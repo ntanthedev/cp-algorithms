@@ -1,0 +1,49 @@
+name: Vietnamese translations
+
+on:
+  pull_request:
+    paths:
+      - 'src/**/*.vi.md'
+      - 'src/**/*.md'
+      - 'TRANSLATING_VI.md'
+      - 'scripts/check_vi_translations.py'
+      - 'mkdocs.yml'
+      - 'scripts/install-mkdocs.sh'
+      - '.github/workflows/translation.yml'
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**/*.vi.md'
+      - 'src/**/*.md'
+      - 'TRANSLATING_VI.md'
+      - 'scripts/check_vi_translations.py'
+      - 'mkdocs.yml'
+      - 'scripts/install-mkdocs.sh'
+      - '.github/workflows/translation.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate translation structure
+        run: python scripts/check_vi_translations.py
+
+      - name: Install MkDocs dependencies
+        run: scripts/install-mkdocs.sh
+
+      - name: Build all languages strictly
+        env:
+          MKDOCS_ENABLE_GIT_REVISION_DATE: 'False'
+          MKDOCS_ENABLE_GIT_COMMITTERS: 'False'
+        run: mkdocs build --strict
