@@ -24,7 +24,7 @@ Bài toán điển hình nhất dẫn đến tìm kiếm nhị phân như sau: c
 <i><a href="https://commons.wikimedia.org/wiki/File:Binary_Search_Depiction.svg">Hình ảnh</a> của <a href="https://commons.wikimedia.org/wiki/User:AlwaysAngry">AlwaysAngry</a> được phát hành theo giấy phép <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC BY-SA 4.0</a></i>.
 </center>
 
-Giả sử ta biết hai chỉ số $L < R$ sao cho $A_L \leq k \leq A_R$. Vì mảng đã sắp xếp, ta suy ra rằng $k$ либо nằm trong các phần tử $A_L, A_{L+1}, \dots, A_R$, либо không xuất hiện trong mảng. Chọn một chỉ số $M$ bất kỳ thỏa mãn $L < M < R$ rồi so sánh $k$ với $A_M$. Có hai trường hợp:
+Giả sử ta biết hai chỉ số $L < R$ sao cho $A_L \leq k \leq A_R$. Vì mảng đã sắp xếp, ta suy ra rằng $k$ hoặc nằm trong các phần tử $A_L, A_{L+1}, \dots, A_R$, hoặc không xuất hiện trong mảng. Chọn một chỉ số $M$ bất kỳ thỏa mãn $L < M < R$ rồi so sánh $k$ với $A_M$. Có hai trường hợp:
 
 1. $A_L \leq k \leq A_M$. Khi đó ta thu hẹp bài toán từ $[L, R]$ xuống $[L, M]$;
 1. $A_M \leq k \leq A_R$. Khi đó ta thu hẹp bài toán từ $[L, R]$ xuống $[M, R]$.
