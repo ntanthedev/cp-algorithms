@@ -45,7 +45,7 @@ Giả sử đồ thị không có chu trình. Khi đó, tìm kiếm theo chiều
 Khi bắt đầu từ một đỉnh $v$, DFS cố gắng duyệt theo mọi cạnh đi ra từ $v$.
 Thuật toán dừng tại những cạnh có đỉnh cuối đã được thăm trước đó, còn với các cạnh khác, nó đi theo cạnh và tiếp tục đệ quy tại đỉnh cuối.
 
-Vì vậy, khi lời gọi hàm $\text{dfs}(v)$ kết thúc, mọi đỉnh có thể đi tới từ $v$ đều đã được tìm kiếm thăm trực tiếp qua một cạnh hoặc gián tiếp qua nhiều cạnh.
+Vì vậy, khi lời gọi hàm $\text{dfs}(v)$ kết thúc, DFS đã thăm mọi đỉnh có thể đi tới từ $v$, trực tiếp qua một cạnh hoặc gián tiếp qua nhiều cạnh.
 
 Ta thêm đỉnh $v$ vào một danh sách khi hoàn tất $\text{dfs}(v)$. Vì mọi đỉnh có thể đi tới từ $v$ đều đã được thăm, chúng đã nằm trong danh sách trước khi ta thêm $v$.
 Thực hiện điều này với mọi đỉnh của đồ thị bằng một hoặc nhiều lần chạy DFS.
