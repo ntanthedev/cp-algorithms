@@ -1,0 +1,30 @@
+name: Vietnamese translation sync
+
+on:
+  pull_request:
+    paths:
+      - 'src/**/*.md'
+      - 'scripts/check_vi_staleness.py'
+      - '.github/workflows/translation-sync.yml'
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/**/*.md'
+      - 'scripts/check_vi_staleness.py'
+      - '.github/workflows/translation-sync.yml'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check source hashes
+        run: python scripts/check_vi_staleness.py

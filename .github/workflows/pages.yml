@@ -1,0 +1,61 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+environment:
+  name: github-pages
+  url: ${{ steps.deployment.outputs.page_url }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: scripts/install-mkdocs.sh
+
+      - name: Validate Vietnamese translations
+        run: python scripts/check_vi_translations.py
+
+      - name: Build site
+        env:
+          MKDOCS_GIT_COMMITTERS_BRANCH: master
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ github.token }}
+          MKDOCS_ENABLE_GIT_REVISION_DATE: 'True'
+          MKDOCS_ENABLE_GIT_COMMITTERS: 'True'
+        run: mkdocs build --strict
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public/
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
