@@ -2,7 +2,7 @@
 
 script_start=`date +%s%N`
 
-python extract_snippets.py
+python3 extract_snippets.py
 
 if [ -z "$CXX" ];
 then
