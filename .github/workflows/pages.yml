@@ -15,10 +15,6 @@ concurrency:
   group: pages
   cancel-in-progress: false
 
-environment:
-  name: github-pages
-  url: ${{ steps.deployment.outputs.page_url }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,10 +38,8 @@ jobs:
 
       - name: Build site
         env:
-          MKDOCS_GIT_COMMITTERS_BRANCH: master
-          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ github.token }}
           MKDOCS_ENABLE_GIT_REVISION_DATE: 'True'
-          MKDOCS_ENABLE_GIT_COMMITTERS: 'True'
+          MKDOCS_ENABLE_GIT_COMMITTERS: 'False'
         run: mkdocs build --strict
 
       - name: Configure Pages
@@ -56,6 +50,13 @@ jobs:
         with:
           path: public/
 
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
