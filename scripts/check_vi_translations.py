@@ -32,6 +32,7 @@ SOURCE_COMMIT_RE = re.compile(r"^\s{2}source_commit:\s*([0-9a-f]{7,40})\s*$", re
 STATUS_RE = re.compile(r"^\s{2}status:\s*([a-z-]+)\s*$", re.MULTILINE)
 LAST_SYNCED_RE = re.compile(r"^\s{2}last_synced:\s*(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
 HEADING_RE = re.compile(r"^(#{1,6})\s+", re.MULTILINE)
+FENCE_RE = re.compile(r"^\s*(```+|~~~+)([^\n]*)$")
 LINK_TARGET_RE = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+['\"][^'\"]*['\"])?\)")
 REFERENCE_LINK_RE = re.compile(r"^\s*\[[^\]]+\]:\s*(\S+)", re.MULTILINE)
 INLINE_CODE_RE = re.compile(r"(?<!`)`([^`\n]+)`(?!`)")
@@ -70,7 +71,7 @@ def extract_fenced_blocks(text: str) -> tuple[list[str], list[str]]:
     current_lines: list[str] = []
 
     for line in lines:
-        match = re.match(r"^\s*(```+|~~~+)([^\n]*)$", line)
+        match = FENCE_RE.match(line)
         if current_marker is None:
             if match:
                 current_marker = match.group(1)[0:3]
@@ -90,6 +91,34 @@ def extract_fenced_blocks(text: str) -> tuple[list[str], list[str]]:
     if current_marker is not None:
         raise ValueError("unclosed fenced code block")
     return signatures, bodies
+
+
+def strip_fenced_blocks(text: str) -> str:
+    """Remove fenced blocks before checking inline-only Markdown syntax."""
+    output: list[str] = []
+    current_marker: str | None = None
+
+    for line in text.splitlines():
+        match = FENCE_RE.match(line)
+        if current_marker is None:
+            if match:
+                current_marker = match.group(1)[0:3]
+                output.append("")
+            else:
+                output.append(line)
+            continue
+
+        output.append("")
+        if re.match(rf"^\s*{re.escape(current_marker)}+\s*$", line):
+            current_marker = None
+
+    return "\n".join(output)
+
+
+def normalize_metadata(metadata: str) -> str:
+    """Normalize insignificant trailing whitespace while keeping key order strict."""
+    lines = [line.rstrip() for line in metadata.strip().splitlines()]
+    return "\n".join(lines)
 
 
 def strip_translation_metadata(metadata: str) -> str:
@@ -177,10 +206,16 @@ def validate_metadata(doc: Document, errors: list[str]) -> Path | None:
 
 
 def validate_pair(source: Document, translated: Document, errors: list[str]) -> None:
-    source_metadata = source.metadata.strip()
-    translated_source_metadata = strip_translation_metadata(translated.metadata)
+    source_metadata = normalize_metadata(source.metadata)
+    translated_source_metadata = normalize_metadata(
+        strip_translation_metadata(translated.metadata)
+    )
     if source_metadata != translated_source_metadata:
-        add_error(errors, translated.path, "source front matter differs from translation")
+        add_error(
+            errors,
+            translated.path,
+            "source front matter must match exactly, excluding the translation block",
+        )
 
     source_headings = sequence(HEADING_RE, source.body)
     translated_headings = sequence(HEADING_RE, translated.body)
@@ -199,7 +234,11 @@ def validate_pair(source: Document, translated: Document, errors: list[str]) -> 
     if source_blocks != translated_blocks:
         add_error(errors, translated.path, "content inside fenced code blocks differs from source")
 
-    if counter(INLINE_CODE_RE, source.body) != counter(INLINE_CODE_RE, translated.body):
+    source_without_fences = strip_fenced_blocks(source.body)
+    translated_without_fences = strip_fenced_blocks(translated.body)
+    if counter(INLINE_CODE_RE, source_without_fences) != counter(
+        INLINE_CODE_RE, translated_without_fences
+    ):
         add_error(errors, translated.path, "inline code differs from source")
 
     if source.body.count("$$") != translated.body.count("$$"):
