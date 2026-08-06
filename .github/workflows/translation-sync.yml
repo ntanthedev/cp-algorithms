@@ -14,9 +14,17 @@ on:
       - 'scripts/check_vi_staleness.py'
       - '.github/workflows/translation-sync.yml'
 
+permissions:
+  contents: read
+
+concurrency:
+  group: vi-translation-sync-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
