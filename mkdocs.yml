@@ -91,7 +91,8 @@ plugins:
       enabled: !ENV [MKDOCS_ENABLE_GIT_COMMITTERS, False]
       branch: !ENV [MKDOCS_ENABLE_GIT_COMMITERS_BRANCH, master]
   - macros
-  - rss
+  - rss:
+      enabled: !ENV [MKDOCS_ENABLE_RSS_PLUGIN, False]
 
 extra:
   social:
