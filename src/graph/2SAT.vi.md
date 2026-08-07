@@ -111,7 +111,7 @@ Việc này có thể được thực hiện bằng thuật toán Kosaraju trong
 Sau đó, ta chọn giá trị gán cho $x$ bằng cách so sánh $\text{comp}[x]$ và $\text{comp}[\lnot x]$. 
 Nếu $\text{comp}[x] = \text{comp}[\lnot x]$, ta trả về $\text{false}$ để báo rằng không tồn tại phép gán hợp lệ thỏa mãn bài toán 2-SAT.
 
-Dưới đây là cài đặt lời giải 2-SAT khi đồ thị kéo theo `adj` và đồ thị chuyển vị $adj^{\intercal}$ (trong đó chiều của mọi cạnh được đảo ngược) đã được xây dựng.
+Dưới đây là cài đặt lời giải 2-SAT khi đồ thị kéo theo $adj$ và đồ thị chuyển vị $adj^{\intercal}$ (trong đó chiều của mọi cạnh được đảo ngược) đã được xây dựng.
 Trong đồ thị, các đỉnh có chỉ số $2k$ và $2k+1$ là hai đỉnh tương ứng với biến $k$, trong đó $2k+1$ tương ứng với biến bị phủ định.
 
 ```{.cpp file=2sat}
