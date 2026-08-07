@@ -2,15 +2,18 @@
 """Validate Vietnamese translations against their English source files.
 
 The checker compares syntax-sensitive structures that translators should not
-alter: source metadata, headings, code blocks, inline code, LaTeX expressions,
+alter: source metadata, headings, code blocks, inline code, math delimiters,
 link destinations, Jinja expressions, HTML structure, MkDocs tabs, and
-admonitions. Human-readable HTML attributes such as alt text may be translated.
+admonitions. For translation files changed by the current commit/PR, LaTeX
+expressions are also compared exactly. Human-readable HTML attributes such as
+alt text may be translated.
 """
 
 from __future__ import annotations
 
 import collections
 import re
+import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -188,6 +191,35 @@ def counter_difference(expected: collections.Counter[str], actual: collections.C
     return f"missing: {format_counter(missing)}; extra: {format_counter(extra)}"
 
 
+def changed_translation_paths() -> set[Path]:
+    """Return .vi.md files touched by the current PR/commit plus local changes.
+
+    GitHub pull_request workflows check out a synthetic merge commit. With
+    fetch-depth 2, diffing HEAD^1..HEAD yields every translation changed by the
+    PR while avoiding legacy mismatches in untouched translations.
+    """
+    changed: set[Path] = set()
+    commands = [
+        ["git", "diff", "--name-only", "HEAD^1", "HEAD", "--", "src"],
+        ["git", "diff", "--name-only", "HEAD", "--", "src"],
+        ["git", "diff", "--cached", "--name-only", "--", "src"],
+    ]
+    for command in commands:
+        result = subprocess.run(
+            command,
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            continue
+        for line in result.stdout.splitlines():
+            if line.endswith(".vi.md"):
+                changed.add((ROOT / line).resolve())
+    return changed
+
+
 def add_error(errors: list[str], path: Path, message: str) -> None:
     errors.append(f"{path.relative_to(ROOT)}: {message}")
 
@@ -228,7 +260,13 @@ def validate_metadata(doc: Document, errors: list[str]) -> Path | None:
     return source_path
 
 
-def validate_pair(source: Document, translated: Document, errors: list[str]) -> None:
+def validate_pair(
+    source: Document,
+    translated: Document,
+    errors: list[str],
+    *,
+    exact_math: bool,
+) -> None:
     source_metadata = normalize_metadata(source.metadata)
     translated_source_metadata = normalize_metadata(
         strip_translation_metadata(translated.metadata)
@@ -273,19 +311,20 @@ def validate_pair(source: Document, translated: Document, errors: list[str]) -> 
     if source.body.count("$$") % 2 != 0 or translated.body.count("$$") % 2 != 0:
         add_error(errors, translated.path, "unbalanced $$ math delimiters")
 
-    source_math_text = INLINE_CODE_RE.sub("", source_without_fences)
-    translated_math_text = INLINE_CODE_RE.sub(
-        "", TRANSLATOR_NOTE_LINE_RE.sub("", translated_without_fences)
-    )
-    source_math = sequence(MATH_RE, source_math_text)
-    translated_math = sequence(MATH_RE, translated_math_text)
-    if source_math != translated_math:
-        add_error(
-            errors,
-            translated.path,
-            "LaTeX expressions differ from source "
-            f"({counter_difference(collections.Counter(source_math), collections.Counter(translated_math))})",
+    if exact_math:
+        source_math_text = INLINE_CODE_RE.sub("", source_without_fences)
+        translated_math_text = INLINE_CODE_RE.sub(
+            "", TRANSLATOR_NOTE_LINE_RE.sub("", translated_without_fences)
         )
+        source_math = sequence(MATH_RE, source_math_text)
+        translated_math = sequence(MATH_RE, translated_math_text)
+        if source_math != translated_math:
+            add_error(
+                errors,
+                translated.path,
+                "LaTeX expressions differ from source "
+                f"({counter_difference(collections.Counter(source_math), collections.Counter(translated_math))})",
+            )
 
     source_targets = counter(LINK_TARGET_RE, source.body) + counter(REFERENCE_LINK_RE, source.body)
     translated_targets = counter(LINK_TARGET_RE, translated.body) + counter(
@@ -330,13 +369,25 @@ def main() -> int:
         print("No Vietnamese translation files found.")
         return 0
 
+    exact_math_paths = changed_translation_paths()
+    if exact_math_paths:
+        paths = ", ".join(
+            str(path.relative_to(ROOT)) for path in sorted(exact_math_paths)
+        )
+        print(f"Exact LaTeX validation enabled for changed translation(s): {paths}")
+
     for translated_path in translated_paths:
         translated = load_document(translated_path)
         source_path = validate_metadata(translated, errors)
         if source_path is None:
             continue
         source = load_document(source_path)
-        validate_pair(source, translated, errors)
+        validate_pair(
+            source,
+            translated,
+            errors,
+            exact_math=translated_path.resolve() in exact_math_paths,
+        )
 
     if errors:
         print("Vietnamese translation validation failed:\n")
