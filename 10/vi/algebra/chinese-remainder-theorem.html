@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#inh-ly-so-du-trung-hoa" class="md-skip">
+        <a href="#inh-ly-thang-du-trung-hoa" class="md-skip">
           Bỏ qua
         </a>
       
@@ -8100,8 +8100,8 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="inh-ly-so-du-trung-hoa">Định lý số dư Trung Hoa<a class="headerlink" href="#inh-ly-so-du-trung-hoa" title="Permanent link">&para;</a></h1>
-<p>Định lý số dư Trung Hoa (Chinese Remainder Theorem, viết tắt là CRT trong phần còn lại của bài) được phát hiện bởi nhà toán học Trung Quốc Tôn Tử (Sun Zi).</p>
+<h1 id="inh-ly-thang-du-trung-hoa">Định lý Thặng dư Trung Hoa<a class="headerlink" href="#inh-ly-thang-du-trung-hoa" title="Permanent link">&para;</a></h1>
+<p>Định lý Thặng dư Trung Hoa (Chinese Remainder Theorem, viết tắt là CRT trong phần còn lại của bài; cũng thường được gọi là Định lý số dư Trung Hoa) được phát hiện bởi nhà toán học Trung Quốc Tôn Tử (Sun Zi).</p>
 <h2 id="phat-bieu">Phát biểu<a class="headerlink" href="#phat-bieu" title="Permanent link">&para;</a></h2>
 <p>Gọi <span class="arithmatex">$m = m_1 \cdot m_2 \cdots m_k$</span>, trong đó các <span class="arithmatex">$m_i$</span> đôi một nguyên tố cùng nhau. Ngoài các <span class="arithmatex">$m_i$</span>, ta còn được cho một hệ đồng dư</p>
 <div class="arithmatex">$$\left\{\begin{array}{rcl}
@@ -8152,7 +8152,7 @@ a &amp; \equiv &amp; a_1 n_2 m_2 + a_2 n_1 m_1 &amp; \pmod{m_1}\\
   &amp; \equiv &amp; a_1 &amp; \pmod{m_1}
 \end{array}
 $$</div>
-<p>Lưu ý rằng Định lý số dư Trung Hoa còn bảo đảm chỉ tồn tại một nghiệm theo mô-đun <span class="arithmatex">$m_1 m_2$</span>.
+<p>Lưu ý rằng Định lý Thặng dư Trung Hoa còn bảo đảm chỉ tồn tại một nghiệm theo mô-đun <span class="arithmatex">$m_1 m_2$</span>.
 Điều này cũng dễ chứng minh.</p>
 <p>Giả sử có hai nghiệm khác nhau <span class="arithmatex">$x$</span> và <span class="arithmatex">$y$</span>.
 Vì <span class="arithmatex">$x \equiv a_i \pmod{m_i}$</span> và <span class="arithmatex">$y \equiv a_i \pmod{m_i}$</span>, suy ra <span class="arithmatex">$x - y \equiv 0 \pmod{m_i}$</span>, do đó <span class="arithmatex">$x - y \equiv 0 \pmod{m_1 m_2}$</span>, hay tương đương <span class="arithmatex">$x \equiv y \pmod{m_1 m_2}$</span>.
@@ -8249,7 +8249,7 @@ Các mô-đun còn lại giờ đôi một nguyên tố cùng nhau, nên có th�
 <p>Thay vì thực hiện nhiều phép tính với các số cực lớn — có thể rất tốn kém, chẳng hạn phép chia số có 1000 chữ số — ta có thể chọn một số mô-đun nguyên tố cùng nhau, biểu diễn số lớn thành một hệ đồng dư rồi thực hiện các phép toán trên hệ đó.
 Mọi số <span class="arithmatex">$a$</span> nhỏ hơn <span class="arithmatex">$m_1 m_2 \cdots m_k$</span> có thể được biểu diễn bằng một mảng <span class="arithmatex">$a_1, \ldots, a_k$</span>, trong đó <span class="arithmatex">$a \equiv a_i \pmod{m_i}$</span>.</p>
 <p>Dùng thuật toán trên, ta có thể khôi phục lại số lớn khi cần.</p>
-<p>Ngoài ra, ta có thể biểu diễn số bằng <strong>hệ cơ số hỗn hợp</strong>:</p>
+<p>Ngoài ra, ta có thể viết số đó dưới <strong>biểu diễn cơ số hỗn hợp</strong>:</p>
 <div class="arithmatex">$$a = x_1 + x_2 m_1 + x_3 m_1 m_2 + \ldots + x_k m_1 \cdots m_{k-1} \text{ with }x_i \in [0, m_i)$$</div>
 <p>Thuật toán Garner, được trình bày trong bài riêng <a href="garners-algorithm.html">Garner's algorithm</a>, tính các hệ số <span class="arithmatex">$x_i$</span>.
 Từ các hệ số này ta có thể khôi phục toàn bộ số ban đầu.</p>
