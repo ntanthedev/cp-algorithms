@@ -39,7 +39,7 @@ Ta mô tả quá trình này chi tiết hơn.
 Ban đầu giả sử `i = L`.
 Nếu `up[u][i]` không phải là tổ tiên của `v`, ta gán `u = up[u][i]` rồi giảm `i` đi một.
 Nếu `up[u][i]` là tổ tiên, ta chỉ giảm `i` đi một.
-Rõ ràng sau khi xử lý mọi `i` không âm, đỉnh `u` sẽ chính là đỉnh cần tìm: `u` vẫn chưa phải tổ tiên của `v`, nhưng `up[u][0]` thì đã là tổ tiên của `v`.
+Rõ ràng sau khi xử lý mọi `i` không âm, đỉnh `u` sẽ chính là đỉnh cần tìm: `u` vẫn chưa phải tổ tiên của `v`, nhưng `up[u][0]` thì đã thỏa điều kiện này.
 
 Khi đó, hiển nhiên đáp án LCA là `up[u][0]`, tức đỉnh thấp nhất trong các tổ tiên của đỉnh `u` mà đồng thời cũng là tổ tiên của `v`.
 
