@@ -20,7 +20,7 @@ We use the classical reduction of the LCA problem to the RMQ problem.
 We traverse all nodes of the tree with [DFS](depth-first-search.md) and keep an array with all visited nodes and the heights of these nodes. 
 The LCA of two nodes $u$ and $v$ is the node between the occurrences of $u$ and $v$ in the tour, that has the smallest height.
 
-In the following picture you can see a possible Euler-Tour of a graph and in the list below you can see the visited nodes and their heights.
+In the following picture you can see a possible Euler-Tour of a tree and in the list below you can see the visited nodes and their heights.
 
 <div style="text-align: center;">
   <img src="LCA_Euler.png" alt="LCA_Euler_Tour">
