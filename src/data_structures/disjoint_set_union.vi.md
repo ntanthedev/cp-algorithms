@@ -374,21 +374,23 @@ ban đầu ta có một đồ thị rỗng, các cạnh được thêm dần, v�
 Nhờ vậy ta có thể nhanh chóng kiểm tra việc thêm một cạnh có làm mất tính hai phía hay không:
 nếu hai đầu cạnh nằm trong cùng thành phần liên thông và có cùng tính chẵn lẻ về độ dài đường đi tới đại diện, việc thêm cạnh sẽ tạo ra một chu trình lẻ và thành phần không còn là đồ thị hai phía.
 
-Khó khăn duy nhất là tính giá trị chẵn lẻ trong phương thức `union_find`.
+Khó khăn duy nhất là tính giá trị chẵn lẻ khi hợp hai thành phần.
+
+**Ghi chú bản dịch:** Nguồn gọi thao tác này là `union_find`; trong cài đặt bên dưới, phần cập nhật tương ứng được thực hiện trong hàm add_edge.
 
 Nếu thêm cạnh $(a, b)$ nối hai thành phần liên thông, khi gắn một cây vào cây kia ta phải điều chỉnh tính chẵn lẻ.
 
 Ta suy ra công thức tính tính chẵn lẻ cần gán cho đại diện của tập sẽ được gắn vào tập kia.
 Gọi $x$ là tính chẵn lẻ của độ dài đường đi từ đỉnh $a$ tới đại diện $A$, $y$ là tính chẵn lẻ từ đỉnh $b$ tới đại diện $B$, và $t$ là giá trị cần gán cho $B$ sau khi hợp.
 Đường đi gồm ba phần:
-từ $B$ tới $b$, từ $b$ tới $a$ qua đúng một cạnh nên có parity $1$, và từ $a$ tới $A$.
+từ $B$ tới $b$, từ $b$ tới $a$ qua đúng một cạnh nên có tính chẵn lẻ bằng $1$, và từ $a$ tới $A$.
 Do đó ta có công thức ($\oplus$ là phép XOR):
 
 $$t = x \oplus y \oplus 1$$
 
 Như vậy, dù thực hiện bao nhiêu lần hợp, tính chẵn lẻ của các cạnh vẫn được truyền từ đại diện này sang đại diện khác.
 
-Dưới đây là cài đặt DSU hỗ trợ parity. Như phần trước, ta dùng một cặp để lưu đỉnh cha và parity. Ngoài ra, với mỗi tập ta lưu trong mảng `bipartite[]` xem tập đó còn hai phía hay không.
+Dưới đây là cài đặt DSU hỗ trợ tính chẵn lẻ. Như phần trước, ta dùng một cặp để lưu đỉnh cha và tính chẵn lẻ. Ngoài ra, với mỗi tập ta lưu trong mảng `bipartite[]` xem tập đó còn hai phía hay không.
 
 ```cpp
 void make_set(int v) {
@@ -581,6 +583,8 @@ Lần đầu cận $O(\alpha(n))$ được chứng minh là vào năm 1975 (Tarj
 Sau đó vào năm 1985, Tarjan cùng Leeuwen công bố nhiều phân tích độ phức tạp cho các heuristic hạng khác nhau và nhiều cách nén đường đi (Tarjan, Leeuwen, "Worst-case Analysis of Set Union Algorithms").
 
 Cuối cùng, năm 1989 Fredman và Sachs chứng minh rằng trong mô hình tính toán được xét, **mọi** thuật toán cho bài toán hợp các tập rời nhau đều phải mất ít nhất $O(\alpha(n))$ thời gian trung bình (Fredman, Saks, "The cell probe complexity of dynamic data structures").
+
+**Ghi chú bản dịch:** Câu nguồn dùng ký hiệu cận trên $O(\alpha(n))$ sau cụm “at least” và viết họ tác giả là “Sachs”. Kết quả được nêu ở đây là một cận dưới $\Omega(\alpha(n))$, và tên tác giả đúng là Michael Saks; chính phần trích dẫn của nguồn cũng ghi “Fredman, Saks”.
 
 ## Bài tập
 
