@@ -8060,7 +8060,7 @@ Heap Fibonacci đạt độ phức tạp tối ưu cho nhiệm vụ này, nhưng
 <p>Một phương án thực tế hơn là dùng cấu trúc dữ liệu mà cả thao tác lấy phần tử nhỏ nhất và cập nhật một phần tử đều chạy trong <span class="arithmatex">$O(\log n)$</span>.
 Khi đó độ phức tạp của Dijkstra là <span class="arithmatex">$O(n \log n + m \log n) = O(m \log n)$</span>.</p>
 <p>C++ cung cấp hai cấu trúc phù hợp là <code>set</code> và <code>priority_queue</code>.
-<code>set</code> thường được cài bằng cây đỏ-đen, còn <code>priority_queue</code> dựa trên heap.
+Cấu trúc thứ nhất thường được cài bằng cây đỏ-đen, còn cấu trúc thứ hai dựa trên heap.
 Vì vậy <code>priority_queue</code> có hằng số ẩn nhỏ hơn, nhưng cũng có một nhược điểm:
 nó không hỗ trợ thao tác xóa một phần tử tùy ý.
 Do đó ta cần dùng một cách xử lý thay thế, dẫn đến hệ số <span class="arithmatex">$\log m$</span> hơi kém hơn <span class="arithmatex">$\log n$</span> (mặc dù xét theo độ phức tạp tiệm cận thì chúng tương đương).</p>
