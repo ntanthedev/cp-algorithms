@@ -8264,7 +8264,7 @@ Khi đó mỗi lần gọi <code>find_set(v)</code> có thể mất <span class=
 Vì vậy ta sẽ xét hai tối ưu giúp tăng tốc đáng kể.</p>
 <h3 id="toi-uu-nen-uong-i">Tối ưu nén đường đi<a class="headerlink" href="#toi-uu-nen-uong-i" title="Permanent link">&para;</a></h3>
 <p>Tối ưu này nhằm tăng tốc <code>find_set</code>.</p>
-<p>Khi gọi <code>find_set(v)</code> cho một đỉnh <code>v</code>, thực tế ta tìm được phần tử đại diện <code>p</code> không chỉ cho <code>v</code> mà còn cho mọi đỉnh đi qua trên đường từ <code>v</code> đến đại diện thật sự <code>p</code>.
+<p>Khi gọi <code>find_set(v)</code> cho một đỉnh <code>v</code>, thực tế ta tìm được phần tử đại diện <code>p</code> cho mọi đỉnh đi qua trên đường từ <code>v</code> đến đại diện thật sự <code>p</code>.
 Ý tưởng là rút ngắn đường đi của tất cả các đỉnh đó bằng cách đặt cha của mỗi đỉnh đã thăm trực tiếp thành <code>p</code>.</p>
 <p>Hình dưới minh họa thao tác này.
 Bên trái là cây ban đầu; bên phải là cây đã được nén sau khi gọi <code>find_set(7)</code>, làm ngắn đường đi của các đỉnh 7, 5, 3 và 2.</p>
