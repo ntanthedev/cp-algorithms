@@ -127,15 +127,17 @@ Tuy nhiên, hơi bất ngờ là chính các phép chuyển đã xây trong auto
 
 Liên kết hậu tố của đỉnh gốc và mọi đỉnh con trực tiếp của nó đều trỏ về đỉnh gốc.
 Với một đỉnh $v$ nằm sâu hơn trong cây, ta có thể tính liên kết hậu tố như sau:
-nếu $p$ là tổ tiên của $v$ và $c$ là ký tự gắn trên cạnh từ $p$ đến $v$,
+nếu $p$ là đỉnh cha trực tiếp của $v$ và $c$ là ký tự gắn trên cạnh từ $p$ đến $v$,
 ta đi tới $p$,
 sau đó đi theo liên kết hậu tố của nó và thực hiện phép chuyển bằng ký tự $c$ từ đó.
+
+**Ghi chú bản dịch:** Nguồn dùng từ “ancestor” cho p, nhưng vì c được định nghĩa là nhãn của cạnh trực tiếp từ p đến v, p ở đây phải là đỉnh cha trực tiếp (parent) của v. Bản dịch dùng “đỉnh cha trực tiếp” để tránh hiểu nhầm.
 
 Như vậy, bài toán tìm phép chuyển được quy về bài toán tìm liên kết hậu tố, còn bài toán tìm liên kết hậu tố lại được quy về bài toán tìm một liên kết hậu tố và một phép chuyển, ngoại trừ các đỉnh gần gốc.
 Ta thu được một quan hệ phụ thuộc đệ quy có thể giải trong thời gian tuyến tính.
 
 Chuyển sang phần cài đặt.
-Lưu ý rằng giờ với mỗi đỉnh $v$, ta sẽ lưu tổ tiên $p$ và ký tự $pch$ trên cạnh từ $p$ đến $v$.
+Lưu ý rằng giờ với mỗi đỉnh $v$, ta sẽ lưu đỉnh cha trực tiếp $p$ và ký tự $pch$ trên cạnh từ $p$ đến $v$.
 Ngoài ra, tại mỗi đỉnh ta lưu liên kết hậu tố $\text{link}$ (hoặc $-1$ nếu chưa được tính), và trong mảng $\text{go}[k]$ ta lưu các phép chuyển của máy theo từng ký hiệu (cũng bằng $-1$ nếu chưa được tính).
 
 ```{.cpp file=aho_corasick_automaton}
