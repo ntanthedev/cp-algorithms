@@ -9,9 +9,9 @@ translation:
   last_synced: 2026-08-07
 ---
 
-# Hàm phi Euler
+# Phi hàm Euler
 
-Hàm phi Euler, còn gọi là **hàm phi** $\phi (n)$, đếm số lượng số nguyên từ 1 đến $n$ (kể cả hai đầu) nguyên tố cùng nhau với $n$. Hai số nguyên tố cùng nhau nếu ước chung lớn nhất của chúng bằng $1$; số $1$ được xem là nguyên tố cùng nhau với mọi số.
+Phi hàm Euler, còn gọi là **hàm phi Euler** $\phi (n)$, đếm số lượng số nguyên từ 1 đến $n$ (kể cả hai đầu) nguyên tố cùng nhau với $n$. Hai số nguyên tố cùng nhau nếu ước chung lớn nhất của chúng bằng $1$; số $1$ được xem là nguyên tố cùng nhau với mọi số.
 
 Dưới đây là các giá trị $\phi(n)$ của một số số nguyên dương đầu tiên:
 
@@ -23,7 +23,7 @@ n & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 & 
 
 ## Tính chất
 
-Các tính chất sau của hàm phi Euler là đủ để tính nó cho một số bất kỳ:
+Các tính chất sau của phi hàm Euler là đủ để tính nó cho một số bất kỳ:
 
   - Nếu $p$ là số nguyên tố thì $\gcd(p, q) = 1$ với mọi $1 \le q < p$. Vì vậy:
   
@@ -38,7 +38,7 @@ $$\phi(p^k) = p^k - p^{k-1}.$$
     
     \[\phi(a b) = \phi(a) \cdot \phi(b).\]
     
-    Quan hệ này không hiển nhiên. Nó suy ra từ [Định lý số dư Trung Hoa](chinese-remainder-theorem.md). Định lý số dư Trung Hoa bảo đảm rằng với mỗi $0 \le x < a$ và mỗi $0 \le y < b$, tồn tại duy nhất $0 \le z < a b$ sao cho $z \equiv x \pmod{a}$ và $z \equiv y \pmod{b}$. Không khó để chứng minh $z$ nguyên tố cùng nhau với $a b$ khi và chỉ khi $x$ nguyên tố cùng nhau với $a$ và $y$ nguyên tố cùng nhau với $b$. Vì vậy số lượng số nguyên nguyên tố cùng nhau với $a b$ bằng tích số lượng tương ứng của $a$ và $b$.
+    Quan hệ này không hiển nhiên. Nó suy ra từ [Định lý Thặng dư Trung Hoa](chinese-remainder-theorem.md). Định lý Thặng dư Trung Hoa bảo đảm rằng với mỗi $0 \le x < a$ và mỗi $0 \le y < b$, tồn tại duy nhất $0 \le z < a b$ sao cho $z \equiv x \pmod{a}$ và $z \equiv y \pmod{b}$. Không khó để chứng minh $z$ nguyên tố cùng nhau với $a b$ khi và chỉ khi $x$ nguyên tố cùng nhau với $a$ và $y$ nguyên tố cùng nhau với $b$. Vì vậy số lượng số nguyên nguyên tố cùng nhau với $a b$ bằng tích số lượng tương ứng của $a$ và $b$.
 
   - Tổng quát hơn, khi $a$ và $b$ không nguyên tố cùng nhau, ta có
 
@@ -76,13 +76,13 @@ int phi(int n) {
 }
 ```
 
-## Hàm phi Euler từ $1$ đến $n$ trong $O(n \log\log{n})$ { #etf_1_to_n data-toc-label="Euler totient function from 1 to n in <script type=\"math/tex\">O(n log log n)</script>" }
+## Phi hàm Euler từ $1$ đến $n$ trong $O(n \log\log{n})$ { #etf_1_to_n data-toc-label="Euler totient function from 1 to n in <script type=\"math/tex\">O(n log log n)</script>" }
 
 Nếu cần tính hàm phi của mọi số từ $1$ đến $n$, việc phân tích thừa số riêng từng số là không hiệu quả.
-Ta có thể dùng cùng ý tưởng với [Sàng Eratosthenes](sieve-of-eratosthenes.md).
+Ta có thể dùng cùng ý tưởng với [Sàng Eratostes](sieve-of-eratosthenes.md).
 Phương pháp vẫn dựa trên tính chất ở trên, nhưng thay vì cập nhật kết quả tạm thời theo từng thừa số nguyên tố của từng số, ta tìm tất cả số nguyên tố rồi với mỗi số nguyên tố cập nhật kết quả tạm thời của mọi số chia hết cho nó.
 
-Vì cách này về bản chất giống Sàng Eratosthenes, độ phức tạp cũng là $O(n \log \log n)$.
+Vì cách này về bản chất giống Sàng Eratostes, độ phức tạp cũng là $O(n \log \log n)$.
 
 ```cpp
 void phi_1_to_n(int n) {
@@ -180,7 +180,7 @@ void phi_1_to_n(int n) {
 
 ## Ứng dụng trong định lý Euler { #application }
 
-Tính chất nổi tiếng và quan trọng nhất của hàm phi Euler được biểu diễn qua **định lý Euler**:
+Tính chất nổi tiếng và quan trọng nhất của phi hàm Euler được biểu diễn qua **định lý Euler**:
 
 $$a^{\phi(m)} \equiv 1 \pmod m \quad \text{if } a \text{ and } m \text{ are relatively prime.}$$
 
@@ -188,7 +188,7 @@ Trong trường hợp riêng khi $m$ là số nguyên tố, định lý Euler tr
 
 $$a^{m - 1} \equiv 1 \pmod m$$
 
-Định lý Euler và hàm phi Euler xuất hiện rất thường xuyên trong thực tế; chẳng hạn cả hai đều được dùng để tính [nghịch đảo nhân mô-đun](module-inverse.md).
+Định lý Euler và phi hàm Euler xuất hiện rất thường xuyên trong thực tế; chẳng hạn cả hai đều được dùng để tính [nghịch đảo nhân mô-đun](module-inverse.md).
 
 Một hệ quả trực tiếp khác là tương đương:
 
@@ -199,7 +199,7 @@ $$a^n \equiv a^{n \bmod \phi(m)} \pmod m$$
 ### Lý thuyết nhóm
 $\phi(n)$ là [cấp của nhóm nhân modulo n](https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n) $(\mathbb Z / n\mathbb Z)^\times$, tức nhóm các đơn vị — các phần tử có nghịch đảo nhân. Những phần tử có nghịch đảo nhân chính xác là những phần tử nguyên tố cùng nhau với $n$.
 
-[Bậc nhân](https://en.wikipedia.org/wiki/Multiplicative_order) của phần tử $a$ modulo $n$, ký hiệu $\operatorname{ord}_n(a)$, là số $k>0$ nhỏ nhất sao cho $a^k \equiv 1 \pmod n$. $\operatorname{ord}_n(a)$ là kích thước của nhóm con sinh bởi $a$, nên theo định lý Lagrange, bậc nhân của mọi $a$ phải chia hết $\phi(n)$. Nếu bậc nhân của $a$ bằng $\phi(n)$, tức lớn nhất có thể, thì $a$ là một [căn nguyên thủy](primitive-root.md) và theo định nghĩa nhóm là cyclic.
+[Bậc nhân](https://en.wikipedia.org/wiki/Multiplicative_order) của phần tử $a$ modulo $n$, ký hiệu $\operatorname{ord}_n(a)$, là số $k>0$ nhỏ nhất sao cho $a^k \equiv 1 \pmod n$. $\operatorname{ord}_n(a)$ là kích thước của nhóm con sinh bởi $a$, nên theo định lý Lagrange, bậc nhân của mọi $a$ phải là ước của $\phi(n)$. Nếu bậc nhân của $a$ bằng $\phi(n)$, tức lớn nhất có thể, thì $a$ là một [căn nguyên thủy](primitive-root.md) và theo định nghĩa nhóm là cyclic.
 
 ## Tổng quát hóa
 
@@ -212,7 +212,7 @@ Chứng minh:
 
 Gọi $p_1, \dots, p_t$ là các ước nguyên tố chung của $x$ và $m$, và $k_i$ là số mũ tương ứng của chúng trong $m$.
 Từ đó đặt $a = p_1^{k_1} \dots p_t^{k_t}$, khi đó $\frac{m}{a}$ nguyên tố cùng nhau với $x$.
-Và gọi $k$ là số nhỏ nhất sao cho $a$ chia hết $x^k$.
+Và gọi $k$ là số nhỏ nhất sao cho $a$ là ước của $x^k$.
 Giả sử $n \ge k$, ta có thể viết:
 
 $$\begin{align}x^n \bmod m &= \frac{x^k}{a}ax^{n-k}\bmod m \\
@@ -230,8 +230,10 @@ Vì $x$ và $\frac{m}{a}$ nguyên tố cùng nhau, ta có thể áp dụng đị
 $$x^n \bmod m = x^k\left(x^{n-k \bmod \phi(\frac{m}{a})} \bmod \frac{m}{a}\right)\bmod m.$$
 
 Công thức này khó áp dụng trực tiếp, nhưng có thể dùng để phân tích hành vi của $x^n \bmod m$. Ta thấy dãy lũy thừa $(x^1 \bmod m, x^2 \bmod m, x^3 \bmod m, \dots)$ đi vào một chu kỳ có độ dài $\phi\left(\frac{m}{a}\right)$ sau $k$ phần tử đầu tiên hoặc ít hơn.
-$\phi\left(\frac{m}{a}\right)$ chia hết $\phi(m)$ (vì $a$ và $\frac{m}{a}$ nguyên tố cùng nhau nên $\phi(a) \cdot \phi\left(\frac{m}{a}\right) = \phi(m)$), vì vậy cũng có thể nói chu kỳ có độ dài $\phi(m)$.
+$\phi\left(\frac{m}{a}\right)$ là ước của $\phi(m)$ (vì $a$ và $\frac{m}{a}$ nguyên tố cùng nhau nên $\phi(a) \cdot \phi\left(\frac{m}{a}\right) = \phi(m)$), vì vậy cũng có thể nói chu kỳ có độ dài $\phi(m)$.
 Và vì $\phi(m) \ge \log_2 m \ge k$, ta suy ra công thức đơn giản hơn mong muốn:
+
+**Ghi chú bản dịch:** Nguồn viết bất đẳng thức $\phi(m) \ge \log_2 m$, nhưng bất đẳng thức này không đúng với mọi $m$; chẳng hạn $\phi(6)=2<\log_2 6$. Bản dịch giữ nguyên mệnh đề của nguồn và đánh dấu điểm này để technical review thay vì âm thầm sửa nội dung thuật toán.
 
 $$ x^n \equiv x^{\phi(m)} x^{(n - \phi(m)) \bmod \phi(m)} \bmod m \equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m.$$
 
