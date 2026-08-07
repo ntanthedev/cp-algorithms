@@ -8137,7 +8137,7 @@ n &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 
 <p>với <span class="arithmatex">$d = \gcd(a, b)$</span>.</p>
 </li>
 </ul>
-<p>Do đó, dùng ba tính chất đầu tiên, ta có thể tính <span class="arithmatex">$\phi(n)$</span> thông qua phân tích <span class="arithmatex">$n$</span> thành thừa số nguyên tố.
+<p>Do đó, dùng ba tính chất đầu tiên, ta có thể tính <span class="arithmatex">$\phi(n)$</span> thông qua phân tích <span class="arithmatex">$n$</span> thành thừa số nguyên tố (tức phân tích <span class="arithmatex">$n$</span> thành tích các thừa số nguyên tố).
 Nếu <span class="arithmatex">$n = {p_1}^{a_1} \cdot {p_2}^{a_2} \cdots {p_k}^{a_k}$</span>, trong đó <span class="arithmatex">$p_i$</span> là các thừa số nguyên tố của <span class="arithmatex">$n$</span>, thì</p>
 <div class="arithmatex">$$\begin{align}
 \phi (n) &amp;= \phi ({p_1}^{a_1}) \cdot \phi ({p_2}^{a_2}) \cdots  \phi ({p_k}^{a_k}) \\\\
@@ -8162,7 +8162,7 @@ Nếu <span class="arithmatex">$n = {p_1}^{a_1} \cdot {p_2}^{a_2} \cdots {p_k}^{
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="etf_1_to_n">Phi hàm Euler từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span> trong <span class="arithmatex">$O(n \log\log{n})$</span><a class="headerlink" href="#etf_1_to_n" title="Permanent link">&para;</a></h2>
-<p>Nếu cần tính hàm phi của mọi số từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span>, việc phân tích thừa số riêng từng số là không hiệu quả.
+<p>Nếu cần tính hàm phi của mọi số từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span>, việc phân tích thừa số riêng cho cả <span class="arithmatex">$n$</span> số là không hiệu quả.
 Ta có thể dùng cùng ý tưởng với <a href="sieve-of-eratosthenes.html">Sàng Eratosthenes</a>.
 Phương pháp vẫn dựa trên tính chất ở trên, nhưng thay vì cập nhật kết quả tạm thời theo từng thừa số nguyên tố của từng số, ta tìm tất cả số nguyên tố rồi với mỗi số nguyên tố cập nhật kết quả tạm thời của mọi số chia hết cho nó.</p>
 <p>Vì cách này về bản chất giống Sàng Eratosthenes, độ phức tạp cũng là <span class="arithmatex">$O(n \log \log n)$</span>.</p>
