@@ -20,7 +20,7 @@ Hãy tìm cách gán $a, b, c$ sao cho công thức sau đúng:
 $$(a \lor \lnot b) \land (\lnot a \lor b) \land (\lnot a \lor \lnot b) \land (a \lor \lnot c)$$
 
 SAT là bài toán NP-complete và hiện chưa có thuật toán hiệu quả đã biết để giải trường hợp tổng quát.
-Tuy nhiên, 2SAT có thể được giải hiệu quả trong $O(n + m)$, với $n$ là số biến và $m$ là số mệnh đề.
+Tuy nhiên, 2-SAT có thể được giải hiệu quả trong $O(n + m)$, với $n$ là số biến và $m$ là số mệnh đề.
 
 ## Thuật toán:
 
