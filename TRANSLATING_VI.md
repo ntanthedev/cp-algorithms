@@ -132,11 +132,13 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | time complexity | độ phức tạp thời gian |
 | space complexity | độ phức tạp bộ nhớ |
 | amortized complexity | độ phức tạp khấu hao |
+| associativity | tính kết hợp |
 | greatest common divisor | ước chung lớn nhất |
 | least common multiple | bội chung nhỏ nhất |
 | extended Euclidean algorithm | thuật toán Euclid mở rộng |
 | Bézout's identity / lemma | đồng nhất thức / bổ đề Bézout |
 | coprime / relatively prime | nguyên tố cùng nhau |
+| pairwise coprime | đôi một nguyên tố cùng nhau |
 | congruence | đồng dư |
 | modulus | mô-đun |
 | modular multiplicative inverse | nghịch đảo nhân mô-đun; sau lần đầu có thể dùng nghịch đảo mô-đun |
@@ -144,6 +146,10 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | binary exponentiation | lũy thừa nhị phân |
 | Euler's totient function | hàm phi Euler |
 | Euclidean division | phép chia Euclid |
+| Chinese Remainder Theorem | Định lý số dư Trung Hoa |
+| multiplicative order | bậc nhân |
+| primitive root | căn nguyên thủy |
+| mixed radix representation | biểu diễn cơ số hỗn hợp |
 | Sieve of Eratosthenes | Sàng Eratosthenes |
 | segmented sieve | sàng phân đoạn |
 | connected component | thành phần liên thông |
