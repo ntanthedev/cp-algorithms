@@ -27,20 +27,29 @@ def _is_vietnamese_page(page, config):
 
 
 def _rewrite_local_image_src(src, page):
-    """Rewrite bare relative raw-HTML image paths for the /vi/ output tree.
+    """Rewrite raw-HTML local image paths for the /vi/ output tree.
 
-    Markdown image syntax is already rewritten by MkDocs. Raw HTML is not, so a
-    source such as ``<img src="MST_before.png">`` would otherwise resolve under
-    ``/vi/graph/`` even though the asset is emitted under ``/graph/``.
+    Markdown image syntax is already rewritten by MkDocs. Raw HTML is not, so
+    source paths such as ``MST_before.png`` or ``./MST_before.png`` would
+    otherwise resolve below ``/vi/`` even though the assets are emitted in the
+    default-language tree.
+
+    Paths beginning with ``../`` are left alone because they can already be
+    rewritten Markdown-image output. The rendered-site checker catches any
+    genuinely broken path that remains.
     """
     parsed = urlsplit(src)
     if parsed.scheme or parsed.netloc or not parsed.path:
         return src
-    if parsed.path.startswith(('/', '.', '#')):
+    if parsed.path.startswith(('/', '#', '../')):
         return src
 
+    source_relative_path = parsed.path[2:] if parsed.path.startswith('./') else parsed.path
+
     src_uri = PurePosixPath(page.file.src_uri)
-    asset_path = PurePosixPath(posixpath.normpath(str(src_uri.parent / parsed.path)))
+    asset_path = PurePosixPath(
+        posixpath.normpath(str(src_uri.parent / source_relative_path))
+    )
 
     page_url = (page.url or '').lstrip('/')
     if not page_url.startswith('vi/'):
