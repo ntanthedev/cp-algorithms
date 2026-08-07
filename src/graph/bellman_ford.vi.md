@@ -137,7 +137,7 @@ Bắt đầu từ đỉnh $t$, ta liên tục đi qua các đỉnh trước cho 
 
 ## Chứng minh thuật toán
 
-Trước hết, với mọi đỉnh không thể đi tới $u$, thuật toán vẫn hoạt động đúng: nhãn $d[u]$ giữ nguyên bằng vô cực, vì Bellman-Ford sẽ tìm một đường nào đó tới mọi đỉnh có thể đi tới từ nguồn $v$, còn phép nới lỏng với các đỉnh còn lại sẽ không bao giờ xảy ra.
+Trước hết, với mọi đỉnh $u$ không thể đi tới từ đỉnh bắt đầu $v$, thuật toán vẫn hoạt động đúng: nhãn $d[u]$ giữ nguyên bằng vô cực, vì Bellman-Ford sẽ tìm một đường nào đó tới mọi đỉnh có thể đi tới từ nguồn $v$, còn phép nới lỏng với các đỉnh còn lại sẽ không bao giờ xảy ra.
 
 Ta chứng minh khẳng định sau: sau khi thực hiện pha thứ $i$, Bellman-Ford tìm đúng mọi đường đi ngắn nhất có số cạnh không vượt quá $i$.
 
@@ -156,7 +156,7 @@ Dễ thấy Bellman-Ford có thể liên tục thực hiện phép nới lỏng 
 
 Từ đây ta có **tiêu chuẩn để phát hiện chu trình âm có thể đi tới từ đỉnh nguồn $v$**: sau pha thứ $(n-1)$, nếu chạy thêm một pha và vẫn thực hiện được ít nhất một phép nới lỏng, thì đồ thị có chu trình âm có thể đi tới từ $v$; nếu không thì không có chu trình như vậy.
 
-Hơn nữa, nếu phát hiện được chu trình như vậy, ta có thể sửa Bellman-Ford để khôi phục chu trình dưới dạng một dãy đỉnh. Chỉ cần nhớ đỉnh cuối cùng $x$ được nới lỏng ở pha thứ $n$. Đỉnh này либо nằm trên chu trình âm, либо có thể đi tới từ chu trình đó. Để chắc chắn đi vào một đỉnh thuộc chu trình âm, bắt đầu từ $x$ và lần theo đỉnh trước $n$ lần. Khi đó ta tới một đỉnh $y$ được bảo đảm nằm trên chu trình âm. Tiếp tục đi qua các đỉnh trước từ $y$ cho tới khi quay lại chính $y$; điều này chắc chắn xảy ra vì các phép nới lỏng trên chu trình âm diễn ra theo vòng.
+Hơn nữa, nếu phát hiện được chu trình như vậy, ta có thể sửa Bellman-Ford để khôi phục chu trình dưới dạng một dãy đỉnh. Chỉ cần nhớ đỉnh cuối cùng $x$ được nới lỏng ở pha thứ $n$. Đỉnh này hoặc nằm trên chu trình âm, hoặc có thể đi tới từ chu trình đó. Để chắc chắn đi vào một đỉnh thuộc chu trình âm, bắt đầu từ $x$ và lần theo đỉnh trước $n$ lần. Khi đó ta tới một đỉnh $y$ được bảo đảm nằm trên chu trình âm. Tiếp tục đi qua các đỉnh trước từ $y$ cho tới khi quay lại chính $y$; điều này chắc chắn xảy ra vì các phép nới lỏng trên chu trình âm diễn ra theo vòng.
 
 ### Cài đặt:
 
@@ -273,6 +273,6 @@ Danh sách các bài có thể giải bằng thuật toán Bellman-Ford:
 * [UVA #515 "King" [difficulty: medium]](http://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=456)
 * [UVA 12519 - The Farnsworth Parabox](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3964)
 
-Xem thêm danh sách bài tập trong bài [Finding the negative cycle in a graph](finding-negative-cycle-in-graph.md).
+Xem thêm danh sách bài tập trong bài [Tìm chu trình âm trong đồ thị](finding-negative-cycle-in-graph.md).
 * [CSES - High Score](https://cses.fi/problemset/task/1673)
 * [CSES - Cycle Finding](https://cses.fi/problemset/task/1197)
