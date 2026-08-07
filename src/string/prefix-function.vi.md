@@ -128,7 +128,7 @@ vector<int> prefix_function(string s) {
 }
 ```
 
-Đây là một thuật toán **online**, tức nó xử lý dữ liệu ngay khi dữ liệu xuất hiện — chẳng hạn có thể đọc từng ký tự của chuỗi và xử lý ngay, tìm giá trị hàm tiền tố cho mỗi ký tự tiếp theo.
+Đây là một thuật toán **online**, tức nó xử lý dữ liệu ngay khi dữ liệu xuất hiện — chẳng hạn có thể đọc từng ký tự của chuỗi và xử lý ngay, tìm giá trị hàm tiền tố $\pi[i]$ cho mỗi ký tự tiếp theo.
 Thuật toán vẫn cần lưu chính chuỗi và các giá trị hàm tiền tố đã tính trước đó, nhưng nếu biết trước giá trị lớn nhất $M$ mà hàm tiền tố có thể đạt trên chuỗi, ta chỉ cần lưu $M+1$ ký tự đầu tiên của chuỗi và cùng số lượng giá trị hàm tiền tố.
 
 ## Ứng dụng
