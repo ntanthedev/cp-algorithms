@@ -25,7 +25,7 @@ Rõ ràng, nếu xây dựng được cách phân rã như vậy cho mọi cây,
 
 ### Thuật toán xây dựng
 
-Với mỗi đỉnh $v$, ta tính kích thước cây con của nó là $s(v)$, tức số đỉnh trong cây con gốc $v$, tính cả chính $v$.
+Với mỗi đỉnh $v$, ta tính kích thước cây con của nó là $s(v)$, tức số đỉnh trong cây con của đỉnh đó, tính cả chính $v$.
 
 Tiếp theo, xét tất cả các cạnh nối từ một đỉnh $v$ tới các đỉnh con của nó. Ta gọi một cạnh là **cạnh nặng** (heavy) nếu nó dẫn tới một đỉnh $c$ thỏa mãn:
 
