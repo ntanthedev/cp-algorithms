@@ -8096,7 +8096,7 @@ Describe the issue of this article in detail.
 <p>Ý tưởng cốt lõi của phép phân rã này là <strong>chia cây thành nhiều đường đi</strong> sao cho từ bất kỳ đỉnh <span class="arithmatex">$v$</span> nào, ta có thể đi tới gốc bằng cách đi qua nhiều nhất <span class="arithmatex">$\log n$</span> đường đi. Đồng thời, các đường đi này không giao nhau.</p>
 <p>Rõ ràng, nếu xây dựng được cách phân rã như vậy cho mọi cây, ta có thể biến một số truy vấn dạng <em>“tính một đại lượng nào đó trên đường đi từ <span class="arithmatex">$a$</span> tới <span class="arithmatex">$b$</span>”</em> thành nhiều truy vấn dạng <em>“tính đại lượng đó trên đoạn <span class="arithmatex">$[l, r]$</span> của đường đi thứ <span class="arithmatex">$k^{th}$</span>”</em>.</p>
 <h3 id="thuat-toan-xay-dung">Thuật toán xây dựng<a class="headerlink" href="#thuat-toan-xay-dung" title="Permanent link">&para;</a></h3>
-<p>Với mỗi đỉnh <span class="arithmatex">$v$</span>, ta tính kích thước cây con của nó là <span class="arithmatex">$s(v)$</span>, tức số đỉnh trong cây con gốc <span class="arithmatex">$v$</span>, tính cả chính <span class="arithmatex">$v$</span>.</p>
+<p>Với mỗi đỉnh <span class="arithmatex">$v$</span>, ta tính kích thước cây con của nó là <span class="arithmatex">$s(v)$</span>, tức số đỉnh trong cây con của đỉnh đó, tính cả chính <span class="arithmatex">$v$</span>.</p>
 <p>Tiếp theo, xét tất cả các cạnh nối từ một đỉnh <span class="arithmatex">$v$</span> tới các đỉnh con của nó. Ta gọi một cạnh là <strong>cạnh nặng</strong> (heavy) nếu nó dẫn tới một đỉnh <span class="arithmatex">$c$</span> thỏa mãn:</p>
 <div class="arithmatex">$$
 s(c) \ge \frac{s(v)}{2} \iff \text{edge }(v, c)\text{ is heavy}

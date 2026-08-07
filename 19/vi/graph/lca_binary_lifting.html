@@ -8034,7 +8034,7 @@ Ta có thể tìm đỉnh <code>x</code> này trong <span class="arithmatex">$O(
 Ban đầu giả sử <code>i = L</code>.
 Nếu <code>up[u][i]</code> không phải là tổ tiên của <code>v</code>, ta gán <code>u = up[u][i]</code> rồi giảm <code>i</code> đi một.
 Nếu <code>up[u][i]</code> là tổ tiên, ta chỉ giảm <code>i</code> đi một.
-Rõ ràng sau khi xử lý mọi <code>i</code> không âm, đỉnh <code>u</code> sẽ chính là đỉnh cần tìm: <code>u</code> vẫn chưa phải tổ tiên của <code>v</code>, nhưng <code>up[u][0]</code> thì đã là tổ tiên của <code>v</code>.</p>
+Rõ ràng sau khi xử lý mọi <code>i</code> không âm, đỉnh <code>u</code> sẽ chính là đỉnh cần tìm: <code>u</code> vẫn chưa phải tổ tiên của <code>v</code>, nhưng <code>up[u][0]</code> thì đã thỏa điều kiện này.</p>
 <p>Khi đó, hiển nhiên đáp án LCA là <code>up[u][0]</code>, tức đỉnh thấp nhất trong các tổ tiên của đỉnh <code>u</code> mà đồng thời cũng là tổ tiên của <code>v</code>.</p>
 <p>Vì vậy, để trả lời một truy vấn LCA, ta duyệt <code>i</code> từ <code>ceil(log(N))</code> xuống <code>0</code> và ở mỗi bước kiểm tra quan hệ tổ tiên giữa các đỉnh.
 Do đó, mỗi truy vấn được trả lời trong <span class="arithmatex">$O(\log N)$</span>.</p>
