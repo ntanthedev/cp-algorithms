@@ -27,6 +27,8 @@ Bài viết này trình bày một số tính chất quan trọng của cây khu
   (Một thuật toán cụ thể thường chỉ trả về một trong các cây khung nhỏ nhất có thể có.)
 * Cây khung nhỏ nhất cũng là cây có tích trọng số các cạnh nhỏ nhất.
   (Có thể chứng minh dễ dàng bằng cách thay trọng số của mọi cạnh bằng logarit của chúng.)
+
+  **Ghi chú bản dịch:** Lập luận bằng logarit và mệnh đề về tích trọng số ở trên chỉ áp dụng khi mọi trọng số cạnh đều dương. Với trọng số bằng 0 hoặc âm, logarit không xác định và mệnh đề không còn đúng trong tổng quát. Nguồn tiếng Anh hiện không nêu điều kiện này.
 * Trong một cây khung nhỏ nhất của đồ thị, trọng số lớn nhất của một cạnh là nhỏ nhất có thể khi xét trên mọi cây khung của đồ thị đó.
   (Điều này suy ra từ tính đúng đắn của thuật toán Kruskal.)
 * Cây khung lớn nhất (cây khung có tổng trọng số cạnh lớn nhất) có thể được tìm tương tự cây khung nhỏ nhất: đổi dấu trọng số của mọi cạnh rồi áp dụng một thuật toán tìm cây khung nhỏ nhất bất kỳ.
@@ -36,6 +38,8 @@ Bài viết này trình bày một số tính chất quan trọng của cây khu
 Thuật toán này được Joseph Bernard Kruskal, Jr. mô tả vào năm 1956.
 
 Ban đầu, thuật toán Kruskal đặt mọi đỉnh của đồ thị gốc tách rời nhau, tạo thành một rừng gồm các cây chỉ có một đỉnh. Sau đó thuật toán dần hợp các cây này lại bằng các cạnh của đồ thị gốc. Trước khi bắt đầu, mọi cạnh được sắp xếp theo trọng số không giảm. Ta lần lượt xét các cạnh theo thứ tự đã sắp xếp; nếu hai đầu của cạnh hiện tại thuộc hai cây con khác nhau, ta hợp hai cây đó và thêm cạnh vào đáp án. Sau khi xét hết các cạnh, mọi đỉnh sẽ thuộc cùng một cây con và ta thu được đáp án.
+
+**Ghi chú bản dịch:** Đoạn mô tả trên giả sử đồ thị liên thông. Nếu đồ thị không liên thông, Kruskal kết thúc với một rừng khung nhỏ nhất (minimum spanning forest), không phải một cây khung nối mọi đỉnh. Nguồn tiếng Anh hiện bỏ qua điều kiện này trong phần mô tả, dù phần chứng minh bên dưới có nêu giả thiết đồ thị ban đầu liên thông.
 
 ## Cài đặt đơn giản nhất
 
