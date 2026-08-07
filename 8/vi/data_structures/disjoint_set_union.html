@@ -8474,16 +8474,17 @@ ban đầu ta có một đồ thị rỗng, các cạnh được thêm dần, v�
 <p>Để giải, ta dùng DSU lưu các thành phần và với mỗi đỉnh lưu tính chẵn lẻ của đường đi tới phần tử đại diện.
 Nhờ vậy ta có thể nhanh chóng kiểm tra việc thêm một cạnh có làm mất tính hai phía hay không:
 nếu hai đầu cạnh nằm trong cùng thành phần liên thông và có cùng tính chẵn lẻ về độ dài đường đi tới đại diện, việc thêm cạnh sẽ tạo ra một chu trình lẻ và thành phần không còn là đồ thị hai phía.</p>
-<p>Khó khăn duy nhất là tính giá trị chẵn lẻ trong phương thức <code>union_find</code>.</p>
+<p>Khó khăn duy nhất là tính giá trị chẵn lẻ khi hợp hai thành phần.</p>
+<p><strong>Ghi chú bản dịch:</strong> Nguồn gọi thao tác này là <code>union_find</code>; trong cài đặt bên dưới, phần cập nhật tương ứng được thực hiện trong hàm add_edge.</p>
 <p>Nếu thêm cạnh <span class="arithmatex">$(a, b)$</span> nối hai thành phần liên thông, khi gắn một cây vào cây kia ta phải điều chỉnh tính chẵn lẻ.</p>
 <p>Ta suy ra công thức tính tính chẵn lẻ cần gán cho đại diện của tập sẽ được gắn vào tập kia.
 Gọi <span class="arithmatex">$x$</span> là tính chẵn lẻ của độ dài đường đi từ đỉnh <span class="arithmatex">$a$</span> tới đại diện <span class="arithmatex">$A$</span>, <span class="arithmatex">$y$</span> là tính chẵn lẻ từ đỉnh <span class="arithmatex">$b$</span> tới đại diện <span class="arithmatex">$B$</span>, và <span class="arithmatex">$t$</span> là giá trị cần gán cho <span class="arithmatex">$B$</span> sau khi hợp.
 Đường đi gồm ba phần:
-từ <span class="arithmatex">$B$</span> tới <span class="arithmatex">$b$</span>, từ <span class="arithmatex">$b$</span> tới <span class="arithmatex">$a$</span> qua đúng một cạnh nên có parity <span class="arithmatex">$1$</span>, và từ <span class="arithmatex">$a$</span> tới <span class="arithmatex">$A$</span>.
+từ <span class="arithmatex">$B$</span> tới <span class="arithmatex">$b$</span>, từ <span class="arithmatex">$b$</span> tới <span class="arithmatex">$a$</span> qua đúng một cạnh nên có tính chẵn lẻ bằng <span class="arithmatex">$1$</span>, và từ <span class="arithmatex">$a$</span> tới <span class="arithmatex">$A$</span>.
 Do đó ta có công thức (<span class="arithmatex">$\oplus$</span> là phép XOR):</p>
 <div class="arithmatex">$$t = x \oplus y \oplus 1$$</div>
 <p>Như vậy, dù thực hiện bao nhiêu lần hợp, tính chẵn lẻ của các cạnh vẫn được truyền từ đại diện này sang đại diện khác.</p>
-<p>Dưới đây là cài đặt DSU hỗ trợ parity. Như phần trước, ta dùng một cặp để lưu đỉnh cha và parity. Ngoài ra, với mỗi tập ta lưu trong mảng <code>bipartite[]</code> xem tập đó còn hai phía hay không.</p>
+<p>Dưới đây là cài đặt DSU hỗ trợ tính chẵn lẻ. Như phần trước, ta dùng một cặp để lưu đỉnh cha và tính chẵn lẻ. Ngoài ra, với mỗi tập ta lưu trong mảng <code>bipartite[]</code> xem tập đó còn hai phía hay không.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">make_set</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">parent</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_pair</span><span class="p">(</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
 <span class="w">    </span><span class="n">rank</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -8635,6 +8636,7 @@ Khi đó ta không còn lựa chọn nào khác ngoài việc đổi gốc của
 <p>Lần đầu cận <span class="arithmatex">$O(\alpha(n))$</span> được chứng minh là vào năm 1975 (Tarjan, "Efficiency of a Good But Not Linear Set Union Algorithm").
 Sau đó vào năm 1985, Tarjan cùng Leeuwen công bố nhiều phân tích độ phức tạp cho các heuristic hạng khác nhau và nhiều cách nén đường đi (Tarjan, Leeuwen, "Worst-case Analysis of Set Union Algorithms").</p>
 <p>Cuối cùng, năm 1989 Fredman và Sachs chứng minh rằng trong mô hình tính toán được xét, <strong>mọi</strong> thuật toán cho bài toán hợp các tập rời nhau đều phải mất ít nhất <span class="arithmatex">$O(\alpha(n))$</span> thời gian trung bình (Fredman, Saks, "The cell probe complexity of dynamic data structures").</p>
+<p><strong>Ghi chú bản dịch:</strong> Câu nguồn dùng ký hiệu cận trên <span class="arithmatex">$O(\alpha(n))$</span> sau cụm “at least” và viết họ tác giả là “Sachs”. Kết quả được nêu ở đây là một cận dưới <span class="arithmatex">$\Omega(\alpha(n))$</span>, và tên tác giả đúng là Michael Saks; chính phần trích dẫn của nguồn cũng ghi “Fredman, Saks”.</p>
 <h2 id="bai-tap">Bài tập<a class="headerlink" href="#bai-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1671">TIMUS - Anansi's Cobweb</a></li>
