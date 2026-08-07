@@ -71,9 +71,11 @@ Hai ký tự chặn `$` và `^` được dùng để không phải xử lý riê
 
 ## Thuật toán Manacher
 
-Ta mô tả thuật toán tìm mọi xâu con đối xứng có độ dài lẻ, tức tính từng giá trị $d_{odd}[i]$ trong $d_{odd}[]$.
+Ta mô tả thuật toán tìm mọi xâu con đối xứng có độ dài lẻ, tức tính từng giá trị $d_{odd}[i]$ trong $d_{odd}[].
 
 Để tính nhanh, ta duy trì **hai biên loại trừ $(l, r)$** của xâu con đối xứng nằm xa nhất về bên phải đã tìm thấy (tức xâu con đối xứng ngoài cùng bên phải hiện tại là $s[l+1] s[l+2] \dots s[r-1]$). Ban đầu đặt $l = 0, r = 1$, tương ứng với chuỗi rỗng.
+
+**Ghi chú bản dịch:** Với quy ước đoạn nửa mở ở đây, r là biên phải loại trừ, nên chỉ số cuối của xâu đối xứng là r − 1. Vì vậy, câu nguồn phía dưới nói rằng r “biểu diễn chỉ số cuối” cần được hiểu là đang cập nhật biên phải của xâu đối xứng, không phải r chính là chỉ số ký tự cuối.
 
 Giả sử ta muốn tính $d_{odd}[i]$ cho vị trí $i$ tiếp theo, và mọi giá trị trước đó trong $d_{odd}[]$ đã được tính. Ta làm như sau:
 
