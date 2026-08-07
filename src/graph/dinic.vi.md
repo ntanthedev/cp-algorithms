@@ -22,7 +22,7 @@ Thuật toán Dinic giải bài toán luồng cực đại trong $O(V^2E)$. Bài
 
 **Luồng cản** (blocking flow) của một mạng là một luồng sao cho mọi đường đi từ $s$ tới $t$ đều chứa ít nhất một cạnh bị luồng này làm bão hòa. Lưu ý rằng luồng cản không nhất thiết là luồng cực đại.
 
-**Đồ thị phân cấp** (layered network) của một mạng $G$ được xây dựng như sau. Trước hết, với mỗi đỉnh $v$ ta tính `level[v]` — độ dài đường đi ngắn nhất (không trọng số) từ $s$ tới đỉnh đó, chỉ sử dụng các cạnh có dung lượng dương. Sau đó ta chỉ giữ các cạnh $(v, u)$ thỏa mãn $level[v] + 1 = level[u]$. Hiển nhiên đồ thị này không có chu trình.
+**Đồ thị phân cấp** (layered network) của một mạng $G$ được xây dựng như sau. Trước hết, với mỗi đỉnh $v$ ta tính $level[v]$ — độ dài đường đi ngắn nhất (không trọng số) từ $s$ tới đỉnh đó, chỉ sử dụng các cạnh có dung lượng dương. Sau đó ta chỉ giữ các cạnh $(v, u)$ thỏa mãn $level[v] + 1 = level[u]$. Hiển nhiên đồ thị này không có chu trình.
 
 ## Thuật toán
 
