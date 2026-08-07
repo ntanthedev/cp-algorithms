@@ -98,9 +98,9 @@ Hàm chính là `find_bridges`; hàm này thực hiện các bước khởi tạ
 
 Hàm `IS_BRIDGE(a, b)` là một hàm dùng để xử lý việc cạnh $(a, b)$ là cạnh cầu, chẳng hạn như in cạnh đó ra.
 
-Lưu ý rằng theo phần mô tả của nguồn, cài đặt này hoạt động sai nếu đồ thị có nhiều cạnh song song vì bỏ qua chúng. Tất nhiên, các cạnh song song sẽ không bao giờ thuộc đáp án, vì vậy `IS_BRIDGE` có thể kiểm tra thêm rằng cạnh cầu được báo không phải là một cạnh song song. Một cách khác là truyền vào `dfs` chỉ số của cạnh dùng để đi vào đỉnh thay vì truyền đỉnh cha (và lưu chỉ số của tất cả các cạnh).
+Lưu ý rằng theo phần mô tả của nguồn, cài đặt này hoạt động sai nếu đồ thị có nhiều cạnh song song vì bỏ qua chúng. Tất nhiên, các cạnh song song sẽ không bao giờ thuộc đáp án, vì vậy `IS_BRIDGE` có thể kiểm tra thêm rằng cạnh cầu được báo không phải là một cạnh song song. Một cách khác là truyền vào `dfs` chỉ số của cạnh dùng để đi vào đỉnh thay vì truyền đỉnh cha (và lưu chỉ số của tất cả các đỉnh).
 
-**Ghi chú bản dịch:** Đoạn trên của nguồn tiếng Anh không còn khớp hoàn toàn với đoạn code hiện tại: code đã có cơ chế chỉ bỏ qua một cạnh dẫn về cha, nên cạnh song song còn lại vẫn được xét. Bản dịch giữ nội dung tương thích với nguồn; vấn đề này được tách riêng để đề xuất sửa ở upstream.
+**Ghi chú bản dịch:** Đoạn trên của nguồn tiếng Anh có hai điểm không còn khớp với cài đặt hiện tại. Thứ nhất, code đã chỉ bỏ qua đúng một cạnh dẫn về cha nên cạnh song song còn lại vẫn được xét. Thứ hai, câu cuối nguồn viết “store the indices of all vertices”, trong khi phương án truyền chỉ số cạnh cần lưu chỉ số của các cạnh. Bản dịch giữ nội dung nguồn trong đoạn chính và nêu rõ hai điểm này ở đây; chúng đã được tách thành PR sửa upstream riêng.
 
 ## Bài tập luyện tập
 
