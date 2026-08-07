@@ -215,6 +215,15 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | suffix link | liên kết hậu tố |
 | finite deterministic automaton | automaton hữu hạn tất định |
 | exit link | exit link; liên kết tới đỉnh output gần nhất theo các suffix link |
+| suffix array | mảng hậu tố (Suffix Array) |
+| longest common prefix (LCP) | tiền tố chung dài nhất (LCP) |
+| counting sort | sắp xếp đếm (counting sort) |
+| radix sort | sắp xếp cơ số (radix sort) |
+| suffix automaton | Suffix Automaton |
+| terminal state | trạng thái kết thúc |
+| continuous / non-continuous transition | phép chuyển liên tục / không liên tục |
+| Lyndon factorization | phân rã Lyndon |
+| Lyndon word | từ Lyndon |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
@@ -229,6 +238,7 @@ Validator so sánh giữa nguồn và bản dịch:
 - đích Markdown link và image;
 - số lượng delimiter công thức khối `$$`;
 - với mỗi file `.vi.md` được thêm hoặc sửa trong PR/commit hiện tại, từng biểu thức LaTeX phải giữ nguyên nội dung và số lần xuất hiện so với nguồn; validator so sánh theo multiset nên cho phép đổi thứ tự các biểu thức khi cấu trúc câu tiếng Việt yêu cầu; nội dung trong `Ghi chú bản dịch` không được coi là công thức của nguồn;
+- ký hiệu dollar đã escape `\$` là ký tự literal, **không phải** delimiter LaTeX; validator chỉ được coi `$`/`$$` không escape là delimiter;
 - Jinja/MkDocs expression;
 - cấu trúc HTML và thuộc tính không thể dịch;
 - số lượng, thứ tự và mức thụt lề của MkDocs tabs;
@@ -236,6 +246,7 @@ Validator so sánh giữa nguồn và bản dịch:
 
 Ngoài validator cấu trúc:
 
+- khi phát hiện biểu thức LaTeX thiếu/thừa, `scripts/check_vi_translations.py` báo cả token và line-number tương ứng ở nguồn/bản dịch để tránh sửa theo phỏng đoán;
 - `scripts/check_vi_markdown_safety.py` chặn `Ghi chú bản dịch` bị thụt vào list;
 - hook build trong `hooks.py` sửa bare relative `src` của raw HTML image cho output `/vi/`;
 - `scripts/check_vi_rendered_pages.py` chạy **sau build** và fail nếu một local image trong `public/vi/` không resolve tới file thực tế.
