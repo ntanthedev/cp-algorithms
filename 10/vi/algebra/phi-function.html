@@ -8143,7 +8143,7 @@ Nếu <span class="arithmatex">$n = {p_1}^{a_1} \cdot {p_2}^{a_2} \cdots {p_k}^{
 \phi (n) &amp;= \phi ({p_1}^{a_1}) \cdot \phi ({p_2}^{a_2}) \cdots  \phi ({p_k}^{a_k}) \\\\
 &amp;= \left({p_1}^{a_1} - {p_1}^{a_1 - 1}\right) \cdot \left({p_2}^{a_2} - {p_2}^{a_2 - 1}\right) \cdots \left({p_k}^{a_k} - {p_k}^{a_k - 1}\right) \\\\
 &amp;= p_1^{a_1} \cdot \left(1 - \frac{1}{p_1}\right) \cdot p_2^{a_2} \cdot \left(1 - \frac{1}{p_2}\right) \cdots p_k^{a_k} \cdot \left(1 - \frac{1}{p_k}\right) \\\\
-&amp;= n \cdot \left(1 - \frac{1}{p_1}\right) \cdot \left(1 - \frac{1}{p_2}\right) \cdots \left(1 - \frac{1}{p_k}\right)
+&amp;= n \cdot \left(1 - \frac{1}{p_1}\right) \cdot \left(1 - \frac{1}{p_2}\right) \cdot \left(1 - \frac{1}{p_k}\right)
 \end{align}$$</div>
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <p>Dưới đây là cài đặt dựa trên phân tích thừa số trong <span class="arithmatex">$O(\sqrt{n})$</span>:</p>
@@ -8163,9 +8163,9 @@ Nếu <span class="arithmatex">$n = {p_1}^{a_1} \cdot {p_2}^{a_2} \cdots {p_k}^{
 </code></pre></div>
 <h2 id="etf_1_to_n">Phi hàm Euler từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span> trong <span class="arithmatex">$O(n \log\log{n})$</span><a class="headerlink" href="#etf_1_to_n" title="Permanent link">&para;</a></h2>
 <p>Nếu cần tính hàm phi của mọi số từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span>, việc phân tích thừa số riêng từng số là không hiệu quả.
-Ta có thể dùng cùng ý tưởng với <a href="sieve-of-eratosthenes.html">Sàng Eratostes</a>.
+Ta có thể dùng cùng ý tưởng với <a href="sieve-of-eratosthenes.html">Sàng Eratosthenes</a>.
 Phương pháp vẫn dựa trên tính chất ở trên, nhưng thay vì cập nhật kết quả tạm thời theo từng thừa số nguyên tố của từng số, ta tìm tất cả số nguyên tố rồi với mỗi số nguyên tố cập nhật kết quả tạm thời của mọi số chia hết cho nó.</p>
-<p>Vì cách này về bản chất giống Sàng Eratostes, độ phức tạp cũng là <span class="arithmatex">$O(n \log \log n)$</span>.</p>
+<p>Vì cách này về bản chất giống Sàng Eratosthenes, độ phức tạp cũng là <span class="arithmatex">$O(n \log \log n)$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">phi_1_to_n</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">phi</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
