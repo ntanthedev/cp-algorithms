@@ -8232,8 +8232,8 @@ Với đồ thị thưa, cách này tốt hơn biến thể phía trên, nhưng 
 <span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">total_weight</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Ở đây đồ thị được biểu diễn bằng danh sách kề <code>adj[]</code>, trong đó <code>adj[v]</code> chứa toàn bộ các cạnh của đỉnh <span class="arithmatex">$v$</span> dưới dạng cặp trọng số và đỉnh đích.
-<code>min_e[v]</code> lưu cạnh có trọng số nhỏ nhất từ đỉnh <span class="arithmatex">$v$</span> tới một đỉnh đã được chọn, cũng dưới dạng cặp trọng số và đỉnh đích.
+<p>Ở đây đồ thị được biểu diễn bằng danh sách kề <code>adj[]</code>, trong đó <code>adj[v]</code> chứa toàn bộ các cạnh của đỉnh <code>v</code> dưới dạng cặp trọng số và đỉnh đích.
+<code>min_e[v]</code> lưu cạnh có trọng số nhỏ nhất từ đỉnh <code>v</code> tới một đỉnh đã được chọn, cũng dưới dạng cặp trọng số và đỉnh đích.
 Ngoài ra, hàng đợi <code>q</code> chứa tất cả các đỉnh chưa được chọn theo thứ tự tăng dần của trọng số <code>min_e</code>.
 Thuật toán thực hiện <code>n</code> bước; ở mỗi bước, nó chọn đỉnh <code>v</code> có trọng số <code>min_e</code> nhỏ nhất bằng cách lấy phần tử đầu hàng đợi, sau đó duyệt mọi cạnh đi ra từ đỉnh này và cập nhật các giá trị trong <code>min_e</code> (mỗi lần cập nhật cũng phải xóa cạnh cũ khỏi hàng đợi <code>q</code> rồi chèn cạnh mới vào).</p>
 
