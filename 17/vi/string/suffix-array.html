@@ -8371,8 +8371,8 @@ Khi đó đáp án là <span class="arithmatex">$\min(lcp[i],~ lcp[i+1],~ \dots,
 <p>Nhiệm vụ chính còn lại là <strong>xây dựng</strong> mảng <span class="arithmatex">$\text{lcp}$</span> này.
 Ta dùng <strong>thuật toán Kasai</strong>, có thể tính mảng trong <span class="arithmatex">$O(n)$</span> thời gian.</p>
 <p>Xét hai hậu tố kề nhau trong thứ tự đã sắp xếp, tức thứ tự của mảng hậu tố.
-Gọi vị trí bắt đầu của chúng là <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span>, và LCP của chúng bằng <span class="arithmatex">$k &gt; 0$</span>.
-Nếu bỏ ký tự đầu của cả hai hậu tố — tức xét hậu tố <span class="arithmatex">$i+1$</span> và <span class="arithmatex">$j+1$</span> — thì hiển nhiên LCP của chúng là <span class="arithmatex">$k - 1$</span>.
+Gọi vị trí bắt đầu của chúng là <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span>, và <span class="arithmatex">$\text{lcp}$</span> của chúng bằng <span class="arithmatex">$k &gt; 0$</span>.
+Nếu bỏ ký tự đầu của cả hai hậu tố — tức xét hậu tố <span class="arithmatex">$i+1$</span> và <span class="arithmatex">$j+1$</span> — thì hiển nhiên <span class="arithmatex">$\text{lcp}$</span> của chúng là <span class="arithmatex">$k - 1$</span>.
 Tuy nhiên, ta không thể dùng ngay giá trị này để ghi vào mảng <span class="arithmatex">$\text{lcp}$</span>, vì hai hậu tố mới có thể không còn đứng cạnh nhau trong thứ tự đã sắp xếp.
 Hậu tố <span class="arithmatex">$i+1$</span> chắc chắn nhỏ hơn hậu tố <span class="arithmatex">$j+1$</span>, nhưng có thể có các hậu tố khác nằm giữa chúng.
 Dù vậy, vì LCP giữa hai hậu tố bằng giá trị nhỏ nhất trên các bước chuyển giữa chúng, ta biết LCP của mọi cặp kề nhau trong khoảng này ít nhất là <span class="arithmatex">$k-1$</span>, đặc biệt là giữa <span class="arithmatex">$i+1$</span> và hậu tố kế tiếp.
@@ -8427,7 +8427,7 @@ Cộng trên toàn bộ hậu tố, ta thu được đáp án:</p>
 <li><a href="http://codeforces.com/problemset/problem/204/E">Codeforces - Little Elephant and Strings</a></li>
 <li><a href="http://www.spoj.com/problems/ADAPHOTO/">SPOJ - Ada and Terramorphing</a></li>
 <li><a href="http://www.spoj.com/problems/ADASTRNG/">SPOJ - Ada and Substring</a></li>
-<li><a href="https://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=3668">UVA - 1227 - The longest constant gene</a></li>
+<li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=24&amp;page=show_problem&amp;problem=3668">UVA - 1227 - The longest constant gene</a></li>
 <li><a href="http://www.spoj.com/problems/LCS/en/">SPOJ - Longest Common Substring</a></li>
 <li><a href="https://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=2507">UVA 11512 - GATTACA</a></li>
 <li><a href="https://vjudge.net/problem/UVALive-7502">LA 7502 - Suffixes and Palindromes</a></li>
