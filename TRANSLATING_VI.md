@@ -242,6 +242,20 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | Heavy-Light Decomposition (HLD) | Heavy-Light Decomposition (HLD); phân tách cây theo cạnh nặng/nhẹ |
 | heavy edge / light edge | cạnh nặng / cạnh nhẹ |
 | heavy path | đường nặng (heavy path) |
+| maximum flow | luồng cực đại |
+| flow network | mạng luồng |
+| capacity (flow) | dung lượng; VNOI cũng dùng khả năng thông qua |
+| source / sink (flow) | nguồn / đích; có thể viết đỉnh nguồn / đỉnh đích |
+| residual capacity | dung lượng thặng dư |
+| residual network | mạng thặng dư; còn gặp đồ thị thặng dư |
+| augmenting path | đường tăng luồng |
+| blocking flow | luồng cản |
+| layered network | đồ thị phân cấp |
+| unit network | mạng đơn vị |
+| minimum cut | lát cắt cực tiểu |
+| minimum-cost flow | luồng với chi phí cực tiểu |
+| minimum-cost maximum-flow | luồng cực đại với chi phí cực tiểu |
+| potential (shortest paths / flow) | thế (potential) |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
