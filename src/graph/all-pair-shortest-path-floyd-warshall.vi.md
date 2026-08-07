@@ -161,7 +161,7 @@ Vì vậy phải tránh tràn số nguyên bằng cách chặn khoảng cách nh
  * [UVA 1233 - USHER](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3674)
  * [UVA 10793 - The Orc Attack](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1734)
  * [UVA 10099 The Tourist Guide](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=1040)
- * [UVA 869 - Airline Comparison](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&page=show_problem&problem=810)
+ * [UVA 869 - Airline Comparison](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=810)
  * [UVA 13211 - Geonosis](https://uva.onlinejudge.org/index.php?option=onlinejudge&Itemid=8&page=show_problem&problem=5134)
  * [SPOJ - Defend the Rohan](http://www.spoj.com/problems/ROHAAN/)
  * [Codeforces - Roads in Berland](http://codeforces.com/contest/25/problem/C)
