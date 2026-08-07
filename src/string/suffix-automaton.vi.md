@@ -112,7 +112,7 @@ Hai xâu con không rỗng $u$ và $w$ (với $length(u) \le length(w)$) tương
 
 Chứng minh khá trực tiếp.
 Nếu $u$ và $w$ có cùng giá trị $endpos$, thì $u$ là hậu tố của $w$ và trong $s$ chỉ xuất hiện dưới dạng hậu tố của $w$.
-Ngược lại, nếu $u$ là hậu tố của $w$ và trong $s$ chỉ xuất hiện dưới dạng hậu tố của $w$, thì theo định nghĩa các giá trị $endpos$ bằng nhau.
+Ngược lại, nếu $u$ là hậu tố của $w$ và trong $s$ chỉ xuất hiện dưới dạng một hậu tố, thì theo định nghĩa các giá trị $endpos$ bằng nhau.
 
 **Bổ đề 2**:
 Xét hai xâu con không rỗng $u$ và $w$ (với $length(u) \le length(w)$).
@@ -339,7 +339,7 @@ Do đó, tổng độ phức tạp của **vị trí thứ nhất và thứ hai*
 Còn lại là ước lượng tổng độ phức tạp của **vị trí thứ ba**, nơi ta chuyển hướng các phép chuyển ban đầu trỏ tới $q$ sang $clone$.
 Ta ký hiệu $v = longest(p)$.
 Đây là một hậu tố của xâu $s$, và sau mỗi vòng lặp độ dài của nó giảm đi — vì vậy vị trí của $v$ khi xem là hậu tố của xâu $s$ tăng đơn điệu sau mỗi vòng.
-Trong trường hợp này, nếu trước vòng đầu tiên, xâu tương ứng $v$ ở độ sâu $k$ ($k \ge 2$) tính từ $last$ (độ sâu tính theo số liên kết hậu tố), thì sau vòng cuối, xâu $v + c$ sẽ nằm ở liên kết hậu tố thứ $2$ trên đường đi từ $cur$ (và $cur$ sẽ trở thành giá trị $last$ mới).
+Trong trường hợp này, nếu trước vòng đầu tiên, xâu tương ứng $v$ ở độ sâu $k$ ($k \ge 2$) tính từ $last$ (độ sâu tính theo số liên kết hậu tố), thì sau vòng cuối, xâu $v + c$ sẽ nằm ở liên kết hậu tố thứ $2$ trên đường đi từ $cur$ (và trạng thái đó sẽ trở thành giá trị $last$ mới).
 
 Vì vậy, mỗi vòng của vòng lặp này làm vị trí của xâu $longest(link(link(last))$ khi xem là hậu tố của xâu hiện tại tăng đơn điệu.
 Do đó vòng lặp không thể chạy quá $n$ lần, đúng như cần chứng minh.
@@ -622,7 +622,7 @@ Mỗi truy vấn tốn $O(length(P))$ thời gian.
 ### Vị trí xuất hiện đầu tiên
 
 Cho văn bản $T$ và nhiều truy vấn.
-Với mỗi xâu truy vấn $P$, ta muốn tìm vị trí bắt đầu của lần xuất hiện đầu tiên của $P$ trong xâu $T$.
+Với mỗi xâu truy vấn $P$, ta muốn tìm vị trí bắt đầu của lần xuất hiện đầu tiên của $P$ trong xâu $T$ (tức vị trí bắt đầu của $P$).
 
 Ta lại xây Suffix Automaton.
 Ngoài ra, ta tính trước vị trí $firstpos$ cho mọi trạng thái, tức với mỗi trạng thái $v$, cần tìm vị trí $firstpos[v]$ là vị trí kết thúc của lần xuất hiện đầu tiên.
