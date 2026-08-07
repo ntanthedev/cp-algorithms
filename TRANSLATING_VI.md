@@ -198,6 +198,16 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | range query | truy vấn trên đoạn |
 | range minimum query (RMQ) | truy vấn giá trị nhỏ nhất trên đoạn (RMQ) |
 | idempotent function | hàm lũy đẳng |
+| prefix function | hàm tiền tố |
+| proper prefix | tiền tố thực sự |
+| Z-function | hàm Z |
+| string hashing | băm chuỗi |
+| hash function | hàm băm |
+| hash / hash value | giá trị băm |
+| hash collision | va chạm băm |
+| pattern (string matching) | mẫu |
+| text (string matching) | văn bản |
+| automaton | automaton; lần đầu có thể chú thích máy trạng thái hữu hạn |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
