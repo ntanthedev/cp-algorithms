@@ -52,7 +52,7 @@ Nếu không còn đường đi nào, thuật toán kết thúc; nguồn tiếng
 Nếu tìm được một đường, ta tăng luồng trên đường đó nhiều nhất có thể (tức tìm dung lượng thặng dư nhỏ nhất $R$ trên đường, tăng luồng thêm lượng đó và giảm luồng trên các cạnh ngược cùng một lượng).
 Nếu tại một thời điểm luồng đạt giá trị $K$, ta dừng thuật toán (lưu ý rằng ở lần lặp cuối, chỉ được tăng một lượng vừa đủ để giá trị luồng cuối cùng không vượt quá $K$).
 
-**Ghi chú bản dịch:** Phát biểu “luồng hiện tại là luồng mong muốn” khi không còn đường đi chỉ đúng nếu lượng luồng yêu cầu đã đạt được. Với phiên bản yêu cầu một lượng K cố định, nếu hết đường trước khi đạt K thì không tồn tại luồng khả thi có lượng K; implementation phía dưới cũng xử lý trường hợp này bằng cách trả về `-1`. Lỗi wording này được tách riêng để đề xuất sửa upstream.
+**Ghi chú bản dịch:** Phát biểu “luồng hiện tại là luồng mong muốn” khi không còn đường đi chỉ đúng nếu lượng luồng yêu cầu đã đạt được. Với phiên bản yêu cầu một lượng K cố định, nếu hết đường trước khi đạt K thì không tồn tại luồng khả thi có lượng K; implementation phía dưới cũng xử lý trường hợp này bằng cách trả về -1. Lỗi wording này được tách riêng để đề xuất sửa upstream.
 
 Không khó để thấy rằng nếu đặt $K$ bằng vô hạn thì thuật toán sẽ tìm luồng cực đại với chi phí cực tiểu.
 Vì vậy, cả hai biến thể của bài toán đều có thể giải bằng cùng một thuật toán.
