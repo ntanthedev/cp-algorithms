@@ -97,7 +97,7 @@ Vì vậy ta sẽ xét hai tối ưu giúp tăng tốc đáng kể.
 
 Tối ưu này nhằm tăng tốc `find_set`.
 
-Khi gọi `find_set(v)` cho một đỉnh `v`, thực tế ta tìm được phần tử đại diện `p` không chỉ cho `v` mà còn cho mọi đỉnh đi qua trên đường từ `v` đến đại diện thật sự `p`.
+Khi gọi `find_set(v)` cho một đỉnh `v`, thực tế ta tìm được phần tử đại diện `p` cho mọi đỉnh đi qua trên đường từ `v` đến đại diện thật sự `p`.
 Ý tưởng là rút ngắn đường đi của tất cả các đỉnh đó bằng cách đặt cha của mỗi đỉnh đã thăm trực tiếp thành `p`.
 
 Hình dưới minh họa thao tác này.
