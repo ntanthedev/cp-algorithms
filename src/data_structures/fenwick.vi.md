@@ -297,7 +297,7 @@ g(6) = g(110_2) = 100_2 &= 4 \\\\
 g(4) = g(100_2) = 000_2 &= 0 \\\\
 \end{align}$$
 
-Có thể tách bit $1$ cuối cùng bằng $i ~\&~ (-i)$, nên thao tác được viết thành:
+Có thể tách bit 1 cuối cùng bằng $i ~\&~ (-i)$, nên thao tác được viết thành:
 
 $$g(i) = i - (i ~\&~ (-i)).$$
 
