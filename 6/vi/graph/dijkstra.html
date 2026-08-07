@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dijkstra-algorithm" class="md-skip">
+        <a href="#thuat-toan-dijkstra" class="md-skip">
           Bỏ qua
         </a>
       
@@ -5777,22 +5777,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Thuật toán
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Algorithm">
+    <nav class="md-nav" aria-label="Thuật toán">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#restoring-shortest-paths" class="md-nav__link">
+  <a href="#khoi-phuc-uong-i-ngan-nhat" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Restoring Shortest Paths
+        Khôi phục đường đi ngắn nhất
       
     </span>
   </a>
@@ -5805,10 +5805,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#proof" class="md-nav__link">
+  <a href="#chung-minh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proof
+        Chứng minh
       
     </span>
   </a>
@@ -5816,10 +5816,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -5827,10 +5827,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        References
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -5838,10 +5838,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap-luyen-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập luyện tập
       
     </span>
   </a>
@@ -7998,13 +7998,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/dijkstra.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/dijkstra.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/dijkstra.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/dijkstra.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -8015,42 +8015,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8086,54 +8050,54 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="dijkstra-algorithm">Dijkstra Algorithm<a class="headerlink" href="#dijkstra-algorithm" title="Permanent link">&para;</a></h1>
-<p>You are given a directed or undirected weighted graph with <span class="arithmatex">$n$</span> vertices and <span class="arithmatex">$m$</span> edges. The weights of all edges are non-negative. You are also given a starting vertex <span class="arithmatex">$s$</span>. This article discusses finding the lengths of the shortest paths from a starting vertex <span class="arithmatex">$s$</span> to all other vertices, and output the shortest paths themselves.</p>
-<p>This problem is also called <strong>single-source shortest paths problem</strong>.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>Here is an algorithm described by the Dutch computer scientist Edsger W. Dijkstra in 1959.</p>
-<p>Let's create an array <span class="arithmatex">$d[]$</span> where for each vertex <span class="arithmatex">$v$</span> we store the current length of the shortest path from <span class="arithmatex">$s$</span> to <span class="arithmatex">$v$</span> in <span class="arithmatex">$d[v]$</span>.
-Initially <span class="arithmatex">$d[s] = 0$</span>, and for all other vertices this length equals infinity.
-In the implementation a sufficiently large number (which is guaranteed to be greater than any possible path length) is chosen as infinity.</p>
+<h1 id="thuat-toan-dijkstra">Thuật toán Dijkstra<a class="headerlink" href="#thuat-toan-dijkstra" title="Permanent link">&para;</a></h1>
+<p>Cho một đồ thị có hướng hoặc vô hướng có trọng số, gồm <span class="arithmatex">$n$</span> đỉnh và <span class="arithmatex">$m$</span> cạnh. Trọng số của mọi cạnh đều không âm. Ta cũng được cho một đỉnh bắt đầu <span class="arithmatex">$s$</span>. Bài viết này trình bày cách tìm độ dài đường đi ngắn nhất từ đỉnh bắt đầu <span class="arithmatex">$s$</span> đến mọi đỉnh khác, đồng thời khôi phục chính các đường đi ngắn nhất đó.</p>
+<p>Bài toán này còn được gọi là <strong>bài toán đường đi ngắn nhất từ một nguồn</strong> (single-source shortest paths problem).</p>
+<h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Thuật toán dưới đây được nhà khoa học máy tính người Hà Lan Edsger W. Dijkstra mô tả vào năm 1959.</p>
+<p>Ta tạo mảng <span class="arithmatex">$d[]$</span>, trong đó với mỗi đỉnh <span class="arithmatex">$v$</span>, giá trị <span class="arithmatex">$d[v]$</span> lưu độ dài hiện tại của đường đi ngắn nhất từ <span class="arithmatex">$s$</span> đến <span class="arithmatex">$v$</span>.
+Ban đầu <span class="arithmatex">$d[s] = 0$</span>, còn với mọi đỉnh khác, độ dài này bằng vô cực.
+Trong cài đặt, ta dùng một số đủ lớn (được bảo đảm lớn hơn mọi độ dài đường đi có thể xuất hiện) để biểu diễn vô cực.</p>
 <div class="arithmatex">$$d[v] = \infty,~ v \ne s$$</div>
-<p>In addition, we maintain a Boolean array <span class="arithmatex">$u[]$</span> which stores for each vertex <span class="arithmatex">$v$</span> whether it's marked. Initially all vertices are unmarked:</p>
+<p>Ngoài ra, ta duy trì một mảng Boolean <span class="arithmatex">$u[]$</span> cho biết mỗi đỉnh <span class="arithmatex">$v$</span> đã được đánh dấu hay chưa. Ban đầu mọi đỉnh đều chưa được đánh dấu:</p>
 <div class="arithmatex">$$u[v] = {\rm false}$$</div>
-<p>The Dijkstra's algorithm runs for <span class="arithmatex">$n$</span> iterations. At each iteration a vertex <span class="arithmatex">$v$</span> is chosen as unmarked vertex which has the least value <span class="arithmatex">$d[v]$</span>:</p>
-<p>Evidently, in the first iteration the starting vertex <span class="arithmatex">$s$</span> will be selected.</p>
-<p>The selected vertex <span class="arithmatex">$v$</span> is marked. Next, from vertex <span class="arithmatex">$v$</span> <strong>relaxations</strong> are performed: all edges of the form <span class="arithmatex">$(v,\text{to})$</span> are considered, and for each vertex <span class="arithmatex">$\text{to}$</span> the algorithm tries to improve the value <span class="arithmatex">$d[\text{to}]$</span>. If the length of the current edge equals <span class="arithmatex">$len$</span>, the code for relaxation is:</p>
+<p>Thuật toán Dijkstra chạy trong <span class="arithmatex">$n$</span> vòng lặp. Ở mỗi vòng, ta chọn một đỉnh chưa được đánh dấu <span class="arithmatex">$v$</span> có giá trị <span class="arithmatex">$d[v]$</span> nhỏ nhất.</p>
+<p>Rõ ràng, ở vòng đầu tiên đỉnh bắt đầu <span class="arithmatex">$s$</span> sẽ được chọn.</p>
+<p>Đỉnh <span class="arithmatex">$v$</span> được chọn sẽ được đánh dấu. Tiếp theo, từ đỉnh <span class="arithmatex">$v$</span> ta thực hiện các <strong>phép nới lỏng</strong> (relaxations): xét mọi cạnh dạng <span class="arithmatex">$(v,\text{to})$</span> và với mỗi đỉnh <span class="arithmatex">$\text{to}$</span>, thuật toán cố gắng cải thiện giá trị <span class="arithmatex">$d[\text{to}]$</span>. Nếu trọng số của cạnh hiện tại bằng <span class="arithmatex">$len$</span>, phép nới lỏng được viết như sau:</p>
 <div class="arithmatex">$$d[\text{to}] = \min (d[\text{to}], d[v] + len)$$</div>
-<p>After all such edges are considered, the current iteration ends. Finally, after <span class="arithmatex">$n$</span> iterations, all vertices will be marked, and the algorithm terminates. We claim that the found values <span class="arithmatex">$d[v]$</span> are the lengths of shortest paths from <span class="arithmatex">$s$</span> to all vertices <span class="arithmatex">$v$</span>.</p>
-<p>Note that if some vertices are unreachable from the starting vertex <span class="arithmatex">$s$</span>, the values <span class="arithmatex">$d[v]$</span> for them will remain infinite. Obviously, the last few iterations of the algorithm will choose those vertices, but no useful work will be done for them. Therefore, the algorithm can be stopped as soon as the selected vertex has infinite distance to it.</p>
-<h3 id="restoring-shortest-paths">Restoring Shortest Paths<a class="headerlink" href="#restoring-shortest-paths" title="Permanent link">&para;</a></h3>
-<p>Usually one needs to know not only the lengths of shortest paths but also the shortest paths themselves. Let's see how to maintain sufficient information to restore the shortest path from <span class="arithmatex">$s$</span> to any vertex. We'll maintain an array of predecessors <span class="arithmatex">$p[]$</span> in which for each vertex <span class="arithmatex">$v \ne s$</span>, <span class="arithmatex">$p[v]$</span> is the penultimate vertex in the shortest path from <span class="arithmatex">$s$</span> to <span class="arithmatex">$v$</span>. Here we use the fact that if we take the shortest path to some vertex <span class="arithmatex">$v$</span> and remove <span class="arithmatex">$v$</span> from this path, we'll get a path ending in at vertex <span class="arithmatex">$p[v]$</span>, and this path will be the shortest for the vertex <span class="arithmatex">$p[v]$</span>. This array of predecessors can be used to restore the shortest path to any vertex: starting with <span class="arithmatex">$v$</span>, repeatedly take the predecessor of the current vertex until we reach the starting vertex <span class="arithmatex">$s$</span> to get the required shortest path with vertices listed in reverse order. So, the shortest path <span class="arithmatex">$P$</span> to the vertex <span class="arithmatex">$v$</span> is equal to:</p>
+<p>Sau khi xét xong tất cả các cạnh như vậy, vòng lặp hiện tại kết thúc. Cuối cùng, sau <span class="arithmatex">$n$</span> vòng lặp, mọi đỉnh đều đã được đánh dấu và thuật toán dừng. Ta sẽ chứng minh rằng các giá trị <span class="arithmatex">$d[v]$</span> thu được chính là độ dài đường đi ngắn nhất từ <span class="arithmatex">$s$</span> đến mọi đỉnh <span class="arithmatex">$v$</span>.</p>
+<p>Nếu một số đỉnh không thể đi tới từ đỉnh bắt đầu <span class="arithmatex">$s$</span>, giá trị <span class="arithmatex">$d[v]$</span> của chúng sẽ vẫn là vô cực. Khi đó, một vài vòng cuối của thuật toán sẽ chọn các đỉnh này nhưng không thực hiện được công việc hữu ích nào. Vì vậy, ta có thể dừng thuật toán ngay khi đỉnh được chọn có khoảng cách bằng vô cực.</p>
+<h3 id="khoi-phuc-uong-i-ngan-nhat">Khôi phục đường đi ngắn nhất<a class="headerlink" href="#khoi-phuc-uong-i-ngan-nhat" title="Permanent link">&para;</a></h3>
+<p>Thông thường ta không chỉ cần biết độ dài đường đi ngắn nhất mà còn cần chính đường đi đó. Ta sẽ lưu thêm đủ thông tin để khôi phục đường đi ngắn nhất từ <span class="arithmatex">$s$</span> đến một đỉnh bất kỳ. Duy trì một mảng đỉnh trước <span class="arithmatex">$p[]$</span>, trong đó với mỗi đỉnh <span class="arithmatex">$v \ne s$</span>, <span class="arithmatex">$p[v]$</span> là đỉnh đứng ngay trước <span class="arithmatex">$v$</span> trên đường đi ngắn nhất từ <span class="arithmatex">$s$</span> đến <span class="arithmatex">$v$</span>. Ta dùng tính chất sau: nếu lấy đường đi ngắn nhất đến một đỉnh <span class="arithmatex">$v$</span> rồi bỏ <span class="arithmatex">$v$</span> khỏi đường đi, ta nhận được một đường đi kết thúc tại <span class="arithmatex">$p[v]$</span>, và đường đi này cũng là ngắn nhất đối với đỉnh <span class="arithmatex">$p[v]$</span>. Nhờ mảng đỉnh trước, ta có thể khôi phục đường đi đến bất kỳ đỉnh nào: bắt đầu từ <span class="arithmatex">$v$</span>, liên tục chuyển sang đỉnh trước của đỉnh hiện tại cho đến khi tới đỉnh bắt đầu <span class="arithmatex">$s$</span>. Khi đó ta thu được đường đi theo thứ tự ngược. Vì vậy, đường đi ngắn nhất <span class="arithmatex">$P$</span> đến đỉnh <span class="arithmatex">$v$</span> có dạng:</p>
 <div class="arithmatex">$$P = (s, \ldots, p[p[p[v]]], p[p[v]], p[v], v)$$</div>
-<p>Building this array of predecessors is very simple: for each successful relaxation, i.e. when for some selected vertex <span class="arithmatex">$v$</span>, there is an improvement in the distance to some vertex <span class="arithmatex">$\text{to}$</span>, we update the predecessor vertex for <span class="arithmatex">$\text{to}$</span> with vertex <span class="arithmatex">$v$</span>:</p>
+<p>Việc xây dựng mảng đỉnh trước rất đơn giản: với mỗi phép nới lỏng thành công, tức là khi từ một đỉnh được chọn <span class="arithmatex">$v$</span> ta cải thiện được khoảng cách đến đỉnh <span class="arithmatex">$\text{to}$</span>, ta cập nhật đỉnh trước của <span class="arithmatex">$\text{to}$</span> thành <span class="arithmatex">$v$</span>:</p>
 <div class="arithmatex">$$p[\text{to}] = v$$</div>
-<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
-<p>The main assertion on which Dijkstra's algorithm correctness is based is the following:</p>
-<p><strong>After any vertex <span class="arithmatex">$v$</span> becomes marked, the current distance to it <span class="arithmatex">$d[v]$</span> is the shortest, and will no longer change.</strong></p>
-<p>The proof is done by induction. For the first iteration this statement is obvious: the only marked vertex is <span class="arithmatex">$s$</span>, and the distance to is <span class="arithmatex">$d[s] = 0$</span> is indeed the length of the shortest path to <span class="arithmatex">$s$</span>. Now suppose this statement is true for all previous iterations, i.e. for all already marked vertices; let's prove that it is not violated after the current iteration completes. Let <span class="arithmatex">$v$</span> be the vertex selected in the current iteration, i.e. <span class="arithmatex">$v$</span> is the vertex that the algorithm will mark. Now we have to prove that <span class="arithmatex">$d[v]$</span> is indeed equal to the length of the shortest path to it <span class="arithmatex">$l[v]$</span>.</p>
-<p>Consider the shortest path <span class="arithmatex">$P$</span> to the vertex <span class="arithmatex">$v$</span>. This path can be split into two parts: <span class="arithmatex">$P_1$</span> which consists of only marked nodes (at least the starting vertex <span class="arithmatex">$s$</span> is part of <span class="arithmatex">$P_1$</span>), and the rest of the path <span class="arithmatex">$P_2$</span> (it may include a marked vertex, but it always starts with an unmarked vertex). Let's denote the first vertex of the path <span class="arithmatex">$P_2$</span> as <span class="arithmatex">$p$</span>, and the last vertex of the path <span class="arithmatex">$P_1$</span> as <span class="arithmatex">$q$</span>.</p>
-<p>First we prove our statement for the vertex <span class="arithmatex">$p$</span>, i.e. let's prove that <span class="arithmatex">$d[p] = l[p]$</span>.
-This is almost obvious: on one of the previous iterations we chose the vertex <span class="arithmatex">$q$</span> and performed relaxation from it.
-Since (by virtue of the choice of vertex <span class="arithmatex">$p$</span>) the shortest path to <span class="arithmatex">$p$</span> is the shortest path to <span class="arithmatex">$q$</span> plus edge <span class="arithmatex">$(p,q)$</span>, the relaxation from <span class="arithmatex">$q$</span> set the value of <span class="arithmatex">$d[p]$</span> to the length of the shortest path <span class="arithmatex">$l[p]$</span>.</p>
-<p>Since the edges' weights are non-negative, the length of the shortest path <span class="arithmatex">$l[p]$</span> (which we just proved to be equal to <span class="arithmatex">$d[p]$</span>) does not exceed the length <span class="arithmatex">$l[v]$</span> of the shortest path to the vertex <span class="arithmatex">$v$</span>. Given that <span class="arithmatex">$l[v] \le d[v]$</span> (because Dijkstra's algorithm could not have found a shorter way than the shortest possible one), we get the inequality:</p>
+<h2 id="chung-minh">Chứng minh<a class="headerlink" href="#chung-minh" title="Permanent link">&para;</a></h2>
+<p>Khẳng định chính làm cơ sở cho tính đúng đắn của thuật toán Dijkstra là:</p>
+<p><strong>Sau khi một đỉnh <span class="arithmatex">$v$</span> được đánh dấu, khoảng cách hiện tại đến nó <span class="arithmatex">$d[v]$</span> là khoảng cách ngắn nhất và sẽ không bao giờ thay đổi nữa.</strong></p>
+<p>Ta chứng minh bằng quy nạp. Ở vòng lặp đầu tiên, khẳng định là hiển nhiên: đỉnh duy nhất được đánh dấu là <span class="arithmatex">$s$</span>, và <span class="arithmatex">$d[s] = 0$</span> đúng là độ dài đường đi ngắn nhất đến <span class="arithmatex">$s$</span>. Giả sử khẳng định đúng với mọi vòng trước, tức là đúng với tất cả các đỉnh đã được đánh dấu; ta cần chứng minh nó vẫn đúng sau vòng hiện tại. Gọi <span class="arithmatex">$v$</span> là đỉnh được chọn ở vòng hiện tại, tức là đỉnh sắp được đánh dấu. Ta cần chứng minh rằng <span class="arithmatex">$d[v]$</span> thực sự bằng độ dài đường đi ngắn nhất đến nó, ký hiệu là <span class="arithmatex">$l[v]$</span>.</p>
+<p>Xét đường đi ngắn nhất <span class="arithmatex">$P$</span> đến đỉnh <span class="arithmatex">$v$</span>. Ta chia đường đi này thành hai phần: <span class="arithmatex">$P_1$</span> chỉ gồm các đỉnh đã được đánh dấu (ít nhất đỉnh bắt đầu <span class="arithmatex">$s$</span> thuộc <span class="arithmatex">$P_1$</span>), và phần còn lại <span class="arithmatex">$P_2$</span> (phần này có thể chứa một đỉnh đã được đánh dấu, nhưng luôn bắt đầu bằng một đỉnh chưa được đánh dấu). Gọi đỉnh đầu tiên của <span class="arithmatex">$P_2$</span> là <span class="arithmatex">$p$</span>, và đỉnh cuối cùng của <span class="arithmatex">$P_1$</span> là <span class="arithmatex">$q$</span>.</p>
+<p>Trước hết, ta chứng minh khẳng định với đỉnh <span class="arithmatex">$p$</span>, tức là <span class="arithmatex">$d[p] = l[p]$</span>.
+Điều này gần như hiển nhiên: ở một vòng trước, ta đã chọn đỉnh <span class="arithmatex">$q$</span> và thực hiện phép nới lỏng từ nó.
+Do cách chọn đỉnh <span class="arithmatex">$p$</span>, đường đi ngắn nhất đến <span class="arithmatex">$p$</span> chính là đường đi ngắn nhất đến <span class="arithmatex">$q$</span> cộng với cạnh <span class="arithmatex">$(p,q)$</span>, nên phép nới lỏng từ <span class="arithmatex">$q$</span> đã đặt <span class="arithmatex">$d[p]$</span> bằng độ dài đường đi ngắn nhất <span class="arithmatex">$l[p]$</span>.</p>
+<p>Vì trọng số các cạnh không âm, độ dài đường đi ngắn nhất <span class="arithmatex">$l[p]$</span> (mà ta vừa chứng minh bằng <span class="arithmatex">$d[p]$</span>) không vượt quá độ dài <span class="arithmatex">$l[v]$</span> của đường đi ngắn nhất đến đỉnh <span class="arithmatex">$v$</span>. Đồng thời <span class="arithmatex">$l[v] \le d[v]$</span> (vì Dijkstra không thể tìm được một đường đi ngắn hơn chính đường đi ngắn nhất), nên ta có:</p>
 <div class="arithmatex">$$d[p] = l[p] \le l[v] \le d[v]$$</div>
-<p>On the other hand, since both vertices <span class="arithmatex">$p$</span> and <span class="arithmatex">$v$</span> are unmarked, and the current iteration chose vertex <span class="arithmatex">$v$</span>, not <span class="arithmatex">$p$</span>, we get another inequality:</p>
+<p>Mặt khác, vì cả <span class="arithmatex">$p$</span> và <span class="arithmatex">$v$</span> đều chưa được đánh dấu, và vòng hiện tại chọn <span class="arithmatex">$v$</span> chứ không phải <span class="arithmatex">$p$</span>, ta có bất đẳng thức:</p>
 <div class="arithmatex">$$d[p] \ge d[v]$$</div>
-<p>From these two inequalities we conclude that <span class="arithmatex">$d[p] = d[v]$</span>, and then from previously found equations we get:</p>
+<p>Từ hai bất đẳng thức trên suy ra <span class="arithmatex">$d[p] = d[v]$</span>, và kết hợp với các đẳng thức đã có, ta được:</p>
 <div class="arithmatex">$$d[v] = l[v]$$</div>
 <p>Q.E.D.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Dijkstra's algorithm performs <span class="arithmatex">$n$</span> iterations. On each iteration it selects an unmarked vertex <span class="arithmatex">$v$</span> with the lowest value <span class="arithmatex">$d[v]$</span>, marks it and checks all the edges <span class="arithmatex">$(v, \text{to})$</span> attempting to improve the value <span class="arithmatex">$d[\text{to}]$</span>.</p>
-<p>The running time of the algorithm consists of:</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Thuật toán Dijkstra thực hiện <span class="arithmatex">$n$</span> vòng lặp. Ở mỗi vòng, nó chọn một đỉnh chưa được đánh dấu <span class="arithmatex">$v$</span> có giá trị <span class="arithmatex">$d[v]$</span> nhỏ nhất, đánh dấu đỉnh này rồi xét mọi cạnh <span class="arithmatex">$(v, \text{to})$</span> để cố gắng cải thiện <span class="arithmatex">$d[\text{to}]$</span>.</p>
+<p>Thời gian chạy của thuật toán gồm:</p>
 <ul>
-<li><span class="arithmatex">$n$</span> searches for a vertex with the smallest value <span class="arithmatex">$d[v]$</span> among <span class="arithmatex">$O(n)$</span> unmarked vertices</li>
-<li><span class="arithmatex">$m$</span> relaxation attempts</li>
+<li><span class="arithmatex">$n$</span> lần tìm đỉnh có giá trị <span class="arithmatex">$d[v]$</span> nhỏ nhất trong số <span class="arithmatex">$O(n)$</span> đỉnh chưa được đánh dấu</li>
+<li><span class="arithmatex">$m$</span> lần thử nới lỏng</li>
 </ul>
-<p>For the simplest implementation of these operations on each iteration vertex search requires <span class="arithmatex">$O(n)$</span> operations, and each relaxation can be performed in <span class="arithmatex">$O(1)$</span>. Hence, the resulting asymptotic behavior of the algorithm is:</p>
+<p>Trong cài đặt đơn giản nhất, mỗi lần tìm đỉnh cần <span class="arithmatex">$O(n)$</span> phép toán, còn mỗi phép nới lỏng thực hiện được trong <span class="arithmatex">$O(1)$</span>. Vì vậy độ phức tạp tổng thể là:</p>
 <div class="arithmatex">$$O(n^2+m)$$</div>
-<p>This complexity is optimal for dense graph, i.e. when <span class="arithmatex">$m \approx n^2$</span>.
-However in sparse graphs, when <span class="arithmatex">$m$</span> is much smaller than the maximal number of edges <span class="arithmatex">$n^2$</span>, the problem can be solved in <span class="arithmatex">$O(n \log n + m)$</span> complexity. The algorithm and implementation can be found on the article <a href="dijkstra_sparse.html">Dijkstra on sparse graphs</a>.</p>
+<p>Độ phức tạp này tối ưu cho đồ thị dày, tức là khi <span class="arithmatex">$m \approx n^2$</span>.
+Tuy nhiên, với đồ thị thưa, khi <span class="arithmatex">$m$</span> nhỏ hơn nhiều so với số cạnh tối đa <span class="arithmatex">$n^2$</span>, bài toán có thể được giải trong <span class="arithmatex">$O(n \log n + m)$</span>. Thuật toán và cài đặt được trình bày trong bài <a href="dijkstra_sparse.html">Dijkstra trên đồ thị thưa</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">INF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000000</span><span class="p">;</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">;</span>
 
@@ -8167,10 +8131,10 @@ However in sparse graphs, when <span class="arithmatex">$m$</span> is much small
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Here the graph <span class="arithmatex">$\text{adj}$</span> is stored as adjacency list: for each vertex <span class="arithmatex">$v$</span> <span class="arithmatex">$\text{adj}[v]$</span> contains the list of edges going from this vertex, i.e. the list of <code>pair&lt;int,int&gt;</code> where the first element in the pair is the vertex at the other end of the edge, and the second element is the edge weight.</p>
-<p>The function takes the starting vertex <span class="arithmatex">$s$</span> and two vectors that will be used as return values.</p>
-<p>First of all, the code initializes arrays: distances <span class="arithmatex">$d[]$</span>, labels <span class="arithmatex">$u[]$</span> and predecessors <span class="arithmatex">$p[]$</span>. Then it performs <span class="arithmatex">$n$</span> iterations. At each iteration the vertex <span class="arithmatex">$v$</span> is selected which has the smallest distance <span class="arithmatex">$d[v]$</span> among all the unmarked vertices. If the distance to selected vertex <span class="arithmatex">$v$</span> is equal to infinity, the algorithm stops. Otherwise the vertex is marked, and all the edges going out from this vertex are checked. If relaxation along the edge is possible (i.e. distance <span class="arithmatex">$d[\text{to}]$</span> can be improved), the distance <span class="arithmatex">$d[\text{to}]$</span> and predecessor <span class="arithmatex">$p[\text{to}]$</span> are updated.</p>
-<p>After performing all the iterations array <span class="arithmatex">$d[]$</span> stores the lengths of the shortest paths to all vertices, and array <span class="arithmatex">$p[]$</span> stores the predecessors of all vertices (except starting vertex <span class="arithmatex">$s$</span>). The path to any vertex <span class="arithmatex">$t$</span> can be restored in the following way:</p>
+<p>Ở đây đồ thị <span class="arithmatex">$\text{adj}$</span> được lưu dưới dạng danh sách kề: với mỗi đỉnh <span class="arithmatex">$v$</span>, <span class="arithmatex">$\text{adj}[v]$</span> chứa danh sách các cạnh đi ra từ đỉnh này, tức là danh sách các <code>pair&lt;int,int&gt;</code> mà phần tử thứ nhất là đỉnh ở đầu còn lại của cạnh, còn phần tử thứ hai là trọng số cạnh.</p>
+<p>Hàm nhận đỉnh bắt đầu <span class="arithmatex">$s$</span> và hai vector dùng làm giá trị trả về.</p>
+<p>Trước tiên, code khởi tạo các mảng: khoảng cách <span class="arithmatex">$d[]$</span>, trạng thái đánh dấu <span class="arithmatex">$u[]$</span> và đỉnh trước <span class="arithmatex">$p[]$</span>. Sau đó nó thực hiện <span class="arithmatex">$n$</span> vòng lặp. Ở mỗi vòng, chọn đỉnh <span class="arithmatex">$v$</span> có khoảng cách <span class="arithmatex">$d[v]$</span> nhỏ nhất trong số các đỉnh chưa được đánh dấu. Nếu khoảng cách đến đỉnh <span class="arithmatex">$v$</span> bằng vô cực, thuật toán dừng. Nếu không, đỉnh được đánh dấu và mọi cạnh đi ra từ nó được xét. Nếu có thể nới lỏng theo một cạnh (tức là cải thiện được <span class="arithmatex">$d[\text{to}]$</span>), ta cập nhật khoảng cách <span class="arithmatex">$d[\text{to}]$</span> và đỉnh trước <span class="arithmatex">$p[\text{to}]$</span>.</p>
+<p>Sau khi hoàn tất các vòng lặp, mảng <span class="arithmatex">$d[]$</span> lưu độ dài đường đi ngắn nhất đến mọi đỉnh, còn mảng <span class="arithmatex">$p[]$</span> lưu đỉnh trước của mọi đỉnh (trừ đỉnh bắt đầu <span class="arithmatex">$s$</span>). Đường đi đến một đỉnh bất kỳ <span class="arithmatex">$t$</span> có thể được khôi phục như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">restore_path</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
 
@@ -8182,12 +8146,12 @@ However in sparse graphs, when <span class="arithmatex">$m$</span> is much small
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Edsger Dijkstra. A note on two problems in connexion with graphs [1959]</li>
 <li>Thomas Cormen, Charles Leiserson, Ronald Rivest, Clifford Stein. Introduction to Algorithms [2005]</li>
 </ul>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1930">Timus - Ivan's Car</a> [Difficulty:Medium]</li>
 <li><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1004">Timus - Sightseeing Trip</a></li>
@@ -8231,7 +8195,7 @@ However in sparse graphs, when <span class="arithmatex">$m$</span> is much small
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="code_master5" data-bi-name="contributorprofile" target="_blank">code_master5</a> (42.27%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (20.62%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (16.49%)</li><li><a href="#" title="Morass" data-bi-name="contributorprofile" target="_blank">Morass</a> (11.34%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (3.09%)</li><li><a href="#" title="Aryaman" data-bi-name="contributorprofile" target="_blank">Aryaman</a> (1.55%)</li><li><a href="#" title="Chaman Agrawal" data-bi-name="contributorprofile" target="_blank">Chaman Agrawal</a> (1.55%)</li><li><a href="#" title="Rodion Gorkovenko" data-bi-name="contributorprofile" target="_blank">Rodion Gorkovenko</a> (1.55%)</li><li><a href="#" title="Bhuvnesh Jain" data-bi-name="contributorprofile" target="_blank">Bhuvnesh Jain</a> (1.03%)</li><li><a href="#" title="PirateOfAndaman" data-bi-name="contributorprofile" target="_blank">PirateOfAndaman</a> (0.52%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

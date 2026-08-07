@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dijkstra-on-sparse-graphs" class="md-skip">
+        <a href="#dijkstra-tren-o-thi-thua" class="md-skip">
           Bỏ qua
         </a>
       
@@ -5805,10 +5805,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Thuật toán
       
     </span>
   </a>
@@ -5816,15 +5816,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Implementation">
+    <nav class="md-nav" aria-label="Cài đặt">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5850,10 +5850,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#getting-rid-of-pairs" class="md-nav__link">
+  <a href="#loai-bo-cac-cap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Getting rid of pairs
+        Loại bỏ các cặp
       
     </span>
   </a>
@@ -7987,13 +7987,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/dijkstra_sparse.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/dijkstra_sparse.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/dijkstra_sparse.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/dijkstra_sparse.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -8004,30 +8004,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8063,37 +8039,36 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="dijkstra-on-sparse-graphs">Dijkstra on sparse graphs<a class="headerlink" href="#dijkstra-on-sparse-graphs" title="Permanent link">&para;</a></h1>
-<p>For the statement of the problem, the algorithm with implementation and proof can be found on the article <a href="dijkstra.html">Dijkstra's algorithm</a>.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>We recall in the derivation of the complexity of Dijkstra's algorithm we used two factors:
-the time of finding the unmarked vertex with the smallest distance <span class="arithmatex">$d[v]$</span>, and the time of the relaxation, i.e. the time of changing the values <span class="arithmatex">$d[\text{to}]$</span>.</p>
-<p>In the simplest implementation these operations require <span class="arithmatex">$O(n)$</span> and <span class="arithmatex">$O(1)$</span> time.
-Therefore, since we perform the first operation <span class="arithmatex">$O(n)$</span> times, and the second one <span class="arithmatex">$O(m)$</span> times, we obtained the complexity <span class="arithmatex">$O(n^2 + m)$</span>.</p>
-<p>It is clear, that this complexity is optimal for a dense graph, i.e. when <span class="arithmatex">$m \approx n^2$</span>.
-However in sparse graphs, when <span class="arithmatex">$m$</span> is much smaller than the maximal number of edges <span class="arithmatex">$n^2$</span>, the complexity gets less optimal because of the first term.
-Thus it is necessary to improve the execution time of the first operation (and of course without greatly affecting the second operation by much).</p>
-<p>To accomplish that we can use a variation of multiple auxiliary data structures.
-The most efficient is the <strong>Fibonacci heap</strong>, which allows the first operation to run in <span class="arithmatex">$O(\log n)$</span>, and the second operation in <span class="arithmatex">$O(1)$</span>.
-Therefore we will get the complexity <span class="arithmatex">$O(n \log n + m)$</span> for Dijkstra's algorithm, which is also the theoretical minimum for the shortest path search problem.
-Therefore this algorithm works optimal, and Fibonacci heaps are the optimal data structure.
-There doesn't exist any data structure, that can perform both operations in <span class="arithmatex">$O(1)$</span>, because this would also allow to sort a list of random numbers in linear time, which is impossible.
-Interestingly there exists an algorithm by Thorup that finds the shortest path in <span class="arithmatex">$O(m)$</span> time, however only works for integer weights, and uses a completely different idea.
-So this doesn't lead to any contradictions.
-Fibonacci heaps provide the optimal complexity for this task.
-However they are quite complex to implement, and also have a quite large hidden constant.</p>
-<p>As a compromise you can use data structures, that perform both types of operations (extracting a minimum and updating an item) in <span class="arithmatex">$O(\log n)$</span>.
-Then the complexity of Dijkstra's algorithm is <span class="arithmatex">$O(n \log n + m \log n) = O(m \log n)$</span>.</p>
-<p>C++ provides two such data structures: <code>set</code> and <code>priority_queue</code>.
-The first is based on red-black trees, and the second one on heaps.
-Therefore <code>priority_queue</code> has a smaller hidden constant, but also has a drawback:
-it doesn't support the operation of removing an element.
-Because of this we need to do a "workaround", that actually leads to a slightly worse factor <span class="arithmatex">$\log m$</span> instead of <span class="arithmatex">$\log n$</span> (although in terms of complexity they are identical).</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<h1 id="dijkstra-tren-o-thi-thua">Dijkstra trên đồ thị thưa<a class="headerlink" href="#dijkstra-tren-o-thi-thua" title="Permanent link">&para;</a></h1>
+<p>Phát biểu bài toán, thuật toán, phần cài đặt cơ bản và chứng minh có thể xem trong bài <a href="dijkstra.html">Thuật toán Dijkstra</a>.</p>
+<h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Nhắc lại rằng khi phân tích độ phức tạp của thuật toán Dijkstra, ta xét hai thành phần:
+thời gian tìm đỉnh chưa được đánh dấu có khoảng cách <span class="arithmatex">$d[v]$</span> nhỏ nhất, và thời gian thực hiện phép nới lỏng, tức là thời gian thay đổi giá trị <span class="arithmatex">$d[\text{to}]$</span>.</p>
+<p>Trong cài đặt đơn giản nhất, hai thao tác này lần lượt cần <span class="arithmatex">$O(n)$</span> và <span class="arithmatex">$O(1)$</span> thời gian.
+Do thao tác thứ nhất được thực hiện <span class="arithmatex">$O(n)$</span> lần còn thao tác thứ hai được thực hiện <span class="arithmatex">$O(m)$</span> lần, ta thu được độ phức tạp <span class="arithmatex">$O(n^2 + m)$</span>.</p>
+<p>Rõ ràng độ phức tạp này tối ưu cho đồ thị dày, tức là khi <span class="arithmatex">$m \approx n^2$</span>.
+Tuy nhiên với đồ thị thưa, khi <span class="arithmatex">$m$</span> nhỏ hơn nhiều so với số cạnh tối đa <span class="arithmatex">$n^2$</span>, thành phần đầu tiên khiến độ phức tạp trở nên kém tối ưu.
+Vì vậy, ta cần giảm thời gian của thao tác tìm đỉnh nhỏ nhất, nhưng không được làm tăng đáng kể chi phí của phép nới lỏng.</p>
+<p>Để làm điều đó, có thể dùng nhiều cấu trúc dữ liệu phụ khác nhau.
+Về lý thuyết, hiệu quả nhất là <strong>heap Fibonacci</strong> (Fibonacci heap): thao tác lấy phần tử nhỏ nhất chạy trong <span class="arithmatex">$O(\log n)$</span>, còn cập nhật một phần tử chạy trong <span class="arithmatex">$O(1)$</span>.
+Khi đó thuật toán Dijkstra đạt độ phức tạp <span class="arithmatex">$O(n \log n + m)$</span>, cũng là cận tối ưu lý thuyết cho bài toán tìm đường đi ngắn nhất trong mô hình này.
+Do đó, heap Fibonacci là một cấu trúc dữ liệu tối ưu cho cách tiếp cận này.
+Không tồn tại cấu trúc dữ liệu có thể thực hiện đồng thời cả hai thao tác trên trong <span class="arithmatex">$O(1)$</span>, vì nếu có thì ta cũng có thể sắp xếp một dãy số tùy ý trong thời gian tuyến tính, điều này là không thể.
+Điều thú vị là có một thuật toán của Thorup tìm đường đi ngắn nhất trong <span class="arithmatex">$O(m)$</span>, nhưng thuật toán đó chỉ áp dụng cho trọng số nguyên và sử dụng một ý tưởng hoàn toàn khác.
+Vì vậy không có mâu thuẫn nào ở đây.
+Heap Fibonacci đạt độ phức tạp tối ưu cho nhiệm vụ này, nhưng khá phức tạp để cài đặt và có hằng số ẩn tương đối lớn.</p>
+<p>Một phương án thực tế hơn là dùng cấu trúc dữ liệu mà cả thao tác lấy phần tử nhỏ nhất và cập nhật một phần tử đều chạy trong <span class="arithmatex">$O(\log n)$</span>.
+Khi đó độ phức tạp của Dijkstra là <span class="arithmatex">$O(n \log n + m \log n) = O(m \log n)$</span>.</p>
+<p>C++ cung cấp hai cấu trúc phù hợp là <code>set</code> và <code>priority_queue</code>.
+Cấu trúc thứ nhất thường được cài bằng cây đỏ-đen, còn cấu trúc thứ hai dựa trên heap.
+Vì vậy <code>priority_queue</code> có hằng số ẩn nhỏ hơn, nhưng cũng có một nhược điểm:
+nó không hỗ trợ thao tác xóa một phần tử tùy ý.
+Do đó ta cần dùng một cách xử lý thay thế, dẫn đến hệ số <span class="arithmatex">$\log m$</span> hơi kém hơn <span class="arithmatex">$\log n$</span> (mặc dù xét theo độ phức tạp tiệm cận thì chúng tương đương).</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <h3 id="set">set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
-<p>Let us start with the container <code>set</code>.
-Since we need to store vertices ordered by their values <span class="arithmatex">$d[]$</span>, it is convenient to store actual pairs: the distance and the index of the vertex.
-As a result in a <code>set</code> pairs are automatically sorted by their distances.</p>
+<p>Trước hết xét container <code>set</code>.
+Vì cần lưu các đỉnh theo thứ tự của giá trị <span class="arithmatex">$d[]$</span>, cách thuận tiện là lưu các cặp gồm khoảng cách và chỉ số đỉnh.
+Khi đó các cặp trong <code>set</code> tự động được sắp theo khoảng cách.</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">INF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000000</span><span class="p">;</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">;</span>
 
@@ -8123,23 +8098,23 @@ As a result in a <code>set</code> pairs are automatically sorted by their distan
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>We don't need the array <span class="arithmatex">$u[]$</span> from the normal Dijkstra's algorithm implementation any more.
-We will use the <code>set</code> to store that information, and also find the vertex with the shortest distance with it.
-It kinda acts like a queue.
-The main loops executes until there are no more vertices in the set/queue.
-A vertex with the smallest distance gets extracted, and for each successful relaxation we first remove the old pair, and then after the relaxation add the new pair into the queue.</p>
+<p>Ta không còn cần mảng <span class="arithmatex">$u[]$</span> như trong cài đặt Dijkstra thông thường.
+<code>set</code> vừa lưu thông tin cần thiết thay cho mảng đó, vừa giúp tìm đỉnh có khoảng cách nhỏ nhất.
+Có thể xem nó hoạt động gần giống một hàng đợi ưu tiên.
+Vòng lặp chính chạy cho đến khi tập/hàng đợi không còn đỉnh nào.
+Mỗi lần ta lấy ra đỉnh có khoảng cách nhỏ nhất; với mỗi phép nới lỏng thành công, trước tiên xóa cặp cũ, sau đó nới lỏng rồi chèn cặp mới trở lại cấu trúc dữ liệu.</p>
 <h3 id="priority_queue">priority_queue<a class="headerlink" href="#priority_queue" title="Permanent link">&para;</a></h3>
-<p>The main difference to the implementation with <code>set</code> is that in many languages, including C++, we cannot remove elements from the <code>priority_queue</code> (although heaps can support that operation in theory).
-Therefore we have to use a workaround:
-We simply don't delete the old pair from the queue.
-As a result a vertex can appear multiple times with different distance in the queue at the same time.
-Among these pairs we are only interested in the pairs where the first element is equal to the corresponding value in <span class="arithmatex">$d[]$</span>, all the other pairs are old.
-Therefore we need to make a small modification:
-at the beginning of each iteration, after extracting the next pair, we check if it is an important pair or if it is already an old and handled pair.
-This check is important, otherwise the complexity can increase up to <span class="arithmatex">$O(n m)$</span>.</p>
-<p>By default a <code>priority_queue</code> sorts elements in descending order.
-To make it sort the elements in ascending order, we can either store the negated distances in it, or pass it a different sorting function.
-We will do the second option.</p>
+<p>Khác biệt chính so với cài đặt bằng <code>set</code> là trong nhiều ngôn ngữ, bao gồm C++, ta không thể xóa một phần tử tùy ý khỏi <code>priority_queue</code> (dù về lý thuyết heap có thể hỗ trợ thao tác đó).
+Vì vậy ta dùng một cách xử lý khác:
+không xóa cặp cũ khỏi hàng đợi.
+Kết quả là cùng một đỉnh có thể xuất hiện nhiều lần trong hàng đợi với các khoảng cách khác nhau.
+Trong số các cặp đó, ta chỉ quan tâm tới cặp mà phần tử thứ nhất bằng giá trị hiện tại tương ứng trong <span class="arithmatex">$d[]$</span>; các cặp còn lại đã lỗi thời.
+Do đó cần một thay đổi nhỏ:
+ở đầu mỗi vòng lặp, sau khi lấy cặp tiếp theo ra, ta kiểm tra cặp đó còn hợp lệ hay đã là dữ liệu cũ được xử lý trước đó.
+Kiểm tra này rất quan trọng; nếu bỏ qua, độ phức tạp có thể tăng tới <span class="arithmatex">$O(n m)$</span>.</p>
+<p>Mặc định, <code>priority_queue</code> sắp xếp các phần tử theo thứ tự giảm dần.
+Để sắp tăng dần, ta có thể lưu khoảng cách với dấu âm hoặc truyền vào một hàm so sánh khác.
+Ở đây ta dùng cách thứ hai.</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">INF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000000</span><span class="p">;</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">;</span>
 
@@ -8172,22 +8147,22 @@ We will do the second option.</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>In practice the <code>priority_queue</code> version is a little bit faster than the version with <code>set</code>.</p>
-<p>Interestingly, a <a href="https://www3.cs.stonybrook.edu/~rezaul/papers/TR-07-54.pdf">2007 technical report</a> concluded the variant of the algorithm not using decrease-key operations ran faster than the decrease-key variant, with a greater performance gap for sparse graphs.</p>
-<h3 id="getting-rid-of-pairs">Getting rid of pairs<a class="headerlink" href="#getting-rid-of-pairs" title="Permanent link">&para;</a></h3>
-<p>You can improve the performance a little bit more if you don't store pairs in the containers, but only the vertex indices.
-In this case we must overload the comparison operator:
-it must compare two vertices using the distances stored in <span class="arithmatex">$d[]$</span>.</p>
-<p>As a result of the relaxation, the distance of some vertices will change.
-However the data structure will not resort itself automatically.
-In fact changing distances of vertices in the queue, might destroy the data structure.
-As before, we need to remove the vertex before we relax it, and then insert it again afterwards.</p>
-<p>Since we only can remove from <code>set</code>, this optimization is only applicable for the <code>set</code> method, and doesn't work with <code>priority_queue</code> implementation.
-In practice this significantly increases the performance, especially when larger data types are used to store distances, like <code>long long</code> or <code>double</code>.</p>
+<p>Trong thực tế, phiên bản <code>priority_queue</code> thường nhanh hơn một chút so với phiên bản dùng <code>set</code>.</p>
+<p>Đáng chú ý, một <a href="https://www3.cs.stonybrook.edu/~rezaul/papers/TR-07-54.pdf">báo cáo kỹ thuật năm 2007</a> kết luận rằng biến thể không dùng thao tác decrease-key chạy nhanh hơn biến thể có decrease-key, và khoảng cách hiệu năng càng rõ trên đồ thị thưa.</p>
+<h3 id="loai-bo-cac-cap">Loại bỏ các cặp<a class="headerlink" href="#loai-bo-cac-cap" title="Permanent link">&para;</a></h3>
+<p>Có thể cải thiện hiệu năng thêm một chút nếu không lưu các cặp trong container mà chỉ lưu chỉ số đỉnh.
+Khi đó ta phải nạp chồng toán tử so sánh:
+nó cần so sánh hai đỉnh dựa trên khoảng cách lưu trong <span class="arithmatex">$d[]$</span>.</p>
+<p>Sau một phép nới lỏng, khoảng cách của một số đỉnh sẽ thay đổi.
+Tuy nhiên cấu trúc dữ liệu không tự động sắp xếp lại theo các giá trị mới.
+Thực tế, thay đổi khoảng cách của một đỉnh khi nó vẫn còn trong hàng đợi có thể phá vỡ tính đúng đắn của cấu trúc dữ liệu.
+Như trước, ta cần xóa đỉnh trước khi nới lỏng rồi chèn lại sau đó.</p>
+<p>Vì chỉ <code>set</code> hỗ trợ xóa theo cách cần thiết, tối ưu này chỉ áp dụng được cho phương án dùng <code>set</code>, không áp dụng được cho cài đặt <code>priority_queue</code>.
+Trong thực tế, cách này có thể cải thiện hiệu năng đáng kể, đặc biệt khi khoảng cách dùng kiểu dữ liệu lớn hơn như <code>long long</code> hoặc <code>double</code>.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (90.13%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (3.95%)</li><li><a href="#" title="jxu" data-bi-name="contributorprofile" target="_blank">jxu</a> (2.63%)</li><li><a href="#" title="Thejazeto Lhousa" data-bi-name="contributorprofile" target="_blank">Thejazeto Lhousa</a> (1.32%)</li><li><a href="#" title="Avinash Pandey" data-bi-name="contributorprofile" target="_blank">Avinash Pandey</a> (0.66%)</li><li><a href="#" title="dj-_-park" data-bi-name="contributorprofile" target="_blank">dj-_-park</a> (0.66%)</li><li><a href="#" title="wiktorkuchta" data-bi-name="contributorprofile" target="_blank">wiktorkuchta</a> (0.66%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
 </ul>
                 
               </article>
