@@ -111,7 +111,7 @@ trong đó $\&$ là phép AND theo bit. Không khó để tự kiểm tra rằng
 
 Giờ ta chỉ cần tìm cách duyệt mọi $j$ sao cho $g(j) \le i \le j$.
 
-Có thể thấy ta tìm được mọi $j$ như vậy bằng cách bắt đầu từ $i$ rồi bật bit $0$ cuối cùng thành $1$.
+Có thể thấy ta tìm được mọi $j$ như vậy bằng cách bắt đầu từ $i$ rồi bật bit 0 cuối cùng thành 1.
 Ta gọi thao tác này là $h(j)$.
 Ví dụ, với $i = 10$ ta có:
 
