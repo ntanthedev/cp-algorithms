@@ -197,6 +197,7 @@ Validator so sánh giữa nguồn và bản dịch:
 - inline code ngoài fenced code block;
 - đích Markdown link và image;
 - số lượng delimiter công thức khối `$$`;
+- với mỗi file `.vi.md` được thêm hoặc sửa trong PR/commit hiện tại, từng biểu thức LaTeX phải giữ nguyên nội dung và số lần xuất hiện so với nguồn; validator so sánh theo multiset nên cho phép đổi thứ tự các biểu thức khi cấu trúc câu tiếng Việt yêu cầu; nội dung được đánh dấu `Ghi chú bản dịch` không được coi là công thức của nguồn;
 - Jinja/MkDocs expression;
 - cấu trúc HTML và thuộc tính không thể dịch;
 - số lượng, thứ tự và mức thụt lề của MkDocs tabs;
@@ -208,7 +209,7 @@ Nếu cần thay đổi cấu trúc, phải giải thích và cập nhật valid
 
 ### `Vietnamese translations`
 
-Chạy validator cấu trúc bằng `scripts/check_vi_translations.py`. Workflow này phải nhẹ và không build MkDocs lần thứ hai.
+Chạy validator cấu trúc bằng `scripts/check_vi_translations.py`. Workflow này phải nhẹ và không build MkDocs lần thứ hai. Trong pull request, checkout đủ lịch sử tối thiểu để validator xác định chính xác các file `.vi.md` đã thay đổi và áp kiểm tra LaTeX nghiêm ngặt cho chúng mà không biến nợ định dạng của bản dịch legacy chưa chạm tới thành blocker của PR mới.
 
 ### `Vietnamese translation sync`
 
