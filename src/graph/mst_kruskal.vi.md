@@ -108,7 +108,7 @@ Nếu $T$ không chứa cạnh $e$, thì $T + e$ sẽ chứa một chu trình $C
 Chu trình này chứa ít nhất một cạnh $f$ không thuộc $F$.
 Tập cạnh $T - f + e$ cũng là một cây khung.
 Lưu ý rằng trọng số của $f$ không thể nhỏ hơn trọng số của $e$, vì nếu vậy Kruskal đã chọn $f$ sớm hơn.
-Trọng số của $f$ cũng không thể lớn hơn, vì khi đó tổng trọng số của $T - f + e$ sẽ nhỏ hơn tổng trọng số của $T$, mâu thuẫn với việc $T$ đã là một MST.
+Nó cũng không thể lớn hơn, vì khi đó tổng trọng số của $T - f + e$ sẽ nhỏ hơn tổng trọng số của $T$, mâu thuẫn với việc $T$ đã là một MST.
 Do đó trọng số của $e$ phải bằng trọng số của $f$.
 Vì vậy $T - f + e$ cũng là một MST và chứa toàn bộ các cạnh của $F + e$.
 Mệnh đề vẫn đúng sau bước này.
