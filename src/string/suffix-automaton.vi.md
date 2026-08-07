@@ -449,9 +449,11 @@ Khung này chỉ gồm các cạnh liên tục, nên số cạnh nhỏ hơn số
 Tiếp theo, ước lượng số phép chuyển không liên tục.
 Xét phép chuyển không liên tục hiện tại $(p, q)$ mang ký tự $c$.
 Ta lấy xâu tương ứng $u + c + w$, trong đó $u$ tương ứng với đường đi dài nhất từ trạng thái ban đầu tới $p$, còn $w$ tương ứng với đường đi dài nhất từ $q$ tới một trạng thái kết thúc bất kỳ.
-Một mặt, mỗi xâu $u + c + w$ như vậy ứng với mỗi xâu không hoàn chỉnh sẽ khác nhau (vì các xâu $u$ và $w$ chỉ được tạo bởi các phép chuyển hoàn chỉnh).
+Một mặt, mỗi xâu $u + c + w$ tương ứng với một phép chuyển không liên tục khác nhau (vì các xâu $u$ và $w$ chỉ được tạo bởi các phép chuyển liên tục).
 Mặt khác, theo định nghĩa trạng thái kết thúc, mỗi xâu $u + c + w$ như vậy là một hậu tố của toàn bộ xâu $s$.
-Vì $s$ chỉ có $n$ hậu tố không rỗng và không xâu $u + c + w$ nào có thể chứa $s$ (vì toàn bộ xâu chỉ gồm các phép chuyển hoàn chỉnh), tổng số phép chuyển không hoàn chỉnh không vượt quá $n - 1$.
+Vì $s$ chỉ có $n$ hậu tố không rỗng và không xâu $u + c + w$ nào có thể chứa $s$ (vì toàn bộ xâu chỉ gồm các phép chuyển liên tục), tổng số phép chuyển không liên tục không vượt quá $n - 1$.
+
+**Ghi chú bản dịch:** Nguồn chuyển từ các thuật ngữ “continuous/non-continuous transitions” đã định nghĩa phía trên sang “complete/incomplete transitions” trong đoạn chứng minh này. Theo ngữ cảnh và đối tượng đang được đếm, bản dịch dùng nhất quán “liên tục/không liên tục” để tránh tạo thêm một cặp thuật ngữ không được định nghĩa.
 
 Kết hợp hai ước lượng cho cận $3n - 3$.
 Tuy nhiên, vì số trạng thái cực đại chỉ đạt được với test $\text{"abbb\dots bbb"}$ và trường hợp này rõ ràng có ít hơn $3n - 3$ phép chuyển, ta thu được cận chặt hơn $3n - 4$ cho số phép chuyển của Suffix Automaton.
