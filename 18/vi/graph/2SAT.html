@@ -8084,7 +8084,7 @@ Việc này có thể được thực hiện bằng thuật toán Kosaraju trong
 Ở lượt duyệt thứ hai, thuật toán Kosaraju thăm các thành phần liên thông mạnh theo thứ tự tô-pô, vì vậy ta dễ dàng tính được <span class="arithmatex">$\text{comp}[v]$</span> cho mỗi đỉnh <span class="arithmatex">$v$</span>.</p>
 <p>Sau đó, ta chọn giá trị gán cho <span class="arithmatex">$x$</span> bằng cách so sánh <span class="arithmatex">$\text{comp}[x]$</span> và <span class="arithmatex">$\text{comp}[\lnot x]$</span>. 
 Nếu <span class="arithmatex">$\text{comp}[x] = \text{comp}[\lnot x]$</span>, ta trả về <span class="arithmatex">$\text{false}$</span> để báo rằng không tồn tại phép gán hợp lệ thỏa mãn bài toán 2-SAT.</p>
-<p>Dưới đây là cài đặt lời giải 2-SAT khi đồ thị kéo theo <code>adj</code> và đồ thị chuyển vị <span class="arithmatex">$adj^{\intercal}$</span> (trong đó chiều của mọi cạnh được đảo ngược) đã được xây dựng.
+<p>Dưới đây là cài đặt lời giải 2-SAT khi đồ thị kéo theo <span class="arithmatex">$adj$</span> và đồ thị chuyển vị <span class="arithmatex">$adj^{\intercal}$</span> (trong đó chiều của mọi cạnh được đảo ngược) đã được xây dựng.
 Trong đồ thị, các đỉnh có chỉ số <span class="arithmatex">$2k$</span> và <span class="arithmatex">$2k+1$</span> là hai đỉnh tương ứng với biến <span class="arithmatex">$k$</span>, trong đó <span class="arithmatex">$2k+1$</span> tương ứng với biến bị phủ định.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">TwoSatSolver</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n_vars</span><span class="p">;</span>
