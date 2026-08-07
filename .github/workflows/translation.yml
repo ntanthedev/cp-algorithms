@@ -8,6 +8,7 @@ on:
       - 'src/**/*.md'
       - 'TRANSLATING_VI.md'
       - 'scripts/check_vi_translations.py'
+      - 'scripts/check_vi_markdown_safety.py'
       - '.github/workflows/translation.yml'
   push:
     branches:
@@ -17,6 +18,7 @@ on:
       - 'src/**/*.md'
       - 'TRANSLATING_VI.md'
       - 'scripts/check_vi_translations.py'
+      - 'scripts/check_vi_markdown_safety.py'
       - '.github/workflows/translation.yml'
 
 permissions:
@@ -38,3 +40,6 @@ jobs:
 
       - name: Validate translation structure
         run: python3 scripts/check_vi_translations.py
+
+      - name: Validate Vietnamese Markdown safety
+        run: python3 scripts/check_vi_markdown_safety.py
