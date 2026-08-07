@@ -180,7 +180,7 @@ a_{31} & a_ {32} & a_ {33} & a_ {34} \\
 a_{41} & a_ {42} & a_ {43} & a_ {44}
 \end{pmatrix}$$
 
-Khi nhân ma trận đó với một vector chứa các tọa độ cũ và một tọa độ bổ sung bằng $1$, ta nhận được vector chứa các tọa độ mới với tọa độ bổ sung đó vẫn bằng $1$:
+Khi nhân ma trận đó với một vector chứa các tọa độ cũ và một tọa độ bổ sung bằng 1, ta nhận được vector chứa các tọa độ mới với tọa độ bổ sung đó vẫn bằng 1:
 
 $$\begin{pmatrix} x & y & z & 1 \end{pmatrix} \cdot
 \begin{pmatrix}
