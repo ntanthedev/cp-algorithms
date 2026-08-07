@@ -48,8 +48,9 @@ TRANSLATABLE_HTML_ATTR_RE = re.compile(
 TAB_RE = re.compile(r"^(\s*)===\s+.+$", re.MULTILINE)
 ADMONITION_RE = re.compile(r"^\s*(?:!!!|\?\?\?)\s+([\w-]+)", re.MULTILINE)
 TRANSLATOR_NOTE_LINE_RE = re.compile(r"^\*\*Ghi chú bản dịch:\*\*.*$", re.MULTILINE)
+BLOCK_MATH_DELIM_RE = re.compile(r"(?<!\\)\$\$")
 MATH_RE = re.compile(
-    r"(?:\$\$.*?\$\$|\\\[.*?\\\]|\\\(.*?\\\)|(?<!\$)\$(?!\$).*?(?<!\\)\$(?!\$))",
+    r"(?:\$\$.*?\$\$|\\\[.*?\\\]|\\\(.*?\\\)|(?<!\\)(?<!\$)\$(?!\$).*?(?<!\\)\$(?!\$))",
     re.DOTALL,
 )
 
@@ -306,9 +307,11 @@ def validate_pair(
             f"inline code differs from source ({counter_difference(source_inline, translated_inline)})",
         )
 
-    if source.body.count("$$") != translated.body.count("$$"):
+    source_block_math_delimiters = len(BLOCK_MATH_DELIM_RE.findall(source.body))
+    translated_block_math_delimiters = len(BLOCK_MATH_DELIM_RE.findall(translated.body))
+    if source_block_math_delimiters != translated_block_math_delimiters:
         add_error(errors, translated.path, "number of $$ math delimiters differs from source")
-    if source.body.count("$$") % 2 != 0 or translated.body.count("$$") % 2 != 0:
+    if source_block_math_delimiters % 2 != 0 or translated_block_math_delimiters % 2 != 0:
         add_error(errors, translated.path, "unbalanced $$ math delimiters")
 
     if exact_math:
