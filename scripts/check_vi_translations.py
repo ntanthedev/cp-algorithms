@@ -4,9 +4,9 @@
 The checker compares syntax-sensitive structures that translators should not
 alter: source metadata, headings, code blocks, inline code, math delimiters,
 link destinations, Jinja expressions, HTML structure, MkDocs tabs, and
-admonitions. For translation files changed by the current commit/PR, LaTeX
-expressions are also compared exactly. Human-readable HTML attributes such as
-alt text may be translated.
+admonitions. For translation files changed by the current commit/PR, every
+LaTeX expression must also be preserved exactly with the same multiplicity.
+Human-readable HTML attributes such as alt text may be translated.
 """
 
 from __future__ import annotations
@@ -316,14 +316,14 @@ def validate_pair(
         translated_math_text = INLINE_CODE_RE.sub(
             "", TRANSLATOR_NOTE_LINE_RE.sub("", translated_without_fences)
         )
-        source_math = sequence(MATH_RE, source_math_text)
-        translated_math = sequence(MATH_RE, translated_math_text)
+        source_math = collections.Counter(sequence(MATH_RE, source_math_text))
+        translated_math = collections.Counter(sequence(MATH_RE, translated_math_text))
         if source_math != translated_math:
             add_error(
                 errors,
                 translated.path,
                 "LaTeX expressions differ from source "
-                f"({counter_difference(collections.Counter(source_math), collections.Counter(translated_math))})",
+                f"({counter_difference(source_math, translated_math)})",
             )
 
     source_targets = counter(LINK_TARGET_RE, source.body) + counter(REFERENCE_LINK_RE, source.body)
