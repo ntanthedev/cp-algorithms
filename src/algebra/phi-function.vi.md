@@ -46,7 +46,7 @@ $$\phi(p^k) = p^k - p^{k-1}.$$
 
     với $d = \gcd(a, b)$.
 
-Do đó, dùng ba tính chất đầu tiên, ta có thể tính $\phi(n)$ thông qua phân tích $n$ thành thừa số nguyên tố.
+Do đó, dùng ba tính chất đầu tiên, ta có thể tính $\phi(n)$ thông qua phân tích $n$ thành thừa số nguyên tố (tức phân tích $n$ thành tích các thừa số nguyên tố).
 Nếu $n = {p_1}^{a_1} \cdot {p_2}^{a_2} \cdots {p_k}^{a_k}$, trong đó $p_i$ là các thừa số nguyên tố của $n$, thì
 
 $$\begin{align}
@@ -78,7 +78,7 @@ int phi(int n) {
 
 ## Phi hàm Euler từ $1$ đến $n$ trong $O(n \log\log{n})$ { #etf_1_to_n data-toc-label="Euler totient function from 1 to n in <script type=\"math/tex\">O(n log log n)</script>" }
 
-Nếu cần tính hàm phi của mọi số từ $1$ đến $n$, việc phân tích thừa số riêng từng số là không hiệu quả.
+Nếu cần tính hàm phi của mọi số từ $1$ đến $n$, việc phân tích thừa số riêng cho cả $n$ số là không hiệu quả.
 Ta có thể dùng cùng ý tưởng với [Sàng Eratosthenes](sieve-of-eratosthenes.md).
 Phương pháp vẫn dựa trên tính chất ở trên, nhưng thay vì cập nhật kết quả tạm thời theo từng thừa số nguyên tố của từng số, ta tìm tất cả số nguyên tố rồi với mỗi số nguyên tố cập nhật kết quả tạm thời của mọi số chia hết cho nó.
 
