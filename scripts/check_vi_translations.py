@@ -48,8 +48,9 @@ TRANSLATABLE_HTML_ATTR_RE = re.compile(
 TAB_RE = re.compile(r"^(\s*)===\s+.+$", re.MULTILINE)
 ADMONITION_RE = re.compile(r"^\s*(?:!!!|\?\?\?)\s+([\w-]+)", re.MULTILINE)
 TRANSLATOR_NOTE_LINE_RE = re.compile(r"^\*\*Ghi chú bản dịch:\*\*.*$", re.MULTILINE)
+BLOCK_MATH_DELIM_RE = re.compile(r"(?<!\\)\$\$")
 MATH_RE = re.compile(
-    r"(?:\$\$.*?\$\$|\\\[.*?\\\]|\\\(.*?\\\)|(?<!\$)\$(?!\$).*?(?<!\\)\$(?!\$))",
+    r"(?:\$\$.*?\$\$|\\\[.*?\\\]|\\\(.*?\\\)|(?<!\\)(?<!\$)\$(?!\$).*?(?<!\\)\$(?!\$))",
     re.DOTALL,
 )
 
@@ -191,6 +192,28 @@ def counter_difference(expected: collections.Counter[str], actual: collections.C
     return f"missing: {format_counter(missing)}; extra: {format_counter(extra)}"
 
 
+def token_line_number_map(pattern: re.Pattern[str], text: str) -> dict[str, list[int]]:
+    """Index exact regex matches by token with 1-based line numbers in one scan."""
+    locations: dict[str, list[int]] = collections.defaultdict(list)
+    for match in pattern.finditer(text):
+        locations[match.group(0)].append(text.count("\n", 0, match.start()) + 1)
+    return dict(locations)
+
+
+def math_mismatch_locations(source_text: str, translated_text: str, source_math: collections.Counter[str], translated_math: collections.Counter[str]) -> str:
+    """Show locations for mismatched math tokens without changing validation semantics."""
+    tokens = sorted(set((source_math - translated_math).keys()) | set((translated_math - source_math).keys()))
+    source_locations = token_line_number_map(MATH_RE, source_text)
+    translated_locations = token_line_number_map(MATH_RE, translated_text)
+    parts: list[str] = []
+    for token in tokens:
+        parts.append(
+            f"{token!r}: source lines {source_locations.get(token, [])}, "
+            f"translation lines {translated_locations.get(token, [])}"
+        )
+    return "; ".join(parts)
+
+
 def changed_translation_paths() -> set[Path]:
     """Return .vi.md files touched by the current PR/commit plus local changes.
 
@@ -306,9 +329,11 @@ def validate_pair(
             f"inline code differs from source ({counter_difference(source_inline, translated_inline)})",
         )
 
-    if source.body.count("$$") != translated.body.count("$$"):
+    source_block_math_delimiters = len(BLOCK_MATH_DELIM_RE.findall(source.body))
+    translated_block_math_delimiters = len(BLOCK_MATH_DELIM_RE.findall(translated.body))
+    if source_block_math_delimiters != translated_block_math_delimiters:
         add_error(errors, translated.path, "number of $$ math delimiters differs from source")
-    if source.body.count("$$") % 2 != 0 or translated.body.count("$$") % 2 != 0:
+    if source_block_math_delimiters % 2 != 0 or translated_block_math_delimiters % 2 != 0:
         add_error(errors, translated.path, "unbalanced $$ math delimiters")
 
     if exact_math:
@@ -323,7 +348,8 @@ def validate_pair(
                 errors,
                 translated.path,
                 "LaTeX expressions differ from source "
-                f"({counter_difference(source_math, translated_math)})",
+                f"({counter_difference(source_math, translated_math)}; "
+                f"locations: {math_mismatch_locations(source_math_text, translated_math_text, source_math, translated_math)})",
             )
 
     source_targets = counter(LINK_TARGET_RE, source.body) + counter(REFERENCE_LINK_RE, source.body)
