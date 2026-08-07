@@ -97,6 +97,7 @@ Vậy tại sao cây khung đó lại là cây khung nhỏ nhất?
 Ta chứng minh bằng quy nạp mệnh đề: "nếu $F$ là tập các cạnh đã được thuật toán chọn ở một thời điểm bất kỳ, thì tồn tại một MST chứa toàn bộ các cạnh của $F$".
 
 Mệnh đề hiển nhiên đúng lúc đầu vì tập rỗng là tập con của mọi MST.
+
 Giả sử ở một bước nào đó $F$ là tập cạnh đã chọn, $T$ là một MST chứa $F$, và $e$ là cạnh mới mà Kruskal đang xét để thêm vào.
 
 Nếu $e$ tạo ra chu trình thì ta không thêm nó, vì vậy mệnh đề vẫn đúng sau bước này.
@@ -107,7 +108,7 @@ Nếu $T$ không chứa cạnh $e$, thì $T + e$ sẽ chứa một chu trình $C
 Chu trình này chứa ít nhất một cạnh $f$ không thuộc $F$.
 Tập cạnh $T - f + e$ cũng là một cây khung.
 Lưu ý rằng trọng số của $f$ không thể nhỏ hơn trọng số của $e$, vì nếu vậy Kruskal đã chọn $f$ sớm hơn.
-Nó cũng không thể lớn hơn trọng số của $e$, vì khi đó tổng trọng số của $T - f + e$ sẽ nhỏ hơn tổng trọng số của $T$, mâu thuẫn với việc $T$ đã là một MST.
+Trọng số của $f$ cũng không thể lớn hơn, vì khi đó tổng trọng số của $T - f + e$ sẽ nhỏ hơn tổng trọng số của $T$, mâu thuẫn với việc $T$ đã là một MST.
 Do đó trọng số của $e$ phải bằng trọng số của $f$.
 Vì vậy $T - f + e$ cũng là một MST và chứa toàn bộ các cạnh của $F + e$.
 Mệnh đề vẫn đúng sau bước này.
