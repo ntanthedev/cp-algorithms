@@ -130,6 +130,7 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | half-open interval | đoạn nửa mở |
 | time complexity | độ phức tạp thời gian |
 | space complexity | độ phức tạp bộ nhớ |
+| amortized complexity | độ phức tạp khấu hao |
 | greatest common divisor | ước chung lớn nhất |
 | least common multiple | bội chung nhỏ nhất |
 | Sieve of Eratosthenes | Sàng Eratosthenes |
@@ -152,6 +153,14 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | topological ordering | thứ tự tô-pô |
 | bipartite graph | đồ thị hai phía |
 | spanning tree | cây khung |
+| minimum spanning tree | cây khung nhỏ nhất |
+| maximum spanning tree | cây khung lớn nhất |
+| Disjoint Set Union | hợp các tập rời nhau |
+| representative / leader | phần tử đại diện |
+| path compression | nén đường đi |
+| union by size | hợp theo kích thước |
+| union by rank | hợp theo hạng |
+| inverse Ackermann function | hàm Ackermann nghịch đảo |
 | dynamic programming | quy hoạch động |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR.

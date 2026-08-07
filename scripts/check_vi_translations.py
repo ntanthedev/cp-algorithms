@@ -165,6 +165,24 @@ def sequence(pattern: re.Pattern[str], text: str) -> list[str]:
     return pattern.findall(text)
 
 
+def format_counter(counter_value: collections.Counter[str]) -> str:
+    """Format a small Counter deterministically for actionable validator errors."""
+    if not counter_value:
+        return "none"
+    parts: list[str] = []
+    for value, count in sorted(counter_value.items(), key=lambda item: repr(item[0])):
+        suffix = f" x{count}" if count != 1 else ""
+        parts.append(f"{value!r}{suffix}")
+    return ", ".join(parts)
+
+
+def counter_difference(expected: collections.Counter[str], actual: collections.Counter[str]) -> str:
+    """Describe missing and unexpected values without changing validation semantics."""
+    missing = expected - actual
+    extra = actual - expected
+    return f"missing: {format_counter(missing)}; extra: {format_counter(extra)}"
+
+
 def add_error(errors: list[str], path: Path, message: str) -> None:
     errors.append(f"{path.relative_to(ROOT)}: {message}")
 
@@ -236,10 +254,14 @@ def validate_pair(source: Document, translated: Document, errors: list[str]) -> 
 
     source_without_fences = strip_fenced_blocks(source.body)
     translated_without_fences = strip_fenced_blocks(translated.body)
-    if counter(INLINE_CODE_RE, source_without_fences) != counter(
-        INLINE_CODE_RE, translated_without_fences
-    ):
-        add_error(errors, translated.path, "inline code differs from source")
+    source_inline = counter(INLINE_CODE_RE, source_without_fences)
+    translated_inline = counter(INLINE_CODE_RE, translated_without_fences)
+    if source_inline != translated_inline:
+        add_error(
+            errors,
+            translated.path,
+            f"inline code differs from source ({counter_difference(source_inline, translated_inline)})",
+        )
 
     if source.body.count("$$") != translated.body.count("$$"):
         add_error(errors, translated.path, "number of $$ math delimiters differs from source")
@@ -251,13 +273,29 @@ def validate_pair(source: Document, translated: Document, errors: list[str]) -> 
         REFERENCE_LINK_RE, translated.body
     )
     if source_targets != translated_targets:
-        add_error(errors, translated.path, "Markdown link/image destinations differ from source")
+        add_error(
+            errors,
+            translated.path,
+            f"Markdown link/image destinations differ from source ({counter_difference(source_targets, translated_targets)})",
+        )
 
-    if counter(JINJA_RE, source.body) != counter(JINJA_RE, translated.body):
-        add_error(errors, translated.path, "Jinja/MkDocs expressions differ from source")
+    source_jinja = counter(JINJA_RE, source.body)
+    translated_jinja = counter(JINJA_RE, translated.body)
+    if source_jinja != translated_jinja:
+        add_error(
+            errors,
+            translated.path,
+            f"Jinja/MkDocs expressions differ from source ({counter_difference(source_jinja, translated_jinja)})",
+        )
 
-    if html_structure(source.body) != html_structure(translated.body):
-        add_error(errors, translated.path, "HTML structure or non-translatable attributes differ")
+    source_html = html_structure(source_without_fences)
+    translated_html = html_structure(translated_without_fences)
+    if source_html != translated_html:
+        add_error(
+            errors,
+            translated.path,
+            f"HTML structure or non-translatable attributes differ ({counter_difference(source_html, translated_html)})",
+        )
 
     if sequence(TAB_RE, source.body) != sequence(TAB_RE, translated.body):
         add_error(errors, translated.path, "MkDocs tab sequence or indentation differs from source")
