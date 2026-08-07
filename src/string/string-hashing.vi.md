@@ -29,7 +29,7 @@ Nếu hai giá trị băm bằng nhau ($\text{hash}(s) = \text{hash}(t)$), hai c
 Ví dụ, một hàm băm hợp lệ có thể đơn giản là $\text{hash}(s) = 0$ với mọi $s$.
 Đây rõ ràng là một ví dụ vô dụng trong thực tế, nhưng về mặt định nghĩa nó vẫn là một hàm băm hợp lệ.
 Lý do chiều ngược lại không bắt buộc đúng là số lượng chuỗi tăng theo cấp số mũ.
-Nếu chỉ muốn hàm băm phân biệt mọi chuỗi gồm chữ cái thường có độ dài nhỏ hơn 15, giá trị băm đã không còn vừa trong một số nguyên 64 bit (chẳng hạn `unsigned long long`) vì số chuỗi quá lớn.
+Nếu chỉ muốn hàm băm phân biệt mọi chuỗi gồm chữ cái thường có độ dài nhỏ hơn 15, giá trị băm đã không còn vừa trong một số nguyên 64 bit (chẳng hạn unsigned long long) vì số chuỗi quá lớn.
 Và dĩ nhiên ta cũng không muốn so sánh các số nguyên dài tùy ý, vì việc đó lại có độ phức tạp $O(n)$.
 
 Do đó, thông thường ta muốn hàm băm ánh xạ các chuỗi vào một miền số cố định $[0, m)$; khi ấy so sánh chuỗi chỉ còn là so sánh hai số nguyên có độ dài cố định.
