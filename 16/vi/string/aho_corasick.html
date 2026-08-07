@@ -8193,13 +8193,14 @@ khi chưa có phép chuyển từ đỉnh hiện tại của trie bằng ký t�
 Tuy nhiên, hơi bất ngờ là chính các phép chuyển đã xây trong automaton lại được dùng để xây các liên kết hậu tố này.</p>
 <p>Liên kết hậu tố của đỉnh gốc và mọi đỉnh con trực tiếp của nó đều trỏ về đỉnh gốc.
 Với một đỉnh <span class="arithmatex">$v$</span> nằm sâu hơn trong cây, ta có thể tính liên kết hậu tố như sau:
-nếu <span class="arithmatex">$p$</span> là tổ tiên của <span class="arithmatex">$v$</span> và <span class="arithmatex">$c$</span> là ký tự gắn trên cạnh từ <span class="arithmatex">$p$</span> đến <span class="arithmatex">$v$</span>,
+nếu <span class="arithmatex">$p$</span> là đỉnh cha trực tiếp của <span class="arithmatex">$v$</span> và <span class="arithmatex">$c$</span> là ký tự gắn trên cạnh từ <span class="arithmatex">$p$</span> đến <span class="arithmatex">$v$</span>,
 ta đi tới <span class="arithmatex">$p$</span>,
 sau đó đi theo liên kết hậu tố của nó và thực hiện phép chuyển bằng ký tự <span class="arithmatex">$c$</span> từ đó.</p>
+<p><strong>Ghi chú bản dịch:</strong> Nguồn dùng từ “ancestor” cho p, nhưng vì c được định nghĩa là nhãn của cạnh trực tiếp từ p đến v, p ở đây phải là đỉnh cha trực tiếp (parent) của v. Bản dịch dùng “đỉnh cha trực tiếp” để tránh hiểu nhầm.</p>
 <p>Như vậy, bài toán tìm phép chuyển được quy về bài toán tìm liên kết hậu tố, còn bài toán tìm liên kết hậu tố lại được quy về bài toán tìm một liên kết hậu tố và một phép chuyển, ngoại trừ các đỉnh gần gốc.
 Ta thu được một quan hệ phụ thuộc đệ quy có thể giải trong thời gian tuyến tính.</p>
 <p>Chuyển sang phần cài đặt.
-Lưu ý rằng giờ với mỗi đỉnh <span class="arithmatex">$v$</span>, ta sẽ lưu tổ tiên <span class="arithmatex">$p$</span> và ký tự <span class="arithmatex">$pch$</span> trên cạnh từ <span class="arithmatex">$p$</span> đến <span class="arithmatex">$v$</span>.
+Lưu ý rằng giờ với mỗi đỉnh <span class="arithmatex">$v$</span>, ta sẽ lưu đỉnh cha trực tiếp <span class="arithmatex">$p$</span> và ký tự <span class="arithmatex">$pch$</span> trên cạnh từ <span class="arithmatex">$p$</span> đến <span class="arithmatex">$v$</span>.
 Ngoài ra, tại mỗi đỉnh ta lưu liên kết hậu tố <span class="arithmatex">$\text{link}$</span> (hoặc <span class="arithmatex">$-1$</span> nếu chưa được tính), và trong mảng <span class="arithmatex">$\text{go}[k]$</span> ta lưu các phép chuyển của máy theo từng ký hiệu (cũng bằng <span class="arithmatex">$-1$</span> nếu chưa được tính).</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">K</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">26</span><span class="p">;</span>
 
