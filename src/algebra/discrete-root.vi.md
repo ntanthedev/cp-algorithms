@@ -53,6 +53,8 @@ $x = g^{y_0 + \frac {l \cdot \phi (n)}{k}} \pmod n \forall l \in Z$.
 
 trong đó $l$ được chọn sao cho phân số là một số nguyên. Để điều này đúng, tử số phải chia hết cho bội chung nhỏ nhất của $\phi (n)$ và $k$. Nhớ rằng bội chung nhỏ nhất của hai số $lcm(a, b) = \frac{a \cdot b}{gcd(a, b)}$; ta thu được
 
+**Ghi chú bản dịch:** Điều kiện trong câu nguồn ngay phía trên không chính xác. Điều kiện đúng là k phải là ước của l·φ(n), tương đương l phải là bội của k/gcd(k, φ(n)). Công thức nghiệm cuối cùng ngay bên dưới vẫn phù hợp với điều kiện đúng này.
+
 $x = g^{y_0 + i \frac {\phi (n)}{gcd(k, \phi (n))}} \pmod n \forall i \in Z$.
 
 Đây là công thức cuối cùng cho mọi nghiệm của bài toán căn rời rạc.
