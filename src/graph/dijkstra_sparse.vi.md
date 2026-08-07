@@ -38,7 +38,7 @@ Một phương án thực tế hơn là dùng cấu trúc dữ liệu mà cả t
 Khi đó độ phức tạp của Dijkstra là $O(n \log n + m \log n) = O(m \log n)$.
 
 C++ cung cấp hai cấu trúc phù hợp là `set` và `priority_queue`.
-`set` thường được cài bằng cây đỏ-đen, còn `priority_queue` dựa trên heap.
+Cấu trúc thứ nhất thường được cài bằng cây đỏ-đen, còn cấu trúc thứ hai dựa trên heap.
 Vì vậy `priority_queue` có hằng số ẩn nhỏ hơn, nhưng cũng có một nhược điểm:
 nó không hỗ trợ thao tác xóa một phần tử tùy ý.
 Do đó ta cần dùng một cách xử lý thay thế, dẫn đến hệ số $\log m$ hơi kém hơn $\log n$ (mặc dù xét theo độ phức tạp tiệm cận thì chúng tương đương).
