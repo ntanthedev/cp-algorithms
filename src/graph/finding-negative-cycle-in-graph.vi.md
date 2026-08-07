@@ -13,7 +13,7 @@ translation:
 
 Cho một đồ thị có hướng, có trọng số $G$ gồm $N$ đỉnh và $M$ cạnh. Hãy tìm một chu trình có tổng trọng số âm nếu chu trình như vậy tồn tại.
 
-Ở một cách phát biểu khác, bài toán yêu cầu tìm mọi cặp đỉnh mà giữa chúng tồn tại một đường đi có trọng số nhỏ tùy ý.
+Ở một cách phát biểu khác, bài toán yêu cầu tìm mọi cặp đỉnh mà giữa chúng có thể tạo các đường đi với trọng số nhỏ tùy ý.
 
 Hai biến thể này thuận tiện hơn khi giải bằng những thuật toán khác nhau, vì vậy bài viết sẽ trình bày cả hai.
 
