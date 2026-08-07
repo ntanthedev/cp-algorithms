@@ -215,7 +215,7 @@ Bây giờ xét các tính chất của DFS khi thêm quá trình gán đỉnh v
 
     - Cạnh ngược: đây là trường hợp đơn giản nhất; nếu $u$ là tổ tiên của $v$, chúng đi tới được lẫn nhau và theo định nghĩa thuộc cùng một SCC.
 
-    - Cạnh xuôi: trước khi cạnh này được xử lý, đã có một chuỗi lời gọi DFS kết thúc mà không tìm thấy gốc của $u$, sau đó quay về $v$ và lời gọi DFS của $v$ tiếp tục.
+    - Cạnh xuôi: trước khi cạnh này được xử lý, đã có một chuỗi lời gọi DFS kết thúc mà không tìm thấy gốc của $u$, sau đó quay về $v$ và lời gọi DFS tại đó tiếp tục.
     Khi đó gốc của $u$ là một tổ tiên mà quá trình gán chưa được thực hiện, nên nó là $v$ hoặc một tổ tiên của $v$; do đó chúng phải thuộc cùng một SCC.
 
     - Cạnh chéo: tương tự, trước khi cạnh này được xử lý, đã có một chuỗi lời gọi DFS kết thúc mà không tìm thấy gốc của $u$, sau đó quay về một tổ tiên chung của $u$ và $v$; lời gọi DFS của tổ tiên này tiếp tục và bắt đầu một chuỗi lời gọi DFS mới dẫn tới lời gọi trên $v$.
