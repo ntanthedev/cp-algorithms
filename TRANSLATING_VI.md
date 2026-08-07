@@ -134,8 +134,14 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | shortest path | đường đi ngắn nhất |
 | single-source shortest path | đường đi ngắn nhất từ một nguồn |
 | relaxation | phép nới lỏng |
+| predecessor | đỉnh trước |
+| negative weight edge | cạnh có trọng số âm |
 | negative cycle | chu trình âm |
 | distance matrix | ma trận khoảng cách |
+| dense graph | đồ thị dày |
+| sparse graph | đồ thị thưa |
+| priority queue | hàng đợi ưu tiên |
+| Fibonacci heap | heap Fibonacci |
 | walk | hành trình |
 | cycle | chu trình |
 | directed acyclic graph | đồ thị có hướng không chu trình |
