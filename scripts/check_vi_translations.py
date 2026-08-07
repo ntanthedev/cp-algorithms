@@ -192,6 +192,27 @@ def counter_difference(expected: collections.Counter[str], actual: collections.C
     return f"missing: {format_counter(missing)}; extra: {format_counter(extra)}"
 
 
+def token_line_numbers(pattern: re.Pattern[str], text: str, token: str) -> list[int]:
+    """Return 1-based line numbers for exact regex matches of token."""
+    return [
+        text.count("\n", 0, match.start()) + 1
+        for match in pattern.finditer(text)
+        if match.group(0) == token
+    ]
+
+
+def math_mismatch_locations(source_text: str, translated_text: str, source_math: collections.Counter[str], translated_math: collections.Counter[str]) -> str:
+    """Show locations for mismatched math tokens without changing validation semantics."""
+    tokens = sorted(set((source_math - translated_math).keys()) | set((translated_math - source_math).keys()))
+    parts: list[str] = []
+    for token in tokens:
+        parts.append(
+            f"{token!r}: source lines {token_line_numbers(MATH_RE, source_text, token)}, "
+            f"translation lines {token_line_numbers(MATH_RE, translated_text, token)}"
+        )
+    return "; ".join(parts)
+
+
 def changed_translation_paths() -> set[Path]:
     """Return .vi.md files touched by the current PR/commit plus local changes.
 
@@ -326,7 +347,8 @@ def validate_pair(
                 errors,
                 translated.path,
                 "LaTeX expressions differ from source "
-                f"({counter_difference(source_math, translated_math)})",
+                f"({counter_difference(source_math, translated_math)}; "
+                f"locations: {math_mismatch_locations(source_math_text, translated_math_text, source_math, translated_math)})",
             )
 
     source_targets = counter(LINK_TARGET_RE, source.body) + counter(REFERENCE_LINK_RE, source.body)
