@@ -131,6 +131,10 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | segmented sieve | sàng phân đoạn |
 | connected component | thành phần liên thông |
 | shortest path | đường đi ngắn nhất |
+| single-source shortest path | đường đi ngắn nhất từ một nguồn |
+| relaxation | phép nới lỏng |
+| negative cycle | chu trình âm |
+| distance matrix | ma trận khoảng cách |
 | walk | hành trình |
 | cycle | chu trình |
 | directed acyclic graph | đồ thị có hướng không chu trình |
