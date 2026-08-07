@@ -76,6 +76,7 @@ plugins:
   - mkdocs-simple-hooks:
       hooks:
           on_env: "hooks:on_env"
+          on_page_content: "hooks:on_page_content"
   - search
   - tags
   - literate-nav:

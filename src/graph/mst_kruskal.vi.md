@@ -27,11 +27,11 @@ Bài viết này trình bày một số tính chất quan trọng của cây khu
   (Một thuật toán cụ thể thường chỉ trả về một trong các cây khung nhỏ nhất có thể có.)
 * Cây khung nhỏ nhất cũng là cây có tích trọng số các cạnh nhỏ nhất.
   (Có thể chứng minh dễ dàng bằng cách thay trọng số của mọi cạnh bằng logarit của chúng.)
-
-  **Ghi chú bản dịch:** Lập luận bằng logarit và mệnh đề về tích trọng số ở trên chỉ áp dụng khi mọi trọng số cạnh đều dương. Với trọng số bằng 0 hoặc âm, logarit không xác định và mệnh đề không còn đúng trong tổng quát. Nguồn tiếng Anh hiện không nêu điều kiện này.
 * Trong một cây khung nhỏ nhất của đồ thị, trọng số lớn nhất của một cạnh là nhỏ nhất có thể khi xét trên mọi cây khung của đồ thị đó.
   (Điều này suy ra từ tính đúng đắn của thuật toán Kruskal.)
 * Cây khung lớn nhất (cây khung có tổng trọng số cạnh lớn nhất) có thể được tìm tương tự cây khung nhỏ nhất: đổi dấu trọng số của mọi cạnh rồi áp dụng một thuật toán tìm cây khung nhỏ nhất bất kỳ.
+
+**Ghi chú bản dịch:** Lập luận bằng logarit và mệnh đề về tích trọng số ở trên chỉ áp dụng khi mọi trọng số cạnh đều dương. Với trọng số bằng 0 hoặc âm, logarit không xác định và mệnh đề không còn đúng trong tổng quát. Nguồn tiếng Anh hiện không nêu điều kiện này.
 
 ## Thuật toán Kruskal
 
@@ -108,7 +108,7 @@ Nếu $T$ không chứa cạnh $e$, thì $T + e$ sẽ chứa một chu trình $C
 Chu trình này chứa ít nhất một cạnh $f$ không thuộc $F$.
 Tập cạnh $T - f + e$ cũng là một cây khung.
 Lưu ý rằng trọng số của $f$ không thể nhỏ hơn trọng số của $e$, vì nếu vậy Kruskal đã chọn $f$ sớm hơn.
-Nó cũng không thể lớn hơn trọng số của $e$, vì khi đó tổng trọng số của $T - f + e$ sẽ nhỏ hơn tổng trọng số của $T$, mâu thuẫn với việc $T$ đã là một MST.
+Nó cũng không thể lớn hơn, vì khi đó tổng trọng số của $T - f + e$ sẽ nhỏ hơn tổng trọng số của $T$, mâu thuẫn với việc $T$ đã là một MST.
 Do đó trọng số của $e$ phải bằng trọng số của $f$.
 Vì vậy $T - f + e$ cũng là một MST và chứa toàn bộ các cạnh của $F + e$.
 Mệnh đề vẫn đúng sau bước này.
