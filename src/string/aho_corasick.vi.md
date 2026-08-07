@@ -25,7 +25,7 @@ Thuật toán được Alfred Aho và Margaret Corasick đề xuất vào năm 1
 <br>
 <i>Một trie được xây từ các từ "Java", "Rad", "Rand", "Rau", "Raum" và "Rose".</i>
 <br>
-<i>Hình ảnh của [nd](https://de.wikipedia.org/wiki/Benutzer:Nd) được phân phối theo giấy phép <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a>.</i>
+<i><a href="https://commons.wikimedia.org/wiki/File:Trie.svg">Hình ảnh</a> của [nd](https://de.wikipedia.org/wiki/Benutzer:Nd) được phân phối theo giấy phép <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.en">CC BY-SA 3.0</a>.</i>
 </center>
 
 Về hình thức, trie là một cây có gốc, trong đó mỗi cạnh của cây được gắn nhãn bằng một ký tự
