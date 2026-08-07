@@ -17,11 +17,11 @@ Bài viết này trình bày nhiều thuật toán để xác định một số
 Theo định nghĩa, một số nguyên tố không có ước nào ngoài $1$ và chính nó.
 Một hợp số có ít nhất một ước khác, gọi là $d$.
 Hiển nhiên $\frac{n}{d}$ cũng là một ước của $n$.
-Dễ thấy $d \le \sqrt{n}$ hoặc $\frac{n}{d} \le \sqrt{n}$, vì vậy một trong hai ước $d$ và $\frac{n}{d}$ không vượt quá $\sqrt{n}$.
+Dễ thấy $d \le \sqrt{n}$ hoặc $\frac{n}{d} \le \sqrt{n}$, vì vậy một trong hai ước $d$ và $\frac{n}{d}$ thỏa $\le \sqrt{n}$.
 Ta có thể dùng nhận xét này để kiểm tra tính nguyên tố.
 
 Ta thử tìm một ước không tầm thường bằng cách kiểm tra xem có số nào từ $2$ đến $\sqrt{n}$ là ước của $n$ hay không.
-Nếu tìm được một ước như vậy thì $n$ chắc chắn không phải số nguyên tố; nếu không, $n$ là số nguyên tố.
+Nếu tìm được một ước như vậy thì $n$ chắc chắn không phải số nguyên tố; nếu không, số đó là số nguyên tố.
 
 ```cpp
 bool isPrime(int x) {
@@ -41,7 +41,7 @@ Nhiều tối ưu kiểu này được trình bày trong bài [phân tích thừ
 
 Đây là một phép kiểm tra xác suất.
 
-Định lý nhỏ Fermat (xem thêm [phi hàm Euler](phi-function.md)) nói rằng với một số nguyên tố $p$ và một số nguyên $a$ nguyên tố cùng nhau với $p$, ta có:
+Định lý nhỏ Fermat (xem thêm [phi hàm Euler](phi-function.md)) nói rằng với một số nguyên tố $p$ và một số nguyên $a$ nguyên tố cùng nhau với số đó, ta có:
 
 $$a^{p-1} \equiv 1 \bmod p$$
 
