@@ -46,7 +46,7 @@ Hence, all the solutions are of the form:
 
 $x = g^{y_0 + \frac {l \cdot \phi (n)}{k}} \pmod n \forall l \in Z$.
 
-where $l$ is chosen such that the fraction must be an integer. For this to be true, the numerator has to be divisible by the least common multiple of  $\phi (n)$ and $k$. Remember that least common multiple of two numbers $lcm(a, b) = \frac{a \cdot b}{gcd(a, b)}$; we'll get
+where $l$ is chosen such that the fraction is an integer. This means that $k$ divides $l \cdot \phi(n)$, or equivalently that $l$ is a multiple of $\frac{k}{\gcd(k, \phi(n))}$. Therefore,
 
 $x = g^{y_0 + i \frac {\phi (n)}{gcd(k, \phi (n))}} \pmod n \forall i \in Z$.
 
@@ -137,7 +137,7 @@ int main() {
 	for (int cur = any_ans % delta; cur < n-1; cur += delta)
 		ans.push_back(powmod(g, cur, n));
 	sort(ans.begin(), ans.end());
-	printf("%d\n", ans.size());
+	printf("%zu\n", ans.size());
 	for (int answer : ans)
 		printf("%d ", answer);
 }
