@@ -26,7 +26,7 @@ Trong bài này, ta xét một số bài toán cổ điển đối với dạng 
 
 ## Trường hợp suy biến
 
-Một trường hợp suy biến cần xử lý riêng là $a = b = 0$. Dễ thấy khi đó phương trình либо không có nghiệm, либо có vô số nghiệm, tùy theo $c = 0$ hay không. Trong phần còn lại của bài, ta bỏ qua trường hợp này.
+Một trường hợp suy biến cần xử lý riêng là $a = b = 0$. Dễ thấy khi đó phương trình hoặc không có nghiệm, hoặc có vô số nghiệm, tùy theo $c = 0$ hay không. Trong phần còn lại của bài, ta bỏ qua trường hợp này.
 
 ## Lời giải trực tiếp
 
