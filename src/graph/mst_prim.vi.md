@@ -212,7 +212,7 @@ void prim() {
 }
 ```
 
-Ở đây đồ thị được biểu diễn bằng danh sách kề `adj[]`, trong đó `adj[v]` chứa toàn bộ các cạnh của đỉnh $v$ dưới dạng cặp trọng số và đỉnh đích.
-`min_e[v]` lưu cạnh có trọng số nhỏ nhất từ đỉnh $v$ tới một đỉnh đã được chọn, cũng dưới dạng cặp trọng số và đỉnh đích.
+Ở đây đồ thị được biểu diễn bằng danh sách kề `adj[]`, trong đó `adj[v]` chứa toàn bộ các cạnh của đỉnh `v` dưới dạng cặp trọng số và đỉnh đích.
+`min_e[v]` lưu cạnh có trọng số nhỏ nhất từ đỉnh `v` tới một đỉnh đã được chọn, cũng dưới dạng cặp trọng số và đỉnh đích.
 Ngoài ra, hàng đợi `q` chứa tất cả các đỉnh chưa được chọn theo thứ tự tăng dần của trọng số `min_e`.
 Thuật toán thực hiện `n` bước; ở mỗi bước, nó chọn đỉnh `v` có trọng số `min_e` nhỏ nhất bằng cách lấy phần tử đầu hàng đợi, sau đó duyệt mọi cạnh đi ra từ đỉnh này và cập nhật các giá trị trong `min_e` (mỗi lần cập nhật cũng phải xóa cạnh cũ khỏi hàng đợi `q` rồi chèn cạnh mới vào).
