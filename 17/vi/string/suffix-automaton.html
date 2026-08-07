@@ -8365,7 +8365,7 @@ Tính tối tiểu suy ra từ định lý Nerode (không được chứng minh 
 Hai xâu con không rỗng <span class="arithmatex">$u$</span> và <span class="arithmatex">$w$</span> (với <span class="arithmatex">$length(u) \le length(w)$</span>) tương đương theo <span class="arithmatex">$endpos$</span> khi và chỉ khi xâu <span class="arithmatex">$u$</span> chỉ xuất hiện trong <span class="arithmatex">$s$</span> dưới dạng hậu tố của <span class="arithmatex">$w$</span>.</p>
 <p>Chứng minh khá trực tiếp.
 Nếu <span class="arithmatex">$u$</span> và <span class="arithmatex">$w$</span> có cùng giá trị <span class="arithmatex">$endpos$</span>, thì <span class="arithmatex">$u$</span> là hậu tố của <span class="arithmatex">$w$</span> và trong <span class="arithmatex">$s$</span> chỉ xuất hiện dưới dạng hậu tố của <span class="arithmatex">$w$</span>.
-Ngược lại, nếu <span class="arithmatex">$u$</span> là hậu tố của <span class="arithmatex">$w$</span> và trong <span class="arithmatex">$s$</span> chỉ xuất hiện dưới dạng hậu tố của <span class="arithmatex">$w$</span>, thì theo định nghĩa các giá trị <span class="arithmatex">$endpos$</span> bằng nhau.</p>
+Ngược lại, nếu <span class="arithmatex">$u$</span> là hậu tố của <span class="arithmatex">$w$</span> và trong <span class="arithmatex">$s$</span> chỉ xuất hiện dưới dạng một hậu tố, thì theo định nghĩa các giá trị <span class="arithmatex">$endpos$</span> bằng nhau.</p>
 <p><strong>Bổ đề 2</strong>:
 Xét hai xâu con không rỗng <span class="arithmatex">$u$</span> và <span class="arithmatex">$w$</span> (với <span class="arithmatex">$length(u) \le length(w)$</span>).
 Hai tập <span class="arithmatex">$endpos$</span> của chúng hoặc hoàn toàn không giao nhau, hoặc <span class="arithmatex">$endpos(w)$</span> là tập con của <span class="arithmatex">$endpos(u)$</span>.
@@ -8560,7 +8560,7 @@ Nhờ đó, thuật toán đạt <span class="arithmatex">$O(n)$</span> thời g
 <p>Còn lại là ước lượng tổng độ phức tạp của <strong>vị trí thứ ba</strong>, nơi ta chuyển hướng các phép chuyển ban đầu trỏ tới <span class="arithmatex">$q$</span> sang <span class="arithmatex">$clone$</span>.
 Ta ký hiệu <span class="arithmatex">$v = longest(p)$</span>.
 Đây là một hậu tố của xâu <span class="arithmatex">$s$</span>, và sau mỗi vòng lặp độ dài của nó giảm đi — vì vậy vị trí của <span class="arithmatex">$v$</span> khi xem là hậu tố của xâu <span class="arithmatex">$s$</span> tăng đơn điệu sau mỗi vòng.
-Trong trường hợp này, nếu trước vòng đầu tiên, xâu tương ứng <span class="arithmatex">$v$</span> ở độ sâu <span class="arithmatex">$k$</span> (<span class="arithmatex">$k \ge 2$</span>) tính từ <span class="arithmatex">$last$</span> (độ sâu tính theo số liên kết hậu tố), thì sau vòng cuối, xâu <span class="arithmatex">$v + c$</span> sẽ nằm ở liên kết hậu tố thứ <span class="arithmatex">$2$</span> trên đường đi từ <span class="arithmatex">$cur$</span> (và <span class="arithmatex">$cur$</span> sẽ trở thành giá trị <span class="arithmatex">$last$</span> mới).</p>
+Trong trường hợp này, nếu trước vòng đầu tiên, xâu tương ứng <span class="arithmatex">$v$</span> ở độ sâu <span class="arithmatex">$k$</span> (<span class="arithmatex">$k \ge 2$</span>) tính từ <span class="arithmatex">$last$</span> (độ sâu tính theo số liên kết hậu tố), thì sau vòng cuối, xâu <span class="arithmatex">$v + c$</span> sẽ nằm ở liên kết hậu tố thứ <span class="arithmatex">$2$</span> trên đường đi từ <span class="arithmatex">$cur$</span> (và trạng thái đó sẽ trở thành giá trị <span class="arithmatex">$last$</span> mới).</p>
 <p>Vì vậy, mỗi vòng của vòng lặp này làm vị trí của xâu <span class="arithmatex">$longest(link(link(last))$</span> khi xem là hậu tố của xâu hiện tại tăng đơn điệu.
 Do đó vòng lặp không thể chạy quá <span class="arithmatex">$n$</span> lần, đúng như cần chứng minh.</p>
 <h3 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h3>
@@ -8755,7 +8755,7 @@ Nếu không, đáp án là <span class="arithmatex">$0$</span>.
 Mỗi truy vấn tốn <span class="arithmatex">$O(length(P))$</span> thời gian.</p>
 <h3 id="vi-tri-xuat-hien-au-tien">Vị trí xuất hiện đầu tiên<a class="headerlink" href="#vi-tri-xuat-hien-au-tien" title="Permanent link">&para;</a></h3>
 <p>Cho văn bản <span class="arithmatex">$T$</span> và nhiều truy vấn.
-Với mỗi xâu truy vấn <span class="arithmatex">$P$</span>, ta muốn tìm vị trí bắt đầu của lần xuất hiện đầu tiên của <span class="arithmatex">$P$</span> trong xâu <span class="arithmatex">$T$</span>.</p>
+Với mỗi xâu truy vấn <span class="arithmatex">$P$</span>, ta muốn tìm vị trí bắt đầu của lần xuất hiện đầu tiên của <span class="arithmatex">$P$</span> trong xâu <span class="arithmatex">$T$</span> (tức vị trí bắt đầu của <span class="arithmatex">$P$</span>).</p>
 <p>Ta lại xây Suffix Automaton.
 Ngoài ra, ta tính trước vị trí <span class="arithmatex">$firstpos$</span> cho mọi trạng thái, tức với mỗi trạng thái <span class="arithmatex">$v$</span>, cần tìm vị trí <span class="arithmatex">$firstpos[v]$</span> là vị trí kết thúc của lần xuất hiện đầu tiên.
 Nói cách khác, ta muốn biết trước phần tử nhỏ nhất của mỗi tập <span class="arithmatex">$endpos$</span> (vì rõ ràng không thể lưu tường minh mọi tập <span class="arithmatex">$endpos$</span>).</p>
