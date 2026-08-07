@@ -9,9 +9,9 @@ translation:
   last_synced: 2026-08-07
 ---
 
-# Định lý số dư Trung Hoa
+# Định lý Thặng dư Trung Hoa
 
-Định lý số dư Trung Hoa (Chinese Remainder Theorem, viết tắt là CRT trong phần còn lại của bài) được phát hiện bởi nhà toán học Trung Quốc Tôn Tử (Sun Zi).
+Định lý Thặng dư Trung Hoa (Chinese Remainder Theorem, viết tắt là CRT trong phần còn lại của bài; cũng thường được gọi là Định lý số dư Trung Hoa) được phát hiện bởi nhà toán học Trung Quốc Tôn Tử (Sun Zi).
 
 ## Phát biểu
 
@@ -87,7 +87,7 @@ a & \equiv & a_1 n_2 m_2 + a_2 n_1 m_1 & \pmod{m_1}\\
 \end{array}
 $$
 
-Lưu ý rằng Định lý số dư Trung Hoa còn bảo đảm chỉ tồn tại một nghiệm theo mô-đun $m_1 m_2$.
+Lưu ý rằng Định lý Thặng dư Trung Hoa còn bảo đảm chỉ tồn tại một nghiệm theo mô-đun $m_1 m_2$.
 Điều này cũng dễ chứng minh.
 
 Giả sử có hai nghiệm khác nhau $x$ và $y$.
@@ -224,7 +224,7 @@ Mọi số $a$ nhỏ hơn $m_1 m_2 \cdots m_k$ có thể được biểu diễn 
 
 Dùng thuật toán trên, ta có thể khôi phục lại số lớn khi cần.
 
-Ngoài ra, ta có thể biểu diễn số bằng **hệ cơ số hỗn hợp**:
+Ngoài ra, ta có thể viết số đó dưới **biểu diễn cơ số hỗn hợp**:
 
 $$a = x_1 + x_2 m_1 + x_3 m_1 m_2 + \ldots + x_k m_1 \cdots m_{k-1} \text{ with }x_i \in [0, m_i)$$
 
