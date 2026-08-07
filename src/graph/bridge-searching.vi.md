@@ -23,11 +23,11 @@ Ngoài ra còn có bài [Finding Bridges Online](bridge-searching-online.md). Kh
 
 Chọn một đỉnh bất kỳ $root$ của đồ thị và chạy [tìm kiếm theo chiều sâu](depth-first-search.md) từ đó. Ta có nhận xét sau (khá dễ chứng minh):
 
-- Giả sử trong DFS ta đang xét các cạnh đi ra từ đỉnh $v$. Cạnh hiện tại $(v, to)$ là một cạnh cầu khi và chỉ khi không có đỉnh nào trong số $to$ và các hậu duệ của nó trên cây duyệt DFS có cạnh ngược nối tới $v$ hoặc một tổ tiên của $v$. Thật vậy, điều kiện này có nghĩa là không tồn tại cách nào khác để đi từ $v$ tới $to$ ngoài cạnh $(v, to)$.
+- Giả sử trong DFS ta đang xét các cạnh đi ra từ đỉnh $v$. Cạnh hiện tại $(v, to)$ là một cạnh cầu khi và chỉ khi không có đỉnh nào trong số $to$ và các hậu duệ của nó trên cây duyệt DFS có cạnh ngược nối tới $v$ hoặc một tổ tiên của nó. Thật vậy, điều kiện này có nghĩa là không tồn tại cách nào khác để đi từ $v$ tới $to$ ngoài cạnh $(v, to)$.
 
 Bây giờ ta cần kiểm tra nhận xét này một cách hiệu quả với mọi đỉnh. Ta sẽ sử dụng "thời điểm vào đỉnh" được tính trong quá trình tìm kiếm theo chiều sâu.
 
-Gọi $\mathtt{tin}[v]$ là thời điểm vào đỉnh $v$. Ta xây dựng mảng $\mathtt{low}$ để lưu thời điểm vào sớm nhất của một đỉnh mà $v$ có thể đi tới bằng một cạnh xuất phát từ chính $v$ hoặc từ một hậu duệ của $v$ trong cây DFS. Cụ thể, $\mathtt{low}[v]$ là giá trị nhỏ nhất trong $\mathtt{tin}[v]$, các thời điểm vào $\mathtt{tin}[p]$ với mỗi đỉnh $p$ được nối với $v$ bởi một cạnh ngược $(v, p)$, và các giá trị $\mathtt{low}[to]$ với mỗi đỉnh $to$ là hậu duệ trực tiếp của $v$ trong cây DFS:
+Gọi $\mathtt{tin}[v]$ là thời điểm vào đỉnh $v$. Ta xây dựng mảng $\mathtt{low}$ để lưu thời điểm vào sớm nhất của một đỉnh mà $v$ có thể đi tới bằng một cạnh xuất phát từ chính đỉnh đó hoặc từ một hậu duệ của nó trong cây DFS. Cụ thể, $\mathtt{low}[v]$ là giá trị nhỏ nhất trong $\mathtt{tin}[v]$, các thời điểm vào $\mathtt{tin}[p]$ với mỗi đỉnh $p$ được nối với $v$ bởi một cạnh ngược $(v, p)$, và các giá trị $\mathtt{low}[to]$ với mỗi đỉnh $to$ là hậu duệ trực tiếp của $v$ trong cây DFS:
 
 $$\mathtt{low}[v] = \min \left\{ 
     \begin{array}{l}
@@ -37,7 +37,7 @@ $$\mathtt{low}[v] = \min \left\{
     \end{array}
 \right\}$$
 
-Khi đó, tồn tại một cạnh ngược từ đỉnh $v$ hoặc một hậu duệ của nó tới một tổ tiên của $v$ khi và chỉ khi $v$ có một đỉnh con $to$ sao cho $\mathtt{low}[to] \leq \mathtt{tin}[v]$. Nếu $\mathtt{low}[to] = \mathtt{tin}[v]$ thì cạnh ngược đi thẳng về $v$; nếu không, cạnh ngược đi tới một tổ tiên của $v$.
+Khi đó, tồn tại một cạnh ngược từ đỉnh $v$ hoặc một hậu duệ của nó tới một tổ tiên của nó khi và chỉ khi $v$ có một đỉnh con $to$ sao cho $\mathtt{low}[to] \leq \mathtt{tin}[v]$. Nếu $\mathtt{low}[to] = \mathtt{tin}[v]$ thì cạnh ngược đi thẳng về $v$; nếu không, cạnh ngược đi tới một tổ tiên của $v$.
 
 Do đó, cạnh hiện tại $(v, to)$ trên cây DFS là một cạnh cầu khi và chỉ khi $\mathtt{low}[to] > \mathtt{tin}[v]$.
 
