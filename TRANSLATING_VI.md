@@ -1,17 +1,17 @@
 # Quy trình dịch tiếng Việt
 
-Tài liệu này là nguồn quy tắc chuẩn cho việc tạo, đồng bộ và review bản dịch tiếng Việt của cp-algorithms.
+Tài liệu này là **nguồn quy tắc chuẩn** cho việc tạo, đồng bộ và review bản dịch tiếng Việt của cp-algorithms.
 
 ## 0. Cổng bắt đầu một batch dịch mới
 
-Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải hoàn tất các bước chuẩn bị sau:
+Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải hoàn tất các bước sau:
 
 1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh.
-   - Chỉ duy trì một nhánh làm việc lâu dài cho bản dịch: `agent/vi-work`, và tối đa một PR dịch đang mở tại một thời điểm.
-   - Nếu đang có một PR dịch cũ dùng tên branch khác, hoàn tất PR đó trước; không mở batch mới và không reset branch đang chứa thay đổi chưa merge.
-   - Sau khi PR đã merge, chỉ reset/di chuyển `agent/vi-work` về `master` mới nhất khi đã xác nhận branch không còn commit riêng chưa merge.
+   - Chỉ duy trì một nhánh làm việc lâu dài cho bản dịch: `agent/vi-work`.
+   - Chỉ duy trì tối đa một PR dịch/maintenance tiếng Việt đang mở tại một thời điểm.
+   - Sau khi PR merge, chỉ reset/di chuyển `agent/vi-work` về `master` mới nhất khi đã xác nhận branch không còn commit riêng chưa merge.
    - Không force-push hoặc reset `master`.
-   - Stacked PR chỉ dùng trong trường hợp phụ thuộc kỹ thuật thực sự không thể tránh; phải giải thích lý do trước và vẫn không được để nhiều batch dịch độc lập cùng mở nếu không cần thiết.
+   - Stacked PR chỉ dùng khi có phụ thuộc kỹ thuật thực sự không thể tránh và phải giải thích lý do trước.
 2. Chọn phạm vi có thể review:
    - tối đa ba bài dài hoặc có nhiều công thức/cấu trúc đặc biệt;
    - tối đa năm bài cỡ vừa;
@@ -23,9 +23,11 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
    - inline code;
    - công thức LaTeX;
    - Markdown link, image và link tham chiếu;
-   - HTML;
+   - raw HTML, đặc biệt `img`, `src`, `alt`, `id`, `class`, `data-*`;
    - MkDocs tabs, admonition, attribute list, Jinja hoặc macro.
-4. Chốt thuật ngữ mới trước khi viết. Thuật ngữ chưa có trong glossary phải được giải thích trong PR.
+4. Chốt thuật ngữ mới trước khi viết.
+   - Thuật ngữ chưa có trong glossary phải được giải thích trong PR.
+   - Nếu có nhiều cách dịch cạnh tranh hoặc chưa chắc cách dùng trong cộng đồng competitive programming Việt Nam, phải đối chiếu [VNOI Wiki](https://wiki.vnoi.info/) trước khi chốt; ghi rõ quyết định/nguồn tham khảo trong PR khi nó ảnh hưởng glossary chung.
 5. Lấy **Git blob SHA** của từng file nguồn, không dùng SHA của commit toàn repository:
 
    ```bash
@@ -40,19 +42,21 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
    - xử lý và resolve mọi review thread/comment có hành động cụ thể trước khi tiếp tục;
    - kiểm tra cả inline review threads, review submissions và PR conversation comments;
    - reviewer tự động như GitHub Copilot có thể gửi comment trễ, nên trạng thái sạch phải được xác nhận lại sau commit cuối cùng và sau CI.
-10. Sau commit cuối cùng của batch và trước khi báo công việc hoàn tất, **kiểm tra lại** tất cả PR dịch đang mở và review mới nhất. Mọi comment có hành động cụ thể xuất hiện trong lúc làm batch phải được xử lý hoặc ghi rõ blocker trước khi bàn giao.
+10. Sau commit cuối cùng và trước khi báo công việc hoàn tất, **kiểm tra review một lần nữa**. Mọi comment có hành động cụ thể xuất hiện muộn phải được xử lý hoặc ghi rõ blocker.
 
 ### Preflight cục bộ
 
 ```bash
 python3 scripts/check_vi_translations.py
 python3 scripts/check_vi_staleness.py
+python3 scripts/check_vi_markdown_safety.py
 MKDOCS_ENABLE_GIT_REVISION_DATE=False \
 MKDOCS_ENABLE_GIT_COMMITTERS=False \
 mkdocs build --strict
+python3 scripts/check_vi_rendered_pages.py
 ```
 
-Sau khi build, mở ít nhất một trang tiếng Việt và kiểm tra mục lục, code tabs, công thức, link, hình ảnh, chuyển ngôn ngữ và giao diện mobile.
+Sau khi build, mở ít nhất một trang tiếng Việt và kiểm tra mục lục, code tabs, công thức, link, **ảnh thực sự tải được**, chuyển ngôn ngữ và giao diện mobile.
 
 ## 1. Cấu trúc file
 
@@ -61,7 +65,7 @@ Sau khi build, mở ít nhất một trang tiếng Việt và kiểm tra mục l
 - Không sửa code, công thức, URL, shortcode, thuộc tính HTML cấu trúc hoặc MkDocs directive chỉ để phù hợp văn phong dịch.
 - Không dịch tên hàm, biến, API, identifier trong code hoặc output của chương trình.
 - Giữ thứ tự đoạn và phạm vi nội dung để reviewer có thể đối chiếu với nguồn.
-- Mỗi commit nên chứa một bài dịch hoặc một thay đổi quy tắc độc lập.
+- Mỗi commit nên chứa một bài dịch hoặc một thay đổi quy tắc/tooling độc lập.
 
 ## 2. Metadata bắt buộc
 
@@ -80,9 +84,9 @@ translation:
 ---
 ```
 
-`source_commit` hiện lưu **blob SHA của file nguồn** dù tên trường được giữ để tương thích với hệ thống hiện tại.
+`source_commit` lưu **blob SHA của file nguồn** dù tên trường được giữ để tương thích với hệ thống hiện tại.
 
-Front matter nguồn phải giữ nguyên thứ tự khóa và giá trị, ngoại trừ khoảng trắng cuối dòng; validator chỉ cho phép bổ sung block `translation`. Quy tắc nghiêm ngặt này nhằm tránh làm thay đổi metadata build, tag hoặc liên kết e-maxx ngoài chủ đích.
+Front matter nguồn phải giữ nguyên thứ tự khóa và giá trị, ngoại trừ khoảng trắng cuối dòng; validator chỉ cho phép bổ sung block `translation`.
 
 Các trạng thái hợp lệ:
 
@@ -101,25 +105,29 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 3. Lần đầu xuất hiện thuật ngữ quan trọng, dùng dạng `tiếng Việt (English)` khi hữu ích.
 4. Sau lần đầu, dùng thuật ngữ nhất quán trong toàn bài.
 5. Giữ nguyên ký hiệu toán học, chỉ số, điều kiện biên và độ phức tạp.
-6. Không tự thêm khẳng định kỹ thuật mới. Giải thích bổ sung phải được đánh dấu là `Ghi chú bản dịch`.
-7. Không thay đổi code mẫu, kể cả comment trong code block.
-8. Giữ nguyên URL, attribution hình ảnh và giấy phép.
-9. Tránh văn phong máy dịch, câu quá dài và cách nói mơ hồ.
-10. Dùng quan hệ chia hết đúng chiều:
+6. Không tự thêm khẳng định kỹ thuật mới. Giải thích bổ sung phải được đánh dấu `Ghi chú bản dịch`.
+7. `Ghi chú bản dịch` phải bắt đầu ở **cột 1**. Không thụt note vào giữa các item của list nguồn. Nếu note liên quan một bullet, mặc định đặt note **sau toàn bộ list**, rồi chỉ rõ bullet/mệnh đề mà note nói tới. Luôn để blank line trước và sau note.
+8. Không thay đổi code mẫu, kể cả comment trong code block.
+9. Giữ nguyên URL, attribution hình ảnh và giấy phép.
+10. Tránh văn phong máy dịch, câu quá dài và cách nói mơ hồ.
+11. Dùng quan hệ chia hết đúng chiều:
     - `a chia hết cho b`;
     - `b là ước của a`;
     - không viết `b chia hết a`.
-11. Không viết `nhỏ hơn hai lần`; dùng `không vượt quá một nửa`, `giảm còn một nửa` hoặc bất đẳng thức.
-12. Phân biệt thuật ngữ đồ thị:
+12. Không viết `nhỏ hơn hai lần`; dùng `không vượt quá một nửa`, `giảm còn một nửa` hoặc bất đẳng thức.
+13. Phân biệt thuật ngữ đồ thị:
     - `walk`: hành trình;
     - `trail`: đường đi không lặp cạnh;
     - `path`: đường đi;
     - `cycle`: chu trình;
     - `connected component`: thành phần liên thông.
-13. Có thể dịch nội dung của `alt`, `title`, `aria-label`; không đổi `src`, `href`, `class`, `id`, `style`, `data-*` hoặc tên thuộc tính.
-14. Heading được dịch nhưng cấp và thứ tự phải giữ nguyên.
-15. Inline code như `` `std::gcd` ``, `` `used[]` `` phải giữ nguyên.
-16. Tên bài tập và tên riêng nên giữ theo nguồn; chỉ sửa typo của nguồn khi ghi rõ trong PR hoặc thực hiện ở PR sửa nguồn riêng.
+14. Có thể dịch nội dung của `alt`, `title`, `aria-label`; không tự ý đổi `href`, `class`, `id`, `style`, `data-*` hoặc tên thuộc tính.
+15. Với **raw HTML image**, giữ `src` giống nguồn trong Markdown. MkDocs không tự rewrite raw HTML khi build thêm tầng `/vi/`, nên hook `on_page_content` chịu trách nhiệm chuyển đường dẫn local tương đối sang vị trí asset đúng ở output. Không tự thêm `../` vào từng bản dịch để chữa cục bộ.
+16. Markdown image như `![alt](image.png)` tiếp tục giữ destination nguồn; MkDocs tự xử lý đường dẫn locale.
+17. Heading được dịch nhưng cấp và thứ tự phải giữ nguyên.
+18. Inline code như `` `std::gcd` ``, `` `used[]` `` phải giữ nguyên.
+19. Tên bài tập và tên riêng nên giữ theo nguồn; chỉ sửa typo của nguồn khi ghi rõ trong PR hoặc thực hiện ở PR sửa nguồn riêng.
+20. Nếu nguồn tiếng Anh có lỗi kỹ thuật chắc chắn, bản dịch không âm thầm sửa như thể đó là nguồn. Có thể thêm `Ghi chú bản dịch`; nếu phù hợp, tạo PR **riêng cho upstream** chỉ sửa nội dung tiếng Anh/thuật toán, không kèm i18n hay file tiếng Việt.
 
 ## 4. Thuật ngữ mặc định
 
@@ -185,7 +193,7 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | inverse Ackermann function | hàm Ackermann nghịch đảo |
 | dynamic programming | quy hoạch động |
 
-Thay đổi thuật ngữ chung phải được giải thích rõ trong PR.
+Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
 ## 5. Những phần phải giữ nguyên cấu trúc
 
@@ -197,19 +205,25 @@ Validator so sánh giữa nguồn và bản dịch:
 - inline code ngoài fenced code block;
 - đích Markdown link và image;
 - số lượng delimiter công thức khối `$$`;
-- với mỗi file `.vi.md` được thêm hoặc sửa trong PR/commit hiện tại, từng biểu thức LaTeX phải giữ nguyên nội dung và số lần xuất hiện so với nguồn; validator so sánh theo multiset nên cho phép đổi thứ tự các biểu thức khi cấu trúc câu tiếng Việt yêu cầu; nội dung được đánh dấu `Ghi chú bản dịch` không được coi là công thức của nguồn;
+- với mỗi file `.vi.md` được thêm hoặc sửa trong PR/commit hiện tại, từng biểu thức LaTeX phải giữ nguyên nội dung và số lần xuất hiện so với nguồn; validator so sánh theo multiset nên cho phép đổi thứ tự các biểu thức khi cấu trúc câu tiếng Việt yêu cầu; nội dung trong `Ghi chú bản dịch` không được coi là công thức của nguồn;
 - Jinja/MkDocs expression;
 - cấu trúc HTML và thuộc tính không thể dịch;
 - số lượng, thứ tự và mức thụt lề của MkDocs tabs;
 - marker admonition.
 
-Nếu cần thay đổi cấu trúc, phải giải thích và cập nhật validator có chủ đích; không xóa kiểm tra chỉ để CI xanh.
+Ngoài validator cấu trúc:
+
+- `scripts/check_vi_markdown_safety.py` chặn `Ghi chú bản dịch` bị thụt vào list;
+- hook build trong `hooks.py` sửa bare relative `src` của raw HTML image cho output `/vi/`;
+- `scripts/check_vi_rendered_pages.py` chạy **sau build** và fail nếu một local image trong `public/vi/` không resolve tới file thực tế.
+
+Nếu cần thay đổi cấu trúc, phải giải thích và cập nhật validator/tooling có chủ đích; không xóa kiểm tra chỉ để CI xanh.
 
 ## 6. Trách nhiệm của các workflow CI
 
 ### `Vietnamese translations`
 
-Chạy validator cấu trúc bằng `scripts/check_vi_translations.py`. Workflow này phải nhẹ và không build MkDocs lần thứ hai. Trong pull request, checkout đủ lịch sử tối thiểu để validator xác định chính xác các file `.vi.md` đã thay đổi và áp kiểm tra LaTeX nghiêm ngặt cho chúng mà không biến nợ định dạng của bản dịch legacy chưa chạm tới thành blocker của PR mới.
+Chạy `scripts/check_vi_translations.py` và `scripts/check_vi_markdown_safety.py`. Workflow phải nhẹ và không build MkDocs lần thứ hai. Trong pull request, checkout đủ lịch sử tối thiểu để validator xác định chính xác các file `.vi.md` đã thay đổi và áp kiểm tra LaTeX nghiêm ngặt cho chúng mà không biến nợ legacy chưa chạm tới thành blocker.
 
 ### `Vietnamese translation sync`
 
@@ -217,7 +231,7 @@ Kiểm tra `source_commit` còn khớp blob SHA hiện tại của file nguồn.
 
 ### `Build`
 
-Chạy `mkdocs build --strict`, kiểm tra toàn bộ website song ngữ và tạo preview artifact.
+Chạy `mkdocs build --strict`, sau đó chạy `scripts/check_vi_rendered_pages.py` để kiểm tra asset hình ảnh ở output tiếng Việt, rồi tạo preview artifact.
 
 ### `Test`
 
@@ -227,27 +241,29 @@ Biên dịch và chạy code-test của các bài nguồn tiếng Anh. Workflow 
 - thư mục `test/`;
 - chính `.github/workflows/test.yml`.
 
-PR chỉ thay `.vi.md`, glossary, validator hoặc quy tắc dịch không cần chạy `Test`, vì validator đã yêu cầu code block trong bản dịch giống hệt nguồn. Với PR dịch thuần túy, ba cổng bắt buộc là `Vietnamese translations`, `Vietnamese translation sync` và `Build`.
+PR chỉ thay `.vi.md`, glossary, validator hoặc quy tắc dịch không cần chạy `Test`, vì validator yêu cầu code block trong bản dịch giống hệt nguồn. Với PR dịch thuần túy, ba cổng bắt buộc là `Vietnamese translations`, `Vietnamese translation sync` và `Build`.
 
 Lỗi `Service Unavailable` hoặc `Failed to resolve action download info` tại `Set up job` là lỗi hạ tầng GitHub; không sửa code để đối phó với lỗi này.
 
 ## 7. Checklist cho người dịch
 
-- [ ] Dùng `agent/vi-work` làm branch dịch lâu dài; nếu đang hoàn tất một PR legacy dùng branch khác thì không mở batch mới cho tới khi PR đó merge.
-- [ ] Tối đa một PR dịch đang mở.
-- [ ] Tất cả review thread/comment có hành động cụ thể trên PR dịch đang mở đã được xử lý hoặc có lý do rõ ràng để chưa xử lý.
+- [ ] Dùng `agent/vi-work` làm branch dịch lâu dài.
+- [ ] Tối đa một PR dịch/maintenance tiếng Việt đang mở.
+- [ ] Tất cả review thread/comment có hành động cụ thể đã được xử lý hoặc có lý do rõ ràng để chưa xử lý.
 - [ ] Phạm vi batch đúng giới hạn.
 - [ ] Đã đọc toàn bộ nguồn và kiểm kê cấu trúc.
-- [ ] Đã chốt thuật ngữ mới.
+- [ ] Đã chốt thuật ngữ mới; thuật ngữ chưa chắc chắn đã đối chiếu VNOI Wiki khi có tài liệu liên quan.
 - [ ] `source`, blob SHA, `last_synced` và `status` chính xác.
 - [ ] Front matter nguồn được giữ nguyên.
 - [ ] Code, comment trong code, công thức và inline code còn nguyên.
 - [ ] Link, hình ảnh và attribution còn nguyên.
+- [ ] Raw HTML image được kiểm tra ở bản render, không chỉ nhìn `src` trong Markdown.
+- [ ] `Ghi chú bản dịch` không nằm thụt vào giữa list nguồn.
 - [ ] Không bỏ sót đoạn, caption, note, alt text hoặc nội dung tab.
-- [ ] Chạy validator, staleness check và strict build.
+- [ ] Chạy validator, staleness check, Markdown safety, strict build và rendered-page check.
 - [ ] Kiểm tra trang đã render.
 - [ ] Mỗi bài nằm trong commit riêng khi có thể.
-- [ ] Đã kiểm tra lại review thread/comment sau commit cuối cùng của batch và xử lý mọi comment mới có hành động cụ thể.
+- [ ] Đã kiểm tra lại review sau commit cuối cùng và xử lý comment mới có hành động cụ thể.
 - [ ] PR ở trạng thái Draft cho đến khi review xong.
 
 ## 8. Checklist review kỹ thuật
@@ -256,6 +272,7 @@ Lỗi `Service Unavailable` hoặc `Failed to resolve action download info` tạ
 - [ ] Kiểm tra chiều quan hệ chia hết và bất đẳng thức.
 - [ ] Kiểm tra ví dụ, chỉ số, công thức và độ phức tạp.
 - [ ] Phân biệt đúng `walk`, `trail`, `path`, `cycle` nếu xuất hiện.
+- [ ] Kiểm tra mọi `Ghi chú bản dịch` có phân biệt rõ lỗi nguồn với nội dung dịch.
 - [ ] Các workflow bắt buộc đã xanh.
 - [ ] Không có code, inline code hoặc link bị đổi ngoài chủ đích.
 
@@ -265,14 +282,14 @@ Chỉ đặt `technical-reviewed` sau khi đạt checklist này.
 
 - [ ] Câu tiếng Việt tự nhiên và phù hợp học sinh.
 - [ ] Không bám máy móc theo trật tự câu tiếng Anh.
-- [ ] Thuật ngữ nhất quán.
+- [ ] Thuật ngữ nhất quán; với thuật ngữ còn tranh luận đã ưu tiên cách dùng phổ biến trong cộng đồng CP Việt Nam/VNOI khi phù hợp.
 - [ ] Không có cách nói so sánh hoặc chia hết mơ hồ.
 - [ ] Không bỏ sót đoạn, caption, note, alt text hoặc nhãn tab.
 - [ ] Không thêm ý mới như thể thuộc nội dung nguồn.
 
 Chỉ đặt `language-reviewed` sau khi đạt checklist này. Maintainer đổi sang `ready` sau khi cả hai review hoàn tất.
 
-## 10. Đồng bộ upstream
+## 10. Đồng bộ upstream và đóng góp ngược
 
 1. Đồng bộ fork với `cp-algorithms/cp-algorithms` định kỳ.
 2. Khi nguồn tiếng Anh đổi, so sánh blob SHA mới với `source_commit`.
@@ -280,6 +297,12 @@ Chỉ đặt `language-reviewed` sau khi đạt checklist này. Maintainer đổ
 4. Thay đổi nội dung thuật toán phải chuyển bản dịch sang `stale`, cập nhật nội dung và review kỹ thuật lại.
 5. Không merge tự động nội dung dịch do AI tạo mà chưa có người đọc lại.
 6. Không trộn PR đồng bộ upstream với batch dịch mới nếu không cần thiết để giải quyết xung đột.
+7. Khi phát hiện lỗi chắc chắn trong nguồn upstream:
+   - xác minh trên `cp-algorithms/cp-algorithms` `main` mới nhất và tìm PR/issue trùng trước;
+   - tạo branch từ upstream `main`, không từ branch i18n;
+   - PR upstream chỉ sửa tiếng Anh, công thức, thuật toán hoặc typo liên quan;
+   - không thêm `.vi.md`, `TRANSLATING_VI.md`, cấu hình i18n hay nhắc dự án dịch Việt nếu không cần thiết cho bản sửa;
+   - tuân thủ `CONTRIBUTING.md` của upstream và để maintainer upstream quyết định merge.
 
 ## 11. Quy tắc dùng AI
 
