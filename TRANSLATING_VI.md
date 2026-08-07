@@ -224,6 +224,19 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | continuous / non-continuous transition | phép chuyển liên tục / không liên tục |
 | Lyndon factorization | phân rã Lyndon |
 | Lyndon word | từ Lyndon |
+| bridge | cạnh cầu; có thể dùng ngắn gọn cầu khi ngữ cảnh rõ |
+| articulation point / cut vertex | đỉnh khớp |
+| tree edge | cạnh cây |
+| back edge | cạnh ngược |
+| forward edge | cạnh xuôi |
+| cross edge | cạnh chéo |
+| strongly connected component (SCC) | thành phần liên thông mạnh (SCC) |
+| condensation graph | đồ thị co (condensation graph) |
+| transpose graph | đồ thị chuyển vị |
+| conjunctive normal form (CNF) | dạng chuẩn hội (CNF) |
+| clause (SAT) | mệnh đề (clause) |
+| literal (SAT) | literal; biến hoặc phủ định của biến |
+| implication graph | đồ thị kéo theo (implication graph) |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
