@@ -43,7 +43,7 @@ Một thuật toán ngây thơ là xét mọi số trong đoạn $[1, n-1]$, r�
 
 Từ phần trước, ta biết rằng nếu số nhỏ nhất $k$ sao cho $g^k \equiv 1 \pmod n$ bằng $\phi (n)$ thì $g$ là căn nguyên thủy. Với mọi số $a$ nguyên tố cùng nhau với $n$, định lý Euler cho $a ^ { \phi (n) } \equiv 1 \pmod n$. Vì vậy, để kiểm tra $g$ là căn nguyên thủy, chỉ cần bảo đảm rằng với mọi $d$ nhỏ hơn $\phi (n)$, $g^d \not \equiv 1 \pmod n$. Tuy nhiên, cách này vẫn quá chậm.
 
-Theo định lý Lagrange, `index` của 1 đối với bất kỳ số nào modulo $n$ phải là một ước của $\phi (n)$. Vì vậy, chỉ cần kiểm tra với mọi ước thực sự $d \mid \phi (n)$ rằng $g^d \not \equiv 1 \pmod n$. Đây đã là một thuật toán nhanh hơn nhiều, nhưng ta vẫn có thể làm tốt hơn.
+Theo định lý Lagrange, index của 1 đối với bất kỳ số nào modulo $n$ phải là một ước của $\phi (n)$. Vì vậy, chỉ cần kiểm tra với mọi ước thực sự $d \mid \phi (n)$ rằng $g^d \not \equiv 1 \pmod n$. Đây đã là một thuật toán nhanh hơn nhiều, nhưng ta vẫn có thể làm tốt hơn.
 
 Phân tích $\phi (n) = p_1 ^ {a_1} \cdots p_s ^ {a_s}$. Ta chứng minh rằng trong thuật toán trên, chỉ cần xét các giá trị $d$ có dạng $\frac { \phi (n) } {p_j}$. Thật vậy, giả sử $d$ là một ước thực sự bất kỳ của $\phi (n)$. Khi đó hiển nhiên tồn tại một $j$ sao cho $d \mid \frac { \phi (n) } {p_j}$, tức $d \cdot k = \frac { \phi (n) } {p_j}$. Nhưng nếu $g^d \equiv 1 \pmod n$, ta sẽ có:
 
