@@ -1,26 +1,44 @@
 name: Test
-on: 
+
+on:
   push:
-    branches:    
-      - 'main'
+    branches:
+      - master
+    paths:
+      - 'src/**/*.md'
+      - '!src/**/*.vi.md'
+      - 'test/**'
+      - '.github/workflows/test.yml'
   pull_request:
+    paths:
+      - 'src/**/*.md'
+      - '!src/**/*.vi.md'
+      - 'test/**'
+      - '.github/workflows/test.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: test-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5.2.0
-        with:
-          python-version: '3.8'
-      - name: Set up C++
+
+      - name: Check preinstalled toolchain
         run: |
-          sudo apt install -y --no-install-recommends build-essential
+          python3 --version
           g++ --version
+
       - name: Run algorithm code tests
-        run: |
-          ./test.sh
+        env:
+          TERM: xterm
+        run: timeout 12m ./test.sh
         working-directory: test

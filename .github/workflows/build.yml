@@ -1,14 +1,19 @@
 name: Build
 
-on: 
-  push:
-    branches:    
-      - main
+on:
   pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout repository
@@ -16,28 +21,23 @@ jobs:
         with:
           fetch-depth: 0
           submodules: recursive
+
       - name: Set up Python
-        uses: actions/setup-python@v5.2.0
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install mkdocs-material
-        run: |
-          scripts/install-mkdocs.sh
-      - name: Cache Github Users
-        uses: actions/cache@v3
-        with:
-          path: authors.json
-          key: test-${{ github.event_name }}-github-users-v0.1
-      - name: Build pages
+
+      - name: Install MkDocs dependencies
+        run: scripts/install-mkdocs.sh
+
+      - name: Build pages strictly
         env:
-          MKDOCS_GIT_COMMITTERS_BRANCH: ${{ github.ref_name }}
-          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ github.token }}
-          MKDOCS_ENABLE_GIT_REVISION_DATE: ${{ github.token && 'True' || 'False' }}
-          MKDOCS_ENABLE_GIT_COMMITTERS: ${{ github.token && 'True' || 'False' }}
-        run: |
-          mkdocs build --strict
+          MKDOCS_ENABLE_GIT_REVISION_DATE: 'False'
+          MKDOCS_ENABLE_GIT_COMMITTERS: 'False'
+        run: mkdocs build --strict
+
       - name: Upload pages as an artifact
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ github.event.number || 'main' }}
+          name: ${{ github.event.number }}
           path: public/
