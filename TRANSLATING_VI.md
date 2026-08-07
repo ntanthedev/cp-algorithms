@@ -31,6 +31,10 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
 6. Sao chép file nguồn thành file `.vi.md`, giữ nguyên cấu trúc, rồi mới thêm metadata dịch và dịch phần văn xuôi.
 7. Mọi bản dịch mới bắt đầu với `status: draft`.
 8. Mở PR ở trạng thái Draft nếu chưa có đủ kết quả CI.
+9. Trước khi tạo hoặc stack batch tiếp theo, kiểm tra tất cả PR dịch đang mở:
+   - xử lý và resolve mọi review thread/comment có hành động cụ thể trước khi tiếp tục;
+   - chỉ stack lên một PR khi head mới nhất của PR đó đã xanh toàn bộ CI bắt buộc và batch mới thực sự phụ thuộc vào glossary, validator hoặc quy tắc của PR đó;
+   - nếu muốn giữ batch stacked thành PR độc lập để review, **không merge PR stacked vào branch base khi base PR chưa merge**; hãy chờ base merge vào `master`, retarget PR stacked về `master`, chạy lại CI rồi mới merge.
 
 ### Preflight cục bộ
 
@@ -198,6 +202,7 @@ Lỗi `Service Unavailable` hoặc `Failed to resolve action download info` tạ
 ## 7. Checklist cho người dịch
 
 - [ ] Branch được tạo từ `master` mới nhất, hoặc là stacked branch hợp lệ theo ngoại lệ ở mục 0.
+- [ ] Tất cả review thread/comment có hành động cụ thể trên các PR dịch đang mở đã được xử lý hoặc có lý do rõ ràng để chưa xử lý.
 - [ ] Phạm vi batch đúng giới hạn.
 - [ ] Đã đọc toàn bộ nguồn và kiểm kê cấu trúc.
 - [ ] Đã chốt thuật ngữ mới.
