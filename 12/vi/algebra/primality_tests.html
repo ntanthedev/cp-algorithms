@@ -8033,10 +8033,10 @@ Describe the issue of this article in detail.
 <p>Theo định nghĩa, một số nguyên tố không có ước nào ngoài <span class="arithmatex">$1$</span> và chính nó.
 Một hợp số có ít nhất một ước khác, gọi là <span class="arithmatex">$d$</span>.
 Hiển nhiên <span class="arithmatex">$\frac{n}{d}$</span> cũng là một ước của <span class="arithmatex">$n$</span>.
-Dễ thấy <span class="arithmatex">$d \le \sqrt{n}$</span> hoặc <span class="arithmatex">$\frac{n}{d} \le \sqrt{n}$</span>, vì vậy một trong hai ước <span class="arithmatex">$d$</span> và <span class="arithmatex">$\frac{n}{d}$</span> không vượt quá <span class="arithmatex">$\sqrt{n}$</span>.
+Dễ thấy <span class="arithmatex">$d \le \sqrt{n}$</span> hoặc <span class="arithmatex">$\frac{n}{d} \le \sqrt{n}$</span>, vì vậy một trong hai ước <span class="arithmatex">$d$</span> và <span class="arithmatex">$\frac{n}{d}$</span> thỏa <span class="arithmatex">$\le \sqrt{n}$</span>.
 Ta có thể dùng nhận xét này để kiểm tra tính nguyên tố.</p>
 <p>Ta thử tìm một ước không tầm thường bằng cách kiểm tra xem có số nào từ <span class="arithmatex">$2$</span> đến <span class="arithmatex">$\sqrt{n}$</span> là ước của <span class="arithmatex">$n$</span> hay không.
-Nếu tìm được một ước như vậy thì <span class="arithmatex">$n$</span> chắc chắn không phải số nguyên tố; nếu không, <span class="arithmatex">$n$</span> là số nguyên tố.</p>
+Nếu tìm được một ước như vậy thì <span class="arithmatex">$n$</span> chắc chắn không phải số nguyên tố; nếu không, số đó là số nguyên tố.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">isPrime</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="n">d</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
@@ -8050,7 +8050,7 @@ Có thể tối ưu hàm này khá nhiều, chẳng hạn trong vòng lặp ch�
 Nhiều tối ưu kiểu này được trình bày trong bài <a href="factorization.html">phân tích thừa số nguyên</a>.</p>
 <h2 id="kiem-tra-tinh-nguyen-to-fermat">Kiểm tra tính nguyên tố Fermat<a class="headerlink" href="#kiem-tra-tinh-nguyen-to-fermat" title="Permanent link">&para;</a></h2>
 <p>Đây là một phép kiểm tra xác suất.</p>
-<p>Định lý nhỏ Fermat (xem thêm <a href="phi-function.html">phi hàm Euler</a>) nói rằng với một số nguyên tố <span class="arithmatex">$p$</span> và một số nguyên <span class="arithmatex">$a$</span> nguyên tố cùng nhau với <span class="arithmatex">$p$</span>, ta có:</p>
+<p>Định lý nhỏ Fermat (xem thêm <a href="phi-function.html">phi hàm Euler</a>) nói rằng với một số nguyên tố <span class="arithmatex">$p$</span> và một số nguyên <span class="arithmatex">$a$</span> nguyên tố cùng nhau với số đó, ta có:</p>
 <div class="arithmatex">$$a^{p-1} \equiv 1 \bmod p$$</div>
 <p>Trong tổng quát, định lý này không đúng với hợp số.</p>
 <p>Ta có thể dùng điều đó để xây dựng một phép kiểm tra tính nguyên tố.
