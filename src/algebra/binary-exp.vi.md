@@ -180,7 +180,7 @@ a_{31} & a_ {32} & a_ {33} & a_ {34} \\
 a_{41} & a_ {42} & a_ {43} & a_ {44}
 \end{pmatrix}$$
 
-Khi nhân ma trận đó với một vector chứa các tọa độ cũ cùng một tọa độ bằng một, ta nhận được vector các tọa độ mới cũng cùng một tọa độ bằng một:
+Khi nhân ma trận đó với một vector chứa các tọa độ cũ và một tọa độ bổ sung bằng $1$, ta nhận được vector chứa các tọa độ mới với tọa độ bổ sung đó vẫn bằng $1$:
 
 $$\begin{pmatrix} x & y & z & 1 \end{pmatrix} \cdot
 \begin{pmatrix}
@@ -222,7 +222,7 @@ $$\begin{pmatrix}
 0 & 0 & 0 & 1
 \end{pmatrix}$$
 
-Khi mọi phép biến đổi đã được biểu diễn dưới dạng ma trận, cả chuỗi phép biến đổi có thể biểu diễn bằng tích các ma trận đó, còn một "loop" lặp $k$ lần có thể biểu diễn bằng cách nâng ma trận lên lũy thừa $k$, tính bằng lũy thừa nhị phân trong $O(\log{k})$. Ta có thể tính trước ma trận đại diện cho toàn bộ phép biến đổi trong $O(m \log{k})$, sau đó áp dụng nó lên mỗi trong $n$ điểm trong $O(n)$, cho tổng độ phức tạp $O(n + m \log{k})$.
+Khi mọi phép biến đổi đã được biểu diễn dưới dạng ma trận, cả chuỗi phép biến đổi có thể biểu diễn bằng tích các ma trận đó, còn một "loop" lặp $k$ lần có thể biểu diễn bằng cách nâng ma trận lên lũy thừa $k$, tính bằng lũy thừa nhị phân trong $O(\log{k})$. Ta có thể tính trước ma trận đại diện cho toàn bộ phép biến đổi trong $O(m \log{k})$, sau đó áp dụng nó lên mỗi điểm trong số $n$ điểm trong $O(n)$, cho tổng độ phức tạp $O(n + m \log{k})$.
 
 
 ### Số đường đi độ dài $k$ trong đồ thị { data-toc-label='Number of paths of length <script type="math/tex">k</script> in a graph' }
