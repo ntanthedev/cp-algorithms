@@ -53,7 +53,7 @@ $$\begin{align}
 \phi (n) &= \phi ({p_1}^{a_1}) \cdot \phi ({p_2}^{a_2}) \cdots  \phi ({p_k}^{a_k}) \\\\
 &= \left({p_1}^{a_1} - {p_1}^{a_1 - 1}\right) \cdot \left({p_2}^{a_2} - {p_2}^{a_2 - 1}\right) \cdots \left({p_k}^{a_k} - {p_k}^{a_k - 1}\right) \\\\
 &= p_1^{a_1} \cdot \left(1 - \frac{1}{p_1}\right) \cdot p_2^{a_2} \cdot \left(1 - \frac{1}{p_2}\right) \cdots p_k^{a_k} \cdot \left(1 - \frac{1}{p_k}\right) \\\\
-&= n \cdot \left(1 - \frac{1}{p_1}\right) \cdot \left(1 - \frac{1}{p_2}\right) \cdots \left(1 - \frac{1}{p_k}\right)
+&= n \cdot \left(1 - \frac{1}{p_1}\right) \cdot \left(1 - \frac{1}{p_2}\right) \cdot \left(1 - \frac{1}{p_k}\right)
 \end{align}$$
 
 ## Cài đặt
@@ -79,10 +79,10 @@ int phi(int n) {
 ## Phi hàm Euler từ $1$ đến $n$ trong $O(n \log\log{n})$ { #etf_1_to_n data-toc-label="Euler totient function from 1 to n in <script type=\"math/tex\">O(n log log n)</script>" }
 
 Nếu cần tính hàm phi của mọi số từ $1$ đến $n$, việc phân tích thừa số riêng từng số là không hiệu quả.
-Ta có thể dùng cùng ý tưởng với [Sàng Eratostes](sieve-of-eratosthenes.md).
+Ta có thể dùng cùng ý tưởng với [Sàng Eratosthenes](sieve-of-eratosthenes.md).
 Phương pháp vẫn dựa trên tính chất ở trên, nhưng thay vì cập nhật kết quả tạm thời theo từng thừa số nguyên tố của từng số, ta tìm tất cả số nguyên tố rồi với mỗi số nguyên tố cập nhật kết quả tạm thời của mọi số chia hết cho nó.
 
-Vì cách này về bản chất giống Sàng Eratostes, độ phức tạp cũng là $O(n \log \log n)$.
+Vì cách này về bản chất giống Sàng Eratosthenes, độ phức tạp cũng là $O(n \log \log n)$.
 
 ```cpp
 void phi_1_to_n(int n) {
