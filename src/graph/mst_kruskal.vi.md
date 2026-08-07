@@ -27,11 +27,11 @@ Bài viết này trình bày một số tính chất quan trọng của cây khu
   (Một thuật toán cụ thể thường chỉ trả về một trong các cây khung nhỏ nhất có thể có.)
 * Cây khung nhỏ nhất cũng là cây có tích trọng số các cạnh nhỏ nhất.
   (Có thể chứng minh dễ dàng bằng cách thay trọng số của mọi cạnh bằng logarit của chúng.)
-
-  **Ghi chú bản dịch:** Lập luận bằng logarit và mệnh đề về tích trọng số ở trên chỉ áp dụng khi mọi trọng số cạnh đều dương. Với trọng số bằng 0 hoặc âm, logarit không xác định và mệnh đề không còn đúng trong tổng quát. Nguồn tiếng Anh hiện không nêu điều kiện này.
 * Trong một cây khung nhỏ nhất của đồ thị, trọng số lớn nhất của một cạnh là nhỏ nhất có thể khi xét trên mọi cây khung của đồ thị đó.
   (Điều này suy ra từ tính đúng đắn của thuật toán Kruskal.)
 * Cây khung lớn nhất (cây khung có tổng trọng số cạnh lớn nhất) có thể được tìm tương tự cây khung nhỏ nhất: đổi dấu trọng số của mọi cạnh rồi áp dụng một thuật toán tìm cây khung nhỏ nhất bất kỳ.
+
+**Ghi chú bản dịch:** Lập luận bằng logarit và mệnh đề về tích trọng số ở trên chỉ áp dụng khi mọi trọng số cạnh đều dương. Với trọng số bằng 0 hoặc âm, logarit không xác định và mệnh đề không còn đúng trong tổng quát. Nguồn tiếng Anh hiện không nêu điều kiện này.
 
 ## Thuật toán Kruskal
 
@@ -97,7 +97,6 @@ Vậy tại sao cây khung đó lại là cây khung nhỏ nhất?
 Ta chứng minh bằng quy nạp mệnh đề: "nếu $F$ là tập các cạnh đã được thuật toán chọn ở một thời điểm bất kỳ, thì tồn tại một MST chứa toàn bộ các cạnh của $F$".
 
 Mệnh đề hiển nhiên đúng lúc đầu vì tập rỗng là tập con của mọi MST.
-
 Giả sử ở một bước nào đó $F$ là tập cạnh đã chọn, $T$ là một MST chứa $F$, và $e$ là cạnh mới mà Kruskal đang xét để thêm vào.
 
 Nếu $e$ tạo ra chu trình thì ta không thêm nó, vì vậy mệnh đề vẫn đúng sau bước này.
