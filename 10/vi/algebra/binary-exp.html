@@ -8220,7 +8220,7 @@ a_{21} &amp; a_ {22} &amp; a_ {23} &amp; a_ {24} \\
 a_{31} &amp; a_ {32} &amp; a_ {33} &amp; a_ {34} \\
 a_{41} &amp; a_ {42} &amp; a_ {43} &amp; a_ {44}
 \end{pmatrix}$$</div>
-<p>Khi nhân ma trận đó với một vector chứa các tọa độ cũ cùng một tọa độ bằng một, ta nhận được vector các tọa độ mới cũng cùng một tọa độ bằng một:</p>
+<p>Khi nhân ma trận đó với một vector chứa các tọa độ cũ và một tọa độ bổ sung bằng <span class="arithmatex">$1$</span>, ta nhận được vector chứa các tọa độ mới với tọa độ bổ sung đó vẫn bằng <span class="arithmatex">$1$</span>:</p>
 <div class="arithmatex">$$\begin{pmatrix} x &amp; y &amp; z &amp; 1 \end{pmatrix} \cdot
 \begin{pmatrix}
 a_{11} &amp; a_ {12} &amp; a_ {13} &amp; a_ {14} \\
@@ -8258,7 +8258,7 @@ a_{41} &amp; a_ {42} &amp; a_ {43} &amp; a_ {44}
 0 &amp; \sin \theta &amp; \cos \theta &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; 1
 \end{pmatrix}$$</div>
-<p>Khi mọi phép biến đổi đã được biểu diễn dưới dạng ma trận, cả chuỗi phép biến đổi có thể biểu diễn bằng tích các ma trận đó, còn một "loop" lặp <span class="arithmatex">$k$</span> lần có thể biểu diễn bằng cách nâng ma trận lên lũy thừa <span class="arithmatex">$k$</span>, tính bằng lũy thừa nhị phân trong <span class="arithmatex">$O(\log{k})$</span>. Ta có thể tính trước ma trận đại diện cho toàn bộ phép biến đổi trong <span class="arithmatex">$O(m \log{k})$</span>, sau đó áp dụng nó lên mỗi trong <span class="arithmatex">$n$</span> điểm trong <span class="arithmatex">$O(n)$</span>, cho tổng độ phức tạp <span class="arithmatex">$O(n + m \log{k})$</span>.</p>
+<p>Khi mọi phép biến đổi đã được biểu diễn dưới dạng ma trận, cả chuỗi phép biến đổi có thể biểu diễn bằng tích các ma trận đó, còn một "loop" lặp <span class="arithmatex">$k$</span> lần có thể biểu diễn bằng cách nâng ma trận lên lũy thừa <span class="arithmatex">$k$</span>, tính bằng lũy thừa nhị phân trong <span class="arithmatex">$O(\log{k})$</span>. Ta có thể tính trước ma trận đại diện cho toàn bộ phép biến đổi trong <span class="arithmatex">$O(m \log{k})$</span>, sau đó áp dụng nó lên mỗi điểm trong số <span class="arithmatex">$n$</span> điểm trong <span class="arithmatex">$O(n)$</span>, cho tổng độ phức tạp <span class="arithmatex">$O(n + m \log{k})$</span>.</p>
 <h3 id="so-uong-i-o-dai-k-trong-o-thi">Số đường đi độ dài <span class="arithmatex">$k$</span> trong đồ thị<a class="headerlink" href="#so-uong-i-o-dai-k-trong-o-thi" title="Permanent link">&para;</a></h3>
 <p><strong>Bài toán:</strong> Cho một đồ thị có hướng không trọng số gồm <span class="arithmatex">$n$</span> đỉnh, tìm số đường đi độ dài <span class="arithmatex">$k$</span> từ một đỉnh <span class="arithmatex">$u$</span> bất kỳ tới một đỉnh <span class="arithmatex">$v$</span> bất kỳ.</p>
 <p><strong>Lời giải:</strong> Bài toán này được trình bày chi tiết hơn trong <a href="../graph/fixed_length_paths.html">một bài riêng</a>. Thuật toán nâng ma trận kề <span class="arithmatex">$M$</span> của đồ thị lên lũy thừa <span class="arithmatex">$k$</span>; <span class="arithmatex">$m_{ij} = 1$</span> nếu có cạnh từ <span class="arithmatex">$i$</span> tới <span class="arithmatex">$j$</span>, và bằng <span class="arithmatex">$0$</span> nếu không. Sau khi nâng lũy thừa, <span class="arithmatex">$m_{ij}$</span> là số đường đi độ dài <span class="arithmatex">$k$</span> từ <span class="arithmatex">$i$</span> tới <span class="arithmatex">$j$</span>. Độ phức tạp là <span class="arithmatex">$O(n^3 \log k)$</span>.</p>
