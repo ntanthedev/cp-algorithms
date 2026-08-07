@@ -100,7 +100,6 @@ int generator(int p) {
 			if (powmod(res, phi / factor, p) == 1) {
 				ok = false;
 				break;
-			}
 		}
 		if (ok) return res;
 	}
@@ -149,6 +148,8 @@ int main() {
 		printf("%d ", answer);
 }
 ```
+
+**Ghi chú bản dịch:** Code nguồn truyền giá trị trả về của ans.size(), có kiểu size_t, cho định dạng %d của printf. Đây là không khớp kiểu trong lời gọi variadic và có thể gây hành vi không xác định; bản dịch vẫn giữ nguyên code nguồn theo quy tắc đồng bộ.
 
 ## Bài tập luyện tập
 
