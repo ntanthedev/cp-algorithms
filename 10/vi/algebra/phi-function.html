@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ham-phi-euler" class="md-skip">
+        <a href="#phi-ham-euler" class="md-skip">
           Bỏ qua
         </a>
       
@@ -8106,8 +8106,8 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="ham-phi-euler">Hàm phi Euler<a class="headerlink" href="#ham-phi-euler" title="Permanent link">&para;</a></h1>
-<p>Hàm phi Euler, còn gọi là <strong>hàm phi</strong> <span class="arithmatex">$\phi (n)$</span>, đếm số lượng số nguyên từ 1 đến <span class="arithmatex">$n$</span> (kể cả hai đầu) nguyên tố cùng nhau với <span class="arithmatex">$n$</span>. Hai số nguyên tố cùng nhau nếu ước chung lớn nhất của chúng bằng <span class="arithmatex">$1$</span>; số <span class="arithmatex">$1$</span> được xem là nguyên tố cùng nhau với mọi số.</p>
+<h1 id="phi-ham-euler">Phi hàm Euler<a class="headerlink" href="#phi-ham-euler" title="Permanent link">&para;</a></h1>
+<p>Phi hàm Euler, còn gọi là <strong>hàm phi Euler</strong> <span class="arithmatex">$\phi (n)$</span>, đếm số lượng số nguyên từ 1 đến <span class="arithmatex">$n$</span> (kể cả hai đầu) nguyên tố cùng nhau với <span class="arithmatex">$n$</span>. Hai số nguyên tố cùng nhau nếu ước chung lớn nhất của chúng bằng <span class="arithmatex">$1$</span>; số <span class="arithmatex">$1$</span> được xem là nguyên tố cùng nhau với mọi số.</p>
 <p>Dưới đây là các giá trị <span class="arithmatex">$\phi(n)$</span> của một số số nguyên dương đầu tiên:</p>
 <div class="arithmatex">$$\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
 \hline
@@ -8115,7 +8115,7 @@ n &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 
 \phi(n) &amp; 1 &amp; 1 &amp; 2 &amp; 2 &amp; 4 &amp; 2 &amp; 6 &amp; 4 &amp; 6 &amp; 4 &amp; 10 &amp; 4 &amp; 12 &amp; 6 &amp; 8 &amp; 8 &amp; 16 &amp; 6 &amp; 18 &amp; 8 &amp; 12 \\\\ \hline
 \end{array}$$</div>
 <h2 id="tinh-chat">Tính chất<a class="headerlink" href="#tinh-chat" title="Permanent link">&para;</a></h2>
-<p>Các tính chất sau của hàm phi Euler là đủ để tính nó cho một số bất kỳ:</p>
+<p>Các tính chất sau của phi hàm Euler là đủ để tính nó cho một số bất kỳ:</p>
 <ul>
 <li>Nếu <span class="arithmatex">$p$</span> là số nguyên tố thì <span class="arithmatex">$\gcd(p, q) = 1$</span> với mọi <span class="arithmatex">$1 \le q &lt; p$</span>. Vì vậy:</li>
 </ul>
@@ -8129,7 +8129,7 @@ n &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 
 <li>
 <p>Nếu <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> nguyên tố cùng nhau thì:</p>
 <div class="arithmatex">$$\phi(a b) = \phi(a) \cdot \phi(b).$$</div>
-<p>Quan hệ này không hiển nhiên. Nó suy ra từ <a href="chinese-remainder-theorem.html">Định lý số dư Trung Hoa</a>. Định lý số dư Trung Hoa bảo đảm rằng với mỗi <span class="arithmatex">$0 \le x &lt; a$</span> và mỗi <span class="arithmatex">$0 \le y &lt; b$</span>, tồn tại duy nhất <span class="arithmatex">$0 \le z &lt; a b$</span> sao cho <span class="arithmatex">$z \equiv x \pmod{a}$</span> và <span class="arithmatex">$z \equiv y \pmod{b}$</span>. Không khó để chứng minh <span class="arithmatex">$z$</span> nguyên tố cùng nhau với <span class="arithmatex">$a b$</span> khi và chỉ khi <span class="arithmatex">$x$</span> nguyên tố cùng nhau với <span class="arithmatex">$a$</span> và <span class="arithmatex">$y$</span> nguyên tố cùng nhau với <span class="arithmatex">$b$</span>. Vì vậy số lượng số nguyên nguyên tố cùng nhau với <span class="arithmatex">$a b$</span> bằng tích số lượng tương ứng của <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span>.</p>
+<p>Quan hệ này không hiển nhiên. Nó suy ra từ <a href="chinese-remainder-theorem.html">Định lý Thặng dư Trung Hoa</a>. Định lý Thặng dư Trung Hoa bảo đảm rằng với mỗi <span class="arithmatex">$0 \le x &lt; a$</span> và mỗi <span class="arithmatex">$0 \le y &lt; b$</span>, tồn tại duy nhất <span class="arithmatex">$0 \le z &lt; a b$</span> sao cho <span class="arithmatex">$z \equiv x \pmod{a}$</span> và <span class="arithmatex">$z \equiv y \pmod{b}$</span>. Không khó để chứng minh <span class="arithmatex">$z$</span> nguyên tố cùng nhau với <span class="arithmatex">$a b$</span> khi và chỉ khi <span class="arithmatex">$x$</span> nguyên tố cùng nhau với <span class="arithmatex">$a$</span> và <span class="arithmatex">$y$</span> nguyên tố cùng nhau với <span class="arithmatex">$b$</span>. Vì vậy số lượng số nguyên nguyên tố cùng nhau với <span class="arithmatex">$a b$</span> bằng tích số lượng tương ứng của <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span>.</p>
 </li>
 <li>
 <p>Tổng quát hơn, khi <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> không nguyên tố cùng nhau, ta có</p>
@@ -8161,11 +8161,11 @@ Nếu <span class="arithmatex">$n = {p_1}^{a_1} \cdot {p_2}^{a_2} \cdots {p_k}^{
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="etf_1_to_n">Hàm phi Euler từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span> trong <span class="arithmatex">$O(n \log\log{n})$</span><a class="headerlink" href="#etf_1_to_n" title="Permanent link">&para;</a></h2>
+<h2 id="etf_1_to_n">Phi hàm Euler từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span> trong <span class="arithmatex">$O(n \log\log{n})$</span><a class="headerlink" href="#etf_1_to_n" title="Permanent link">&para;</a></h2>
 <p>Nếu cần tính hàm phi của mọi số từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span>, việc phân tích thừa số riêng từng số là không hiệu quả.
-Ta có thể dùng cùng ý tưởng với <a href="sieve-of-eratosthenes.html">Sàng Eratosthenes</a>.
+Ta có thể dùng cùng ý tưởng với <a href="sieve-of-eratosthenes.html">Sàng Eratostes</a>.
 Phương pháp vẫn dựa trên tính chất ở trên, nhưng thay vì cập nhật kết quả tạm thời theo từng thừa số nguyên tố của từng số, ta tìm tất cả số nguyên tố rồi với mỗi số nguyên tố cập nhật kết quả tạm thời của mọi số chia hết cho nó.</p>
-<p>Vì cách này về bản chất giống Sàng Eratosthenes, độ phức tạp cũng là <span class="arithmatex">$O(n \log \log n)$</span>.</p>
+<p>Vì cách này về bản chất giống Sàng Eratostes, độ phức tạp cũng là <span class="arithmatex">$O(n \log \log n)$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">phi_1_to_n</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">phi</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -8244,17 +8244,17 @@ Cài đặt này đơn giản hơn một chút so với cách dựa trên Sàng 
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="application">Ứng dụng trong định lý Euler<a class="headerlink" href="#application" title="Permanent link">&para;</a></h2>
-<p>Tính chất nổi tiếng và quan trọng nhất của hàm phi Euler được biểu diễn qua <strong>định lý Euler</strong>:</p>
+<p>Tính chất nổi tiếng và quan trọng nhất của phi hàm Euler được biểu diễn qua <strong>định lý Euler</strong>:</p>
 <div class="arithmatex">$$a^{\phi(m)} \equiv 1 \pmod m \quad \text{if } a \text{ and } m \text{ are relatively prime.}$$</div>
 <p>Trong trường hợp riêng khi <span class="arithmatex">$m$</span> là số nguyên tố, định lý Euler trở thành <strong>định lý nhỏ Fermat</strong>:</p>
 <div class="arithmatex">$$a^{m - 1} \equiv 1 \pmod m$$</div>
-<p>Định lý Euler và hàm phi Euler xuất hiện rất thường xuyên trong thực tế; chẳng hạn cả hai đều được dùng để tính <a href="module-inverse.html">nghịch đảo nhân mô-đun</a>.</p>
+<p>Định lý Euler và phi hàm Euler xuất hiện rất thường xuyên trong thực tế; chẳng hạn cả hai đều được dùng để tính <a href="module-inverse.html">nghịch đảo nhân mô-đun</a>.</p>
 <p>Một hệ quả trực tiếp khác là tương đương:</p>
 <div class="arithmatex">$$a^n \equiv a^{n \bmod \phi(m)} \pmod m$$</div>
 <p>Điều này cho phép tính <span class="arithmatex">$x^n \bmod m$</span> khi <span class="arithmatex">$n$</span> rất lớn, đặc biệt nếu <span class="arithmatex">$n$</span> là kết quả của một phép tính khác, vì ta có thể tính <span class="arithmatex">$n$</span> theo một mô-đun.</p>
 <h3 id="ly-thuyet-nhom">Lý thuyết nhóm<a class="headerlink" href="#ly-thuyet-nhom" title="Permanent link">&para;</a></h3>
 <p><span class="arithmatex">$\phi(n)$</span> là <a href="https://en.wikipedia.org/wiki/Multiplicative_group_of_integers_modulo_n">cấp của nhóm nhân modulo n</a> <span class="arithmatex">$(\mathbb Z / n\mathbb Z)^\times$</span>, tức nhóm các đơn vị — các phần tử có nghịch đảo nhân. Những phần tử có nghịch đảo nhân chính xác là những phần tử nguyên tố cùng nhau với <span class="arithmatex">$n$</span>.</p>
-<p><a href="https://en.wikipedia.org/wiki/Multiplicative_order">Bậc nhân</a> của phần tử <span class="arithmatex">$a$</span> modulo <span class="arithmatex">$n$</span>, ký hiệu <span class="arithmatex">$\operatorname{ord}_n(a)$</span>, là số <span class="arithmatex">$k&gt;0$</span> nhỏ nhất sao cho <span class="arithmatex">$a^k \equiv 1 \pmod n$</span>. <span class="arithmatex">$\operatorname{ord}_n(a)$</span> là kích thước của nhóm con sinh bởi <span class="arithmatex">$a$</span>, nên theo định lý Lagrange, bậc nhân của mọi <span class="arithmatex">$a$</span> phải chia hết <span class="arithmatex">$\phi(n)$</span>. Nếu bậc nhân của <span class="arithmatex">$a$</span> bằng <span class="arithmatex">$\phi(n)$</span>, tức lớn nhất có thể, thì <span class="arithmatex">$a$</span> là một <a href="primitive-root.html">căn nguyên thủy</a> và theo định nghĩa nhóm là cyclic.</p>
+<p><a href="https://en.wikipedia.org/wiki/Multiplicative_order">Bậc nhân</a> của phần tử <span class="arithmatex">$a$</span> modulo <span class="arithmatex">$n$</span>, ký hiệu <span class="arithmatex">$\operatorname{ord}_n(a)$</span>, là số <span class="arithmatex">$k&gt;0$</span> nhỏ nhất sao cho <span class="arithmatex">$a^k \equiv 1 \pmod n$</span>. <span class="arithmatex">$\operatorname{ord}_n(a)$</span> là kích thước của nhóm con sinh bởi <span class="arithmatex">$a$</span>, nên theo định lý Lagrange, bậc nhân của mọi <span class="arithmatex">$a$</span> phải là ước của <span class="arithmatex">$\phi(n)$</span>. Nếu bậc nhân của <span class="arithmatex">$a$</span> bằng <span class="arithmatex">$\phi(n)$</span>, tức lớn nhất có thể, thì <span class="arithmatex">$a$</span> là một <a href="primitive-root.html">căn nguyên thủy</a> và theo định nghĩa nhóm là cyclic.</p>
 <h2 id="tong-quat-hoa">Tổng quát hóa<a class="headerlink" href="#tong-quat-hoa" title="Permanent link">&para;</a></h2>
 <p>Có một phiên bản ít được biết đến hơn của tương đương cuối cùng, cho phép tính <span class="arithmatex">$x^n \bmod m$</span> hiệu quả ngay cả khi <span class="arithmatex">$x$</span> và <span class="arithmatex">$m$</span> không nguyên tố cùng nhau.
 Với <span class="arithmatex">$x, m$</span> bất kỳ và <span class="arithmatex">$n \geq \log_2 m$</span>:</p>
@@ -8262,7 +8262,7 @@ Với <span class="arithmatex">$x, m$</span> bất kỳ và <span class="arithma
 <p>Chứng minh:</p>
 <p>Gọi <span class="arithmatex">$p_1, \dots, p_t$</span> là các ước nguyên tố chung của <span class="arithmatex">$x$</span> và <span class="arithmatex">$m$</span>, và <span class="arithmatex">$k_i$</span> là số mũ tương ứng của chúng trong <span class="arithmatex">$m$</span>.
 Từ đó đặt <span class="arithmatex">$a = p_1^{k_1} \dots p_t^{k_t}$</span>, khi đó <span class="arithmatex">$\frac{m}{a}$</span> nguyên tố cùng nhau với <span class="arithmatex">$x$</span>.
-Và gọi <span class="arithmatex">$k$</span> là số nhỏ nhất sao cho <span class="arithmatex">$a$</span> chia hết <span class="arithmatex">$x^k$</span>.
+Và gọi <span class="arithmatex">$k$</span> là số nhỏ nhất sao cho <span class="arithmatex">$a$</span> là ước của <span class="arithmatex">$x^k$</span>.
 Giả sử <span class="arithmatex">$n \ge k$</span>, ta có thể viết:</p>
 <div class="arithmatex">$$\begin{align}x^n \bmod m &amp;= \frac{x^k}{a}ax^{n-k}\bmod m \\
 &amp;= \frac{x^k}{a}\left(ax^{n-k}\bmod m\right) \bmod m \\
@@ -8275,8 +8275,9 @@ Thật vậy, nếu <span class="arithmatex">$b = cd + r$</span> với <span cla
 <p>Vì <span class="arithmatex">$x$</span> và <span class="arithmatex">$\frac{m}{a}$</span> nguyên tố cùng nhau, ta có thể áp dụng định lý Euler và nhận công thức hiệu quả sau (vì <span class="arithmatex">$k$</span> rất nhỏ; thực tế <span class="arithmatex">$k \le \log_2 m$</span>):</p>
 <div class="arithmatex">$$x^n \bmod m = x^k\left(x^{n-k \bmod \phi(\frac{m}{a})} \bmod \frac{m}{a}\right)\bmod m.$$</div>
 <p>Công thức này khó áp dụng trực tiếp, nhưng có thể dùng để phân tích hành vi của <span class="arithmatex">$x^n \bmod m$</span>. Ta thấy dãy lũy thừa <span class="arithmatex">$(x^1 \bmod m, x^2 \bmod m, x^3 \bmod m, \dots)$</span> đi vào một chu kỳ có độ dài <span class="arithmatex">$\phi\left(\frac{m}{a}\right)$</span> sau <span class="arithmatex">$k$</span> phần tử đầu tiên hoặc ít hơn.
-<span class="arithmatex">$\phi\left(\frac{m}{a}\right)$</span> chia hết <span class="arithmatex">$\phi(m)$</span> (vì <span class="arithmatex">$a$</span> và <span class="arithmatex">$\frac{m}{a}$</span> nguyên tố cùng nhau nên <span class="arithmatex">$\phi(a) \cdot \phi\left(\frac{m}{a}\right) = \phi(m)$</span>), vì vậy cũng có thể nói chu kỳ có độ dài <span class="arithmatex">$\phi(m)$</span>.
+<span class="arithmatex">$\phi\left(\frac{m}{a}\right)$</span> là ước của <span class="arithmatex">$\phi(m)$</span> (vì <span class="arithmatex">$a$</span> và <span class="arithmatex">$\frac{m}{a}$</span> nguyên tố cùng nhau nên <span class="arithmatex">$\phi(a) \cdot \phi\left(\frac{m}{a}\right) = \phi(m)$</span>), vì vậy cũng có thể nói chu kỳ có độ dài <span class="arithmatex">$\phi(m)$</span>.
 Và vì <span class="arithmatex">$\phi(m) \ge \log_2 m \ge k$</span>, ta suy ra công thức đơn giản hơn mong muốn:</p>
+<p><strong>Ghi chú bản dịch:</strong> Nguồn viết bất đẳng thức <span class="arithmatex">$\phi(m) \ge \log_2 m$</span>, nhưng bất đẳng thức này không đúng với mọi <span class="arithmatex">$m$</span>; chẳng hạn <span class="arithmatex">$\phi(6)=2&lt;\log_2 6$</span>. Bản dịch giữ nguyên mệnh đề của nguồn và đánh dấu điểm này để technical review thay vì âm thầm sửa nội dung thuật toán.</p>
 <div class="arithmatex">$$ x^n \equiv x^{\phi(m)} x^{(n - \phi(m)) \bmod \phi(m)} \bmod m \equiv x^{\phi(m)+[n \bmod \phi(m)]} \mod m.$$</div>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
