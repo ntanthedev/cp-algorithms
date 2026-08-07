@@ -192,6 +192,12 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | union by rank | hợp theo hạng |
 | inverse Ackermann function | hàm Ackermann nghịch đảo |
 | dynamic programming | quy hoạch động |
+| Fenwick Tree / Binary Indexed Tree | cây Fenwick; còn gọi cây chỉ số nhị phân (BIT) |
+| Sparse Table | Sparse Table |
+| sqrt decomposition | chia căn |
+| range query | truy vấn trên đoạn |
+| range minimum query (RMQ) | truy vấn giá trị nhỏ nhất trên đoạn (RMQ) |
+| idempotent function | hàm lũy đẳng |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
