@@ -91,7 +91,7 @@ Lưu ý rằng Định lý Thặng dư Trung Hoa còn bảo đảm chỉ tồn t
 Điều này cũng dễ chứng minh.
 
 Giả sử có hai nghiệm khác nhau $x$ và $y$.
-Vì $x \equiv a_i \pmod{m_i}$ và $y \equiv a_i \pmod{m_i}$, suy ra $x - y \equiv 0 \pmod{m_i}$, do đó $x - y \equiv 0 \pmod{m_1 m_2}$, hay tương đương $x \equiv y \pmod{m_1 m_2}$.
+Vì $x \equiv a_i \pmod{m_i}$ và $y \equiv a_i \pmod{m_i}$, suy ra $x − y \equiv 0 \pmod{m_i}$, do đó $x − y \equiv 0 \pmod{m_1 m_2}$, hay tương đương $x \equiv y \pmod{m_1 m_2}$.
 Vậy $x$ và $y$ thực chất là cùng một nghiệm.
 
 ## Lời giải cho trường hợp tổng quát
