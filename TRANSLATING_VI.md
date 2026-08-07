@@ -6,11 +6,12 @@ Tài liệu này là nguồn quy tắc chuẩn cho việc tạo, đồng bộ v�
 
 Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải hoàn tất các bước chuẩn bị sau:
 
-1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh và tạo branch dịch từ `master`.
+1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh và mặc định tạo branch dịch từ `master`.
+   - Ngoại lệ: nếu batch mới phụ thuộc trực tiếp vào glossary, validator hoặc quy tắc đang nằm trong một Draft PR dịch khác **đã xanh toàn bộ CI bắt buộc**, có thể tạo stacked branch từ head của PR đó và mở PR mới nhắm vào branch phụ thuộc. Sau khi PR phụ thuộc merge, phải retarget PR stacked về `master` trước khi merge.
 2. Chọn phạm vi có thể review:
-   - một bài dài hoặc có nhiều công thức/cấu trúc đặc biệt;
-   - tối đa ba bài cỡ vừa;
-   - từ ba đến năm bài ngắn thuộc cùng nhóm kiến thức.
+   - tối đa ba bài dài hoặc có nhiều công thức/cấu trúc đặc biệt;
+   - tối đa năm bài cỡ vừa;
+   - từ năm đến mười bài ngắn thuộc cùng nhóm kiến thức.
 3. Đọc toàn bộ từng file nguồn và kiểm kê:
    - front matter;
    - cấp và thứ tự heading;
@@ -30,6 +31,10 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
 6. Sao chép file nguồn thành file `.vi.md`, giữ nguyên cấu trúc, rồi mới thêm metadata dịch và dịch phần văn xuôi.
 7. Mọi bản dịch mới bắt đầu với `status: draft`.
 8. Mở PR ở trạng thái Draft nếu chưa có đủ kết quả CI.
+9. Trước khi tạo hoặc stack batch tiếp theo, kiểm tra tất cả PR dịch đang mở:
+   - xử lý và resolve mọi review thread/comment có hành động cụ thể trước khi tiếp tục;
+   - chỉ stack lên một PR khi head mới nhất của PR đó đã xanh toàn bộ CI bắt buộc và batch mới thực sự phụ thuộc vào glossary, validator hoặc quy tắc của PR đó;
+   - nếu muốn giữ batch stacked thành PR độc lập để review, **không merge PR stacked vào branch base khi base PR chưa merge**; hãy chờ base merge vào `master`, retarget PR stacked về `master`, chạy lại CI rồi mới merge.
 
 ### Preflight cục bộ
 
@@ -131,6 +136,16 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | segmented sieve | sàng phân đoạn |
 | connected component | thành phần liên thông |
 | shortest path | đường đi ngắn nhất |
+| single-source shortest path | đường đi ngắn nhất từ một nguồn |
+| relaxation | phép nới lỏng |
+| predecessor | đỉnh trước |
+| negative weight edge | cạnh có trọng số âm |
+| negative cycle | chu trình âm |
+| distance matrix | ma trận khoảng cách |
+| dense graph | đồ thị dày |
+| sparse graph | đồ thị thưa |
+| priority queue | hàng đợi ưu tiên |
+| Fibonacci heap | heap Fibonacci |
 | walk | hành trình |
 | cycle | chu trình |
 | directed acyclic graph | đồ thị có hướng không chu trình |
@@ -186,7 +201,8 @@ Lỗi `Service Unavailable` hoặc `Failed to resolve action download info` tạ
 
 ## 7. Checklist cho người dịch
 
-- [ ] Branch được tạo từ `master` mới nhất.
+- [ ] Branch được tạo từ `master` mới nhất, hoặc là stacked branch hợp lệ theo ngoại lệ ở mục 0.
+- [ ] Tất cả review thread/comment có hành động cụ thể trên các PR dịch đang mở đã được xử lý hoặc có lý do rõ ràng để chưa xử lý.
 - [ ] Phạm vi batch đúng giới hạn.
 - [ ] Đã đọc toàn bộ nguồn và kiểm kê cấu trúc.
 - [ ] Đã chốt thuật ngữ mới.
