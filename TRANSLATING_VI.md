@@ -237,6 +237,11 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | clause (SAT) | mệnh đề (clause) |
 | literal (SAT) | literal; biến hoặc phủ định của biến |
 | implication graph | đồ thị kéo theo (implication graph) |
+| lowest common ancestor (LCA) | tổ tiên chung gần nhất (LCA) |
+| binary lifting | nhảy nhị phân (binary lifting) |
+| Heavy-Light Decomposition (HLD) | Heavy-Light Decomposition (HLD); phân tách cây theo cạnh nặng/nhẹ |
+| heavy edge / light edge | cạnh nặng / cạnh nhẹ |
+| heavy path | đường nặng (heavy path) |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
