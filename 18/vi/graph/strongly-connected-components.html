@@ -8291,7 +8291,7 @@ Nếu <span class="arithmatex">$u$</span> đã được một lời gọi DFS n�
 <p>Cạnh ngược: đây là trường hợp đơn giản nhất; nếu <span class="arithmatex">$u$</span> là tổ tiên của <span class="arithmatex">$v$</span>, chúng đi tới được lẫn nhau và theo định nghĩa thuộc cùng một SCC.</p>
 </li>
 <li>
-<p>Cạnh xuôi: trước khi cạnh này được xử lý, đã có một chuỗi lời gọi DFS kết thúc mà không tìm thấy gốc của <span class="arithmatex">$u$</span>, sau đó quay về <span class="arithmatex">$v$</span> và lời gọi DFS của <span class="arithmatex">$v$</span> tiếp tục.
+<p>Cạnh xuôi: trước khi cạnh này được xử lý, đã có một chuỗi lời gọi DFS kết thúc mà không tìm thấy gốc của <span class="arithmatex">$u$</span>, sau đó quay về <span class="arithmatex">$v$</span> và lời gọi DFS tại đó tiếp tục.
 Khi đó gốc của <span class="arithmatex">$u$</span> là một tổ tiên mà quá trình gán chưa được thực hiện, nên nó là <span class="arithmatex">$v$</span> hoặc một tổ tiên của <span class="arithmatex">$v$</span>; do đó chúng phải thuộc cùng một SCC.</p>
 </li>
 <li>
