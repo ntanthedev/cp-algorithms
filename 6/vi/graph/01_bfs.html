@@ -8060,8 +8060,9 @@ Nhờ vậy, hàng đợi luôn được giữ theo thứ tự khoảng cách.</
 </code></pre></div>
 <h2 id="thuat-toan-dial">Thuật toán Dial<a class="headerlink" href="#thuat-toan-dial" title="Permanent link">&para;</a></h2>
 <p>Ta còn có thể mở rộng ý tưởng này khi cho phép trọng số cạnh lớn hơn.
-Nếu mọi cạnh của đồ thị có trọng số <span class="arithmatex">$\le k$</span>, thì khoảng cách của các đỉnh trong hàng đợi chỉ lệch tối đa <span class="arithmatex">$k$</span> so với khoảng cách từ <span class="arithmatex">$v$</span> đến nguồn.
-Vì vậy, ta có thể duy trì <span class="arithmatex">$k + 1$</span> bucket cho các đỉnh trong hàng đợi; mỗi khi bucket ứng với khoảng cách nhỏ nhất trở nên rỗng, ta dịch vòng để chuyển sang bucket có khoảng cách lớn hơn kế tiếp.
+Nếu mọi cạnh của đồ thị có trọng số <span class="arithmatex">$\le k$</span>, thì khoảng cách từ nguồn đến các đỉnh trong hàng đợi chỉ lệch tối đa <span class="arithmatex">$k$</span> so với <span class="arithmatex">$d[v]$</span>, tức khoảng cách từ nguồn đến đỉnh <span class="arithmatex">$v$</span>.</p>
+<p><strong>Ghi chú bản dịch:</strong> nguồn tiếng Anh viết “distance of <span class="arithmatex">$v$</span> to the source”, nhưng theo định nghĩa của <span class="arithmatex">$d[v]$</span> xuyên suốt bài, đại lượng ở đây là khoảng cách từ nguồn đến <span class="arithmatex">$v$</span>. Bản dịch dùng đúng chiều này để tránh nhầm trên đồ thị có hướng.</p>
+<p>Vì vậy, ta có thể duy trì <span class="arithmatex">$k + 1$</span> bucket cho các đỉnh trong hàng đợi; mỗi khi bucket ứng với khoảng cách nhỏ nhất trở nên rỗng, ta dịch vòng để chuyển sang bucket có khoảng cách lớn hơn kế tiếp.
 Phần mở rộng này được gọi là <strong>thuật toán Dial</strong> (Dial's algorithm).</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
