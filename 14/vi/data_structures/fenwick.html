@@ -8390,7 +8390,7 @@ g(7) = g(111_2) = 110_2 &amp;= 6 \\\\
 g(6) = g(110_2) = 100_2 &amp;= 4 \\\\
 g(4) = g(100_2) = 000_2 &amp;= 0 \\\\
 \end{align}$$</div>
-<p>Có thể tách bit <span class="arithmatex">$1$</span> cuối cùng bằng <span class="arithmatex">$i ~\&amp;~ (-i)$</span>, nên thao tác được viết thành:</p>
+<p>Có thể tách bit 1 cuối cùng bằng <span class="arithmatex">$i ~\&amp;~ (-i)$</span>, nên thao tác được viết thành:</p>
 <div class="arithmatex">$$g(i) = i - (i ~\&amp;~ (-i)).$$</div>
 <p>Và không khó để thấy rằng khi muốn cập nhật <span class="arithmatex">$A[j]$</span>, ta cần thay đổi mọi giá trị <span class="arithmatex">$T[j]$</span> trong dãy <span class="arithmatex">$i,~ h(i),~ h(h(i)),~ \dots$</span>, trong đó <span class="arithmatex">$h(i)$</span> được định nghĩa là:</p>
 <div class="arithmatex">$$h(i) = i + (i ~\&amp;~ (-i)).$$</div>
