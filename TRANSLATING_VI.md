@@ -6,8 +6,12 @@ Tài liệu này là nguồn quy tắc chuẩn cho việc tạo, đồng bộ v�
 
 Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải hoàn tất các bước chuẩn bị sau:
 
-1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh và mặc định tạo branch dịch từ `master`.
-   - Ngoại lệ: nếu batch mới phụ thuộc trực tiếp vào glossary, validator hoặc quy tắc đang nằm trong một Draft PR dịch khác **đã xanh toàn bộ CI bắt buộc**, có thể tạo stacked branch từ head của PR đó và mở PR mới nhắm vào branch phụ thuộc. Sau khi PR phụ thuộc merge, phải retarget PR stacked về `master` trước khi merge.
+1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh.
+   - Chỉ duy trì một nhánh làm việc lâu dài cho bản dịch: `agent/vi-work`, và tối đa một PR dịch đang mở tại một thời điểm.
+   - Nếu đang có một PR dịch cũ dùng tên branch khác, hoàn tất PR đó trước; không mở batch mới và không reset branch đang chứa thay đổi chưa merge.
+   - Sau khi PR đã merge, chỉ reset/di chuyển `agent/vi-work` về `master` mới nhất khi đã xác nhận branch không còn commit riêng chưa merge.
+   - Không force-push hoặc reset `master`.
+   - Stacked PR chỉ dùng trong trường hợp phụ thuộc kỹ thuật thực sự không thể tránh; phải giải thích lý do trước và vẫn không được để nhiều batch dịch độc lập cùng mở nếu không cần thiết.
 2. Chọn phạm vi có thể review:
    - tối đa ba bài dài hoặc có nhiều công thức/cấu trúc đặc biệt;
    - tối đa năm bài cỡ vừa;
@@ -31,11 +35,12 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
 6. Sao chép file nguồn thành file `.vi.md`, giữ nguyên cấu trúc, rồi mới thêm metadata dịch và dịch phần văn xuôi.
 7. Mọi bản dịch mới bắt đầu với `status: draft`.
 8. Mở PR ở trạng thái Draft nếu chưa có đủ kết quả CI.
-9. Trước khi tạo hoặc stack batch tiếp theo, kiểm tra tất cả PR dịch đang mở:
+9. Trước khi bắt đầu batch tiếp theo, kiểm tra tất cả PR dịch đang mở:
+   - nếu còn một PR dịch chưa merge, **không bắt đầu batch mới**;
    - xử lý và resolve mọi review thread/comment có hành động cụ thể trước khi tiếp tục;
-   - chỉ stack lên một PR khi head mới nhất của PR đó đã xanh toàn bộ CI bắt buộc và batch mới thực sự phụ thuộc vào glossary, validator hoặc quy tắc của PR đó;
-   - nếu muốn giữ batch stacked thành PR độc lập để review, **không merge PR stacked vào branch base khi base PR chưa merge**; hãy chờ base merge vào `master`, retarget PR stacked về `master`, chạy lại CI rồi mới merge.
-10. Sau commit cuối cùng của batch và trước khi báo công việc hoàn tất, **kiểm tra lại** tất cả PR dịch đang mở và review mới nhất. Reviewer tự động như GitHub Copilot có thể gửi comment sau lần kiểm tra ban đầu; mọi comment có hành động cụ thể xuất hiện trong lúc làm batch phải được xử lý hoặc ghi rõ blocker trước khi bàn giao.
+   - kiểm tra cả inline review threads, review submissions và PR conversation comments;
+   - reviewer tự động như GitHub Copilot có thể gửi comment trễ, nên trạng thái sạch phải được xác nhận lại sau commit cuối cùng và sau CI.
+10. Sau commit cuối cùng của batch và trước khi báo công việc hoàn tất, **kiểm tra lại** tất cả PR dịch đang mở và review mới nhất. Mọi comment có hành động cụ thể xuất hiện trong lúc làm batch phải được xử lý hoặc ghi rõ blocker trước khi bàn giao.
 
 ### Preflight cục bộ
 
@@ -132,18 +137,24 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | time complexity | độ phức tạp thời gian |
 | space complexity | độ phức tạp bộ nhớ |
 | amortized complexity | độ phức tạp khấu hao |
+| associativity | tính kết hợp |
 | greatest common divisor | ước chung lớn nhất |
 | least common multiple | bội chung nhỏ nhất |
 | extended Euclidean algorithm | thuật toán Euclid mở rộng |
 | Bézout's identity / lemma | đồng nhất thức / bổ đề Bézout |
 | coprime / relatively prime | nguyên tố cùng nhau |
+| pairwise coprime | đôi một nguyên tố cùng nhau |
 | congruence | đồng dư |
 | modulus | mô-đun |
 | modular multiplicative inverse | nghịch đảo nhân mô-đun; sau lần đầu có thể dùng nghịch đảo mô-đun |
 | linear Diophantine equation | phương trình Diophantine tuyến tính |
 | binary exponentiation | lũy thừa nhị phân |
-| Euler's totient function | hàm phi Euler |
+| Euler's totient function | phi hàm Euler; còn gọi hàm phi Euler |
 | Euclidean division | phép chia Euclid |
+| Chinese Remainder Theorem | Định lý Thặng dư Trung Hoa (CRT); cũng gặp Định lý số dư Trung Hoa |
+| multiplicative order | bậc nhân |
+| primitive root | căn nguyên thủy |
+| mixed radix representation | biểu diễn cơ số hỗn hợp |
 | Sieve of Eratosthenes | Sàng Eratosthenes |
 | segmented sieve | sàng phân đoạn |
 | connected component | thành phần liên thông |
@@ -186,6 +197,7 @@ Validator so sánh giữa nguồn và bản dịch:
 - inline code ngoài fenced code block;
 - đích Markdown link và image;
 - số lượng delimiter công thức khối `$$`;
+- với mỗi file `.vi.md` được thêm hoặc sửa trong PR/commit hiện tại, từng biểu thức LaTeX phải giữ nguyên nội dung và số lần xuất hiện so với nguồn; validator so sánh theo multiset nên cho phép đổi thứ tự các biểu thức khi cấu trúc câu tiếng Việt yêu cầu; nội dung được đánh dấu `Ghi chú bản dịch` không được coi là công thức của nguồn;
 - Jinja/MkDocs expression;
 - cấu trúc HTML và thuộc tính không thể dịch;
 - số lượng, thứ tự và mức thụt lề của MkDocs tabs;
@@ -197,7 +209,7 @@ Nếu cần thay đổi cấu trúc, phải giải thích và cập nhật valid
 
 ### `Vietnamese translations`
 
-Chạy validator cấu trúc bằng `scripts/check_vi_translations.py`. Workflow này phải nhẹ và không build MkDocs lần thứ hai.
+Chạy validator cấu trúc bằng `scripts/check_vi_translations.py`. Workflow này phải nhẹ và không build MkDocs lần thứ hai. Trong pull request, checkout đủ lịch sử tối thiểu để validator xác định chính xác các file `.vi.md` đã thay đổi và áp kiểm tra LaTeX nghiêm ngặt cho chúng mà không biến nợ định dạng của bản dịch legacy chưa chạm tới thành blocker của PR mới.
 
 ### `Vietnamese translation sync`
 
@@ -221,8 +233,9 @@ Lỗi `Service Unavailable` hoặc `Failed to resolve action download info` tạ
 
 ## 7. Checklist cho người dịch
 
-- [ ] Branch được tạo từ `master` mới nhất, hoặc là stacked branch hợp lệ theo ngoại lệ ở mục 0.
-- [ ] Tất cả review thread/comment có hành động cụ thể trên các PR dịch đang mở đã được xử lý hoặc có lý do rõ ràng để chưa xử lý.
+- [ ] Dùng `agent/vi-work` làm branch dịch lâu dài; nếu đang hoàn tất một PR legacy dùng branch khác thì không mở batch mới cho tới khi PR đó merge.
+- [ ] Tối đa một PR dịch đang mở.
+- [ ] Tất cả review thread/comment có hành động cụ thể trên PR dịch đang mở đã được xử lý hoặc có lý do rõ ràng để chưa xử lý.
 - [ ] Phạm vi batch đúng giới hạn.
 - [ ] Đã đọc toàn bộ nguồn và kiểm kê cấu trúc.
 - [ ] Đã chốt thuật ngữ mới.
