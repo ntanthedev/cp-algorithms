@@ -8224,8 +8224,8 @@ Describe the issue of this article in detail.
 </ul>
 </li>
 </ul>
-<p>Như vậy ta đã chứng minh mỗi lần lặp của vòng bên trong đều làm con trỏ <span class="arithmatex">$r$</span> tiến sang phải. Vì <span class="arithmatex">$r$</span> không thể lớn hơn <span class="arithmatex">$n-1$</span>, vòng lặp bên trong sẽ không chạy quá <span class="arithmatex">$n-1$</span> lần.</p>
-<p><strong>Ghi chú bản dịch:</strong> Vì đoạn được biểu diễn theo dạng nửa mở [l, r), biên phải r có thể bằng n. Phát biểu nguồn về giới hạn n-1 lệch một đơn vị; lập luận tuyến tính chỉ cần r tăng đơn điệu và không vượt quá n.</p>
+<p>Như vậy ta đã chứng minh mỗi lần lặp của vòng bên trong đều làm con trỏ <span class="arithmatex">$r$</span> tiến sang phải. Vì biên phải r tăng mỗi lần và không vượt quá n, tổng số lần lặp của vòng bên trong là tuyến tính theo độ dài chuỗi.</p>
+<p><strong>Ghi chú bản dịch:</strong> Nguồn kết luận rằng r không thể lớn hơn n-1 và vì thế vòng lặp bên trong không chạy quá n-1 lần. Với cách biểu diễn đoạn nửa mở [l, r), r thực ra có thể bằng n. Cận đúng là r không vượt quá n; điều này vẫn đủ để suy ra độ phức tạp tuyến tính.</p>
 <p>Phần còn lại của thuật toán hiển nhiên chạy trong <span class="arithmatex">$O(n)$</span>, do đó toàn bộ thuật toán tính hàm Z chạy trong thời gian tuyến tính.</p>
 <h2 id="ung-dung">Ứng dụng<a class="headerlink" href="#ung-dung" title="Permanent link">&para;</a></h2>
 <p>Tiếp theo ta xét một số ứng dụng cụ thể của hàm Z.</p>
@@ -8258,7 +8258,7 @@ Describe the issue of this article in detail.
 <li><a href="https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=588&amp;page=show_problem&amp;problem=4450">LA 6439 - Pasti Pas!</a></li>
 <li><a href="https://www.codechef.com/problems/CHSTR">Codechef - Chef and Strings</a></li>
 <li><a href="http://codeforces.com/problemset/problem/432/D">Codeforces - Prefixes and Suffixes</a></li>
-<li><a href="https://codeforces.com/problemset/problem/1984/D">Codeforces - "a" String Problem</a></li>
+<li><a href="https://codeforces.com/contest/1984/problem/D">Codeforces - "a" String Problem</a></li>
 </ul>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
