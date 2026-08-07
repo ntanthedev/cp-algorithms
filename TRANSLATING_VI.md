@@ -208,6 +208,13 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | pattern (string matching) | mẫu |
 | text (string matching) | văn bản |
 | automaton | automaton; lần đầu có thể chú thích máy trạng thái hữu hạn |
+| string matching | so khớp chuỗi |
+| palindrome | xâu đối xứng |
+| palindromic substring | xâu con đối xứng |
+| trie | cây tiền tố (trie) |
+| suffix link | liên kết hậu tố |
+| finite deterministic automaton | automaton hữu hạn tất định |
+| exit link | exit link; liên kết tới đỉnh output gần nhất theo các suffix link |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
