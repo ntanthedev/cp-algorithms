@@ -35,6 +35,7 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
    - xử lý và resolve mọi review thread/comment có hành động cụ thể trước khi tiếp tục;
    - chỉ stack lên một PR khi head mới nhất của PR đó đã xanh toàn bộ CI bắt buộc và batch mới thực sự phụ thuộc vào glossary, validator hoặc quy tắc của PR đó;
    - nếu muốn giữ batch stacked thành PR độc lập để review, **không merge PR stacked vào branch base khi base PR chưa merge**; hãy chờ base merge vào `master`, retarget PR stacked về `master`, chạy lại CI rồi mới merge.
+10. Sau commit cuối cùng của batch và trước khi báo công việc hoàn tất, **kiểm tra lại** tất cả PR dịch đang mở và review mới nhất. Reviewer tự động như GitHub Copilot có thể gửi comment sau lần kiểm tra ban đầu; mọi comment có hành động cụ thể xuất hiện trong lúc làm batch phải được xử lý hoặc ghi rõ blocker trước khi bàn giao.
 
 ### Preflight cục bộ
 
@@ -133,6 +134,16 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | amortized complexity | độ phức tạp khấu hao |
 | greatest common divisor | ước chung lớn nhất |
 | least common multiple | bội chung nhỏ nhất |
+| extended Euclidean algorithm | thuật toán Euclid mở rộng |
+| Bézout's identity / lemma | đồng nhất thức / bổ đề Bézout |
+| coprime / relatively prime | nguyên tố cùng nhau |
+| congruence | đồng dư |
+| modulus | mô-đun |
+| modular multiplicative inverse | nghịch đảo nhân mô-đun; sau lần đầu có thể dùng nghịch đảo mô-đun |
+| linear Diophantine equation | phương trình Diophantine tuyến tính |
+| binary exponentiation | lũy thừa nhị phân |
+| Euler's totient function | hàm phi Euler |
+| Euclidean division | phép chia Euclid |
 | Sieve of Eratosthenes | Sàng Eratosthenes |
 | segmented sieve | sàng phân đoạn |
 | connected component | thành phần liên thông |
@@ -223,6 +234,7 @@ Lỗi `Service Unavailable` hoặc `Failed to resolve action download info` tạ
 - [ ] Chạy validator, staleness check và strict build.
 - [ ] Kiểm tra trang đã render.
 - [ ] Mỗi bài nằm trong commit riêng khi có thể.
+- [ ] Đã kiểm tra lại review thread/comment sau commit cuối cùng của batch và xử lý mọi comment mới có hành động cụ thể.
 - [ ] PR ở trạng thái Draft cho đến khi review xong.
 
 ## 8. Checklist review kỹ thuật
