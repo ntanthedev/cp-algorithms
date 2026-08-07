@@ -31,7 +31,7 @@ Gọi $tin[v]$ là thời điểm vào đỉnh $v$. Ta xây dựng mảng $low[v
 
 $$low[v] = \min \begin{cases} tin[v] \\ tin[p] &\text{ for all }p\text{ for which }(v, p)\text{ is a back edge} \\ low[to]& \text{ for all }to\text{ for which }(v, to)\text{ is a tree edge} \end{cases}$$
 
-Khi đó, tồn tại một cạnh ngược từ đỉnh $v$ hoặc một hậu duệ của nó tới một tổ tiên của $v$ khi và chỉ khi $v$ có một đỉnh con $to$ sao cho $low[to] < tin[v]$. Nếu $low[to] = tin[v]$ thì cạnh ngược đi thẳng về $v$; nếu không, cạnh ngược đi tới một tổ tiên của $v$.
+Khi đó, tồn tại một cạnh ngược từ đỉnh $v$ hoặc một hậu duệ của nó tới một tổ tiên của nó khi và chỉ khi $v$ có một đỉnh con $to$ sao cho $low[to] < tin[v]$. Nếu $low[to] = tin[v]$ thì cạnh ngược đi thẳng về $v$; nếu không, cạnh ngược đi tới một tổ tiên của $v$.
 
 Do đó, đỉnh $v$ trong cây DFS là một đỉnh khớp khi và chỉ khi $low[to] \geq tin[v]$.
 
