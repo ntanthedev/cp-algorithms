@@ -25,7 +25,9 @@ Ta sử dụng phép quy bài toán LCA về bài toán RMQ kinh điển.
 Ta duyệt toàn bộ các đỉnh của cây bằng [DFS](depth-first-search.md), đồng thời lưu một mảng chứa thứ tự các đỉnh được thăm và độ cao của chúng.
 LCA của hai đỉnh $u$ và $v$ chính là đỉnh có độ cao nhỏ nhất nằm giữa hai lần xuất hiện tương ứng của $u$ và $v$ trong Euler tour.
 
-Hình dưới đây minh họa một Euler tour có thể có của một đồ thị; danh sách phía dưới cho biết các đỉnh được thăm và độ cao của chúng.
+Hình dưới đây minh họa một Euler tour có thể có của một cây; danh sách phía dưới cho biết các đỉnh được thăm và độ cao của chúng.
+
+**Ghi chú bản dịch:** Nguồn tiếng Anh ở câu trên dùng “a graph”, nhưng toàn bộ ngữ cảnh của bài LCA và phép duyệt đang xét một cây. Vì vậy hình minh họa phải được hiểu là Euler tour của cây; lỗi diễn đạt này đã được đề xuất sửa trong upstream PR #1679.
 
 <div style="text-align: center;">
   <img src="LCA_Euler.png" alt="LCA_Euler_Tour">
