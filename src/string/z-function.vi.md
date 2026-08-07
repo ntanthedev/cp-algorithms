@@ -58,7 +58,7 @@ Rõ ràng đây chưa phải cài đặt hiệu quả. Tiếp theo ta sẽ xây 
 
 Ta sẽ duy trì **các chỉ số $[l, r)$ của đoạn khớp nằm xa bên phải nhất**. Nghĩa là trong mọi đoạn đã phát hiện, ta giữ đoạn có điểm kết thúc xa bên phải nhất. Có thể xem chỉ số $r$ là "biên" mà thuật toán đã quét tới trong chuỗi $s$; mọi thứ bên phải đó vẫn chưa được biết.
 
-Nếu chỉ số hiện tại (vị trí cần tính giá trị hàm Z tiếp theo) là $i$, ta có hai trường hợp:
+Nếu chỉ số hiện tại $i$ (vị trí cần tính giá trị hàm Z tiếp theo) là $i$, ta có hai trường hợp:
 
 *   $i \geq r$ -- vị trí hiện tại nằm **ngoài** phần đã xử lý.
 
@@ -181,7 +181,7 @@ Các ứng dụng này phần lớn tương tự những ứng dụng của [hà
 
 Để giải, ta tạo chuỗi mới $s = p + \diamond + t$, tức nối $p$ và $t$ nhưng chèn thêm ký tự phân cách $\diamond$ ở giữa (chọn $\diamond$ sao cho chắc chắn không xuất hiện trong $p$ hay $t$).
 
-Tính hàm Z của $s$. Sau đó, với mỗi $i$ trong đoạn $[0; \; \operatorname{length}(t) - 1]$, xét giá trị tương ứng $k = z[i + \operatorname{length}(p) + 1]$. Nếu $k$ bằng $\operatorname{length}(p)$ thì có một lần xuất hiện của $p$ tại vị trí thứ $i$ trong $t$; nếu không thì không có lần xuất hiện nào của $p$ tại vị trí đó.
+Tính hàm Z của $s$. Sau đó, với mỗi $i$ trong đoạn $[0; \; \operatorname{length}(t) - 1]$, xét giá trị tương ứng $k = z[i + \operatorname{length}(p) + 1]$. Nếu $k$ bằng $\operatorname{length}(p)$ thì có một lần xuất hiện của $p$ tại vị trí thứ $i$ trong văn bản $t$; nếu không thì không có lần xuất hiện nào của $p$ tại vị trí đó.
 
 Thời gian chạy (và lượng bộ nhớ sử dụng) là $O(\operatorname{length}(t) + \operatorname{length}(p))$.
 
