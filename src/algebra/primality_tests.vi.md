@@ -17,7 +17,7 @@ Bài viết này trình bày nhiều thuật toán để xác định một số
 Theo định nghĩa, một số nguyên tố không có ước nào ngoài $1$ và chính nó.
 Một hợp số có ít nhất một ước khác, gọi là $d$.
 Hiển nhiên $\frac{n}{d}$ cũng là một ước của $n$.
-Dễ thấy либо $d \le \sqrt{n}$ hoặc $\frac{n}{d} \le \sqrt{n}$, vì vậy một trong hai ước $d$ và $\frac{n}{d}$ không vượt quá $\sqrt{n}$.
+Dễ thấy $d \le \sqrt{n}$ hoặc $\frac{n}{d} \le \sqrt{n}$, vì vậy một trong hai ước $d$ và $\frac{n}{d}$ không vượt quá $\sqrt{n}$.
 Ta có thể dùng nhận xét này để kiểm tra tính nguyên tố.
 
 Ta thử tìm một ước không tầm thường bằng cách kiểm tra xem có số nào từ $2$ đến $\sqrt{n}$ là ước của $n$ hay không.
