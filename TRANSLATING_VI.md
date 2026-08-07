@@ -6,11 +6,12 @@ Tài liệu này là nguồn quy tắc chuẩn cho việc tạo, đồng bộ v�
 
 Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải hoàn tất các bước chuẩn bị sau:
 
-1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh và tạo branch dịch từ `master`.
+1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh và mặc định tạo branch dịch từ `master`.
+   - Ngoại lệ: nếu batch mới phụ thuộc trực tiếp vào glossary, validator hoặc quy tắc đang nằm trong một Draft PR dịch khác **đã xanh toàn bộ CI bắt buộc**, có thể tạo stacked branch từ head của PR đó và mở PR mới nhắm vào branch phụ thuộc. Sau khi PR phụ thuộc merge, phải retarget PR stacked về `master` trước khi merge.
 2. Chọn phạm vi có thể review:
-   - một bài dài hoặc có nhiều công thức/cấu trúc đặc biệt;
-   - tối đa ba bài cỡ vừa;
-   - từ ba đến năm bài ngắn thuộc cùng nhóm kiến thức.
+   - tối đa ba bài dài hoặc có nhiều công thức/cấu trúc đặc biệt;
+   - tối đa năm bài cỡ vừa;
+   - từ năm đến mười bài ngắn thuộc cùng nhóm kiến thức.
 3. Đọc toàn bộ từng file nguồn và kiểm kê:
    - front matter;
    - cấp và thứ tự heading;
@@ -190,7 +191,7 @@ Lỗi `Service Unavailable` hoặc `Failed to resolve action download info` tạ
 
 ## 7. Checklist cho người dịch
 
-- [ ] Branch được tạo từ `master` mới nhất.
+- [ ] Branch được tạo từ `master` mới nhất, hoặc là stacked branch hợp lệ theo ngoại lệ ở mục 0.
 - [ ] Phạm vi batch đúng giới hạn.
 - [ ] Đã đọc toàn bộ nguồn và kiểm kê cấu trúc.
 - [ ] Đã chốt thuật ngữ mới.
