@@ -27,7 +27,7 @@ Luồng trên một cạnh không được vượt quá dung lượng của cạ
 
 $$f(e) \le c(e)$$
 
-Với mỗi đỉnh $u$ ngoại trừ nguồn và đích, tổng luồng đi vào phải bằng tổng luồng đi ra.
+Với mỗi đỉnh $u$ ngoại trừ nguồn và đích, tổng luồng đi vào đỉnh $u$ phải bằng tổng luồng đi ra.
 
 $$\sum_{(v, u) \in E} f((v, u)) = \sum_{(u, v) \in E} f((u, v))$$
 
