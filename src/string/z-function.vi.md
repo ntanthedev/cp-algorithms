@@ -163,9 +163,9 @@ Ta sẽ chứng minh rằng **mỗi lần lặp** của vòng `while` đều là
 
           Trường hợp này không thể xảy ra theo định nghĩa của $z_0$.
 
-Như vậy ta đã chứng minh mỗi lần lặp của vòng bên trong đều làm con trỏ $r$ tiến sang phải. Vì biên phải r tăng mỗi lần và không vượt quá n, tổng số lần lặp của vòng bên trong là tuyến tính theo độ dài chuỗi.
+Như vậy ta đã chứng minh mỗi lần lặp của vòng bên trong đều làm con trỏ $r$ tiến sang phải. Nguồn viết cận ở bước này là $r$ không thể lớn hơn $n-1$, rồi từ đó kết luận vòng lặp bên trong không chạy quá $n-1$ lần. Với cách biểu diễn đoạn nửa mở [l, r), cận đúng là r không vượt quá n; điều này vẫn đủ để suy ra tổng số lần lặp là tuyến tính.
 
-**Ghi chú bản dịch:** Nguồn kết luận rằng r không thể lớn hơn n-1 và vì thế vòng lặp bên trong không chạy quá n-1 lần. Với cách biểu diễn đoạn nửa mở [l, r), r thực ra có thể bằng n. Cận đúng là r không vượt quá n; điều này vẫn đủ để suy ra độ phức tạp tuyến tính.
+**Ghi chú bản dịch:** Phát biểu nguồn ở câu trên lệch một đơn vị: biên phải r thực ra có thể bằng n. Cận đúng là r không vượt quá n, nên kết luận độ phức tạp tuyến tính vẫn không thay đổi.
 
 Phần còn lại của thuật toán hiển nhiên chạy trong $O(n)$, do đó toàn bộ thuật toán tính hàm Z chạy trong thời gian tuyến tính.
 
@@ -220,4 +220,4 @@ Chứng minh của tính chất này giống lời giải dùng [hàm tiền t�
 * [LA 6439 - Pasti Pas!](https://icpcarchive.ecs.baylor.edu/index.php?option=com_onlinejudge&Itemid=8&category=588&page=show_problem&problem=4450)
 * [Codechef - Chef and Strings](https://www.codechef.com/problems/CHSTR)
 * [Codeforces - Prefixes and Suffixes](http://codeforces.com/problemset/problem/432/D)
-* [Codeforces - "a" String Problem](https://codeforces.com/contest/1984/problem/D)
+* [Codeforces - "a" String Problem](https://codeforces.com/problemset/problem/1984/D)
