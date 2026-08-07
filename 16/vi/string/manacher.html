@@ -8113,7 +8113,7 @@ Describe the issue of this article in detail.
 </code></pre></div>
 <p>Hai ký tự chặn <code>$</code> và <code>^</code> được dùng để không phải xử lý riêng hai đầu chuỗi.</p>
 <h2 id="thuat-toan-manacher">Thuật toán Manacher<a class="headerlink" href="#thuat-toan-manacher" title="Permanent link">&para;</a></h2>
-<p>Ta mô tả thuật toán tìm mọi xâu con đối xứng có độ dài lẻ, tức tính từng giá trị <span class="arithmatex">$d_{odd}[i]$</span> trong $d_{odd}[].</p>
+<p>Ta mô tả thuật toán tìm mọi xâu con đối xứng có độ dài lẻ, tức tính từng giá trị <span class="arithmatex">$d_{odd}[i]$</span> trong <span class="arithmatex">$d_{odd}[]$</span>.</p>
 <p>Để tính nhanh, ta duy trì <strong>hai biên loại trừ <span class="arithmatex">$(l, r)$</span></strong> của xâu con đối xứng nằm xa nhất về bên phải đã tìm thấy (tức xâu con đối xứng ngoài cùng bên phải hiện tại là <span class="arithmatex">$s[l+1] s[l+2] \dots s[r-1]$</span>). Ban đầu đặt <span class="arithmatex">$l = 0, r = 1$</span>, tương ứng với chuỗi rỗng.</p>
 <p><strong>Ghi chú bản dịch:</strong> Với quy ước đoạn nửa mở ở đây, r là biên phải loại trừ, nên chỉ số cuối của xâu đối xứng là r − 1. Vì vậy, câu nguồn phía dưới nói rằng r “biểu diễn chỉ số cuối” cần được hiểu là đang cập nhật biên phải của xâu đối xứng, không phải r chính là chỉ số ký tự cuối.</p>
 <p>Giả sử ta muốn tính <span class="arithmatex">$d_{odd}[i]$</span> cho vị trí <span class="arithmatex">$i$</span> tiếp theo, và mọi giá trị trước đó trong <span class="arithmatex">$d_{odd}[]$</span> đã được tính. Ta làm như sau:</p>
