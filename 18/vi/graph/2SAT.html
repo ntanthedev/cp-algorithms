@@ -8019,7 +8019,7 @@ Sau đây là một ví dụ về bài toán 2-SAT.
 Hãy tìm cách gán <span class="arithmatex">$a, b, c$</span> sao cho công thức sau đúng:</p>
 <div class="arithmatex">$$(a \lor \lnot b) \land (\lnot a \lor b) \land (\lnot a \lor \lnot b) \land (a \lor \lnot c)$$</div>
 <p>SAT là bài toán NP-complete và hiện chưa có thuật toán hiệu quả đã biết để giải trường hợp tổng quát.
-Tuy nhiên, 2SAT có thể được giải hiệu quả trong <span class="arithmatex">$O(n + m)$</span>, với <span class="arithmatex">$n$</span> là số biến và <span class="arithmatex">$m$</span> là số mệnh đề.</p>
+Tuy nhiên, 2-SAT có thể được giải hiệu quả trong <span class="arithmatex">$O(n + m)$</span>, với <span class="arithmatex">$n$</span> là số biến và <span class="arithmatex">$m$</span> là số mệnh đề.</p>
 <h2 id="thuat-toan">Thuật toán:<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
 <p>Trước hết, ta cần chuyển bài toán sang một dạng khác gọi là dạng chuẩn kéo theo (implicative normal form).
 Lưu ý rằng biểu thức <span class="arithmatex">$a \lor b$</span> tương đương với <span class="arithmatex">$\lnot a \Rightarrow b \land \lnot b \Rightarrow a$</span> (nếu một trong hai biến sai thì biến còn lại bắt buộc phải đúng).</p>
