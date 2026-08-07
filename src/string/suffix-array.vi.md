@@ -396,7 +396,7 @@ $$\sum_{i=0}^{n-1} (n - p[i]) - \sum_{i=0}^{n-2} \text{lcp}[i] = \frac{n^2 + n}{
 * [Codeforces - Little Elephant and Strings](http://codeforces.com/problemset/problem/204/E)
 * [SPOJ - Ada and Terramorphing](http://www.spoj.com/problems/ADAPHOTO/)
 * [SPOJ - Ada and Substring](http://www.spoj.com/problems/ADASTRNG/)
-* [UVA - 1227 - The longest constant gene](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=3668)
+* [UVA - 1227 - The longest constant gene](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=3668)
 * [SPOJ - Longest Common Substring](http://www.spoj.com/problems/LCS/en/)
 * [UVA 11512 - GATTACA](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2507)
 * [LA 7502 - Suffixes and Palindromes](https://vjudge.net/problem/UVALive-7502)
