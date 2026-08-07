@@ -330,8 +330,8 @@ Nhiệm vụ chính còn lại là **xây dựng** mảng $\text{lcp}$ này.
 Ta dùng **thuật toán Kasai**, có thể tính mảng trong $O(n)$ thời gian.
 
 Xét hai hậu tố kề nhau trong thứ tự đã sắp xếp, tức thứ tự của mảng hậu tố.
-Gọi vị trí bắt đầu của chúng là $i$ và $j$, và LCP của chúng bằng $k > 0$.
-Nếu bỏ ký tự đầu của cả hai hậu tố — tức xét hậu tố $i+1$ và $j+1$ — thì hiển nhiên LCP của chúng là $k - 1$.
+Gọi vị trí bắt đầu của chúng là $i$ và $j$, và $\text{lcp}$ của chúng bằng $k > 0$.
+Nếu bỏ ký tự đầu của cả hai hậu tố — tức xét hậu tố $i+1$ và $j+1$ — thì hiển nhiên $\text{lcp}$ của chúng là $k - 1$.
 Tuy nhiên, ta không thể dùng ngay giá trị này để ghi vào mảng $\text{lcp}$, vì hai hậu tố mới có thể không còn đứng cạnh nhau trong thứ tự đã sắp xếp.
 Hậu tố $i+1$ chắc chắn nhỏ hơn hậu tố $j+1$, nhưng có thể có các hậu tố khác nằm giữa chúng.
 Dù vậy, vì LCP giữa hai hậu tố bằng giá trị nhỏ nhất trên các bước chuyển giữa chúng, ta biết LCP của mọi cặp kề nhau trong khoảng này ít nhất là $k-1$, đặc biệt là giữa $i+1$ và hậu tố kế tiếp.
@@ -396,7 +396,7 @@ $$\sum_{i=0}^{n-1} (n - p[i]) - \sum_{i=0}^{n-2} \text{lcp}[i] = \frac{n^2 + n}{
 * [Codeforces - Little Elephant and Strings](http://codeforces.com/problemset/problem/204/E)
 * [SPOJ - Ada and Terramorphing](http://www.spoj.com/problems/ADAPHOTO/)
 * [SPOJ - Ada and Substring](http://www.spoj.com/problems/ADASTRNG/)
-* [UVA - 1227 - The longest constant gene](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=3668)
+* [UVA - 1227 - The longest constant gene](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=24&page=show_problem&problem=3668)
 * [SPOJ - Longest Common Substring](http://www.spoj.com/problems/LCS/en/)
 * [UVA 11512 - GATTACA](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2507)
 * [LA 7502 - Suffixes and Palindromes](https://vjudge.net/problem/UVALive-7502)
