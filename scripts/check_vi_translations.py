@@ -192,23 +192,24 @@ def counter_difference(expected: collections.Counter[str], actual: collections.C
     return f"missing: {format_counter(missing)}; extra: {format_counter(extra)}"
 
 
-def token_line_numbers(pattern: re.Pattern[str], text: str, token: str) -> list[int]:
-    """Return 1-based line numbers for exact regex matches of token."""
-    return [
-        text.count("\n", 0, match.start()) + 1
-        for match in pattern.finditer(text)
-        if match.group(0) == token
-    ]
+def token_line_number_map(pattern: re.Pattern[str], text: str) -> dict[str, list[int]]:
+    """Index exact regex matches by token with 1-based line numbers in one scan."""
+    locations: dict[str, list[int]] = collections.defaultdict(list)
+    for match in pattern.finditer(text):
+        locations[match.group(0)].append(text.count("\n", 0, match.start()) + 1)
+    return dict(locations)
 
 
 def math_mismatch_locations(source_text: str, translated_text: str, source_math: collections.Counter[str], translated_math: collections.Counter[str]) -> str:
     """Show locations for mismatched math tokens without changing validation semantics."""
     tokens = sorted(set((source_math - translated_math).keys()) | set((translated_math - source_math).keys()))
+    source_locations = token_line_number_map(MATH_RE, source_text)
+    translated_locations = token_line_number_map(MATH_RE, translated_text)
     parts: list[str] = []
     for token in tokens:
         parts.append(
-            f"{token!r}: source lines {token_line_numbers(MATH_RE, source_text, token)}, "
-            f"translation lines {token_line_numbers(MATH_RE, translated_text, token)}"
+            f"{token!r}: source lines {source_locations.get(token, [])}, "
+            f"translation lines {translated_locations.get(token, [])}"
         )
     return "; ".join(parts)
 
