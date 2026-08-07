@@ -288,8 +288,8 @@ def validate_pair(source: Document, translated: Document, errors: list[str]) -> 
             f"Jinja/MkDocs expressions differ from source ({counter_difference(source_jinja, translated_jinja)})",
         )
 
-    source_html = html_structure(source.body)
-    translated_html = html_structure(translated.body)
+    source_html = html_structure(source_without_fences)
+    translated_html = html_structure(translated_without_fences)
     if source_html != translated_html:
         add_error(
             errors,
