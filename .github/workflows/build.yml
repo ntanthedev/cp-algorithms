@@ -36,6 +36,9 @@ jobs:
           MKDOCS_ENABLE_GIT_COMMITTERS: 'False'
         run: mkdocs build --strict
 
+      - name: Validate rendered Vietnamese image assets
+        run: python3 scripts/check_vi_rendered_pages.py
+
       - name: Upload pages as an artifact
         uses: actions/upload-artifact@v4
         with:
