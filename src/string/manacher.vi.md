@@ -71,7 +71,7 @@ Hai ký tự chặn `$` và `^` được dùng để không phải xử lý riê
 
 ## Thuật toán Manacher
 
-Ta mô tả thuật toán tìm mọi xâu con đối xứng có độ dài lẻ, tức tính từng giá trị $d_{odd}[i]$ trong $d_{odd}[].
+Ta mô tả thuật toán tìm mọi xâu con đối xứng có độ dài lẻ, tức tính từng giá trị $d_{odd}[i]$ trong $d_{odd}[]$.
 
 Để tính nhanh, ta duy trì **hai biên loại trừ $(l, r)$** của xâu con đối xứng nằm xa nhất về bên phải đã tìm thấy (tức xâu con đối xứng ngoài cùng bên phải hiện tại là $s[l+1] s[l+2] \dots s[r-1]$). Ban đầu đặt $l = 0, r = 1$, tương ứng với chuỗi rỗng.
 
