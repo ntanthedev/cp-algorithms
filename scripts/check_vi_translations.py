@@ -2,7 +2,7 @@
 """Validate Vietnamese translations against their English source files.
 
 The checker compares syntax-sensitive structures that translators should not
-alter: source metadata, headings, code blocks, inline code, math delimiters,
+alter: source metadata, headings, code blocks, inline code, LaTeX expressions,
 link destinations, Jinja expressions, HTML structure, MkDocs tabs, and
 admonitions. Human-readable HTML attributes such as alt text may be translated.
 """
@@ -44,6 +44,11 @@ TRANSLATABLE_HTML_ATTR_RE = re.compile(
 )
 TAB_RE = re.compile(r"^(\s*)===\s+.+$", re.MULTILINE)
 ADMONITION_RE = re.compile(r"^\s*(?:!!!|\?\?\?)\s+([\w-]+)", re.MULTILINE)
+TRANSLATOR_NOTE_LINE_RE = re.compile(r"^\*\*Ghi chú bản dịch:\*\*.*$", re.MULTILINE)
+MATH_RE = re.compile(
+    r"(?:\$\$.*?\$\$|\\\[.*?\\\]|\\\(.*?\\\)|(?<!\$)\$(?!\$).*?(?<!\\)\$(?!\$))",
+    re.DOTALL,
+)
 
 
 @dataclass
@@ -267,6 +272,20 @@ def validate_pair(source: Document, translated: Document, errors: list[str]) -> 
         add_error(errors, translated.path, "number of $$ math delimiters differs from source")
     if source.body.count("$$") % 2 != 0 or translated.body.count("$$") % 2 != 0:
         add_error(errors, translated.path, "unbalanced $$ math delimiters")
+
+    source_math_text = INLINE_CODE_RE.sub("", source_without_fences)
+    translated_math_text = INLINE_CODE_RE.sub(
+        "", TRANSLATOR_NOTE_LINE_RE.sub("", translated_without_fences)
+    )
+    source_math = sequence(MATH_RE, source_math_text)
+    translated_math = sequence(MATH_RE, translated_math_text)
+    if source_math != translated_math:
+        add_error(
+            errors,
+            translated.path,
+            "LaTeX expressions differ from source "
+            f"({counter_difference(collections.Counter(source_math), collections.Counter(translated_math))})",
+        )
 
     source_targets = counter(LINK_TARGET_RE, source.body) + counter(REFERENCE_LINK_RE, source.body)
     translated_targets = counter(LINK_TARGET_RE, translated.body) + counter(
