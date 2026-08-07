@@ -12,7 +12,7 @@ translation:
 
 Trong bài viết này, ta trình bày một số thuật toán phân tích số nguyên thành thừa số nguyên tố. Tùy dữ liệu đầu vào, mỗi thuật toán có thể chạy nhanh hoặc chậm ở những mức độ khác nhau.
 
-Lưu ý rằng nếu số cần phân tích thực ra là một số nguyên tố, phần lớn các thuật toán sẽ chạy rất chậm. Điều này đặc biệt đúng với các phương pháp phân tích Fermat, Pollard $p-1$ và Pollard rho.
+Lưu ý rằng nếu số cần phân tích thực ra là một số nguyên tố, phần lớn các thuật toán sẽ chạy rất chậm. Điều này đặc biệt đúng với các phương pháp phân tích Fermat, Pollard p-1 và Pollard rho.
 Vì vậy, trước khi cố phân tích một số, hợp lý nhất là chạy một [phép kiểm tra tính nguyên tố](primality_tests.md) xác suất (hoặc một phép kiểm tra tất định đủ nhanh).
 
 ## Chia thử
@@ -164,7 +164,7 @@ Bằng cách xét các số chính phương $a^2$ modulo một số nhỏ cố �
 
 ## Phương pháp Pollard $p - 1$ { data-toc-label="Pollard's <script type='math/tex'>p - 1</script> method" }
 
-Một số $n$ thường có ít nhất một thừa số nguyên tố $p$ sao cho $p - 1$ là $\mathrm{B}$**-powersmooth** với $\mathrm{B}$ nhỏ. Một số nguyên $m$ được gọi là $\mathrm{B}$-powersmooth nếu mọi lũy thừa nguyên tố chia hết $m$ đều không vượt quá $\mathrm{B}$. Chính xác hơn, cho $\mathrm{B} \geqslant 1$ và số nguyên dương $m$. Giả sử phân tích thừa số nguyên tố của $m$ là $m = \prod {q_i}^{e_i}$, trong đó mỗi $q_i$ là số nguyên tố và $e_i \geqslant 1$. Khi đó $m$ là $\mathrm{B}$-powersmooth nếu với mọi $i$, ${q_i}^{e_i} \leqslant \mathrm{B}$.
+Một số $n$ thường có ít nhất một thừa số nguyên tố $p$ sao cho $p - 1$ là $\mathrm{B}$**-powersmooth** với $\mathrm{B}$ nhỏ. Một số nguyên $m$ được gọi là $\mathrm{B}$-powersmooth nếu mọi lũy thừa nguyên tố là ước của $m$ đều không vượt quá $\mathrm{B}$. Chính xác hơn, cho $\mathrm{B} \geqslant 1$ và số nguyên dương $m$. Giả sử phân tích thừa số nguyên tố của $m$ là $m = \prod {q_i}^{e_i}$, trong đó mỗi $q_i$ là số nguyên tố và $e_i \geqslant 1$. Khi đó $m$ là $\mathrm{B}$-powersmooth nếu với mọi $i$, ${q_i}^{e_i} \leqslant \mathrm{B}$.
 Ví dụ, phân tích thừa số nguyên tố của $4817191$ là $1303 \cdot 3697$.
 Các giá trị $1303 - 1$ và $3697 - 1$ lần lượt là $31$-powersmooth và $16$-powersmooth, vì $1303 - 1 = 2 \cdot 3 \cdot 7 \cdot 31$ và $3697 - 1 = 2^4 \cdot 3 \cdot 7 \cdot 11$.
 Năm 1974, John Pollard đưa ra một phương pháp tách thừa số $p$ sao cho $p-1$ là $\mathrm{B}$-powersmooth khỏi một hợp số.
@@ -182,14 +182,14 @@ $${\left(a^{(p - 1)}\right)}^k \equiv a^{k \cdot (p - 1)} \equiv 1 \pmod{p}.$$
 Vì vậy, với mọi $M$ thỏa $p - 1 ~|~ M$, ta biết $a^M \equiv 1$.
 Suy ra $a^M - 1 = p \cdot r$, và do đó $p ~|~ \gcd(a^M - 1, n)$.
 
-Vì vậy, nếu $p - 1$ của một thừa số $p$ của $n$ chia hết $M$, ta có thể tách được một thừa số bằng [thuật toán Euclid](euclid-algorithm.md).
+Vì vậy, nếu $p - 1$ của một thừa số $p$ của $n$ là ước của $M$, ta có thể tách được một thừa số bằng [thuật toán Euclid](euclid-algorithm.md).
 
 Rõ ràng $M$ nhỏ nhất là bội của mọi số $\mathrm{B}$-powersmooth chính là $\text{lcm}(1,~2~,3~,4~,~\dots,~B)$.
 Hoặc tương đương:
 
 $$M = \prod_{\text{prime } q \le B} q^{\lfloor \log_q B \rfloor}$$
 
-Lưu ý rằng nếu $p-1$ chia hết $M$ với mọi thừa số nguyên tố $p$ của $n$, thì $\gcd(a^M - 1, n)$ sẽ bằng chính $n$.
+Lưu ý rằng nếu $p-1$ là ước của $M$ với mọi thừa số nguyên tố $p$ của $n$, thì $\gcd(a^M - 1, n)$ sẽ bằng chính $n$.
 Khi đó ta không thu được thừa số nào.
 Vì vậy, trong khi xây dựng $M$, ta sẽ tính $\gcd$ nhiều lần.
 
@@ -248,7 +248,7 @@ Vì $f$ là hàm đa thức và mọi giá trị nằm trong đoạn $[0;~p)$, d
 Nếu $p$ nhỏ hơn $\sqrt{n}$, sự lặp lại nhiều khả năng sẽ bắt đầu sau $O(\sqrt[4]{n})$ bước.
 
 Dưới đây là hình minh họa một dãy $\{x_i \bmod p\}$ như vậy với $n = 2206637$, $p = 317$, $x_0 = 2$ và $f(x) = x^2 + 1$.
-Nhìn vào hình dạng của dãy, ta có thể thấy rõ vì sao thuật toán được gọi là rho của Pollard.
+Nhìn vào hình dạng của dãy, ta có thể thấy rõ vì sao thuật toán được gọi là thuật toán $\rho$ của Pollard.
 
 <div style="text-align: center;">
   <img src="pollard_rho.png" alt="Minh họa thuật toán rho của Pollard">
