@@ -10,7 +10,7 @@ translation:
 
 # Tối ưu Knuth (Knuth's Optimization)
 
-Tối ưu Knuth (Knuth's optimization), còn được gọi là tăng tốc Knuth-Yao (Knuth-Yao Speedup), là một trường hợp đặc biệt của quy hoạch động trên đoạn, cho phép cải thiện độ phức tạp thời gian của lời giải thêm một hệ số tuyến tính: từ $O(n^3)$ với quy hoạch động trên đoạn thông thường xuống $O(n^2)$.
+Tối ưu Knuth (Knuth's optimization), còn được gọi là tăng tốc Knuth-Yao (Knuth-Yao Speedup), là một trường hợp đặc biệt của quy hoạch động trên đoạn, cho phép giảm độ phức tạp thời gian đi một hệ số tuyến tính: từ $O(n^3)$ với quy hoạch động trên đoạn thông thường xuống $O(n^2)$.
 
 ## Điều kiện áp dụng
 
@@ -36,7 +36,7 @@ Ta xử lý các trạng thái dp theo thứ tự sao cho $dp(i, j-1)$ và $dp(i
 
 ### Cài đặt tổng quát
 
-Cách cài đặt có thể thay đổi theo từng bài toán, nhưng dưới đây là một ví dụ khá tổng quát. Cấu trúc code gần như giống hệt quy hoạch động trên đoạn.
+Cách cài đặt có thể thay đổi theo từng bài toán, nhưng dưới đây là một ví dụ khá tổng quát. Cấu trúc phần cài đặt gần như giống hệt quy hoạch động trên đoạn.
 
 ```{.cpp file=knuth_optimization}
 
@@ -91,9 +91,9 @@ thay vì $O(n^3)$ như khi dùng quy hoạch động trên đoạn thông thư�
 
 ### Trong thực tế
 
-Ứng dụng phổ biến nhất của tối ưu Knuth là quy hoạch động trên đoạn với công thức chuyển trạng thái nêu trên. Khó khăn chính là chứng minh hàm chi phí thỏa mãn các điều kiện đã cho. Trường hợp đơn giản nhất là khi hàm chi phí $C(i, j)$ chính là tổng các phần tử của mảng con $S[i, i+1, ..., j]$ của một mảng nào đó (tùy bài toán). Tuy nhiên, đôi khi hàm chi phí có thể phức tạp hơn.
+Ứng dụng phổ biến nhất của tối ưu Knuth là quy hoạch động trên đoạn với công thức chuyển trạng thái nêu trên. Khó khăn duy nhất là chứng minh hàm chi phí thỏa mãn các điều kiện đã cho. Trường hợp đơn giản nhất là khi hàm chi phí $C(i, j)$ chính là tổng các phần tử của mảng con $S[i, i+1, ..., j]$ của một mảng nào đó (tùy bài toán). Tuy nhiên, đôi khi hàm chi phí có thể phức tạp hơn.
 
-Quan trọng hơn cả dạng cụ thể của chuyển trạng thái dp và hàm chi phí, mấu chốt của phép tối ưu này là bất đẳng thức của điểm chia tối ưu. Trong một số bài toán, chẳng hạn bài toán cây tìm kiếm nhị phân tối ưu (cũng chính là bài toán ban đầu mà phép tối ưu này được phát triển cho nó), chuyển trạng thái và hàm chi phí có thể không rõ ràng như trên; tuy nhiên, nếu vẫn chứng minh được $opt(i, j-1) \leq opt(i, j) \leq opt(i+1, j)$ thì ta vẫn có thể áp dụng phép tối ưu này.
+Quan trọng hơn cả dạng cụ thể của chuyển trạng thái dp và hàm chi phí, mấu chốt của phép tối ưu này là bất đẳng thức của điểm chia tối ưu. Trong một số bài toán, chẳng hạn bài toán cây tìm kiếm nhị phân tối ưu (cũng chính là bài toán ban đầu mà phép tối ưu này được phát triển để giải), chuyển trạng thái và hàm chi phí có thể không hiển nhiên như trong trường hợp trên; tuy nhiên, nếu vẫn chứng minh được $opt(i, j-1) \leq opt(i, j) \leq opt(i+1, j)$ thì ta vẫn có thể áp dụng phép tối ưu này.
 
 
 ### Chứng minh tính đúng đắn
@@ -153,7 +153,7 @@ khi các điều kiện đã cho được thỏa mãn.
 
     Như vậy bổ đề được chứng minh.
 
-Ghi chú bản dịch: Trong trường hợp 1 của chứng minh trên, nguồn dùng các điều kiện “z < j” và “z ≥ j” dù biến j không được định nghĩa trong thiết lập đó. Theo ngữ cảnh của lập luận, mốc phân trường hợp phải là b. Bản dịch giữ nguyên ký hiệu của nguồn để đồng bộ; lỗi này được xử lý riêng ở phía nguồn tiếng Anh.
+Ghi chú bản dịch: Trong trường hợp 1 của chứng minh trên, nguồn dùng các điều kiện $z < j$ và $z \geq j$ dù biến $j$ không được định nghĩa trong thiết lập đó. Theo ngữ cảnh của lập luận, mốc phân trường hợp phải là $b$. Bản dịch giữ nguyên ký hiệu để đồng bộ với nguồn hiện tại. Vấn đề này đã được báo và đề xuất sửa riêng ở bản tiếng Anh.
 
 Bây giờ xét thiết lập sau. Ta có 2 chỉ số $i \leq p \leq q < j$. Đặt $dp_{k} = C(i, j) + dp(i, k) + dp(k+1, j)$.
 
