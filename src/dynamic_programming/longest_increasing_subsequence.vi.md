@@ -182,7 +182,7 @@ Khi xử lý $a[i]$, ta tự hỏi:
 Điều kiện nào cần thỏa để ghi số hiện tại $a[i]$ vào mảng $d[0 \dots n]$?
 
 Ta đặt $d[l] = a[i]$ nếu tồn tại một dãy con tăng dài nhất độ dài $l$ kết thúc tại $a[i]$, đồng thời không có dãy con tăng dài nhất độ dài $l$ nào kết thúc tại một số nhỏ hơn.
-Tương tự cách trước, nếu bỏ $a[i]$ khỏi dãy con tăng dài nhất độ dài $l$, ta thu được một dãy con tăng dài nhất khác có độ dài $l-1$.
+Tương tự cách trước, nếu bỏ $a[i]$ khỏi dãy con tăng dài nhất độ dài $l$, ta thu được một dãy con tăng dài nhất khác có độ dài $l -1$.
 Vì vậy ta muốn nối $a[i]$ vào một dãy con tăng dài nhất độ dài $l - 1$; rõ ràng dãy độ dài $l - 1$ có phần tử cuối nhỏ nhất sẽ thuận lợi nhất, tức dãy kết thúc tại $d[l-1]$.
 
 Tồn tại một dãy con tăng dài nhất độ dài $l - 1$ mà ta có thể nối thêm $a[i]$ khi và chỉ khi $d[l-1] < a[i]$.
