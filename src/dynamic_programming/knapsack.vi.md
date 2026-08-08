@@ -25,11 +25,11 @@ tương ứng với hai giá trị nhị phân 0 và 1. Vì vậy dạng bài n�
 
 ### Giải thích
 
-Trong ví dụ trên, đầu vào của bài toán gồm: trọng lượng của vật thứ $i^{th}$ là $w_{i}$, giá trị của vật thứ $i^{th}$ là $v_{i}$, và sức chứa tổng cộng của túi là $W$.
+Trong ví dụ trên, đầu vào của bài toán gồm: trọng lượng của vật được đánh số $i^{th}$ là $w_{i}$, giá trị của vật được đánh số $i^{th}$ là $v_{i}$, và sức chứa tổng cộng của túi là $W$.
 
 Gọi $f_{i, j}$ là trạng thái quy hoạch động lưu tổng giá trị lớn nhất mà chiếc túi sức chứa $j$ có thể đạt được khi chỉ xét $i$ vật đầu tiên.
 
-Giả sử mọi trạng thái của $i-1$ vật đầu đã được xử lý. Với vật thứ $i^{th}$, ta có những lựa chọn nào?
+Giả sử mọi trạng thái của $i-1$ vật đầu đã được xử lý. Với vật được đánh số $i^{th}$, ta có những lựa chọn nào?
 
 - Nếu không cho vật này vào túi, sức chứa còn lại không đổi và tổng giá trị cũng không đổi. Vì vậy giá trị lớn nhất trong trường hợp này là $f_{i-1, j}$
 - Nếu cho vật này vào túi, sức chứa còn lại giảm $w_{i}$ và tổng giá trị tăng $v_{i}$,
@@ -119,7 +119,7 @@ $$f_{i, j} = \max_{k=0}^{k_i}(f_{i-1,j-k\cdot w_i} + k\cdot v_i)$$
 
 Ta vẫn xét cách chuyển mô hình Knapsack có giới hạn số lượng thành Knapsack 0-1 để tối ưu. Thành phần $O(Wn)$ của độ phức tạp không thể tiếp tục được cải thiện bằng cách trên, nên ta tập trung vào thành phần $O(\sum k_i)$.
 
-Gọi $A_{i, j}$ là vật thứ $j^{th}$ được tách ra từ loại vật thứ $i^{th}$. Trong cách trực tiếp ở trên, mọi $A_{i, j}$ với $j \leq k_i$ đều biểu diễn cùng một vật. Nguyên nhân chính khiến cách này kém hiệu quả là có quá nhiều công việc lặp lại. Chẳng hạn, việc chọn $\{A_{i, 1},A_{i, 2}\}$ và việc chọn $\{A_{i, 2}, A_{i, 3}\}$ là hoàn toàn tương đương. Vì vậy, tối ưu cách tách nhóm sẽ làm giảm đáng kể độ phức tạp.
+Gọi $A_{i, j}$ là vật được đánh số $j^{th}$ sau khi tách từ loại vật được đánh số $i^{th}$. Trong cách trực tiếp ở trên, mọi $A_{i, j}$ với $j \leq k_i$ đều biểu diễn cùng một vật. Nguyên nhân chính khiến cách này kém hiệu quả là có quá nhiều công việc lặp lại. Chẳng hạn, việc chọn $\{A_{i, 1},A_{i, 2}\}$ và việc chọn $\{A_{i, 2}, A_{i, 3}\}$ là hoàn toàn tương đương. Vì vậy, tối ưu cách tách nhóm sẽ làm giảm đáng kể độ phức tạp.
 
 Ta có thể phân nhóm hiệu quả hơn bằng cách dùng các nhóm có kích thước theo lũy thừa của hai.
 
