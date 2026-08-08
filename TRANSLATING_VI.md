@@ -192,6 +192,11 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | union by rank | hợp theo hạng |
 | inverse Ackermann function | hàm Ackermann nghịch đảo |
 | dynamic programming | quy hoạch động |
+| binomial coefficient | hệ số nhị thức |
+| binomial theorem | định lý nhị thức |
+| Pascal's triangle | tam giác Pascal |
+| Catalan number | số Catalan |
+| inclusion-exclusion principle | nguyên lý bao hàm – loại trừ |
 | Fenwick Tree / Binary Indexed Tree | cây Fenwick; còn gọi cây chỉ số nhị phân (BIT) |
 | Sparse Table | Sparse Table |
 | sqrt decomposition | chia căn |

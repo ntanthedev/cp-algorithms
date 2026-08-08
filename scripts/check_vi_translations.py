@@ -40,7 +40,9 @@ LINK_TARGET_RE = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+['\"][^'\"]*['\"])?\)
 REFERENCE_LINK_RE = re.compile(r"^\s*\[[^\]]+\]:\s*(\S+)", re.MULTILINE)
 INLINE_CODE_RE = re.compile(r"(?<!`)`([^`\n]+)`(?!`)")
 JINJA_RE = re.compile(r"(?:\{%.*?%\}|\{\{.*?\}\})", re.DOTALL)
-HTML_TAG_RE = re.compile(r"</?[A-Za-z][^>]*>")
+HTML_TAG_RE = re.compile(
+    r"</?[A-Za-z][A-Za-z0-9:-]*(?:\s+[^<>]*?)?\s*/?>"
+)
 TRANSLATABLE_HTML_ATTR_RE = re.compile(
     r"(\s(?:alt|title|aria-label)\s*=\s*)([\"'])(.*?)\2",
     re.IGNORECASE,
