@@ -87,17 +87,17 @@ long long solve() {
 ### Những điểm cần lưu ý
 
 Khó khăn lớn nhất của các bài Quy hoạch động chia để trị là chứng minh tính đơn điệu của $opt$. Một trường hợp đặc biệt mà tính chất này đúng là khi hàm chi phí thỏa mãn bất đẳng thức tứ giác, tức $C(a, c) + C(b, d) \leq C(a, d) + C(b, c)$ với mọi $a \leq b \leq c \leq d$. 
-Nhiều bài toán Quy hoạch động chia để trị cũng có thể giải bằng Convex Hull trick hoặc ngược lại. Biết và hiểu cả hai kỹ thuật sẽ rất hữu ích! 
+Nhiều bài toán Quy hoạch động chia để trị cũng có thể giải bằng kỹ thuật bao lồi (Convex Hull Trick) hoặc ngược lại. Biết và hiểu cả hai kỹ thuật sẽ rất hữu ích! 
 
 ## Bài tập luyện tập
 - [AtCoder - Yakiniku Restaurants](https://atcoder.jp/contests/arc067/tasks/arc067_d)
-- [CodeForces - Ciel and Gondolas](https://codeforces.com/contest/321/problem/E) (Be careful with I/O!)
+- [CodeForces - Ciel and Gondolas](https://codeforces.com/contest/321/problem/E) (Cẩn thận với I/O!)
 - [CodeForces - Levels And Regions](https://codeforces.com/problemset/problem/673/E)
 - [CodeForces - Partition Game](https://codeforces.com/contest/1527/problem/E)
 - [CodeForces - The Bakery](https://codeforces.com/problemset/problem/834/D)
 - [CodeForces - Yet Another Minimization Problem](https://codeforces.com/contest/868/problem/F)
 - [Codechef - CHEFAOR](https://www.codechef.com/problems/CHEFAOR)
-- [CodeForces - GUARDS](https://codeforces.com/gym/103536/problem/A) (This is the exact problem in this article.)
+- [CodeForces - GUARDS](https://codeforces.com/gym/103536/problem/A) (Đây chính là bài toán được dùng trong bài viết này.)
 - [Hackerrank - Guardians of the Lunatics](https://www.hackerrank.com/contests/ioi-2014-practice-contest-2/challenges/guardians-lunatics-ioi14)
 - [Hackerrank - Mining](https://www.hackerrank.com/contests/world-codesprint-5/challenges/mining)
 - [Kattis - Money (ACM ICPC World Finals 2017)](https://open.kattis.com/problems/money)
