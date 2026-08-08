@@ -192,6 +192,15 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | union by rank | hợp theo hạng |
 | inverse Ackermann function | hàm Ackermann nghịch đảo |
 | dynamic programming | quy hoạch động |
+| memoization | ghi nhớ; trong ngữ cảnh đệ quy có thể dùng đệ quy có nhớ |
+| top-down dynamic programming | quy hoạch động từ trên xuống |
+| bottom-up dynamic programming | quy hoạch động từ dưới lên |
+| knapsack problem | bài toán cái túi (Knapsack); VNOI cũng dùng xếp vali |
+| complete / unbounded knapsack | Knapsack không giới hạn |
+| multiple knapsack | Knapsack có giới hạn số lượng |
+| monotone queue | hàng đợi đơn điệu |
+| longest increasing subsequence (LIS) | dãy con tăng dài nhất (LIS) |
+| longest non-decreasing subsequence | dãy con không giảm dài nhất |
 | binomial coefficient | hệ số nhị thức |
 | binomial theorem | định lý nhị thức |
 | Pascal's triangle | tam giác Pascal |
