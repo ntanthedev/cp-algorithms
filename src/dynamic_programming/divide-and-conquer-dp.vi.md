@@ -23,13 +23,13 @@ trong đó $C(k, j)$ là hàm chi phí và $dp(i, j) = 0$ khi $j \lt 0$.
 
 Giả sử $0 \leq i \lt m$ và $0 \leq j \lt n$, đồng thời việc tính $C$ mất $O(1)$ thời gian. Khi đó, cách tính trực tiếp công thức truy hồi trên có độ phức tạp $O(m n^2)$. Có $m \times n$ trạng thái và mỗi trạng thái có $n$ chuyển trạng thái.
 
-Gọi $opt(i, j)$ là giá trị $k$ làm biểu thức trên đạt giá trị nhỏ nhất. Nếu hàm chi phí thỏa mãn bất đẳng thức tứ giác, ta có thể chứng minh rằng $opt(i, j) \leq opt(i, j + 1)$ với mọi $i, j$. Tính chất này được gọi là _điều kiện đơn điệu_. Khi đó, ta có thể áp dụng quy hoạch động chia để trị. Với một $i$ cố định, "điểm chia" tối ưu tăng khi $j$ tăng.
+Gọi $opt(i, j)$ là giá trị $k$ làm biểu thức trên đạt giá trị nhỏ nhất. Nếu hàm chi phí thỏa mãn bất đẳng thức tứ giác, ta có thể chứng minh rằng $opt(i, j) \leq opt(i, j + 1)$ với mọi $i, j$. Tính chất này được gọi là _điều kiện đơn điệu_. Khi đó, ta có thể áp dụng quy hoạch động chia để trị. Với một $i$ cố định, "điểm chia" tối ưu không giảm khi $j$ tăng.
 
 Nhờ vậy, ta có thể tính mọi trạng thái hiệu quả hơn. Giả sử ta đã tính $opt(i, j)$ với một $i$ và $j$ cố định. Khi đó, với mọi $j' < j$, ta biết $opt(i, j') \leq opt(i, j)$. Điều này có nghĩa là khi tính $opt(i, j')$, ta không cần xét nhiều điểm chia như trước.
 
-Để giảm thời gian chạy, ta áp dụng tư tưởng chia để trị. Trước tiên, tính $opt(i, n / 2)$. Sau đó, tính $opt(i, n / 4)$, biết rằng nó không lớn hơn $opt(i, n / 2)$, và tính $opt(i, 3 n / 4)$, biết rằng nó không nhỏ hơn $opt(i, n / 2)$. Bằng cách đệ quy và luôn duy trì cận dưới, cận trên của $opt$, ta đạt thời gian chạy $O(m n \log n)$. Hãy xem code bên dưới để biết chi tiết cài đặt.
+Để giảm thời gian chạy, ta áp dụng tư tưởng chia để trị. Trước tiên, tính $opt(i, n / 2)$. Sau đó, tính $opt(i, n / 4)$, biết rằng nó không lớn hơn $opt(i, n / 2)$, và tính $opt(i, 3 n / 4)$, biết rằng nó không nhỏ hơn $opt(i, n / 2)$. Bằng cách đệ quy và luôn duy trì cận dưới, cận trên của $opt$, ta đạt thời gian chạy $O(m n \log n)$. Hãy xem phần cài đặt bên dưới để biết chi tiết.
 
-Để chứng minh độ phức tạp của quá trình chia để trị, trước hết lưu ý rằng đệ quy có $O(\log{n})$ tầng. Ta sẽ chứng minh rằng mỗi tầng thực hiện $O(n)$ bước. Gọi tổng độ dài của các khoảng $\text{opt}$ (được ký hiệu bởi $optl$ và $optr$ trong code) ở tầng thứ $k$ là $S_k$. Quan sát rằng mỗi khi một khoảng ở tầng $k$ có độ dài $x$ bị chia, tổng độ dài của các khoảng kết quả không vượt quá $x + 1$. Hơn nữa, ở tầng $k$ có nhiều nhất $2^k$ lần chia, vì vậy ta có $S_{k + 1} \leq S_k + 2^k$. Áp dụng cận này bằng quy nạp với $S_0 = n$, ta có với mỗi tầng $k$,
+Để chứng minh độ phức tạp của quá trình chia để trị, trước hết lưu ý rằng đệ quy có $O(\log{n})$ tầng. Ta sẽ chứng minh rằng mỗi tầng thực hiện $O(n)$ bước. Gọi tổng độ dài của các khoảng $\text{opt}$ (được ký hiệu bởi $optl$ và $optr$ trong mã nguồn) ở tầng thứ $k$ là $S_k$. Quan sát rằng mỗi khi một khoảng ở tầng $k$ có độ dài $x$ bị chia, tổng độ dài của các khoảng kết quả không vượt quá $x + 1$. Hơn nữa, ở tầng $k$ có nhiều nhất $2^k$ lần chia, vì vậy ta có $S_{k + 1} \leq S_k + 2^k$. Áp dụng cận này bằng quy nạp với $S_0 = n$, ta có với mỗi tầng $k$,
 
 $$
 S_k < n + 2^k \in O(n).
@@ -39,8 +39,8 @@ Do đó, độ phức tạp của mỗi lần chia để trị là $O(n\log{n})$
 
 ## Cài đặt tổng quát
 
-Dù cài đặt cụ thể thay đổi theo từng bài toán, dưới đây là một template khá tổng quát.
-Hàm `compute` tính một hàng trạng thái $i$ của `dp_cur`, dựa trên hàng trạng thái $i-1$ trước đó trong `dp_before`.
+Dù cài đặt cụ thể thay đổi theo từng bài toán, dưới đây là một mẫu cài đặt khá tổng quát.
+Hàm `compute` tính hàng thứ $i$ của bảng DP, lưu kết quả vào `dp_cur`, dựa trên hàng thứ $i-1$ được lưu trong `dp_before`.
 Cần gọi hàm này bằng `compute(0, n-1, 0, n-1)`. Hàm `solve` tính `m` hàng và trả về kết quả.
 
 ```{.cpp file=divide_and_conquer_dp}
@@ -86,8 +86,8 @@ long long solve() {
 
 ### Những điểm cần lưu ý
 
-Khó khăn lớn nhất của các bài Quy hoạch động chia để trị là chứng minh tính đơn điệu của $opt$. Một trường hợp đặc biệt mà tính chất này đúng là khi hàm chi phí thỏa mãn bất đẳng thức tứ giác, tức $C(a, c) + C(b, d) \leq C(a, d) + C(b, c)$ với mọi $a \leq b \leq c \leq d$. 
-Nhiều bài toán Quy hoạch động chia để trị cũng có thể giải bằng kỹ thuật bao lồi (Convex Hull Trick) hoặc ngược lại. Biết và hiểu cả hai kỹ thuật sẽ rất hữu ích! 
+Khó khăn lớn nhất của các bài quy hoạch động chia để trị là chứng minh tính đơn điệu của $opt$. Một trường hợp đặc biệt mà tính chất này đúng là khi hàm chi phí thỏa mãn bất đẳng thức tứ giác, tức $C(a, c) + C(b, d) \leq C(a, d) + C(b, c)$ với mọi $a \leq b \leq c \leq d$. 
+Nhiều bài toán quy hoạch động chia để trị cũng có thể giải bằng kỹ thuật bao lồi (Convex Hull Trick) hoặc ngược lại. Biết và hiểu cả hai kỹ thuật sẽ rất hữu ích! 
 
 ## Bài tập luyện tập
 - [AtCoder - Yakiniku Restaurants](https://atcoder.jp/contests/arc067/tasks/arc067_d)
