@@ -63,7 +63,10 @@ Trường hợp đồ thị vô hướng hoặc đa đồ thị không khác v�
 Thuật toán vẫn hoạt động trên các đồ thị này.
 Tuy nhiên, việc cài đặt trở nên phức tạp hơn một chút.
 
-Một **cạnh vô hướng** $(i, j)$ thực chất tương đương với hai cạnh có hướng $(i, j)$ và $(j, i)$ có cùng dung lượng và giá trị.
+Một **cạnh vô hướng** $(i, j)$ thực chất tương đương với hai cạnh có hướng $(i, j)$ và $(j, i)$ có cùng dung lượng và chi phí.
+
+**Ghi chú bản dịch:** Nguồn tiếng Anh viết “same capacity and values”. Trong ngữ cảnh này, thuộc tính thứ hai đã được định nghĩa là chi phí trên mỗi đơn vị luồng; bản dịch dùng “chi phí” để tránh mơ hồ và correction tương ứng được bổ sung vào PR upstream riêng.
+
 Vì thuật toán luồng với chi phí cực tiểu ở trên sinh một cạnh ngược cho mỗi cạnh có hướng, nên một cạnh vô hướng được tách thành $4$ cạnh có hướng và ta thực sự thu được một **đa đồ thị**.
 
 Ta xử lý **nhiều cạnh** như thế nào?
