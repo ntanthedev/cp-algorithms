@@ -201,6 +201,15 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | monotone queue | hàng đợi đơn điệu |
 | longest increasing subsequence (LIS) | dãy con tăng dài nhất (LIS) |
 | longest non-decreasing subsequence | dãy con không giảm dài nhất |
+| computational geometry | hình học tính toán |
+| line (geometry) | đường thẳng |
+| line segment / segment (geometry) | đoạn thẳng |
+| intersection point (geometry) | giao điểm |
+| circle (geometry) | đường tròn |
+| cross product | tích có hướng |
+| degenerate (geometry) | suy biến |
+| normalization (geometry) | chuẩn hóa |
+| parametric form (geometry) | dạng tham số |
 | binomial coefficient | hệ số nhị thức |
 | binomial theorem | định lý nhị thức |
 | Pascal's triangle | tam giác Pascal |
