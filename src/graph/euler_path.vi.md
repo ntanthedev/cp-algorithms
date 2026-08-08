@@ -63,7 +63,7 @@ Sau đây là một bài toán kinh điển về chu trình Euler — bài toán
 
 Có $N$ quân domino. Như thường thấy, trên hai đầu của mỗi quân domino có ghi hai số (thông thường từ 1 đến 6, nhưng trong bài toán này điều đó không quan trọng). Ta muốn xếp tất cả quân domino thành một hàng sao cho với mọi hai quân kề nhau, hai số nằm ở phía tiếp giáp của chúng bằng nhau. Được phép lật các quân domino.
 
-Ta phát biểu lại bài toán. Xem các số xuất hiện trên domino là các đỉnh của đồ thị, còn các quân domino là các cạnh của đồ thị (mỗi quân Domino mang hai số $(a,b)$ tương ứng với các cạnh $(a,b)$ và $(b, a)$). Khi đó, bài toán được quy về tìm đường đi Euler trong đồ thị này.
+Ta phát biểu lại bài toán. Xem các số xuất hiện trên domino là các đỉnh của đồ thị, còn các quân domino là các cạnh của đồ thị (mỗi quân domino mang hai số $(a,b)$ tương ứng với các cạnh $(a,b)$ và $(b, a)$). Khi đó, bài toán được quy về tìm đường đi Euler trong đồ thị này.
 
 ## Cài đặt
 
