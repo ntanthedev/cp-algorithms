@@ -6,8 +6,8 @@ e_maxx_link: euler_path
 ---
 # Finding the Eulerian path in $O(M)$
 
-A Eulerian path is a path in a graph that passes through all of its edges exactly once.
-A Eulerian cycle is a Eulerian path that is a cycle.
+An Eulerian path is a path in a graph that passes through all of its edges exactly once.
+An Eulerian cycle is an Eulerian path that is a cycle.
 
 The problem is to find the Eulerian path in an **undirected multigraph with loops**.
 
@@ -15,7 +15,7 @@ The problem is to find the Eulerian path in an **undirected multigraph with loop
 
 First we can check if there is an Eulerian path.
 We can use the following theorem. An Eulerian cycle exists if and only if the degrees of all vertices are even.
-And an Eulerian path exists if and only if the number of vertices with odd degrees is two (or zero, in the case of the existence of a Eulerian cycle).
+And an Eulerian path exists if and only if the number of vertices with odd degrees is two (or zero, in the case of the existence of an Eulerian cycle).
 In addition, of course, the graph must be sufficiently connected (i.e., if you remove all isolated vertices from it, you should get a connected graph).
 
 To find the Eulerian path / Eulerian cycle we can use the following strategy:
@@ -62,7 +62,7 @@ Reformulate the problem. Let the numbers written on the bottoms be the vertices 
 
 ## Implementation
 
-The program below searches for and outputs a Eulerian loop or path in a graph, or outputs $-1$ if it does not exist.
+The program below searches for and outputs an Eulerian cycle or path in a graph, or outputs $-1$ if it does not exist.
 
 First, the program checks the degree of vertices: if there are no vertices with an odd degree, then the graph has an Euler cycle, if there are $2$ vertices with an odd degree, then in the graph there is only an Euler path (but no Euler cycle), if there are more than $2$ such vertices, then in the graph there is no Euler cycle or Euler path.
 To find the Euler path (not a cycle), let's do this: if $V1$ and $V2$ are two vertices of odd degree, then just add an edge $(V1, V2)$, in the resulting graph we find the Euler cycle (it will obviously exist), and then remove the "fictitious" edge $(V1, V2)$ from the answer.
@@ -72,11 +72,12 @@ Finally, the program takes into account that there can be isolated vertices in t
 Notice that we use an adjacency matrix in this problem.
 Also this implementation handles finding the next with brute-force, which requires to iterate over the complete row in the matrix over and over.
 A better way would be to store the graph as an adjacency list, and remove edges in $O(1)$ and mark the reversed edges in separate list.
-This way we can achieve an $O(N)$ algorithm.
+This way we can achieve an $O(M)$ algorithm.
 
 ```cpp
 int main() {
     int n;
+    cin >> n;
     vector<vector<int>> g(n, vector<int>(n));
     // reading the graph in the adjacency matrix
 
