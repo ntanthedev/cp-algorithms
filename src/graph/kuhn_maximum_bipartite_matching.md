@@ -36,7 +36,7 @@ That is, $A \oplus B = (A - B) \cup (B - A) = (A \cup B) - (A \cap B)$.
 ### Berge's lemma
 
 This lemma was proven by the French mathematician **Claude Berge** in 1957, although it already was observed by the Danish mathematician **Julius Petersen** in 1891 and 
-the Hungarian mathematician **Denés Kőnig** in 1931.
+the Hungarian mathematician **Dénes Kőnig** in 1931.
 
 #### Formulation 
 A matching $M$ is maximum $\Leftrightarrow$ there is no augmenting path relative to the matching $M$.
@@ -80,7 +80,7 @@ The algorithm is more convenient to describe if we assume that the input graph i
 that the input graph is not explicitly split into two parts).
 
 The algorithm looks at all the vertices $v$ of the first part of the graph: $v = 1 \ldots n_1$. If the current vertex $v$ is already saturated with the current matching 
-(i.e., some edge adjacent to it has already been selected), then skip this vertex. Otherwise, the algorithm tries to saturate this vertex, for which it starts 
+(i.e., some edge adjacent to it has already been selected), then it can be skipped. Otherwise, the algorithm tries to saturate this vertex, for which it starts 
 a search for an augmenting path starting from this vertex.
 
 The search for an augmenting path is carried out using a special depth-first or breadth-first traversal (usually depth-first traversal is used for ease of implementation). 
@@ -113,8 +113,7 @@ Let us present here an implementation of the above algorithm based on depth-firs
 This implementation is very concise, and perhaps it should be remembered in this form.
 
 Here $n$ is the number of vertices in the first part, $k$ - in the second part, $g[v]$ is the list of edges from the top of the first part (i.e. the list of numbers of the 
-vertices to which these edges lead from $v$). The vertices in both parts are numbered independently, i.e. vertices in the first part are numbered $1 \ldots n$, and those in the 
-second are numbered $1 \ldots k$.
+vertices to which these edges lead from $v$). In the implementation below, the vertices in both parts are indexed independently from zero: the first part uses indices $0 \ldots n-1$, and the second part uses $0 \ldots k-1$. The printed output adds one to these indices.
 
 Then there are two auxiliary arrays: $\rm mt$ and $\rm used$. The first - $\rm mt$ - contains information about the current matching. For convenience of programming, 
 this information is contained only for the vertices of the second part: $\textrm{mt[} i \rm]$ - this is the number of the vertex of the first part connected by an edge with the vertex $i$ of 
