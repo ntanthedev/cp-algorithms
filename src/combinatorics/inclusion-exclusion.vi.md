@@ -290,7 +290,7 @@ Vì vậy, bài này cũng có lời giải với độ phức tạp $O(2^k \cdo
 
 $$ ans = \sum_{Y ~ : ~ |Y| \ge k} (-1)^{|Y|-k} \cdot \binom{|Y|-1}{|Y|-k} \cdot f(Y) $$
 
-**Ghi chú bản dịch:** Ở tiểu mục này, đầu bài dùng n là số mẫu và k là số mẫu cần khớp, nhưng các dòng độ phức tạp của nguồn lại dùng k như kích thước toàn bộ tập mẫu. Theo các vòng duyệt mô tả trong chính bài, các bound này phải phụ thuộc vào n (ví dụ dạng $O(2^n\cdot n)$ sau khi đảo tổng), không phải chỉ vào k. Bản dịch giữ nguyên các biểu thức của nguồn và tách correction để đề xuất sửa upstream.
+**Ghi chú bản dịch:** Ở tiểu mục này, đầu bài dùng n là số mẫu và k là số mẫu cần khớp, nhưng các dòng độ phức tạp của nguồn lại dùng k như kích thước toàn bộ tập mẫu. Theo các vòng duyệt mô tả trong chính bài, các cận độ phức tạp này phải phụ thuộc vào n (ví dụ dạng $O(2^n\cdot n)$ sau khi đảo tổng), không phải chỉ vào k. Bản dịch giữ nguyên các biểu thức của nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
 
 ### Số cách đi từ một ô tới một ô khác
 
@@ -332,7 +332,7 @@ $$ans = \sum_{d \ge 2} (-1)^{deg(d)-1} \cdot f(d)$$
 
 trong đó $deg(d)$ là số số nguyên tố trong phân tích thừa số của $d$, còn $f(d)$ là số bộ bốn chia hết cho $d$.
 
-**Ghi chú bản dịch:** Công thức nguồn ở trên chỉ đúng khi tổng chạy trên các d square-free, tức các tích của những số nguyên tố phân biệt; các lũy thừa như 4 hoặc 8 không tạo thêm một giao mới trong bao hàm – loại trừ. Điều kiện này đã được bổ sung trong upstream PR #1683.
+**Ghi chú bản dịch:** Công thức nguồn ở trên chỉ đúng khi tổng chạy trên các số d không chia hết cho bình phương của bất kỳ số nguyên tố nào, tức d là tích của các số nguyên tố phân biệt. Các lũy thừa như 4 hoặc 8 không tạo thêm một giao mới trong bao hàm – loại trừ. Bản dịch giữ nguyên công thức nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
 
 Để tính $f(d)$, chỉ cần đếm số bội của $d$ (như ở bài trước) rồi dùng [hệ số nhị thức](binomial-coefficients.md) để đếm số cách chọn bốn số trong đó.
 
@@ -369,6 +369,8 @@ Có thể giải nhanh hơn bằng biến thể sau của sàng Eratosthenes:
 2. Tiếp theo, cần tính đáp án cho mọi $i$ từ $2$ tới $n$, tức mảng $cnt[]$ — số lượng số nguyên không nguyên tố cùng nhau với $i$.
     * Để làm vậy, nhớ lại công thức bao hàm – loại trừ hoạt động như thế nào — ở đây ta cài đặt cùng ý tưởng nhưng đảo chiều: duyệt một thành phần (tích của các số nguyên tố trong phân tích) rồi cộng hoặc trừ hạng tử tương ứng vào công thức bao hàm – loại trừ của mỗi bội của nó.
     * Giả sử đang xử lý một số $i$ có $good[i] = true$, tức nó tham gia công thức bao hàm – loại trừ. Duyệt mọi số là bội của $i$, rồi cộng hoặc trừ $\lfloor N/i \rfloor$ vào $cnt[]$ của chúng (dấu phụ thuộc vào $deg[i]$: nếu $deg[i]$ lẻ thì cộng, ngược lại thì trừ).
+
+**Ghi chú bản dịch:** Ở gạch đầu dòng cuối, nguồn dùng ký hiệu N trong biểu thức lấy phần nguyên, trong khi toàn bộ tiểu mục và đoạn mã bên dưới dùng n. Đây là lỗi ký hiệu; bản dịch giữ nguyên biểu thức nguồn hiện tại và vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
 
 Dưới đây là cài đặt C++:
 
@@ -445,7 +447,7 @@ $$ n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots \pm \frac{1
 
 Đáng chú ý, một bài toán tương tự cũng có thể giải theo cách này: yêu cầu các điểm cố định không nằm trong $m$ phần tử đầu tiên của hoán vị (thay vì không nằm ở bất kỳ vị trí nào như bài vừa giải). Công thức thu được giống công thức chính xác ở trên, nhưng tổng chỉ chạy đến $k$ thay vì $n$.
 
-**Ghi chú bản dịch:** Ở câu trên nguồn vừa đặt tham số là m nhưng sau đó lại nói tổng chạy đến k; k không được định nghĩa trong biến thể này. Nhiều khả năng ký hiệu đúng phải là m. Bản dịch giữ wording nguồn và tách typo này để đề xuất sửa upstream.
+**Ghi chú bản dịch:** Ở câu trên, nguồn đặt tham số là m nhưng sau đó lại nói tổng chạy đến k; k không được định nghĩa trong biến thể này. Với m vị trí bị cấm làm điểm cố định, bao hàm – loại trừ phải chạy trên m biến cố tương ứng, nên giới hạn đúng là m. Bản dịch giữ nguyên cách viết của nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
 
 ## Bài tập luyện tập
 
