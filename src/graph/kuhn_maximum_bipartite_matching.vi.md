@@ -37,7 +37,9 @@ Tức là $A \oplus B = (A - B) \cup (B - A) = (A \cup B) - (A \cap B)$.
 
 ### Bổ đề Berge
 
-Bổ đề này được nhà toán học người Pháp **Claude Berge** chứng minh vào năm 1957, dù trước đó nhà toán học Đan Mạch **Julius Petersen** đã quan sát thấy kết quả này vào năm 1891 và nhà toán học Hungary **Denés Kőnig** vào năm 1931.
+Bổ đề này được nhà toán học người Pháp **Claude Berge** chứng minh vào năm 1957, dù trước đó nhà toán học Đan Mạch **Julius Petersen** đã quan sát thấy kết quả này vào năm 1891 và nhà toán học Hungary **Dénes Kőnig** vào năm 1931.
+
+**Ghi chú bản dịch:** Nguồn tiếng Anh viết “Denés Kőnig”; tên đúng là **Dénes Kőnig**. Correction này đã được bổ sung vào upstream PR #1681.
 
 #### Phát biểu
 Một cặp ghép $M$ là cực đại $\Leftrightarrow$ không tồn tại đường tăng đối với cặp ghép $M$.
@@ -76,7 +78,7 @@ Còn lại là cách tìm đường tăng. Thuật toán Kuhn đơn giản tìm 
 
 Sẽ thuận tiện hơn khi mô tả thuật toán nếu giả sử đồ thị đầu vào đã được chia sẵn thành hai phần (dù trên thực tế có thể cài đặt thuật toán mà không cần cung cấp tường minh cách chia này).
 
-Thuật toán xét mọi đỉnh $v$ thuộc phần thứ nhất: $v = 1 \ldots n_1$. Nếu đỉnh hiện tại $v$ đã bão hòa trong cặp ghép hiện tại (tức đã có một cạnh kề với nó được chọn), ta bỏ qua đỉnh này. Ngược lại, thuật toán cố bão hòa đỉnh này bằng cách bắt đầu tìm một đường tăng từ nó.
+Trong biến thể được mô tả ở đây, thuật toán xét mọi đỉnh $v$ thuộc phần thứ nhất: $v = 1 \ldots n_1$. Nếu đỉnh hiện tại $v$ đã bão hòa trong cặp ghép hiện tại (tức đã có một cạnh kề với nó được chọn), ta có thể bỏ qua đỉnh này. Ngược lại, thuật toán cố bão hòa đỉnh này bằng cách bắt đầu tìm một đường tăng từ nó. Việc bỏ qua đỉnh đã bão hòa là một tối ưu hóa an toàn trong cách cài đặt này, không phải điều kiện bắt buộc trong định nghĩa chung của thuật toán Kuhn.
 
 Việc tìm đường tăng được thực hiện bằng một phép duyệt theo chiều sâu hoặc theo chiều rộng đặc biệt (thường dùng duyệt theo chiều sâu vì dễ cài đặt hơn).
 Ban đầu, DFS đứng tại đỉnh chưa bão hòa $v$ thuộc phần thứ nhất. Ta xét tất cả các cạnh đi từ đỉnh này. Gọi cạnh hiện tại là $(v, to)$. Nếu đỉnh $to$ chưa bão hòa trong cặp ghép, ta đã tìm được một đường tăng chỉ gồm cạnh $(v, to)$; khi đó chỉ cần thêm cạnh này vào cặp ghép và dừng việc tìm đường tăng từ $v$. Ngược lại, nếu $to$ đã bão hòa bởi một cạnh $(to, p)$, ta đi tiếp theo cạnh đó: tức cố tìm một đường tăng đi qua $(v, to),(to, p), \ldots$.
@@ -101,6 +103,8 @@ Sau đây là một cài đặt của thuật toán dựa trên DFS và nhận �
 Cài đặt này rất ngắn gọn và đáng để ghi nhớ ở dạng này.
 
 Ở đây $n$ là số đỉnh của phần thứ nhất, $k$ là số đỉnh của phần thứ hai, còn $g[v]$ là danh sách các cạnh của đỉnh thuộc phần thứ nhất tương ứng (tức danh sách số hiệu các đỉnh mà các cạnh từ $v$ đi tới). Các đỉnh trong hai phần được đánh số độc lập: phần thứ nhất từ $1 \ldots n$, phần thứ hai từ $1 \ldots k$.
+
+**Ghi chú bản dịch:** Mô tả đánh số ở câu trên được giữ theo nguồn. Snippet C++ ngay dưới thực tế dùng chỉ số bắt đầu từ 0 cho các mảng và chỉ cộng 1 khi in kết quả; điểm không nhất quán này đã được bổ sung vào upstream PR #1681.
 
 Tiếp theo có hai mảng phụ trợ: $\rm mt$ và $\rm used$. Mảng thứ nhất, $\rm mt$, lưu thông tin về cặp ghép hiện tại. Để thuận tiện khi lập trình, ta chỉ lưu thông tin này cho các đỉnh thuộc phần thứ hai: $\textrm{mt[} i \rm]$ là số hiệu đỉnh thuộc phần thứ nhất được ghép với đỉnh $i$ thuộc phần thứ hai (hoặc $-1$ nếu không có cạnh ghép nào kề với nó). Mảng thứ hai là $\rm used$: mảng đánh dấu "đã thăm" thông thường trong DFS (để DFS không đi vào cùng một đỉnh hai lần).
 
