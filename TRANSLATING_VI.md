@@ -231,6 +231,15 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | degenerate (geometry) | suy biến |
 | normalization (geometry) | chuẩn hóa |
 | parametric form (geometry) | dạng tham số |
+| convex hull | bao lồi |
+| Convex Hull Trick | kỹ thuật bao lồi (Convex Hull Trick) |
+| Li Chao Tree | cây Li Chao (Li Chao Tree); VNOI cũng dùng Li-chao Tree / Cây phân đoạn trên tập đường thẳng |
+| convex polygon | đa giác lồi |
+| dot product | tích vô hướng |
+| normal vector | vector pháp tuyến |
+| polar angle | góc cực |
+| collinear | thẳng hàng |
+| clockwise / counter-clockwise | theo chiều kim đồng hồ / ngược chiều kim đồng hồ |
 | binomial coefficient | hệ số nhị thức |
 | binomial theorem | định lý nhị thức |
 | Pascal's triangle | tam giác Pascal |
