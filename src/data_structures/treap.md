@@ -339,7 +339,7 @@ Now let's consider the implementation of various operations on implicit treaps:
 - **Addition / painting** on the interval.  
  We act similarly to the previous paragraph, but instead of the field F we will store a field `add` which will contain the added value for the subtree (or the value to which the subtree is painted). Before performing any operation we have to "push" this value correctly - i.e. change $T \rightarrow L \rightarrow add$ and $T \rightarrow R \rightarrow add$, and to clean up `add` in the parent node. This way after any changes to the tree the information will not be lost.
 - **Reverse** on the interval.  
- This is again similar to the previous operation: we have to add boolean flag `rev` and set it to true when the subtree of the current node has to be reversed. "Pushing" this value is a bit complicated - we swap children of this node and set this flag to true for them.
+ This is again similar to the previous operation: we have to add boolean flag `rev` and toggle it whenever the subtree of the current node has to be reversed. "Pushing" this value is a bit complicated - we swap children of this node and toggle this flag for them.
 
 Here is an example implementation of the implicit treap with reverse on the interval. For each node we store field called `value` which is the actual value of the array element at current position. We also provide implementation of the function `output()`, which outputs an array that corresponds to the current state of the implicit treap.
 
