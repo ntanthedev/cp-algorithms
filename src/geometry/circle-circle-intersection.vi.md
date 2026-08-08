@@ -43,6 +43,8 @@ Bài toán này có thể được giải như mô tả trong [bài viết tươ
 
 Trường hợp suy biến duy nhất cần xét riêng là khi tâm hai đường tròn trùng nhau. Khi đó $x_2=y_2=0$, và phương trình đường thẳng trở thành $C = r_1^2-r_2^2 = 0$. Nếu bán kính hai đường tròn bằng nhau thì có vô số giao điểm; nếu chúng khác nhau thì không có giao điểm.
 
+**Ghi chú bản dịch:** Dấu “= 0” ở câu trên là điều kiện để phương trình còn nghiệm khi hai tâm trùng nhau; điều kiện này chỉ thỏa khi hai bán kính bằng nhau.
+
 ## Bài tập luyện tập
 
 - [RadarFinder](https://community.topcoder.com/stat?c=problem_statement&pm=7766)
