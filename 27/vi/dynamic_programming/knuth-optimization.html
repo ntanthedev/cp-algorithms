@@ -8061,7 +8061,7 @@ Describe the issue of this article in detail.
 
 
 <h1 id="toi-uu-knuth-knuths-optimization">Tối ưu Knuth (Knuth's Optimization)<a class="headerlink" href="#toi-uu-knuth-knuths-optimization" title="Permanent link">&para;</a></h1>
-<p>Tối ưu Knuth (Knuth's optimization), còn được gọi là tăng tốc Knuth-Yao (Knuth-Yao Speedup), là một trường hợp đặc biệt của quy hoạch động trên đoạn, cho phép cải thiện độ phức tạp thời gian của lời giải thêm một hệ số tuyến tính: từ <span class="arithmatex">$O(n^3)$</span> với quy hoạch động trên đoạn thông thường xuống <span class="arithmatex">$O(n^2)$</span>.</p>
+<p>Tối ưu Knuth (Knuth's optimization), còn được gọi là tăng tốc Knuth-Yao (Knuth-Yao Speedup), là một trường hợp đặc biệt của quy hoạch động trên đoạn, cho phép giảm độ phức tạp thời gian đi một hệ số tuyến tính: từ <span class="arithmatex">$O(n^3)$</span> với quy hoạch động trên đoạn thông thường xuống <span class="arithmatex">$O(n^2)$</span>.</p>
 <h2 id="ieu-kien-ap-dung">Điều kiện áp dụng<a class="headerlink" href="#ieu-kien-ap-dung" title="Permanent link">&para;</a></h2>
 <p>Phương pháp tăng tốc này áp dụng cho các chuyển trạng thái có dạng</p>
 <div class="arithmatex">$$dp(i, j) = \min_{i \leq k &lt; j} [ dp(i, k) + dp(k+1, j) + C(i, j) ].$$</div>
@@ -8080,7 +8080,7 @@ Describe the issue of this article in detail.
 <h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
 <p>Ta xử lý các trạng thái dp theo thứ tự sao cho <span class="arithmatex">$dp(i, j-1)$</span> và <span class="arithmatex">$dp(i+1, j)$</span> được tính trước <span class="arithmatex">$dp(i, j)$</span>; đồng thời ta cũng tính <span class="arithmatex">$opt(i, j-1)$</span> và <span class="arithmatex">$opt(i+1, j)$</span>. Khi đó, để tính <span class="arithmatex">$opt(i, j)$</span>, thay vì thử mọi giá trị <span class="arithmatex">$k$</span> từ <span class="arithmatex">$i$</span> đến <span class="arithmatex">$j-1$</span>, ta chỉ cần thử từ <span class="arithmatex">$opt(i, j-1)$</span> đến <span class="arithmatex">$opt(i+1, j)$</span>. Để xử lý các cặp <span class="arithmatex">$(i,j)$</span> theo thứ tự này, chỉ cần dùng hai vòng lặp lồng nhau, trong đó <span class="arithmatex">$i$</span> đi từ giá trị lớn nhất xuống nhỏ nhất, còn <span class="arithmatex">$j$</span> đi từ <span class="arithmatex">$i+1$</span> đến giá trị lớn nhất.</p>
 <h3 id="cai-at-tong-quat">Cài đặt tổng quát<a class="headerlink" href="#cai-at-tong-quat" title="Permanent link">&para;</a></h3>
-<p>Cách cài đặt có thể thay đổi theo từng bài toán, nhưng dưới đây là một ví dụ khá tổng quát. Cấu trúc code gần như giống hệt quy hoạch động trên đoạn.</p>
+<p>Cách cài đặt có thể thay đổi theo từng bài toán, nhưng dưới đây là một ví dụ khá tổng quát. Cấu trúc phần cài đặt gần như giống hệt quy hoạch động trên đoạn.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">solve</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
 <span class="w">    </span><span class="p">...</span><span class="w"> </span><span class="c1">// read N and input</span>
@@ -8124,8 +8124,8 @@ $$</div>
 $$</div>
 <p>thay vì <span class="arithmatex">$O(n^3)$</span> như khi dùng quy hoạch động trên đoạn thông thường.</p>
 <h3 id="trong-thuc-te">Trong thực tế<a class="headerlink" href="#trong-thuc-te" title="Permanent link">&para;</a></h3>
-<p>Ứng dụng phổ biến nhất của tối ưu Knuth là quy hoạch động trên đoạn với công thức chuyển trạng thái nêu trên. Khó khăn chính là chứng minh hàm chi phí thỏa mãn các điều kiện đã cho. Trường hợp đơn giản nhất là khi hàm chi phí <span class="arithmatex">$C(i, j)$</span> chính là tổng các phần tử của mảng con <span class="arithmatex">$S[i, i+1, ..., j]$</span> của một mảng nào đó (tùy bài toán). Tuy nhiên, đôi khi hàm chi phí có thể phức tạp hơn.</p>
-<p>Quan trọng hơn cả dạng cụ thể của chuyển trạng thái dp và hàm chi phí, mấu chốt của phép tối ưu này là bất đẳng thức của điểm chia tối ưu. Trong một số bài toán, chẳng hạn bài toán cây tìm kiếm nhị phân tối ưu (cũng chính là bài toán ban đầu mà phép tối ưu này được phát triển cho nó), chuyển trạng thái và hàm chi phí có thể không rõ ràng như trên; tuy nhiên, nếu vẫn chứng minh được <span class="arithmatex">$opt(i, j-1) \leq opt(i, j) \leq opt(i+1, j)$</span> thì ta vẫn có thể áp dụng phép tối ưu này.</p>
+<p>Ứng dụng phổ biến nhất của tối ưu Knuth là quy hoạch động trên đoạn với công thức chuyển trạng thái nêu trên. Khó khăn duy nhất là chứng minh hàm chi phí thỏa mãn các điều kiện đã cho. Trường hợp đơn giản nhất là khi hàm chi phí <span class="arithmatex">$C(i, j)$</span> chính là tổng các phần tử của mảng con <span class="arithmatex">$S[i, i+1, ..., j]$</span> của một mảng nào đó (tùy bài toán). Tuy nhiên, đôi khi hàm chi phí có thể phức tạp hơn.</p>
+<p>Quan trọng hơn cả dạng cụ thể của chuyển trạng thái dp và hàm chi phí, mấu chốt của phép tối ưu này là bất đẳng thức của điểm chia tối ưu. Trong một số bài toán, chẳng hạn bài toán cây tìm kiếm nhị phân tối ưu (cũng chính là bài toán ban đầu mà phép tối ưu này được phát triển để giải), chuyển trạng thái và hàm chi phí có thể không hiển nhiên như trong trường hợp trên; tuy nhiên, nếu vẫn chứng minh được <span class="arithmatex">$opt(i, j-1) \leq opt(i, j) \leq opt(i+1, j)$</span> thì ta vẫn có thể áp dụng phép tối ưu này.</p>
 <h3 id="chung-minh-tinh-ung-an">Chứng minh tính đúng đắn<a class="headerlink" href="#chung-minh-tinh-ung-an" title="Permanent link">&para;</a></h3>
 <p>Để chứng minh thuật toán đúng dựa trên các điều kiện của <span class="arithmatex">$C(i,j)$</span>, chỉ cần chứng minh rằng</p>
 <div class="arithmatex">$$
@@ -8184,7 +8184,7 @@ $$</div>
 </ol>
 <p>Như vậy bổ đề được chứng minh.</p>
 </details>
-<p>Ghi chú bản dịch: Trong trường hợp 1 của chứng minh trên, nguồn dùng các điều kiện “z &lt; j” và “z ≥ j” dù biến j không được định nghĩa trong thiết lập đó. Theo ngữ cảnh của lập luận, mốc phân trường hợp phải là b. Bản dịch giữ nguyên ký hiệu của nguồn để đồng bộ; lỗi này được xử lý riêng ở phía nguồn tiếng Anh.</p>
+<p>Ghi chú bản dịch: Trong trường hợp 1 của chứng minh trên, nguồn dùng các điều kiện <span class="arithmatex">$z &lt; j$</span> và <span class="arithmatex">$z \geq j$</span> dù biến <span class="arithmatex">$j$</span> không được định nghĩa trong thiết lập đó. Theo ngữ cảnh của lập luận, mốc phân trường hợp phải là <span class="arithmatex">$b$</span>. Bản dịch giữ nguyên ký hiệu để đồng bộ với nguồn hiện tại. Vấn đề này đã được báo và đề xuất sửa riêng ở bản tiếng Anh.</p>
 <p>Bây giờ xét thiết lập sau. Ta có 2 chỉ số <span class="arithmatex">$i \leq p \leq q &lt; j$</span>. Đặt <span class="arithmatex">$dp_{k} = C(i, j) + dp(i, k) + dp(k+1, j)$</span>.</p>
 <p>Giả sử ta chứng minh được rằng</p>
 <div class="arithmatex">$$
