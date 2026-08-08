@@ -56,7 +56,7 @@ The case of an undirected graph or a multigraph doesn't differ conceptually from
 The algorithm will also work on these graphs.
 However it becomes a little more difficult to implement it.
 
-An **undirected edge** $(i, j)$ is actually the same as two oriented edges $(i, j)$ and $(j, i)$ with the same capacity and values.
+An **undirected edge** $(i, j)$ is actually the same as two oriented edges $(i, j)$ and $(j, i)$ with the same capacity and cost.
 Since the above-described minimum-cost flow algorithm generates a back edge for each directed edge, so it splits the undirected edge into $4$ directed edges, and we actually get a **multigraph**.
 
 How do we deal with **multiple edges**?
