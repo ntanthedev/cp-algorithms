@@ -206,6 +206,13 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | priority (Treap) | độ ưu tiên |
 | implicit key | khóa ẩn |
 | dynamic programming | quy hoạch động |
+| Divide and Conquer DP | quy hoạch động chia để trị (Divide and Conquer DP) |
+| Knuth's Optimization | tối ưu Knuth (Knuth's Optimization) |
+| Knuth-Yao Speedup | tăng tốc Knuth-Yao; giữ Knuth-Yao như tên riêng |
+| Range DP | quy hoạch động trên đoạn |
+| quadrangle inequality | bất đẳng thức tứ giác |
+| monotonicity condition | điều kiện đơn điệu |
+| optimal splitting point | điểm chia tối ưu |
 | memoization | ghi nhớ; trong ngữ cảnh đệ quy có thể dùng đệ quy có nhớ |
 | top-down dynamic programming | quy hoạch động từ trên xuống |
 | bottom-up dynamic programming | quy hoạch động từ dưới lên |
