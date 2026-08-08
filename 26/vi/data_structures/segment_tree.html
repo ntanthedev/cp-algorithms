@@ -2239,10 +2239,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#tim-tien-to-cua-mang-co-tong-cho-truoc" class="md-nav__link">
+  <a href="#tim-tien-to-au-tien-co-tong-at-nguong-cho-truoc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tìm tiền tố của mảng có tổng cho trước
+        Tìm tiền tố đầu tiên có tổng đạt ngưỡng cho trước
       
     </span>
   </a>
@@ -2338,15 +2338,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cap-nhat-oan-lazy-propagation" class="md-nav__link">
+  <a href="#cap-nhat-luoi-lazy-propagation" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Cập nhật đoạn (Lazy Propagation)
+        Cập nhật lười (Lazy Propagation)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Cập nhật đoạn (Lazy Propagation)">
+    <nav class="md-nav" aria-label="Cập nhật lười (Lazy Propagation)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8426,7 +8426,7 @@ Dựa trên tầng vừa tính, ta tiếp tục tính tầng phía trên nữa, 
 </ol>
 <p>Ta bắt đầu dựng từ nút gốc, nhờ vậy có thể tính toàn bộ cây phân đoạn.</p>
 <p>Độ phức tạp thời gian của quá trình xây dựng là <span class="arithmatex">$O(n)$</span>, giả sử phép hợp nhất chạy trong thời gian hằng số (phép hợp nhất được gọi <span class="arithmatex">$n$</span> lần, bằng số nút trong của cây phân đoạn).</p>
-<p>Ghi chú bản dịch: Với cây nhị phân đầy đủ có n nút lá, số nút trong thực tế là n-1, nên số lần hợp nhất là n-1 chứ không phải n. Độ phức tạp O(n) của nguồn vẫn đúng; upstream đã có PR #1560 sửa chính xác chi tiết đếm này.</p>
+<p>Ghi chú bản dịch: Với cây nhị phân đầy đủ có n nút lá, số nút trong thực tế là n-1, nên số lần hợp nhất là n-1 chứ không phải n. Độ phức tạp O(n) của nguồn vẫn đúng.</p>
 <h3 id="truy-van-tong">Truy vấn tổng<a class="headerlink" href="#truy-van-tong" title="Permanent link">&para;</a></h3>
 <p>Trước mắt, ta sẽ trả lời các truy vấn tổng. Đầu vào là hai số nguyên <span class="arithmatex">$l$</span> và <span class="arithmatex">$r$</span>, và ta cần tính tổng của đoạn <span class="arithmatex">$a[l \dots r]$</span> trong <span class="arithmatex">$O(\log n)$</span>.</p>
 <p>Để làm vậy, ta duyệt cây phân đoạn và dùng các tổng của đoạn đã được tính trước.
@@ -8573,7 +8573,7 @@ Ngoài việc tìm giá trị lớn nhất, ta còn phải tìm số lần xuấ
 <p>Để giải, tại mỗi nút ta lưu một cặp số:
 ngoài giá trị lớn nhất, ta còn lưu số lần nó xuất hiện trong đoạn tương ứng.
 Ta vẫn có thể xác định cặp đúng cần lưu tại <span class="arithmatex">$t[v]$</span> trong thời gian hằng số từ các cặp ở hai nút con.
-Nên tách thao tác kết hợp hai cặp như vậy thành một hàm riêng, vì đây là thao tác được dùng khi dựng cây, trả lời truy vấn cực đại và thực hiện cập nhật.</p>
+Nên tách thao tác kết hợp hai cặp như vậy thành một hàm riêng, vì đây là thao tác được dùng khi dựng cây, trả lời truy vấn giá trị lớn nhất và thực hiện cập nhật.</p>
 <div class="highlight"><pre><span></span><code><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="o">*</span><span class="n">MAXN</span><span class="p">];</span>
 
 <span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">combine</span><span class="p">(</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8647,7 +8647,7 @@ Lưu ý, nếu chọn nút con phải, ta phải trừ khỏi <span class="arith
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">find_kth</span><span class="p">(</span><span class="n">v</span><span class="o">*</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">tm</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">tr</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="n">v</span><span class="o">*</span><span class="mi">2</span><span class="p">]);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h4 id="tim-tien-to-cua-mang-co-tong-cho-truoc">Tìm tiền tố của mảng có tổng cho trước<a class="headerlink" href="#tim-tien-to-cua-mang-co-tong-cho-truoc" title="Permanent link">&para;</a></h4>
+<h4 id="tim-tien-to-au-tien-co-tong-at-nguong-cho-truoc">Tìm tiền tố đầu tiên có tổng đạt ngưỡng cho trước<a class="headerlink" href="#tim-tien-to-au-tien-co-tong-at-nguong-cho-truoc" title="Permanent link">&para;</a></h4>
 <p>Bài toán như sau:
 với một giá trị <span class="arithmatex">$x$</span> cho trước, ta cần nhanh chóng tìm chỉ số nhỏ nhất <span class="arithmatex">$i$</span> sao cho tổng của <span class="arithmatex">$i$</span> phần tử đầu của mảng <span class="arithmatex">$a[]$</span> lớn hơn hoặc bằng <span class="arithmatex">$x$</span> (giả sử mảng <span class="arithmatex">$a[]$</span> chỉ chứa các giá trị không âm).</p>
 <p>Bài toán này có thể giải bằng tìm kiếm nhị phân, mỗi lần tính tổng tiền tố bằng cây phân đoạn.
@@ -8823,7 +8823,7 @@ Nó biểu diễn "không có đáp án trong khoảng đã cho".</p>
 <p>Bài toán này giống bài trước.
 Nhược điểm của cách trước là không thể sửa mảng giữa các lần trả lời truy vấn.
 Bây giờ ta muốn làm đúng điều đó: một truy vấn cập nhật thực hiện phép gán <span class="arithmatex">$a[i] = y$</span>.</p>
-<p>Lời giải tương tự bài trước, nhưng thay vì danh sách tại mỗi nút của cây phân đoạn, ta lưu một danh sách cân bằng cho phép nhanh chóng tìm, xóa và chèn số.
+<p>Lời giải tương tự bài trước, nhưng thay vì danh sách tại mỗi nút của cây phân đoạn, ta lưu một cấu trúc dữ liệu cân bằng cho phép nhanh chóng tìm, xóa và chèn số.
 Vì mảng có thể chứa một số lặp lại, lựa chọn phù hợp là cấu trúc dữ liệu <span class="arithmatex">$\text{multiset}$</span>.</p>
 <p>Việc dựng cây phân đoạn kiểu này gần giống bài trước, chỉ khác rằng giờ ta cần kết hợp các <span class="arithmatex">$\text{multiset}$</span> thay vì danh sách đã sắp xếp.
 Điều này cho thời gian xây dựng <span class="arithmatex">$O(n \log^2 n)$</span> (nói chung có thể gộp hai cây đỏ-đen trong thời gian tuyến tính, nhưng C++ STL không bảo đảm độ phức tạp này).</p>
@@ -8887,7 +8887,7 @@ Ta cũng phải làm rất cẩn thận để tăng hoặc giảm đúng iterato
 <p>Kỹ thuật này mở ra cả một lớp ứng dụng mới.
 Thay vì lưu một <span class="arithmatex">$\text{vector}$</span> hoặc <span class="arithmatex">$\text{multiset}$</span> ở mỗi nút, ta có thể dùng các cấu trúc dữ liệu khác:
 cây phân đoạn khác (được đề cập phần nào ở <a href="segment_tree.html#generalization-to-higher-dimensions">Tổng quát hóa lên nhiều chiều</a>), cây Fenwick, cây Cartesian, v.v.</p>
-<h3 id="cap-nhat-oan-lazy-propagation">Cập nhật đoạn (Lazy Propagation)<a class="headerlink" href="#cap-nhat-oan-lazy-propagation" title="Permanent link">&para;</a></h3>
+<h3 id="cap-nhat-luoi-lazy-propagation">Cập nhật lười (Lazy Propagation)<a class="headerlink" href="#cap-nhat-luoi-lazy-propagation" title="Permanent link">&para;</a></h3>
 <p>Tất cả các bài toán ở các phần trước đều xét truy vấn cập nhật chỉ ảnh hưởng tới một phần tử riêng lẻ của mảng.
 Tuy nhiên, cây phân đoạn cho phép áp dụng truy vấn cập nhật lên cả một đoạn gồm các phần tử liên tiếp, đồng thời vẫn thực hiện truy vấn trong cùng thời gian <span class="arithmatex">$O(\log n)$</span>.</p>
 <h4 id="cong-tren-oan">Cộng trên đoạn<a class="headerlink" href="#cong-tren-oan" title="Permanent link">&para;</a></h4>
@@ -9156,7 +9156,7 @@ Từ đó, nếu phải bỏ cây phân đoạn hai chiều do không thể th�
 <p>Cấu trúc dữ liệu persistent là cấu trúc dữ liệu ghi nhớ trạng thái trước đó sau mỗi lần cập nhật.
 Điều này cho phép truy cập bất kỳ phiên bản nào của cấu trúc dữ liệu mà ta quan tâm và thực hiện truy vấn trên phiên bản đó.</p>
 <p>Cây phân đoạn là một cấu trúc dữ liệu có thể được biến thành cấu trúc dữ liệu persistent một cách hiệu quả (cả về thời gian lẫn bộ nhớ).
-Ta muốn tránh sao chép toàn bộ cây trước mỗi lần cập nhật, đồng thời không muốn mất thời gian <span class="arithmatex">$O(\log n)$</span> khi trả lời truy vấn trên đoạn.</p>
+Ta muốn tránh sao chép toàn bộ cây trước mỗi lần cập nhật, đồng thời vẫn muốn giữ độ phức tạp <span class="arithmatex">$O(\log n)$</span> khi trả lời truy vấn trên đoạn.</p>
 <p>Thực tế, mọi truy vấn cập nhật trên cây phân đoạn chỉ làm thay đổi dữ liệu của <span class="arithmatex">$O(\log n)$</span> nút dọc theo đường đi bắt đầu từ gốc.
 Vì thế, nếu lưu cây phân đoạn bằng con trỏ (tức mỗi nút chứa con trỏ tới nút con trái và phải), khi thực hiện truy vấn cập nhật ta chỉ cần tạo các nút mới thay vì sửa các nút sẵn có.
 Những nút không bị ảnh hưởng bởi cập nhật vẫn có thể được tái sử dụng bằng cách trỏ tới các nút cũ.
@@ -9274,7 +9274,7 @@ Ta dễ dàng tạo các bảng tra cứu (chẳng hạn dùng <span class="arit
 <p>(Được gọi như vậy vì hình dạng của nó là động và các nút thường được cấp phát động.
 Còn được gọi là <em>implicit segment tree</em> hoặc <em>sparse segment tree</em>.)</p>
 <p>Trước đây, ta xét những trường hợp có thể dựng toàn bộ cây phân đoạn ban đầu. Nhưng nếu không gian chỉ số ban đầu được lấp bằng một giá trị mặc định, còn kích thước của nó quá lớn để dựng đầy đủ trước thì sao?</p>
-<p>Ta có thể giải bài toán bằng cách tạo cây phân đoạn một cách lười (tăng dần). Ban đầu chỉ tạo nút gốc, và chỉ tạo các nút khác khi cần.
+<p>Ta có thể giải bài toán bằng cách tạo dần cây phân đoạn theo nhu cầu. Ban đầu chỉ tạo nút gốc, và chỉ tạo các nút khác khi cần.
 Trong trường hợp này, ta dùng cài đặt bằng con trỏ (trước khi đi xuống các nút con, kiểm tra xem chúng đã được tạo chưa; nếu chưa thì tạo chúng).
 Mỗi truy vấn vẫn chỉ có độ phức tạp <span class="arithmatex">$O(\log n)$</span>, đủ nhỏ cho phần lớn trường hợp sử dụng (chẳng hạn <span class="arithmatex">$\log_2 10^9 \approx 30$</span>).</p>
 <p>Trong cài đặt này có hai loại truy vấn: cộng một giá trị tại một vị trí (ban đầu mọi giá trị đều bằng <span class="arithmatex">$0$</span>), và tính tổng mọi giá trị trên một đoạn.
@@ -9318,7 +9318,7 @@ Mỗi truy vấn vẫn chỉ có độ phức tạp <span class="arithmatex">$O(
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>Rõ ràng ý tưởng này có thể được mở rộng theo rất nhiều cách. Chẳng hạn, có thể thêm hỗ trợ cập nhật đoạn bằng lazy propagation.</p>
+<p>Rõ ràng ý tưởng này có thể được mở rộng theo rất nhiều cách. Chẳng hạn, có thể thêm hỗ trợ cập nhật đoạn bằng cập nhật lười.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/KQUERY/">SPOJ - KQUERY</a> [Persistent segment tree / Merge sort tree]</li>
@@ -9333,14 +9333,14 @@ Mỗi truy vấn vẫn chỉ có độ phức tạp <span class="arithmatex">$O(
 <li><a href="https://codeforces.com/problemset/problem/52/C">Codeforces - Circular RMQ</a></li>
 <li><a href="https://codeforces.com/contest/121/problem/E">Codeforces - Lucky Array</a></li>
 <li><a href="https://codeforces.com/contest/438/problem/D">Codeforces - The Child and Sequence</a></li>
-<li><a href="https://codeforces.com/contest/446/problem/C">Codeforces - DZY Loves Fibonacci Numbers</a> [Lazy propagation]</li>
+<li><a href="https://codeforces.com/contest/446/problem/C">Codeforces - DZY Loves Fibonacci Numbers</a> [Cập nhật lười]</li>
 <li><a href="https://codeforces.com/problemset/problem/610/E">Codeforces - Alphabet Permutations</a></li>
 <li><a href="https://codeforces.com/problemset/problem/895/E">Codeforces - Eyes Closed</a></li>
 <li><a href="https://codeforces.com/problemset/problem/580/E">Codeforces - Kefa and Watch</a></li>
 <li><a href="https://codeforces.com/problemset/problem/558/E">Codeforces - A Simple Task</a></li>
 <li><a href="https://codeforces.com/problemset/problem/920/F">Codeforces - SUM and REPLACE</a></li>
-<li><a href="https://codeforces.com/problemset/problem/242/E">Codeforces - XOR on Segment</a> [Lazy propagation]</li>
-<li><a href="https://codeforces.com/problemset/problem/1114/F">Codeforces - Please, another Queries on Array?</a> [Lazy propagation]</li>
+<li><a href="https://codeforces.com/problemset/problem/242/E">Codeforces - XOR on Segment</a> [Cập nhật lười]</li>
+<li><a href="https://codeforces.com/problemset/problem/1114/F">Codeforces - Please, another Queries on Array?</a> [Cập nhật lười]</li>
 <li><a href="https://oj.uz/problem/view/COCI17_deda">COCI - Deda</a> [Last element smaller or equal to x / Binary search]</li>
 <li><a href="https://codeforces.com/problemset/problem/869/E">Codeforces - The Untended Antiquity</a> [2D]</li>
 <li><a href="https://cses.fi/problemset/task/1143">CSES - Hotel Queries</a></li>
