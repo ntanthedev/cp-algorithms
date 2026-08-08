@@ -268,7 +268,7 @@ Now our solution has asymptotics $O(2^n \cdot n)$.
 
 We will now solve the second version of the problem: find the number of strings that match **at least** $k$ of the patterns.
 
-Of course, we can just use the solution to the first version of the problem and add the answers for sets with size greater than $k$. However, you may notice that in this problem, a set |Y| is considered in the formula for all sets with size $\ge k$ which are contained in $Y$. That said, we can write the part of the expression that is being multiplied by $f(Y)$ as:
+Of course, we can just use the solution to the first version of the problem and add the answers for sets with size greater than $k$. However, you may notice that in this problem, a set $Y$ of size $|Y|$ is considered in the formula for all sets with size $\ge k$ which are contained in $Y$. That said, we can write the part of the expression that is being multiplied by $f(Y)$ as:
 
 
 $$ (-1)^{|Y|-k} \cdot \binom{|Y|}{k} + (-1)^{|Y|-k-1} \cdot \binom{|Y|}{k+1} + (-1)^{|Y|-k-2} \cdot \binom{|Y|}{k+2} + \cdots + (-1)^{|Y|-|Y|} \cdot \binom{|Y|}{|Y|} $$
@@ -305,7 +305,7 @@ However, this will again be non-polynomial in complexity $O(2^k \cdot k)$.
 
 Here goes a polynomial solution:
 
-We will use dynamic programming. For convenience, push (1,1) to the beginning and (n,m) at the end of the obstacles array. Let's compute the numbers $d[i]$ — the number of ways to get from the starting point ($0-th$) to $i-th$, without stepping on any other obstacle (except for $i$, of course). We will compute this number for all the obstacle cells, and also for the ending one.
+We will use dynamic programming. For convenience, push (1,1) to the beginning and (n,m) at the end of the obstacles array. Let's compute the numbers $d[i]$ — the number of ways to get from the starting point (index $0$) to index $i$, without stepping on any other obstacle (except for $i$, of course). We will compute this number for all the obstacle cells, and also for the ending one.
 
 Let's forget for a second the obstacles and just count the number of paths from cell $0$ to $i$. We need to consider some "bad" paths, the ones that pass through the obstacles, and subtract them from the total number of ways of going from $0$ to $i$.
 
