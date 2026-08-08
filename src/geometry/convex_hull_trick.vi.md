@@ -14,7 +14,7 @@ Xét bài toán sau. Có $n$ thành phố. Bạn muốn đi ô tô từ thành p
 
 $$dp_i = toll_i+\min\limits_{j<i}(cost_j \cdot (x_i - x_j)+dp_j)$$
 
-Cách làm trực tiếp có độ phức tạp $O(n^2)$, có thể cải thiện xuống $O(n \log n)$ hoặc $O(n \log [C \varepsilon^{-1}])$, trong đó $C$ là giá trị lớn nhất có thể của $|x_i|$ và $\varepsilon$ là độ chính xác dùng để xét $x_i$ ($\varepsilon = 1$ với số nguyên, là trường hợp thường gặp). Để làm được điều này, hãy nhận thấy bài toán có thể quy về việc thêm các hàm tuyến tính $k \cdot x + b$ vào một tập và tìm giá trị nhỏ nhất của các hàm tại một điểm $x$ cho trước. Có hai cách tiếp cận chính.
+Cách làm trực tiếp có độ phức tạp $O(n^2)$, có thể cải thiện xuống $O(n \log n)$ hoặc $O(n \log [C \varepsilon^{-1}])$, trong đó $C$ là giá trị lớn nhất có thể của $|x_i|$ và $\varepsilon$ là độ phân giải dùng để biểu diễn tọa độ $x_i$ ($\varepsilon = 1$ với số nguyên, là trường hợp thường gặp). Để làm được điều này, hãy nhận thấy bài toán có thể quy về việc thêm các hàm tuyến tính $k \cdot x + b$ vào một tập và tìm giá trị nhỏ nhất của các hàm tại một điểm $x$ cho trước. Có hai cách tiếp cận chính.
 
 ## Kỹ thuật bao lồi
 
@@ -31,7 +31,7 @@ Khi có truy vấn $(x;1)$, ta cần tìm vector pháp tuyến gần nó nhất 
 Để thấy điều này, lưu ý rằng các điểm có tích vô hướng không đổi với $(x;1)$ nằm trên một đường thẳng vuông góc với $(x;1)$. Vì vậy, hàm tuyến tính tối ưu chính là điểm mà tại đó tiếp tuyến của bao lồi, song song với vector pháp tuyến của $(x;1)$, tiếp xúc với bao lồi.
 Đó là điểm sao cho các pháp tuyến của cạnh nằm bên trái và bên phải nó hướng về hai phía khác nhau của $(x;1)$.
 
-Cách tiếp cận này hữu ích khi các truy vấn thêm hàm tuyến tính có $k$ đơn điệu, hoặc khi xử lý offline, tức là ta có thể thêm tất cả các hàm trước rồi mới trả lời truy vấn.
+Cách tiếp cận này hữu ích khi hệ số $k$ của các hàm tuyến tính được thêm vào biến thiên đơn điệu, hoặc khi xử lý offline, tức là ta có thể thêm tất cả các hàm trước rồi mới trả lời truy vấn.
 Vì vậy, ta không thể giải bài toán thành phố/xăng ở trên theo cách này.
 Bài toán đó đòi hỏi phải xử lý truy vấn online.
 Với truy vấn online, việc cài đặt sẽ phức tạp hơn và thường cần một cấu trúc dữ liệu dạng tập để duy trì bao lồi đúng cách.
@@ -93,7 +93,7 @@ int get(ftype x) {
 
 Giả sử ta có một tập hàm sao cho mỗi cặp hàm giao nhau nhiều nhất một lần. Ta lưu tại mỗi đỉnh của một cây phân đoạn một hàm theo cách sao cho khi đi từ gốc đến một lá, chắc chắn một trong các hàm gặp trên đường đi là hàm cho giá trị nhỏ nhất tại lá đó. Ta sẽ xem cách xây dựng cấu trúc này.
 
-Giả sử ta đang ở một đỉnh tương ứng với đoạn nửa mở $[l,r)$, tại đó đang lưu hàm $f_{old}$ và ta muốn thêm hàm $f_{new}$. Khi đó, giao điểm của hai hàm sẽ nằm trong $[l;m)$ hoặc $[m;r)$, với $m=\left\lfloor\tfrac{l+r}{2}\right\rfloor$. Ta có thể xác định nửa chứa giao điểm một cách hiệu quả bằng cách so sánh giá trị hai hàm tại $l$ và $m$. Nếu hàm chiếm ưu thế thay đổi thì giao điểm nằm trong $[l;m)$; nếu không, nó nằm trong $[m;r)$. Với nửa không chứa giao điểm, ta chọn hàm thấp hơn và lưu nó tại đỉnh hiện tại. Có thể thấy đó luôn là hàm thấp hơn tại điểm $m$. Sau đó, ta đệ quy sang nửa còn lại với hàm trước đó nằm phía trên. Như vậy, tính đúng đắn được giữ nguyên ở nửa đầu, còn ở nửa kia sẽ được duy trì trong lời gọi đệ quy. Do đó, ta có thể thêm hàm và truy vấn giá trị nhỏ nhất tại một điểm trong $O(\log [C\varepsilon^{-1}])$.
+Giả sử ta đang ở một đỉnh tương ứng với đoạn nửa mở $[l,r)$, tại đó đang lưu hàm $f_{old}$ và ta muốn thêm hàm $f_{new}$. Khi đó, giao điểm của hai hàm sẽ nằm trong $[l;m)$ hoặc $[m;r)$, với $m=\left\lfloor\tfrac{l+r}{2}\right\rfloor$. Ta có thể xác định nửa chứa giao điểm một cách hiệu quả bằng cách so sánh giá trị hai hàm tại $l$ và $m$. Nếu hàm chiếm ưu thế thay đổi thì giao điểm nằm trong $[l;m)$; nếu không, nó nằm trong $[m;r)$. Với nửa không chứa giao điểm, ta chọn hàm thấp hơn và lưu nó tại đỉnh hiện tại. Có thể thấy đó luôn là hàm thấp hơn tại điểm $m$. Sau đó, ta đệ quy sang nửa còn lại với hàm trước đó nằm phía trên. Như vậy, tính đúng đắn được giữ nguyên ở nửa không chứa giao điểm, còn ở nửa kia sẽ được duy trì trong lời gọi đệ quy. Do đó, ta có thể thêm hàm và truy vấn giá trị nhỏ nhất tại một điểm trong $O(\log [C\varepsilon^{-1}])$.
 
 Hình sau minh họa những gì xảy ra tại một đỉnh khi thêm hàm mới:
 
@@ -157,7 +157,7 @@ ftype get(int x, int v = 1, int l = 0, int r = maxn) {
 
 ## Bài tập
 
-* [Codebreaker - TROUBLES](https://codeforces.com/gym/103536/problem/B) (ứng dụng đơn giản của Convex Hull Trick sau một vài nhận xét)
+* [Codebreaker - TROUBLES](https://codeforces.com/gym/103536/problem/B) (ứng dụng đơn giản của kỹ thuật bao lồi (Convex Hull Trick) sau một vài nhận xét)
 * [CS Academy - Squared Ends](https://csacademy.com/contest/archive/task/squared-ends)
 * [Codeforces - Escape Through Leaf](http://codeforces.com/contest/932/problem/F)
 * [CodeChef - Polynomials](https://www.codechef.com/NOV17/problems/POLY)
