@@ -194,7 +194,7 @@ Vì vậy $g(x)$ nguyên tố cùng nhau với m, và ta có thể tính nghịc
 Sau khi tính trước mọi giá trị $g$ và $c$ bằng quy hoạch động trong $\mathcal{O}(n)$, ta có thể tính hệ số nhị thức trong $O(\log m)$.
 Hoặc tính trước mọi nghịch đảo và mọi lũy thừa của $p$, rồi tính mỗi hệ số trong $O(1)$.
 
-Lưu ý rằng nếu $c(n) - c(k) - c(n-k) \ge b$ thì $p^b ~|~ p^{c(n) - c(k) - c(n-k)}$, và hệ số nhị thức bằng $0$ theo mô-đun $m$.
+Lưu ý rằng nếu $c(n) - c(k) - c(n-k) \ge b$ thì $p^b ~|~ p^{c(n) - c(k) - c(n-k)}$, và hệ số nhị thức bằng $0$ theo mô-đun m.
 
 ### Hệ số nhị thức theo một mô-đun bất kỳ
 
