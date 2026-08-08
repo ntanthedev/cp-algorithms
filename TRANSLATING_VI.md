@@ -191,6 +191,20 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | union by size | hợp theo kích thước |
 | union by rank | hợp theo hạng |
 | inverse Ackermann function | hàm Ackermann nghịch đảo |
+| Segment Tree | cây phân đoạn (Segment Tree); sau lần đầu có thể dùng cây phân đoạn |
+| Lazy Propagation | cập nhật lười (Lazy Propagation) |
+| range update | cập nhật đoạn |
+| Merge Sort Tree | Merge Sort Tree |
+| fractional cascading | fractional cascading; giữ tiếng Anh và giải thích khi xuất hiện |
+| persistent data structure | cấu trúc dữ liệu persistent; VNOI cũng giữ tên Persistent Data Structures |
+| Persistent Segment Tree | cây phân đoạn persistent (Persistent Segment Tree) |
+| dynamic / implicit / sparse Segment Tree | cây phân đoạn động / ẩn / thưa; giữ tên tiếng Anh khi cần phân biệt alias |
+| coordinate / index compression | rời rạc hóa (nén số) |
+| binary search tree (BST) | cây tìm kiếm nhị phân (BST) |
+| Treap | Treap |
+| Cartesian tree | cây Cartesian |
+| priority (Treap) | độ ưu tiên |
+| implicit key | khóa ẩn |
 | dynamic programming | quy hoạch động |
 | memoization | ghi nhớ; trong ngữ cảnh đệ quy có thể dùng đệ quy có nhớ |
 | top-down dynamic programming | quy hoạch động từ trên xuống |
