@@ -25,7 +25,7 @@ Ta có thể kiểm tra điều này bằng một vài phép tính tích có hư
 
 ## Cài đặt
 
-Thuật toán dưới đây được cài đặt cho các điểm có tọa độ nguyên. Dĩ nhiên, ta có thể dễ dàng sửa nó để làm việc với số thực `double`.
+Thuật toán dưới đây được cài đặt cho các điểm có tọa độ nguyên. Dĩ nhiên, ta có thể dễ dàng sửa nó để làm việc với số thực double.
 
 ```{.cpp file=check-segments-inter}
 struct pt {
