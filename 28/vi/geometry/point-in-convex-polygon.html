@@ -8014,7 +8014,7 @@ Describe the issue of this article in detail.
 <h1 id="kiem-tra-mot-iem-co-thuoc-a-giac-loi-trong-olog-n-hay-khong">Kiểm tra một điểm có thuộc đa giác lồi trong <span class="arithmatex">$O(\log N)$</span> hay không<a class="headerlink" href="#kiem-tra-mot-iem-co-thuoc-a-giac-loi-trong-olog-n-hay-khong" title="Permanent link">&para;</a></h1>
 <p>Xét bài toán sau: cho một đa giác lồi có các đỉnh là tọa độ nguyên và rất nhiều truy vấn.
 Mỗi truy vấn là một điểm; ta cần xác định điểm đó nằm bên trong hoặc trên biên của đa giác hay không.
-Giả sử các đỉnh của đa giác được sắp theo thứ tự ngược chiều kim đồng hồ. Ta sẽ trả lời trực tuyến mỗi truy vấn trong <span class="arithmatex">$O(\log n)$</span>.</p>
+Giả sử các đỉnh của đa giác được sắp theo thứ tự ngược chiều kim đồng hồ. Mỗi truy vấn được xử lý trực tuyến trong <span class="arithmatex">$O(\log n)$</span>.</p>
 <h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
 <p>Hãy chọn điểm có tọa độ x nhỏ nhất. Nếu có nhiều điểm như vậy, ta chọn điểm có tọa độ y nhỏ nhất. Ký hiệu điểm này là <span class="arithmatex">$p_0$</span>.
 Khi đó, tất cả các điểm còn lại <span class="arithmatex">$p_1,\dots,p_n$</span> của đa giác được sắp theo góc cực quanh điểm đã chọn (vì đa giác được sắp ngược chiều kim đồng hồ).</p>
@@ -8030,7 +8030,7 @@ Nếu <span class="arithmatex">$(a - c) \times (b - c) &lt; 0$</span>, điểm n
 Còn nếu tích có hướng bằng 0, điểm nằm đúng trên đường thẳng đi qua <span class="arithmatex">$b$</span> và <span class="arithmatex">$c$</span>.</p>
 <p>Quay lại thuật toán:
 Xét một điểm truy vấn <span class="arithmatex">$p$</span>.
-Trước hết, ta phải kiểm tra điểm có nằm giữa <span class="arithmatex">$p_1$</span> và <span class="arithmatex">$p_n$</span> hay không.
+Trước hết, ta phải kiểm tra điểm có nằm trong miền góc giới hạn bởi hai hướng đến <span class="arithmatex">$p_1$</span> và <span class="arithmatex">$p_n$</span> hay không.
 Nếu không, ta đã biết nó không thể thuộc đa giác.
 Có thể làm điều này bằng cách kiểm tra tích có hướng <span class="arithmatex">$(p_1 - p_0)\times(p - p_0)$</span> bằng 0 hoặc cùng dấu với <span class="arithmatex">$(p_1 - p_0)\times(p_n - p_0)$</span>, đồng thời <span class="arithmatex">$(p_n - p_0)\times(p - p_0)$</span> bằng 0 hoặc cùng dấu với <span class="arithmatex">$(p_n - p_0)\times(p_1 - p_0)$</span>.
 Sau đó, ta xử lý trường hợp đặc biệt khi <span class="arithmatex">$p$</span> nằm trên đường thẳng <span class="arithmatex">$(p_0, p_1)$</span>.
@@ -8044,7 +8044,7 @@ Nếu <span class="arithmatex">$p$</span> nằm trong, hai giá trị sẽ bằn
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <p>Hàm <code>prepare</code> bảo đảm điểm nhỏ nhất theo thứ tự từ điển (tọa độ x nhỏ nhất, nếu hòa thì tọa độ y nhỏ nhất) trở thành <span class="arithmatex">$p_0$</span>, đồng thời tính các vector <span class="arithmatex">$p_i - p_0$</span>.
 Sau đó, hàm <code>pointInConvexPolygon</code> tính kết quả của một truy vấn.
-Ta cũng lưu lại điểm <span class="arithmatex">$p_0$</span> và tịnh tiến tất cả các điểm truy vấn theo nó để tính đúng khoảng cách, vì bản thân vector không có điểm đầu cố định.
+Ta cũng lưu lại điểm <span class="arithmatex">$p_0$</span> và tịnh tiến mỗi điểm truy vấn về hệ tọa độ lấy điểm đó làm gốc để tính đúng khoảng cách, vì bản thân vector không có điểm đầu cố định.
 Sau khi tịnh tiến các điểm truy vấn, ta có thể giả sử mọi vector đều bắt đầu tại gốc tọa độ <span class="arithmatex">$(0, 0)$</span>, nhờ đó đơn giản hóa các phép tính khoảng cách và độ dài.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
