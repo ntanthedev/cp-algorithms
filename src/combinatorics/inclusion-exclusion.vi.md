@@ -332,6 +332,8 @@ $$ans = \sum_{d \ge 2} (-1)^{deg(d)-1} \cdot f(d)$$
 
 trong đó $deg(d)$ là số số nguyên tố trong phân tích thừa số của $d$, còn $f(d)$ là số bộ bốn chia hết cho $d$.
 
+**Ghi chú bản dịch:** Công thức nguồn ở trên chỉ đúng khi tổng chạy trên các d square-free, tức các tích của những số nguyên tố phân biệt; các lũy thừa như 4 hoặc 8 không tạo thêm một giao mới trong bao hàm – loại trừ. Điều kiện này đã được bổ sung trong upstream PR #1683.
+
 Để tính $f(d)$, chỉ cần đếm số bội của $d$ (như ở bài trước) rồi dùng [hệ số nhị thức](binomial-coefficients.md) để đếm số cách chọn bốn số trong đó.
 
 Vì vậy, theo công thức bao hàm – loại trừ, ta cộng số nhóm bốn chia hết cho một số nguyên tố, trừ số bộ bốn chia hết cho tích của hai số nguyên tố, cộng số bộ bốn chia hết cho tích của ba số nguyên tố, v.v.
