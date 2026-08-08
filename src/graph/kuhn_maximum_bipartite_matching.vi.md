@@ -48,9 +48,9 @@ Ta chứng minh cả hai chiều của tương đương bằng phản chứng.
 
 1.  Cặp ghép $M$ là cực đại $\Rightarrow$ không tồn tại đường tăng đối với cặp ghép $M$.
   
-    Giả sử tồn tại một đường tăng $P$ đối với cặp ghép cực đại $M$. Đường tăng $P$ nhất thiết có độ dài lẻ và có nhiều hơn đúng một cạnh không thuộc $M$ so với số cạnh vừa thuộc $P$ vừa thuộc $M$.
+    Giả sử tồn tại một đường tăng $P$ đối với cặp ghép cực đại $M$. Đường tăng $P$ nhất thiết có độ dài lẻ và có nhiều hơn đúng một cạnh không thuộc $M$ so với số cạnh của nó đồng thời thuộc $M$.
     Ta tạo một cặp ghép mới $M'$ bằng cách giữ mọi cạnh của cặp ghép ban đầu $M$ trừ những cạnh đồng thời nằm trên $P$, rồi thêm các cạnh thuộc $P$ nhưng không thuộc $M$.
-    Đây vẫn là một cặp ghép hợp lệ vì hai đầu mút của $P$ chưa bão hòa bởi $M$, còn các đỉnh khác trên $P$ chỉ bão hòa bởi các cạnh thuộc $P \cap M$.
+    Đây vẫn là một cặp ghép hợp lệ vì hai đầu mút của $P$ chưa bão hòa bởi $M$, còn các đỉnh khác chỉ bão hòa bởi các cạnh thuộc $P \cap M$.
     Cặp ghép mới $M'$ có nhiều hơn $M$ đúng một cạnh, mâu thuẫn với giả thiết $M$ là cực đại.
     
     Viết hình thức hơn, với một đường tăng $P$ đối với cặp ghép cực đại $M$, cặp ghép $M' = P \oplus M$ thỏa $|M'| = |M| + 1$, mâu thuẫn.
@@ -76,7 +76,7 @@ Còn lại là cách tìm đường tăng. Thuật toán Kuhn đơn giản tìm 
 
 Sẽ thuận tiện hơn khi mô tả thuật toán nếu giả sử đồ thị đầu vào đã được chia sẵn thành hai phần (dù trên thực tế có thể cài đặt thuật toán mà không cần cung cấp tường minh cách chia này).
 
-Thuật toán xét mọi đỉnh $v$ thuộc phần thứ nhất: $v = 1 \ldots n_1$. Nếu đỉnh hiện tại $v$ đã bão hòa trong cặp ghép hiện tại (tức đã có một cạnh kề với nó được chọn), ta bỏ qua đỉnh này. Ngược lại, thuật toán cố bão hòa $v$ bằng cách bắt đầu tìm một đường tăng từ $v$.
+Thuật toán xét mọi đỉnh $v$ thuộc phần thứ nhất: $v = 1 \ldots n_1$. Nếu đỉnh hiện tại $v$ đã bão hòa trong cặp ghép hiện tại (tức đã có một cạnh kề với nó được chọn), ta bỏ qua đỉnh này. Ngược lại, thuật toán cố bão hòa đỉnh này bằng cách bắt đầu tìm một đường tăng từ nó.
 
 Việc tìm đường tăng được thực hiện bằng một phép duyệt theo chiều sâu hoặc theo chiều rộng đặc biệt (thường dùng duyệt theo chiều sâu vì dễ cài đặt hơn).
 Ban đầu, DFS đứng tại đỉnh chưa bão hòa $v$ thuộc phần thứ nhất. Ta xét tất cả các cạnh đi từ đỉnh này. Gọi cạnh hiện tại là $(v, to)$. Nếu đỉnh $to$ chưa bão hòa trong cặp ghép, ta đã tìm được một đường tăng chỉ gồm cạnh $(v, to)$; khi đó chỉ cần thêm cạnh này vào cặp ghép và dừng việc tìm đường tăng từ $v$. Ngược lại, nếu $to$ đã bão hòa bởi một cạnh $(to, p)$, ta đi tiếp theo cạnh đó: tức cố tìm một đường tăng đi qua $(v, to),(to, p), \ldots$.
@@ -100,7 +100,7 @@ Trong cài đặt mô tả ở trên, DFS/BFS chỉ bắt đầu từ các đỉ
 Sau đây là một cài đặt của thuật toán dựa trên DFS và nhận đầu vào là một đồ thị hai phía đã được chia tường minh thành hai phần.
 Cài đặt này rất ngắn gọn và đáng để ghi nhớ ở dạng này.
 
-Ở đây $n$ là số đỉnh của phần thứ nhất, $k$ là số đỉnh của phần thứ hai, còn $g[v]$ là danh sách các cạnh đi từ đỉnh $v$ thuộc phần thứ nhất (tức danh sách số hiệu các đỉnh mà các cạnh từ $v$ đi tới). Các đỉnh trong hai phần được đánh số độc lập: phần thứ nhất từ $1 \ldots n$, phần thứ hai từ $1 \ldots k$.
+Ở đây $n$ là số đỉnh của phần thứ nhất, $k$ là số đỉnh của phần thứ hai, còn $g[v]$ là danh sách các cạnh của đỉnh thuộc phần thứ nhất tương ứng (tức danh sách số hiệu các đỉnh mà các cạnh từ $v$ đi tới). Các đỉnh trong hai phần được đánh số độc lập: phần thứ nhất từ $1 \ldots n$, phần thứ hai từ $1 \ldots k$.
 
 Tiếp theo có hai mảng phụ trợ: $\rm mt$ và $\rm used$. Mảng thứ nhất, $\rm mt$, lưu thông tin về cặp ghép hiện tại. Để thuận tiện khi lập trình, ta chỉ lưu thông tin này cho các đỉnh thuộc phần thứ hai: $\textrm{mt[} i \rm]$ là số hiệu đỉnh thuộc phần thứ nhất được ghép với đỉnh $i$ thuộc phần thứ hai (hoặc $-1$ nếu không có cạnh ghép nào kề với nó). Mảng thứ hai là $\rm used$: mảng đánh dấu "đã thăm" thông thường trong DFS (để DFS không đi vào cùng một đỉnh hai lần).
 
