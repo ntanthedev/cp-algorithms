@@ -8087,8 +8087,9 @@ Vì vậy, cả hai biến thể của bài toán đều có thể giải bằng
 <p>Trường hợp đồ thị vô hướng hoặc đa đồ thị không khác về mặt ý tưởng so với thuật toán trên.
 Thuật toán vẫn hoạt động trên các đồ thị này.
 Tuy nhiên, việc cài đặt trở nên phức tạp hơn một chút.</p>
-<p>Một <strong>cạnh vô hướng</strong> <span class="arithmatex">$(i, j)$</span> thực chất tương đương với hai cạnh có hướng <span class="arithmatex">$(i, j)$</span> và <span class="arithmatex">$(j, i)$</span> có cùng dung lượng và giá trị.
-Vì thuật toán luồng với chi phí cực tiểu ở trên sinh một cạnh ngược cho mỗi cạnh có hướng, nên một cạnh vô hướng được tách thành <span class="arithmatex">$4$</span> cạnh có hướng và ta thực sự thu được một <strong>đa đồ thị</strong>.</p>
+<p>Một <strong>cạnh vô hướng</strong> <span class="arithmatex">$(i, j)$</span> thực chất tương đương với hai cạnh có hướng <span class="arithmatex">$(i, j)$</span> và <span class="arithmatex">$(j, i)$</span> có cùng dung lượng và chi phí.</p>
+<p><strong>Ghi chú bản dịch:</strong> Nguồn tiếng Anh viết “same capacity and values”. Trong ngữ cảnh này, thuộc tính thứ hai đã được định nghĩa là chi phí trên mỗi đơn vị luồng; bản dịch dùng “chi phí” để tránh mơ hồ và correction tương ứng được bổ sung vào PR upstream riêng.</p>
+<p>Vì thuật toán luồng với chi phí cực tiểu ở trên sinh một cạnh ngược cho mỗi cạnh có hướng, nên một cạnh vô hướng được tách thành <span class="arithmatex">$4$</span> cạnh có hướng và ta thực sự thu được một <strong>đa đồ thị</strong>.</p>
 <p>Ta xử lý <strong>nhiều cạnh</strong> như thế nào?
 Thứ nhất, luồng trên từng cạnh trong số các cạnh song song phải được lưu riêng.
 Thứ hai, khi tìm đường đi ngắn nhất, ta cần biết chính xác cạnh nào trong số các cạnh song song được dùng trên đường.
