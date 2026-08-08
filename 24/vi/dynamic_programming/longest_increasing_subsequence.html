@@ -8295,7 +8295,7 @@ $$</div>
 <p>Khi xử lý <span class="arithmatex">$a[i]$</span>, ta tự hỏi:
 Điều kiện nào cần thỏa để ghi số hiện tại <span class="arithmatex">$a[i]$</span> vào mảng <span class="arithmatex">$d[0 \dots n]$</span>?</p>
 <p>Ta đặt <span class="arithmatex">$d[l] = a[i]$</span> nếu tồn tại một dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span> kết thúc tại <span class="arithmatex">$a[i]$</span>, đồng thời không có dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span> nào kết thúc tại một số nhỏ hơn.
-Tương tự cách trước, nếu bỏ <span class="arithmatex">$a[i]$</span> khỏi dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span>, ta thu được một dãy con tăng dài nhất khác có độ dài <span class="arithmatex">$l-1$</span>.
+Tương tự cách trước, nếu bỏ <span class="arithmatex">$a[i]$</span> khỏi dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span>, ta thu được một dãy con tăng dài nhất khác có độ dài <span class="arithmatex">$l -1$</span>.
 Vì vậy ta muốn nối <span class="arithmatex">$a[i]$</span> vào một dãy con tăng dài nhất độ dài <span class="arithmatex">$l - 1$</span>; rõ ràng dãy độ dài <span class="arithmatex">$l - 1$</span> có phần tử cuối nhỏ nhất sẽ thuận lợi nhất, tức dãy kết thúc tại <span class="arithmatex">$d[l-1]$</span>.</p>
 <p>Tồn tại một dãy con tăng dài nhất độ dài <span class="arithmatex">$l - 1$</span> mà ta có thể nối thêm <span class="arithmatex">$a[i]$</span> khi và chỉ khi <span class="arithmatex">$d[l-1] &lt; a[i]$</span>.
 Do đó, ta có thể duyệt mọi độ dài <span class="arithmatex">$l$</span> và kiểm tra điều kiện này để xem có thể mở rộng dãy độ dài <span class="arithmatex">$l - 1$</span> hay không.</p>
