@@ -153,7 +153,7 @@ khi các điều kiện đã cho được thỏa mãn.
 
     Như vậy bổ đề được chứng minh.
 
-Ghi chú bản dịch: Trong trường hợp 1 của chứng minh trên, nguồn dùng các điều kiện $z < j$ và $z \geq j$ dù biến $j$ không được định nghĩa trong thiết lập đó. Theo ngữ cảnh của lập luận, mốc phân trường hợp phải là $b$. Bản dịch giữ nguyên ký hiệu để đồng bộ với nguồn hiện tại. Vấn đề này đã được báo và đề xuất sửa riêng ở bản tiếng Anh.
+Ghi chú bản dịch: Trong trường hợp 1 của chứng minh trên, nguồn dùng các điều kiện “z < j” và “z ≥ j” dù biến j không được định nghĩa trong thiết lập đó. Theo ngữ cảnh của lập luận, mốc phân trường hợp phải là b. Bản dịch giữ nguyên ký hiệu để đồng bộ với nguồn hiện tại. Vấn đề này đã được báo và đề xuất sửa riêng ở bản tiếng Anh.
 
 Bây giờ xét thiết lập sau. Ta có 2 chỉ số $i \leq p \leq q < j$. Đặt $dp_{k} = C(i, j) + dp(i, k) + dp(k+1, j)$.
 
