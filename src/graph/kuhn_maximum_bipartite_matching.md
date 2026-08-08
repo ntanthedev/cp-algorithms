@@ -122,10 +122,10 @@ the second part (or $-1$, if no matching edge comes out of it). The second array
 (it is needed just so that the depth-first traversal does not enter the same vertex twice).
 
 A function $\textrm{try_kuhn}$ is a depth-first traversal. It returns $\rm true$ if it was able to find an augmenting path from the vertex $v$, and it is considered that this 
-function has already performed the alternation of matching along the found chain.
+function has already performed the alternation of matching along the found path.
 
 Inside the function, all the edges outgoing from the vertex $v$ of the first part are scanned, and then the following is checked: if this edge leads to an unsaturated vertex 
-$to$, or if this vertex $to$ is saturated, but it is possible to find an increasing chain by recursively starting from $\textrm{mt[}to \rm ]$, then we say that we have found an 
+$to$, or if this vertex $to$ is saturated, but it is possible to find an augmenting path by recursively starting from $\textrm{mt[}to \rm ]$, then we say that we have found an 
 augmenting path, and before returning from the function with the result $\rm true$, we alternate the current edge: we redirect the edge adjacent to $to$ to the vertex $v$.
 
 The main program first indicates that the current matching is empty (the list $\rm mt$ is filled with numbers $-1$). Then the vertex $v$ of the first part is searched by $\textrm{try_kuhn}$, 
@@ -171,7 +171,7 @@ int main() {
 We repeat once again that Kuhn's algorithm is easy to implement in such a way that it works on graphs that are known to be bipartite, but their explicit splitting into two parts 
 has not been given. In this case, it will be necessary to abandon the convenient division into two parts, and store all the information for all vertices of the graph. For this, 
 an array of lists $g$ is now specified not only for the vertices of the first part, but for all the vertices of the graph (of course, now the vertices of both parts are numbered 
-in a common numbering - from $1$ to $n$). Arrays $\rm mt$ and are $\rm used$ are now also defined for the vertices of both parts, and, accordingly, they need to be kept in this state.
+in a common numbering - from $1$ to $n$). Arrays $\rm mt$ and $\rm used$ are now also defined for the vertices of both parts, and, accordingly, they need to be kept in this state.
 
 ### Improved implementation
 
