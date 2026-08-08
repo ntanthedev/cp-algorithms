@@ -83,7 +83,7 @@ Ta bắt đầu dựng từ nút gốc, nhờ vậy có thể tính toàn bộ c
 
 Độ phức tạp thời gian của quá trình xây dựng là $O(n)$, giả sử phép hợp nhất chạy trong thời gian hằng số (phép hợp nhất được gọi $n$ lần, bằng số nút trong của cây phân đoạn).
 
-Ghi chú bản dịch: Với cây nhị phân đầy đủ có n nút lá, số nút trong thực tế là n-1, nên số lần hợp nhất là n-1 chứ không phải n. Độ phức tạp O(n) của nguồn vẫn đúng; upstream đã có PR #1560 sửa chính xác chi tiết đếm này.
+Ghi chú bản dịch: Với cây nhị phân đầy đủ có n nút lá, số nút trong thực tế là n-1, nên số lần hợp nhất là n-1 chứ không phải n. Độ phức tạp O(n) của nguồn vẫn đúng.
 
 ### Truy vấn tổng
 
@@ -284,7 +284,7 @@ Ngoài việc tìm giá trị lớn nhất, ta còn phải tìm số lần xuấ
 Để giải, tại mỗi nút ta lưu một cặp số:
 ngoài giá trị lớn nhất, ta còn lưu số lần nó xuất hiện trong đoạn tương ứng.
 Ta vẫn có thể xác định cặp đúng cần lưu tại $t[v]$ trong thời gian hằng số từ các cặp ở hai nút con.
-Nên tách thao tác kết hợp hai cặp như vậy thành một hàm riêng, vì đây là thao tác được dùng khi dựng cây, trả lời truy vấn cực đại và thực hiện cập nhật.
+Nên tách thao tác kết hợp hai cặp như vậy thành một hàm riêng, vì đây là thao tác được dùng khi dựng cây, trả lời truy vấn giá trị lớn nhất và thực hiện cập nhật.
 
 ```{.cpp file=segment_tree_maximum_and_count}
 pair<int, int> t[4*MAXN];
@@ -370,7 +370,7 @@ int find_kth(int v, int tl, int tr, int k) {
 }
 ```
 
-#### Tìm tiền tố của mảng có tổng cho trước
+#### Tìm tiền tố đầu tiên có tổng đạt ngưỡng cho trước
 
 Bài toán như sau:
 với một giá trị $x$ cho trước, ta cần nhanh chóng tìm chỉ số nhỏ nhất $i$ sao cho tổng của $i$ phần tử đầu của mảng $a[]$ lớn hơn hoặc bằng $x$ (giả sử mảng $a[]$ chỉ chứa các giá trị không âm).
@@ -589,7 +589,7 @@ Bài toán này giống bài trước.
 Nhược điểm của cách trước là không thể sửa mảng giữa các lần trả lời truy vấn.
 Bây giờ ta muốn làm đúng điều đó: một truy vấn cập nhật thực hiện phép gán $a[i] = y$.
 
-Lời giải tương tự bài trước, nhưng thay vì danh sách tại mỗi nút của cây phân đoạn, ta lưu một danh sách cân bằng cho phép nhanh chóng tìm, xóa và chèn số.
+Lời giải tương tự bài trước, nhưng thay vì danh sách tại mỗi nút của cây phân đoạn, ta lưu một cấu trúc dữ liệu cân bằng cho phép nhanh chóng tìm, xóa và chèn số.
 Vì mảng có thể chứa một số lặp lại, lựa chọn phù hợp là cấu trúc dữ liệu $\text{multiset}$.
 
 Việc dựng cây phân đoạn kiểu này gần giống bài trước, chỉ khác rằng giờ ta cần kết hợp các $\text{multiset}$ thay vì danh sách đã sắp xếp.
@@ -676,7 +676,7 @@ Kỹ thuật này mở ra cả một lớp ứng dụng mới.
 Thay vì lưu một $\text{vector}$ hoặc $\text{multiset}$ ở mỗi nút, ta có thể dùng các cấu trúc dữ liệu khác:
 cây phân đoạn khác (được đề cập phần nào ở [Tổng quát hóa lên nhiều chiều](segment_tree.md#generalization-to-higher-dimensions)), cây Fenwick, cây Cartesian, v.v.
 
-### Cập nhật đoạn (Lazy Propagation)
+### Cập nhật lười (Lazy Propagation)
 
 Tất cả các bài toán ở các phần trước đều xét truy vấn cập nhật chỉ ảnh hưởng tới một phần tử riêng lẻ của mảng.
 Tuy nhiên, cây phân đoạn cho phép áp dụng truy vấn cập nhật lên cả một đoạn gồm các phần tử liên tiếp, đồng thời vẫn thực hiện truy vấn trong cùng thời gian $O(\log n)$.
@@ -996,7 +996,7 @@ Cấu trúc dữ liệu persistent là cấu trúc dữ liệu ghi nhớ trạng
 Điều này cho phép truy cập bất kỳ phiên bản nào của cấu trúc dữ liệu mà ta quan tâm và thực hiện truy vấn trên phiên bản đó.
 
 Cây phân đoạn là một cấu trúc dữ liệu có thể được biến thành cấu trúc dữ liệu persistent một cách hiệu quả (cả về thời gian lẫn bộ nhớ).
-Ta muốn tránh sao chép toàn bộ cây trước mỗi lần cập nhật, đồng thời không muốn mất thời gian $O(\log n)$ khi trả lời truy vấn trên đoạn.
+Ta muốn tránh sao chép toàn bộ cây trước mỗi lần cập nhật, đồng thời vẫn muốn giữ độ phức tạp $O(\log n)$ khi trả lời truy vấn trên đoạn.
 
 Thực tế, mọi truy vấn cập nhật trên cây phân đoạn chỉ làm thay đổi dữ liệu của $O(\log n)$ nút dọc theo đường đi bắt đầu từ gốc.
 Vì thế, nếu lưu cây phân đoạn bằng con trỏ (tức mỗi nút chứa con trỏ tới nút con trái và phải), khi thực hiện truy vấn cập nhật ta chỉ cần tạo các nút mới thay vì sửa các nút sẵn có.
@@ -1140,7 +1140,7 @@ Còn được gọi là _implicit segment tree_ hoặc _sparse segment tree_.)
 
 Trước đây, ta xét những trường hợp có thể dựng toàn bộ cây phân đoạn ban đầu. Nhưng nếu không gian chỉ số ban đầu được lấp bằng một giá trị mặc định, còn kích thước của nó quá lớn để dựng đầy đủ trước thì sao?
 
-Ta có thể giải bài toán bằng cách tạo cây phân đoạn một cách lười (tăng dần). Ban đầu chỉ tạo nút gốc, và chỉ tạo các nút khác khi cần.
+Ta có thể giải bài toán bằng cách tạo dần cây phân đoạn theo nhu cầu. Ban đầu chỉ tạo nút gốc, và chỉ tạo các nút khác khi cần.
 Trong trường hợp này, ta dùng cài đặt bằng con trỏ (trước khi đi xuống các nút con, kiểm tra xem chúng đã được tạo chưa; nếu chưa thì tạo chúng).
 Mỗi truy vấn vẫn chỉ có độ phức tạp $O(\log n)$, đủ nhỏ cho phần lớn trường hợp sử dụng (chẳng hạn $\log_2 10^9 \approx 30$).
 
@@ -1188,7 +1188,7 @@ struct Vertex {
 };
 ```
 
-Rõ ràng ý tưởng này có thể được mở rộng theo rất nhiều cách. Chẳng hạn, có thể thêm hỗ trợ cập nhật đoạn bằng lazy propagation.
+Rõ ràng ý tưởng này có thể được mở rộng theo rất nhiều cách. Chẳng hạn, có thể thêm hỗ trợ cập nhật đoạn bằng cập nhật lười.
 
 ## Bài tập luyện tập
 
@@ -1204,14 +1204,14 @@ Rõ ràng ý tưởng này có thể được mở rộng theo rất nhiều cá
 * [Codeforces - Circular RMQ](https://codeforces.com/problemset/problem/52/C)
 * [Codeforces - Lucky Array](https://codeforces.com/contest/121/problem/E)
 * [Codeforces - The Child and Sequence](https://codeforces.com/contest/438/problem/D)
-* [Codeforces - DZY Loves Fibonacci Numbers](https://codeforces.com/contest/446/problem/C) [Lazy propagation]
+* [Codeforces - DZY Loves Fibonacci Numbers](https://codeforces.com/contest/446/problem/C) [Cập nhật lười]
 * [Codeforces - Alphabet Permutations](https://codeforces.com/problemset/problem/610/E)
 * [Codeforces - Eyes Closed](https://codeforces.com/problemset/problem/895/E)
 * [Codeforces - Kefa and Watch](https://codeforces.com/problemset/problem/580/E)
 * [Codeforces - A Simple Task](https://codeforces.com/problemset/problem/558/E)
 * [Codeforces - SUM and REPLACE](https://codeforces.com/problemset/problem/920/F)
-* [Codeforces - XOR on Segment](https://codeforces.com/problemset/problem/242/E) [Lazy propagation]
-* [Codeforces - Please, another Queries on Array?](https://codeforces.com/problemset/problem/1114/F) [Lazy propagation]
+* [Codeforces - XOR on Segment](https://codeforces.com/problemset/problem/242/E) [Cập nhật lười]
+* [Codeforces - Please, another Queries on Array?](https://codeforces.com/problemset/problem/1114/F) [Cập nhật lười]
 * [COCI - Deda](https://oj.uz/problem/view/COCI17_deda) [Last element smaller or equal to x / Binary search]
 * [Codeforces - The Untended Antiquity](https://codeforces.com/problemset/problem/869/E) [2D]
 * [CSES - Hotel Queries](https://cses.fi/problemset/task/1143)
