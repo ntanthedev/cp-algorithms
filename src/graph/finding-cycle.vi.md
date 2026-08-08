@@ -15,7 +15,7 @@ Xét một đồ thị có hướng hoặc vô hướng không có cạnh khuyê
 
 Ta có thể giải bài toán bằng [duyệt theo chiều sâu](depth-first-search.md) trong $O(M)$, với $M$ là số cạnh.
 
-**Ghi chú bản dịch:** Nguồn tiếng Anh ghi độ phức tạp là $O(M)$. Nếu tính cả bước duyệt qua các đỉnh để khởi động DFS cho từng thành phần, cách viết tổng quát chặt hơn là $O(N+M)$. Bản dịch giữ ký hiệu của nguồn và tách correction này để đề xuất sửa upstream.
+**Ghi chú bản dịch:** Nguồn tiếng Anh ghi độ phức tạp là $O(M)$. Nếu tính cả bước duyệt qua các đỉnh để khởi động DFS cho từng thành phần, với $N$ là số đỉnh, cách viết tổng quát chặt hơn là $O(N+M)$. Bản dịch giữ ký hiệu của nguồn và tách correction này để đề xuất sửa upstream.
 
 ## Thuật toán
 
