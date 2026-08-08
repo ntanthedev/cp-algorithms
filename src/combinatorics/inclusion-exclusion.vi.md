@@ -81,7 +81,7 @@ Biểu thức này rất giống khai triển nhị thức của $(1 - x)^k$:
 
 $$ (1 - x)^k = \binom{k}{0} - \binom{k}{1} \cdot x + \binom{k}{2} \cdot x^2 - \binom{k}{3} \cdot x^3 + \cdots + (-1)^k\cdot \binom{k}{k} \cdot x^k $$
 
-Khi $x = 1$, $(1 - x)^k$ gần như chính là $T$. Tuy nhiên, biểu thức còn có thêm $\binom{k}{0} = 1$ và toàn bộ phần tương ứng với $T$ mang thêm dấu âm. Do đó $(1 - 1)^k = 1 - T$. Suy ra $T = 1 - (1 - 1)^k = 1$, đúng như cần chứng minh: phần tử được tính đúng một lần.
+Khi $x = 1$, $(1 - x)^k$ gần như chính là $T$. Tuy nhiên, biểu thức còn có thêm $\binom{k}{0} = 1$, và phần còn lại được nhân với $-1$. Do đó $(1 - 1)^k = 1 - T$. Suy ra $T = 1 - (1 - 1)^k = 1$, đúng như cần chứng minh: phần tử được tính đúng một lần.
 
 ## Tổng quát hóa để đếm phần tử nằm trong đúng $r$ tập {data-toc-label="Generalization for calculating number of elements in exactly r sets"}
 
@@ -160,7 +160,7 @@ $$N_0 = \binom{25}{5}$$
 
 Bây giờ ta tính số nghiệm "xấu" bằng nguyên lý bao hàm – loại trừ. Nghiệm "xấu" là những nghiệm có một hoặc nhiều $x_i$ lớn hơn hoặc bằng $9$.
 
-Ký hiệu $A_k ~ (k = 1,2\ldots 6)$ là tập các nghiệm có $x_k \ge 9$, còn mọi $x_i$ khác thỏa $x_i \ge 0 ~ (i \ne k)$ (chúng có thể $\ge 9$ hoặc không). Để tính kích thước $A_k$, lưu ý rằng về bản chất ta có cùng bài toán tổ hợp như hai đoạn trên, chỉ khác là $9$ đơn vị đã được lấy khỏi các ô trống và chắc chắn thuộc nhóm đầu tiên. Do đó:
+Ký hiệu $A_k ~ (k = 1,2\ldots 6)$ là tập các nghiệm có $x_k \ge 9$, còn các biến khác thỏa $x_i \ge 0 ~ (i \ne k)$ (chúng có thể $\ge 9$ hoặc không). Để tính kích thước $A_k$, lưu ý rằng về bản chất ta có cùng bài toán tổ hợp như hai đoạn trên, chỉ khác là $9$ đơn vị đã được lấy khỏi các ô trống và chắc chắn thuộc nhóm đầu tiên. Do đó:
 
 $$ | A_k | = \binom{16}{5} $$
 
@@ -180,7 +180,7 @@ $$\sum_{i=0}^d (-1)^i \binom{d}{i} \binom{s+d-1-(b+1)i}{d-1}$$
 
 Như trên, ta coi các hệ số nhị thức có chỉ số trên âm bằng không.
 
-Bài toán này cũng có thể giải bằng quy hoạch động hoặc hàm sinh. Đáp án bằng bao hàm – loại trừ được tính trong $O(d)$ thời gian (giả sử các phép toán như tính hệ số nhị thức là $O(1)$), còn một cách quy hoạch động đơn giản sẽ mất $O(ds)$.
+Bài toán này cũng có thể giải bằng quy hoạch động hoặc hàm sinh. Đáp án bằng bao hàm – loại trừ được tính trong $O(d)$ thời gian (giả sử các phép toán như tính hệ số nhị thức mất thời gian hằng số), còn một cách quy hoạch động đơn giản sẽ mất $O(ds)$.
 
 ### Số lượng số nguyên tố cùng nhau trong một đoạn
 
