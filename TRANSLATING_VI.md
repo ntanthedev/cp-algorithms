@@ -256,6 +256,17 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | minimum-cost flow | luồng với chi phí cực tiểu |
 | minimum-cost maximum-flow | luồng cực đại với chi phí cực tiểu |
 | potential (shortest paths / flow) | thế (potential) |
+| matching | cặp ghép |
+| maximal matching | cặp ghép tối đại |
+| maximum matching / maximum-cardinality matching | cặp ghép cực đại |
+| saturated / unsaturated vertex (matching) | đỉnh bão hòa / chưa bão hòa |
+| alternating path (matching) | đường luân phiên |
+| augmenting path (matching) | đường tăng |
+| symmetric difference | hiệu đối xứng |
+| perfect matching | cặp ghép hoàn hảo |
+| assignment problem | bài toán phân công |
+| rigid edge (Hungarian algorithm) | cạnh chặt (rigid edge) |
+| dual problem | bài toán đối ngẫu |
 
 Thay đổi thuật ngữ chung phải được giải thích rõ trong PR. Với thuật ngữ chưa chắc chắn, ưu tiên đối chiếu VNOI Wiki trước khi thêm vào bảng.
 
