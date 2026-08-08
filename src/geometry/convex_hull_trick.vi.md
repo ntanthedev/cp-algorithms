@@ -10,7 +10,7 @@ translation:
 
 # Kỹ thuật bao lồi và cây Li Chao
 
-Xét bài toán sau. Có $n$ thành phố. Bạn muốn đi ô tô từ thành phố $1$ đến thành phố $n$. Để làm được điều đó, bạn phải mua xăng. Biết rằng một lít xăng có giá $cost_k$ tại thành phố thứ $k$. Ban đầu bình xăng rỗng và xe tiêu thụ một lít xăng cho mỗi ki-lô-mét. Các thành phố nằm trên cùng một đường thẳng theo thứ tự tăng dần, trong đó thành phố thứ $k$ có tọa độ $x_k$. Ngoài ra, bạn phải trả phí $toll_k$ để đi vào thành phố thứ $k$. Mục tiêu là hoàn thành chuyến đi với chi phí nhỏ nhất có thể. Có thể thấy lời giải được tính bằng quy hoạch động:
+Xét bài toán sau. Có $n$ thành phố. Bạn muốn đi ô tô từ thành phố $1$ đến thành phố $n$. Để làm được điều đó, bạn phải mua xăng. Biết rằng một lít xăng có giá $cost_k$ tại thành phố $k^{th}$. Ban đầu bình xăng rỗng và xe tiêu thụ một lít xăng cho mỗi ki-lô-mét. Các thành phố nằm trên cùng một đường thẳng theo thứ tự tăng dần, trong đó thành phố $k^{th}$ có tọa độ $x_k$. Ngoài ra, bạn phải trả phí $toll_k$ để đi vào thành phố $k^{th}$. Mục tiêu là hoàn thành chuyến đi với chi phí nhỏ nhất có thể. Có thể thấy lời giải được tính bằng quy hoạch động:
 
 $$dp_i = toll_i+\min\limits_{j<i}(cost_j \cdot (x_i - x_j)+dp_j)$$
 
