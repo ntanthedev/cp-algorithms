@@ -82,9 +82,9 @@ Mọi cạnh thuộc cặp ghép $M$ được định hướng từ phần bên 
 Theo thuật ngữ của bài toán cặp ghép, một đỉnh được gọi là bão hòa nếu có một cạnh của cặp ghép hiện tại kề với nó. Một đỉnh không kề với cạnh nào của cặp ghép hiện tại được gọi là chưa bão hòa. Một đường đi độ dài lẻ, có cạnh đầu tiên không thuộc cặp ghép và các cạnh sau đó luân phiên thuộc/không thuộc cặp ghép, được gọi là đường tăng.
 Ta bắt đầu [duyệt theo chiều sâu](depth-first-search.md) hoặc [duyệt theo chiều rộng](breadth-first-search.md) từ mọi đỉnh chưa bão hòa thuộc phần bên trái. Nếu quá trình duyệt đi tới được một đỉnh chưa bão hòa thuộc phần bên phải, ta đã tìm được một đường tăng từ trái sang phải. Nếu thêm các cạnh lẻ trên đường vào cặp ghép và bỏ các cạnh chẵn (tức thêm cạnh thứ nhất, bỏ cạnh thứ hai, thêm cạnh thứ ba, v.v.), số cạnh của cặp ghép tăng thêm một.
 
-Nếu không tồn tại đường tăng, cặp ghép hiện tại $M$ là tối đại trong đồ thị $H$.
+Nếu không tồn tại đường tăng, cặp ghép hiện tại $M$ là cực đại trong đồ thị $H$.
 
-**Ghi chú bản dịch:** Theo bổ đề Berge được chính bài Kuhn sử dụng, không tồn tại đường tăng thực ra suy ra cặp ghép hiện tại là **cực đại** (maximum), mạnh hơn “tối đại” (maximal). Nguồn tiếng Anh dùng từ “maximal” ở câu trên; bản dịch giữ sát wording nguồn và ghi rõ điểm này để đề xuất sửa upstream.
+**Ghi chú bản dịch:** Nguồn tiếng Anh dùng từ “maximal” ở câu trên, nhưng theo bổ đề Berge được chính bài Kuhn sử dụng, không tồn tại đường tăng suy ra cặp ghép hiện tại là **cực đại** (maximum). Bản dịch dùng kết luận đúng và correction này đã được gửi trong upstream PR #1681.
 
 **Bước 3.** Nếu ở bước hiện tại không thể tăng số cạnh của cặp ghép, ta tính lại thế sao cho ở các bước tiếp theo có thêm cơ hội tăng cặp ghép.
 
