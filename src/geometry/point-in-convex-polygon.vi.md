@@ -13,7 +13,7 @@ translation:
 
 Xét bài toán sau: cho một đa giác lồi có các đỉnh là tọa độ nguyên và rất nhiều truy vấn.
 Mỗi truy vấn là một điểm; ta cần xác định điểm đó nằm bên trong hoặc trên biên của đa giác hay không.
-Giả sử các đỉnh của đa giác được sắp theo thứ tự ngược chiều kim đồng hồ. Ta sẽ trả lời trực tuyến mỗi truy vấn trong $O(\log n)$.
+Giả sử các đỉnh của đa giác được sắp theo thứ tự ngược chiều kim đồng hồ. Mỗi truy vấn được xử lý trực tuyến trong $O(\log n)$.
 
 ## Thuật toán
 Hãy chọn điểm có tọa độ x nhỏ nhất. Nếu có nhiều điểm như vậy, ta chọn điểm có tọa độ y nhỏ nhất. Ký hiệu điểm này là $p_0$.
@@ -34,7 +34,7 @@ Còn nếu tích có hướng bằng 0, điểm nằm đúng trên đường th�
 
 Quay lại thuật toán:
 Xét một điểm truy vấn $p$.
-Trước hết, ta phải kiểm tra điểm có nằm giữa $p_1$ và $p_n$ hay không.
+Trước hết, ta phải kiểm tra điểm có nằm trong miền góc giới hạn bởi hai hướng đến $p_1$ và $p_n$ hay không.
 Nếu không, ta đã biết nó không thể thuộc đa giác.
 Có thể làm điều này bằng cách kiểm tra tích có hướng $(p_1 - p_0)\times(p - p_0)$ bằng 0 hoặc cùng dấu với $(p_1 - p_0)\times(p_n - p_0)$, đồng thời $(p_n - p_0)\times(p - p_0)$ bằng 0 hoặc cùng dấu với $(p_n - p_0)\times(p_1 - p_0)$.
 Sau đó, ta xử lý trường hợp đặc biệt khi $p$ nằm trên đường thẳng $(p_0, p_1)$.
@@ -51,7 +51,7 @@ Ghi chú bản dịch: Nguồn hiện tại không nhất quán khi mô tả tr�
 
 Hàm `prepare` bảo đảm điểm nhỏ nhất theo thứ tự từ điển (tọa độ x nhỏ nhất, nếu hòa thì tọa độ y nhỏ nhất) trở thành $p_0$, đồng thời tính các vector $p_i - p_0$.
 Sau đó, hàm `pointInConvexPolygon` tính kết quả của một truy vấn.
-Ta cũng lưu lại điểm $p_0$ và tịnh tiến tất cả các điểm truy vấn theo nó để tính đúng khoảng cách, vì bản thân vector không có điểm đầu cố định.
+Ta cũng lưu lại điểm $p_0$ và tịnh tiến mỗi điểm truy vấn về hệ tọa độ lấy điểm đó làm gốc để tính đúng khoảng cách, vì bản thân vector không có điểm đầu cố định.
 Sau khi tịnh tiến các điểm truy vấn, ta có thể giả sử mọi vector đều bắt đầu tại gốc tọa độ $(0, 0)$, nhờ đó đơn giản hóa các phép tính khoảng cách và độ dài.
 
 ```{.cpp file=points_in_convex_polygon}
