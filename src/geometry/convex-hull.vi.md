@@ -21,14 +21,16 @@ Ta sẽ tìm hiểu thuật toán **Graham's scan** do Graham công bố năm 19
 Thuật toán trước hết tìm điểm thấp nhất $P_0$. Nếu có nhiều điểm cùng tọa độ Y, ta chọn điểm có tọa độ X nhỏ hơn. Bước này mất $\mathcal{O}(N)$ thời gian.
 
 Tiếp theo, sắp xếp tất cả các điểm còn lại theo góc cực theo chiều kim đồng hồ.
-Nếu hai hay nhiều điểm có cùng góc cực, ta phá hòa bằng khoảng cách đến $P_0$, theo thứ tự tăng dần.
+Nếu hai hay nhiều điểm có cùng góc cực, ta sắp xếp tiếp theo khoảng cách đến $P_0$ tăng dần.
 
 Sau đó, ta lần lượt duyệt từng điểm và bảo đảm rằng điểm hiện tại cùng hai điểm trước nó tạo thành một lần rẽ theo chiều kim đồng hồ. Nếu không, điểm trước đó bị loại vì nó sẽ làm hình thu được không còn lồi. Có thể kiểm tra hướng quay theo hoặc ngược chiều kim đồng hồ bằng [orientation](oriented-triangle-area.md).
 
 Ta dùng một ngăn xếp để lưu các điểm. Khi đi đến điểm ban đầu $P_0$, thuật toán kết thúc và trả về ngăn xếp chứa các điểm của bao lồi theo thứ tự chiều kim đồng hồ.
 
-Nếu cần giữ cả các điểm thẳng hàng khi thực hiện Graham scan, ta cần thêm một bước sau khi sắp xếp. Hãy lấy các điểm có khoảng cách cực lớn nhất đến $P_0$ (chúng nằm ở cuối vector đã sắp xếp) và thẳng hàng.
+Nếu cần giữ cả các điểm thẳng hàng khi thực hiện Graham scan, ta cần thêm một bước sau khi sắp xếp. Hãy lấy các điểm có “khoảng cách cực” lớn nhất đến $P_0$ (chúng nằm ở cuối vector đã sắp xếp) và thẳng hàng.
 Các điểm trên đường thẳng này cần được đảo thứ tự để ta có thể đưa tất cả các điểm thẳng hàng vào kết quả; nếu không, thuật toán sẽ lấy điểm gần nhất trên đường này rồi dừng xử lý phần còn lại. Không nên thực hiện bước này ở phiên bản không giữ điểm thẳng hàng, vì khi đó kết quả sẽ không còn là bao lồi nhỏ nhất.
+
+**Ghi chú bản dịch:** Ở đoạn trên, nguồn dùng cụm “biggest polar distance”. Tuy nhiên, cài đặt thực tế lấy dãy điểm ở cuối thứ tự góc cực, tức các điểm thẳng hàng theo hướng có góc cực lớn nhất. Cách diễn đạt này đang được đề xuất làm rõ riêng ở bản tiếng Anh.
 
 ### Cài đặt
 
@@ -61,7 +63,7 @@ void convex_hull(vector<pt>& a, bool include_collinear = false) {
         int o = orientation(p0, a, b);
         if (o == 0)
             return (p0.x-a.x)*(p0.x-a.x) + (p0.y-a.y)*(p0.y-a.y)
-                < (p0.x-b.x)*(p0.x-b.x) + (p0.y-b.y)*(p0.y-b.y);
+                < (p0.x-b.x)*(p0.x-b.x) + (p0.y-a.y)*(p0.y-a.y);
         return o < 0;
     });
     if (include_collinear) {
@@ -85,7 +87,9 @@ void convex_hull(vector<pt>& a, bool include_collinear = false) {
 ```
 
 ## Thuật toán Monotone chain
-Thuật toán trước hết tìm điểm trái nhất và phải nhất, ký hiệu là A và B. Nếu có nhiều điểm như vậy, ta chọn điểm thấp nhất trong các điểm trái nhất (tọa độ Y nhỏ nhất) làm A, và điểm cao nhất trong các điểm phải nhất (tọa độ Y lớn nhất) làm B. Rõ ràng A và B đều phải thuộc bao lồi vì chúng là các điểm cực trị và không thể nằm hoàn toàn bên trong một đường bao tạo bởi các điểm còn lại.
+Thuật toán trước hết tìm điểm trái nhất và phải nhất, ký hiệu là A và B. Nếu có nhiều điểm như vậy, ta chọn điểm thấp nhất trong các điểm trái nhất (tọa độ Y nhỏ nhất) làm A, và điểm cao nhất trong các điểm phải nhất (tọa độ Y lớn nhất) làm B. Rõ ràng A và B đều phải thuộc bao lồi vì chúng là các điểm nằm xa nhất về hai phía và không thể bị chứa bởi bất kỳ đường thẳng nào đi qua một cặp điểm trong tập đã cho.
+
+**Ghi chú bản dịch:** Cách giải thích “the farthest away” và “contained by any line” trong nguồn khá mơ hồ. Với cách chọn A và B ở đây, lý do trực tiếp là chúng là hai điểm cực trị theo tọa độ x, nên phải nằm trên biên của bao lồi. Cách diễn đạt nguồn đang được đề xuất làm rõ riêng ở bản tiếng Anh.
 
 Bây giờ, kẻ đường thẳng qua AB. Đường này chia tất cả các điểm còn lại thành hai tập S1 và S2, trong đó S1 chứa tất cả các điểm phía trên đường nối A và B, còn S2 chứa tất cả các điểm phía dưới. Các điểm nằm trên đường thẳng AB có thể thuộc một trong hai tập. Hai điểm A và B thuộc cả hai tập. Thuật toán lần lượt xây dựng tập trên S1 và tập dưới S2 rồi kết hợp chúng để thu được đáp án. 
 
