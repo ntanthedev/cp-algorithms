@@ -240,6 +240,13 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | polar angle | góc cực |
 | collinear | thẳng hàng |
 | clockwise / counter-clockwise | theo chiều kim đồng hồ / ngược chiều kim đồng hồ |
+| oriented / signed area | diện tích có hướng (có dấu) |
+| simple polygon | đa giác đơn |
+| lattice polygon | đa giác lưới |
+| lattice / integer point | điểm nguyên; điểm có tọa độ nguyên |
+| triangulation | tam giác hóa |
+| Pick's theorem | Định lý Pick |
+| Minkowski sum | Tổng Minkowski |
 | binomial coefficient | hệ số nhị thức |
 | binomial theorem | định lý nhị thức |
 | Pascal's triangle | tam giác Pascal |
