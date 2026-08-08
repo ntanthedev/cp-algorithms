@@ -63,7 +63,7 @@ void convex_hull(vector<pt>& a, bool include_collinear = false) {
         int o = orientation(p0, a, b);
         if (o == 0)
             return (p0.x-a.x)*(p0.x-a.x) + (p0.y-a.y)*(p0.y-a.y)
-                < (p0.x-b.x)*(p0.x-b.x) + (p0.y-a.y)*(p0.y-a.y);
+                < (p0.x-b.x)*(p0.x-b.x) + (p0.y-b.y)*(p0.y-b.y);
         return o < 0;
     });
     if (include_collinear) {
