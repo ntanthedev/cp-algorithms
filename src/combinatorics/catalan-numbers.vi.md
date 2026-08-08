@@ -52,7 +52,7 @@ Ta cũng có thể hình dung theo cách sau. Theo định nghĩa, $C_n$ là s�
 
 $( ) ( ( ) )$ có thể được chia thành $( )$ và $( ( ) )$, nhưng không thể chia thành $( ) ($ và $( ) )$. Một lần nữa, cộng trên mọi $k's$ hợp lệ ta thu được hệ thức truy hồi của $C_n$.
 
-**Ghi chú bản dịch:** Đoạn chứng minh ở nguồn có vấn đề về cách đếm. Nếu l và r là vị trí của hai ký tự ngoặc thì số **cặp ngoặc** nằm giữa chúng là $(r-l-1)/2$, trong khi $C_k$ đếm số dãy gồm k cặp ngoặc. Cách chứng minh chuẩn là cố định cặp ngoặc khớp với dấu mở đầu tiên, rồi chọn số cặp nằm bên trong và số cặp nằm phía sau; correction này được tách để đề xuất sửa upstream.
+**Ghi chú bản dịch:** Đoạn chứng minh ở nguồn nhầm giữa số ký tự và số cặp ngoặc: nếu l và r là vị trí hai ký tự ngoặc thì số cặp ngoặc nằm giữa chúng là $(r-l-1)/2$, trong khi $C_k$ đếm dãy gồm k cặp ngoặc. Cách chứng minh chuẩn là cố định dấu ngoặc đóng khớp với dấu mở đầu tiên, rồi phân chia số cặp nằm bên trong và phía sau. Bản dịch giữ nguyên nội dung nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
 
 #### Cài đặt C++
 
@@ -74,7 +74,7 @@ void init() {
 }
 ```
 
-**Ghi chú bản dịch:** Snippet nguồn sử dụng biến n trong điều kiện vòng lặp nhưng không khai báo hoặc truyền biến này vào hàm. Bản dịch giữ nguyên code theo policy; lỗi cài đặt này được tách để đề xuất sửa upstream.
+**Ghi chú bản dịch:** Đoạn mã nguồn sử dụng biến n trong điều kiện vòng lặp nhưng không khai báo hoặc truyền biến này vào hàm. Bản dịch giữ nguyên đoạn mã theo quy tắc đồng bộ nguồn; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
 
 ### Công thức giải tích
 
