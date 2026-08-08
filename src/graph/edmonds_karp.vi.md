@@ -63,7 +63,7 @@ ta có thể đẩy tối đa bao nhiêu nước qua hệ thống ống từ ngu
 
 Hình dưới đây minh họa luồng cực đại trong mạng luồng.
 <div style="text-align: center;">
-  <img src="Flow9.png" alt="Maximal flow">
+  <img src="Flow9.png" alt="Luồng cực đại">
 </div>
 
 ## Phương pháp Ford-Fulkerson
