@@ -144,9 +144,9 @@ if (l) cout << "Left subtree size: " << (l->size) << endl;
 if (r) cout << "Right subtree size: " << (r->size) << endl;
 ```
 
-Ghi chú bản dịch: Đoạn ví dụ trên truy cập trường size, nhưng cấu trúc item được khai báo ngay trước đó chưa định nghĩa trường này. Đây là lỗi của mã nguồn tiếng Anh hiện tại; bản dịch giữ nguyên code để đồng bộ với nguồn.
+Ghi chú bản dịch: Đoạn ví dụ trên truy cập trường size, nhưng cấu trúc item được khai báo ngay trước đó chưa định nghĩa trường này. Vì đây là lỗi của nguồn, bản dịch giữ nguyên đoạn code để đồng bộ.
 
-Hàm `split` này có thể khá khó hiểu vì nó vừa có con trỏ (`pitem`), vừa có tham chiếu tới các con trỏ đó (`pitem &l`). Ta hãy diễn giải bằng lời ý nghĩa của lời gọi `split(t, k, l, r)`: "tách Treap `t` theo giá trị `k` thành hai Treap, rồi lưu Treap bên trái vào `l` và Treap bên phải vào `r`". Tốt! Bây giờ, hãy áp dụng định nghĩa này cho hai lời gọi đệ quy theo các trường hợp đã phân tích ở phần trước: (Điều kiện if đầu tiên chỉ là trường hợp cơ sở đơn giản khi Treap rỗng)
+Hàm `split` này có thể khá khó hiểu vì nó vừa có con trỏ (`pitem`), vừa có tham chiếu tới các con trỏ đó (`pitem &l`). Ta hãy diễn giải bằng lời ý nghĩa của lời gọi `split(t, k, l, r)`: "tách Treap `t` theo giá trị `k` thành hai Treap, rồi lưu Treap bên trái vào `l` và Treap bên phải vào `r`". Bây giờ, hãy áp dụng định nghĩa này cho hai lời gọi đệ quy theo các trường hợp đã phân tích ở phần trước: (Điều kiện if đầu tiên chỉ là trường hợp cơ sở đơn giản khi Treap rỗng)
 
 1. Khi giá trị nút gốc là $\le$ key, ta gọi `split (t->r, key, t->r, r)`, nghĩa là: "tách Treap `t->r` (cây con phải của `t`) theo giá trị `key`, lưu cây con trái vào `t->r` và cây con phải vào `r`". Sau đó ta đặt `l = t`. Lúc này giá trị kết quả `l` đã chứa `t->l`, `t` và cả `t->r` (là kết quả từ lời gọi đệ quy vừa thực hiện), tất cả đã được hợp nhất theo đúng thứ tự! Bạn nên dừng lại một chút để chắc chắn rằng kết quả `l` và `r` đúng với phần Mô tả cài đặt ở trên.
 2. Khi giá trị nút gốc lớn hơn key, ta gọi `split (t->l, key, l, t->l)`, nghĩa là: "tách Treap `t->l` (cây con trái của `t`) theo giá trị `key`, lưu cây con trái vào `l` và cây con phải vào `t->l`". Sau đó ta đặt `r = t`. Lúc này giá trị kết quả `r` đã chứa `t->l` (là kết quả từ lời gọi đệ quy vừa thực hiện), `t` và `t->r`, tất cả đã được hợp nhất theo đúng thứ tự! Bạn nên dừng lại một chút để chắc chắn rằng kết quả `l` và `r` đúng với phần Mô tả cài đặt ở trên.
@@ -212,7 +212,7 @@ void upd_cnt (pitem t) {
 
 ## Dựng Treap trong $O (N)$ ở chế độ offline {data-toc-label="Building a Treap in O(N) in offline mode"}
 
-Với một danh sách khóa đã sắp xếp, ta có thể dựng Treap nhanh hơn so với chèn từng khóa một — cách đó mất $O(N \log N)$. Do các khóa đã được sắp xếp, ta có thể dễ dàng dựng một cây tìm kiếm nhị phân cân bằng trong thời gian tuyến tính. Các giá trị heap $Y$ được khởi tạo ngẫu nhiên, sau đó có thể heapify độc lập với các khóa $X$ để [dựng heap](https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap) trong $O(N)$.
+Với một danh sách khóa đã sắp xếp, ta có thể dựng Treap nhanh hơn so với chèn từng khóa một — cách đó mất $O(N \log N)$. Do các khóa đã được sắp xếp, ta có thể dễ dàng dựng một cây tìm kiếm nhị phân cân bằng trong thời gian tuyến tính. Các độ ưu tiên $Y$ được khởi tạo ngẫu nhiên, sau đó có thể heapify độc lập với các khóa $X$ để [dựng heap](https://en.wikipedia.org/wiki/Binary_heap#Building_a_heap) trong $O(N)$.
 
 ```cpp
 void heapify (pitem t) {
@@ -241,7 +241,7 @@ pitem build (int * a, int n) {
 }
 ```
 
-Ghi chú bản dịch: Trong mã nguồn hiện tại, dòng gọi upd_cnt(t) ở đoạn trên thiếu dấu chấm phẩy, vì vậy snippet sẽ không biên dịch nguyên trạng. Bản dịch không sửa code nguồn.
+Ghi chú bản dịch: Dòng gọi upd_cnt(t) trong đoạn code trên thiếu dấu chấm phẩy, nên đoạn code không biên dịch nguyên trạng. Vì đây là lỗi của nguồn, bản dịch giữ nguyên code để đồng bộ.
 
 Lưu ý: lời gọi `upd_cnt(t)` chỉ cần thiết nếu bạn cần kích thước cây con.
 
@@ -292,7 +292,7 @@ pitem build(int *x, int *y, int n) {
 }
 ```
 
-Ghi chú bản dịch: Đoạn cài đặt tuyến tính này dùng trường p làm con trỏ cha, nhưng cấu trúc item đã khai báo trước đó không có trường p. Ngoài ra, đoạn này dùng quy ước heap cực tiểu theo độ ưu tiên, khác với quy ước heap cực đại ở phần Treap thông thường phía trên. Bản dịch giữ nguyên code và đang xử lý correction riêng cho nguồn tiếng Anh.
+Ghi chú bản dịch: Đoạn dựng tuyến tính này dùng trường p làm con trỏ cha, nhưng cấu trúc item đã khai báo trước đó không có trường p. Ngoài ra, đoạn này dùng quy ước heap cực tiểu theo độ ưu tiên, khác với quy ước heap cực đại ở phần Treap thông thường phía trên. Đây là vấn đề của nguồn; bản dịch giữ nguyên code để đồng bộ.
 
 ## Implicit Treap
 
@@ -306,7 +306,7 @@ Implicit Treap là một biến thể đơn giản nhưng rất mạnh của Tre
 
 Ý tưởng là các khóa phải là **chỉ số** bắt đầu từ 0 của các phần tử trong mảng. Tuy nhiên, ta sẽ không lưu các giá trị này một cách tường minh (nếu không, chẳng hạn việc chèn một phần tử sẽ khiến khóa của $O (N)$ nút trong cây phải thay đổi).
 
-Lưu ý rằng khóa của một nút là số nút nhỏ hơn nó (các nút như vậy có thể không chỉ nằm trong cây con trái của nó mà còn trong các cây con trái của các tổ tiên).
+Lưu ý rằng khóa của một nút chính là số nút có khóa nhỏ hơn nó (các nút như vậy có thể không chỉ nằm trong cây con trái của nó mà còn trong các cây con trái của các tổ tiên).
 Cụ thể hơn, **khóa ẩn** của một nút T là số đỉnh $cnt (T \rightarrow L)$ trong cây con trái của nút này, cộng với các giá trị tương tự $cnt (P \rightarrow L) + 1$ đối với mỗi tổ tiên P của nút T nếu T nằm trong cây con phải của P.
 
 Bây giờ ta có thể thấy cách tính nhanh khóa ẩn của nút hiện tại. Do trong mọi thao tác ta đều đi tới một nút bằng cách đi xuống cây, ta chỉ cần tích lũy tổng này và truyền nó vào hàm. Nếu đi sang cây con trái, tổng tích lũy không đổi; nếu đi sang cây con phải, nó tăng thêm $cnt (T \rightarrow L) +1$.
@@ -352,6 +352,8 @@ Bây giờ hãy xét cách cài đặt các thao tác khác nhau trên Implicit 
  Ta làm tương tự đoạn trước, nhưng thay vì trường F, ta lưu một trường `add` chứa giá trị cần cộng cho cây con (hoặc giá trị mà cây con sẽ được tô thành). Trước khi thực hiện bất kỳ thao tác nào, ta phải "push" giá trị này xuống đúng cách — tức thay đổi $T \rightarrow L \rightarrow add$ và $T \rightarrow R \rightarrow add$, rồi xóa `add` ở nút cha. Nhờ vậy, thông tin sẽ không bị mất sau các thay đổi trên cây.
 - **Đảo ngược** trên đoạn.  
  Thao tác này lại tương tự thao tác trước: ta cần thêm cờ Boolean `rev` và đặt nó thành true khi cây con của nút hiện tại phải bị đảo ngược. Việc "push" giá trị này phức tạp hơn một chút — ta đổi chỗ hai nút con của nút này và đặt cờ tương ứng thành true cho chúng.
+
+Ghi chú bản dịch: Ở mục Đảo ngược phía trên, nguồn mô tả rằng khi đẩy phép đảo ngược ta đặt cờ của các nút con thành true, nhưng code bên dưới thực tế đảo giá trị cờ. Cách trong code mới đúng vì hai phép đảo ngược liên tiếp phải triệt tiêu nhau. Bản dịch giữ mô tả nguồn để đồng bộ.
 
 Dưới đây là một cài đặt mẫu của Implicit Treap hỗ trợ đảo ngược một đoạn. Với mỗi nút, ta lưu trường `value`, là giá trị thực tế của phần tử mảng tại vị trí hiện tại. Ta cũng cung cấp cài đặt hàm `output()`, hàm này xuất ra mảng tương ứng với trạng thái hiện tại của Implicit Treap.
 
