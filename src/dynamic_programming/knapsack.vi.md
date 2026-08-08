@@ -125,7 +125,7 @@ Ta có thể phân nhóm hiệu quả hơn bằng cách dùng các nhóm có kí
 
 Cụ thể, $A_{i, j}$ đại diện cho $2^j$ vật riêng lẻ ($j\in[0,\lfloor \log_2(k_i+1)\rfloor-1]$). Nếu $k_i + 1$ không phải một lũy thừa nguyên của $2$, ta dùng thêm một nhóm có kích thước $k_i-(2^{\lfloor \log_2(k_i+1)\rfloor}-1)$ để bù phần còn lại.
 
-Với cách tách trên, ta có thể tạo ra mọi tổng không vượt quá $k_i$ vật bằng cách chọn một số $A_{i, j}$. Sau khi tách từng loại vật theo cách này, chỉ cần dùng phương pháp Knapsack 0-1 để giải bài toán mới.
+Với cách tách trên, ta có thể tạo ra mọi tổng số vật $\leq k_i$ bằng cách chọn một số $A_{i, j}$. Sau khi tách từng loại vật theo cách này, chỉ cần dùng phương pháp Knapsack 0-1 để giải bài toán mới.
 
 Tối ưu này cho độ phức tạp $O(W\sum\limits_{i=1}^{n}\log k_i)$.
 
