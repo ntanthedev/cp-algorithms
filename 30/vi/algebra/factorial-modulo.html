@@ -8025,14 +8025,14 @@ Chẳng hạn <span class="arithmatex">$7!_{\%p} \equiv 1 \cdot 2 \cdot \underbr
 <h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
 <p>Hãy viết tường minh giai thừa biến đổi này.</p>
 <div class="arithmatex">$$\begin{eqnarray}
-n!_{\%p} &amp;=&amp; 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\\
- &amp; &amp;\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\\\
-&amp;=&amp; 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\\
+n!_{\%p} &amp;=&amp; 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\
+ &amp; &amp;\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\\
+&amp;=&amp; 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\
 &amp; &amp;\quad \cdot \ldots \cdot (p-1) \cdot \underbrace{1}_{p^2} \cdot 1 \cdot 2 \cdot \ldots \cdot (n \bmod p) \pmod{p}
 \end{eqnarray}$$</div>
 <p>Có thể thấy rõ rằng giai thừa được chia thành nhiều khối có cùng độ dài, ngoại trừ khối cuối cùng.</p>
 <div class="arithmatex">$$\begin{eqnarray}
-n!_{\%p}&amp;=&amp; \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}_{2\text{nd}} \cdot \ldots \\\\
+n!_{\%p}&amp;=&amp; \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}_{2\text{nd}} \cdot \ldots \\\
 &amp; &amp; \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{p\text{th}} \cdot \ldots \cdot \quad \underbrace{1 \cdot 2 \cdot \cdot \ldots \cdot (n \bmod p)}_{\text{tail}} \pmod{p}.
 \end{eqnarray}$$</div>
 <p>Phần chính của mỗi khối rất dễ tính — đó chính là <span class="arithmatex">$(p-1)!\ \mathrm{mod}\ p$</span>.
@@ -8046,8 +8046,9 @@ Nếu ẩn các phần tử đã xử lý, ta thấy mẫu sau:</p>
 <div class="arithmatex">$$n!_{\%p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2} \cdot \ldots \cdot \underbrace{ \ldots \cdot (p-1)} \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 1} \cdot \underbrace{ \ldots \cdot 2} \cdots$$</div>
 <p>Đây lại là một giai thừa biến đổi, nhưng có kích thước nhỏ hơn nhiều.
 Cụ thể, đó là <span class="arithmatex">$\lfloor n / p \rfloor !_{\%p}$</span>.</p>
-<p>Như vậy, trong quá trình tính giai thừa biến đổi <span class="arithmatex">$n\!_{\%p}$</span>, ta thực hiện <span class="arithmatex">$O(p)$</span> phép toán rồi còn lại bài toán tính <span class="arithmatex">$\lfloor n / p \rfloor !_{\%p}$</span>.
-Ta thu được một công thức đệ quy.
+<p>Như vậy, trong quá trình tính giai thừa biến đổi <span class="arithmatex">$n\!_{\%p}$</span>, ta thực hiện <span class="arithmatex">$O(p)$</span> phép toán rồi còn lại bài toán tính <span class="arithmatex">$\lfloor n / p \rfloor !_{\%p}$</span>.</p>
+<p><strong>Ghi chú bản dịch:</strong> Ký hiệu ở câu trên được giữ nguyên theo nguồn. Trong LaTeX nguồn, sau n là lệnh khoảng trắng âm chứ không phải dấu giai thừa, nên ký hiệu có thể hiển thị thiếu dấu chấm than; ý nghĩa của đoạn là giai thừa biến đổi của n.</p>
+<p>Ta thu được một công thức đệ quy.
 Độ sâu đệ quy là <span class="arithmatex">$O(\log_p n)$</span>, nên độ phức tạp tổng thể của thuật toán là <span class="arithmatex">$O(p \log_p n)$</span>.</p>
 <p>Lưu ý rằng nếu tính trước các giai thừa <span class="arithmatex">$0!,~ 1!,~ 2!,~ \dots,~ (p-1)!$</span> modulo <span class="arithmatex">$p$</span>, độ phức tạp sẽ chỉ còn <span class="arithmatex">$O(\log_p n)$</span>.</p>
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
