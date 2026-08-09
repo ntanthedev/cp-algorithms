@@ -8077,7 +8077,7 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú bản dịch:</strong> Hai cài đặt căn bậc hai nguyên ở trên không xử lý riêng trường hợp đầu vào bằng 0. Với trường hợp đó, biến lặp có thể trở thành 0 rồi phép chia ở vòng lặp kế tiếp không còn hợp lệ. Bản dịch giữ nguyên code nguồn; correction được tách sang PR upstream.</p>
+<p><strong>Ghi chú bản dịch:</strong> Hai cài đặt căn bậc hai nguyên ở trên không xử lý riêng trường hợp đầu vào bằng 0. Với trường hợp đó, biến lặp có thể trở thành 0 rồi phép chia ở vòng lặp kế tiếp không còn hợp lệ. Ngoài ra, ở cài đặt C++, phép cộng trung gian được tính bằng kiểu int nên có thể tràn số với đầu vào lớn gần giới hạn của kiểu này. Bản dịch giữ nguyên code nguồn; các correction được tách sang PR upstream.</p>
 <p>Ví dụ, đoạn code này chạy trong <span class="arithmatex">$60$</span> mili giây với <span class="arithmatex">$n = 10^{1000}$</span>; nếu bỏ cách chọn xấp xỉ ban đầu cải tiến và chỉ bắt đầu từ <span class="arithmatex">$1$</span>, thời gian chạy sẽ vào khoảng <span class="arithmatex">$120$</span> mili giây.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
