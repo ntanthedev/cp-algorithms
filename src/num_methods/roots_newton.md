@@ -75,7 +75,7 @@ int isqrt_newton(int n) {
 	int x = 1;
 	bool decreased = false;
 	for (;;) {
-		int nx = (x + n / x) >> 1;
+		int nx = (x + 1LL * n / x) >> 1;
 		if (x == nx || nx > x && decreased)
 			break;
 		decreased = nx < x;
