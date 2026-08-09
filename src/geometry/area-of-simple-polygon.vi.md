@@ -36,4 +36,4 @@ double area(const vector<point>& fig) {
 ## Phương pháp 2
 Ta có thể chọn tùy ý một điểm $O$, sau đó duyệt qua tất cả các cạnh và cộng diện tích có hướng của tam giác tạo bởi cạnh đó với điểm $O$. Một lần nữa, nhờ dấu của diện tích, phần diện tích thừa sẽ được triệt tiêu.
 
-Phương pháp này tốt hơn vì có thể khái quát cho những trường hợp phức tạp hơn (chẳng hạn khi một số cạnh là cung tròn thay vì đoạn thẳng)
+Phương pháp này tốt hơn vì có thể khái quát cho những trường hợp phức tạp hơn (chẳng hạn khi một số cạnh là cung tròn thay vì đoạn thẳng).
