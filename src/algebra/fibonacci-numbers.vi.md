@@ -27,7 +27,7 @@ Các số Fibonacci có rất nhiều tính chất thú vị. Dưới đây là 
   
 $$F_{n-1} F_{n+1} - F_n^2 = (-1)^n$$
 
->Có thể chứng minh bằng quy nạp. Knuth có một chứng minh chỉ trong một dòng bằng cách lấy định thức của dạng ma trận 2x2 ở phía dưới.
+> Có thể chứng minh bằng quy nạp. Knuth có một chứng minh chỉ trong một dòng bằng cách lấy định thức của dạng ma trận 2x2 ở phía dưới.
 
 * Quy tắc "cộng":
   
@@ -37,7 +37,7 @@ $$F_{n+k} = F_k F_{n+1} + F_{k-1} F_n$$
   
 $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
 
-* Từ đây, bằng quy nạp ta có thể chứng minh rằng với mọi số nguyên dương $k$,  $F_{nk}$ là bội của $F_n$.
+* Từ đây, bằng quy nạp ta có thể chứng minh rằng với mọi số nguyên dương $k$, $F_{nk}$ là bội của $F_n$.
 
 * Mệnh đề đảo cũng đúng: nếu $F_m$ là bội của $F_n$, thì $m$ là bội của $n$.
 
