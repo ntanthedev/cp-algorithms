@@ -31,9 +31,9 @@ $$d(n) = (e_1 + 1) \cdot (e_2 + 1) \cdots (e_k + 1)$$
 
 Có thể hình dung như sau:
 
-* Nếu chỉ có một ước nguyên tố phân biệt $n = p_1^{e_1}$, thì hiển nhiên có $e_1 + 1$ ước ($1, p_1, p_1^2, \dots, p_1^{e_1}$).
+* Nếu $n = p_1^{e_1}$ chỉ có một thừa số nguyên tố phân biệt, thì hiển nhiên có $e_1 + 1$ ước ($1, p_1, p_1^2, \dots, p_1^{e_1}$).
 
-* Nếu có hai ước nguyên tố phân biệt $n = p_1^{e_1} \cdot p_2^{e_2}$, ta có thể sắp xếp tất cả các ước thành một bảng.
+* Nếu $n = p_1^{e_1} \cdot p_2^{e_2}$ có hai thừa số nguyên tố phân biệt, ta có thể sắp xếp tất cả các ước thành một bảng.
 
 $$\begin{array}{c|ccccc}
 & 1 & p_2 & p_2^2 & \dots & p_2^{e_2} \\\\\hline
@@ -73,13 +73,13 @@ long long numberOfDivisors(long long num) {
 
 Ta có thể dùng lập luận tương tự như ở phần trước.
 
-* Nếu chỉ có một ước nguyên tố phân biệt $n = p_1^{e_1}$, thì tổng là:
+* Nếu $n = p_1^{e_1}$ chỉ có một thừa số nguyên tố phân biệt, thì tổng là:
 
 $$1 + p_1 + p_1^2 + \dots + p_1^{e_1} = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1}$$
 
-* Nếu có hai ước nguyên tố phân biệt $n = p_1^{e_1} \cdot p_2^{e_2}$, ta có thể lập bảng giống như trước.
+* Nếu $n = p_1^{e_1} \cdot p_2^{e_2}$ có hai thừa số nguyên tố phân biệt, ta có thể lập bảng giống như trước.
   Điểm khác biệt duy nhất là bây giờ ta muốn tính tổng thay vì đếm số phần tử.
-  Dễ thấy tổng của tất cả các tổ hợp có thể được biểu diễn thành:
+  Khi đó, tổng tất cả các ước bằng:
 
 $$\left(1 + p_1 + p_1^2 + \dots + p_1^{e_1}\right) \cdot \left(1 + p_2 + p_2^2 + \dots + p_2^{e_2}\right)$$
 
@@ -126,7 +126,7 @@ khi $a$ và $b$ nguyên tố cùng nhau.
 
 Cả $d(n)$ và $\sigma(n)$ đều là các hàm nhân tính.
 
-Hàm nhân tính có rất nhiều tính chất thú vị và có thể đặc biệt hữu ích trong các bài toán số học.
+Hàm nhân tính có rất nhiều tính chất thú vị và rất hữu ích trong các bài toán số học.
 Chẳng hạn, tích chập Dirichlet của hai hàm nhân tính cũng là một hàm nhân tính.
 
 ## Bài tập luyện tập
