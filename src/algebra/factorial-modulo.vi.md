@@ -12,13 +12,13 @@ translation:
 
 # Giai thừa modulo $p$
 
-Trong một số bài toán, ta cần xét theo modulo một số nguyên tố $p$ các công thức phức tạp có chứa giai thừa ở cả tử số và mẫu số, chẳng hạn như công thức hệ số nhị thức.
+Trong một số bài toán, ta cần xét các công thức phức tạp theo modulo một số nguyên tố $p$, trong đó giai thừa xuất hiện ở cả tử số và mẫu số, chẳng hạn như công thức hệ số nhị thức.
 Ở đây ta xét trường hợp $p$ tương đối nhỏ.
 Bài toán này chỉ có ý nghĩa khi các giai thừa xuất hiện ở cả tử và mẫu của phân số.
-Nếu không, từ $p!$ trở đi các giá trị đều trở thành 0.
+Nếu không, từ $p!$ trở đi, các giai thừa đều bằng 0 theo modulo đang xét.
 Nhưng trong một phân số, các thừa số $p$ ở tử và mẫu có thể triệt tiêu nhau, nên biểu thức cuối cùng vẫn có thể khác 0 modulo $p$.
 
-Vì vậy, phát biểu chính thức của bài toán là: ta muốn tính $n! \bmod p$ nhưng bỏ qua mọi thừa số $p$ xuất hiện trong giai thừa.
+Vì vậy, phát biểu chính thức của bài toán là: khi tính $n! \bmod p$, ta bỏ qua mọi thừa số $p$ xuất hiện trong giai thừa.
 Hãy tưởng tượng ta phân tích $n!$ thành thừa số nguyên tố, loại bỏ tất cả thừa số $p$, rồi tính tích còn lại modulo $p$.
 Ta gọi đại lượng này là *giai thừa biến đổi (modified factorial)* và ký hiệu $n!_{\%p}$.
 Chẳng hạn $7!_{\%p} \equiv 1 \cdot 2 \cdot \underbrace{1}_{3} \cdot 4 \cdot 5 \underbrace{2}_{6} \cdot 7 \equiv 2 \bmod 3$.
@@ -47,9 +47,9 @@ Ta có thể tính trực tiếp bằng chương trình hoặc áp dụng địn
 
 Có đúng $\lfloor \frac{n}{p} \rfloor$ khối như vậy, nên ta cần nâng $-1$ lên lũy thừa $\lfloor \frac{n}{p} \rfloor$.
 Có thể thực hiện trong thời gian logarit bằng [lũy thừa nhị phân](binary-exp.md); tuy nhiên, cũng có thể nhận ra kết quả chỉ luân phiên giữa $-1$ và $1$, nên ta chỉ cần xét tính chẵn lẻ của số mũ và nhân với $-1$ khi số mũ lẻ.
-Thay vì thực hiện phép nhân, ta cũng có thể chỉ cần lấy $p$ trừ đi kết quả hiện tại.
+Khi số mũ lẻ, thay vì thực hiện phép nhân đó, ta cũng có thể chỉ cần lấy $p$ trừ đi kết quả hiện tại.
 
-Giá trị của khối cuối cùng chưa đủ độ dài có thể được tính riêng trong $O(p)$.
+Phần còn lại ở khối cuối có thể được tính riêng trong $O(p)$.
 
 
 Giờ chỉ còn phần tử cuối của mỗi khối.
@@ -91,13 +91,13 @@ int factmod(int n, int p) {
 }
 ```
 
-Ngoài ra, nếu bộ nhớ bị giới hạn và không thể lưu toàn bộ các giai thừa, ta có thể chỉ ghi nhớ những giá trị giai thừa thực sự cần dùng, sắp xếp chúng, rồi tính trong một lượt bằng cách duyệt $0!,~ 1!,~ 2!,~ \dots,~ (p-1)!$ mà không lưu tường minh tất cả giá trị.
+Ngoài ra, nếu bộ nhớ bị giới hạn và không thể lưu toàn bộ các giai thừa, ta có thể chỉ ghi lại những chỉ số của các giai thừa thực sự cần dùng, sắp xếp các chỉ số đó, rồi tính các giá trị tương ứng trong một lượt bằng cách duyệt $0!,~ 1!,~ 2!,~ \dots,~ (p-1)!$ mà không lưu tường minh tất cả giá trị.
 
 ## Số mũ của $p$
 
 Nếu muốn tính hệ số nhị thức modulo $p$, ta còn cần biết số lần $p$ xuất hiện trong $n$, tức số lần $p$ xuất hiện trong phân tích thừa số nguyên tố của $n$, hay số lần ta đã xóa $p$ trong quá trình tính giai thừa biến đổi.
 
-**Ghi chú bản dịch:** Câu nguồn phía trên dùng n, nhưng ngữ cảnh, công thức Legendre ngay dưới và quá trình xóa các thừa số p đều đang xét n!. Đại lượng cần dùng ở đây là số mũ của p trong phân tích thừa số nguyên tố của n!. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
+**Ghi chú bản dịch:** Câu nguồn phía trên dùng n, nhưng ngữ cảnh, công thức Legendre ngay dưới và quá trình loại các thừa số p đều đang xét n!. Đại lượng cần ở đây là số mũ của p trong phân tích thừa số nguyên tố của n!.
 
 [Công thức Legendre](https://en.wikipedia.org/wiki/Legendre%27s_formula) cho phép tính đại lượng này trong thời gian $O(\log_p n)$.
 Công thức cho số mũ $\nu_p$ là:
