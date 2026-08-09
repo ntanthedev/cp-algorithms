@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tim-so-mu-lon-nhat-cua-mot-uoc-trong-giai-thua" class="md-skip">
+        <a href="#tim-so-mu-lon-nhat-cua-mot-uoc-cua-giai-thua" class="md-skip">
           Bỏ qua
         </a>
       
@@ -8017,14 +8017,14 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="tim-so-mu-lon-nhat-cua-mot-uoc-trong-giai-thua">Tìm số mũ lớn nhất của một ước trong giai thừa<a class="headerlink" href="#tim-so-mu-lon-nhat-cua-mot-uoc-trong-giai-thua" title="Permanent link">&para;</a></h1>
+<h1 id="tim-so-mu-lon-nhat-cua-mot-uoc-cua-giai-thua">Tìm số mũ lớn nhất của một ước của giai thừa<a class="headerlink" href="#tim-so-mu-lon-nhat-cua-mot-uoc-cua-giai-thua" title="Permanent link">&para;</a></h1>
 <p>Cho hai số <span class="arithmatex">$n$</span> và <span class="arithmatex">$k$</span>. Hãy tìm số nguyên lớn nhất <span class="arithmatex">$x$</span> sao cho <span class="arithmatex">$k^x$</span> là ước của <span class="arithmatex">$n!$</span>.</p>
 <h2 id="k-nguyen-to"><span class="arithmatex">$k$</span> nguyên tố<a class="headerlink" href="#k-nguyen-to" title="Permanent link">&para;</a></h2>
 <p>Trước hết, xét trường hợp <span class="arithmatex">$k$</span> là số nguyên tố. Viết giai thừa dưới dạng tích:</p>
 <div class="arithmatex">$$n! = 1 \cdot 2 \cdot 3 \ldots (n-1) \cdot n$$</div>
-<p>Cứ mỗi phần tử thứ <span class="arithmatex">$k$</span> trong tích lại chia hết cho <span class="arithmatex">$k$</span>, tức đóng góp thêm <span class="arithmatex">$+1$</span> vào đáp án; số phần tử như vậy là <span class="arithmatex">$\Bigl\lfloor\dfrac{n}{k}\Bigr\rfloor$</span>.</p>
-<p>Tiếp theo, cứ mỗi phần tử thứ <span class="arithmatex">$k^2$</span> lại chia hết cho <span class="arithmatex">$k^2$</span>, nên đóng góp thêm một <span class="arithmatex">$+1$</span> nữa vào đáp án (thừa số <span class="arithmatex">$k$</span> thứ nhất đã được tính ở đoạn trước). Số phần tử như vậy là <span class="arithmatex">$\Bigl\lfloor\dfrac{n}{k^2}\Bigr\rfloor$</span>.</p>
-<p>Tương tự, với mỗi <span class="arithmatex">$i$</span>, cứ mỗi phần tử thứ <span class="arithmatex">$k^i$</span> lại đóng góp thêm <span class="arithmatex">$+1$</span> vào đáp án, và có <span class="arithmatex">$\Bigl\lfloor\dfrac{n}{k^i}\Bigr\rfloor$</span> phần tử như vậy.</p>
+<p>Trong tích trên, các bội của <span class="arithmatex">$k$</span> đều chia hết cho <span class="arithmatex">$k$</span>, nên mỗi số đóng góp thêm <span class="arithmatex">$+1$</span> vào đáp án; có tất cả <span class="arithmatex">$\Bigl\lfloor\dfrac{n}{k}\Bigr\rfloor$</span> số như vậy.</p>
+<p>Tiếp theo, các bội của <span class="arithmatex">$k^2$</span> đều chia hết cho <span class="arithmatex">$k^2$</span>, nên mỗi số đóng góp thêm một <span class="arithmatex">$+1$</span> nữa vào đáp án (một thừa số <span class="arithmatex">$k$</span> đã được tính ở đoạn trước). Có tất cả <span class="arithmatex">$\Bigl\lfloor\dfrac{n}{k^2}\Bigr\rfloor$</span> số như vậy.</p>
+<p>Tương tự, với mỗi <span class="arithmatex">$i$</span>, các bội của <span class="arithmatex">$k^i$</span> đóng góp thêm <span class="arithmatex">$+1$</span> vào đáp án, và có <span class="arithmatex">$\Bigl\lfloor\dfrac{n}{k^i}\Bigr\rfloor$</span> số như vậy.</p>
 <p>Đáp án cuối cùng là</p>
 <div class="arithmatex">$$\Bigl\lfloor\dfrac{n}{k}\Bigr\rfloor + \Bigl\lfloor\dfrac{n}{k^2}\Bigr\rfloor + \ldots + \Bigl\lfloor\dfrac{n}{k^i}\Bigr\rfloor + \ldots$$</div>
 <p>Kết quả này còn được gọi là <a href="https://en.wikipedia.org/wiki/Legendre%27s_formula">công thức Legendre</a>.
@@ -8040,9 +8040,9 @@ Tổng trên tất nhiên là hữu hạn, vì chỉ xấp xỉ <span class="ari
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="k-hop-so"><span class="arithmatex">$k$</span> hợp số<a class="headerlink" href="#k-hop-so" title="Permanent link">&para;</a></h2>
-<p>Không thể áp dụng trực tiếp ý tưởng trên. Thay vào đó, ta phân tích <span class="arithmatex">$k$</span> thành thừa số nguyên tố, viết <span class="arithmatex">$k = k_1^{p_1} \cdot \ldots \cdot k_m^{p_m}$</span>. Với mỗi <span class="arithmatex">$k_i$</span>, dùng thuật toán phía trên để tìm số lần thừa số này xuất hiện trong <span class="arithmatex">$n!$</span>; gọi giá trị đó là <span class="arithmatex">$a_i$</span>. Nguồn viết đáp án cho trường hợp <span class="arithmatex">$k$</span> hợp số là</p>
+<p>Không thể áp dụng trực tiếp ý tưởng trên. Thay vào đó, ta phân tích <span class="arithmatex">$k$</span> thành thừa số nguyên tố, viết <span class="arithmatex">$k = k_1^{p_1} \cdot \ldots \cdot k_m^{p_m}$</span>. Với mỗi <span class="arithmatex">$k_i$</span>, dùng thuật toán phía trên để tìm số lần thừa số này xuất hiện trong <span class="arithmatex">$n!$</span>; gọi giá trị đó là <span class="arithmatex">$a_i$</span>. Đáp án cho trường hợp <span class="arithmatex">$k$</span> hợp số là</p>
 <div class="arithmatex">$$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$</div>
-<p><strong>Ghi chú bản dịch:</strong> Vì bài toán yêu cầu x là số nguyên, biểu thức nguồn phía trên còn thiếu phép lấy phần nguyên. Với mỗi thừa số nguyên tố trong phân tích của k, số bản sao đầy đủ có thể lấy từ n! là phần nguyên của số lần thừa số đó xuất hiện chia cho số mũ tương ứng; đáp án phải lấy giá trị nhỏ nhất trong các số nguyên đó. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.</p>
+<p><strong>Ghi chú bản dịch:</strong> Vì bài toán yêu cầu x là số nguyên, biểu thức nguồn phía trên chưa viết tường minh phép lấy phần nguyên. Với mỗi thừa số nguyên tố trong phân tích của k, giới hạn tương ứng của x bằng phần nguyên của tỷ số giữa số mũ của thừa số đó trong n! và số mũ của nó trong k; đáp án là giới hạn nhỏ nhất.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>

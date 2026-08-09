@@ -8012,12 +8012,12 @@ Describe the issue of this article in detail.
 
 
 <h1 id="giai-thua-modulo-p">Giai thừa modulo <span class="arithmatex">$p$</span><a class="headerlink" href="#giai-thua-modulo-p" title="Permanent link">&para;</a></h1>
-<p>Trong một số bài toán, ta cần xét theo modulo một số nguyên tố <span class="arithmatex">$p$</span> các công thức phức tạp có chứa giai thừa ở cả tử số và mẫu số, chẳng hạn như công thức hệ số nhị thức.
+<p>Trong một số bài toán, ta cần xét các công thức phức tạp theo modulo một số nguyên tố <span class="arithmatex">$p$</span>, trong đó giai thừa xuất hiện ở cả tử số và mẫu số, chẳng hạn như công thức hệ số nhị thức.
 Ở đây ta xét trường hợp <span class="arithmatex">$p$</span> tương đối nhỏ.
 Bài toán này chỉ có ý nghĩa khi các giai thừa xuất hiện ở cả tử và mẫu của phân số.
-Nếu không, từ <span class="arithmatex">$p!$</span> trở đi các giá trị đều trở thành 0.
+Nếu không, từ <span class="arithmatex">$p!$</span> trở đi, các giai thừa đều bằng 0 theo modulo đang xét.
 Nhưng trong một phân số, các thừa số <span class="arithmatex">$p$</span> ở tử và mẫu có thể triệt tiêu nhau, nên biểu thức cuối cùng vẫn có thể khác 0 modulo <span class="arithmatex">$p$</span>.</p>
-<p>Vì vậy, phát biểu chính thức của bài toán là: ta muốn tính <span class="arithmatex">$n! \bmod p$</span> nhưng bỏ qua mọi thừa số <span class="arithmatex">$p$</span> xuất hiện trong giai thừa.
+<p>Vì vậy, phát biểu chính thức của bài toán là: khi tính <span class="arithmatex">$n! \bmod p$</span>, ta bỏ qua mọi thừa số <span class="arithmatex">$p$</span> xuất hiện trong giai thừa.
 Hãy tưởng tượng ta phân tích <span class="arithmatex">$n!$</span> thành thừa số nguyên tố, loại bỏ tất cả thừa số <span class="arithmatex">$p$</span>, rồi tính tích còn lại modulo <span class="arithmatex">$p$</span>.
 Ta gọi đại lượng này là <em>giai thừa biến đổi (modified factorial)</em> và ký hiệu <span class="arithmatex">$n!_{\%p}$</span>.
 Chẳng hạn <span class="arithmatex">$7!_{\%p} \equiv 1 \cdot 2 \cdot \underbrace{1}_{3} \cdot 4 \cdot 5 \underbrace{2}_{6} \cdot 7 \equiv 2 \bmod 3$</span>.</p>
@@ -8039,8 +8039,8 @@ n!_{\%p}&amp;=&amp; \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot
 Ta có thể tính trực tiếp bằng chương trình hoặc áp dụng định lý Wilson, theo đó <span class="arithmatex">$(p-1)! \bmod p = -1$</span> với mọi số nguyên tố <span class="arithmatex">$p$</span>.</p>
 <p>Có đúng <span class="arithmatex">$\lfloor \frac{n}{p} \rfloor$</span> khối như vậy, nên ta cần nâng <span class="arithmatex">$-1$</span> lên lũy thừa <span class="arithmatex">$\lfloor \frac{n}{p} \rfloor$</span>.
 Có thể thực hiện trong thời gian logarit bằng <a href="binary-exp.html">lũy thừa nhị phân</a>; tuy nhiên, cũng có thể nhận ra kết quả chỉ luân phiên giữa <span class="arithmatex">$-1$</span> và <span class="arithmatex">$1$</span>, nên ta chỉ cần xét tính chẵn lẻ của số mũ và nhân với <span class="arithmatex">$-1$</span> khi số mũ lẻ.
-Thay vì thực hiện phép nhân, ta cũng có thể chỉ cần lấy <span class="arithmatex">$p$</span> trừ đi kết quả hiện tại.</p>
-<p>Giá trị của khối cuối cùng chưa đủ độ dài có thể được tính riêng trong <span class="arithmatex">$O(p)$</span>.</p>
+Khi số mũ lẻ, thay vì thực hiện phép nhân đó, ta cũng có thể chỉ cần lấy <span class="arithmatex">$p$</span> trừ đi kết quả hiện tại.</p>
+<p>Phần còn lại ở khối cuối có thể được tính riêng trong <span class="arithmatex">$O(p)$</span>.</p>
 <p>Giờ chỉ còn phần tử cuối của mỗi khối.
 Nếu ẩn các phần tử đã xử lý, ta thấy mẫu sau:</p>
 <div class="arithmatex">$$n!_{\%p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2} \cdot \ldots \cdot \underbrace{ \ldots \cdot (p-1)} \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 1} \cdot \underbrace{ \ldots \cdot 2} \cdots$$</div>
@@ -8070,10 +8070,10 @@ Nếu cần gọi hàm nhiều lần, có thể đưa phần tiền xử lý ra 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Ngoài ra, nếu bộ nhớ bị giới hạn và không thể lưu toàn bộ các giai thừa, ta có thể chỉ ghi nhớ những giá trị giai thừa thực sự cần dùng, sắp xếp chúng, rồi tính trong một lượt bằng cách duyệt <span class="arithmatex">$0!,~ 1!,~ 2!,~ \dots,~ (p-1)!$</span> mà không lưu tường minh tất cả giá trị.</p>
+<p>Ngoài ra, nếu bộ nhớ bị giới hạn và không thể lưu toàn bộ các giai thừa, ta có thể chỉ ghi lại những chỉ số của các giai thừa thực sự cần dùng, sắp xếp các chỉ số đó, rồi tính các giá trị tương ứng trong một lượt bằng cách duyệt <span class="arithmatex">$0!,~ 1!,~ 2!,~ \dots,~ (p-1)!$</span> mà không lưu tường minh tất cả giá trị.</p>
 <h2 id="so-mu-cua-p">Số mũ của <span class="arithmatex">$p$</span><a class="headerlink" href="#so-mu-cua-p" title="Permanent link">&para;</a></h2>
 <p>Nếu muốn tính hệ số nhị thức modulo <span class="arithmatex">$p$</span>, ta còn cần biết số lần <span class="arithmatex">$p$</span> xuất hiện trong <span class="arithmatex">$n$</span>, tức số lần <span class="arithmatex">$p$</span> xuất hiện trong phân tích thừa số nguyên tố của <span class="arithmatex">$n$</span>, hay số lần ta đã xóa <span class="arithmatex">$p$</span> trong quá trình tính giai thừa biến đổi.</p>
-<p><strong>Ghi chú bản dịch:</strong> Câu nguồn phía trên dùng n, nhưng ngữ cảnh, công thức Legendre ngay dưới và quá trình xóa các thừa số p đều đang xét n!. Đại lượng cần dùng ở đây là số mũ của p trong phân tích thừa số nguyên tố của n!. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.</p>
+<p><strong>Ghi chú bản dịch:</strong> Câu nguồn phía trên dùng n, nhưng ngữ cảnh, công thức Legendre ngay dưới và quá trình loại các thừa số p đều đang xét n!. Đại lượng cần ở đây là số mũ của p trong phân tích thừa số nguyên tố của n!.</p>
 <p><a href="https://en.wikipedia.org/wiki/Legendre%27s_formula">Công thức Legendre</a> cho phép tính đại lượng này trong thời gian <span class="arithmatex">$O(\log_p n)$</span>.
 Công thức cho số mũ <span class="arithmatex">$\nu_p$</span> là:</p>
 <div class="arithmatex">$$\nu_p(n!) = \sum_{i=1}^{\infty} \left\lfloor \frac{n}{p^i} \right\rfloor$$</div>
