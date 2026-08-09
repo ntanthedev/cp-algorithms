@@ -13,7 +13,7 @@ translation:
 
 ## Liệt kê mọi mask con của một mask cho trước
 
-Cho một bitmask $m$, ta muốn duyệt hiệu quả qua tất cả **mask con (submask)** của nó, tức các mask $s$ mà chỉ những bit đã xuất hiện trong mask $m$ mới có thể được bật.
+Cho một bitmask $m$, ta muốn duyệt hiệu quả qua tất cả **mask con (submask)** của nó, tức các mask $s$ mà chỉ những bit được bật trong mask $m$ mới có thể được bật.
 
 Xét cách cài đặt thuật toán này dựa trên một mẹo thao tác bit:
 
@@ -43,7 +43,7 @@ for (int s=m; ; s=(s-1)&m) {
 
 Ta hãy xem vì sao đoạn code trên duyệt qua mọi mask con của $m$, không lặp lại và theo thứ tự giảm dần.
 
-Giả sử mask hiện tại là $s$ và ta muốn chuyển sang mask kế tiếp. Khi trừ mask $s$ đi một đơn vị, bit 1 ngoài cùng bên phải sẽ bị tắt, còn mọi bit ở bên phải nó trở thành 1. Sau đó ta loại bỏ những bit 1 "thừa" không thuộc mask $m$, vì chúng không thể xuất hiện trong một mask con của mask ban đầu. Ta thực hiện bước loại bỏ này bằng phép toán bit `(s-1) & m`. Kết quả là ta "cắt" mask $s-1$ về giá trị lớn nhất mà nó có thể nhận trong khi vẫn là một mask con hợp lệ, tức mask con kế tiếp sau $s$ theo thứ tự giảm dần.
+Giả sử mask hiện tại là $s$ và ta muốn chuyển sang mask kế tiếp. Khi trừ mask $s$ đi một đơn vị, bit 1 ngoài cùng bên phải sẽ bị tắt, còn mọi bit ở bên phải nó trở thành 1. Sau đó ta loại bỏ những bit 1 "thừa" không thuộc mask $m$, vì chúng không thể xuất hiện trong một mask con của $m$. Ta thực hiện bước loại bỏ này bằng phép toán bit `(s-1) & m`. Kết quả là ta "cắt" mask $s-1$ về giá trị lớn nhất mà nó có thể nhận trong khi vẫn là mask con của $m$, tức mask con kế tiếp sau $s$ theo thứ tự giảm dần.
 
 Như vậy, thuật toán sinh tất cả mask con của mask đã cho theo thứ tự giảm dần và chỉ thực hiện hai phép toán ở mỗi vòng lặp.
 
@@ -59,7 +59,7 @@ for (int m=0; m<(1<<n); ++m)
  ... s and m ...
 ```
 
-Ta sẽ chứng minh vòng lặp trong cùng thực hiện tổng cộng $O(3^n)$ lượt.
+Ta sẽ chứng minh vòng lặp bên trong thực hiện tổng cộng $O(3^n)$ lượt.
 
 **Chứng minh thứ nhất**: Xét bit thứ $i$. Có đúng ba khả năng:
 
