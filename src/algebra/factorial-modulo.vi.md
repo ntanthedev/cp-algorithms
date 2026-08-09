@@ -70,7 +70,7 @@ Lưu ý rằng nếu tính trước các giai thừa $0!,~ 1!,~ 2!,~ \dots,~ (p-
 ## Cài đặt
 
 Ta không cần dùng đệ quy vì đây là trường hợp đệ quy đuôi và có thể dễ dàng chuyển thành vòng lặp.
-Trong cài đặt dưới đây, ta tính trước các giai thừa $0!,~ 1!,~ 2!,~ \dots,~ (p-1)!$, nên thời gian chạy là $O(p + \log_p n)$.
+Trong cài đặt dưới đây, ta tính trước các giai thừa $0!,~ 1!,~ \dots,~ (p-1)!$, nên thời gian chạy là $O(p + \log_p n)$.
 Nếu cần gọi hàm nhiều lần, có thể đưa phần tiền xử lý ra ngoài hàm và mỗi lần tính $n!_{\%p}$ chỉ mất $O(\log_p n)$.
 
 ```cpp
@@ -97,7 +97,7 @@ Ngoài ra, nếu bộ nhớ bị giới hạn và không thể lưu toàn bộ c
 
 Nếu muốn tính hệ số nhị thức modulo $p$, ta còn cần biết số lần $p$ xuất hiện trong $n$, tức số lần $p$ xuất hiện trong phân tích thừa số nguyên tố của $n$, hay số lần ta đã xóa $p$ trong quá trình tính giai thừa biến đổi.
 
-**Ghi chú bản dịch:** Câu nguồn phía trên dùng $n$, nhưng ngữ cảnh, công thức Legendre ngay dưới và quá trình xóa các thừa số $p$ đều đang xét $n!$. Đại lượng cần dùng ở đây là số mũ của $p$ trong phân tích thừa số nguyên tố của $n!$. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
+**Ghi chú bản dịch:** Câu nguồn phía trên dùng n, nhưng ngữ cảnh, công thức Legendre ngay dưới và quá trình xóa các thừa số p đều đang xét n!. Đại lượng cần dùng ở đây là số mũ của p trong phân tích thừa số nguyên tố của n!. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
 
 [Công thức Legendre](https://en.wikipedia.org/wiki/Legendre%27s_formula) cho phép tính đại lượng này trong thời gian $O(\log_p n)$.
 Công thức cho số mũ $\nu_p$ là:
