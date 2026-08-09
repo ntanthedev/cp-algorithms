@@ -41,7 +41,7 @@ $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
 
 * Mệnh đề đảo cũng đúng: nếu $F_m$ là bội của $F_n$, thì $m$ là bội của $n$.
 
-**Ghi chú bản dịch:** Mệnh đề đảo ở trên cần loại các trường hợp suy biến khi n bằng 1 hoặc 2 vì F1 và F2 đều bằng 1. Chẳng hạn F3 là bội của F2 nhưng 3 không phải là bội của 2. Với n từ 3 trở lên, mệnh đề đúng.
+**Ghi chú bản dịch:** Mệnh đề đảo ở trên có ngoại lệ khi chỉ số n bằng 2, vì số Fibonacci thứ 2 bằng 1 nên là ước của mọi số Fibonacci. Chẳng hạn số Fibonacci thứ 3 là bội của số Fibonacci thứ 2 nhưng 3 không phải là bội của 2. Với chỉ số n nguyên dương khác 2, mệnh đề đúng.
 
 * Đồng nhất thức UCLN:
   
