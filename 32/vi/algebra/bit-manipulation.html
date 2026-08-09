@@ -8220,7 +8220,7 @@ Trên máy tính, dịch bit thường nhanh hơn đáng kể so với thực hi
 </li>
 <li>
 <p><span class="arithmatex">$\ll$</span> Dịch một số sang trái bằng cách thêm các chữ số 0 ở cuối.
-    Tương tự dịch phải, dịch trái <span class="arithmatex">$k$</span> vị trí tương ứng với phép nhân với <span class="arithmatex">$2^k$</span>.</p>
+    Tương tự phép dịch phải <span class="arithmatex">$k$</span> vị trí, phép dịch trái <span class="arithmatex">$k$</span> vị trí tương ứng với phép nhân với <span class="arithmatex">$2^k$</span>.</p>
 <p>Chẳng hạn <span class="arithmatex">$5 \ll 3 = 101_2 \ll 3 = 101000_2 = 40$</span>, giống với <span class="arithmatex">$5 \cdot 2^3 = 5 \cdot 8 = 40$</span>.</p>
 <p>Tuy nhiên, với số nguyên có độ dài cố định, điều này có nghĩa các chữ số ngoài cùng bên trái có thể bị loại bỏ; nếu dịch quá nhiều, theo mô tả của nguồn ta sẽ nhận được số <span class="arithmatex">$0$</span>.</p>
 </li>
@@ -8284,7 +8284,7 @@ n &amp; (n-1) = 00110000
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="em-tong-so-bit-1-en-n">Đếm tổng số bit 1 đến <span class="arithmatex">$n$</span><a class="headerlink" href="#em-tong-so-bit-1-en-n" title="Permanent link">&para;</a></h3>
-<p>Để đếm tổng số bit 1 trong mọi số từ 0 đến <span class="arithmatex">$n$</span> (kể cả <span class="arithmatex">$n$</span>), ta có thể chạy thuật toán Brian Kernighan cho từng số đến <span class="arithmatex">$n$</span>. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. </p>
+<p>Để đếm tổng số bit 1 trong mọi số từ 0 đến <span class="arithmatex">$n$</span> (kể cả số cuối), ta có thể chạy thuật toán Brian Kernighan cho từng số đến <span class="arithmatex">$n$</span>. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. </p>
 <p>Ta dùng tính chất rằng với các số đến <span class="arithmatex">$2^x$</span> (tức từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$2^x - 1$</span>), có tổng cộng <span class="arithmatex">$x \cdot 2^{x-1}$</span> bit 1. Có thể hình dung như sau.
 <div class="highlight"><pre><span></span><code>0 -&gt;   0 0 0 0
 1 -&gt;   0 0 0 1
@@ -8315,7 +8315,7 @@ n &amp; (n-1) = 00110000
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú bản dịch:</strong> Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện phép dịch <code>x &lt;&lt; (x - 1)</code>, tức dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.</p>
+<p><strong>Ghi chú bản dịch:</strong> Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện một phép dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.</p>
 <h3 id="cac-meo-bo-sung">Các mẹo bổ sung<a class="headerlink" href="#cac-meo-bo-sung" title="Permanent link">&para;</a></h3>
 <ul>
 <li><span class="arithmatex">$n ~\&amp;~ (n + 1)$</span> tắt mọi bit 1 ở cuối: <span class="arithmatex">$0011~0111_2 \rightarrow 0011~0000_2$</span>.</li>
