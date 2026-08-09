@@ -103,7 +103,7 @@ Có hai toán tử dùng để dịch các bit.
     Trên máy tính, dịch bit thường nhanh hơn đáng kể so với thực hiện phép chia.
 
 -   $\ll$ Dịch một số sang trái bằng cách thêm các chữ số 0 ở cuối.
-    Tương tự phép dịch phải $k$ vị trí, phép dịch trái $k$ vị trí tương ứng với phép nhân với $2^k$.
+    Tương tự dịch phải, dịch trái $k$ vị trí tương ứng với phép nhân với $2^k$.
 
     Chẳng hạn $5 \ll 3 = 101_2 \ll 3 = 101000_2 = 40$, giống với $5 \cdot 2^3 = 5 \cdot 8 = 40$.
 
@@ -194,9 +194,9 @@ int countSetBits(int n)
 ```
 
 ### Đếm tổng số bit 1 đến $n$
-Để đếm tổng số bit 1 trong mọi số từ 0 đến $n$ (kể cả số cuối), ta có thể chạy thuật toán Brian Kernighan cho từng số đến $n$. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. 
+Để đếm tổng số bit 1 trong mọi số từ 0 đến $n$ (kể cả $n$), ta có thể chạy thuật toán Brian Kernighan cho từng số đến $n$. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. 
 
-Ta dùng tính chất rằng với các số đến $2^x$ (tức từ $1$ đến $2^x - 1$), có tổng cộng $x \cdot 2^{x-1}$ bit 1. Có thể hình dung như sau.
+Ta dùng tính chất sau với $2^x$: trong các số từ $1$ đến $2^x - 1$, có tổng cộng $x \cdot 2^{x-1}$ bit 1. Có thể hình dung như sau.
 ```
 0 ->   0 0 0 0
 1 ->   0 0 0 1
@@ -210,6 +210,8 @@ Ta dùng tính chất rằng với các số đến $2^x$ (tức từ $1$ đến
 ```
 
 Ta thấy mọi cột trừ cột ngoài cùng bên trái đều có $4$ bit 1 (tức $2^2$); nói cách khác, đến số $2^3 - 1$, tổng số bit 1 là $3 \cdot 2^{3-1}$.
+
+**Ghi chú bản dịch:** Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện phép dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.
 
 Từ nhận xét trên, ta có thuật toán sau:
 
@@ -231,13 +233,11 @@ int countSetBits(int n) {
 }
 ```
 
-**Ghi chú bản dịch:** Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện một phép dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.
-
 ### Các mẹo bổ sung
 
 - $n ~\&~ (n + 1)$ tắt mọi bit 1 ở cuối: $0011~0111_2 \rightarrow 0011~0000_2$.
-- $n ~|~ (n + 1)$ bật bit 0 cuối cùng: $0011~0101_2 \rightarrow 0011~0111_2$.
-- $n ~\&~ -n$ tách lấy bit 1 cuối cùng: $0011~0100_2 \rightarrow 0000~0100_2$.
+- $n ~|~ (n + 1)$ bật bit 0 ngoài cùng bên phải: $0011~0101_2 \rightarrow 0011~0111_2$.
+- $n ~\&~ -n$ tách lấy bit 1 ngoài cùng bên phải: $0011~0100_2 \rightarrow 0000~0100_2$.
 
 Có thể tìm thêm nhiều mẹo khác trong cuốn [Hacker's Delight](https://en.wikipedia.org/wiki/Hacker%27s_Delight).
 
@@ -246,7 +246,7 @@ Có thể tìm thêm nhiều mẹo khác trong cuốn [Hacker's Delight](https:/
 C++ hỗ trợ một số thao tác trên từ C++20 thông qua thư viện chuẩn [bit](https://en.cppreference.com/w/cpp/header/bit):
 
 - `has_single_bit`: kiểm tra số có phải lũy thừa của hai hay không
-- `bit_ceil` / `bit_floor`: làm tròn lên/xuống tới lũy thừa của hai kế tiếp
+- `bit_ceil` / `bit_floor`: làm tròn lên/xuống tới lũy thừa của 2 gần nhất theo hướng tương ứng
 - `rotl` / `rotr`: xoay các bit của số
 - `countl_zero` / `countr_zero` / `countl_one` / `countr_one`: đếm số bit 0/1 liên tiếp ở đầu/cuối
 - `popcount`: đếm số bit 1
@@ -255,7 +255,7 @@ Ngoài ra, một số trình biên dịch còn cung cấp sẵn các hàm hỗ t
 Chẳng hạn GCC định nghĩa một danh sách tại [Built-in Functions Provided by GCC](https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html), và các hàm này cũng dùng được với các phiên bản C++ cũ hơn:
 
 - `__builtin_popcount(unsigned int)` trả về số bit 1 (`__builtin_popcount(0b0001'0010'1100) == 4`)
-- `__builtin_ffs(int)` tìm chỉ số của bit 1 đầu tiên từ bên phải (`__builtin_ffs(0b0001'0010'1100) == 3`)
+- `__builtin_ffs(int)` trả về vị trí (đánh số từ 1) của bit 1 ngoài cùng bên phải (`__builtin_ffs(0b0001'0010'1100) == 3`)
 - `__builtin_clz(unsigned int)` trả về số bit 0 ở đầu (`__builtin_clz(0b0001'0010'1100) == 23`)
 - `__builtin_ctz(unsigned int)` trả về số bit 0 ở cuối (`__builtin_ctz(0b0001'0010'1100) == 2`)
 - ` __builtin_parity(x)` trả về tính chẵn lẻ của số bit 1 trong biểu diễn bit
