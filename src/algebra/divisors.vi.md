@@ -8,7 +8,7 @@ translation:
   last_synced: 2026-08-09
 ---
 
-# Số các ước / tổng các ước
+# Số các ước và tổng các ước
 
 Trong bài viết này, ta sẽ tìm hiểu cách tính số các ước $d(n)$ và tổng các ước $\sigma(n)$ của một số $n$ cho trước.
 
