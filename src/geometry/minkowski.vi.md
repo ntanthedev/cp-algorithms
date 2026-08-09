@@ -56,17 +56,17 @@ Khoảng cách giữa hai đa giác lồi $P$ và $Q$ được định nghĩa l�
 khoảng cách luôn đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh, nên ta có thể dễ dàng tìm khoảng cách trong $O(|P||Q|)$. Tuy nhiên,
 nếu sử dụng tổng Minkowski một cách khéo léo, ta có thể giảm độ phức tạp xuống $O(|P| + |Q|)$.
 
-**Ghi chú bản dịch:** Mệnh đề “khoảng cách luôn đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh” trong nguồn thiếu trường hợp hai đa giác giao nhau: khoảng cách khi đó bằng 0 và có thể đạt tại giao điểm nằm trong phần trong của hai cạnh. Phương pháp Minkowski ngay dưới vẫn xử lý đúng trường hợp giao nhau bằng cách kiểm tra gốc tọa độ có nằm trong hoặc trên biên đa giác tổng hay không. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
+**Ghi chú bản dịch:** Mệnh đề “khoảng cách luôn đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh” trong nguồn thiếu trường hợp hai đa giác giao nhau: khoảng cách khi đó bằng 0, chẳng hạn khi hai cạnh cắt nhau tại một điểm nằm bên trong cả hai đoạn cạnh. Phương pháp Minkowski ngay dưới vẫn xử lý đúng trường hợp giao nhau bằng cách kiểm tra gốc tọa độ có nằm trong hoặc trên biên đa giác tổng Minkowski hay không. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
 
-Nếu phản xạ $Q$ qua điểm $(0, 0)$ để thu được đa giác $-Q$, bài toán trở thành tìm khoảng cách nhỏ nhất giữa một điểm trong
+Nếu lấy đối xứng $Q$ qua gốc tọa độ $(0, 0)$ để thu được đa giác $-Q$, bài toán trở thành tìm khoảng cách nhỏ nhất giữa một điểm trong
 $P + (-Q)$ và $(0, 0)$. Ta có thể tìm khoảng cách đó trong thời gian tuyến tính bằng ý tưởng sau.
 Nếu $(0, 0)$ nằm bên trong hoặc trên biên của đa giác, khoảng cách bằng $0$; nếu không, khoảng cách đạt được giữa $(0, 0)$ và một đỉnh hoặc cạnh nào đó của đa giác.
 Vì tổng Minkowski có thể được tính
 trong thời gian tuyến tính, ta thu được một thuật toán thời gian tuyến tính để tìm khoảng cách giữa hai đa giác lồi.
 
 ## Cài đặt
-Dưới đây là cài đặt tổng Minkowski cho các đa giác có các đỉnh nguyên. Lưu ý rằng trong trường hợp này, mọi phép tính đều có thể thực hiện bằng số nguyên vì
-thay vì tính trực tiếp các góc cực rồi so sánh chúng, ta có thể xét dấu của tích có hướng giữa hai vector.
+Dưới đây là cài đặt tổng Minkowski cho các đa giác có đỉnh tọa độ nguyên. Lưu ý rằng trong trường hợp này, mọi phép tính đều có thể thực hiện bằng số nguyên, vì
+ta không cần tính trực tiếp các góc cực rồi so sánh chúng mà chỉ cần xét dấu của tích có hướng giữa hai vector.
 
 ```{.cpp file=minkowski}
 struct pt{
