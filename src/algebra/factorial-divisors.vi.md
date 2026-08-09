@@ -9,7 +9,7 @@ translation:
   last_synced: 2026-08-09
 ---
 
-# Tìm số mũ lớn nhất của một ước trong giai thừa
+# Tìm số mũ lớn nhất của một ước của giai thừa
 
 Cho hai số $n$ và $k$. Hãy tìm số nguyên lớn nhất $x$ sao cho $k^x$ là ước của $n!$.
 
@@ -19,11 +19,11 @@ Trước hết, xét trường hợp $k$ là số nguyên tố. Viết giai th�
 
 $$n! = 1 \cdot 2 \cdot 3 \ldots (n-1) \cdot n$$
 
-Cứ mỗi phần tử thứ $k$ trong tích lại chia hết cho $k$, tức đóng góp thêm $+1$ vào đáp án; số phần tử như vậy là $\Bigl\lfloor\dfrac{n}{k}\Bigr\rfloor$.
+Trong tích trên, các bội của $k$ đều chia hết cho $k$, nên mỗi số đóng góp thêm $+1$ vào đáp án; có tất cả $\Bigl\lfloor\dfrac{n}{k}\Bigr\rfloor$ số như vậy.
 
-Tiếp theo, cứ mỗi phần tử thứ $k^2$ lại chia hết cho $k^2$, nên đóng góp thêm một $+1$ nữa vào đáp án (thừa số $k$ thứ nhất đã được tính ở đoạn trước). Số phần tử như vậy là $\Bigl\lfloor\dfrac{n}{k^2}\Bigr\rfloor$.
+Tiếp theo, các bội của $k^2$ đều chia hết cho $k^2$, nên mỗi số đóng góp thêm một $+1$ nữa vào đáp án (một thừa số $k$ đã được tính ở đoạn trước). Có tất cả $\Bigl\lfloor\dfrac{n}{k^2}\Bigr\rfloor$ số như vậy.
 
-Tương tự, với mỗi $i$, cứ mỗi phần tử thứ $k^i$ lại đóng góp thêm $+1$ vào đáp án, và có $\Bigl\lfloor\dfrac{n}{k^i}\Bigr\rfloor$ phần tử như vậy.
+Tương tự, với mỗi $i$, các bội của $k^i$ đóng góp thêm $+1$ vào đáp án, và có $\Bigl\lfloor\dfrac{n}{k^i}\Bigr\rfloor$ số như vậy.
 
 Đáp án cuối cùng là
 
@@ -49,8 +49,8 @@ int fact_pow (int n, int k) {
 
 ## $k$ hợp số {data-toc-label="Composite k"}
 
-Không thể áp dụng trực tiếp ý tưởng trên. Thay vào đó, ta phân tích $k$ thành thừa số nguyên tố, viết $k = k_1^{p_1} \cdot \ldots \cdot k_m^{p_m}$. Với mỗi $k_i$, dùng thuật toán phía trên để tìm số lần thừa số này xuất hiện trong $n!$; gọi giá trị đó là $a_i$. Nguồn viết đáp án cho trường hợp $k$ hợp số là
+Không thể áp dụng trực tiếp ý tưởng trên. Thay vào đó, ta phân tích $k$ thành thừa số nguyên tố, viết $k = k_1^{p_1} \cdot \ldots \cdot k_m^{p_m}$. Với mỗi $k_i$, dùng thuật toán phía trên để tìm số lần thừa số này xuất hiện trong $n!$; gọi giá trị đó là $a_i$. Đáp án cho trường hợp $k$ hợp số là
 
 $$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$
 
-**Ghi chú bản dịch:** Vì bài toán yêu cầu x là số nguyên, biểu thức nguồn phía trên còn thiếu phép lấy phần nguyên. Với mỗi thừa số nguyên tố trong phân tích của k, số bản sao đầy đủ có thể lấy từ n! là phần nguyên của số lần thừa số đó xuất hiện chia cho số mũ tương ứng; đáp án phải lấy giá trị nhỏ nhất trong các số nguyên đó. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
+**Ghi chú bản dịch:** Vì bài toán yêu cầu x là số nguyên, biểu thức nguồn phía trên chưa viết tường minh phép lấy phần nguyên. Với mỗi thừa số nguyên tố trong phân tích của k, giới hạn tương ứng của x bằng phần nguyên của tỷ số giữa số mũ của thừa số đó trong n! và số mũ của nó trong k; đáp án là giới hạn nhỏ nhất.
