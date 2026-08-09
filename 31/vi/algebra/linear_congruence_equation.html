@@ -1198,10 +1198,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#giai-bang-cach-tim-phan-tu-nghich-ao" class="md-nav__link">
+  <a href="#giai-bang-cach-tim-nghich-ao-mo-un" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Giải bằng cách tìm phần tử nghịch đảo
+        Giải bằng cách tìm nghịch đảo mô-đun
       
     </span>
   </a>
@@ -8004,10 +8004,10 @@ Describe the issue of this article in detail.
 <p>Phương trình có dạng:</p>
 <div class="arithmatex">$$a \cdot x \equiv b \pmod n,$$</div>
 <p>trong đó <span class="arithmatex">$a$</span>, <span class="arithmatex">$b$</span> và <span class="arithmatex">$n$</span> là các số nguyên đã biết, còn <span class="arithmatex">$x$</span> là số nguyên cần tìm.</p>
-<p>Ta cần tìm giá trị <span class="arithmatex">$x$</span> trong đoạn <span class="arithmatex">$[0, n-1]$</span> (rõ ràng, trên toàn bộ trục số có thể có vô hạn nghiệm, các nghiệm sai khác nhau một lượng <span class="arithmatex">$n \cdot k$</span> , với <span class="arithmatex">$k$</span> là một số nguyên bất kỳ). Nếu nghiệm không duy nhất, ta cũng sẽ xét cách tìm tất cả các nghiệm.</p>
-<h2 id="giai-bang-cach-tim-phan-tu-nghich-ao">Giải bằng cách tìm phần tử nghịch đảo<a class="headerlink" href="#giai-bang-cach-tim-phan-tu-nghich-ao" title="Permanent link">&para;</a></h2>
+<p>Ta cần tìm giá trị <span class="arithmatex">$x$</span> trong đoạn <span class="arithmatex">$[0, n-1]$</span> (rõ ràng, trên toàn bộ tập số nguyên có thể có vô hạn nghiệm; các nghiệm sai khác nhau một bội của mô-đun, cụ thể là <span class="arithmatex">$n \cdot k$</span>, với <span class="arithmatex">$k$</span> là một số nguyên bất kỳ). Nếu nghiệm không duy nhất, ta cũng sẽ xét cách tìm tất cả các nghiệm.</p>
+<h2 id="giai-bang-cach-tim-nghich-ao-mo-un">Giải bằng cách tìm nghịch đảo mô-đun<a class="headerlink" href="#giai-bang-cach-tim-nghich-ao-mo-un" title="Permanent link">&para;</a></h2>
 <p>Trước hết, xét trường hợp đơn giản hơn khi <span class="arithmatex">$a$</span> và <span class="arithmatex">$n$</span> <strong>nguyên tố cùng nhau</strong> (<span class="arithmatex">$\gcd(a, n) = 1$</span>).
-Khi đó, ta có thể tìm <a href="module-inverse.html">nghịch đảo</a> của <span class="arithmatex">$a$</span>. Nhân cả hai vế của phương trình với nghịch đảo này, ta thu được một nghiệm <strong>duy nhất</strong>.</p>
+Khi đó, ta có thể tìm <a href="module-inverse.html">nghịch đảo mô-đun</a> của <span class="arithmatex">$a$</span>. Nhân cả hai vế của phương trình với nghịch đảo này, ta thu được một nghiệm <strong>duy nhất</strong>.</p>
 <div class="arithmatex">$$x \equiv b \cdot a ^ {- 1} \pmod n$$</div>
 <p>Bây giờ xét trường hợp <span class="arithmatex">$a$</span> và <span class="arithmatex">$n$</span> <strong>không nguyên tố cùng nhau</strong> (<span class="arithmatex">$\gcd(a, n) \ne 1$</span>).
 Khi đó, nghiệm không phải lúc nào cũng tồn tại (chẳng hạn <span class="arithmatex">$2 \cdot x \equiv 1 \pmod 4$</span> không có nghiệm).</p>

@@ -8107,7 +8107,7 @@ Describe the issue of this article in detail.
 <div class="arithmatex">$$F_{2n} = F_n (F_{n+1} + F_{n-1})$$</div>
 <ul>
 <li>
-<p>Từ đây, bằng quy nạp ta có thể chứng minh rằng với mọi số nguyên dương <span class="arithmatex">$k$</span>,  <span class="arithmatex">$F_{nk}$</span> là bội của <span class="arithmatex">$F_n$</span>.</p>
+<p>Từ đây, bằng quy nạp ta có thể chứng minh rằng với mọi số nguyên dương <span class="arithmatex">$k$</span>, <span class="arithmatex">$F_{nk}$</span> là bội của <span class="arithmatex">$F_n$</span>.</p>
 </li>
 <li>
 <p>Mệnh đề đảo cũng đúng: nếu <span class="arithmatex">$F_m$</span> là bội của <span class="arithmatex">$F_n$</span>, thì <span class="arithmatex">$m$</span> là bội của <span class="arithmatex">$n$</span>.</p>
@@ -8158,10 +8158,10 @@ Ta nối thêm một <span class="arithmatex">$1$</span> vào cuối mã để �
 <p>Có một công thức được gọi là "công thức Binet", mặc dù Moivre đã biết công thức này từ trước:</p>
 <div class="arithmatex">$$F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{2}\right)^n}{\sqrt{5}}$$</div>
 <p>Công thức này dễ chứng minh bằng quy nạp, nhưng cũng có thể suy ra bằng khái niệm hàm sinh hoặc bằng cách giải một phương trình hàm.</p>
-<p>Có thể nhận thấy ngay rằng giá trị tuyệt đối của số hạng thứ hai luôn nhỏ hơn <span class="arithmatex">$1$</span> và giảm rất nhanh (theo cấp số nhân). Vì vậy, chỉ riêng số hạng thứ nhất đã "gần như" bằng <span class="arithmatex">$F_n$</span>. Có thể viết chặt chẽ như sau: </p>
+<p>Có thể nhận thấy ngay rằng giá trị tuyệt đối của số hạng thứ hai luôn nhỏ hơn <span class="arithmatex">$1$</span> và giảm rất nhanh theo hàm mũ. Vì vậy, chỉ riêng số hạng thứ nhất đã "gần như" bằng <span class="arithmatex">$F_n$</span>. Có thể viết chặt chẽ như sau: </p>
 <div class="arithmatex">$$F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]$$</div>
 <p>trong đó dấu ngoặc vuông biểu thị phép làm tròn tới số nguyên gần nhất.</p>
-<p>Do hai công thức này đòi hỏi độ chính xác rất cao khi tính toán với số thập phân, chúng ít hữu ích trong tính toán thực tế.</p>
+<p>Do hai công thức này đòi hỏi độ chính xác rất cao khi tính toán với số thực, chúng ít hữu ích trong tính toán thực tế.</p>
 <h3 id="tinh-fibonacci-trong-thoi-gian-tuyen-tinh">Tính Fibonacci trong thời gian tuyến tính<a class="headerlink" href="#tinh-fibonacci-trong-thoi-gian-tuyen-tinh" title="Permanent link">&para;</a></h3>
 <p>Có thể dễ dàng tìm số Fibonacci thứ <span class="arithmatex">$n$</span> trong <span class="arithmatex">$O(n)$</span> bằng cách lần lượt tính các số cho đến <span class="arithmatex">$n$</span>. Tuy nhiên, như ta sẽ thấy, còn có những cách nhanh hơn.</p>
 <p>Ta có thể bắt đầu với cách lặp, tận dụng công thức <span class="arithmatex">$F_n = F_{n-1} + F_{n-2}$</span>; theo mô tả của nguồn, ta sẽ tiền tính các giá trị này trong một mảng và chú ý hai trường hợp cơ sở <span class="arithmatex">$F_0$</span> và <span class="arithmatex">$F_1$</span>.</p>
@@ -8200,7 +8200,7 @@ F_{n+1}  \\
 F_{n}
 \end{pmatrix}
 $$</div>
-<p>Nhờ đó, ta có thể xem việc lặp hệ thức truy hồi như phép nhân ma trận lặp lại, vốn có nhiều tính chất hữu ích. Cụ thể,</p>
+<p>Ta có thể xem việc áp dụng hệ thức truy hồi nhiều lần là phép nhân ma trận lặp; cách biểu diễn này có nhiều tính chất hữu ích. Cụ thể,</p>
 <div class="arithmatex">$$
 \begin{pmatrix}
 1 &amp; 1 \\
@@ -8310,7 +8310,7 @@ F_{2k} &amp;= F_k(F_{k+1}+F_{k-1}) = F_k (2F_{k+1} - F_{k})\\
 <p>Ta chứng minh bằng phản chứng. Xét <span class="arithmatex">$p^2 + 1$</span> cặp số Fibonacci đầu tiên khi lấy modulo <span class="arithmatex">$p$</span>:</p>
 <div class="arithmatex">$$(F_0,\ F_1),\ (F_1,\ F_2),\ \ldots,\ (F_{p^2},\ F_{p^2 + 1})$$</div>
 <p>Chỉ có <span class="arithmatex">$p$</span> số dư khác nhau modulo <span class="arithmatex">$p$</span> và nhiều nhất <span class="arithmatex">$p^2$</span> cặp số dư khác nhau, nên trong các cặp trên phải có ít nhất hai cặp giống nhau. Điều này đủ để chứng minh dãy tuần hoàn, vì một số Fibonacci được xác định bởi hai số đứng trước nó. Do đó, nếu hai cặp số liên tiếp lặp lại thì các số đứng sau chúng cũng sẽ lặp lại theo cùng cách.</p>
-<p>Bây giờ chọn hai cặp có cùng số dư và có chỉ số nhỏ nhất trong dãy. Gọi hai cặp đó là <span class="arithmatex">$(F_a,\ F_{a + 1})$</span> và <span class="arithmatex">$(F_b,\ F_{b + 1})$</span>. Ta sẽ chứng minh <span class="arithmatex">$a = 0$</span>. Nếu điều này sai, sẽ tồn tại hai cặp đứng trước là <span class="arithmatex">$(F_{a-1},\ F_a)$</span> và <span class="arithmatex">$(F_{b-1},\ F_b)$</span>, và theo tính chất của số Fibonacci, hai cặp này cũng bằng nhau. Tuy nhiên, điều đó mâu thuẫn với việc ta đã chọn hai cặp có chỉ số nhỏ nhất, qua đó chứng minh không có tiền chu kỳ (tức dãy tuần hoàn ngay từ <span class="arithmatex">$F_0$</span>).</p>
+<p>Bây giờ chọn hai cặp có cùng số dư và có chỉ số nhỏ nhất trong dãy. Gọi hai cặp đó là <span class="arithmatex">$(F_a,\ F_{a + 1})$</span> và <span class="arithmatex">$(F_b,\ F_{b + 1})$</span>. Ta sẽ chứng minh <span class="arithmatex">$a = 0$</span>. Nếu điều này sai, sẽ tồn tại hai cặp đứng trước là <span class="arithmatex">$(F_{a-1},\ F_a)$</span> và <span class="arithmatex">$(F_{b-1},\ F_b)$</span>, và theo hệ thức Fibonacci, hai cặp đứng trước này cũng cho cùng cặp số dư modulo p. Tuy nhiên, điều đó mâu thuẫn với việc ta đã chọn hai cặp có chỉ số nhỏ nhất, qua đó chứng minh không có tiền chu kỳ (tức dãy tuần hoàn ngay từ <span class="arithmatex">$F_0$</span>).</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/MAIN74/">SPOJ - Euclid Algorithm Revisited</a></li>

@@ -8025,10 +8025,10 @@ Do đó, ta có <span class="arithmatex">$e+1$</span> lựa chọn.</p>
 <p>Có thể hình dung như sau:</p>
 <ul>
 <li>
-<p>Nếu chỉ có một ước nguyên tố phân biệt <span class="arithmatex">$n = p_1^{e_1}$</span>, thì hiển nhiên có <span class="arithmatex">$e_1 + 1$</span> ước (<span class="arithmatex">$1, p_1, p_1^2, \dots, p_1^{e_1}$</span>).</p>
+<p>Nếu <span class="arithmatex">$n = p_1^{e_1}$</span> chỉ có một thừa số nguyên tố phân biệt, thì hiển nhiên có <span class="arithmatex">$e_1 + 1$</span> ước (<span class="arithmatex">$1, p_1, p_1^2, \dots, p_1^{e_1}$</span>).</p>
 </li>
 <li>
-<p>Nếu có hai ước nguyên tố phân biệt <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2}$</span>, ta có thể sắp xếp tất cả các ước thành một bảng.</p>
+<p>Nếu <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2}$</span> có hai thừa số nguyên tố phân biệt, ta có thể sắp xếp tất cả các ước thành một bảng.</p>
 </li>
 </ul>
 <div class="arithmatex">$$\begin{array}{c|ccccc}
@@ -8064,13 +8064,13 @@ p_1^{e_1} &amp; p_1^{e_1} &amp; p_1^{e_1} \cdot p_2 &amp; p_1^{e_1} \cdot p_2^2 
 <h2 id="tong-cac-uoc">Tổng các ước<a class="headerlink" href="#tong-cac-uoc" title="Permanent link">&para;</a></h2>
 <p>Ta có thể dùng lập luận tương tự như ở phần trước.</p>
 <ul>
-<li>Nếu chỉ có một ước nguyên tố phân biệt <span class="arithmatex">$n = p_1^{e_1}$</span>, thì tổng là:</li>
+<li>Nếu <span class="arithmatex">$n = p_1^{e_1}$</span> chỉ có một thừa số nguyên tố phân biệt, thì tổng là:</li>
 </ul>
 <div class="arithmatex">$$1 + p_1 + p_1^2 + \dots + p_1^{e_1} = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1}$$</div>
 <ul>
-<li>Nếu có hai ước nguyên tố phân biệt <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2}$</span>, ta có thể lập bảng giống như trước.
+<li>Nếu <span class="arithmatex">$n = p_1^{e_1} \cdot p_2^{e_2}$</span> có hai thừa số nguyên tố phân biệt, ta có thể lập bảng giống như trước.
   Điểm khác biệt duy nhất là bây giờ ta muốn tính tổng thay vì đếm số phần tử.
-  Dễ thấy tổng của tất cả các tổ hợp có thể được biểu diễn thành:</li>
+  Khi đó, tổng tất cả các ước bằng:</li>
 </ul>
 <div class="arithmatex">$$\left(1 + p_1 + p_1^2 + \dots + p_1^{e_1}\right) \cdot \left(1 + p_2 + p_2^2 + \dots + p_2^{e_2}\right)$$</div>
 <div class="arithmatex">$$ = \frac{p_1^{e_1 + 1} - 1}{p_1 - 1} \cdot \frac{p_2^{e_2 + 1} - 1}{p_2 - 1}$$</div>
@@ -8108,7 +8108,7 @@ p_1^{e_1} &amp; p_1^{e_1} &amp; p_1^{e_1} \cdot p_2 &amp; p_1^{e_1} \cdot p_2^2 
 <div class="arithmatex">$$f(a \cdot b) = f(a) \cdot f(b)$$</div>
 <p>khi <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> nguyên tố cùng nhau.</p>
 <p>Cả <span class="arithmatex">$d(n)$</span> và <span class="arithmatex">$\sigma(n)$</span> đều là các hàm nhân tính.</p>
-<p>Hàm nhân tính có rất nhiều tính chất thú vị và có thể đặc biệt hữu ích trong các bài toán số học.
+<p>Hàm nhân tính có rất nhiều tính chất thú vị và rất hữu ích trong các bài toán số học.
 Chẳng hạn, tích chập Dirichlet của hai hàm nhân tính cũng là một hàm nhân tính.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
