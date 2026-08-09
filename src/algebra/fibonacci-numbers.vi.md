@@ -94,13 +94,13 @@ $$F_n = \frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n - \left(\frac{1 - \sqrt{5}}{
 
 Công thức này dễ chứng minh bằng quy nạp, nhưng cũng có thể suy ra bằng khái niệm hàm sinh hoặc bằng cách giải một phương trình hàm.
 
-Có thể nhận thấy ngay rằng giá trị tuyệt đối của số hạng thứ hai luôn nhỏ hơn $1$ và giảm rất nhanh (theo cấp số nhân). Vì vậy, chỉ riêng số hạng thứ nhất đã "gần như" bằng $F_n$. Có thể viết chặt chẽ như sau: 
+Có thể nhận thấy ngay rằng giá trị tuyệt đối của số hạng thứ hai luôn nhỏ hơn $1$ và giảm rất nhanh theo hàm mũ. Vì vậy, chỉ riêng số hạng thứ nhất đã "gần như" bằng $F_n$. Có thể viết chặt chẽ như sau: 
 
 $$F_n = \left[\frac{\left(\frac{1 + \sqrt{5}}{2}\right)^n}{\sqrt{5}}\right]$$
 
 trong đó dấu ngoặc vuông biểu thị phép làm tròn tới số nguyên gần nhất.
 
-Do hai công thức này đòi hỏi độ chính xác rất cao khi tính toán với số thập phân, chúng ít hữu ích trong tính toán thực tế.
+Do hai công thức này đòi hỏi độ chính xác rất cao khi tính toán với số thực, chúng ít hữu ích trong tính toán thực tế.
 
 ### Tính Fibonacci trong thời gian tuyến tính
 
@@ -150,7 +150,7 @@ F_{n}
 \end{pmatrix}
 $$
 
-Nhờ đó, ta có thể xem việc lặp hệ thức truy hồi như phép nhân ma trận lặp lại, vốn có nhiều tính chất hữu ích. Cụ thể,
+Ta có thể xem việc áp dụng hệ thức truy hồi nhiều lần là phép nhân ma trận lặp; cách biểu diễn này có nhiều tính chất hữu ích. Cụ thể,
 
 $$
 \begin{pmatrix}
@@ -282,7 +282,7 @@ $$(F_0,\ F_1),\ (F_1,\ F_2),\ \ldots,\ (F_{p^2},\ F_{p^2 + 1})$$
 
 Chỉ có $p$ số dư khác nhau modulo $p$ và nhiều nhất $p^2$ cặp số dư khác nhau, nên trong các cặp trên phải có ít nhất hai cặp giống nhau. Điều này đủ để chứng minh dãy tuần hoàn, vì một số Fibonacci được xác định bởi hai số đứng trước nó. Do đó, nếu hai cặp số liên tiếp lặp lại thì các số đứng sau chúng cũng sẽ lặp lại theo cùng cách.
 
-Bây giờ chọn hai cặp có cùng số dư và có chỉ số nhỏ nhất trong dãy. Gọi hai cặp đó là $(F_a,\ F_{a + 1})$ và $(F_b,\ F_{b + 1})$. Ta sẽ chứng minh $a = 0$. Nếu điều này sai, sẽ tồn tại hai cặp đứng trước là $(F_{a-1},\ F_a)$ và $(F_{b-1},\ F_b)$, và theo tính chất của số Fibonacci, hai cặp này cũng bằng nhau. Tuy nhiên, điều đó mâu thuẫn với việc ta đã chọn hai cặp có chỉ số nhỏ nhất, qua đó chứng minh không có tiền chu kỳ (tức dãy tuần hoàn ngay từ $F_0$).
+Bây giờ chọn hai cặp có cùng số dư và có chỉ số nhỏ nhất trong dãy. Gọi hai cặp đó là $(F_a,\ F_{a + 1})$ và $(F_b,\ F_{b + 1})$. Ta sẽ chứng minh $a = 0$. Nếu điều này sai, sẽ tồn tại hai cặp đứng trước là $(F_{a-1},\ F_a)$ và $(F_{b-1},\ F_b)$, và theo hệ thức Fibonacci, hai cặp đứng trước này cũng cho cùng cặp số dư modulo p. Tuy nhiên, điều đó mâu thuẫn với việc ta đã chọn hai cặp có chỉ số nhỏ nhất, qua đó chứng minh không có tiền chu kỳ (tức dãy tuần hoàn ngay từ $F_0$).
 
 ## Bài tập luyện tập
 
