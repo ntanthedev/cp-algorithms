@@ -103,7 +103,7 @@ Có hai toán tử dùng để dịch các bit.
     Trên máy tính, dịch bit thường nhanh hơn đáng kể so với thực hiện phép chia.
 
 -   $\ll$ Dịch một số sang trái bằng cách thêm các chữ số 0 ở cuối.
-    Tương tự dịch phải, dịch trái $k$ vị trí tương ứng với phép nhân với $2^k$.
+    Tương tự dịch phải $k$ vị trí, dịch trái $k$ vị trí tương ứng với phép nhân với $2^k$.
 
     Chẳng hạn $5 \ll 3 = 101_2 \ll 3 = 101000_2 = 40$, giống với $5 \cdot 2^3 = 5 \cdot 8 = 40$.
 
@@ -194,7 +194,7 @@ int countSetBits(int n)
 ```
 
 ### Đếm tổng số bit 1 đến $n$
-Để đếm tổng số bit 1 trong mọi số từ 0 đến $n$ (kể cả $n$), ta có thể chạy thuật toán Brian Kernighan cho từng số đến $n$. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. 
+Để đếm tổng số bit 1 trong mọi số từ 0 đến $n$ (kể cả cận trên), ta có thể chạy thuật toán Brian Kernighan cho từng số đến $n$. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. 
 
 Ta dùng tính chất sau với $2^x$: trong các số từ $1$ đến $2^x - 1$, có tổng cộng $x \cdot 2^{x-1}$ bit 1. Có thể hình dung như sau.
 ```
