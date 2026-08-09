@@ -13,7 +13,7 @@ translation:
 
 Một đa giác không tự cắt được gọi là đa giác lưới nếu tất cả các đỉnh của nó có tọa độ nguyên trên một lưới hai chiều nào đó. Định lý Pick cho phép tính diện tích của đa giác này thông qua số đỉnh nằm trên biên và số đỉnh nằm hoàn toàn bên trong đa giác.
 
-**Ghi chú bản dịch:** Ở câu trên, nguồn dùng từ “vertices”. Tuy nhiên, Định lý Pick thực tế sử dụng số **điểm nguyên** nằm trên biên và nằm hoàn toàn bên trong đa giác. Phần Công thức bên dưới đã ghi rõ $I$ đếm các điểm có tọa độ nguyên, nhưng câu định nghĩa $B$ của nguồn vẫn thiếu điều kiện này. Các cách diễn đạt này đang được đề xuất sửa riêng ở bản tiếng Anh.
+**Ghi chú bản dịch:** Ở câu trên, nguồn dùng từ “vertices”. Tuy nhiên, Định lý Pick thực tế sử dụng số **điểm nguyên** nằm trên biên và nằm hoàn toàn bên trong đa giác. Phần Công thức bên dưới đã ghi rõ I đếm các điểm có tọa độ nguyên, nhưng câu định nghĩa B của nguồn vẫn thiếu điều kiện này. Các cách diễn đạt này đang được đề xuất sửa riêng ở bản tiếng Anh.
 
 ## Công thức
 
@@ -21,7 +21,7 @@ Cho một đa giác lưới có diện tích khác không.
 
 Ký hiệu diện tích của nó là $S$, số điểm có tọa độ nguyên nằm hoàn toàn bên trong đa giác là $I$ và số điểm nằm trên các cạnh của đa giác là $B$.
 
-**Ghi chú bản dịch:** Trong công thức Pick, $B$ phải được hiểu là số **điểm nguyên** nằm trên biên đa giác; câu nguồn hiện chỉ viết “points lying on polygon sides”.
+**Ghi chú bản dịch:** Trong công thức Pick, B phải được hiểu là số **điểm nguyên** nằm trên biên đa giác; câu nguồn hiện chỉ viết “points lying on polygon sides”.
 
 Khi đó, **công thức Pick** phát biểu:
 
@@ -45,7 +45,7 @@ Chứng minh được thực hiện qua nhiều bước, từ các đa giác đ�
 
 - Một đa giác bất kỳ: Để chứng minh, hãy tam giác hóa nó, tức chia thành các tam giác có các đỉnh tọa độ nguyên. Hơn nữa, có thể chứng minh rằng Định lý Pick vẫn đúng khi ghép thêm một tam giác vào đa giác. Như vậy, ta đã chứng minh công thức Pick cho đa giác bất kỳ.
 
-**Ghi chú bản dịch:** Ở bullet đầu, các giá trị $S=1, I=0, B=4$ tương ứng với một hình vuông đơn vị, trong khi nguồn chỉ viết “A single square”. Ở bullet thứ ba, nguồn viết “A right angle with legs parallel to the axes”, nhưng lập luận ngay sau đó nói về một tam giác được tạo bằng cách cắt hình chữ nhật theo đường chéo; đối tượng cần xét là một **tam giác vuông**, không phải một góc vuông. Hai cách diễn đạt này đang được đề xuất làm rõ riêng ở bản tiếng Anh.
+**Ghi chú bản dịch:** Ở bullet đầu, các giá trị S=1, I=0, B=4 tương ứng với một hình vuông đơn vị, trong khi nguồn chỉ viết “A single square”. Ở bullet thứ ba, nguồn viết “A right angle with legs parallel to the axes”, nhưng lập luận ngay sau đó nói về một tam giác được tạo bằng cách cắt hình chữ nhật theo đường chéo; đối tượng cần xét là một **tam giác vuông**, không phải một góc vuông. Hai cách diễn đạt này đang được đề xuất làm rõ riêng ở bản tiếng Anh.
 
 ## Khái quát lên số chiều cao hơn
 
