@@ -53,4 +53,4 @@ Không thể áp dụng trực tiếp ý tưởng trên. Thay vào đó, ta phâ
 
 $$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$
 
-**Ghi chú bản dịch:** Vì bài toán yêu cầu $x$ là số nguyên, biểu thức nguồn phía trên còn thiếu phép lấy phần nguyên. Với mỗi thừa số $k_i^{p_i}$, số bản sao đầy đủ có thể lấy từ $n!$ là phần nguyên của $a_i/p_i$; đáp án phải lấy giá trị nhỏ nhất trong các số nguyên đó. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
+**Ghi chú bản dịch:** Vì bài toán yêu cầu x là số nguyên, biểu thức nguồn phía trên còn thiếu phép lấy phần nguyên. Với mỗi thừa số nguyên tố trong phân tích của k, số bản sao đầy đủ có thể lấy từ n! là phần nguyên của số lần thừa số đó xuất hiện chia cho số mũ tương ứng; đáp án phải lấy giá trị nhỏ nhất trong các số nguyên đó. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
