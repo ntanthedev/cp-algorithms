@@ -105,7 +105,7 @@ public static BigInteger isqrtNewton(BigInteger n) {
 }
 ```
 
-**Ghi chú bản dịch:** Hai cài đặt căn bậc hai nguyên ở trên không xử lý riêng trường hợp đầu vào bằng 0. Với trường hợp đó, biến lặp có thể trở thành 0 rồi phép chia ở vòng lặp kế tiếp không còn hợp lệ. Bản dịch giữ nguyên code nguồn; correction được tách sang PR upstream.
+**Ghi chú bản dịch:** Hai cài đặt căn bậc hai nguyên ở trên không xử lý riêng trường hợp đầu vào bằng 0. Với trường hợp đó, biến lặp có thể trở thành 0 rồi phép chia ở vòng lặp kế tiếp không còn hợp lệ. Ngoài ra, ở cài đặt C++, phép cộng trung gian được tính bằng kiểu int nên có thể tràn số với đầu vào lớn gần giới hạn của kiểu này. Bản dịch giữ nguyên code nguồn; các correction được tách sang PR upstream.
 
 Ví dụ, đoạn code này chạy trong $60$ mili giây với $n = 10^{1000}$; nếu bỏ cách chọn xấp xỉ ban đầu cải tiến và chỉ bắt đầu từ $1$, thời gian chạy sẽ vào khoảng $120$ mili giây.
 
