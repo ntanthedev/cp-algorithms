@@ -17,7 +17,7 @@ $$a \cdot x \equiv b \pmod n,$$
 
 trong đó $a$, $b$ và $n$ là các số nguyên đã biết, còn $x$ là số nguyên cần tìm.
 
-Ta cần tìm giá trị $x$ trong đoạn $[0, n-1]$ (rõ ràng, trên toàn bộ tập số nguyên có thể có vô hạn nghiệm; các nghiệm sai khác nhau một bội của mô-đun, cụ thể là $n \cdot k$ , với $k$ là một số nguyên bất kỳ). Nếu nghiệm không duy nhất, ta cũng sẽ xét cách tìm tất cả các nghiệm.
+Ta cần tìm giá trị $x$ trong đoạn $[0, n-1]$ (rõ ràng, trên toàn bộ tập số nguyên có thể có vô hạn nghiệm; các nghiệm sai khác nhau một bội của mô-đun, cụ thể là $n \cdot k$, với $k$ là một số nguyên bất kỳ). Nếu nghiệm không duy nhất, ta cũng sẽ xét cách tìm tất cả các nghiệm.
 
 ## Giải bằng cách tìm nghịch đảo mô-đun
 
