@@ -28,7 +28,7 @@ int g (int n) {
 }
 ```
 
-## Tìm mã Gray ngược
+## Khôi phục số từ mã Gray
 
 Cho mã Gray $g$, hãy khôi phục số ban đầu $n$.
 
@@ -62,19 +62,18 @@ Mã Gray có nhiều ứng dụng hữu ích, đôi khi khá bất ngờ:
 
 *   Mã Gray có thể được dùng để giải bài toán Tháp Hà Nội.
     Gọi $n$ là số đĩa. Bắt đầu với mã Gray độ dài $n$ gồm toàn bit 0 ($G(0)$), rồi lần lượt chuyển giữa các mã Gray liên tiếp (từ $G(i)$ sang $G(i+1)$).
-    Theo mô tả của nguồn, bit thứ $i$ của mã Gray hiện tại biểu diễn đĩa thứ $n$ 
+    Bit thứ $i$ của mã Gray hiện tại biểu diễn đĩa thứ $n$ 
     (bit thấp nhất tương ứng với đĩa nhỏ nhất và bit cao nhất tương ứng với đĩa lớn nhất). 
     Vì mỗi bước chỉ có đúng một bit thay đổi, ta có thể xem việc đổi bit thứ $i$ là di chuyển đĩa thứ $i$.
     Nhận xét rằng ở mỗi bước (trừ vị trí bắt đầu và kết thúc), mỗi đĩa (trừ đĩa nhỏ nhất) chỉ có đúng một cách di chuyển hợp lệ.
     Đĩa nhỏ nhất luôn có hai cách di chuyển, nhưng có một chiến lược luôn dẫn đến đáp án:
     nếu $n$ lẻ thì dãy di chuyển của đĩa nhỏ nhất có dạng $f \to t \to r \to f \to t \to r \to ...$
-    trong đó $f$ là cọc ban đầu, $t$ là cọc đích và $r$ là cọc còn lại), còn 
+    trong đó $f$ là cọc ban đầu, $t$ là cọc đích và $r$ là cọc còn lại, còn 
     nếu $n$ chẵn: $f \to r \to t \to f \to r \to t \to ...$.
 
 *   Mã Gray cũng được dùng trong lý thuyết thuật toán di truyền.
 
-**Ghi chú bản dịch:** Trong bullet Tháp Hà Nội, nguồn ghi “bit thứ i” biểu diễn “đĩa thứ n”, nhưng câu kế tiếp lại dùng việc đổi bit thứ i như di chuyển đĩa thứ i. Theo ngữ cảnh, “đĩa thứ n” nhiều khả năng là typo và phải là “đĩa thứ i”.
-
+**Ghi chú bản dịch:** Trong bullet về Tháp Hà Nội, câu nguồn ghi “bit thứ i” biểu diễn “đĩa thứ n”, nhưng câu kế tiếp lại dùng việc đổi bit thứ i như di chuyển đĩa thứ i. Theo ngữ cảnh, “đĩa thứ n” nhiều khả năng là typo và phải là “đĩa thứ i”.
 
 ## Bài tập luyện tập
 *   <a href="https://cses.fi/problemset/task/2205">Gray Code &nbsp;&nbsp;&nbsp;&nbsp; [Độ khó: dễ]</a>
