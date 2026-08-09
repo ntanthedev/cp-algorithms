@@ -146,6 +146,13 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | space complexity | độ phức tạp bộ nhớ |
 | amortized complexity | độ phức tạp khấu hao |
 | associativity | tính kết hợp |
+| bit manipulation | phép toán bit; khi nói thao tác cụ thể có thể dùng thao tác bit |
+| bitwise AND / OR / XOR / NOT | AND / OR / XOR / NOT theo bit |
+| set / clear / flip a bit | bật / tắt / đảo bit |
+| bitmask | bitmask; lần đầu có thể chú thích mặt nạ bit khi hữu ích |
+| submask | mask con (submask); sau lần đầu dùng mask con |
+| Gray code | mã Gray |
+| least / most significant bit (LSB / MSB) | bit có trọng số thấp nhất / cao nhất (LSB / MSB); khi ngữ cảnh rõ có thể dùng bit thấp nhất / cao nhất |
 | greatest common divisor | ước chung lớn nhất |
 | least common multiple | bội chung nhỏ nhất |
 | extended Euclidean algorithm | thuật toán Euclid mở rộng |
