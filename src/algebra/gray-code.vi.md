@@ -64,9 +64,6 @@ Mã Gray có nhiều ứng dụng hữu ích, đôi khi khá bất ngờ:
     Gọi $n$ là số đĩa. Bắt đầu với mã Gray độ dài $n$ gồm toàn bit 0 ($G(0)$), rồi lần lượt chuyển giữa các mã Gray liên tiếp (từ $G(i)$ sang $G(i+1)$).
     Theo mô tả của nguồn, bit thứ $i$ của mã Gray hiện tại biểu diễn đĩa thứ $n$ 
     (bit thấp nhất tương ứng với đĩa nhỏ nhất và bit cao nhất tương ứng với đĩa lớn nhất). 
-
-**Ghi chú bản dịch:** Câu nguồn ngay phía trên ghi “bit thứ i” biểu diễn “đĩa thứ n”, nhưng câu kế tiếp lại dùng việc đổi bit thứ i như di chuyển đĩa thứ i. Theo ngữ cảnh, “đĩa thứ n” nhiều khả năng là typo và phải là “đĩa thứ i”.
-
     Vì mỗi bước chỉ có đúng một bit thay đổi, ta có thể xem việc đổi bit thứ $i$ là di chuyển đĩa thứ $i$.
     Nhận xét rằng ở mỗi bước (trừ vị trí bắt đầu và kết thúc), mỗi đĩa (trừ đĩa nhỏ nhất) chỉ có đúng một cách di chuyển hợp lệ.
     Đĩa nhỏ nhất luôn có hai cách di chuyển, nhưng có một chiến lược luôn dẫn đến đáp án:
@@ -75,6 +72,8 @@ Mã Gray có nhiều ứng dụng hữu ích, đôi khi khá bất ngờ:
     nếu $n$ chẵn: $f \to r \to t \to f \to r \to t \to ...$.
 
 *   Mã Gray cũng được dùng trong lý thuyết thuật toán di truyền.
+
+**Ghi chú bản dịch:** Trong bullet Tháp Hà Nội, nguồn ghi “bit thứ i” biểu diễn “đĩa thứ n”, nhưng câu kế tiếp lại dùng việc đổi bit thứ i như di chuyển đĩa thứ i. Theo ngữ cảnh, “đĩa thứ n” nhiều khả năng là typo và phải là “đĩa thứ i”.
 
 
 ## Bài tập luyện tập
