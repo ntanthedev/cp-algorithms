@@ -1516,10 +1516,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tim-ma-gray-nguoc" class="md-nav__link">
+  <a href="#khoi-phuc-so-tu-ma-gray" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Tìm mã Gray ngược
+        Khôi phục số từ mã Gray
       
     </span>
   </a>
@@ -8033,7 +8033,7 @@ Chẳng hạn, <span class="arithmatex">$G(3) = (010)_2$</span> và <span class=
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="tim-ma-gray-nguoc">Tìm mã Gray ngược<a class="headerlink" href="#tim-ma-gray-nguoc" title="Permanent link">&para;</a></h2>
+<h2 id="khoi-phuc-so-tu-ma-gray">Khôi phục số từ mã Gray<a class="headerlink" href="#khoi-phuc-so-tu-ma-gray" title="Permanent link">&para;</a></h2>
 <p>Cho mã Gray <span class="arithmatex">$g$</span>, hãy khôi phục số ban đầu <span class="arithmatex">$n$</span>.</p>
 <p>Ta đi từ các bit cao nhất xuống các bit thấp nhất (bit thấp nhất có chỉ số 1 và bit cao nhất có chỉ số <span class="arithmatex">$k$</span>). Quan hệ giữa các bit <span class="arithmatex">$n_i$</span> của số <span class="arithmatex">$n$</span> và các bit <span class="arithmatex">$g_i$</span> của số <span class="arithmatex">$g$</span> là:</p>
 <div class="arithmatex">$$\begin{align}
@@ -8063,20 +8063,20 @@ Chẳng hạn, <span class="arithmatex">$G(3) = (010)_2$</span> và <span class=
 <li>
 <p>Mã Gray có thể được dùng để giải bài toán Tháp Hà Nội.
     Gọi <span class="arithmatex">$n$</span> là số đĩa. Bắt đầu với mã Gray độ dài <span class="arithmatex">$n$</span> gồm toàn bit 0 (<span class="arithmatex">$G(0)$</span>), rồi lần lượt chuyển giữa các mã Gray liên tiếp (từ <span class="arithmatex">$G(i)$</span> sang <span class="arithmatex">$G(i+1)$</span>).
-    Theo mô tả của nguồn, bit thứ <span class="arithmatex">$i$</span> của mã Gray hiện tại biểu diễn đĩa thứ <span class="arithmatex">$n$</span> 
+    Bit thứ <span class="arithmatex">$i$</span> của mã Gray hiện tại biểu diễn đĩa thứ <span class="arithmatex">$n$</span> 
     (bit thấp nhất tương ứng với đĩa nhỏ nhất và bit cao nhất tương ứng với đĩa lớn nhất). 
     Vì mỗi bước chỉ có đúng một bit thay đổi, ta có thể xem việc đổi bit thứ <span class="arithmatex">$i$</span> là di chuyển đĩa thứ <span class="arithmatex">$i$</span>.
     Nhận xét rằng ở mỗi bước (trừ vị trí bắt đầu và kết thúc), mỗi đĩa (trừ đĩa nhỏ nhất) chỉ có đúng một cách di chuyển hợp lệ.
     Đĩa nhỏ nhất luôn có hai cách di chuyển, nhưng có một chiến lược luôn dẫn đến đáp án:
     nếu <span class="arithmatex">$n$</span> lẻ thì dãy di chuyển của đĩa nhỏ nhất có dạng <span class="arithmatex">$f \to t \to r \to f \to t \to r \to ...$</span>
-    trong đó <span class="arithmatex">$f$</span> là cọc ban đầu, <span class="arithmatex">$t$</span> là cọc đích và <span class="arithmatex">$r$</span> là cọc còn lại), còn 
+    trong đó <span class="arithmatex">$f$</span> là cọc ban đầu, <span class="arithmatex">$t$</span> là cọc đích và <span class="arithmatex">$r$</span> là cọc còn lại, còn 
     nếu <span class="arithmatex">$n$</span> chẵn: <span class="arithmatex">$f \to r \to t \to f \to r \to t \to ...$</span>.</p>
 </li>
 <li>
 <p>Mã Gray cũng được dùng trong lý thuyết thuật toán di truyền.</p>
 </li>
 </ul>
-<p><strong>Ghi chú bản dịch:</strong> Trong bullet Tháp Hà Nội, nguồn ghi “bit thứ i” biểu diễn “đĩa thứ n”, nhưng câu kế tiếp lại dùng việc đổi bit thứ i như di chuyển đĩa thứ i. Theo ngữ cảnh, “đĩa thứ n” nhiều khả năng là typo và phải là “đĩa thứ i”.</p>
+<p><strong>Ghi chú bản dịch:</strong> Trong bullet về Tháp Hà Nội, câu nguồn ghi “bit thứ i” biểu diễn “đĩa thứ n”, nhưng câu kế tiếp lại dùng việc đổi bit thứ i như di chuyển đĩa thứ i. Theo ngữ cảnh, “đĩa thứ n” nhiều khả năng là typo và phải là “đĩa thứ i”.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://cses.fi/problemset/task/2205">Gray Code &nbsp;&nbsp;&nbsp;&nbsp; [Độ khó: dễ]</a></li>

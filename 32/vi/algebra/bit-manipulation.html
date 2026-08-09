@@ -8220,7 +8220,7 @@ Trên máy tính, dịch bit thường nhanh hơn đáng kể so với thực hi
 </li>
 <li>
 <p><span class="arithmatex">$\ll$</span> Dịch một số sang trái bằng cách thêm các chữ số 0 ở cuối.
-    Tương tự phép dịch phải <span class="arithmatex">$k$</span> vị trí, phép dịch trái <span class="arithmatex">$k$</span> vị trí tương ứng với phép nhân với <span class="arithmatex">$2^k$</span>.</p>
+    Tương tự dịch phải, dịch trái <span class="arithmatex">$k$</span> vị trí tương ứng với phép nhân với <span class="arithmatex">$2^k$</span>.</p>
 <p>Chẳng hạn <span class="arithmatex">$5 \ll 3 = 101_2 \ll 3 = 101000_2 = 40$</span>, giống với <span class="arithmatex">$5 \cdot 2^3 = 5 \cdot 8 = 40$</span>.</p>
 <p>Tuy nhiên, với số nguyên có độ dài cố định, điều này có nghĩa các chữ số ngoài cùng bên trái có thể bị loại bỏ; nếu dịch quá nhiều, theo mô tả của nguồn ta sẽ nhận được số <span class="arithmatex">$0$</span>.</p>
 </li>
@@ -8284,8 +8284,8 @@ n &amp; (n-1) = 00110000
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="em-tong-so-bit-1-en-n">Đếm tổng số bit 1 đến <span class="arithmatex">$n$</span><a class="headerlink" href="#em-tong-so-bit-1-en-n" title="Permanent link">&para;</a></h3>
-<p>Để đếm tổng số bit 1 trong mọi số từ 0 đến <span class="arithmatex">$n$</span> (kể cả số cuối), ta có thể chạy thuật toán Brian Kernighan cho từng số đến <span class="arithmatex">$n$</span>. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. </p>
-<p>Ta dùng tính chất rằng với các số đến <span class="arithmatex">$2^x$</span> (tức từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$2^x - 1$</span>), có tổng cộng <span class="arithmatex">$x \cdot 2^{x-1}$</span> bit 1. Có thể hình dung như sau.
+<p>Để đếm tổng số bit 1 trong mọi số từ 0 đến <span class="arithmatex">$n$</span> (kể cả <span class="arithmatex">$n$</span>), ta có thể chạy thuật toán Brian Kernighan cho từng số đến <span class="arithmatex">$n$</span>. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. </p>
+<p>Ta dùng tính chất sau với <span class="arithmatex">$2^x$</span>: trong các số từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$2^x - 1$</span>, có tổng cộng <span class="arithmatex">$x \cdot 2^{x-1}$</span> bit 1. Có thể hình dung như sau.
 <div class="highlight"><pre><span></span><code>0 -&gt;   0 0 0 0
 1 -&gt;   0 0 0 1
 2 -&gt;   0 0 1 0
@@ -8297,6 +8297,7 @@ n &amp; (n-1) = 00110000
 8 -&gt;   1 0 0 0
 </code></pre></div></p>
 <p>Ta thấy mọi cột trừ cột ngoài cùng bên trái đều có <span class="arithmatex">$4$</span> bit 1 (tức <span class="arithmatex">$2^2$</span>); nói cách khác, đến số <span class="arithmatex">$2^3 - 1$</span>, tổng số bit 1 là <span class="arithmatex">$3 \cdot 2^{3-1}$</span>.</p>
+<p><strong>Ghi chú bản dịch:</strong> Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện phép dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.</p>
 <p>Từ nhận xét trên, ta có thuật toán sau:</p>
 <ul>
 <li>Tìm lũy thừa lớn nhất của <span class="arithmatex">$2$</span> không vượt quá số đã cho. Gọi số này là <span class="arithmatex">$x$</span>.</li>
@@ -8315,19 +8316,18 @@ n &amp; (n-1) = 00110000
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú bản dịch:</strong> Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện một phép dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.</p>
 <h3 id="cac-meo-bo-sung">Các mẹo bổ sung<a class="headerlink" href="#cac-meo-bo-sung" title="Permanent link">&para;</a></h3>
 <ul>
 <li><span class="arithmatex">$n ~\&amp;~ (n + 1)$</span> tắt mọi bit 1 ở cuối: <span class="arithmatex">$0011~0111_2 \rightarrow 0011~0000_2$</span>.</li>
-<li><span class="arithmatex">$n ~|~ (n + 1)$</span> bật bit 0 cuối cùng: <span class="arithmatex">$0011~0101_2 \rightarrow 0011~0111_2$</span>.</li>
-<li><span class="arithmatex">$n ~\&amp;~ -n$</span> tách lấy bit 1 cuối cùng: <span class="arithmatex">$0011~0100_2 \rightarrow 0000~0100_2$</span>.</li>
+<li><span class="arithmatex">$n ~|~ (n + 1)$</span> bật bit 0 ngoài cùng bên phải: <span class="arithmatex">$0011~0101_2 \rightarrow 0011~0111_2$</span>.</li>
+<li><span class="arithmatex">$n ~\&amp;~ -n$</span> tách lấy bit 1 ngoài cùng bên phải: <span class="arithmatex">$0011~0100_2 \rightarrow 0000~0100_2$</span>.</li>
 </ul>
 <p>Có thể tìm thêm nhiều mẹo khác trong cuốn <a href="https://en.wikipedia.org/wiki/Hacker%27s_Delight">Hacker's Delight</a>.</p>
 <h3 id="ho-tro-cua-ngon-ngu-va-trinh-bien-dich">Hỗ trợ của ngôn ngữ và trình biên dịch<a class="headerlink" href="#ho-tro-cua-ngon-ngu-va-trinh-bien-dich" title="Permanent link">&para;</a></h3>
 <p>C++ hỗ trợ một số thao tác trên từ C++20 thông qua thư viện chuẩn <a href="https://en.cppreference.com/w/cpp/header/bit">bit</a>:</p>
 <ul>
 <li><code>has_single_bit</code>: kiểm tra số có phải lũy thừa của hai hay không</li>
-<li><code>bit_ceil</code> / <code>bit_floor</code>: làm tròn lên/xuống tới lũy thừa của hai kế tiếp</li>
+<li><code>bit_ceil</code> / <code>bit_floor</code>: làm tròn lên/xuống tới lũy thừa của 2 gần nhất theo hướng tương ứng</li>
 <li><code>rotl</code> / <code>rotr</code>: xoay các bit của số</li>
 <li><code>countl_zero</code> / <code>countr_zero</code> / <code>countl_one</code> / <code>countr_one</code>: đếm số bit 0/1 liên tiếp ở đầu/cuối</li>
 <li><code>popcount</code>: đếm số bit 1</li>
@@ -8336,7 +8336,7 @@ n &amp; (n-1) = 00110000
 Chẳng hạn GCC định nghĩa một danh sách tại <a href="https://gcc.gnu.org/onlinedocs/gcc/Other-Builtins.html">Built-in Functions Provided by GCC</a>, và các hàm này cũng dùng được với các phiên bản C++ cũ hơn:</p>
 <ul>
 <li><code>__builtin_popcount(unsigned int)</code> trả về số bit 1 (<code>__builtin_popcount(0b0001'0010'1100) == 4</code>)</li>
-<li><code>__builtin_ffs(int)</code> tìm chỉ số của bit 1 đầu tiên từ bên phải (<code>__builtin_ffs(0b0001'0010'1100) == 3</code>)</li>
+<li><code>__builtin_ffs(int)</code> trả về vị trí (đánh số từ 1) của bit 1 ngoài cùng bên phải (<code>__builtin_ffs(0b0001'0010'1100) == 3</code>)</li>
 <li><code>__builtin_clz(unsigned int)</code> trả về số bit 0 ở đầu (<code>__builtin_clz(0b0001'0010'1100) == 23</code>)</li>
 <li><code>__builtin_ctz(unsigned int)</code> trả về số bit 0 ở cuối (<code>__builtin_ctz(0b0001'0010'1100) == 2</code>)</li>
 <li><code>__builtin_parity(x)</code> trả về tính chẵn lẻ của số bit 1 trong biểu diễn bit</li>
