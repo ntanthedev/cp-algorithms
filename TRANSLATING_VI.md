@@ -163,6 +163,9 @@ Không đặt `ready` trong cùng lượt tạo bản dịch nếu chưa có rev
 | multiplicative order | bậc nhân |
 | primitive root | căn nguyên thủy |
 | mixed radix representation | biểu diễn cơ số hỗn hợp |
+| factorial modulo p | giai thừa modulo p |
+| modified factorial | giai thừa biến đổi; trong ngữ cảnh modulo p là giai thừa sau khi loại mọi thừa số p |
+| Legendre's formula | công thức Legendre |
 | Sieve of Eratosthenes | Sàng Eratosthenes |
 | segmented sieve | sàng phân đoạn |
 | connected component | thành phần liên thông |
