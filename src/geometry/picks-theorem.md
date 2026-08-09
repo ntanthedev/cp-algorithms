@@ -12,7 +12,7 @@ A polygon without self-intersections is called lattice if all its vertices have 
 
 Given a certain lattice polygon with non-zero area.
 
-We denote its area by $S$, the number of points with integer coordinates lying strictly inside the polygon by $I$ and the number of points lying on polygon sides by $B$.
+We denote its area by $S$, the number of points with integer coordinates lying strictly inside the polygon by $I$ and the number of lattice points lying on polygon sides by $B$.
 
 Then, the **Pick's formula** states:
 
@@ -26,7 +26,7 @@ This formula was discovered and proven by Austrian mathematician Georg Alexander
 
 The proof is carried out in many stages: from simple polygons to arbitrary ones:
 
-- A single square: $S=1, I=0, B=4$, which satisfies the formula.
+- A unit square: $S=1, I=0, B=4$, which satisfies the formula.
 
 - An arbitrary non-degenerate rectangle with sides parallel to coordinate axes: Let $a$ and $b$ be the lengths of the sides of the rectangle. Then, $S=ab, I=(a-1)(b-1), B=2(a+b)$. On substituting, we see that the formula is true.
 
@@ -34,7 +34,7 @@ The proof is carried out in many stages: from simple polygons to arbitrary ones:
 
 - An arbitrary triangle: Note that any such triangle can be turned into a rectangle by attaching it to sides of right-angled triangles with legs parallel to the axes (you will not need more than 3 such triangles). From here, we can get the correct formula for any triangle.
 
-- An arbitrary polygon: To prove this, triangulate it, i.e., divide it into triangles with integral coordinates. Further, it is possible to prove that Pick's theorem retains its validity when a polygon is added to a triangle. Thus, we have proven Pick's formula for an arbitrary polygon.
+- An arbitrary polygon: To prove this, triangulate it, i.e., divide it into triangles whose vertices have integer coordinates. Further, it is possible to prove that Pick's theorem retains its validity when a triangle is attached to a polygon along a shared edge. Thus, we have proven Pick's formula for an arbitrary polygon.
 
 ## Generalization to higher dimensions
 
