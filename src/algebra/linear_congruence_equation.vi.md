@@ -17,12 +17,12 @@ $$a \cdot x \equiv b \pmod n,$$
 
 trong đó $a$, $b$ và $n$ là các số nguyên đã biết, còn $x$ là số nguyên cần tìm.
 
-Ta cần tìm giá trị $x$ trong đoạn $[0, n-1]$ (rõ ràng, trên toàn bộ trục số có thể có vô hạn nghiệm, các nghiệm sai khác nhau một lượng $n \cdot k$ , với $k$ là một số nguyên bất kỳ). Nếu nghiệm không duy nhất, ta cũng sẽ xét cách tìm tất cả các nghiệm.
+Ta cần tìm giá trị $x$ trong đoạn $[0, n-1]$ (rõ ràng, trên toàn bộ tập số nguyên có thể có vô hạn nghiệm; các nghiệm sai khác nhau một bội của mô-đun, cụ thể là $n \cdot k$ , với $k$ là một số nguyên bất kỳ). Nếu nghiệm không duy nhất, ta cũng sẽ xét cách tìm tất cả các nghiệm.
 
-## Giải bằng cách tìm phần tử nghịch đảo
+## Giải bằng cách tìm nghịch đảo mô-đun
 
 Trước hết, xét trường hợp đơn giản hơn khi $a$ và $n$ **nguyên tố cùng nhau** ($\gcd(a, n) = 1$).
-Khi đó, ta có thể tìm [nghịch đảo](module-inverse.md) của $a$. Nhân cả hai vế của phương trình với nghịch đảo này, ta thu được một nghiệm **duy nhất**.
+Khi đó, ta có thể tìm [nghịch đảo mô-đun](module-inverse.md) của $a$. Nhân cả hai vế của phương trình với nghịch đảo này, ta thu được một nghiệm **duy nhất**.
 
 $$x \equiv b \cdot a ^ {- 1} \pmod n$$
 
