@@ -43,7 +43,7 @@ for (int s=m; ; s=(s-1)&m) {
 
 Ta hãy xem vì sao đoạn code trên duyệt qua mọi mask con của $m$, không lặp lại và theo thứ tự giảm dần.
 
-Giả sử mask hiện tại là $s$ và ta muốn chuyển sang mask kế tiếp. Khi trừ mask $s$ đi một đơn vị, bit 1 ngoài cùng bên phải sẽ bị tắt, còn mọi bit ở bên phải nó trở thành 1. Sau đó ta loại bỏ những bit 1 "thừa" không thuộc mask $m$, vì chúng không thể xuất hiện trong một mask con của $m$. Ta thực hiện bước loại bỏ này bằng phép toán bit `(s-1) & m`. Kết quả là ta "cắt" mask $s-1$ về giá trị lớn nhất mà nó có thể nhận trong khi vẫn là mask con của $m$, tức mask con kế tiếp sau $s$ theo thứ tự giảm dần.
+Giả sử mask hiện tại là $s$ và ta muốn chuyển sang mask kế tiếp. Khi trừ mask $s$ đi một đơn vị, bit 1 ngoài cùng bên phải sẽ bị tắt, còn mọi bit ở bên phải nó trở thành 1. Sau đó ta loại bỏ những bit 1 "thừa" không thuộc mask $m$, vì chúng không thể xuất hiện trong một mask con của mask ban đầu. Ta thực hiện bước loại bỏ này bằng phép toán bit `(s-1) & m`. Kết quả là ta "cắt" mask $s-1$ về giá trị lớn nhất mà nó có thể nhận trong khi vẫn là một mask con hợp lệ, tức mask con kế tiếp sau $s$ theo thứ tự giảm dần.
 
 Như vậy, thuật toán sinh tất cả mask con của mask đã cho theo thứ tự giảm dần và chỉ thực hiện hai phép toán ở mỗi vòng lặp.
 
