@@ -27,7 +27,7 @@ Ta muốn giải phương trình này. Cụ thể hơn, ta muốn tìm một tro
 	<img src="./roots_newton.png" alt="plot_f(x)">
 </p>
 
-Giả sử ta đã tính được $x_i$. Ta tính $x_{i+1}$ như sau: kẻ tiếp tuyến với đồ thị hàm $f(x)$ tại điểm $x = x_i$, rồi tìm giao điểm của tiếp tuyến này với trục $x$. Đặt $x_{i+1}$ bằng hoành độ của giao điểm vừa tìm được, sau đó lặp lại toàn bộ quá trình.
+Giả sử ta đã tính được $x_i$. Ta tính $x_{i+1}$ như sau: kẻ tiếp tuyến với đồ thị hàm $f(x)$ tại điểm $x = x_i$, rồi tìm giao điểm của tiếp tuyến này với trục $x$. Đặt $x_{i+1}$ bằng tọa độ $x$ của giao điểm vừa tìm được, sau đó lặp lại toàn bộ quá trình.
 
 Không khó để thu được công thức:
 
