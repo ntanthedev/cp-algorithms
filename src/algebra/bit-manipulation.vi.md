@@ -103,7 +103,7 @@ Có hai toán tử dùng để dịch các bit.
     Trên máy tính, dịch bit thường nhanh hơn đáng kể so với thực hiện phép chia.
 
 -   $\ll$ Dịch một số sang trái bằng cách thêm các chữ số 0 ở cuối.
-    Tương tự dịch phải, dịch trái $k$ vị trí tương ứng với phép nhân với $2^k$.
+    Tương tự phép dịch phải $k$ vị trí, phép dịch trái $k$ vị trí tương ứng với phép nhân với $2^k$.
 
     Chẳng hạn $5 \ll 3 = 101_2 \ll 3 = 101000_2 = 40$, giống với $5 \cdot 2^3 = 5 \cdot 8 = 40$.
 
@@ -194,7 +194,7 @@ int countSetBits(int n)
 ```
 
 ### Đếm tổng số bit 1 đến $n$
-Để đếm tổng số bit 1 trong mọi số từ 0 đến $n$ (kể cả $n$), ta có thể chạy thuật toán Brian Kernighan cho từng số đến $n$. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. 
+Để đếm tổng số bit 1 trong mọi số từ 0 đến $n$ (kể cả số cuối), ta có thể chạy thuật toán Brian Kernighan cho từng số đến $n$. Tuy nhiên, cách này có thể dẫn đến "Time Limit Exceeded" khi nộp bài. 
 
 Ta dùng tính chất rằng với các số đến $2^x$ (tức từ $1$ đến $2^x - 1$), có tổng cộng $x \cdot 2^{x-1}$ bit 1. Có thể hình dung như sau.
 ```
@@ -231,7 +231,7 @@ int countSetBits(int n) {
 }
 ```
 
-**Ghi chú bản dịch:** Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện phép dịch `x << (x - 1)`, tức dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.
+**Ghi chú bản dịch:** Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện một phép dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.
 
 ### Các mẹo bổ sung
 
