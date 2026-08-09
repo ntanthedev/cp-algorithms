@@ -15,7 +15,7 @@ translation:
 Trong một số bài toán, ta cần xét theo modulo một số nguyên tố $p$ các công thức phức tạp có chứa giai thừa ở cả tử số và mẫu số, chẳng hạn như công thức hệ số nhị thức.
 Ở đây ta xét trường hợp $p$ tương đối nhỏ.
 Bài toán này chỉ có ý nghĩa khi các giai thừa xuất hiện ở cả tử và mẫu của phân số.
-Nếu không, từ $p!$ trở đi các giá trị đều trở thành 0 theo modulo $p$.
+Nếu không, từ $p!$ trở đi các giá trị đều trở thành 0.
 Nhưng trong một phân số, các thừa số $p$ ở tử và mẫu có thể triệt tiêu nhau, nên biểu thức cuối cùng vẫn có thể khác 0 modulo $p$.
 
 Vì vậy, phát biểu chính thức của bài toán là: ta muốn tính $n! \bmod p$ nhưng bỏ qua mọi thừa số $p$ xuất hiện trong giai thừa.
