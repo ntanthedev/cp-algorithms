@@ -90,7 +90,7 @@ Alternative, if you only have limit memory and can't afford storing all factoria
 
 ## Multiplicity of $p$
 
-If we want to compute a Binomial coefficient modulo $p$, then we additionally need the multiplicity of the $p$ in $n$, i.e. the number of times $p$ occurs in the prime factorization of $n$, or number of times we erased $p$ during the computation of the *modified* factorial.
+If we want to compute a Binomial coefficient modulo $p$, then we additionally need the multiplicity of $p$ in $n!$, i.e. the number of times $p$ occurs in the prime factorization of $n!$, or the number of times we erased $p$ during the computation of the *modified* factorial.
 
 [Legendre's formula](https://en.wikipedia.org/wiki/Legendre%27s_formula) gives us a way to compute this in $O(\log_p n)$ time.
 The formula gives the multiplicity $\nu_p$ as:
