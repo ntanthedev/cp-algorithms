@@ -3,8 +3,8 @@
 
 from __future__ import annotations
 
-import hashlib
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -17,9 +17,14 @@ STATUS_RE = re.compile(r"^\s{2}status:\s*([a-z-]+)\s*$", re.MULTILINE)
 
 
 def git_blob_sha(path: Path) -> str:
-    data = path.read_bytes()
-    header = f"blob {len(data)}\0".encode()
-    return hashlib.sha1(header + data).hexdigest()
+    # Hash the working file with Git's clean filters (including CRLF -> LF).
+    # Reading HEAD would incorrectly hide uncommitted source edits.
+    relative = path.relative_to(ROOT).as_posix()
+    return subprocess.check_output(
+        ["git", "hash-object", f"--path={relative}", "--", relative],
+        cwd=ROOT,
+        text=True,
+    ).strip()
 
 
 def main() -> int:
