@@ -1,5 +1,7 @@
 # Algorithms for Competitive Programming
 
+**Dự án tiếng Việt:** [quy trình làm việc](WORKFLOW_VI.md) · [prompt cho ChatGPT web](PROMPTS_VI.md) · [quy tắc và thuật ngữ](TRANSLATING_VI.md) · [checkpoint khôi phục 2026-09-28](docs/translation/RESTART_2026-09-28.md).
+
 [![Contributors](https://img.shields.io/github/contributors/cp-algorithms/cp-algorithms.svg)](https://github.com/cp-algorithms/cp-algorithms/graphs/contributors)
 [![Pull Requests](https://img.shields.io/github/issues-pr/cp-algorithms/cp-algorithms.svg)](https://github.com/cp-algorithms/cp-algorithms/pulls)
 [![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/cp-algorithms/cp-algorithms.svg)](https://github.com/cp-algorithms/cp-algorithms/pulls?q=is%3Apr+is%3Aclosed)
