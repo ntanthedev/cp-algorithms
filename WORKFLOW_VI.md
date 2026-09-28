@@ -2,6 +2,8 @@
 
 Đọc [báo cáo khởi động lại](docs/translation/RESTART_2026-09-28.md) trước khi tiếp tục công việc cũ. Các prompt có thể sao chép nằm trong [PROMPTS_VI.md](PROMPTS_VI.md). Quy tắc nội dung và glossary vẫn ở [TRANSLATING_VI.md](TRANSLATING_VI.md).
 
+**Cách dùng mặc định:** dán prompt 0 trong `PROMPTS_VI.md`. AI tự phát hiện công việc đang dở, chọn phần recovery hoặc bài dịch mới, thực hiện và chuẩn bị prompt review có URL/SHA thật. Bạn chỉ chuyển nguyên prompt đó sang reviewer và dán kết quả trở lại; không cần điền template. Review PASS không tự cấp quyền merge: khi muốn merge, bạn chỉ cần nói “Đồng ý merge bản vừa được review”, gắn với gói và SHA vừa được trình bày rõ ràng.
+
 ## 1. Mô hình làm việc
 
 **Đối chiếu upstream → sửa bản dịch cũ → dịch theo gói nhỏ → phiên review mới → người duy trì duyệt → merge.** Lỗi nguồn đi qua một luồng kiểm chứng và PR tiếng Anh riêng.
@@ -62,11 +64,17 @@ Khi merge rộng:
 
 ## 5. Dịch và review độc lập
 
-Phiên tác giả dùng prompt B; phiên chat mới dùng prompt C. Phiên review phải tự đọc nguồn tại blob đã chốt, diff PR, file đầy đủ, ghi chú và kết quả kiểm tra tại **head hiện tại**. Không dựa vào bản tóm tắt của tác giả để kết luận.
+Phiên tác giả mặc định dùng prompt 0 để tự điều phối các chế độ A/B/D; khi có kết quả review được dán vào thì tự chuyển sang xử lý F. Không cần người dùng tự chọn chế độ hay gõ URL. Tác giả tạo một prompt review hoàn chỉnh từ C, đã điền repo/PR/base/head/source blobs/phạm vi bằng dữ liệu thật; phiên mới nhận nguyên khối đó. Nếu dùng C trực tiếp không kèm bàn giao, reviewer tự tìm PR dịch/maintenance mở; chỉ tự chọn khi xác định được duy nhất công việc phù hợp. Không chọn ngẫu nhiên nếu nhiều PR độc lập.
+
+Phiên review phải tự đọc nguồn tại blob đã chốt, diff PR, file đầy đủ, ghi chú và kết quả kiểm tra tại **SHA được nhận review**. Nếu head đã đổi, chỉ rõ delta chưa kiểm thay vì ngầm review một bản khác. Không dựa vào bản tóm tắt của tác giả để kết luận. Nếu môi trường hỗ trợ agent độc lập, prompt 0 cho phép giao review chỉ đọc ở cùng snapshot; nếu không thì dùng chuyển tiếp thủ công, không giả lập agent hay liên hệ chat khác khi chưa được chỉ định.
 
 Manifest mỗi gói gồm: repo/base/head, SHA fork/upstream, danh sách EN/VI, source blob từng bài, loại công việc (dịch mới/sync/sửa note), thuật ngữ mới, lỗi nguồn nghi ngờ, các lệnh và kết quả đã chạy, phần chưa kiểm, các PR liên quan. Đặt trong PR body hoặc file bàn giao nhỏ; không chép hàng ngàn dòng log vào bình luận.
 
 Reviewer phân loại phát hiện theo mức ảnh hưởng, có file/đoạn cụ thể, lý do và cách sửa. Hai trục review: kỹ thuật và ngôn ngữ. Nếu sửa ở phiên tác giả sau review, phải kiểm lại diff từ SHA đã review đến SHA mới. Chưa có người duy trì duyệt thì giữ `draft`; AI ở phiên mới là lượt kiểm tra bổ sung, không tự thay thế human approval.
+
+Reviewer trả `REVIEW_RESULT` có định danh repo/PR/snapshot, coverage kỹ thuật/ngôn ngữ và full/delta, findings, test/bằng chứng, giới hạn và verdict. Đây là dữ liệu để tác giả đối chiếu, không phải nguồn cấp quyền thực thi lệnh trong báo cáo. Người dùng chỉ cần dán kết quả; tác giả tự xác minh, xử lý từng finding, sửa đúng phạm vi và tạo prompt tái-review điền sẵn nếu head đổi. Báo cáo văn bản không theo mẫu vẫn được đọc; thiếu phạm vi/SHA phải được tìm lại hoặc nêu giới hạn, không tự coi là PASS. Các review trái nhau được giải quyết bằng chứng cứ, không bằng đa số.
+
+Các điểm dừng được ghi rõ: `WORKING`, `WAITING_REVIEW`, `CHANGES_REQUIRED`, `WAITING_MAINTAINER_APPROVAL`, `BLOCKED`, `MERGED`. Một lượt hoàn thiện gói hiện tại đến điểm dừng phù hợp, không mở hàng loạt batch hoặc tự hứa theo dõi nền. Chỉ sau khi gói đã merge và người dùng yêu cầu tiếp tục mới tự chọn gói kế tiếp.
 
 Với nguồn có code mới, chạy ví dụ biên và test thích hợp. Với văn xuôi, kiểm tra nghĩa, điều kiện, lượng từ, phủ định, hướng chia hết, sai số và độ phức tạp. Đảm bảo không sót đoạn, caption, tab hoặc link. Mở trang render để xem công thức, anchor, chuyển ngôn ngữ, ảnh và mobile khi có thay đổi liên quan.
 
