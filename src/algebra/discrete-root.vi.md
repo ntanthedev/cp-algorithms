@@ -53,7 +53,7 @@ $x = g^{y_0 + \frac {l \cdot \phi (n)}{k}} \pmod n \forall l \in Z$.
 
 trong đó $l$ được chọn sao cho phân số là một số nguyên. Để điều này đúng, tử số phải chia hết cho bội chung nhỏ nhất của $\phi (n)$ và $k$. Nhớ rằng bội chung nhỏ nhất của hai số $lcm(a, b) = \frac{a \cdot b}{gcd(a, b)}$; ta thu được
 
-**Ghi chú bản dịch:** Điều kiện trong câu nguồn ngay phía trên không chính xác. Điều kiện đúng là k phải là ước của l·φ(n), tương đương l phải là bội của k/gcd(k, φ(n)). Công thức nghiệm cuối cùng ngay bên dưới vẫn phù hợp với điều kiện đúng này.
+**Ghi chú bản dịch:** Với k > 0, hai cách viết điều kiện là tương đương: tử số l·φ(n) đã chia hết cho φ(n), nên nó chia hết cho bội chung nhỏ nhất của φ(n) và k khi và chỉ khi nó chia hết cho k. Điều này cũng tương đương với việc l là bội của k/gcd(k, φ(n)).
 
 $x = g^{y_0 + i \frac {\phi (n)}{gcd(k, \phi (n))}} \pmod n \forall i \in Z$.
 

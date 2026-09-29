@@ -2,17 +2,22 @@
 
 Tài liệu này là **nguồn quy tắc chuẩn** cho việc tạo, đồng bộ và review bản dịch tiếng Việt của cp-algorithms.
 
+Cách vận hành các phiên ChatGPT web, đồng bộ upstream và giảm số PR nằm trong [WORKFLOW_VI.md](WORKFLOW_VI.md); bộ prompt sao chép ở [PROMPTS_VI.md](PROMPTS_VI.md). Các tài liệu đó bổ sung quy trình, không thay thế glossary và quy tắc bảo toàn nội dung ở đây.
+
 ## 0. Cổng bắt đầu một batch dịch mới
 
 Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải hoàn tất các bước sau:
 
 1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh.
+   - Fetch cả fork và upstream; kiểm blob nguồn với upstream mới nhất bằng `scripts/audit_vi_upstream.py`. Checker staleness cục bộ chỉ so với nguồn trong fork, không đủ để kết luận đã bắt kịp upstream.
+   - Ưu tiên đồng bộ bản dịch cũ trước khi dịch mới. Không đổi metadata hàng loạt để che phần chưa đồng bộ.
    - Chỉ duy trì một nhánh làm việc lâu dài cho bản dịch: `agent/vi-work`.
    - Chỉ duy trì tối đa một PR dịch/maintenance tiếng Việt đang mở tại một thời điểm.
    - Sau khi PR merge, chỉ reset/di chuyển `agent/vi-work` về `master` mới nhất khi đã xác nhận branch không còn commit riêng chưa merge.
    - Không force-push hoặc reset `master`.
    - Stacked PR chỉ dùng khi có phụ thuộc kỹ thuật thực sự không thể tránh và phải giải thích lý do trước.
 2. Chọn phạm vi có thể review:
+   - một gói PR có thể dùng nhiều phiên chat tác giả/review; không mở nhánh/PR mới theo mỗi phiên;
    - tối đa ba bài dài hoặc có nhiều công thức/cấu trúc đặc biệt;
    - tối đa năm bài cỡ vừa;
    - từ năm đến mười bài ngắn thuộc cùng nhóm kiến thức.
@@ -445,6 +450,7 @@ Chỉ đặt `language-reviewed` sau khi đạt checklist này. Maintainer đổ
 5. Không merge tự động nội dung dịch do AI tạo mà chưa có người đọc lại.
 6. Không trộn PR đồng bộ upstream với batch dịch mới nếu không cần thiết để giải quyết xung đột.
 7. Khi phát hiện lỗi chắc chắn trong nguồn upstream:
+   - cần chứng minh/phản ví dụ hoặc case tái hiện; thử bác bỏ chẩn đoán trước khi gửi. Hai cách viết tương đương không phải lỗi logic;
    - xác minh trên `cp-algorithms/cp-algorithms` `main` mới nhất và tìm PR/issue trùng trước;
    - tạo branch từ upstream `main`, không từ branch i18n;
    - PR upstream chỉ sửa tiếng Anh, công thức, thuật toán hoặc typo liên quan;

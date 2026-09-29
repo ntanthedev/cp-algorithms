@@ -11,6 +11,7 @@ Human-readable HTML attributes such as alt text may be translated.
 
 from __future__ import annotations
 
+import argparse
 import collections
 import re
 import subprocess
@@ -216,7 +217,7 @@ def math_mismatch_locations(source_text: str, translated_text: str, source_math:
     return "; ".join(parts)
 
 
-def changed_translation_paths() -> set[Path]:
+def changed_translation_paths(base_ref: str | None = None) -> set[Path]:
     """Return .vi.md files touched by the current PR/commit plus local changes.
 
     GitHub pull_request workflows check out a synthetic merge commit. With
@@ -224,10 +225,19 @@ def changed_translation_paths() -> set[Path]:
     PR while avoiding legacy mismatches in untouched translations.
     """
     changed: set[Path] = set()
+    if base_ref:
+        result = subprocess.run(
+            ["git", "rev-parse", "--verify", f"{base_ref}^{{commit}}"],
+            cwd=ROOT, text=True, capture_output=True, check=False,
+        )
+        if result.returncode != 0:
+            raise ValueError(f"Cannot resolve --base-ref {base_ref!r}; fetch it first.")
+        base_ref = result.stdout.strip()
     commands = [
-        ["git", "diff", "--name-only", "HEAD^1", "HEAD", "--", "src"],
+        ["git", "diff", "--name-only", base_ref or "HEAD^1", "HEAD", "--", "src"],
         ["git", "diff", "--name-only", "HEAD", "--", "src"],
         ["git", "diff", "--cached", "--name-only", "--", "src"],
+        ["git", "ls-files", "--others", "--exclude-standard", "--", "src"],
     ]
     for command in commands:
         result = subprocess.run(
@@ -391,13 +401,22 @@ def validate_pair(
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--base-ref", help="Validate exact math across all changes since this commit/ref."
+    )
+    args = parser.parse_args()
     errors: list[str] = []
     translated_paths = sorted(DOCS.rglob(VI_PATTERN))
     if not translated_paths:
         print("No Vietnamese translation files found.")
         return 0
 
-    exact_math_paths = changed_translation_paths()
+    try:
+        exact_math_paths = changed_translation_paths(args.base_ref)
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
     if exact_math_paths:
         paths = ", ".join(
             str(path.relative_to(ROOT)) for path in sorted(exact_math_paths)
