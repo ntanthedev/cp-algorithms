@@ -1,8 +1,8 @@
 # Algorithms for Competitive Programming
 
-**Dự án tiếng Việt:** [quy trình làm việc](WORKFLOW_VI.md) · [prompt cho ChatGPT web](PROMPTS_VI.md) · [quy tắc và thuật ngữ](TRANSLATING_VI.md) · [checkpoint khôi phục 2026-09-28](docs/translation/RESTART_2026-09-28.md).
+**Dự án tiếng Việt:** [quy trình làm việc](https://github.com/ntanthedev/cp-algorithms/blob/master/WORKFLOW_VI.md) · [prompt cho ChatGPT web](https://github.com/ntanthedev/cp-algorithms/blob/master/PROMPTS_VI.md) · [quy tắc và thuật ngữ](https://github.com/ntanthedev/cp-algorithms/blob/master/TRANSLATING_VI.md) · [checkpoint khôi phục 2026-09-28](https://github.com/ntanthedev/cp-algorithms/blob/master/docs/translation/RESTART_2026-09-28.md).
 
-Đợt đồng bộ mới: [trạng thái 2026-09-30](docs/translation/SYNC_2026-09-30.md) · [prompt review PR đồng bộ](docs/translation/REVIEW_SYNC_2026-09-30.md).
+Đợt đồng bộ mới: [trạng thái 2026-09-30](https://github.com/ntanthedev/cp-algorithms/blob/master/docs/translation/SYNC_2026-09-30.md) · [prompt review PR đồng bộ](https://github.com/ntanthedev/cp-algorithms/blob/master/docs/translation/REVIEW_SYNC_2026-09-30.md).
 
 [![Contributors](https://img.shields.io/github/contributors/cp-algorithms/cp-algorithms.svg)](https://github.com/cp-algorithms/cp-algorithms/graphs/contributors)
 [![Pull Requests](https://img.shields.io/github/issues-pr/cp-algorithms/cp-algorithms.svg)](https://github.com/cp-algorithms/cp-algorithms/pulls)
