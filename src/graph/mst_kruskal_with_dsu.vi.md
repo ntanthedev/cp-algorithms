@@ -81,7 +81,7 @@ for (Edge e : edges) {
 }
 ```
 
-Lưu ý: vì MST chứa đúng $N-1$ cạnh, ta có thể dừng vòng lặp `for` ngay khi đã tìm đủ số cạnh này.
+Lưu ý: vì MST chứa đúng $N-1$ cạnh, ta có thể dừng vòng lặp for ngay khi đã tìm đủ số cạnh này.
 
 ## Bài tập luyện tập
 
