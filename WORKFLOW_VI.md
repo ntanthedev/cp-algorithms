@@ -2,6 +2,8 @@
 
 Đọc [báo cáo khởi động lại](docs/translation/RESTART_2026-09-28.md) trước khi tiếp tục công việc cũ. Các prompt có thể sao chép nằm trong [PROMPTS_VI.md](PROMPTS_VI.md). Quy tắc nội dung và glossary vẫn ở [TRANSLATING_VI.md](TRANSLATING_VI.md).
 
+**Trạng thái hiện hành:** PR #33 đã merge. Để chạy 2–3 phiên dịch, dùng [START_HERE_VI.md](START_HERE_VI.md): mỗi phiên có nhánh và phạm vi riêng, tối đa ba PR độc lập. Các mô tả xử lý #33 và con số stale ngày 2026-09-28 bên dưới là bối cảnh lịch sử; không khởi động lại đợt recovery đã hoàn thành.
+
 **Cách dùng mặc định:** dán prompt 0 trong `PROMPTS_VI.md`. AI tự phát hiện công việc đang dở, chọn phần recovery hoặc bài dịch mới, thực hiện và chuẩn bị prompt review có URL/SHA thật. Bạn chỉ chuyển nguyên prompt đó sang reviewer và dán kết quả trở lại; không cần điền template. Review PASS không tự cấp quyền merge: khi muốn merge, bạn chỉ cần nói “Đồng ý merge bản vừa được review”, gắn với gói và SHA vừa được trình bày rõ ràng.
 
 ## 1. Mô hình làm việc
@@ -12,7 +14,7 @@
 |---|---|
 | `cp-algorithms/cp-algorithms:main` | Nguồn tiếng Anh mới nhất; remote `upstream` |
 | `ntanthedev/cp-algorithms:master` | Bản đã merge của dự án Việt; remote `origin` |
-| `agent/vi-work` | Một nhánh dịch dùng lại; hiện có PR #33, không reset |
+| `agent/vi-work` | Nhánh dùng lại cho bảo trì chung hoặc chế độ tuần tự; PR #33 đã merge |
 | `upstream/fix-<topic>` | Một lỗi hoặc nhóm lỗi nguồn liên quan, tạo từ upstream `main` |
 | `codex/translation-workflow` | Nhánh cục bộ chuẩn bị workflow và sửa lỗi phát hiện khi khảo sát |
 
@@ -42,7 +44,7 @@ Các file workflow đang ở máy sẽ không tự xuất hiện trong phiên we
    ```
 
    Script chỉ đọc ref đã fetch, không tự gọi mạng. Nó đối chiếu **blob nguồn đã dịch**, **blob nguồn trong fork**, **blob upstream**. Kết quả không bao gồm sửa đổi chưa commit. Chạy validator riêng cho working tree.
-4. Nếu có PR dịch mở: tiếp tục PR ấy trước. Với #33, ưu tiên đồng bộ Newton/Simpson rồi review ba bài; không nối thêm bài thứ tư.
+4. Nếu có PR dịch mở của phiên/phạm vi mình: tiếp tục PR ấy trước. Chế độ song song chỉ xét PR đúng nhánh trong `START_HERE_VI.md`; không nhận hoặc chặn việc của phiên khác. PR #33 đã hoàn tất đồng bộ và merge, không dùng làm việc mặc định nữa.
 5. Nếu còn nguồn đã dịch khác upstream: tạo hàng đợi sửa cũ; mặc định chưa dịch mới. Phân biệt đổi code/công thức/điều kiện biên, bổ sung mục, sửa nghĩa, typo và link. `draft` không có nghĩa là fresh; blob khớp không có nghĩa là chất lượng tốt.
 6. Mọi ghi chú từng nói “nguồn có lỗi” phải được xét lại. Upstream có thể đã sửa, hoặc chẩn đoán cũ có thể sai.
 
@@ -115,7 +117,7 @@ Linux/Codex cloud: `git submodule update --init --recursive`, môi trường Pyt
 
 ## 8. Merge và giảm hoạt động gây nhiễu
 
-Mặc định một PR dịch mở tại một thời điểm, reuse `agent/vi-work`; viết commit có ý nghĩa, push theo phần đã kiểm thay vì mỗi đoạn. Cập nhật PR body hiện có; chỉ thêm comment khi có thông tin cần phản hồi. Draft vẫn là hoạt động công khai, không phải chế độ ẩn.
+Chế độ tuần tự dùng một PR trên `agent/vi-work`. Chế độ 2–3 phiên theo `START_HERE_VI.md` dùng tối đa ba PR, một PR và một tác giả trên mỗi nhánh riêng, phạm vi file không giao nhau. Giữ các nhánh để dùng lại; viết commit có ý nghĩa, push theo phần đã kiểm thay vì mỗi đoạn. Cập nhật PR body hiện có; chỉ thêm comment khi có thông tin cần phản hồi. Draft vẫn là hoạt động công khai, không phải chế độ ẩn. Bảo trì nguồn/tooling chung không chạy đồng thời với các phiên dịch chưa được phối hợp.
 
 Sau người duy trì duyệt, merge commit thông thường phù hợp nhánh dùng lại: có thể fast-forward nhánh làm việc về `master` mới. Squash cũng được nếu muốn lịch sử gọn, nhưng không làm biến mất sự kiện PR và có thể làm nhánh lâu dài phân kỳ; phải kiểm mọi commit riêng trước khi tái đồng bộ. Không reset/force-push `master`.
 

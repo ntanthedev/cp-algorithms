@@ -11,8 +11,8 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
 1. Xác nhận nhánh mặc định `master` mới nhất đang build xanh.
    - Fetch cả fork và upstream; kiểm blob nguồn với upstream mới nhất bằng `scripts/audit_vi_upstream.py`. Checker staleness cục bộ chỉ so với nguồn trong fork, không đủ để kết luận đã bắt kịp upstream.
    - Ưu tiên đồng bộ bản dịch cũ trước khi dịch mới. Không đổi metadata hàng loạt để che phần chưa đồng bộ.
-   - Chỉ duy trì một nhánh làm việc lâu dài cho bản dịch: `agent/vi-work`.
-   - Chỉ duy trì tối đa một PR dịch/maintenance tiếng Việt đang mở tại một thời điểm.
+   - Chạy tuần tự/bảo trì chung dùng `agent/vi-work`, tối đa một PR. Khi người duy trì giao 2–3 phiên song song, dùng ba nhánh và phạm vi không giao nhau trong [START_HERE_VI.md](START_HERE_VI.md), tối đa một PR mỗi phiên và ba PR dịch tổng cộng.
+   - Mỗi nhánh có một tác giả; các phiên song song không sửa nguồn EN, glossary, tooling hoặc cấu hình chung. Không dùng chung working tree và không coi PR ở phạm vi khác là công việc của mình.
    - Sau khi PR merge, chỉ reset/di chuyển `agent/vi-work` về `master` mới nhất khi đã xác nhận branch không còn commit riêng chưa merge.
    - Không force-push hoặc reset `master`.
    - Stacked PR chỉ dùng khi có phụ thuộc kỹ thuật thực sự không thể tránh và phải giải thích lý do trước.
@@ -43,7 +43,7 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
 7. Mọi bản dịch mới bắt đầu với `status: draft`.
 8. Mở PR ở trạng thái Draft nếu chưa có đủ kết quả CI.
 9. Trước khi bắt đầu batch tiếp theo, kiểm tra tất cả PR dịch đang mở:
-   - nếu còn một PR dịch chưa merge, **không bắt đầu batch mới**;
+   - nếu còn PR dịch chưa merge của cùng phiên/phạm vi, **không bắt đầu batch mới ở phiên đó**; chế độ song song theo `START_HERE_VI.md` cho phép các phạm vi độc lập tiếp tục;
    - xử lý và resolve mọi review thread/comment có hành động cụ thể trước khi tiếp tục;
    - kiểm tra cả inline review threads, review submissions và PR conversation comments;
    - reviewer tự động như GitHub Copilot có thể gửi comment trễ, nên trạng thái sạch phải được xác nhận lại sau commit cuối cùng và sau CI.
@@ -399,8 +399,8 @@ Lỗi `Service Unavailable` hoặc `Failed to resolve action download info` tạ
 
 ## 7. Checklist cho người dịch
 
-- [ ] Dùng `agent/vi-work` làm branch dịch lâu dài.
-- [ ] Tối đa một PR dịch/maintenance tiếng Việt đang mở.
+- [ ] Dùng `agent/vi-work` khi chạy tuần tự hoặc đúng nhánh riêng theo `START_HERE_VI.md` khi chạy song song.
+- [ ] Tối đa một PR trong mỗi phiên/phạm vi; không ghi vào nhánh hoặc file của phiên khác.
 - [ ] Tất cả review thread/comment có hành động cụ thể đã được xử lý hoặc có lý do rõ ràng để chưa xử lý.
 - [ ] Phạm vi batch đúng giới hạn.
 - [ ] Đã đọc toàn bộ nguồn và kiểm kê cấu trúc.
