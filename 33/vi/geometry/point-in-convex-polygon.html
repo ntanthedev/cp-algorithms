@@ -7933,16 +7933,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Check if points belong to the convex polygon in O(log N)";
@@ -7976,6 +7967,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8020,14 +8015,14 @@ Giả sử các đỉnh của đa giác được sắp theo thứ tự ngược 
 Khi đó, tất cả các điểm còn lại <span class="arithmatex">$p_1,\dots,p_n$</span> của đa giác được sắp theo góc cực quanh điểm đã chọn (vì đa giác được sắp ngược chiều kim đồng hồ).</p>
 <p>Nếu điểm cần truy vấn thuộc đa giác, nó sẽ thuộc một tam giác nào đó <span class="arithmatex">$p_0, p_i, p_{i + 1}$</span> (có thể thuộc nhiều hơn một tam giác nếu nằm trên biên của các tam giác).
 Xét tam giác <span class="arithmatex">$p_0, p_i, p_{i + 1}$</span> chứa <span class="arithmatex">$p$</span> và có <span class="arithmatex">$i$</span> lớn nhất trong tất cả các tam giác như vậy.</p>
-<p>Có một trường hợp đặc biệt: <span class="arithmatex">$p$</span> nằm trên đoạn <span class="arithmatex">$(p_0, p_n)$</span>. Ta sẽ kiểm tra riêng trường hợp này.
+<p>Có một trường hợp đặc biệt: <span class="arithmatex">$p$</span> nằm trên đoạn <span class="arithmatex">$(p_0, p_1)$</span>. Ta sẽ kiểm tra riêng trường hợp này.
 Nếu không, tất cả các điểm <span class="arithmatex">$p_j$</span> với <span class="arithmatex">$j \le i$</span> đều nằm ngược chiều kim đồng hồ so với <span class="arithmatex">$p$</span> khi xét quanh <span class="arithmatex">$p_0$</span>, còn các điểm khác thì không.
 Điều này cho phép ta tìm kiếm nhị phân điểm <span class="arithmatex">$p_i$</span> sao cho <span class="arithmatex">$p_i$</span> không nằm ngược chiều kim đồng hồ so với <span class="arithmatex">$p$</span> khi xét quanh <span class="arithmatex">$p_0$</span>, đồng thời <span class="arithmatex">$i$</span> lớn nhất trong tất cả các điểm thỏa mãn.
 Sau đó, ta kiểm tra xem điểm truy vấn có thực sự nằm trong tam giác đã xác định hay không.</p>
 <p>Dấu của <span class="arithmatex">$(a - c) \times (b - c)$</span> cho biết điểm <span class="arithmatex">$a$</span> nằm theo hay ngược chiều kim đồng hồ so với điểm <span class="arithmatex">$b$</span> khi xét quanh điểm <span class="arithmatex">$c$</span>.
 Nếu <span class="arithmatex">$(a - c) \times (b - c) &gt; 0$</span>, điểm <span class="arithmatex">$a$</span> nằm bên phải vector đi từ <span class="arithmatex">$c$</span> đến <span class="arithmatex">$b$</span>, tức nằm theo chiều kim đồng hồ so với <span class="arithmatex">$b$</span> khi xét quanh <span class="arithmatex">$c$</span>.
 Nếu <span class="arithmatex">$(a - c) \times (b - c) &lt; 0$</span>, điểm nằm bên trái, tức ngược chiều kim đồng hồ.
-Còn nếu tích có hướng bằng 0, điểm nằm đúng trên đường thẳng đi qua <span class="arithmatex">$b$</span> và <span class="arithmatex">$c$</span>.</p>
+Nếu tích có hướng bằng không, điểm <span class="arithmatex">$a$</span> nằm đúng trên đường thẳng đi qua <span class="arithmatex">$b$</span> và <span class="arithmatex">$c$</span>.</p>
 <p>Quay lại thuật toán:
 Xét một điểm truy vấn <span class="arithmatex">$p$</span>.
 Trước hết, ta phải kiểm tra điểm có nằm trong miền góc giới hạn bởi hai hướng đến <span class="arithmatex">$p_1$</span> và <span class="arithmatex">$p_n$</span> hay không.
@@ -8040,7 +8035,6 @@ Với một điểm <span class="arithmatex">$p_i$</span>, điều kiện này �
 Điều này kiểm tra diện tích của tam giác <span class="arithmatex">$p_0, p_i, p_{i+1}$</span> có đúng bằng tổng diện tích các tam giác <span class="arithmatex">$p_0, p_i, p$</span>, <span class="arithmatex">$p_0, p, p_{i+1}$</span> và <span class="arithmatex">$p_i, p_{i+1}, p$</span> hay không.
 Nếu <span class="arithmatex">$p$</span> nằm ngoài, tổng diện tích ba tam giác nhỏ sẽ lớn hơn diện tích tam giác ban đầu.
 Nếu <span class="arithmatex">$p$</span> nằm trong, hai giá trị sẽ bằng nhau.</p>
-<p>Ghi chú bản dịch: Nguồn hiện tại không nhất quán khi mô tả trường hợp đặc biệt: đoạn đầu ghi “(p_0, p_n)”, trong khi phần thuật toán bên dưới và cài đặt xử lý riêng “(p_0, p_1)”. Bản dịch giữ nguyên cả hai mệnh đề để đồng bộ với nguồn; vấn đề này được báo và đề xuất sửa riêng ở bản tiếng Anh.</p>
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <p>Hàm <code>prepare</code> bảo đảm điểm nhỏ nhất theo thứ tự từ điển (tọa độ x nhỏ nhất, nếu hòa thì tọa độ y nhỏ nhất) trở thành <span class="arithmatex">$p_0$</span>, đồng thời tính các vector <span class="arithmatex">$p_i - p_0$</span>.
 Sau đó, hàm <code>pointInConvexPolygon</code> tính kết quả của một truy vấn.
@@ -8125,7 +8119,7 @@ Sau khi tịnh tiến các điểm truy vấn, ta có thể giả sử mọi vec
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (96.92%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (3.08%)</li></ul>
 </ul>
                 
               </article>
@@ -8191,6 +8185,8 @@ Sau khi tịnh tiến các điểm truy vấn, ta có thể giả sử mọi vec
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

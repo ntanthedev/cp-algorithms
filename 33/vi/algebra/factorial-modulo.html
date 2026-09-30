@@ -7933,16 +7933,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Factorial modulo p";
@@ -7976,6 +7967,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8025,14 +8020,14 @@ Chẳng hạn <span class="arithmatex">$7!_{\%p} \equiv 1 \cdot 2 \cdot \underbr
 <h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
 <p>Hãy viết tường minh giai thừa biến đổi này.</p>
 <div class="arithmatex">$$\begin{eqnarray}
-n!_{\%p} &amp;=&amp; 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\\
- &amp; &amp;\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\\\
-&amp;=&amp; 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\\
+n!_{\%p} &amp;=&amp; 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\
+ &amp; &amp;\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\\
+&amp;=&amp; 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\
 &amp; &amp;\quad \cdot \ldots \cdot (p-1) \cdot \underbrace{1}_{p^2} \cdot 1 \cdot 2 \cdot \ldots \cdot (n \bmod p) \pmod{p}
 \end{eqnarray}$$</div>
 <p>Có thể thấy rõ rằng giai thừa được chia thành nhiều khối có cùng độ dài, ngoại trừ khối cuối cùng.</p>
 <div class="arithmatex">$$\begin{eqnarray}
-n!_{\%p}&amp;=&amp; \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}_{2\text{nd}} \cdot \ldots \\\\
+n!_{\%p}&amp;=&amp; \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}_{2\text{nd}} \cdot \ldots \\\
 &amp; &amp; \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{p\text{th}} \cdot \ldots \cdot \quad \underbrace{1 \cdot 2 \cdot \cdot \ldots \cdot (n \bmod p)}_{\text{tail}} \pmod{p}.
 \end{eqnarray}$$</div>
 <p>Phần chính của mỗi khối rất dễ tính — đó chính là <span class="arithmatex">$(p-1)!\ \mathrm{mod}\ p$</span>.
@@ -8046,7 +8041,7 @@ Nếu ẩn các phần tử đã xử lý, ta thấy mẫu sau:</p>
 <div class="arithmatex">$$n!_{\%p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2} \cdot \ldots \cdot \underbrace{ \ldots \cdot (p-1)} \cdot \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 1} \cdot \underbrace{ \ldots \cdot 2} \cdots$$</div>
 <p>Đây lại là một giai thừa biến đổi, nhưng có kích thước nhỏ hơn nhiều.
 Cụ thể, đó là <span class="arithmatex">$\lfloor n / p \rfloor !_{\%p}$</span>.</p>
-<p>Như vậy, trong quá trình tính giai thừa biến đổi <span class="arithmatex">$n\!_{\%p}$</span>, ta thực hiện <span class="arithmatex">$O(p)$</span> phép toán rồi còn lại bài toán tính <span class="arithmatex">$\lfloor n / p \rfloor !_{\%p}$</span>.
+<p>Như vậy, trong quá trình tính giai thừa biến đổi <span class="arithmatex">$n!_{\%p}$</span>, ta thực hiện <span class="arithmatex">$O(p)$</span> phép toán rồi còn lại bài toán tính <span class="arithmatex">$\lfloor n / p \rfloor !_{\%p}$</span>.
 Ta thu được một công thức đệ quy.
 Độ sâu đệ quy là <span class="arithmatex">$O(\log_p n)$</span>, nên độ phức tạp tổng thể của thuật toán là <span class="arithmatex">$O(p \log_p n)$</span>.</p>
 <p>Lưu ý rằng nếu tính trước các giai thừa <span class="arithmatex">$0!,~ 1!,~ 2!,~ \dots,~ (p-1)!$</span> modulo <span class="arithmatex">$p$</span>, độ phức tạp sẽ chỉ còn <span class="arithmatex">$O(\log_p n)$</span>.</p>
@@ -8072,8 +8067,7 @@ Nếu cần gọi hàm nhiều lần, có thể đưa phần tiền xử lý ra 
 </code></pre></div>
 <p>Ngoài ra, nếu bộ nhớ bị giới hạn và không thể lưu toàn bộ các giai thừa, ta có thể chỉ ghi lại những chỉ số của các giai thừa thực sự cần dùng, sắp xếp các chỉ số đó, rồi tính các giá trị tương ứng trong một lượt bằng cách duyệt <span class="arithmatex">$0!,~ 1!,~ 2!,~ \dots,~ (p-1)!$</span> mà không lưu tường minh tất cả giá trị.</p>
 <h2 id="so-mu-cua-p">Số mũ của <span class="arithmatex">$p$</span><a class="headerlink" href="#so-mu-cua-p" title="Permanent link">&para;</a></h2>
-<p>Nếu muốn tính hệ số nhị thức modulo <span class="arithmatex">$p$</span>, ta còn cần biết số lần <span class="arithmatex">$p$</span> xuất hiện trong <span class="arithmatex">$n$</span>, tức số lần <span class="arithmatex">$p$</span> xuất hiện trong phân tích thừa số nguyên tố của <span class="arithmatex">$n$</span>, hay số lần ta đã xóa <span class="arithmatex">$p$</span> trong quá trình tính giai thừa biến đổi.</p>
-<p><strong>Ghi chú bản dịch:</strong> Câu nguồn phía trên dùng n, nhưng ngữ cảnh, công thức Legendre ngay dưới và quá trình loại các thừa số p đều đang xét n!. Đại lượng cần ở đây là số mũ của p trong phân tích thừa số nguyên tố của n!.</p>
+<p>Nếu muốn tính hệ số nhị thức modulo <span class="arithmatex">$p$</span>, ta còn cần biết số lần <span class="arithmatex">$p$</span> xuất hiện trong <span class="arithmatex">$n!$</span>, tức số lần <span class="arithmatex">$p$</span> xuất hiện trong phân tích thừa số nguyên tố của <span class="arithmatex">$n!$</span>, hay số lần ta đã xóa <span class="arithmatex">$p$</span> trong quá trình tính giai thừa biến đổi.</p>
 <p><a href="https://en.wikipedia.org/wiki/Legendre%27s_formula">Công thức Legendre</a> cho phép tính đại lượng này trong thời gian <span class="arithmatex">$O(\log_p n)$</span>.
 Công thức cho số mũ <span class="arithmatex">$\nu_p$</span> là:</p>
 <div class="arithmatex">$$\nu_p(n!) = \sum_{i=1}^{\infty} \left\lfloor \frac{n}{p^i} \right\rfloor$$</div>
@@ -8094,7 +8088,7 @@ Nếu loại một thừa số <span class="arithmatex">$p$</span> khỏi mỗi 
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (93.39%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (6.61%)</li></ul>
 </ul>
                 
               </article>
@@ -8160,6 +8154,8 @@ Nếu loại một thừa số <span class="arithmatex">$p$</span> khỏi mỗi 
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

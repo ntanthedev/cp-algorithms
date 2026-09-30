@@ -8077,16 +8077,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Bit manipulation";
@@ -8120,6 +8111,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8163,7 +8158,7 @@ Các số nguyên dương, dù thuộc kiểu có dấu hay không dấu, đư�
 <span class="n">assert</span><span class="p">(</span><span class="n">positive_signed_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b1101</span><span class="p">);</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">negative_signed_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">-13</span><span class="p">;</span>
-<span class="n">assert</span><span class="p">(</span><span class="n">negative_signed_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b1111&#39;1111&#39;1111&#39;1111&#39;1111&#39;1111&#39;1111&#39;0011</span><span class="p">);</span>
+<span class="n">assert</span><span class="p">(</span><span class="n">negative_signed_number</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b1111'1111'1111'1111'1111'1111'1111'0011</span><span class="p">);</span>
 </code></pre></div>
 <p>CPU có thể thao tác các bit rất nhanh bằng những phép toán chuyên dụng.
 Trong một số bài toán, ta có thể tận dụng biểu diễn nhị phân để tăng tốc chương trình.
@@ -8181,14 +8176,13 @@ Trong một số bài khác, thường gặp ở tổ hợp hoặc quy hoạch �
     Nếu ít nhất một trong hai bit bằng 1, bit kết quả tương ứng được đặt thành 1. Ngược lại, bit kết quả bằng 0.</p>
 </li>
 <li>
-<p><span class="arithmatex">$\wedge$</span> : Toán tử OR loại trừ theo bit (XOR) so sánh từng bit của toán hạng thứ nhất với bit tương ứng của toán hạng thứ hai.
+<p><span class="arithmatex">$\oplus$</span> : Toán tử OR loại trừ theo bit (XOR) so sánh từng bit của toán hạng thứ nhất với bit tương ứng của toán hạng thứ hai.
     Nếu một bit bằng 0 còn bit kia bằng 1, bit kết quả tương ứng được đặt thành 1. Ngược lại, bit kết quả bằng 0.</p>
 </li>
 <li>
 <p><span class="arithmatex">$\sim$</span> : Toán tử bù theo bit (NOT) đảo mọi bit của một số: bit đang bật sẽ bị tắt, còn bit đang tắt sẽ được bật.</p>
 </li>
 </ul>
-<p><strong>Ghi chú bản dịch:</strong> Nguồn dùng ký hiệu ∧ trong phần mô tả và các công thức cho XOR, trong khi các ví dụ code C++ dùng ký hiệu ^. Trong C++, toán tử XOR theo bit là ^; ký hiệu ∧ ở đây là một điểm trình bày dễ gây nhầm lẫn của nguồn và được giữ nguyên để bảo toàn LaTeX.</p>
 <p>Ví dụ:</p>
 <div class="highlight"><pre><span></span><code>n         = 01011000
 n-1       = 01010111
@@ -8231,7 +8225,7 @@ Trên máy tính, dịch bit thường nhanh hơn đáng kể so với thực hi
 <span class="arithmatex">$1 \ll x$</span> là một số chỉ có bit thứ <span class="arithmatex">$x$</span> được bật, còn <span class="arithmatex">$\sim(1 \ll x)$</span> là một số có mọi bit được bật trừ bit thứ <span class="arithmatex">$x$</span>.</p>
 <ul>
 <li><span class="arithmatex">$n ~|~ (1 \ll x)$</span> bật bit thứ <span class="arithmatex">$x$</span> trong số <span class="arithmatex">$n$</span></li>
-<li><span class="arithmatex">$n ~\wedge~ (1 \ll x)$</span> đảo bit thứ <span class="arithmatex">$x$</span> trong số <span class="arithmatex">$n$</span></li>
+<li><span class="arithmatex">$n ~\oplus~ (1 \ll x)$</span> đảo bit thứ <span class="arithmatex">$x$</span> trong số <span class="arithmatex">$n$</span></li>
 <li><span class="arithmatex">$n ~\&amp;~ \sim(1 \ll x)$</span> tắt bit thứ <span class="arithmatex">$x$</span> trong số <span class="arithmatex">$n$</span></li>
 </ul>
 <h3 id="kiem-tra-mot-bit-co-uoc-bat-hay-khong">Kiểm tra một bit có được bật hay không<a class="headerlink" href="#kiem-tra-mot-bit-co-uoc-bat-hay-khong" title="Permanent link">&para;</a></h3>
@@ -8297,23 +8291,22 @@ n &amp; (n-1) = 00110000
 8 -&gt;   1 0 0 0
 </code></pre></div></p>
 <p>Ta thấy mọi cột trừ cột ngoài cùng bên trái đều có <span class="arithmatex">$4$</span> bit 1 (tức <span class="arithmatex">$2^2$</span>); nói cách khác, đến số <span class="arithmatex">$2^3 - 1$</span>, tổng số bit 1 là <span class="arithmatex">$3 \cdot 2^{3-1}$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện phép dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.</p>
 <p>Từ nhận xét trên, ta có thuật toán sau:</p>
 <ul>
-<li>Tìm lũy thừa lớn nhất của <span class="arithmatex">$2$</span> không vượt quá số đã cho. Gọi số này là <span class="arithmatex">$x$</span>.</li>
+<li>Tìm số mũ <span class="arithmatex">$x$</span> lớn nhất sao cho <span class="arithmatex">$2^x$</span> không vượt quá số đã cho.</li>
 <li>Tính tổng số bit 1 từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$2^x - 1$</span> bằng công thức <span class="arithmatex">$x \cdot 2^{x-1}$</span>.</li>
 <li>Đếm số bit 1 ở vị trí cao nhất trong các số từ <span class="arithmatex">$2^x$</span> đến <span class="arithmatex">$n$</span> rồi cộng vào kết quả.</li>
 <li>Trừ <span class="arithmatex">$2^x$</span> khỏi <span class="arithmatex">$n$</span> và lặp lại các bước trên với <span class="arithmatex">$n$</span> mới.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">countSetBits</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bit_width</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">            </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">            </span><span class="n">n</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
-<span class="w">            </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">popcount_sum</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">bit_width</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="p">)</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span><span class="w"> </span><span class="c1">// set bits below 2^x</span>
+<span class="w">        </span><span class="n">n</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="mi">1u</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">        </span><span class="n">count</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">                   </span><span class="c1">// leading bits of 2^x..n</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 <h3 id="cac-meo-bo-sung">Các mẹo bổ sung<a class="headerlink" href="#cac-meo-bo-sung" title="Permanent link">&para;</a></h3>
@@ -8351,7 +8344,7 @@ Chẳng hạn GCC định nghĩa một danh sách tại <a href="https://gcc.gnu
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (95.47%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (4.53%)</li></ul>
 </ul>
                 
               </article>
@@ -8417,6 +8410,8 @@ Chẳng hạn GCC định nghĩa một danh sách tại <a href="https://gcc.gnu
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

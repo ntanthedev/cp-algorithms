@@ -8016,16 +8016,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Hungarian Algorithm";
@@ -8059,6 +8050,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8119,7 +8114,6 @@ Describe the issue of this article in detail.
 Năm 1957, James <strong>Munkres</strong> chỉ ra rằng thuật toán chạy trong thời gian đa thức (theo nghĩa chặt), không phụ thuộc vào độ lớn của chi phí.<br>
 Vì vậy, trong tài liệu, thuật toán không chỉ được gọi là "Hungarian" mà còn là "Kuhn-Munkres algorithm" hoặc "Munkres algorithm".<br>
 Tuy nhiên, vào năm 2006 người ta phát hiện rằng cùng thuật toán này đã được nhà toán học Đức Carl Gustav <strong>Jacobi</strong> tìm ra <strong>sớm hơn Kuhn một thế kỷ</strong>. Công trình <em>About the research of the order of a system of arbitrary ordinary differential equations</em>, được xuất bản sau khi ông qua đời vào năm 1890, có chứa một thuật toán đa thức cho bài toán phân công. Do công trình được viết bằng tiếng Latin, kết quả này đã không được cộng đồng toán học chú ý trong thời gian dài.</p>
-<p><strong>Ghi chú bản dịch:</strong> Nguồn tiếng Anh viết sai tên Munkres thành “Mankres” ở hai vị trí. Bản dịch dùng đúng tên <strong>Munkres</strong>; typo này được tách để đề xuất sửa upstream.</p>
 <p>Cũng cần lưu ý rằng thuật toán ban đầu của Kuhn có độ phức tạp tiệm cận <span class="arithmatex">$\mathcal{O}(n^4)$</span>; về sau Jack <strong>Edmonds</strong> và Richard <strong>Karp</strong> (độc lập với <strong>Tomizawa</strong>) chỉ ra cách cải tiến xuống <span class="arithmatex">$\mathcal{O}(n^3)$</span>.</p>
 <h3 id="thuat-toan-mathcalon4">Thuật toán <span class="arithmatex">$\mathcal{O}(n^4)$</span><a class="headerlink" href="#thuat-toan-mathcalon4" title="Permanent link">&para;</a></h3>
 <p>Để tránh mơ hồ, trước hết ta chủ yếu xét bài toán phân công ở dạng ma trận (tức cho ma trận <span class="arithmatex">$A$</span>, cần chọn <span class="arithmatex">$n$</span> ô nằm ở các hàng và cột đôi một khác nhau). Ta đánh số mảng từ <span class="arithmatex">$1$</span>, chẳng hạn ma trận <span class="arithmatex">$A$</span> có chỉ số <span class="arithmatex">$A[1 \dots n][1 \dots n]$</span>.</p>
@@ -8147,7 +8141,6 @@ Mọi cạnh thuộc cặp ghép <span class="arithmatex">$M$</span> được đ
 <p>Theo thuật ngữ của bài toán cặp ghép, một đỉnh được gọi là bão hòa nếu có một cạnh của cặp ghép hiện tại kề với nó. Một đỉnh không kề với cạnh nào của cặp ghép hiện tại được gọi là chưa bão hòa. Một đường đi độ dài lẻ, có cạnh đầu tiên không thuộc cặp ghép và các cạnh sau đó luân phiên thuộc/không thuộc cặp ghép, được gọi là đường tăng.
 Ta bắt đầu <a href="depth-first-search.html">duyệt theo chiều sâu</a> hoặc <a href="breadth-first-search.html">duyệt theo chiều rộng</a> từ mọi đỉnh chưa bão hòa thuộc phần bên trái. Nếu quá trình duyệt đi tới được một đỉnh chưa bão hòa thuộc phần bên phải, ta đã tìm được một đường tăng từ trái sang phải. Nếu thêm các cạnh lẻ trên đường vào cặp ghép và bỏ các cạnh chẵn (tức thêm cạnh thứ nhất, bỏ cạnh thứ hai, thêm cạnh thứ ba, v.v.), số cạnh của cặp ghép tăng thêm một.</p>
 <p>Nếu không tồn tại đường tăng, cặp ghép hiện tại <span class="arithmatex">$M$</span> là cực đại trong đồ thị <span class="arithmatex">$H$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Nguồn tiếng Anh dùng từ “maximal” ở câu trên, nhưng theo bổ đề Berge được chính bài Kuhn sử dụng, không tồn tại đường tăng suy ra cặp ghép hiện tại là <strong>cực đại</strong> (maximum). Bản dịch dùng kết luận đúng và correction này đã được gửi trong upstream PR #1681.</p>
 <p><strong>Bước 3.</strong> Nếu ở bước hiện tại không thể tăng số cạnh của cặp ghép, ta tính lại thế sao cho ở các bước tiếp theo có thêm cơ hội tăng cặp ghép.</p>
 <p>Ký hiệu <span class="arithmatex">$Z_1$</span> là tập các đỉnh thuộc phần bên trái đã được thăm trong lần duyệt cuối của thuật toán Kuhn, và <span class="arithmatex">$Z_2$</span> là tập các đỉnh thuộc phần bên phải đã được thăm.</p>
 <p>Tính <span class="arithmatex">$\Delta$</span>:</p>
@@ -8291,7 +8284,6 @@ Về độ phức tạp, thuật toán chạy trong <span class="arithmatex">$\m
 <ul>
 <li>Dùng thuật toán <a href="bellman_ford.html">Bellman-Ford</a>, bắt đầu từ nguồn <span class="arithmatex">$s$</span> và với mỗi đỉnh tìm trọng số nhỏ nhất <span class="arithmatex">$h(v)$</span> của một đường đi từ <span class="arithmatex">$s$</span> tới <span class="arithmatex">$v$</span>.</li>
 </ul>
-<p><strong>Ghi chú bản dịch:</strong> Nguồn tiếng Anh gọi <span class="arithmatex">$s$</span> là “sink” ở câu trên, nhưng ký hiệu và đường đi đều bắt đầu từ <span class="arithmatex">$s$</span>; trong ngữ cảnh này phải là <strong>source</strong>. Bản dịch dùng “nguồn” và tách lỗi này để đề xuất sửa upstream.</p>
 <p>Với mỗi bước của thuật toán chính:</p>
 <ul>
 <li>Đổi trọng số các cạnh của đồ thị ban đầu như sau: <span class="arithmatex">$w(u,v) \gets w(u,v)+h(u)-h(v)$</span>.</li>
@@ -8378,7 +8370,7 @@ Về độ phức tạp, thuật toán chạy trong <span class="arithmatex">$\m
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (99.37%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (0.63%)</li></ul>
 </ul>
                 
               </article>
@@ -8444,6 +8436,8 @@ Về độ phức tạp, thuật toán chạy trong <span class="arithmatex">$\m
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

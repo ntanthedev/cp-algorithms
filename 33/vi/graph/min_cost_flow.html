@@ -7972,16 +7972,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Minimum-cost flow";
@@ -8015,6 +8006,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8077,10 +8072,9 @@ mạng thặng dư chỉ chứa các cạnh chưa bão hòa (tức các cạnh t
 <p>Bây giờ ta có thể mô tả <strong>thuật toán</strong> tính luồng với chi phí cực tiểu.
 Ở mỗi lần lặp, ta tìm đường đi ngắn nhất trong đồ thị thặng dư từ <span class="arithmatex">$s$</span> tới <span class="arithmatex">$t$</span>.
 Khác với Edmonds-Karp, ở đây độ dài đường đi được tính theo chi phí của đường thay vì số cạnh.
-Nếu không còn đường đi nào, thuật toán kết thúc; nguồn tiếng Anh gọi luồng <span class="arithmatex">$F$</span> hiện tại là luồng mong muốn.
+Nếu không còn đường đi như vậy, thuật toán kết thúc. Nếu luồng hiện tại chưa đạt <span class="arithmatex">$K$</span> thì không tồn tại luồng có giá trị <span class="arithmatex">$K$</span>; ngược lại, <span class="arithmatex">$F$</span> là luồng mong muốn.
 Nếu tìm được một đường, ta tăng luồng trên đường đó nhiều nhất có thể (tức tìm dung lượng thặng dư nhỏ nhất <span class="arithmatex">$R$</span> trên đường, tăng luồng thêm lượng đó và giảm luồng trên các cạnh ngược cùng một lượng).
 Nếu tại một thời điểm luồng đạt giá trị <span class="arithmatex">$K$</span>, ta dừng thuật toán (lưu ý rằng ở lần lặp cuối, chỉ được tăng một lượng vừa đủ để giá trị luồng cuối cùng không vượt quá <span class="arithmatex">$K$</span>).</p>
-<p><strong>Ghi chú bản dịch:</strong> Phát biểu “luồng hiện tại là luồng mong muốn” khi không còn đường đi chỉ đúng nếu lượng luồng yêu cầu đã đạt được. Với phiên bản yêu cầu một lượng K cố định, nếu hết đường trước khi đạt K thì không tồn tại luồng khả thi có lượng K; implementation phía dưới cũng xử lý trường hợp này bằng cách trả về -1. Lỗi wording này được tách riêng để đề xuất sửa upstream.</p>
 <p>Không khó để thấy rằng nếu đặt <span class="arithmatex">$K$</span> bằng vô hạn thì thuật toán sẽ tìm luồng cực đại với chi phí cực tiểu.
 Vì vậy, cả hai biến thể của bài toán đều có thể giải bằng cùng một thuật toán.</p>
 <h3 id="o-thi-vo-huong-a-o-thi">Đồ thị vô hướng / đa đồ thị<a class="headerlink" href="#o-thi-vo-huong-a-o-thi" title="Permanent link">&para;</a></h3>
@@ -8088,7 +8082,6 @@ Vì vậy, cả hai biến thể của bài toán đều có thể giải bằng
 Thuật toán vẫn hoạt động trên các đồ thị này.
 Tuy nhiên, việc cài đặt trở nên phức tạp hơn một chút.</p>
 <p>Một <strong>cạnh vô hướng</strong> <span class="arithmatex">$(i, j)$</span> thực chất tương đương với hai cạnh có hướng <span class="arithmatex">$(i, j)$</span> và <span class="arithmatex">$(j, i)$</span> có cùng dung lượng và chi phí.</p>
-<p><strong>Ghi chú bản dịch:</strong> Nguồn tiếng Anh viết “same capacity and values”. Trong ngữ cảnh này, thuộc tính thứ hai đã được định nghĩa là chi phí trên mỗi đơn vị luồng; bản dịch dùng “chi phí” để tránh mơ hồ và correction tương ứng được bổ sung vào PR upstream riêng.</p>
 <p>Vì thuật toán luồng với chi phí cực tiểu ở trên sinh một cạnh ngược cho mỗi cạnh có hướng, nên một cạnh vô hướng được tách thành <span class="arithmatex">$4$</span> cạnh có hướng và ta thực sự thu được một <strong>đa đồ thị</strong>.</p>
 <p>Ta xử lý <strong>nhiều cạnh</strong> như thế nào?
 Thứ nhất, luồng trên từng cạnh trong số các cạnh song song phải được lưu riêng.
@@ -8191,7 +8184,7 @@ Do có nhiều cạnh, với mỗi cạnh ta cần lưu số hiệu của cạnh
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.28%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.72%)</li></ul>
 </ul>
                 
               </article>
@@ -8257,6 +8250,8 @@ Do có nhiều cạnh, với mỗi cạnh ta cần lưu số hiệu của cạnh
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

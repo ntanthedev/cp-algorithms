@@ -8022,16 +8022,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Chinese Remainder Theorem";
@@ -8065,6 +8056,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8196,7 +8191,7 @@ First you compute <span class="arithmatex">$b_2 := a \pmod{m_1 m_2}$</span> usin
 then you can compute <span class="arithmatex">$b_3 := a \pmod{m_1 m_2 m_3}$</span> using the congruences <span class="arithmatex">$a \equiv b_2 \pmod{m_1 m_2}$</span> and <span class="arithmatex">$a \equiv a_3 \pmod {m_3}$</span>, etc.</p>
 <h3 id="direct-construction">Direct Construction<a class="headerlink" href="#direct-construction" title="Permanent link">&para;</a></h3>
 <p>A direct construction similar to Lagrange interpolation is possible.</p>
-<p>Let <span class="arithmatex">$M_i := \prod_{i \neq j} m_j$</span>, the product of all moduli but <span class="arithmatex">$m_i$</span>, and <span class="arithmatex">$N_i$</span> the modular inverses <span class="arithmatex">$N_i := M_i^{-1} \bmod{m_i}$</span>.
+<p>Let <span class="arithmatex">$M_i := \prod_{j \neq i} m_j$</span>, the product of all moduli but <span class="arithmatex">$m_i$</span>, and <span class="arithmatex">$N_i$</span> the modular inverses <span class="arithmatex">$N_i := M_i^{-1} \bmod{m_i}$</span>.
 Then a solution to the system of congruences is:</p>
 <div class="arithmatex">$$a \equiv \sum_{i=1}^k a_i M_i N_i \pmod{m_1 m_2 \cdots m_k}$$</div>
 <p>We can check this is indeed a solution, by computing <span class="arithmatex">$a \bmod{m_i}$</span> for all <span class="arithmatex">$i$</span>.
@@ -8293,7 +8288,7 @@ And with those coefficients you can restore the full number.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (74.35%)</li><li><a href="#" title="jxu" data-bi-name="contributorprofile" target="_blank">jxu</a> (13.04%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (5.65%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (3.04%)</li><li><a href="#" title="thanhtnguyen" data-bi-name="contributorprofile" target="_blank">thanhtnguyen</a> (1.74%)</li><li><a href="#" title="Vatsal Sharma" data-bi-name="contributorprofile" target="_blank">Vatsal Sharma</a> (0.87%)</li><li><a href="#" title="JATIN GAUR" data-bi-name="contributorprofile" target="_blank">JATIN GAUR</a> (0.43%)</li><li><a href="#" title="Max" data-bi-name="contributorprofile" target="_blank">Max</a> (0.43%)</li><li><a href="#" title="Mayank Pratap Singh" data-bi-name="contributorprofile" target="_blank">Mayank Pratap Singh</a> (0.43%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (73.91%)</li><li><a href="#" title="jxu" data-bi-name="contributorprofile" target="_blank">jxu</a> (13.04%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (5.65%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (3.04%)</li><li><a href="#" title="thanhtnguyen" data-bi-name="contributorprofile" target="_blank">thanhtnguyen</a> (1.74%)</li><li><a href="#" title="Vatsal Sharma" data-bi-name="contributorprofile" target="_blank">Vatsal Sharma</a> (0.87%)</li><li><a href="#" title="JATIN GAUR" data-bi-name="contributorprofile" target="_blank">JATIN GAUR</a> (0.43%)</li><li><a href="#" title="Max" data-bi-name="contributorprofile" target="_blank">Max</a> (0.43%)</li><li><a href="#" title="Mayank Pratap Singh" data-bi-name="contributorprofile" target="_blank">Mayank Pratap Singh</a> (0.43%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (0.43%)</li></ul>
 </ul>
                 
               </article>
@@ -8359,6 +8354,8 @@ And with those coefficients you can restore the full number.</p>
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

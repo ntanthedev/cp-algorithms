@@ -8061,16 +8061,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Kuhn\u0027s Algorithm - Maximum Bipartite Matching";
@@ -8104,6 +8095,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8172,7 +8167,6 @@ Tức là <span class="arithmatex">$A \oplus B = (A - B) \cup (B - A) = (A \cup 
 </ul>
 <h3 id="bo-e-berge">Bổ đề Berge<a class="headerlink" href="#bo-e-berge" title="Permanent link">&para;</a></h3>
 <p>Bổ đề này được nhà toán học người Pháp <strong>Claude Berge</strong> chứng minh vào năm 1957, dù trước đó nhà toán học Đan Mạch <strong>Julius Petersen</strong> đã quan sát thấy kết quả này vào năm 1891 và nhà toán học Hungary <strong>Dénes Kőnig</strong> vào năm 1931.</p>
-<p><strong>Ghi chú bản dịch:</strong> Nguồn tiếng Anh viết “Denés Kőnig”; tên đúng là <strong>Dénes Kőnig</strong>. Correction này đã được bổ sung vào upstream PR #1681.</p>
 <h4 id="phat-bieu">Phát biểu<a class="headerlink" href="#phat-bieu" title="Permanent link">&para;</a></h4>
 <p>Một cặp ghép <span class="arithmatex">$M$</span> là cực đại <span class="arithmatex">$\Leftrightarrow$</span> không tồn tại đường tăng đối với cặp ghép <span class="arithmatex">$M$</span>.</p>
 <h4 id="chung-minh">Chứng minh<a class="headerlink" href="#chung-minh" title="Permanent link">&para;</a></h4>
@@ -8218,12 +8212,10 @@ Trong cài đặt mô tả ở trên, DFS/BFS chỉ bắt đầu từ các đỉ
 <h3 id="cai-at-chuan">Cài đặt chuẩn<a class="headerlink" href="#cai-at-chuan" title="Permanent link">&para;</a></h3>
 <p>Sau đây là một cài đặt của thuật toán dựa trên DFS và nhận đầu vào là một đồ thị hai phía đã được chia tường minh thành hai phần.
 Cài đặt này rất ngắn gọn và đáng để ghi nhớ ở dạng này.</p>
-<p>Ở đây <span class="arithmatex">$n$</span> là số đỉnh của phần thứ nhất, <span class="arithmatex">$k$</span> là số đỉnh của phần thứ hai, còn <span class="arithmatex">$g[v]$</span> là danh sách các cạnh của đỉnh thuộc phần thứ nhất tương ứng (tức danh sách số hiệu các đỉnh mà các cạnh từ <span class="arithmatex">$v$</span> đi tới). Các đỉnh trong hai phần được đánh số độc lập: phần thứ nhất từ <span class="arithmatex">$1 \ldots n$</span>, phần thứ hai từ <span class="arithmatex">$1 \ldots k$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Mô tả đánh số ở câu trên được giữ theo nguồn. Snippet C++ ngay dưới thực tế dùng chỉ số bắt đầu từ 0 cho các mảng và chỉ cộng 1 khi in kết quả; điểm không nhất quán này đã được bổ sung vào upstream PR #1681.</p>
+<p>Ở đây <span class="arithmatex">$n$</span> là số đỉnh của phần thứ nhất, <span class="arithmatex">$k$</span> là số đỉnh của phần thứ hai, còn <span class="arithmatex">$g[v]$</span> là danh sách các cạnh của đỉnh thuộc phần thứ nhất tương ứng (tức danh sách số hiệu các đỉnh mà các cạnh từ <span class="arithmatex">$v$</span> đi tới). Trong cài đặt dưới đây, các đỉnh trong hai phần được đánh chỉ số độc lập từ không: phần thứ nhất dùng <span class="arithmatex">$0 \ldots n-1$</span>, phần thứ hai dùng <span class="arithmatex">$0 \ldots k-1$</span>. Khi in kết quả, ta cộng thêm một vào các chỉ số này.</p>
 <p>Tiếp theo có hai mảng phụ trợ: <span class="arithmatex">$\rm mt$</span> và <span class="arithmatex">$\rm used$</span>. Mảng thứ nhất, <span class="arithmatex">$\rm mt$</span>, lưu thông tin về cặp ghép hiện tại. Để thuận tiện khi lập trình, ta chỉ lưu thông tin này cho các đỉnh thuộc phần thứ hai: <span class="arithmatex">$\textrm{mt[} i \rm]$</span> là số hiệu đỉnh thuộc phần thứ nhất được ghép với đỉnh <span class="arithmatex">$i$</span> thuộc phần thứ hai (hoặc <span class="arithmatex">$-1$</span> nếu không có cạnh ghép nào kề với nó). Mảng thứ hai là <span class="arithmatex">$\rm used$</span>: mảng đánh dấu "đã thăm" thông thường trong DFS (để DFS không đi vào cùng một đỉnh hai lần).</p>
 <p>Hàm <span class="arithmatex">$\textrm{try_kuhn}$</span> là một DFS. Hàm trả về <span class="arithmatex">$\rm true$</span> nếu tìm được một đường tăng từ đỉnh <span class="arithmatex">$v$</span>, và ta xem như hàm cũng đã thực hiện việc đảo cặp ghép dọc theo đường tìm được.</p>
 <p>Bên trong hàm, ta xét mọi cạnh đi ra từ đỉnh <span class="arithmatex">$v$</span> của phần thứ nhất. Nếu cạnh hiện tại dẫn tới một đỉnh chưa bão hòa <span class="arithmatex">$to$</span>, hoặc nếu <span class="arithmatex">$to$</span> đã bão hòa nhưng có thể tìm được một đường tăng bằng cách gọi đệ quy từ <span class="arithmatex">$\textrm{mt[}to \rm ]$</span>, thì ta đã tìm được một đường tăng. Trước khi trả về <span class="arithmatex">$\rm true$</span>, ta đảo cạnh hiện tại bằng cách đổi đỉnh thuộc phần thứ nhất được ghép với <span class="arithmatex">$to$</span> thành <span class="arithmatex">$v$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Nguồn tiếng Anh dùng cụm “increasing chain” ở đoạn cài đặt này, nhưng ngữ cảnh và chính thuật toán đang nói về augmenting path; bản dịch dùng nhất quán “đường tăng”. Lỗi wording này được tách để đề xuất sửa upstream.</p>
 <p>Chương trình chính trước hết đặt cặp ghép hiện tại là rỗng (mảng <span class="arithmatex">$\rm mt$</span> được điền bằng các giá trị <span class="arithmatex">$-1$</span>). Sau đó, với mỗi đỉnh <span class="arithmatex">$v$</span> thuộc phần thứ nhất, ta gọi <span class="arithmatex">$\textrm{try_kuhn}$</span> sau khi đặt lại mảng <span class="arithmatex">$\rm used$</span> về chưa thăm.</p>
 <p>Kích thước cặp ghép có thể lấy bằng số lần gọi <span class="arithmatex">$\textrm{try_kuhn}$</span> trong chương trình chính trả về <span class="arithmatex">$\rm true$</span>. Cặp ghép cực đại cần tìm nằm trong mảng <span class="arithmatex">$\rm mt$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">;</span>
@@ -8255,7 +8247,7 @@ Cài đặt này rất ngắn gọn và đáng để ghi nhớ ở dạng này.<
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">mt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Nhắc lại rằng thuật toán Kuhn có thể dễ dàng được cài đặt cho một đồ thị đã biết là hai phía nhưng chưa cung cấp tường minh cách chia thành hai phần. Khi đó, ta không còn dùng cách chia tiện lợi ở trên mà lưu thông tin cho mọi đỉnh của đồ thị. Mảng danh sách <span class="arithmatex">$g$</span> lúc này được khai báo cho mọi đỉnh, không chỉ các đỉnh thuộc phần thứ nhất (và các đỉnh của hai phần dùng chung một cách đánh số từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span>). Hai mảng <span class="arithmatex">$\rm mt$</span> và <span class="arithmatex">$\rm used$</span> cũng được khai báo cho mọi đỉnh và phải được duy trì tương ứng.</p>
@@ -8287,7 +8279,7 @@ Cài đặt này rất ngắn gọn và đáng để ghi nhớ ở dạng này.<
 
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span>
-<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%d %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">            </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">mt</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><strong>Một heuristic tốt khác</strong> như sau. Ở mỗi bước, tìm đỉnh có bậc nhỏ nhất nhưng không cô lập, chọn một cạnh bất kỳ kề với nó và thêm cạnh đó vào cặp ghép, rồi xóa cả hai đầu mút cùng mọi cạnh kề với chúng khỏi đồ thị. Cách tham lam này hoạt động rất tốt trên các đồ thị ngẫu nhiên; trong nhiều trường hợp nó thậm chí tạo ra cặp ghép cực đại (dù vẫn tồn tại phản ví dụ mà trên đó cặp ghép tìm được nhỏ hơn rất nhiều so với cực đại).</p>
@@ -8305,7 +8297,7 @@ Cài đặt này rất ngắn gọn và đáng để ghi nhớ ở dạng này.<
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.5%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.5%)</li></ul>
 </ul>
                 
               </article>
@@ -8371,6 +8363,8 @@ Cài đặt này rất ngắn gọn và đáng để ghi nhớ ở dạng này.<
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

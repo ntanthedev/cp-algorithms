@@ -8121,16 +8121,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Disjoint Set Union";
@@ -8164,6 +8155,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8615,7 +8610,12 @@ ta cài đặt một <a href="../graph/depth-first-search.html">DFS</a> trả v�
 Để tính đáp án cho nút hiện tại (trừ khi nó là lá), gọi DFS cho tất cả các con rồi hợp các tập nhận được.
 Kích thước của tập kết quả chính là đáp án cho nút hiện tại.
 Để hợp nhiều tập hiệu quả, ta chỉ cần áp dụng nguyên tắc trên: thêm các tập nhỏ hơn vào tập lớn hơn.
-Cuối cùng thu được lời giải <span class="arithmatex">$O(n \log^2 n)$</span> vì mỗi số chỉ được thêm vào một tập tối đa <span class="arithmatex">$O(\log n)$</span> lần.</p>
+Cuối cùng thu được lời giải <span class="arithmatex">$O(n \log^2 n)$</span>, nhưng cần thận trọng khi giải thích cận này.
+Ta dễ cho rằng mỗi số chỉ được thêm vào một tập <span class="arithmatex">$O(\log n)$</span> lần vì kích thước tập chứa nó tăng gấp đôi sau mỗi lần chuyển, nhưng điều đó không đúng khi tập chỉ chứa các số <strong>phân biệt</strong>: hợp một tập kích thước <span class="arithmatex">$k$</span> vào tập lớn hơn có thể không làm kích thước kết quả tăng lên, nên không có sự tăng gấp đôi.
+Thay vào đó, ta đếm số lần <em>thử chèn</em>, vì gặp phần tử trùng vẫn tốn một phép tra cứu.
+Tập của một cây con có số phần tử không vượt quá số đỉnh của cây con đó, và hợp vào con có nhiều số phân biệt nhất không tốn hơn hợp vào con có cây con lớn nhất.
+Với quy tắc sau, lập luận tăng gấp đôi là đúng khi áp dụng cho đỉnh thay vì giá trị: mỗi đỉnh thuộc cây con nhỏ hơn nhiều nhất <span class="arithmatex">$O(\log n)$</span> lần, vì cây con sau khi hợp có kích thước ít nhất gấp đôi cây nhỏ hơn.
+Do đó có <span class="arithmatex">$O(n \log n)$</span> lần chèn, mỗi lần tốn <span class="arithmatex">$O(\log n)$</span> trong một <code>set</code>.</p>
 <h3 id="luu-dsu-ong-thoi-duy-tri-cau-truc-cay-ro-rang-tim-cau-online-trong-oalphan-trung-binh">Lưu DSU đồng thời duy trì cấu trúc cây rõ ràng / Tìm cầu online trong <span class="arithmatex">$O(\alpha(n))$</span> trung bình<a class="headerlink" href="#luu-dsu-ong-thoi-duy-tri-cau-truc-cay-ro-rang-tim-cau-online-trong-oalphan-trung-binh" title="Permanent link">&para;</a></h3>
 <p>Một trong những ứng dụng mạnh nhất của DSU là cho phép lưu đồng thời cây ở dạng <strong>đã nén và chưa nén</strong>.
 Dạng nén dùng để hợp cây và kiểm tra hai đỉnh có thuộc cùng một cây hay không; dạng chưa nén có thể dùng, chẳng hạn, để tìm đường giữa hai đỉnh hoặc thực hiện các phép duyệt khác trên cấu trúc cây.</p>
@@ -8652,7 +8652,7 @@ Sau đó vào năm 1985, Tarjan cùng Leeuwen công bố nhiều phân tích đ�
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.68%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.32%)</li></ul>
 </ul>
                 
               </article>
@@ -8718,6 +8718,8 @@ Sau đó vào năm 1985, Tarjan cùng Leeuwen công bố nhiều phân tích đ�
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

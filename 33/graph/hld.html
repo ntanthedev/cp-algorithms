@@ -8011,16 +8011,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Heavy-light decomposition";
@@ -8054,6 +8045,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8175,8 +8170,8 @@ Hence, one query <span class="arithmatex">$(a, b)$</span> takes <span class="ari
 <h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
 <p>Certain parts of the above discussed approach can be modified to make implementation easier without losing efficiency.</p>
 <ul>
-<li>The definition of <strong>heavy edge</strong> can be changed to <strong>the edge leading to the child with largest subtree</strong>, with ties broken arbitrarily. This may result is some light edges being converted to heavy, which means some heavy paths will combine to form a single path, but all heavy paths will remain disjoint. It is also still guaranteed that going down a light edge reduces subtree size to half or less.</li>
-<li>Instead of a building segment tree over every heavy path, a single segment tree can be used with disjoint segments allocated to each heavy path.</li>
+<li>The definition of <strong>heavy edge</strong> can be changed to <strong>the edge leading to the child with largest subtree</strong>, with ties broken arbitrarily. This may result in some light edges being converted to heavy, which means some heavy paths will combine to form a single path, but all heavy paths will remain disjoint. It is also still guaranteed that going down a light edge reduces subtree size to half or less.</li>
+<li>Instead of building a segment tree over every heavy path, a single segment tree can be used with disjoint segments allocated to each heavy path.</li>
 <li>It has been mentioned that answering queries requires calculation of the LCA. While LCA can be calculated separately, it is also possible to integrate LCA calculation in the process of answering queries.</li>
 </ul>
 <p>To perform heavy-light decomposition:</p>
@@ -8226,7 +8221,7 @@ Hence, one query <span class="arithmatex">$(a, b)$</span> takes <span class="ari
 <p>The <code>decompose</code> function assigns for each vertex <code>v</code> the values <code>head[v]</code> and <code>pos[v]</code>, which are respectively the head of the heavy path <code>v</code> belongs to and the position of <code>v</code> on the single segment tree that covers all vertices.</p>
 <p>To answer queries on paths, for example the maximum query discussed, we can do something like this:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">segment_tree_query</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">a</span><span class="p">],</span><span class="w"> </span><span class="n">pos</span><span class="p">[</span><span class="n">a</span><span class="p">]);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">head</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">head</span><span class="p">[</span><span class="n">b</span><span class="p">];</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">[</span><span class="n">head</span><span class="p">[</span><span class="n">b</span><span class="p">]])</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">head</span><span class="p">[</span><span class="n">a</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">head</span><span class="p">[</span><span class="n">b</span><span class="p">]])</span>
 <span class="w">            </span><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
@@ -8253,7 +8248,7 @@ Hence, one query <span class="arithmatex">$(a, b)$</span> takes <span class="ari
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Soumik Sarkar" data-bi-name="contributorprofile" target="_blank">Soumik Sarkar</a> (86.53%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (3.11%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (2.59%)</li><li><a href="#" title="Mirco Paul" data-bi-name="contributorprofile" target="_blank">Mirco Paul</a> (2.59%)</li><li><a href="#" title="Ankit Sangwan" data-bi-name="contributorprofile" target="_blank">Ankit Sangwan</a> (2.07%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (1.55%)</li><li><a href="#" title="Hostek" data-bi-name="contributorprofile" target="_blank">Hostek</a> (0.52%)</li><li><a href="#" title="Tanmay Sinha" data-bi-name="contributorprofile" target="_blank">Tanmay Sinha</a> (0.52%)</li><li><a href="#" title="TheOrnithologistMan" data-bi-name="contributorprofile" target="_blank">TheOrnithologistMan</a> (0.52%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Soumik Sarkar" data-bi-name="contributorprofile" target="_blank">Soumik Sarkar</a> (84.97%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (3.11%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (2.59%)</li><li><a href="#" title="Mirco Paul" data-bi-name="contributorprofile" target="_blank">Mirco Paul</a> (2.59%)</li><li><a href="#" title="Ankit Sangwan" data-bi-name="contributorprofile" target="_blank">Ankit Sangwan</a> (2.07%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (1.55%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (1.55%)</li><li><a href="#" title="Hostek" data-bi-name="contributorprofile" target="_blank">Hostek</a> (0.52%)</li><li><a href="#" title="Tanmay Sinha" data-bi-name="contributorprofile" target="_blank">Tanmay Sinha</a> (0.52%)</li><li><a href="#" title="TheOrnithologistMan" data-bi-name="contributorprofile" target="_blank">TheOrnithologistMan</a> (0.52%)</li></ul>
 </ul>
                 
               </article>
@@ -8319,6 +8314,8 @@ Hence, one query <span class="arithmatex">$(a, b)$</span> takes <span class="ari
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

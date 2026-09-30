@@ -7933,16 +7933,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Newton\u0027s method for finding roots";
@@ -7976,6 +7967,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8069,12 +8064,14 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Another common variant of the problem is when we need to calculate the integer root (for the given <span class="arithmatex">$n$</span> find the largest <span class="arithmatex">$x$</span> such that <span class="arithmatex">$x^2 \le n$</span>). Here it is necessary to slightly change the termination condition of the algorithm, since it may happen that <span class="arithmatex">$x$</span> will start to "jump" near the answer. Therefore, we add a condition that if the value <span class="arithmatex">$x$</span> has decreased in the previous step, and it tries to increase at the current step, then the algorithm must be stopped.</p>
+<p>Another common variant of the problem is when we need to calculate the integer root (for the given non-negative <span class="arithmatex">$n$</span> find the largest <span class="arithmatex">$x$</span> such that <span class="arithmatex">$x^2 \le n$</span>). Here it is necessary to slightly change the termination condition of the algorithm, since it may happen that <span class="arithmatex">$x$</span> will start to "jump" near the answer. Therefore, we add a condition that if the value <span class="arithmatex">$x$</span> has decreased in the previous step, and it tries to increase at the current step, then the algorithm must be stopped.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">isqrt_newton</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">decreased</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1L</span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">decreased</span><span class="p">)</span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span>
 <span class="w">        </span><span class="n">decreased</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
@@ -8085,6 +8082,8 @@ Describe the issue of this article in detail.
 </code></pre></div>
 <p>Finally, we are given the third variant - for the case of bignum arithmetic. Since the number <span class="arithmatex">$n$</span> can be large enough, it makes sense to pay attention to the initial approximation. Obviously, the closer it is to the root, the faster the result will be achieved. It is simple enough and effective to take the initial approximation as the number <span class="arithmatex">$2^{\textrm{bits}/2}$</span>, where <span class="arithmatex">$\textrm{bits}$</span> is the number of bits in the number <span class="arithmatex">$n$</span>. Here is the Java code that demonstrates this variant:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">BigInteger</span><span class="w"> </span><span class="nf">isqrtNewton</span><span class="p">(</span><span class="n">BigInteger</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">signum</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">BigInteger</span><span class="p">.</span><span class="na">ZERO</span><span class="p">;</span>
 <span class="w">    </span><span class="n">BigInteger</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BigInteger</span><span class="p">.</span><span class="na">ONE</span><span class="p">.</span><span class="na">shiftLeft</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">bitLength</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">p_dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
@@ -8105,7 +8104,7 @@ Describe the issue of this article in detail.
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="prpr" data-bi-name="contributorprofile" target="_blank">prpr</a> (77.36%)</li><li><a href="#" title="Toufiq Shishir" data-bi-name="contributorprofile" target="_blank">Toufiq Shishir</a> (13.21%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (5.66%)</li><li><a href="#" title="Abhijeet Krishnan" data-bi-name="contributorprofile" target="_blank">Abhijeet Krishnan</a> (1.89%)</li><li><a href="#" title="Chuan Liu" data-bi-name="contributorprofile" target="_blank">Chuan Liu</a> (0.94%)</li><li><a href="#" title="Vineet Kumar" data-bi-name="contributorprofile" target="_blank">Vineet Kumar</a> (0.94%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="prpr" data-bi-name="contributorprofile" target="_blank">prpr</a> (72.73%)</li><li><a href="#" title="Toufiq Shishir" data-bi-name="contributorprofile" target="_blank">Toufiq Shishir</a> (12.73%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (5.45%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (5.45%)</li><li><a href="#" title="Abhijeet Krishnan" data-bi-name="contributorprofile" target="_blank">Abhijeet Krishnan</a> (1.82%)</li><li><a href="#" title="Chuan Liu" data-bi-name="contributorprofile" target="_blank">Chuan Liu</a> (0.91%)</li><li><a href="#" title="Vineet Kumar" data-bi-name="contributorprofile" target="_blank">Vineet Kumar</a> (0.91%)</li></ul>
 </ul>
                 
               </article>
@@ -8171,6 +8170,8 @@ Describe the issue of this article in detail.
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

@@ -7944,16 +7944,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Pick\u0027s Theorem - area of lattice polygons";
@@ -7992,6 +7983,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8023,12 +8018,10 @@ Describe the issue of this article in detail.
 
 
 <h1 id="inh-ly-pick">Định lý Pick<a class="headerlink" href="#inh-ly-pick" title="Permanent link">&para;</a></h1>
-<p>Một đa giác không tự cắt được gọi là đa giác lưới nếu tất cả các đỉnh của nó có tọa độ nguyên trên một lưới hai chiều nào đó. Định lý Pick cho phép tính diện tích của đa giác này thông qua số đỉnh nằm trên biên và số đỉnh nằm hoàn toàn bên trong đa giác.</p>
-<p><strong>Ghi chú bản dịch:</strong> Ở câu trên, nguồn dùng từ “vertices”. Tuy nhiên, Định lý Pick thực tế sử dụng số <strong>điểm nguyên</strong> nằm trên biên và nằm hoàn toàn bên trong đa giác. Phần Công thức bên dưới đã ghi rõ I đếm các điểm có tọa độ nguyên, nhưng câu định nghĩa B của nguồn vẫn thiếu điều kiện này. Các cách diễn đạt này đang được đề xuất sửa riêng ở bản tiếng Anh.</p>
+<p>Một đa giác không tự cắt được gọi là đa giác lưới nếu tất cả các đỉnh của nó có tọa độ nguyên trên một lưới hai chiều nào đó. Định lý Pick cho phép tính diện tích của đa giác này thông qua số điểm nguyên nằm trên biên và số điểm nguyên nằm hoàn toàn bên trong đa giác.</p>
 <h2 id="cong-thuc">Công thức<a class="headerlink" href="#cong-thuc" title="Permanent link">&para;</a></h2>
 <p>Cho một đa giác lưới có diện tích khác không.</p>
-<p>Ký hiệu diện tích của nó là <span class="arithmatex">$S$</span>, số điểm có tọa độ nguyên nằm hoàn toàn bên trong đa giác là <span class="arithmatex">$I$</span> và số điểm nằm trên các cạnh của đa giác là <span class="arithmatex">$B$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Trong công thức Pick, B phải được hiểu là số <strong>điểm nguyên</strong> nằm trên biên đa giác; câu nguồn hiện chỉ viết “points lying on polygon sides”.</p>
+<p>Ký hiệu diện tích của nó là <span class="arithmatex">$S$</span>, số điểm có tọa độ nguyên nằm hoàn toàn bên trong đa giác là <span class="arithmatex">$I$</span> và số điểm nguyên nằm trên các cạnh của đa giác là <span class="arithmatex">$B$</span>.</p>
 <p>Khi đó, <strong>công thức Pick</strong> phát biểu:</p>
 <div class="arithmatex">$$S=I+\frac{B}{2}-1$$</div>
 <p>Đặc biệt, nếu đã biết các giá trị <span class="arithmatex">$I$</span> và <span class="arithmatex">$B$</span> của một đa giác, ta có thể tính diện tích trong <span class="arithmatex">$O(1)$</span> mà thậm chí không cần biết các đỉnh.</p>
@@ -8037,22 +8030,21 @@ Describe the issue of this article in detail.
 <p>Chứng minh được thực hiện qua nhiều bước, từ các đa giác đơn giản đến trường hợp tổng quát:</p>
 <ul>
 <li>
-<p>Một hình vuông: <span class="arithmatex">$S=1, I=0, B=4$</span>, thỏa mãn công thức.</p>
+<p>Một hình vuông đơn vị: <span class="arithmatex">$S=1, I=0, B=4$</span>, thỏa mãn công thức.</p>
 </li>
 <li>
 <p>Một hình chữ nhật không suy biến bất kỳ có các cạnh song song với các trục tọa độ: Giả sử <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> là độ dài hai cạnh của hình chữ nhật. Khi đó, <span class="arithmatex">$S=ab, I=(a-1)(b-1), B=2(a+b)$</span>. Thay vào, ta thấy công thức đúng.</p>
 </li>
 <li>
-<p>Một góc vuông có các cạnh song song với các trục: Để chứng minh điều này, lưu ý rằng một tam giác như vậy có thể thu được bằng cách cắt một hình chữ nhật theo đường chéo. Ký hiệu số điểm nguyên nằm trên đường chéo là <span class="arithmatex">$c$</span>, có thể chứng minh rằng công thức Pick đúng cho tam giác này bất kể <span class="arithmatex">$c$</span> bằng bao nhiêu.</p>
+<p>Một tam giác vuông có hai cạnh góc vuông song song với các trục: Để chứng minh điều này, lưu ý rằng một tam giác như vậy có thể thu được bằng cách cắt một hình chữ nhật theo đường chéo. Ký hiệu số điểm nguyên nằm trên đường chéo là <span class="arithmatex">$c$</span>, có thể chứng minh rằng công thức Pick đúng cho tam giác này bất kể <span class="arithmatex">$c$</span> bằng bao nhiêu.</p>
 </li>
 <li>
 <p>Một tam giác bất kỳ: Lưu ý rằng có thể biến một tam giác như vậy thành hình chữ nhật bằng cách ghép thêm các tam giác vuông có hai cạnh góc vuông song song với các trục (không cần quá 3 tam giác như vậy). Từ đây, ta suy ra công thức đúng cho mọi tam giác.</p>
 </li>
 <li>
-<p>Một đa giác bất kỳ: Để chứng minh, hãy tam giác hóa nó, tức chia thành các tam giác có các đỉnh tọa độ nguyên. Hơn nữa, có thể chứng minh rằng Định lý Pick vẫn đúng khi ghép thêm một tam giác vào đa giác. Như vậy, ta đã chứng minh công thức Pick cho đa giác bất kỳ.</p>
+<p>Một đa giác bất kỳ: Để chứng minh, hãy tam giác hóa nó, tức chia thành các tam giác có các đỉnh tọa độ nguyên. Hơn nữa, có thể chứng minh rằng Định lý Pick vẫn đúng khi ghép thêm một tam giác vào đa giác dọc theo một cạnh chung. Như vậy, ta đã chứng minh công thức Pick cho đa giác bất kỳ.</p>
 </li>
 </ul>
-<p><strong>Ghi chú bản dịch:</strong> Ở bullet đầu, các giá trị S=1, I=0, B=4 tương ứng với một hình vuông đơn vị, trong khi nguồn chỉ viết “A single square”. Ở bullet thứ ba, nguồn viết “A right angle with legs parallel to the axes”, nhưng lập luận ngay sau đó nói về một tam giác được tạo bằng cách cắt hình chữ nhật theo đường chéo; đối tượng cần xét là một <strong>tam giác vuông</strong>, không phải một góc vuông. Hai cách diễn đạt này đang được đề xuất làm rõ riêng ở bản tiếng Anh.</p>
 <h2 id="khai-quat-len-so-chieu-cao-hon">Khái quát lên số chiều cao hơn<a class="headerlink" href="#khai-quat-len-so-chieu-cao-hon" title="Permanent link">&para;</a></h2>
 <p>Đáng tiếc, công thức đơn giản và đẹp này không thể được khái quát trực tiếp lên số chiều cao hơn.</p>
 <p>John Reeve đã chỉ ra điều này vào năm 1957 bằng một tứ diện (<strong>tứ diện Reeve</strong>) có các đỉnh:</p>
@@ -8067,7 +8059,7 @@ D=(1,1,k),$$</div>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (88.33%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (11.67%)</li></ul>
 </ul>
                 
               </article>
@@ -8133,6 +8125,8 @@ D=(1,1,k),$$</div>
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

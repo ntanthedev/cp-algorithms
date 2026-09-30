@@ -8033,16 +8033,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Integer factorization";
@@ -8076,6 +8067,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8381,7 +8376,7 @@ Tuy nhiên, lựa chọn <span class="arithmatex">$x_0 = 1$</span>, <span class=
 <p>Brent dùng một phương pháp tương tự Floyd với hai con trỏ.
 Điểm khác biệt là thay vì cho hai con trỏ tiến lần lượt một và hai vị trí, chúng được tiến theo các lũy thừa của hai.
 Ngay khi <span class="arithmatex">$2^i$</span> lớn hơn <span class="arithmatex">$\lambda$</span> và <span class="arithmatex">$\mu$</span>, ta sẽ phát hiện được chu trình.</p>
-<div class="highlight"><pre><span></span><code>function floyd(f, x0):
+<div class="highlight"><pre><span></span><code>function brent(f, x0):
     tortoise = x0
     hare = f(x0)
     l = 1
@@ -8442,7 +8437,7 @@ Ngoài ra, thay vì tính <span class="arithmatex">$\gcd$</span> ở mọi bư�
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (99.31%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (0.69%)</li></ul>
 </ul>
                 
               </article>
@@ -8508,6 +8503,8 @@ Ngoài ra, thay vì tính <span class="arithmatex">$\gcd$</span> ở mọi bư�
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

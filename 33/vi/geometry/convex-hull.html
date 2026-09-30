@@ -7967,16 +7967,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Convex hull construction";
@@ -8010,6 +8001,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8055,9 +8050,8 @@ Describe the issue of this article in detail.
 Nếu hai hay nhiều điểm có cùng góc cực, ta sắp xếp tiếp theo khoảng cách đến <span class="arithmatex">$P_0$</span> tăng dần.</p>
 <p>Sau đó, ta lần lượt duyệt từng điểm và bảo đảm rằng điểm hiện tại cùng hai điểm trước nó tạo thành một lần rẽ theo chiều kim đồng hồ. Nếu không, điểm trước đó bị loại vì nó sẽ làm hình thu được không còn lồi. Có thể kiểm tra hướng quay theo hoặc ngược chiều kim đồng hồ bằng <a href="oriented-triangle-area.html">orientation</a>.</p>
 <p>Ta dùng một ngăn xếp để lưu các điểm. Khi đi đến điểm ban đầu <span class="arithmatex">$P_0$</span>, thuật toán kết thúc và trả về ngăn xếp chứa các điểm của bao lồi theo thứ tự chiều kim đồng hồ.</p>
-<p>Nếu cần giữ cả các điểm thẳng hàng khi thực hiện Graham scan, ta cần thêm một bước sau khi sắp xếp. Hãy lấy các điểm có “khoảng cách cực” lớn nhất đến <span class="arithmatex">$P_0$</span> (chúng nằm ở cuối vector đã sắp xếp) và thẳng hàng.
-Các điểm trên đường thẳng này cần được đảo thứ tự để ta có thể đưa tất cả các điểm thẳng hàng vào kết quả; nếu không, thuật toán sẽ lấy điểm gần nhất trên đường này rồi dừng xử lý phần còn lại. Không nên thực hiện bước này ở phiên bản không giữ điểm thẳng hàng, vì khi đó kết quả sẽ không còn là bao lồi nhỏ nhất.</p>
-<p><strong>Ghi chú bản dịch:</strong> Ở đoạn trên, nguồn dùng cụm “biggest polar distance”. Tuy nhiên, cài đặt thực tế lấy dãy điểm ở cuối thứ tự góc cực, tức các điểm thẳng hàng theo hướng có góc cực lớn nhất. Cách diễn đạt này đang được đề xuất làm rõ riêng ở bản tiếng Anh.</p>
+<p>Nếu cần giữ cả các điểm thẳng hàng khi thực hiện Graham scan, ta cần thêm một bước sau khi sắp xếp. Hãy lấy nhóm điểm cuối cùng trong vector đã sắp xếp, tức các điểm thẳng hàng với <span class="arithmatex">$P_0$</span> và điểm cuối cùng.
+Các điểm trên tia này cần được đảo thứ tự để ta có thể đưa tất cả các điểm thẳng hàng vào kết quả; nếu không, thuật toán sẽ lấy điểm gần nhất trên đường này rồi dừng xử lý phần còn lại. Không nên thực hiện bước này ở phiên bản không giữ điểm thẳng hàng, vì khi đó kết quả sẽ không còn là bao lồi nhỏ nhất.</p>
 <h3 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">pt</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
@@ -8110,8 +8104,7 @@ Các điểm trên đường thẳng này cần được đảo thứ tự để
 <span class="p">}</span>
 </code></pre></div>
 <h2 id="thuat-toan-monotone-chain">Thuật toán Monotone chain<a class="headerlink" href="#thuat-toan-monotone-chain" title="Permanent link">&para;</a></h2>
-<p>Thuật toán trước hết tìm điểm trái nhất và phải nhất, ký hiệu là A và B. Nếu có nhiều điểm như vậy, ta chọn điểm thấp nhất trong các điểm trái nhất (tọa độ Y nhỏ nhất) làm A, và điểm cao nhất trong các điểm phải nhất (tọa độ Y lớn nhất) làm B. Rõ ràng A và B đều phải thuộc bao lồi vì chúng là các điểm nằm xa nhất về hai phía và không thể bị chứa bởi bất kỳ đường thẳng nào đi qua một cặp điểm trong tập đã cho.</p>
-<p><strong>Ghi chú bản dịch:</strong> Cách giải thích “the farthest away” và “contained by any line” trong nguồn khá mơ hồ. Với cách chọn A và B ở đây, lý do trực tiếp là chúng là hai điểm cực trị theo tọa độ x, nên phải nằm trên biên của bao lồi. Cách diễn đạt nguồn đang được đề xuất làm rõ riêng ở bản tiếng Anh.</p>
+<p>Thuật toán trước hết tìm điểm trái nhất và phải nhất, ký hiệu là A và B. Nếu có nhiều điểm như vậy, ta chọn điểm thấp nhất trong các điểm trái nhất (tọa độ Y nhỏ nhất) làm A, và điểm cao nhất trong các điểm phải nhất (tọa độ Y lớn nhất) làm B. Rõ ràng A và B đều phải thuộc bao lồi vì không có điểm nào nằm xa hơn về bên trái so với A hoặc xa hơn về bên phải so với B.</p>
 <p>Bây giờ, kẻ đường thẳng qua AB. Đường này chia tất cả các điểm còn lại thành hai tập S1 và S2, trong đó S1 chứa tất cả các điểm phía trên đường nối A và B, còn S2 chứa tất cả các điểm phía dưới. Các điểm nằm trên đường thẳng AB có thể thuộc một trong hai tập. Hai điểm A và B thuộc cả hai tập. Thuật toán lần lượt xây dựng tập trên S1 và tập dưới S2 rồi kết hợp chúng để thu được đáp án. </p>
 <p>Để xây dựng tập trên, ta sắp xếp tất cả các điểm theo tọa độ x. Với mỗi điểm, ta kiểm tra một trong hai điều kiện: điểm hiện tại là điểm cuối cùng (đã định nghĩa là B), hoặc hướng quay giữa đoạn từ A đến điểm hiện tại và đoạn từ điểm hiện tại đến B là theo chiều kim đồng hồ. Trong các trường hợp đó, điểm hiện tại thuộc tập trên S1. Có thể kiểm tra hướng quay theo hoặc ngược chiều kim đồng hồ bằng <a href="oriented-triangle-area.html">orientation</a>.</p>
 <p>Nếu điểm đã cho thuộc tập trên, ta xét góc tạo bởi đoạn nối điểm áp chót với điểm cuối cùng của bao lồi trên và đoạn nối điểm cuối cùng đó với điểm hiện tại. Nếu góc không quay theo chiều kim đồng hồ, ta loại điểm vừa được thêm gần nhất khỏi bao lồi trên, vì sau khi điểm hiện tại được thêm vào, nó sẽ khiến điểm trước đó nằm bên trong phần bao.</p>
@@ -8189,7 +8182,7 @@ Tuy nhiên, điều này tạo ra một trường hợp suy biến khi tất c�
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.09%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.91%)</li></ul>
 </ul>
                 
               </article>
@@ -8255,6 +8248,8 @@ Tuy nhiên, điều này tạo ra một trường hợp suy biến khi tất c�
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

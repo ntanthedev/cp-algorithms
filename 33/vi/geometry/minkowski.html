@@ -7966,16 +7966,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Minkowski sum of convex polygons";
@@ -8009,6 +8000,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8072,10 +8067,8 @@ Lặp các bước sau trong khi <span class="arithmatex">$i &lt; |P|$</span> ho
 
 <h2 id="khoang-cach-giua-hai-a-giac">Khoảng cách giữa hai đa giác<a class="headerlink" href="#khoang-cach-giua-hai-a-giac" title="Permanent link">&para;</a></h2>
 <p>Một trong những ứng dụng phổ biến nhất của tổng Minkowski là tính khoảng cách giữa hai đa giác lồi (hoặc đơn giản là kiểm tra chúng có giao nhau hay không).
-Khoảng cách giữa hai đa giác lồi <span class="arithmatex">$P$</span> và <span class="arithmatex">$Q$</span> được định nghĩa là <span class="arithmatex">$\min\limits_{a \in P, b \in Q} ||a - b||$</span>. Có thể nhận thấy rằng
-khoảng cách luôn đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh, nên ta có thể dễ dàng tìm khoảng cách trong <span class="arithmatex">$O(|P||Q|)$</span>. Tuy nhiên,
-nếu sử dụng tổng Minkowski một cách khéo léo, ta có thể giảm độ phức tạp xuống <span class="arithmatex">$O(|P| + |Q|)$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Mệnh đề “khoảng cách luôn đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh” trong nguồn thiếu trường hợp hai đa giác giao nhau: khoảng cách khi đó bằng 0, chẳng hạn khi hai cạnh cắt nhau tại một điểm nằm bên trong cả hai đoạn cạnh. Phương pháp Minkowski ngay dưới vẫn xử lý đúng trường hợp giao nhau bằng cách kiểm tra gốc tọa độ có nằm trong hoặc trên biên đa giác tổng Minkowski hay không. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.</p>
+Khoảng cách giữa hai đa giác lồi <span class="arithmatex">$P$</span> và <span class="arithmatex">$Q$</span> được định nghĩa là <span class="arithmatex">$\min\limits_{a \in P, b \in Q} ||a - b||$</span>. Nếu hai đa giác giao nhau, khoảng cách này bằng <span class="arithmatex">$0$</span>.
+Ngược lại, khoảng cách nhỏ nhất đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh, nên kiểm tra trực tiếp từng cặp mất thời gian <span class="arithmatex">$O(|P||Q|)$</span>. Tuy nhiên, bằng cách sử dụng tổng Minkowski khéo léo, ta có thể giảm độ phức tạp xuống <span class="arithmatex">$O(|P| + |Q|)$</span>.</p>
 <p>Nếu lấy đối xứng <span class="arithmatex">$Q$</span> qua gốc tọa độ <span class="arithmatex">$(0, 0)$</span> để thu được đa giác <span class="arithmatex">$-Q$</span>, bài toán trở thành tìm khoảng cách nhỏ nhất giữa một điểm trong
 <span class="arithmatex">$P + (-Q)$</span> và <span class="arithmatex">$(0, 0)$</span>. Ta có thể tìm khoảng cách đó trong thời gian tuyến tính bằng ý tưởng sau.
 Nếu <span class="arithmatex">$(0, 0)$</span> nằm bên trong hoặc trên biên của đa giác, khoảng cách bằng <span class="arithmatex">$0$</span>; nếu không, khoảng cách đạt được giữa <span class="arithmatex">$(0, 0)$</span> và một đỉnh hoặc cạnh nào đó của đa giác.
@@ -8138,7 +8131,7 @@ ta không cần tính trực tiếp các góc cực rồi so sánh chúng mà ch
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (95.83%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (4.17%)</li></ul>
 </ul>
                 
               </article>
@@ -8204,6 +8197,8 @@ ta không cần tính trực tiếp các góc cực rồi so sánh chúng mà ch
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

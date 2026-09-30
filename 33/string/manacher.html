@@ -7999,16 +7999,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Manacher\u0027s Algorithm - Finding all sub-palindromes in O(N)";
@@ -8042,6 +8033,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8157,7 +8152,7 @@ Describe the issue of this article in detail.
 <p>The implementation of the trivial algorithm is:</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">manacher_odd_trivial</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;$&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;^&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"$"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"^"</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span><span class="w"> </span><span class="p">{</span>
@@ -8175,7 +8170,7 @@ Describe the issue of this article in detail.
 <ul>
 <li>
 <p>If <span class="arithmatex">$i$</span> is outside the current sub-palindrome, i. e. <span class="arithmatex">$i \geq r$</span>, we'll just launch the trivial algorithm.</p>
-<p>So we'll increase <span class="arithmatex">$d_{odd}[i]$</span> consecutively and check each time if the current rightmost substring <span class="arithmatex">$[i - d_{odd}[i]\dots i + d_{odd}[i]]$</span> is a palindrome. When we find the first mismatch or meet the boundaries of <span class="arithmatex">$s$</span>, we'll stop. In this case we've finally calculated <span class="arithmatex">$d_{odd}[i]$</span>. After this, we must not forget to update <span class="arithmatex">$(l, r)$</span>. <span class="arithmatex">$r$</span> should be updated in such a way that it represents the last index of the current rightmost sub-palindrome.</p>
+<p>So we'll increase <span class="arithmatex">$d_{odd}[i]$</span> consecutively and check each time if the current rightmost substring <span class="arithmatex">$[i - d_{odd}[i]\dots i + d_{odd}[i]]$</span> is a palindrome. When we find the first mismatch or meet the boundaries of <span class="arithmatex">$s$</span>, we'll stop. In this case we've finally calculated <span class="arithmatex">$d_{odd}[i]$</span>. After this, we must not forget to update <span class="arithmatex">$(l, r)$</span>. <span class="arithmatex">$r$</span> should be updated so that it represents the exclusive right border of the current rightmost sub-palindrome (therefore its last index is <span class="arithmatex">$r - 1$</span>).</p>
 </li>
 <li>
 <p>Now consider the case when <span class="arithmatex">$i \le r$</span>. We'll try to extract some information from the already calculated values in <span class="arithmatex">$d_{odd}[]$</span>. So, let's find the "mirror" position of <span class="arithmatex">$i$</span> in the sub-palindrome <span class="arithmatex">$(l, r)$</span>, i.e. we'll get the position <span class="arithmatex">$j = l + (r - i)$</span>, and we check the value of <span class="arithmatex">$d_{odd}[j]$</span>. Because <span class="arithmatex">$j$</span> is the position symmetrical to <span class="arithmatex">$i$</span> with respect to <span class="arithmatex">$(l+r)/2$</span>, we can <strong>almost always</strong> assign <span class="arithmatex">$d_{odd}[i] = d_{odd}[j]$</span>. Illustration of this (palindrome around <span class="arithmatex">$j$</span> is actually "copied" into the palindrome around <span class="arithmatex">$i$</span>):</p>
@@ -8232,7 +8227,7 @@ $$</div>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">manacher_odd</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;$&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;^&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"$"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"^"</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8261,9 +8256,9 @@ $$</div>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">manacher</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">t</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">        </span><span class="n">t</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="s">"#"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manacher_odd</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;#&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manacher_odd</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"#"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">begin</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -8281,7 +8276,7 @@ $$</div>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Alexander Kernozhitsky" data-bi-name="contributorprofile" target="_blank">Alexander Kernozhitsky</a> (44.61%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (27.45%)</li><li><a href="#" title="bruised_samurai" data-bi-name="contributorprofile" target="_blank">bruised_samurai</a> (10.78%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (5.39%)</li><li><a href="#" title="Sunit Gautam" data-bi-name="contributorprofile" target="_blank">Sunit Gautam</a> (3.43%)</li><li><a href="#" title="Yurii A." data-bi-name="contributorprofile" target="_blank">Yurii A.</a> (1.96%)</li><li><a href="#" title="HJ Ji" data-bi-name="contributorprofile" target="_blank">HJ Ji</a> (1.47%)</li><li><a href="#" title="Dip Turkar" data-bi-name="contributorprofile" target="_blank">Dip Turkar</a> (0.98%)</li><li><a href="#" title="Felipe Noronha" data-bi-name="contributorprofile" target="_blank">Felipe Noronha</a> (0.98%)</li><li><a href="#" title="sanct" data-bi-name="contributorprofile" target="_blank">sanct</a> (0.98%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (0.49%)</li><li><a href="#" title="Tarun Khullar" data-bi-name="contributorprofile" target="_blank">Tarun Khullar</a> (0.49%)</li><li><a href="#" title="Yan Huang" data-bi-name="contributorprofile" target="_blank">Yan Huang</a> (0.49%)</li><li><a href="#" title="navneet-iitbhu" data-bi-name="contributorprofile" target="_blank">navneet-iitbhu</a> (0.49%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Alexander Kernozhitsky" data-bi-name="contributorprofile" target="_blank">Alexander Kernozhitsky</a> (44.61%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (27.45%)</li><li><a href="#" title="bruised_samurai" data-bi-name="contributorprofile" target="_blank">bruised_samurai</a> (10.29%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (5.39%)</li><li><a href="#" title="Sunit Gautam" data-bi-name="contributorprofile" target="_blank">Sunit Gautam</a> (3.43%)</li><li><a href="#" title="Yurii A." data-bi-name="contributorprofile" target="_blank">Yurii A.</a> (1.96%)</li><li><a href="#" title="HJ Ji" data-bi-name="contributorprofile" target="_blank">HJ Ji</a> (1.47%)</li><li><a href="#" title="Dip Turkar" data-bi-name="contributorprofile" target="_blank">Dip Turkar</a> (0.98%)</li><li><a href="#" title="Felipe Noronha" data-bi-name="contributorprofile" target="_blank">Felipe Noronha</a> (0.98%)</li><li><a href="#" title="sanct" data-bi-name="contributorprofile" target="_blank">sanct</a> (0.98%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (0.49%)</li><li><a href="#" title="Tarun Khullar" data-bi-name="contributorprofile" target="_blank">Tarun Khullar</a> (0.49%)</li><li><a href="#" title="Yan Huang" data-bi-name="contributorprofile" target="_blank">Yan Huang</a> (0.49%)</li><li><a href="#" title="navneet-iitbhu" data-bi-name="contributorprofile" target="_blank">navneet-iitbhu</a> (0.49%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (0.49%)</li></ul>
 </ul>
                 
               </article>
@@ -8347,6 +8342,8 @@ $$</div>
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

@@ -8081,16 +8081,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Longest increasing subsequence";
@@ -8124,6 +8115,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8302,32 +8297,28 @@ Do đó, ta có thể duyệt mọi độ dài <span class="arithmatex">$l$</spa
 <p>Ngoài ra, ta cũng phải kiểm tra liệu đã tìm được một dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span> với phần tử cuối nhỏ hơn hay chưa.
 Vì vậy chỉ cập nhật khi <span class="arithmatex">$a[i] &lt; d[l]$</span>.</p>
 <p>Sau khi xử lý mọi phần tử của <span class="arithmatex">$a[]$</span>, độ dài dãy con cần tìm là giá trị <span class="arithmatex">$l$</span> lớn nhất thỏa <span class="arithmatex">$d[l] &lt; \infty$</span>.</p>
+<p>Việc thêm các giá trị <span class="arithmatex">$\pm\infty$</span> chỉ để thuận tiện khi phát biểu hệ thức truy hồi; ta không cần thực sự lưu chúng.
+Trong các cài đặt dưới đây, ta chỉ giữ các phần tử ứng với những độ dài đã đạt được.
+Khi đó <span class="arithmatex">$d[]$</span> tăng nhiều nhất một phần tử sau mỗi bước; việc đi tới vị trí ngay sau cuối mảng tương ứng với điều kiện <span class="arithmatex">$d[l] = \infty$</span> trước đây, và đáp án đơn giản là kích thước của mảng.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">lis</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">INF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e9</span><span class="p">;</span>
-<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">INF</span><span class="p">);</span>
-<span class="w">    </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">INF</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="mi">-1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
-<span class="w">                </span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
-<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">size_t</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="w">            </span><span class="n">l</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">size</span><span class="p">())</span>
+<span class="w">            </span><span class="n">d</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">INF</span><span class="p">)</span>
-<span class="w">            </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Bây giờ ta có hai nhận xét quan trọng.</p>
 <ol>
 <li>
 <p>Mảng <span class="arithmatex">$d$</span> luôn được sắp xếp:
-    <span class="arithmatex">$d[l-1] &lt; d[l]$</span> với mọi <span class="arithmatex">$i = 1 \dots n$</span>.</p>
+    <span class="arithmatex">$d[l-1] &lt; d[l]$</span> với mọi <span class="arithmatex">$l = 1 \dots n$</span>.</p>
 <p>Điều này hiển nhiên vì chỉ cần bỏ phần tử cuối khỏi dãy con tăng độ dài <span class="arithmatex">$l$</span>, ta nhận được một dãy con tăng độ dài <span class="arithmatex">$l-1$</span> với phần tử cuối nhỏ hơn.</p>
 </li>
 <li>
@@ -8336,40 +8327,58 @@ Vì vậy chỉ cập nhật khi <span class="arithmatex">$a[i] &lt; d[l]$</span
 Chỉ có thể tồn tại một vị trí trong mảng thỏa <span class="arithmatex">$d[l-1] &lt; a[i] &lt; d[l]$</span>.</p>
 </li>
 </ol>
-<p><strong>Ghi chú bản dịch:</strong> Ở nhận xét thứ nhất, bất đẳng thức được đánh chỉ số theo l nhưng nguồn lại viết “với mọi i”. Ký hiệu đúng trong lượng từ phải là l. Bản dịch giữ nguyên biểu thức của nguồn và chỉ ghi chú lỗi ký hiệu này.</p>
 <p>Vì vậy, ta có thể tìm phần tử này trong mảng <span class="arithmatex">$d[]$</span> bằng <a href="../num_methods/binary_search.html">tìm kiếm nhị phân</a> trong <span class="arithmatex">$O(\log n)$</span>.
 Thực tế, ta chỉ cần tìm trong <span class="arithmatex">$d[]$</span> số đầu tiên lớn hơn nghiêm ngặt <span class="arithmatex">$a[i]$</span>, rồi thử cập nhật phần tử đó giống như trong cài đặt phía trên.</p>
 <h3 id="cai-at_1">Cài đặt<a class="headerlink" href="#cai-at_1" title="Permanent link">&para;</a></h3>
-<p>Ta thu được cài đặt <span class="arithmatex">$O(n \log n)$</span> nhanh hơn:</p>
+<p>Ta thu được cài đặt <span class="arithmatex">$O(n \log n)$</span> nhanh hơn, chỉ khác cài đặt phía trên ở cách tìm vị trí:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">lis</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">INF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e9</span><span class="p">;</span>
-<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">INF</span><span class="p">);</span>
-<span class="w">    </span><span class="n">d</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="n">INF</span><span class="p">;</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">upper_bound</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="mi">-1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">])</span>
-<span class="w">            </span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower_bound</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+<span class="w">            </span><span class="n">d</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="o">*</span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">l</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="n">l</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">INF</span><span class="p">)</span>
-<span class="w">            </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú bản dịch:</strong> Hai cài đặt của cách tiếp cận này dùng 1e9 và -1e9 làm hai giá trị canh gác nhưng bài không nêu giới hạn giá trị phần tử. Vì đầu vào là int, các giá trị đủ lớn hoặc đủ nhỏ vẫn hợp lệ nhưng có thể làm giả thiết về hai giá trị canh gác không còn đúng. Bản dịch giữ nguyên code nguồn; vấn đề này được tách để đề xuất sửa ở bản tiếng Anh.</p>
 <h3 id="khoi-phuc-day-con_1">Khôi phục dãy con<a class="headerlink" href="#khoi-phuc-day-con_1" title="Permanent link">&para;</a></h3>
-<p>Cách tiếp cận này cũng có thể khôi phục dãy con.
-Lần này ta cần duy trì hai mảng phụ.
-Một mảng cho biết chỉ số của các phần tử trong <span class="arithmatex">$d[]$</span>.
-Và một lần nữa ta tạo mảng các "phần tử trước" <span class="arithmatex">$p[i]$</span>.
-<span class="arithmatex">$p[i]$</span> là chỉ số của phần tử trước đó trong dãy con tối ưu kết thúc tại phần tử <span class="arithmatex">$i$</span>.</p>
-<p>Hai mảng này có thể được duy trì dễ dàng trong khi duyệt mảng <span class="arithmatex">$a[]$</span> song song với quá trình tính <span class="arithmatex">$d[]$</span>.
-Sau cùng, ta có thể dùng chúng để khôi phục dãy con cần tìm.</p>
+<p>Ta cũng có thể khôi phục dãy con bằng cách tiếp cận này.
+Cách trực tiếp là duy trì hai mảng phụ: một mảng ánh xạ mỗi vị trí của <span class="arithmatex">$d[]$</span> về chỉ số của nó trong <span class="arithmatex">$a[]$</span>, và một mảng "tổ tiên" <span class="arithmatex">$p[i]$</span> lưu chỉ số của phần tử trước trong dãy con tối ưu kết thúc tại <span class="arithmatex">$a[i]$</span>.</p>
+<p>Tuy nhiên, có thể khôi phục dãy con tiết kiệm bộ nhớ hơn, chỉ dùng một mảng phụ <span class="arithmatex">$p[0 \dots n-1]$</span>, được ghi lại như một kết quả phụ của phép tìm kiếm nhị phân mà thuật toán vốn đã thực hiện.
+Ta đặt <span class="arithmatex">$p[i]$</span> là vị trí trong <span class="arithmatex">$d[]$</span> mà <span class="arithmatex">$a[i]$</span> được đưa vào, nên dãy con tăng dài nhất kết thúc tại <span class="arithmatex">$a[i]$</span> có độ dài <span class="arithmatex">$p[i] + 1$</span>.</p>
+<p>Giả sử độ dài LIS là <span class="arithmatex">$L$</span>. Ta duyệt ngược <span class="arithmatex">$a[]$</span>, chọn phần tử cuối cùng thỏa <span class="arithmatex">$p[i] = L - 1$</span>, rồi chọn phần tử cuối cùng đứng trước nó thỏa <span class="arithmatex">$p[i] = L - 2$</span>, và tiếp tục đến <span class="arithmatex">$p[i] = 0$</span>.
+Mỗi phần tử được chọn như vậy đều là phần tử đứng trước hợp lệ của phần tử đã chọn ở bước trước.
+Thật vậy, giả sử đã chọn <span class="arithmatex">$a[j]$</span> với <span class="arithmatex">$p[j] = l + 1$</span>, và <span class="arithmatex">$a[i]$</span> là phần tử cuối cùng đứng trước nó có <span class="arithmatex">$p[i] = l$</span>.
+Vì <span class="arithmatex">$d[l]$</span> luôn chứa phần tử được đặt vào vị trí <span class="arithmatex">$l$</span> gần nhất, nó bằng <span class="arithmatex">$a[i]$</span> tại thời điểm xử lý <span class="arithmatex">$a[j]$</span>.
+Phép tìm kiếm nhị phân đặt <span class="arithmatex">$a[j]$</span> vào vị trí <span class="arithmatex">$l + 1$</span> chính vì <span class="arithmatex">$d[l] &lt; a[j]$</span>, do đó <span class="arithmatex">$a[i] &lt; a[j]$</span>.</p>
+<p>Thu thập các phần tử theo cách này rồi đảo ngược thứ tự cuối cùng cho ta một dãy con tăng dài nhất.</p>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">lis</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lower_bound</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">it</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">end</span><span class="p">())</span>
+<span class="w">            </span><span class="n">d</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="o">*</span><span class="n">it</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">subseq</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">--</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">subseq</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">            </span><span class="n">l</span><span class="o">--</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="n">reverse</span><span class="p">(</span><span class="n">subseq</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">subseq</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">subseq</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="loi-giai-on-log-n-bang-cau-truc-du-lieu">Lời giải <span class="arithmatex">$O(n \log n)$</span> bằng cấu trúc dữ liệu<a class="headerlink" href="#loi-giai-on-log-n-bang-cau-truc-du-lieu" title="Permanent link">&para;</a></h2>
 <p>Thay vì cách tính dãy con tăng dài nhất trong <span class="arithmatex">$O(n \log n)$</span> ở trên, ta cũng có thể giải bài toán theo một hướng khác bằng một số cấu trúc dữ liệu đơn giản.</p>
 <p>Quay lại phương pháp đầu tiên.
@@ -8440,7 +8449,7 @@ Cụ thể, duyệt từ trái sang phải và gán số hiện tại vào dãy 
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (83.42%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (16.58%)</li></ul>
 </ul>
                 
               </article>
@@ -8506,6 +8515,8 @@ Cụ thể, duyệt từ trái sang phải và gán số hiện tại vào dãy 
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

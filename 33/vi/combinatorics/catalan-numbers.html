@@ -7989,16 +7989,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Catalan Numbers";
@@ -8032,6 +8023,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8092,15 +8087,13 @@ Describe the issue of this article in detail.
 <div class="arithmatex">$$C_0 = C_1 = 1$$</div>
 <div class="arithmatex">$$C_n = \sum_{k = 0}^{n-1} C_k C_{n-1-k} , {n} \geq 2$$</div>
 <p>Có thể suy ra công thức truy hồi dễ dàng từ bài toán dãy ngoặc đúng.</p>
-<p>Dấu ngoặc mở ngoài cùng bên trái <span class="arithmatex">$l$</span> tương ứng với một dấu ngoặc đóng <span class="arithmatex">$r$</span> nào đó, chia dãy thành 2 phần mà mỗi phần cũng phải là một dãy ngoặc đúng. Vì vậy công thức cũng tách thành 2 phần. Nếu ký hiệu <span class="arithmatex">$k = {r - l - 1}$</span> thì với <span class="arithmatex">$r$</span> cố định sẽ có đúng <span class="arithmatex">$C_k C_{n-1-k}$</span> dãy ngoặc như vậy. Cộng trên mọi <span class="arithmatex">$k's$</span> hợp lệ, ta thu được hệ thức truy hồi của <span class="arithmatex">$C_n$</span>.</p>
-<p>Ta cũng có thể hình dung theo cách sau. Theo định nghĩa, <span class="arithmatex">$C_n$</span> là số dãy ngoặc đúng. Bây giờ dãy có thể được chia thành 2 phần có độ dài <span class="arithmatex">$k$</span> và <span class="arithmatex">${n - k}$</span>, mỗi phần đều phải là một dãy ngoặc đúng. Ví dụ:</p>
-<p><span class="arithmatex">$( ) ( ( ) )$</span> có thể được chia thành <span class="arithmatex">$( )$</span> và <span class="arithmatex">$( ( ) )$</span>, nhưng không thể chia thành <span class="arithmatex">$( ) ($</span> và <span class="arithmatex">$( ) )$</span>. Một lần nữa, cộng trên mọi <span class="arithmatex">$k's$</span> hợp lệ ta thu được hệ thức truy hồi của <span class="arithmatex">$C_n$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Đoạn chứng minh ở nguồn nhầm giữa số ký tự và số cặp ngoặc: nếu l và r là vị trí hai ký tự ngoặc thì số cặp ngoặc nằm giữa chúng là <span class="arithmatex">$(r-l-1)/2$</span>, trong khi <span class="arithmatex">$C_k$</span> đếm dãy gồm k cặp ngoặc. Cách chứng minh chuẩn là cố định dấu ngoặc đóng khớp với dấu mở đầu tiên, rồi phân chia số cặp nằm bên trong và phía sau. Bản dịch giữ nguyên nội dung nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.</p>
+<p>Dấu ngoặc mở ngoài cùng bên trái <span class="arithmatex">$l$</span> tương ứng với một dấu ngoặc đóng <span class="arithmatex">$r$</span> nào đó. Giả sử có <span class="arithmatex">$k$</span> cặp ngoặc nằm giữa <span class="arithmatex">$l$</span> và <span class="arithmatex">$r$</span>. Xâu con nằm giữa chúng có thể là bất kỳ dãy ngoặc đúng nào gồm <span class="arithmatex">$k$</span> cặp, còn phần phía sau <span class="arithmatex">$r$</span> có thể là bất kỳ dãy ngoặc đúng nào gồm <span class="arithmatex">$n-1-k$</span> cặp. Do đó, với <span class="arithmatex">$k$</span> cố định, có đúng <span class="arithmatex">$C_k C_{n-1-k}$</span> dãy ngoặc như vậy. Cộng trên mọi <span class="arithmatex">$k=0,1,\ldots,n-1$</span> cho ta hệ thức truy hồi của <span class="arithmatex">$C_n$</span>.</p>
+<p>Tương đương, mọi dãy ngoặc đúng không rỗng đều có cách phân tách duy nhất thành <span class="arithmatex">$(A)B$</span>, trong đó <span class="arithmatex">$A$</span> và <span class="arithmatex">$B$</span> là các dãy ngoặc đúng. Nếu <span class="arithmatex">$A$</span> chứa <span class="arithmatex">$k$</span> cặp thì <span class="arithmatex">$B$</span> chứa <span class="arithmatex">$n-1-k$</span> cặp, cho ta cùng hệ thức truy hồi.</p>
 <h4 id="cai-at-c">Cài đặt C++<a class="headerlink" href="#cai-at-c" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MOD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">....</span>
 <span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">....</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">catalan</span><span class="p">[</span><span class="n">MAX</span><span class="p">];</span>
-<span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">init</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">catalan</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">catalan</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;=</span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">catalan</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -8113,7 +8106,6 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú bản dịch:</strong> Đoạn mã nguồn sử dụng biến n trong điều kiện vòng lặp nhưng không khai báo hoặc truyền biến này vào hàm. Bản dịch giữ nguyên đoạn mã theo quy tắc đồng bộ nguồn; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.</p>
 <h3 id="cong-thuc-giai-tich">Công thức giải tích<a class="headerlink" href="#cong-thuc-giai-tich" title="Permanent link">&para;</a></h3>
 <div class="arithmatex">$$C_n = \frac{1}{n + 1} {\binom{2n}{n}}$$</div>
 <p>(ở đây <span class="arithmatex">$\binom{n}{k}$</span> là hệ số nhị thức thông thường, tức số cách chọn <span class="arithmatex">$k$</span> đối tượng từ một tập gồm <span class="arithmatex">$n$</span> đối tượng).</p>
@@ -8139,7 +8131,7 @@ Describe the issue of this article in detail.
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (94.95%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (5.05%)</li></ul>
 </ul>
                 
               </article>
@@ -8205,6 +8197,8 @@ Describe the issue of this article in detail.
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

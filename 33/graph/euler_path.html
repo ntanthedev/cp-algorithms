@@ -7950,16 +7950,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Eulerian Path";
@@ -8069,13 +8060,13 @@ Describe the issue of this article in detail.
 
 
 <h1 id="finding-the-eulerian-path-in-om">Finding the Eulerian path in <span class="arithmatex">$O(M)$</span><a class="headerlink" href="#finding-the-eulerian-path-in-om" title="Permanent link">&para;</a></h1>
-<p>A Eulerian path is a path in a graph that passes through all of its edges exactly once.
-A Eulerian cycle is a Eulerian path that is a cycle.</p>
+<p>An Eulerian path is a path in a graph that passes through all of its edges exactly once.
+An Eulerian cycle is an Eulerian path that is a cycle.</p>
 <p>The problem is to find the Eulerian path in an <strong>undirected multigraph with loops</strong>.</p>
 <h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
 <p>First we can check if there is an Eulerian path.
 We can use the following theorem. An Eulerian cycle exists if and only if the degrees of all vertices are even.
-And an Eulerian path exists if and only if the number of vertices with odd degrees is two (or zero, in the case of the existence of a Eulerian cycle).
+And an Eulerian path exists if and only if the number of vertices with odd degrees is two (or zero, in the case of the existence of an Eulerian cycle).
 In addition, of course, the graph must be sufficiently connected (i.e., if you remove all isolated vertices from it, you should get a connected graph).</p>
 <p>To find the Eulerian path / Eulerian cycle we can use the following strategy:
 We find all simple cycles and combine them into one - this will be the Eulerian cycle.
@@ -8104,10 +8095,10 @@ until St is empty
 <p>It is easy to check the equivalence of these two forms of the algorithm. However, the second form is obviously faster, and the code will be much more efficient.</p>
 <h2 id="the-domino-problem">The Domino problem<a class="headerlink" href="#the-domino-problem" title="Permanent link">&para;</a></h2>
 <p>We give here a classical Eulerian cycle problem - the Domino problem.</p>
-<p>There are <span class="arithmatex">$N$</span> dominoes, as it is known, on both ends of the Domino one number is written (usually from 1 to 6, but in our case it is not important). You want to put all the dominoes in a row so that the numbers on any two adjacent dominoes, written on their common side, coincide. Dominoes are allowed to turn.</p>
-<p>Reformulate the problem. Let the numbers written on the bottoms be the vertices of the graph, and the dominoes be the edges of this graph (each Domino with numbers <span class="arithmatex">$(a,b)$</span> are the edges <span class="arithmatex">$(a,b)$</span> and <span class="arithmatex">$(b, a)$</span>). Then our problem is reduced to the problem of finding the Eulerian path in this graph.</p>
+<p>There are <span class="arithmatex">$N$</span> dominoes, as it is known, on both ends of the domino one number is written (usually from 1 to 6, but in our case it is not important). You want to put all the dominoes in a row so that the numbers on any two adjacent dominoes, written on their common side, coincide. Dominoes are allowed to turn.</p>
+<p>Reformulate the problem. Let the numbers written on the bottoms be the vertices of the graph, and the dominoes be the edges of this graph (each domino with numbers <span class="arithmatex">$(a,b)$</span> are the edges <span class="arithmatex">$(a,b)$</span> and <span class="arithmatex">$(b,a)$</span>). Then our problem is reduced to the problem of finding the Eulerian path in this graph.</p>
 <h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>The program below searches for and outputs a Eulerian loop or path in a graph, or outputs <span class="arithmatex">$-1$</span> if it does not exist.</p>
+<p>The program below searches for and outputs an Eulerian cycle or path in a graph, or outputs <span class="arithmatex">$-1$</span> if it does not exist.</p>
 <p>First, the program checks the degree of vertices: if there are no vertices with an odd degree, then the graph has an Euler cycle, if there are <span class="arithmatex">$2$</span> vertices with an odd degree, then in the graph there is only an Euler path (but no Euler cycle), if there are more than <span class="arithmatex">$2$</span> such vertices, then in the graph there is no Euler cycle or Euler path.
 To find the Euler path (not a cycle), let's do this: if <span class="arithmatex">$V1$</span> and <span class="arithmatex">$V2$</span> are two vertices of odd degree, then just add an edge <span class="arithmatex">$(V1, V2)$</span>, in the resulting graph we find the Euler cycle (it will obviously exist), and then remove the "fictitious" edge <span class="arithmatex">$(V1, V2)$</span> from the answer.
 We will look for the Euler cycle exactly as described above (non-recursive version), and at the same time at the end of this algorithm we will check whether the graph was connected or not (if the graph was not connected, then at the end of the algorithm some edges will remain in the graph, and in this case we need to print <span class="arithmatex">$-1$</span>).
@@ -8115,9 +8106,10 @@ Finally, the program takes into account that there can be isolated vertices in t
 <p>Notice that we use an adjacency matrix in this problem.
 Also this implementation handles finding the next with brute-force, which requires to iterate over the complete row in the matrix over and over.
 A better way would be to store the graph as an adjacency list, and remove edges in <span class="arithmatex">$O(1)$</span> and mark the reversed edges in separate list.
-This way we can achieve an <span class="arithmatex">$O(N)$</span> algorithm.</p>
+This way we can achieve an <span class="arithmatex">$O(M)$</span> algorithm.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
 <span class="w">    </span><span class="c1">// reading the graph in the adjacency matrix</span>
 
@@ -8196,7 +8188,7 @@ This way we can achieve an <span class="arithmatex">$O(N)$</span> algorithm.</p>
 <span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">res</span><span class="p">)</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -8210,7 +8202,7 @@ This way we can achieve an <span class="arithmatex">$O(N)$</span> algorithm.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Amandeep Singh" data-bi-name="contributorprofile" target="_blank">Amandeep Singh</a> (87.43%)</li><li><a href="#" title="Anish Aggarwal" data-bi-name="contributorprofile" target="_blank">Anish Aggarwal</a> (2.99%)</li><li><a href="#" title="Aryaman" data-bi-name="contributorprofile" target="_blank">Aryaman</a> (1.8%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (1.8%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (1.8%)</li><li><a href="#" title="Hostek" data-bi-name="contributorprofile" target="_blank">Hostek</a> (1.2%)</li><li><a href="#" title="Anirudh Pupneja" data-bi-name="contributorprofile" target="_blank">Anirudh Pupneja</a> (0.6%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (0.6%)</li><li><a href="#" title="Ashish Ahuja" data-bi-name="contributorprofile" target="_blank">Ashish Ahuja</a> (0.6%)</li><li><a href="#" title="Shyamal Vaderia" data-bi-name="contributorprofile" target="_blank">Shyamal Vaderia</a> (0.6%)</li><li><a href="#" title="Sohaib Uddin Syed" data-bi-name="contributorprofile" target="_blank">Sohaib Uddin Syed</a> (0.6%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Amandeep Singh" data-bi-name="contributorprofile" target="_blank">Amandeep Singh</a> (83.33%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (4.76%)</li><li><a href="#" title="Anish Aggarwal" data-bi-name="contributorprofile" target="_blank">Anish Aggarwal</a> (2.98%)</li><li><a href="#" title="Aryaman" data-bi-name="contributorprofile" target="_blank">Aryaman</a> (1.79%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (1.79%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (1.79%)</li><li><a href="#" title="Hostek" data-bi-name="contributorprofile" target="_blank">Hostek</a> (1.19%)</li><li><a href="#" title="Anirudh Pupneja" data-bi-name="contributorprofile" target="_blank">Anirudh Pupneja</a> (0.6%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (0.6%)</li><li><a href="#" title="Shyamal Vaderia" data-bi-name="contributorprofile" target="_blank">Shyamal Vaderia</a> (0.6%)</li><li><a href="#" title="Sohaib Uddin Syed" data-bi-name="contributorprofile" target="_blank">Sohaib Uddin Syed</a> (0.6%)</li></ul>
 </ul>
                 
               </article>
@@ -8276,6 +8268,8 @@ This way we can achieve an <span class="arithmatex">$O(N)$</span> algorithm.</p>
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

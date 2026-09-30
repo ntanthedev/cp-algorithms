@@ -8044,16 +8044,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Suffix Array";
@@ -8285,7 +8276,7 @@ Thuật toán cần <span class="arithmatex">$O(n \log n)$</span> thời gian v�
 Như đã nói ở đầu mục, ta có thể tạo thứ tự hậu tố đã sắp xếp bằng cách thêm một ký tự nhỏ hơn mọi ký tự khác trong xâu, rồi sắp xếp các phép dịch vòng của xâu mới, chẳng hạn với <span class="arithmatex">$s + \$$</span>.
 Điều này hiển nhiên cho mảng hậu tố của <span class="arithmatex">$s$</span>, nhưng có thêm <span class="arithmatex">$|s|$</span> ở đầu.</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">suffix_array_construction</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">&quot;$&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="s">"$"</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sorted_shifts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sort_cyclic_shifts</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
 <span class="w">    </span><span class="n">sorted_shifts</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">sorted_shifts</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">sorted_shifts</span><span class="p">;</span>
@@ -8521,6 +8512,8 @@ Cộng trên toàn bộ hậu tố, ta thu được đáp án:</p>
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

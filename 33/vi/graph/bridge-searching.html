@@ -7933,16 +7933,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Finding Bridges in O(N+M)";
@@ -7976,6 +7967,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8082,8 +8077,7 @@ Describe the issue of this article in detail.
 </code></pre></div>
 <p>Hàm chính là <code>find_bridges</code>; hàm này thực hiện các bước khởi tạo cần thiết rồi bắt đầu tìm kiếm theo chiều sâu trong từng thành phần liên thông của đồ thị.</p>
 <p>Hàm <code>IS_BRIDGE(a, b)</code> là một hàm dùng để xử lý việc cạnh <span class="arithmatex">$(a, b)$</span> là cạnh cầu, chẳng hạn như in cạnh đó ra.</p>
-<p>Lưu ý rằng theo phần mô tả của nguồn, cài đặt này hoạt động sai nếu đồ thị có nhiều cạnh song song vì bỏ qua chúng. Tất nhiên, các cạnh song song sẽ không bao giờ thuộc đáp án, vì vậy <code>IS_BRIDGE</code> có thể kiểm tra thêm rằng cạnh cầu được báo không phải là một cạnh song song. Một cách khác là truyền vào <code>dfs</code> chỉ số của cạnh dùng để đi vào đỉnh thay vì truyền đỉnh cha (và lưu chỉ số của tất cả các đỉnh).</p>
-<p><strong>Ghi chú bản dịch:</strong> Đoạn trên của nguồn tiếng Anh có hai điểm không còn khớp với cài đặt hiện tại. Thứ nhất, code đã chỉ bỏ qua đúng một cạnh dẫn về cha nên cạnh song song còn lại vẫn được xét. Thứ hai, câu cuối nguồn viết “store the indices of all vertices”, trong khi phương án truyền chỉ số cạnh cần lưu chỉ số của các cạnh. Bản dịch giữ nội dung nguồn trong đoạn chính và nêu rõ hai điểm này ở đây; chúng đã được tách thành PR sửa upstream riêng.</p>
+<p>Cờ <code>parent_skipped</code> giúp cài đặt này xử lý nhiều cạnh giữa một đỉnh và cha của nó: cài đặt chỉ bỏ qua cạnh cây DFS dùng để đi vào đỉnh, còn một cạnh song song khác được xử lý như cạnh ngược. Một cách khác là truyền vào <code>dfs</code> chỉ số của cạnh dùng để đi vào đỉnh thay vì đỉnh cha (và lưu chỉ số của tất cả các cạnh).</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://uva.onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;page=show_problem&amp;problem=737">UVA #796 "Critical Links"</a> [difficulty: low]</li>
@@ -8101,7 +8095,7 @@ Describe the issue of this article in detail.
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.39%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.61%)</li></ul>
 </ul>
                 
               </article>
@@ -8167,6 +8161,8 @@ Describe the issue of this article in detail.
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

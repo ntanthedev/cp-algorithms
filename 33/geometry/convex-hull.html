@@ -7967,16 +7967,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Convex hull construction";
@@ -8010,6 +8001,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8108,9 +8103,8 @@ nature can be done by checking the <a href="oriented-triangle-area.html">orienta
 the algorithm is done and we return the stack containing all the points of the
 convex hull in clockwise order.</p>
 <p>If you need to include the collinear points while doing a Graham scan, you need
-another step after sorting. You need to get the points that have the biggest
-polar distance from <span class="arithmatex">$P_0$</span> (these should be at the end of the sorted vector) and are collinear.
-The points in this line should be reversed so that we can output all the
+another step after sorting. You need to get the last group of the sorted vector, that is the points collinear with <span class="arithmatex">$P_0$</span> and the final point.
+The points on this ray should be reversed so that we can output all the
 collinear points, otherwise the algorithm would get the nearest point in this
 line and bail. This step shouldn't be included in the non-collinear version
 of the algorithm, otherwise you wouldn't get the smallest convex hull.</p>
@@ -8168,8 +8162,7 @@ of the algorithm, otherwise you wouldn't get the smallest convex hull.</p>
 <h2 id="monotone-chain-algorithm">Monotone chain Algorithm<a class="headerlink" href="#monotone-chain-algorithm" title="Permanent link">&para;</a></h2>
 <p>The algorithm first finds the leftmost and rightmost points A and B. In the event multiple such points exist,
 the lowest among the left (lowest Y-coordinate) is taken as A, and the highest among the right (highest Y-coordinate)
-is taken as B. Clearly, A and B must both belong to the convex hull as they are the farthest away and they cannot be contained
-by any line formed by a pair among the given points.</p>
+is taken as B. Clearly, A and B must both belong to the convex hull because no point lies farther left than A or farther right than B.</p>
 <p>Now, draw a line through AB. This divides all the other points into two sets, S1 and S2, where S1 contains all the points
 above the line connecting A and B, and S2 contains all the points below the line joining A and B. The points that lie on
 the line joining A and B may belong to either set. The points A and B belong to both sets. Now the algorithm
@@ -8260,7 +8253,7 @@ is what Graham's implementation would return in this case.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="fer22f" data-bi-name="contributorprofile" target="_blank">fer22f</a> (53.0%)</li><li><a href="#" title="Aditya Ramesh" data-bi-name="contributorprofile" target="_blank">Aditya Ramesh</a> (30.5%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (5.5%)</li><li><a href="#" title="Nguyen Xuan Tung" data-bi-name="contributorprofile" target="_blank">Nguyen Xuan Tung</a> (3.5%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (2.5%)</li><li><a href="#" title="Tarun Khullar" data-bi-name="contributorprofile" target="_blank">Tarun Khullar</a> (2.0%)</li><li><a href="#" title="Abd El-Twab M. Fakhry" data-bi-name="contributorprofile" target="_blank">Abd El-Twab M. Fakhry</a> (1.5%)</li><li><a href="#" title="Hostek" data-bi-name="contributorprofile" target="_blank">Hostek</a> (0.5%)</li><li><a href="#" title="Pedro Mesquita" data-bi-name="contributorprofile" target="_blank">Pedro Mesquita</a> (0.5%)</li><li><a href="#" title="Spheniscine" data-bi-name="contributorprofile" target="_blank">Spheniscine</a> (0.5%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="fer22f" data-bi-name="contributorprofile" target="_blank">fer22f</a> (52.02%)</li><li><a href="#" title="Aditya Ramesh" data-bi-name="contributorprofile" target="_blank">Aditya Ramesh</a> (29.8%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (5.56%)</li><li><a href="#" title="Nguyen Xuan Tung" data-bi-name="contributorprofile" target="_blank">Nguyen Xuan Tung</a> (3.54%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (2.53%)</li><li><a href="#" title="Tarun Khullar" data-bi-name="contributorprofile" target="_blank">Tarun Khullar</a> (2.02%)</li><li><a href="#" title="Abd El-Twab M. Fakhry" data-bi-name="contributorprofile" target="_blank">Abd El-Twab M. Fakhry</a> (1.52%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (1.52%)</li><li><a href="#" title="Hostek" data-bi-name="contributorprofile" target="_blank">Hostek</a> (0.51%)</li><li><a href="#" title="Pedro Mesquita" data-bi-name="contributorprofile" target="_blank">Pedro Mesquita</a> (0.51%)</li><li><a href="#" title="Spheniscine" data-bi-name="contributorprofile" target="_blank">Spheniscine</a> (0.51%)</li></ul>
 </ul>
                 
               </article>
@@ -8326,6 +8319,8 @@ is what Graham's implementation would return in this case.</p>
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

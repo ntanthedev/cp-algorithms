@@ -8022,16 +8022,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Chinese Remainder Theorem";
@@ -8065,6 +8056,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8164,8 +8159,7 @@ Vậy <span class="arithmatex">$x$</span> và <span class="arithmatex">$y$</span
 sau đó tính <span class="arithmatex">$b_3 := a \pmod{m_1 m_2 m_3}$</span> bằng hai đồng dư <span class="arithmatex">$a \equiv b_2 \pmod{m_1 m_2}$</span> và <span class="arithmatex">$a \equiv a_3 \pmod {m_3}$</span>, rồi tiếp tục tương tự.</p>
 <h3 id="xay-dung-truc-tiep">Xây dựng trực tiếp<a class="headerlink" href="#xay-dung-truc-tiep" title="Permanent link">&para;</a></h3>
 <p>Có thể xây dựng nghiệm trực tiếp theo cách tương tự nội suy Lagrange.</p>
-<p>Gọi <span class="arithmatex">$M_i := \prod_{i \neq j} m_j$</span>, là tích của mọi mô-đun trừ <span class="arithmatex">$m_i$</span>, và <span class="arithmatex">$N_i$</span> là nghịch đảo mô-đun <span class="arithmatex">$N_i := M_i^{-1} \bmod{m_i}$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Ký hiệu tích trong nguồn được viết là <span class="arithmatex">$\prod_{i \neq j} m_j$</span>; ý nghĩa theo câu văn và các công thức phía sau là lấy tích trên mọi chỉ số <span class="arithmatex">$j \neq i$</span>.</p>
+<p>Gọi <span class="arithmatex">$M_i := \prod_{j \neq i} m_j$</span>, là tích của mọi mô-đun trừ <span class="arithmatex">$m_i$</span>, và <span class="arithmatex">$N_i$</span> là nghịch đảo mô-đun <span class="arithmatex">$N_i := M_i^{-1} \bmod{m_i}$</span>.</p>
 <p>Khi đó một nghiệm của hệ đồng dư là:</p>
 <div class="arithmatex">$$a \equiv \sum_{i=1}^k a_i M_i N_i \pmod{m_1 m_2 \cdots m_k}$$</div>
 <p>Ta kiểm tra đây là nghiệm bằng cách tính <span class="arithmatex">$a \bmod{m_i}$</span> với mọi <span class="arithmatex">$i$</span>.
@@ -8262,7 +8256,7 @@ Từ các hệ số này ta có thể khôi phục toàn bộ số ban đầu.</
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.73%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.27%)</li></ul>
 </ul>
                 
               </article>
@@ -8328,6 +8322,8 @@ Từ các hệ số này ta có thể khôi phục toàn bộ số ban đầu.</
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

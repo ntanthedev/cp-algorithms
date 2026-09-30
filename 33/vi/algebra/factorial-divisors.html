@@ -7939,16 +7939,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Finding Power of Factorial Divisor";
@@ -7982,6 +7973,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8041,12 +8036,12 @@ Tổng trên tất nhiên là hữu hạn, vì chỉ xấp xỉ <span class="ari
 </code></pre></div>
 <h2 id="k-hop-so"><span class="arithmatex">$k$</span> hợp số<a class="headerlink" href="#k-hop-so" title="Permanent link">&para;</a></h2>
 <p>Không thể áp dụng trực tiếp ý tưởng trên. Thay vào đó, ta phân tích <span class="arithmatex">$k$</span> thành thừa số nguyên tố, viết <span class="arithmatex">$k = k_1^{p_1} \cdot \ldots \cdot k_m^{p_m}$</span>. Với mỗi <span class="arithmatex">$k_i$</span>, dùng thuật toán phía trên để tìm số lần thừa số này xuất hiện trong <span class="arithmatex">$n!$</span>; gọi giá trị đó là <span class="arithmatex">$a_i$</span>. Đáp án cho trường hợp <span class="arithmatex">$k$</span> hợp số là</p>
-<div class="arithmatex">$$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$</div>
+<div class="arithmatex">$$\min_ {i=1 \ldots m} \left\lfloor \dfrac{a_i}{p_i} \right\rfloor$$</div>
 <p><strong>Ghi chú bản dịch:</strong> Vì bài toán yêu cầu x là số nguyên, biểu thức nguồn phía trên chưa viết tường minh phép lấy phần nguyên. Với mỗi thừa số nguyên tố trong phân tích của k, giới hạn tương ứng của x bằng phần nguyên của tỷ số giữa số mũ của thừa số đó trong n! và số mũ của nó trong k; đáp án là giới hạn nhỏ nhất.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (94.64%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (5.36%)</li></ul>
 </ul>
                 
               </article>
@@ -8112,6 +8107,8 @@ Tổng trên tất nhiên là hữu hạn, vì chỉ xấp xỉ <span class="ari
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

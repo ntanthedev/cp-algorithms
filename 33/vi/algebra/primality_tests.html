@@ -978,23 +978,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Kiểm tra tính nguyên tố Miller-Rabin">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#phien-ban-tat-inh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Phiên bản tất định
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -7961,16 +7944,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Primality tests";
@@ -8004,6 +7978,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8111,8 +8089,11 @@ Trong trường hợp đó, cơ số <span class="arithmatex">$a$</span> đượ
 Nếu một cơ số <span class="arithmatex">$a$</span> thỏa một trong các đẳng thức, <span class="arithmatex">$n$</span> mới chỉ là một <em>số có khả năng nguyên tố mạnh</em> (strong probable prime).
 Tuy nhiên, không tồn tại các số tương tự số Carmichael mà mọi cơ số không tầm thường đều đánh lừa phép kiểm tra.
 Thực tế có thể chứng minh rằng nhiều nhất <span class="arithmatex">$\frac{1}{4}$</span> số cơ số có thể là các cơ số đánh lừa mạnh.
-Nếu <span class="arithmatex">$n$</span> là hợp số, một cơ số ngẫu nhiên có xác suất <span class="arithmatex">$\ge 75\%$</span> cho ta biết nó là hợp số.
-Bằng cách thực hiện nhiều vòng lặp với các cơ số ngẫu nhiên khác nhau, ta có thể xác định với xác suất rất cao một số thực sự là nguyên tố hay là hợp số.</p>
+Nếu <span class="arithmatex">$n$</span> là hợp số, một cơ số ngẫu nhiên có xác suất <span class="arithmatex">$\ge 75\%$</span> cho ta biết nó là hợp số; vì vậy, lặp phép kiểm tra với các cơ số ngẫu nhiên giúp giảm xác suất sai xuống nhỏ tùy ý.</p>
+<p>Trên một miền bị chặn, ta có thể bỏ hoàn toàn tính ngẫu nhiên: một tập nhỏ các cơ số cố định, tìm được bằng vét cạn, quyết định chính xác tính nguyên tố của mọi số trong miền đó.
+Miller chỉ ra rằng kiểm tra mọi cơ số <span class="arithmatex">$\le O((\ln n)^2)$</span> làm phép kiểm tra trở thành tất định, và Bach đưa ra cận cụ thể <span class="arithmatex">$a \le 2\ln(n)^2$</span>.
+Đó vẫn là nhiều cơ số, nên người ta đã dành đáng kể tài nguyên tính toán để tìm các tập nhỏ hơn.
+Với số nguyên 64 bit, bảy cơ số là đủ: 2, 325, 9375, 28178, 450775, 9780504 và 1795265022.</p>
 <p>Dưới đây là một cài đặt cho số nguyên 64 bit.</p>
 <div class="highlight"><pre><span></span><code><span class="k">using</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">uint64_t</span><span class="p">;</span>
 <span class="k">using</span><span class="w"> </span><span class="n">u128</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">__uint128_t</span><span class="p">;</span>
@@ -8130,6 +8111,9 @@ Bằng cách thực hiện nhiều vòng lặp với các cơ số ngẫu nhiên
 <span class="p">}</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">check_composite</span><span class="p">(</span><span class="n">u64</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">u64</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">a</span><span class="w"> </span><span class="o">%=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// n divides the base, so this base can say nothing about n</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="n">u64</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">binpower</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">);</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
@@ -8141,9 +8125,9 @@ Bằng cách thực hiện nhiều vòng lặp với các cơ số ngẫu nhiên
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">};</span>
 
-<span class="kt">bool</span><span class="w"> </span><span class="nf">MillerRabin</span><span class="p">(</span><span class="n">u64</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">iter</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// returns true if n is probably prime, else returns false.</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="kt">bool</span><span class="w"> </span><span class="nf">MillerRabin</span><span class="p">(</span><span class="n">u64</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// returns true if n is prime, else returns false.</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="n">u64</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -8152,48 +8136,23 @@ Bằng cách thực hiện nhiều vòng lặp với các cơ số ngẫu nhiên
 <span class="w">        </span><span class="n">s</span><span class="o">++</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">iter</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rand</span><span class="p">()</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">u64</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">325</span><span class="p">,</span><span class="w"> </span><span class="mi">9375</span><span class="p">,</span><span class="w"> </span><span class="mi">28178</span><span class="p">,</span><span class="w"> </span><span class="mi">450775</span><span class="p">,</span><span class="w"> </span><span class="mi">9780504</span><span class="p">,</span><span class="w"> </span><span class="mi">1795265022</span><span class="p">})</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">check_composite</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">s</span><span class="p">))</span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Trước khi chạy Miller-Rabin, ta có thể kiểm tra thêm xem một vài số nguyên tố nhỏ đầu tiên có phải ước hay không.
-Điều này có thể tăng tốc đáng kể vì phần lớn hợp số có thừa số nguyên tố rất nhỏ.
-Ví dụ, <span class="arithmatex">$88\%$</span> mọi số có một thừa số nguyên tố nhỏ hơn <span class="arithmatex">$100$</span>.</p>
-<h3 id="phien-ban-tat-inh">Phiên bản tất định<a class="headerlink" href="#phien-ban-tat-inh" title="Permanent link">&para;</a></h3>
-<p>Miller chứng minh rằng có thể làm thuật toán trở thành tất định bằng cách chỉ kiểm tra mọi cơ số <span class="arithmatex">$\le O((\ln n)^2)$</span>.
-Sau đó Bach đưa ra một cận cụ thể: chỉ cần kiểm tra mọi cơ số <span class="arithmatex">$a \le 2 \ln(n)^2$</span>.</p>
-<p>Đây vẫn là một số lượng cơ số khá lớn.
-Vì vậy, người ta đã dành nhiều tài nguyên tính toán để tìm các cận nhỏ hơn.
-Hóa ra, để kiểm tra một số nguyên 32 bit, chỉ cần kiểm tra bốn cơ số nguyên tố đầu tiên: 2, 3, 5 và 7.
-Hợp số nhỏ nhất vượt qua phép kiểm tra này là <span class="arithmatex">$3,215,031,751 = 151 \cdot 751 \cdot 28351$</span>.
-Còn để kiểm tra một số nguyên 64 bit, chỉ cần kiểm tra 12 cơ số nguyên tố đầu tiên: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 và 37.</p>
-<p>Từ đó ta có cài đặt tất định sau:</p>
-<div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">MillerRabin</span><span class="p">(</span><span class="n">u64</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// returns true if n is prime, else returns false.</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">    </span><span class="n">u64</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">((</span><span class="n">d</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">d</span><span class="w"> </span><span class="o">&gt;&gt;=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">        </span><span class="n">r</span><span class="o">++</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w"> </span><span class="mi">17</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span><span class="w"> </span><span class="mi">29</span><span class="p">,</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="mi">37</span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">a</span><span class="p">)</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">check_composite</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">))</span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Cũng có thể kiểm tra chỉ với 7 cơ số: 2, 325, 9375, 28178, 450775, 9780504 và 1795265022.
-Tuy nhiên, vì các số này (trừ 2) không phải số nguyên tố, ta cần kiểm tra thêm xem số đang xét có bằng bất kỳ thừa số nguyên tố nào của các cơ số đó hay không: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.</p>
+<p>Ngoài <span class="arithmatex">$2$</span>, không cơ số nào trong bảy cơ số là số nguyên tố, nên một cơ số có thể là bội của chính <span class="arithmatex">$n$</span> đang kiểm tra; chẳng hạn <span class="arithmatex">$5$</span> là ước của <span class="arithmatex">$9375$</span> và <span class="arithmatex">$13$</span> là ước của <span class="arithmatex">$325$</span>.
+Cơ số như vậy có phần dư bằng <span class="arithmatex">$0$</span> và không cho biết gì về <span class="arithmatex">$n$</span>, nên <code>check_composite</code> bỏ qua nó và để các cơ số còn lại quyết định.</p>
+<p>Điều này hẹp hơn việc bỏ qua mọi phần dư bằng không, và đó là chủ đích.
+Nếu <span class="arithmatex">$n$</span> không phải ước của <span class="arithmatex">$a$</span> nhưng lại là ước của <span class="arithmatex">$a^d$</span> thì <span class="arithmatex">$n$</span> không thể là số nguyên tố, vì một số nguyên tố là ước của <span class="arithmatex">$a^d$</span> phải là ước của <span class="arithmatex">$a$</span>.
+Trong trường hợp này, giá trị không là bằng chứng về tính hợp số chứ không phải thiếu thông tin, và hàm sẽ kết luận tương ứng.
+Chỉ nhánh đầu tiên bỏ qua thông tin, vì vậy cùng hàm <code>check_composite</code> vẫn đúng nếu nhận các cơ số ngẫu nhiên thay cho tập cố định này.</p>
+<p>Dùng 12 số nguyên tố đầu tiên làm cơ số, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 và 37, cũng đúng cho số nguyên 64 bit, nhưng tốn thêm năm vòng kiểm tra.
+Với số nguyên 32 bit, bốn cơ số nguyên tố đầu tiên 2, 3, 5 và 7 là đủ; hợp số nhỏ nhất vượt qua chúng là <span class="arithmatex">$3\,215\,031\,751 = 151 \cdot 751 \cdot 28351$</span>.</p>
+<p>Có thể giảm số vòng hơn nữa bằng cách chọn cơ số từ một bảng nhỏ được đánh chỉ số bằng giá trị băm của <span class="arithmatex">$n$</span>, nhờ đó chỉ cần ba phép kiểm tra cho một số 64 bit bất kỳ.
+Xem <a href="https://lib.cp-algorithms.com/cp-algo/number_theory/primality.hpp.html"><code>cp-algo/number_theory/primality.hpp</code></a>, mặc định dùng bảy cơ số trên và chuyển sang bảng băm khi có sẵn, đồng thời dùng bộ cơ số quen thuộc 2, 7 và 61 cho các số nhỏ hơn <span class="arithmatex">$2^{32}$</span> khi không dùng bảng.
+Các bảng do <a href="https://www.techneon.com/">Bradley Berg</a> xây dựng, mở rộng một phép kiểm tra 32 bit trước đó của Steve Worley.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.spoj.com/problems/PON/">SPOJ - Prime or Not</a></li>
@@ -8202,7 +8161,7 @@ Tuy nhiên, vì các số này (trừ 2) không phải số nguyên tố, ta c�
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (87.25%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (12.75%)</li></ul>
 </ul>
                 
               </article>
@@ -8268,6 +8227,8 @@ Tuy nhiên, vì các số này (trừ 2) không phải số nguyên tố, ta c�
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

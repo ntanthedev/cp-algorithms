@@ -7994,16 +7994,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Knuth\u0027s Optimization";
@@ -8037,6 +8028,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8145,7 +8140,7 @@ $$</div>
 Bất đẳng thức rút gọn thành <span class="arithmatex">$dp(a, b) + dp(b, d) \leq dp(a, d)$</span> (điều này giả sử <span class="arithmatex">$dp(i, i) = 0$</span> với mọi <span class="arithmatex">$i$</span>, đúng với mọi bài toán sử dụng phép tối ưu này). Đặt <span class="arithmatex">$opt(a,d) = z$</span>. </p>
 <ul>
 <li>
-<p>Nếu <span class="arithmatex">$z &lt; j$</span>,<br />
+<p>Nếu <span class="arithmatex">$z &lt; b$</span>,<br />
 Ta có</p>
 <div class="arithmatex">$$
 dp(a, b) \leq dp_{z}(a, b) = dp(a, z) + dp(z+1, b) + C(a, b).
@@ -8157,7 +8152,7 @@ $$</div>
 <p>Theo giả thiết quy nạp, <span class="arithmatex">$dp(z+1, b) + dp(b, d) \leq dp(z+1, d)$</span>. Đồng thời, đề bài cho <span class="arithmatex">$C(a, b) \leq C(a, d)$</span>. Kết hợp hai điều này với bất đẳng thức trên, ta thu được kết quả cần chứng minh.</p>
 </li>
 <li>
-<p>Nếu <span class="arithmatex">$z \geq j$</span>, chứng minh của trường hợp này đối xứng với trường hợp trước.</p>
+<p>Nếu <span class="arithmatex">$z \geq b$</span>, chứng minh của trường hợp này đối xứng với trường hợp trước.</p>
 </li>
 </ul>
 </li>
@@ -8184,7 +8179,6 @@ $$</div>
 </ol>
 <p>Như vậy bổ đề được chứng minh.</p>
 </details>
-<p>Ghi chú bản dịch: Trong trường hợp 1 của chứng minh trên, nguồn dùng các điều kiện “z &lt; j” và “z ≥ j” dù biến j không được định nghĩa trong thiết lập đó. Theo ngữ cảnh của lập luận, mốc phân trường hợp phải là b. Bản dịch giữ nguyên ký hiệu để đồng bộ với nguồn hiện tại. Vấn đề này đã được báo và đề xuất sửa riêng ở bản tiếng Anh.</p>
 <p>Bây giờ xét thiết lập sau. Ta có 2 chỉ số <span class="arithmatex">$i \leq p \leq q &lt; j$</span>. Đặt <span class="arithmatex">$dp_{k} = C(i, j) + dp(i, k) + dp(k+1, j)$</span>.</p>
 <p>Giả sử ta chứng minh được rằng</p>
 <div class="arithmatex">$$
@@ -8224,7 +8218,7 @@ $$</div>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.99%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.01%)</li></ul>
 </ul>
                 
               </article>
@@ -8290,6 +8284,8 @@ $$</div>
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

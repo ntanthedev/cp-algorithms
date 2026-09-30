@@ -7922,16 +7922,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "RMQ task (Range Minimum Query - the smallest element in an interval)";
@@ -7965,6 +7956,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8034,7 +8029,7 @@ You have to answer incoming queries of the form <span class="arithmatex">$(L, R)
 <li><a href="../data_structures/segment_tree.html">Segment tree</a> - answers each query in <span class="arithmatex">$O(\log N)$</span>, preprocessing done in <span class="arithmatex">$O(N)$</span>.
   Pros: good time complexity. Cons: larger amount of code compared to the other data structures.</li>
 <li><a href="../data_structures/fenwick.html">Fenwick tree</a> - answers each query in <span class="arithmatex">$O(\log N)$</span>, preprocessing done in <span class="arithmatex">$O(N \log N)$</span>.
-  Pros: the shortest code, good time complexity. Cons: Fenwick tree can only be used for queries with <span class="arithmatex">$L = 1$</span>, so it is not applicable to many problems.</li>
+  Pros: the shortest code, good time complexity. Cons: the standard Fenwick tree for RMQ only supports prefix queries (<span class="arithmatex">$L = 1$</span>).</li>
 </ul>
 <p>And here are the approaches that only work on static arrays, i.e. it is not possible to change a value in the array without recomputing the complete data structure.</p>
 <ul>
@@ -8054,7 +8049,7 @@ You have to answer incoming queries of the form <span class="arithmatex">$(L, R)
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (47.62%)</li><li><a href="#" title="Anthony" data-bi-name="contributorprofile" target="_blank">Anthony</a> (19.05%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (14.29%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (9.52%)</li><li><a href="#" title="Kartikay singh" data-bi-name="contributorprofile" target="_blank">Kartikay singh</a> (7.14%)</li><li><a href="#" title="Tanmay Sinha" data-bi-name="contributorprofile" target="_blank">Tanmay Sinha</a> (2.38%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (45.24%)</li><li><a href="#" title="Anthony" data-bi-name="contributorprofile" target="_blank">Anthony</a> (19.05%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (14.29%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (9.52%)</li><li><a href="#" title="Kartikay singh" data-bi-name="contributorprofile" target="_blank">Kartikay singh</a> (7.14%)</li><li><a href="#" title="Abhay Mahalle" data-bi-name="contributorprofile" target="_blank">Abhay Mahalle</a> (2.38%)</li><li><a href="#" title="Tanmay Sinha" data-bi-name="contributorprofile" target="_blank">Tanmay Sinha</a> (2.38%)</li></ul>
 </ul>
                 
               </article>
@@ -8120,6 +8115,8 @@ You have to answer incoming queries of the form <span class="arithmatex">$(L, R)
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

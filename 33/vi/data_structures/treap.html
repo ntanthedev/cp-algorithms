@@ -8071,16 +8071,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Treap";
@@ -8114,6 +8105,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8242,13 +8237,10 @@ Nếu một nút của cây chứa các giá trị <span class="arithmatex">$(X_
 <span class="w">        </span><span class="n">split</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">l</span><span class="p">),</span><span class="w">  </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><code>t</code> là Treap cần tách, còn <code>key</code> là giá trị BST dùng làm mốc tách. Lưu ý rằng ta không <code>return</code> các giá trị kết quả ở đâu cả; thay vào đó, ta chỉ sử dụng chúng như sau:</p>
+<p><code>t</code> là Treap cần tách, còn <code>key</code> là giá trị BST dùng làm mốc tách. Lưu ý rằng ta không <code>return</code> các kết quả; thay vào đó, hai treap đầu ra được ghi thông qua <code>l</code> và <code>r</code>, chẳng hạn:</p>
 <div class="highlight"><pre><span></span><code><span class="n">pitem</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="n">split</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="p">);</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Left subtree size: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">l</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Right subtree size: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 </code></pre></div>
-<p>Ghi chú bản dịch: Đoạn ví dụ trên truy cập trường size, nhưng cấu trúc item được khai báo ngay trước đó chưa định nghĩa trường này. Vì đây là lỗi của nguồn, bản dịch giữ nguyên đoạn code để đồng bộ.</p>
 <p>Hàm <code>split</code> này có thể khá khó hiểu vì nó vừa có con trỏ (<code>pitem</code>), vừa có tham chiếu tới các con trỏ đó (<code>pitem &amp;l</code>). Ta hãy diễn giải bằng lời ý nghĩa của lời gọi <code>split(t, k, l, r)</code>: "tách Treap <code>t</code> theo giá trị <code>k</code> thành hai Treap, rồi lưu Treap bên trái vào <code>l</code> và Treap bên phải vào <code>r</code>". Bây giờ, hãy áp dụng định nghĩa này cho hai lời gọi đệ quy theo các trường hợp đã phân tích ở phần trước: (Điều kiện if đầu tiên chỉ là trường hợp cơ sở đơn giản khi Treap rỗng)</p>
 <ol>
 <li>Khi giá trị nút gốc là <span class="arithmatex">$\le$</span> key, ta gọi <code>split (t-&gt;r, key, t-&gt;r, r)</code>, nghĩa là: "tách Treap <code>t-&gt;r</code> (cây con phải của <code>t</code>) theo giá trị <code>key</code>, lưu cây con trái vào <code>t-&gt;r</code> và cây con phải vào <code>r</code>". Sau đó ta đặt <code>l = t</code>. Lúc này giá trị kết quả <code>l</code> đã chứa <code>t-&gt;l</code>, <code>t</code> và cả <code>t-&gt;r</code> (là kết quả từ lời gọi đệ quy vừa thực hiện), tất cả đã được hợp nhất theo đúng thứ tự! Bạn nên dừng lại một chút để chắc chắn rằng kết quả <code>l</code> và <code>r</code> đúng với phần Mô tả cài đặt ở trên.</li>
@@ -8328,11 +8320,10 @@ Nếu một nút của cây chứa các giá trị <span class="arithmatex">$(X_
 <span class="w">    </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">mid</span><span class="p">);</span>
 <span class="w">    </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mid</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="w">    </span><span class="n">heapify</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
-<span class="w">    </span><span class="n">upd_cnt</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="w">    </span><span class="n">upd_cnt</span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Ghi chú bản dịch: Dòng gọi upd_cnt(t) trong đoạn code trên thiếu dấu chấm phẩy, nên đoạn code không biên dịch nguyên trạng. Vì đây là lỗi của nguồn, bản dịch giữ nguyên code để đồng bộ.</p>
 <p>Lưu ý: lời gọi <code>upd_cnt(t)</code> chỉ cần thiết nếu bạn cần kích thước cây con.</p>
 <p>Cách tiếp cận trên luôn tạo ra một cây cân bằng hoàn hảo, nhìn chung tốt trong thực tế, nhưng đổi lại nó không giữ nguyên các độ ưu tiên đã được gán ban đầu cho mỗi nút. Vì vậy, cách này không phù hợp để giải bài toán sau:</p>
 <div class="admonition example">
@@ -8341,7 +8332,8 @@ Nếu một nút của cây chứa các giá trị <span class="arithmatex">$(X_
 </div>
 <p>Lưu ý rằng trong bài toán này các độ ưu tiên không ngẫu nhiên, vì thế việc chỉ chèn từng đỉnh một có thể dẫn tới lời giải bậc hai.</p>
 <p>Một lời giải khả dĩ là, với mỗi phần tử, tìm phần tử gần nhất bên trái và bên phải có độ ưu tiên nhỏ hơn độ ưu tiên của phần tử đó. Trong hai phần tử này, phần tử có độ ưu tiên lớn hơn phải là cha của phần tử hiện tại.</p>
-<p>Bài toán này có thể giải bằng một biến thể của <a href="stack_queue_modification.html">ngăn xếp cực tiểu</a> trong thời gian tuyến tính:</p>
+<p>Bài toán này có thể giải bằng một biến thể của <a href="stack_queue_modification.html">ngăn xếp cực tiểu</a> trong thời gian tuyến tính.
+Cách dựng dưới đây dùng quy ước min-heap cho độ ưu tiên, khác với quy ước max-heap của cài đặt treap thông thường ở trên, và giả sử <code>item</code> được mở rộng với con trỏ cha <code>p</code> khởi tạo bằng <code>nullptr</code>:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">connect</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="k">auto</span><span class="w"> </span><span class="n">to</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pitem</span><span class="o">&gt;</span><span class="w"> </span><span class="n">st</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">it</span><span class="o">:</span><span class="w"> </span><span class="n">ranges</span><span class="o">::</span><span class="n">subrange</span><span class="p">(</span><span class="n">from</span><span class="p">,</span><span class="w"> </span><span class="n">to</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
@@ -8376,7 +8368,6 @@ Nếu một nút của cây chứa các giá trị <span class="arithmatex">$(X_
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">nodes</span><span class="p">[</span><span class="n">min_element</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y</span><span class="p">];</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Ghi chú bản dịch: Đoạn dựng tuyến tính này dùng trường p làm con trỏ cha, nhưng cấu trúc item đã khai báo trước đó không có trường p. Ngoài ra, đoạn này dùng quy ước heap cực tiểu theo độ ưu tiên, khác với quy ước heap cực đại ở phần Treap thông thường phía trên. Đây là vấn đề của nguồn; bản dịch giữ nguyên code để đồng bộ.</p>
 <h2 id="implicit-treap">Implicit Treap<a class="headerlink" href="#implicit-treap" title="Permanent link">&para;</a></h2>
 <p>Implicit Treap là một biến thể đơn giản nhưng rất mạnh của Treap thông thường. Trên thực tế, có thể xem Implicit Treap như một mảng hỗ trợ các thao tác sau (tất cả đều trong <span class="arithmatex">$O (\log N)$</span> ở chế độ online):</p>
 <ul>
@@ -8426,9 +8417,8 @@ Cụ thể hơn, <strong>khóa ẩn</strong> của một nút T là số đỉnh
 <li><strong>Cộng / tô (gán)</strong> trên đoạn.<br />
  Ta làm tương tự đoạn trước, nhưng thay vì trường F, ta lưu một trường <code>add</code> chứa giá trị cần cộng cho cây con (hoặc giá trị mà cây con sẽ được tô thành). Trước khi thực hiện bất kỳ thao tác nào, ta phải "push" giá trị này xuống đúng cách — tức thay đổi <span class="arithmatex">$T \rightarrow L \rightarrow add$</span> và <span class="arithmatex">$T \rightarrow R \rightarrow add$</span>, rồi xóa <code>add</code> ở nút cha. Nhờ vậy, thông tin sẽ không bị mất sau các thay đổi trên cây.</li>
 <li><strong>Đảo ngược</strong> trên đoạn.<br />
- Thao tác này lại tương tự thao tác trước: ta cần thêm cờ Boolean <code>rev</code> và đặt nó thành true khi cây con của nút hiện tại phải bị đảo ngược. Việc "push" giá trị này phức tạp hơn một chút — ta đổi chỗ hai nút con của nút này và đặt cờ tương ứng thành true cho chúng.</li>
+ Thao tác này lại tương tự thao tác trước: ta cần thêm cờ Boolean <code>rev</code> và đảo giá trị của nó khi cây con của nút hiện tại phải bị đảo ngược. Việc "push" giá trị này phức tạp hơn một chút — ta đổi chỗ hai nút con của nút này và đảo giá trị cờ tương ứng của chúng.</li>
 </ul>
-<p>Ghi chú bản dịch: Ở mục Đảo ngược phía trên, nguồn mô tả rằng khi đẩy phép đảo ngược ta đặt cờ của các nút con thành true, nhưng code bên dưới thực tế đảo giá trị cờ. Cách trong code mới đúng vì hai phép đảo ngược liên tiếp phải triệt tiêu nhau. Bản dịch giữ mô tả nguồn để đồng bộ.</p>
 <p>Dưới đây là một cài đặt mẫu của Implicit Treap hỗ trợ đảo ngược một đoạn. Với mỗi nút, ta lưu trường <code>value</code>, là giá trị thực tế của phần tử mảng tại vị trí hiện tại. Ta cũng cung cấp cài đặt hàm <code>output()</code>, hàm này xuất ra mảng tương ứng với trạng thái hiện tại của Implicit Treap.</p>
 <div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">item</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pitem</span><span class="p">;</span>
 <span class="k">struct</span><span class="w"> </span><span class="nc">item</span><span class="w"> </span><span class="p">{</span>
@@ -8492,7 +8482,7 @@ Cụ thể hơn, <strong>khóa ẩn</strong> của một nút T là số đỉnh
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">t</span><span class="p">)</span><span class="w">  </span><span class="k">return</span><span class="p">;</span>
 <span class="w">    </span><span class="n">push</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="p">);</span>
 <span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">l</span><span class="p">);</span>
-<span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;%d &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">"%d "</span><span class="p">,</span><span class="w"> </span><span class="n">t</span><span class="o">-&gt;</span><span class="n">value</span><span class="p">);</span>
 <span class="w">    </span><span class="n">output</span><span class="w"> </span><span class="p">(</span><span class="n">t</span><span class="o">-&gt;</span><span class="n">r</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -8521,7 +8511,7 @@ Cụ thể hơn, <strong>khóa ẩn</strong> của một nút T là số đỉnh
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.41%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.59%)</li></ul>
 </ul>
                 
               </article>
@@ -8587,6 +8577,8 @@ Cụ thể hơn, <strong>khóa ẩn</strong> của một nút T là số đỉnh
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

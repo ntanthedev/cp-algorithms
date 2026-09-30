@@ -7944,16 +7944,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Breadth First Search";
@@ -7987,6 +7978,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8030,10 +8025,10 @@ Describe the issue of this article in detail.
 <p>Đầu vào của thuật toán là một đồ thị không trọng số và chỉ số của đỉnh xuất phát <span class="arithmatex">$s$</span>. Đồ thị có thể có hướng hoặc vô hướng; điều này không làm thay đổi cách BFS hoạt động.</p>
 <p>Có thể hình dung thuật toán như một đám cháy lan trên đồ thị: ở bước thứ không, chỉ đỉnh nguồn <span class="arithmatex">$s$</span> đang cháy. Ở mỗi bước tiếp theo, lửa tại từng đỉnh lan sang tất cả các đỉnh kề. Sau mỗi vòng lặp, "vòng lửa" mở rộng thêm một lớp, vì thế thuật toán có tên là tìm kiếm theo chiều rộng.</p>
 <p>Cụ thể hơn, ta tạo một hàng đợi <span class="arithmatex">$q$</span> chứa các đỉnh cần xử lý và một mảng Boolean <span class="arithmatex">$used[]$</span> cho biết mỗi đỉnh đã được thăm hay chưa.</p>
-<p>Ban đầu, đưa đỉnh nguồn <span class="arithmatex">$s$</span> vào hàng đợi, đặt <span class="arithmatex">$used[s] = true$</span>, còn với mọi đỉnh <span class="arithmatex">$v$</span> khác thì đặt <span class="arithmatex">$used[v] = false$</span>.
+<p>Ban đầu, đưa đỉnh nguồn <span class="arithmatex">$s$</span> vào hàng đợi, đặt <span class="arithmatex">$used[s] = true$</span>, còn với mọi đỉnh khác thì đặt <span class="arithmatex">$used[v] = false$</span>.
 Sau đó, lặp cho đến khi hàng đợi rỗng. Trong mỗi vòng lặp, lấy một đỉnh ở đầu hàng đợi, duyệt mọi cạnh đi ra từ đỉnh đó; nếu một cạnh dẫn đến đỉnh chưa được thăm, đánh dấu đỉnh ấy đã được thăm và đưa nó vào hàng đợi.</p>
 <p>Khi hàng đợi rỗng, BFS đã thăm mọi đỉnh có thể đi tới từ nguồn <span class="arithmatex">$s$</span>, và mỗi đỉnh được tiếp cận theo đường đi ngắn nhất có thể.
-Ta cũng có thể tính độ dài đường đi ngắn nhất bằng cách duy trì mảng khoảng cách <span class="arithmatex">$d[]$</span>, đồng thời lưu thông tin để khôi phục các đường đi bằng mảng "cha" <span class="arithmatex">$p[]$</span>, trong đó <span class="arithmatex">$p[v]$</span> là đỉnh mà từ đó ta đi tới <span class="arithmatex">$v$</span> lần đầu.</p>
+Ta cũng có thể tính độ dài đường đi ngắn nhất bằng cách duy trì mảng khoảng cách <span class="arithmatex">$d[]$</span>, đồng thời lưu thông tin để khôi phục các đường đi bằng mảng "cha" <span class="arithmatex">$p[]$</span>, lưu cho mỗi đỉnh đỉnh trước mà từ đó ta đi tới nó.</p>
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <p>Dưới đây là cách cài đặt thuật toán bằng C++ và Java.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">C++</label><label for="__tabbed_1_2">Java</label></div>
@@ -8099,21 +8094,21 @@ Ta cũng có thể tính độ dài đường đi ngắn nhất bằng cách duy
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">used</span><span class="p">[</span><span class="n">u</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;No path!&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"No path!"</span><span class="p">;</span>
 <span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="n">v</span><span class="p">])</span>
 <span class="w">        </span><span class="n">path</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
 <span class="w">    </span><span class="n">reverse</span><span class="p">(</span><span class="n">path</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">path</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
-<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Path: &quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Path: "</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">path</span><span class="p">)</span>
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">used</span><span class="o">[</span><span class="n">u</span><span class="o">]</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;No path!&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"No path!"</span><span class="p">);</span>
 <span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">u</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="o">[</span><span class="n">v</span><span class="o">]</span><span class="p">)</span>
@@ -8155,7 +8150,7 @@ Trong tất cả các chu trình thu được, nhiều nhất một chu trình t
 Ta chạy hai lần tìm kiếm theo chiều rộng:
 một lần từ <span class="arithmatex">$a$</span> và một lần từ <span class="arithmatex">$b$</span>.
 Gọi <span class="arithmatex">$d_a []$</span> là mảng khoảng cách ngắn nhất thu được từ BFS bắt đầu tại <span class="arithmatex">$a$</span>, và <span class="arithmatex">$d_b []$</span> là mảng khoảng cách ngắn nhất thu được từ BFS bắt đầu tại <span class="arithmatex">$b$</span>.
-Với mỗi cạnh <span class="arithmatex">$(u, v)$</span>, có thể kiểm tra dễ dàng cạnh đó có nằm trên một đường đi ngắn nhất giữa <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> hay không bằng điều kiện <span class="arithmatex">$d_a [u] + 1 + d_b [v] = d_a [b]$</span>.</p>
+Với mỗi cạnh <span class="arithmatex">$(u, v)$</span>, giả sử <span class="arithmatex">$d_a [u] &lt; d_a [v]$</span>, tức <span class="arithmatex">$u$</span> đứng trước <span class="arithmatex">$v$</span> khi đi từ <span class="arithmatex">$a$</span> đến <span class="arithmatex">$b$</span>. Khi đó có thể kiểm tra dễ dàng cạnh này có nằm trên một đường đi ngắn nhất giữa <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> hay không bằng điều kiện <span class="arithmatex">$d_a [u] + 1 + d_b [v] = d_a [b]$</span>.</p>
 </li>
 <li>
 <p>Tìm mọi đỉnh nằm trên ít nhất một đường đi ngắn nhất giữa hai đỉnh <span class="arithmatex">$(a, b)$</span>.
@@ -8202,7 +8197,7 @@ Sau đó, chạy BFS để tìm hành trình ngắn nhất từ trạng thái đ
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.3%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.7%)</li></ul>
 </ul>
                 
               </article>
@@ -8268,6 +8263,8 @@ Sau đó, chạy BFS để tìm hành trình ngắn nhất từ trạng thái đ
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

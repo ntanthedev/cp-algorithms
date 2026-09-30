@@ -7939,16 +7939,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Checking a graph for acyclicity and finding a cycle in O(M)";
@@ -8015,6 +8006,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8047,7 +8042,7 @@ Describe the issue of this article in detail.
 
 <h1 id="checking-a-graph-for-acyclicity-and-finding-a-cycle-in-om">Checking a graph for acyclicity and finding a cycle in <span class="arithmatex">$O(M)$</span><a class="headerlink" href="#checking-a-graph-for-acyclicity-and-finding-a-cycle-in-om" title="Permanent link">&para;</a></h1>
 <p>Consider a directed or undirected graph without loops and multiple edges. We have to check whether it is acyclic, and if it is not, then find any cycle.</p>
-<p>We can solve this problem by using <a href="depth-first-search.html">Depth First Search</a> in <span class="arithmatex">$O(M)$</span> where <span class="arithmatex">$M$</span> is number of edges.</p>
+<p>We can solve this problem by using <a href="depth-first-search.html">Depth First Search</a> in <span class="arithmatex">$O(M)$</span>, where <span class="arithmatex">$M$</span> is the number of edges. An isolated vertex can never lie on a cycle, so it is enough to start the search from the at most <span class="arithmatex">$2M$</span> vertices that are incident to an edge. The implementation below simply iterates over all vertices, which adds an <span class="arithmatex">$O(N)$</span> term that the algorithm itself does not require.</p>
 <h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
 <p>We will run a series of DFS in the graph. Initially all vertices are colored white (0). From each unvisited (white) vertex, start the DFS, mark it gray (1) while entering and mark it black (2) on exit. If DFS moves to a gray vertex, then we have found a cycle (if the graph is undirected, the edge to parent is not considered).
 The cycle itself can be reconstructed using parent array.</p>
@@ -8087,7 +8082,7 @@ The cycle itself can be reconstructed using parent array.</p>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cycle_start</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Acyclic&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Acyclic"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cycle</span><span class="p">;</span>
 <span class="w">        </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cycle_start</span><span class="p">);</span>
@@ -8096,9 +8091,9 @@ The cycle itself can be reconstructed using parent array.</p>
 <span class="w">        </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cycle_start</span><span class="p">);</span>
 <span class="w">        </span><span class="n">reverse</span><span class="p">(</span><span class="n">cycle</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">cycle</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Cycle found: &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Cycle found: "</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">cycle</span><span class="p">)</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
 <span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -8142,7 +8137,7 @@ Thus we can turn the char vector <code>color</code> into a boolean vector <code>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cycle_start</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Acyclic&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Acyclic"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cycle</span><span class="p">;</span>
 <span class="w">        </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cycle_start</span><span class="p">);</span>
@@ -8150,9 +8145,9 @@ Thus we can turn the char vector <code>color</code> into a boolean vector <code>
 <span class="w">            </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
 <span class="w">        </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cycle_start</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Cycle found: &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Cycle found: "</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">cycle</span><span class="p">)</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
 <span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -8166,7 +8161,7 @@ Thus we can turn the char vector <code>color</code> into a boolean vector <code>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Ankit Sangwan" data-bi-name="contributorprofile" target="_blank">Ankit Sangwan</a> (32.84%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (25.37%)</li><li><a href="#" title="Pranjal Jain" data-bi-name="contributorprofile" target="_blank">Pranjal Jain</a> (24.63%)</li><li><a href="#" title="Michael Tan" data-bi-name="contributorprofile" target="_blank">Michael Tan</a> (9.7%)</li><li><a href="#" title="Aryaman" data-bi-name="contributorprofile" target="_blank">Aryaman</a> (2.99%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (2.24%)</li><li><a href="#" title="Tarun Khullar" data-bi-name="contributorprofile" target="_blank">Tarun Khullar</a> (1.49%)</li><li><a href="#" title="Nadezhda R" data-bi-name="contributorprofile" target="_blank">Nadezhda R</a> (0.75%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Ankit Sangwan" data-bi-name="contributorprofile" target="_blank">Ankit Sangwan</a> (32.84%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (24.63%)</li><li><a href="#" title="Pranjal Jain" data-bi-name="contributorprofile" target="_blank">Pranjal Jain</a> (24.63%)</li><li><a href="#" title="Michael Tan" data-bi-name="contributorprofile" target="_blank">Michael Tan</a> (9.7%)</li><li><a href="#" title="Aryaman" data-bi-name="contributorprofile" target="_blank">Aryaman</a> (2.99%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (2.24%)</li><li><a href="#" title="Tarun Khullar" data-bi-name="contributorprofile" target="_blank">Tarun Khullar</a> (1.49%)</li><li><a href="#" title="Nadezhda R" data-bi-name="contributorprofile" target="_blank">Nadezhda R</a> (0.75%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (0.75%)</li></ul>
 </ul>
                 
               </article>
@@ -8232,6 +8227,8 @@ Thus we can turn the char vector <code>color</code> into a boolean vector <code>
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

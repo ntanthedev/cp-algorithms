@@ -1,5 +1,9 @@
 # Algorithms for Competitive Programming
 
+**Dự án tiếng Việt:** [quy trình làm việc](https://github.com/ntanthedev/cp-algorithms/blob/master/WORKFLOW_VI.md) · [prompt cho ChatGPT web](https://github.com/ntanthedev/cp-algorithms/blob/master/PROMPTS_VI.md) · [quy tắc và thuật ngữ](https://github.com/ntanthedev/cp-algorithms/blob/master/TRANSLATING_VI.md) · [checkpoint khôi phục 2026-09-28](https://github.com/ntanthedev/cp-algorithms/blob/master/docs/translation/RESTART_2026-09-28.md).
+
+Đợt đồng bộ mới: [trạng thái 2026-09-30](https://github.com/ntanthedev/cp-algorithms/blob/master/docs/translation/SYNC_2026-09-30.md) · [prompt review PR đồng bộ](https://github.com/ntanthedev/cp-algorithms/blob/master/docs/translation/REVIEW_SYNC_2026-09-30.md).
+
 [![Contributors](https://img.shields.io/github/contributors/cp-algorithms/cp-algorithms.svg)](https://github.com/cp-algorithms/cp-algorithms/graphs/contributors)
 [![Pull Requests](https://img.shields.io/github/issues-pr/cp-algorithms/cp-algorithms.svg)](https://github.com/cp-algorithms/cp-algorithms/pulls)
 [![Closed Pull Requests](https://img.shields.io/github/issues-pr-closed/cp-algorithms/cp-algorithms.svg)](https://github.com/cp-algorithms/cp-algorithms/pulls?q=is%3Apr+is%3Aclosed)
@@ -12,17 +16,9 @@ and data structures especially popular in field of competitive programming.
 Moreover we want to improve the collected knowledge by extending the articles
 and adding new articles to the collection.
 
-We're a volunteer-run website that's free for everyone. Users can contribute articles or help sponsor bounties on articles for greater algorithmic coverage. Your help is greatly appreciated.
+We're an ad-free, volunteer-run website that's free for everyone. Users can contribute articles or help sponsor bounties on articles for greater algorithmic coverage. Your help is greatly appreciated.
 
 Compiled pages are published at [https://cp-algorithms.com/](https://cp-algorithms.com/).
-
-## Supported by
-
-<div class="mainpage-sponsor">
-  <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-    <img src="https://cp-algorithms.com/img/sponsors/coddy-logo-text.svg" alt="Coddy" width="140">
-  </a>
-</div>
 
 ## Become a Contributor
 

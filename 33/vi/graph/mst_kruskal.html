@@ -7966,16 +7966,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Minimum Spanning Tree - Kruskal";
@@ -8009,6 +8000,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8055,17 +8050,15 @@ Cây khung như vậy được gọi là <strong>cây khung nhỏ nhất</strong
 <ul>
 <li>Cây khung nhỏ nhất của một đồ thị là duy nhất nếu trọng số của mọi cạnh đều khác nhau. Nếu không, có thể tồn tại nhiều cây khung nhỏ nhất.
   (Một thuật toán cụ thể thường chỉ trả về một trong các cây khung nhỏ nhất có thể có.)</li>
-<li>Cây khung nhỏ nhất cũng là cây có tích trọng số các cạnh nhỏ nhất.
-  (Có thể chứng minh dễ dàng bằng cách thay trọng số của mọi cạnh bằng logarit của chúng.)</li>
+<li>Nếu mọi trọng số cạnh đều dương, một cây khung nhỏ nhất cũng là cây có tích trọng số các cạnh nhỏ nhất.
+  (Có thể chứng minh bằng cách thay trọng số mỗi cạnh bằng logarit của nó; phép biến đổi này bảo toàn thứ tự trọng số các cạnh.)</li>
 <li>Trong một cây khung nhỏ nhất của đồ thị, trọng số lớn nhất của một cạnh là nhỏ nhất có thể khi xét trên mọi cây khung của đồ thị đó.
   (Điều này suy ra từ tính đúng đắn của thuật toán Kruskal.)</li>
 <li>Cây khung lớn nhất (cây khung có tổng trọng số cạnh lớn nhất) có thể được tìm tương tự cây khung nhỏ nhất: đổi dấu trọng số của mọi cạnh rồi áp dụng một thuật toán tìm cây khung nhỏ nhất bất kỳ.</li>
 </ul>
-<p><strong>Ghi chú bản dịch:</strong> Lập luận bằng logarit và mệnh đề về tích trọng số ở trên chỉ áp dụng khi mọi trọng số cạnh đều dương. Với trọng số bằng 0 hoặc âm, logarit không xác định và mệnh đề không còn đúng trong tổng quát. Nguồn tiếng Anh hiện không nêu điều kiện này.</p>
 <h2 id="thuat-toan-kruskal">Thuật toán Kruskal<a class="headerlink" href="#thuat-toan-kruskal" title="Permanent link">&para;</a></h2>
 <p>Thuật toán này được Joseph Bernard Kruskal, Jr. mô tả vào năm 1956.</p>
-<p>Ban đầu, thuật toán Kruskal đặt mọi đỉnh của đồ thị gốc tách rời nhau, tạo thành một rừng gồm các cây chỉ có một đỉnh. Sau đó thuật toán dần hợp các cây này lại bằng các cạnh của đồ thị gốc. Trước khi bắt đầu, mọi cạnh được sắp xếp theo trọng số không giảm. Ta lần lượt xét các cạnh theo thứ tự đã sắp xếp; nếu hai đầu của cạnh hiện tại thuộc hai cây con khác nhau, ta hợp hai cây đó và thêm cạnh vào đáp án. Sau khi xét hết các cạnh, mọi đỉnh sẽ thuộc cùng một cây con và ta thu được đáp án.</p>
-<p><strong>Ghi chú bản dịch:</strong> Đoạn mô tả trên giả sử đồ thị liên thông. Nếu đồ thị không liên thông, Kruskal kết thúc với một rừng khung nhỏ nhất (minimum spanning forest), không phải một cây khung nối mọi đỉnh. Nguồn tiếng Anh hiện bỏ qua điều kiện này trong phần mô tả, dù phần chứng minh bên dưới có nêu giả thiết đồ thị ban đầu liên thông.</p>
+<p>Ban đầu, thuật toán Kruskal đặt mọi đỉnh của đồ thị gốc tách rời nhau, tạo thành một rừng gồm các cây chỉ có một đỉnh. Sau đó thuật toán dần hợp các cây này lại bằng các cạnh của đồ thị gốc. Trước khi bắt đầu, mọi cạnh được sắp xếp theo trọng số không giảm. Ta lần lượt xét các cạnh theo thứ tự đã sắp xếp; nếu hai đầu của cạnh hiện tại thuộc hai cây con khác nhau, ta hợp hai cây đó và thêm cạnh vào đáp án. Nếu đồ thị liên thông, sau khi xét hết các cạnh, mọi đỉnh sẽ thuộc cùng một cây con và ta thu được một cây khung nhỏ nhất. Nếu đồ thị không liên thông, cùng quy trình này cho ta một rừng khung nhỏ nhất.</p>
 <h2 id="cai-at-on-gian-nhat">Cài đặt đơn giản nhất<a class="headerlink" href="#cai-at-on-gian-nhat" title="Permanent link">&para;</a></h2>
 <p>Đoạn code sau cài đặt trực tiếp thuật toán đã mô tả và có độ phức tạp thời gian <span class="arithmatex">$O(M \log M + N^2)$</span>.
 Việc sắp xếp các cạnh cần <span class="arithmatex">$O(M \log N)$</span> phép toán (tương đương <span class="arithmatex">$O(M \log M)$</span>).
@@ -8162,7 +8155,7 @@ Sau khi xét toàn bộ các cạnh, tập cạnh kết quả liên thông và �
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (96.62%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (3.38%)</li></ul>
 </ul>
                 
               </article>
@@ -8228,6 +8221,8 @@ Sau khi xét toàn bộ các cạnh, tập cạnh kết quả liên thông và �
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

@@ -7950,16 +7950,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Eulerian Path";
@@ -7993,6 +7984,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8065,21 +8060,20 @@ until St is empty
 <h2 id="bai-toan-domino">Bài toán Domino<a class="headerlink" href="#bai-toan-domino" title="Permanent link">&para;</a></h2>
 <p>Sau đây là một bài toán kinh điển về chu trình Euler — bài toán Domino.</p>
 <p>Có <span class="arithmatex">$N$</span> quân domino. Như thường thấy, trên hai đầu của mỗi quân domino có ghi hai số (thông thường từ 1 đến 6, nhưng trong bài toán này điều đó không quan trọng). Ta muốn xếp tất cả quân domino thành một hàng sao cho với mọi hai quân kề nhau, hai số nằm ở phía tiếp giáp của chúng bằng nhau. Được phép lật các quân domino.</p>
-<p>Ta phát biểu lại bài toán. Xem các số xuất hiện trên domino là các đỉnh của đồ thị, còn các quân domino là các cạnh của đồ thị (mỗi quân domino mang hai số <span class="arithmatex">$(a,b)$</span> tương ứng với các cạnh <span class="arithmatex">$(a,b)$</span> và <span class="arithmatex">$(b, a)$</span>). Khi đó, bài toán được quy về tìm đường đi Euler trong đồ thị này.</p>
+<p>Ta phát biểu lại bài toán. Xem các số xuất hiện trên domino là các đỉnh của đồ thị, còn các quân domino là các cạnh của đồ thị (mỗi quân domino mang hai số <span class="arithmatex">$(a,b)$</span> tương ứng với các cạnh <span class="arithmatex">$(a,b)$</span> và <span class="arithmatex">$(b,a)$</span>). Khi đó, bài toán được quy về tìm đường đi Euler trong đồ thị này.</p>
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <p>Chương trình dưới đây tìm và in ra một chu trình Euler hoặc đường đi Euler trong đồ thị, hoặc in <span class="arithmatex">$-1$</span> nếu không tồn tại.</p>
 <p>Trước hết, chương trình kiểm tra bậc các đỉnh: nếu không có đỉnh bậc lẻ thì đồ thị có chu trình Euler; nếu có <span class="arithmatex">$2$</span> đỉnh bậc lẻ thì đồ thị chỉ có đường đi Euler (không có chu trình Euler); nếu có nhiều hơn <span class="arithmatex">$2$</span> đỉnh như vậy thì không tồn tại chu trình Euler hay đường đi Euler.
 Để tìm đường đi Euler không phải chu trình, làm như sau: nếu <span class="arithmatex">$V1$</span> và <span class="arithmatex">$V2$</span> là hai đỉnh có bậc lẻ, chỉ cần thêm cạnh <span class="arithmatex">$(V1, V2)$</span>; trong đồ thị thu được ta tìm chu trình Euler (chu trình này hiển nhiên tồn tại), rồi loại cạnh "giả" <span class="arithmatex">$(V1, V2)$</span> khỏi đáp án.
 Ta tìm chu trình Euler đúng như mô tả ở trên (phiên bản không đệ quy), đồng thời khi thuật toán kết thúc sẽ kiểm tra đồ thị có liên thông hay không (nếu đồ thị không liên thông thì một số cạnh vẫn còn lại, và khi đó cần in <span class="arithmatex">$-1$</span>).
 Cuối cùng, chương trình cũng xét trường hợp đồ thị có các đỉnh cô lập.</p>
-<p><strong>Ghi chú bản dịch:</strong> Trong snippet nguồn, biến n được khai báo rồi dùng ngay để tạo ma trận kề trước khi có bước đọc hoặc khởi tạo giá trị của n. Bản dịch giữ nguyên code theo policy; lỗi cài đặt này được tách để đề xuất sửa upstream.</p>
 <p>Lưu ý rằng cài đặt này dùng ma trận kề.
 Ngoài ra, cách cài đặt này tìm đỉnh tiếp theo bằng vét cạn, nên phải duyệt đi duyệt lại toàn bộ một hàng của ma trận.
 Một cách tốt hơn là lưu đồ thị bằng danh sách kề, xóa cạnh trong <span class="arithmatex">$O(1)$</span> và đánh dấu các cạnh ngược trong một danh sách riêng.
-Bằng cách đó, ta có thể đạt một thuật toán <span class="arithmatex">$O(N)$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Ở câu trên, nguồn dùng <span class="arithmatex">$O(N)$</span> dù toàn bộ đoạn đang phân tích độ phức tạp theo số cạnh và mục tiêu của bài là tuyến tính theo số cạnh. Với ký hiệu của bài, bound phù hợp phải là <span class="arithmatex">$O(M)$</span> (hoặc <span class="arithmatex">$O(V+E)$</span> nếu viết theo số đỉnh và cạnh). Bản dịch giữ wording nguồn và tách correction này để đề xuất sửa upstream.</p>
+Bằng cách đó, ta có thể đạt một thuật toán <span class="arithmatex">$O(M)$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
 <span class="w">    </span><span class="c1">// reading the graph in the adjacency matrix</span>
 
@@ -8158,7 +8152,7 @@ Bằng cách đó, ta có thể đạt một thuật toán <span class="arithmat
 <span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">res</span><span class="p">)</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -8172,7 +8166,7 @@ Bằng cách đó, ta có thể đạt một thuật toán <span class="arithmat
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.69%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.31%)</li></ul>
 </ul>
                 
               </article>
@@ -8238,6 +8232,8 @@ Bằng cách đó, ta có thể đạt một thuật toán <span class="arithmat
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

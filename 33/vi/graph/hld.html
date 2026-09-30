@@ -8011,16 +8011,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Heavy-light decomposition";
@@ -8054,6 +8045,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8194,7 +8189,7 @@ Vì vậy, một truy vấn <span class="arithmatex">$(a, b)$</span> mất <span
 <p>Hàm <code>decompose</code> gán cho mỗi đỉnh <code>v</code> hai giá trị <code>head[v]</code> và <code>pos[v]</code>, lần lượt là đầu của đường nặng chứa <code>v</code> và vị trí của <code>v</code> trên Segment Tree duy nhất bao phủ toàn bộ các đỉnh.</p>
 <p>Để trả lời truy vấn trên đường đi, chẳng hạn truy vấn giá trị lớn nhất đã nói ở trên, ta có thể làm như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">query</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">segment_tree_query</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="n">a</span><span class="p">],</span><span class="w"> </span><span class="n">pos</span><span class="p">[</span><span class="n">a</span><span class="p">]);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;</span><span class="w"> </span><span class="n">head</span><span class="p">[</span><span class="n">a</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">head</span><span class="p">[</span><span class="n">b</span><span class="p">];</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parent</span><span class="p">[</span><span class="n">head</span><span class="p">[</span><span class="n">b</span><span class="p">]])</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">head</span><span class="p">[</span><span class="n">a</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">head</span><span class="p">[</span><span class="n">b</span><span class="p">]])</span>
 <span class="w">            </span><span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span>
@@ -8208,7 +8203,6 @@ Vì vậy, một truy vấn <span class="arithmatex">$(a, b)$</span> mất <span
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú bản dịch:</strong> Đoạn truy vấn giá trị lớn nhất trong nguồn khởi tạo kết quả bằng 0. Cách này chỉ đúng khi giá trị cần lấy lớn nhất không âm; nếu mọi giá trị trên đường đi đều âm, kết quả 0 là sai. Bản dịch giữ nguyên code nguồn và lỗi này được tách riêng để đề xuất sửa upstream.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.spoj.com/problems/QTREE/">SPOJ - QTREE - Query on a tree</a></li>
@@ -8222,7 +8216,7 @@ Vì vậy, một truy vấn <span class="arithmatex">$(a, b)$</span> mất <span
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.48%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.52%)</li></ul>
 </ul>
                 
               </article>
@@ -8288,6 +8282,8 @@ Vì vậy, một truy vấn <span class="arithmatex">$(a, b)$</span> mất <span
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

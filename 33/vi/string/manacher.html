@@ -7999,16 +7999,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Manacher\u0027s Algorithm - Finding all sub-palindromes in O(N)";
@@ -8042,6 +8033,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8101,7 +8096,7 @@ Describe the issue of this article in detail.
 <p>Cài đặt của thuật toán ngây thơ như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">manacher_odd_trivial</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;$&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;^&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"$"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"^"</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">while</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">s</span><span class="p">[</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="p">[</span><span class="n">i</span><span class="p">]])</span><span class="w"> </span><span class="p">{</span>
@@ -8115,12 +8110,11 @@ Describe the issue of this article in detail.
 <h2 id="thuat-toan-manacher">Thuật toán Manacher<a class="headerlink" href="#thuat-toan-manacher" title="Permanent link">&para;</a></h2>
 <p>Ta mô tả thuật toán tìm mọi xâu con đối xứng có độ dài lẻ, tức tính từng giá trị <span class="arithmatex">$d_{odd}[i]$</span> trong <span class="arithmatex">$d_{odd}[]$</span>.</p>
 <p>Để tính nhanh, ta duy trì <strong>hai biên loại trừ <span class="arithmatex">$(l, r)$</span></strong> của xâu con đối xứng nằm xa nhất về bên phải đã tìm thấy (tức xâu con đối xứng ngoài cùng bên phải hiện tại là <span class="arithmatex">$s[l+1] s[l+2] \dots s[r-1]$</span>). Ban đầu đặt <span class="arithmatex">$l = 0, r = 1$</span>, tương ứng với chuỗi rỗng.</p>
-<p><strong>Ghi chú bản dịch:</strong> Với quy ước đoạn nửa mở ở đây, r là biên phải loại trừ, nên chỉ số cuối của xâu đối xứng là r − 1. Vì vậy, câu nguồn phía dưới nói rằng r “biểu diễn chỉ số cuối” cần được hiểu là đang cập nhật biên phải của xâu đối xứng, không phải r chính là chỉ số ký tự cuối.</p>
 <p>Giả sử ta muốn tính <span class="arithmatex">$d_{odd}[i]$</span> cho vị trí <span class="arithmatex">$i$</span> tiếp theo, và mọi giá trị trước đó trong <span class="arithmatex">$d_{odd}[]$</span> đã được tính. Ta làm như sau:</p>
 <ul>
 <li>
 <p>Nếu <span class="arithmatex">$i$</span> nằm ngoài xâu con đối xứng hiện tại, tức <span class="arithmatex">$i \geq r$</span>, ta chỉ cần chạy thuật toán ngây thơ.</p>
-<p>Ta tăng dần <span class="arithmatex">$d_{odd}[i]$</span> và mỗi lần kiểm tra xem chuỗi con hiện tại ngoài cùng bên phải <span class="arithmatex">$[i - d_{odd}[i]\dots i + d_{odd}[i]]$</span> có phải xâu đối xứng hay không. Khi gặp cặp ký tự đầu tiên không khớp hoặc chạm biên của <span class="arithmatex">$s$</span>, ta dừng lại. Khi đó <span class="arithmatex">$d_{odd}[i]$</span> đã được tính xong. Sau đó, đừng quên cập nhật <span class="arithmatex">$(l, r)$</span>. <span class="arithmatex">$r$</span> cần được cập nhật sao cho nó biểu diễn chỉ số cuối của xâu con đối xứng ngoài cùng bên phải hiện tại.</p>
+<p>Ta tăng dần <span class="arithmatex">$d_{odd}[i]$</span> và mỗi lần kiểm tra xem chuỗi con hiện tại ngoài cùng bên phải <span class="arithmatex">$[i - d_{odd}[i]\dots i + d_{odd}[i]]$</span> có phải xâu đối xứng hay không. Khi gặp cặp ký tự đầu tiên không khớp hoặc chạm biên của <span class="arithmatex">$s$</span>, ta dừng lại. Khi đó <span class="arithmatex">$d_{odd}[i]$</span> đã được tính xong. Sau đó, đừng quên cập nhật <span class="arithmatex">$(l, r)$</span>. Biên phải loại trừ <span class="arithmatex">$r$</span> cần được cập nhật sao cho <span class="arithmatex">$r - 1$</span> là chỉ số cuối của xâu con đối xứng ngoài cùng bên phải hiện tại.</p>
 </li>
 <li>
 <p>Bây giờ xét trường hợp <span class="arithmatex">$i \le r$</span>. Ta sẽ cố tận dụng các giá trị đã tính trong <span class="arithmatex">$d_{odd}[]$</span>. Hãy tìm vị trí "đối xứng" của <span class="arithmatex">$i$</span> trong xâu con đối xứng <span class="arithmatex">$(l, r)$</span>, tức vị trí <span class="arithmatex">$j = l + (r - i)$</span>, rồi xét giá trị <span class="arithmatex">$d_{odd}[j]$</span>. Vì <span class="arithmatex">$j$</span> đối xứng với <span class="arithmatex">$i$</span> qua <span class="arithmatex">$(l+r)/2$</span>, ta <strong>gần như luôn có thể</strong> gán <span class="arithmatex">$d_{odd}[i] = d_{odd}[j]$</span>. Hình dưới minh họa điều này (xâu đối xứng quanh <span class="arithmatex">$j$</span> thực chất được "sao chép" sang xâu đối xứng quanh <span class="arithmatex">$i$</span>):</p>
@@ -8177,7 +8171,7 @@ $$</div>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">manacher_odd</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
-<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;$&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;^&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"$"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"^"</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">p</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8206,9 +8200,9 @@ $$</div>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">manacher</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="k">auto</span><span class="w"> </span><span class="n">c</span><span class="o">:</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">t</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
+<span class="w">        </span><span class="n">t</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">string</span><span class="p">(</span><span class="s">"#"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manacher_odd</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;#&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">manacher_odd</span><span class="p">(</span><span class="n">t</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">"#"</span><span class="p">);</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">begin</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">(</span><span class="n">res</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -8226,7 +8220,7 @@ $$</div>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.56%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.44%)</li></ul>
 </ul>
                 
               </article>
@@ -8292,6 +8286,8 @@ $$</div>
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

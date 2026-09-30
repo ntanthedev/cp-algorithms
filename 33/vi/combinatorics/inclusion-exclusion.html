@@ -8121,16 +8121,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "The Inclusion-Exclusion Principle";
@@ -8164,6 +8155,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8351,20 +8346,19 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
 <p>(Nếu khó hình dung, hãy thử vẽ biểu đồ Venn.)</p>
 <p>Cộng trên mọi <span class="arithmatex">$ans(X)$</span> sẽ cho đáp án cuối cùng:</p>
 <div class="arithmatex">$$ ans = \sum_{X ~ : ~ |X| = k} ans(X) $$</div>
-<p>Tuy nhiên, độ phức tạp của lời giải này là <span class="arithmatex">$O(3^k \cdot k)$</span>. Để cải thiện, lưu ý rằng các phép tính <span class="arithmatex">$ans(X)$</span> khác nhau thường dùng chung rất nhiều tập <span class="arithmatex">$Y$</span>.</p>
+<p>Có <span class="arithmatex">$\binom{n}{k}$</span> cách chọn <span class="arithmatex">$X$</span>, và mỗi cách có <span class="arithmatex">$2^{n-k}$</span> siêu tập. Nếu xử lý một tập mất <span class="arithmatex">$O(n)$</span>, cách trực tiếp này cần thời gian <span class="arithmatex">$O\left(\binom{n}{k} 2^{n-k} n\right)$</span>. Để cải thiện, lưu ý rằng các phép tính <span class="arithmatex">$ans(X)$</span> khác nhau thường dùng chung rất nhiều tập <span class="arithmatex">$Y$</span>.</p>
 <p>Ta đảo thứ tự cộng trong công thức bao hàm – loại trừ và cộng theo các tập <span class="arithmatex">$Y$</span>. Khi đó có thể thấy cùng một tập <span class="arithmatex">$Y$</span> được tính trong <span class="arithmatex">$ans(X)$</span> của <span class="arithmatex">$\binom{|Y|}{k}$</span> tập với cùng dấu <span class="arithmatex">$(-1)^{|Y| - k}$</span>.</p>
 <div class="arithmatex">$$ ans = \sum_{Y ~ : ~ |Y| \ge k} (-1)^{|Y|-k} \cdot \binom{|Y|}{k} \cdot f(Y) $$</div>
-<p>Lúc này lời giải có độ phức tạp <span class="arithmatex">$O(2^k \cdot k)$</span>.</p>
+<p>Lúc này lời giải có độ phức tạp <span class="arithmatex">$O(2^n \cdot n)$</span>.</p>
 <p>Ta tiếp tục giải phiên bản thứ hai: tìm số xâu khớp <strong>ít nhất</strong> <span class="arithmatex">$k$</span> mẫu.</p>
-<p>Dĩ nhiên, có thể dùng lời giải của phiên bản thứ nhất rồi cộng đáp án cho mọi kích thước tập lớn hơn <span class="arithmatex">$k$</span>. Tuy nhiên, trong bài này một tập |Y| được xét trong công thức cho mọi tập có kích thước <span class="arithmatex">$\ge k$</span> nằm trong <span class="arithmatex">$Y$</span>. Vì vậy, phần biểu thức nhân với <span class="arithmatex">$f(Y)$</span> có thể viết thành:</p>
+<p>Dĩ nhiên, có thể dùng lời giải của phiên bản thứ nhất rồi cộng đáp án cho mọi kích thước tập lớn hơn <span class="arithmatex">$k$</span>. Tuy nhiên, trong bài này một tập <span class="arithmatex">$Y$</span> có kích thước <span class="arithmatex">$|Y|$</span> được xét trong công thức cho mọi tập có kích thước <span class="arithmatex">$\ge k$</span> nằm trong <span class="arithmatex">$Y$</span>. Vì vậy, phần biểu thức nhân với <span class="arithmatex">$f(Y)$</span> có thể viết thành:</p>
 <div class="arithmatex">$$ (-1)^{|Y|-k} \cdot \binom{|Y|}{k} + (-1)^{|Y|-k-1} \cdot \binom{|Y|}{k+1} + (-1)^{|Y|-k-2} \cdot \binom{|Y|}{k+2} + \cdots + (-1)^{|Y|-|Y|} \cdot \binom{|Y|}{|Y|} $$</div>
 <p>Theo công thức quen thuộc trong sách của Graham (Graham, Knuth, Patashnik. "Concrete mathematics" [1998] ) về <a href="binomial-coefficients.html">hệ số nhị thức</a>:</p>
 <div class="arithmatex">$$ \sum_{k=0}^m (-1)^k \cdot \binom{n}{k} = (-1)^m \cdot \binom{n-1}{m} $$</div>
 <p>Áp dụng ở đây, toàn bộ tổng hệ số nhị thức được rút gọn thành:</p>
 <div class="arithmatex">$$ (-1)^{|Y|-k} \cdot \binom{|Y|-1}{|Y|-k} $$</div>
-<p>Vì vậy, bài này cũng có lời giải với độ phức tạp <span class="arithmatex">$O(2^k \cdot k)$</span>:</p>
+<p>Vì vậy, bài này cũng có lời giải với độ phức tạp <span class="arithmatex">$O(2^n \cdot n)$</span>:</p>
 <div class="arithmatex">$$ ans = \sum_{Y ~ : ~ |Y| \ge k} (-1)^{|Y|-k} \cdot \binom{|Y|-1}{|Y|-k} \cdot f(Y) $$</div>
-<p><strong>Ghi chú bản dịch:</strong> Ở tiểu mục này, đầu bài dùng n là số mẫu và k là số mẫu cần khớp, nhưng các dòng độ phức tạp của nguồn lại dùng k như kích thước toàn bộ tập mẫu. Theo các vòng duyệt mô tả trong chính bài, các cận độ phức tạp này phải phụ thuộc vào n (ví dụ dạng <span class="arithmatex">$O(2^n\cdot n)$</span> sau khi đảo tổng), không phải chỉ vào k. Bản dịch giữ nguyên các biểu thức của nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.</p>
 <h3 id="so-cach-i-tu-mot-o-toi-mot-o-khac">Số cách đi từ một ô tới một ô khác<a class="headerlink" href="#so-cach-i-tu-mot-o-toi-mot-o-khac" title="Permanent link">&para;</a></h3>
 <p>Cho một bảng <span class="arithmatex">$n \times m$</span> có <span class="arithmatex">$k$</span> ô là tường không thể đi qua. Robot ban đầu ở ô <span class="arithmatex">$(1,1)$</span> (góc dưới trái), chỉ được đi sang phải hoặc đi lên và cuối cùng phải tới ô <span class="arithmatex">$(n,m)$</span> mà không đi qua chướng ngại vật. Cần đếm số cách đi.</p>
 <p>Giả sử <span class="arithmatex">$n$</span> và <span class="arithmatex">$m$</span> rất lớn (chẳng hạn <span class="arithmatex">$10^9$</span>), còn <span class="arithmatex">$k$</span> nhỏ (khoảng <span class="arithmatex">$100$</span>).</p>
@@ -8375,17 +8369,16 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
 <p>Khi duyệt một tập con các chướng ngại vật mà đường đi sẽ giẫm lên, ta chỉ cần nhân số đường đi từ ô xuất phát tới chướng ngại vật được chọn đầu tiên, từ chướng ngại vật thứ nhất tới thứ hai, v.v., rồi cộng hoặc trừ giá trị này khỏi đáp án theo công thức bao hàm – loại trừ chuẩn.</p>
 <p>Tuy nhiên, cách này vẫn có độ phức tạp không đa thức <span class="arithmatex">$O(2^k \cdot k)$</span>.</p>
 <p>Sau đây là một lời giải đa thức:</p>
-<p>Ta dùng quy hoạch động. Để tiện, thêm (1,1) vào đầu và (n,m) vào cuối mảng chướng ngại vật. Tính <span class="arithmatex">$d[i]$</span> — số cách đi từ điểm xuất phát (phần tử thứ <span class="arithmatex">$0-th$</span>) tới điểm thứ <span class="arithmatex">$i-th$</span> mà không đi qua bất kỳ chướng ngại vật nào khác (ngoại trừ chính <span class="arithmatex">$i$</span>). Ta tính giá trị này cho mọi ô chướng ngại vật và cả ô đích.</p>
+<p>Ta dùng quy hoạch động. Để tiện, thêm (1,1) vào đầu và (n,m) vào cuối mảng chướng ngại vật. Tính <span class="arithmatex">$d[i]$</span> — số cách đi từ điểm xuất phát (chỉ số <span class="arithmatex">$0$</span>) tới chỉ số <span class="arithmatex">$i$</span> mà không đi qua bất kỳ chướng ngại vật nào khác (ngoại trừ chính <span class="arithmatex">$i$</span>). Ta tính giá trị này cho mọi ô chướng ngại vật và cả ô đích.</p>
 <p>Tạm quên các chướng ngại vật và chỉ đếm số đường đi từ ô <span class="arithmatex">$0$</span> tới <span class="arithmatex">$i$</span>. Ta cần xét các đường đi "xấu", tức các đường đi đi qua chướng ngại vật, rồi trừ chúng khỏi tổng số cách đi từ <span class="arithmatex">$0$</span> tới <span class="arithmatex">$i$</span>.</p>
 <p>Xét một chướng ngại vật <span class="arithmatex">$t$</span> nằm giữa <span class="arithmatex">$0$</span> và <span class="arithmatex">$i$</span> (<span class="arithmatex">$0 &lt; t &lt; i$</span>) mà ta có thể đi qua. Số đường đi từ <span class="arithmatex">$0$</span> tới <span class="arithmatex">$i$</span> đi qua <span class="arithmatex">$t$</span> và có <span class="arithmatex">$t$</span> là <strong>chướng ngại vật đầu tiên giữa điểm xuất phát và <span class="arithmatex">$i$</span></strong> bằng <span class="arithmatex">$d[t]$</span> nhân với số đường đi tùy ý từ <span class="arithmatex">$t$</span> tới <span class="arithmatex">$i$</span>. Cộng giá trị này cho mọi <span class="arithmatex">$t$</span> giữa <span class="arithmatex">$0$</span> và <span class="arithmatex">$i$</span> ta thu được số đường đi "xấu".</p>
 <p>Có thể tính mỗi <span class="arithmatex">$d[i]$</span> trong <span class="arithmatex">$O(k)$</span> cho <span class="arithmatex">$O(k)$</span> chướng ngại vật, nên lời giải có độ phức tạp <span class="arithmatex">$O(k^2)$</span>.</p>
 <h3 id="so-bo-bon-nguyen-to-cung-nhau">Số bộ bốn nguyên tố cùng nhau<a class="headerlink" href="#so-bo-bon-nguyen-to-cung-nhau" title="Permanent link">&para;</a></h3>
 <p>Cho <span class="arithmatex">$n$</span> số: <span class="arithmatex">$a_1, a_2, \ldots, a_n$</span>. Cần đếm số cách chọn bốn số sao cho ước chung lớn nhất của cả bốn bằng một.</p>
 <p>Ta giải bài toán bù — đếm số bộ bốn "xấu", tức các bộ bốn mà mọi số đều chia hết cho một số <span class="arithmatex">$d &gt; 1$</span>.</p>
-<p>Ta dùng nguyên lý bao hàm – loại trừ khi cộng trên mọi nhóm bốn số chia hết cho một ước <span class="arithmatex">$d$</span>.</p>
-<div class="arithmatex">$$ans = \sum_{d \ge 2} (-1)^{deg(d)-1} \cdot f(d)$$</div>
-<p>trong đó <span class="arithmatex">$deg(d)$</span> là số số nguyên tố trong phân tích thừa số của <span class="arithmatex">$d$</span>, còn <span class="arithmatex">$f(d)$</span> là số bộ bốn chia hết cho <span class="arithmatex">$d$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Công thức nguồn ở trên chỉ đúng khi tổng chạy trên các số d không chia hết cho bình phương của bất kỳ số nguyên tố nào, tức d là tích của các số nguyên tố phân biệt. Các lũy thừa như 4 hoặc 8 không tạo thêm một giao mới trong bao hàm – loại trừ. Bản dịch giữ nguyên công thức nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.</p>
+<p>Ta dùng nguyên lý bao hàm – loại trừ khi cộng trên các ước square-free <span class="arithmatex">$d &gt; 1$</span>, tức tích của các số nguyên tố phân biệt. Các ước không square-free không tạo ra giao mới của các điều kiện chia hết cho số nguyên tố, nên không được tính riêng.</p>
+<div class="arithmatex">$$ans = \sum_{\substack{d \ge 2 \\ d\text{ square-free}}} (-1)^{deg(d)-1} \cdot f(d)$$</div>
+<p>trong đó <span class="arithmatex">$deg(d)$</span> là số số nguyên tố phân biệt trong phân tích thừa số của <span class="arithmatex">$d$</span>, còn <span class="arithmatex">$f(d)$</span> là số bộ bốn chia hết cho <span class="arithmatex">$d$</span>.</p>
 <p>Để tính <span class="arithmatex">$f(d)$</span>, chỉ cần đếm số bội của <span class="arithmatex">$d$</span> (như ở bài trước) rồi dùng <a href="binomial-coefficients.html">hệ số nhị thức</a> để đếm số cách chọn bốn số trong đó.</p>
 <p>Vì vậy, theo công thức bao hàm – loại trừ, ta cộng số nhóm bốn chia hết cho một số nguyên tố, trừ số bộ bốn chia hết cho tích của hai số nguyên tố, cộng số bộ bốn chia hết cho tích của ba số nguyên tố, v.v.</p>
 <h3 id="so-bo-ba-harmonic">Số bộ ba harmonic<a class="headerlink" href="#so-bo-ba-harmonic" title="Permanent link">&para;</a></h3>
@@ -8414,11 +8407,10 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
 <p>Tiếp theo, cần tính đáp án cho mọi <span class="arithmatex">$i$</span> từ <span class="arithmatex">$2$</span> tới <span class="arithmatex">$n$</span>, tức mảng <span class="arithmatex">$cnt[]$</span> — số lượng số nguyên không nguyên tố cùng nhau với <span class="arithmatex">$i$</span>.</p>
 <ul>
 <li>Để làm vậy, nhớ lại công thức bao hàm – loại trừ hoạt động như thế nào — ở đây ta cài đặt cùng ý tưởng nhưng đảo chiều: duyệt một thành phần (tích của các số nguyên tố trong phân tích) rồi cộng hoặc trừ hạng tử tương ứng vào công thức bao hàm – loại trừ của mỗi bội của nó.</li>
-<li>Giả sử đang xử lý một số <span class="arithmatex">$i$</span> có <span class="arithmatex">$good[i] = true$</span>, tức nó tham gia công thức bao hàm – loại trừ. Duyệt mọi số là bội của <span class="arithmatex">$i$</span>, rồi cộng hoặc trừ <span class="arithmatex">$\lfloor N/i \rfloor$</span> vào <span class="arithmatex">$cnt[]$</span> của chúng (dấu phụ thuộc vào <span class="arithmatex">$deg[i]$</span>: nếu <span class="arithmatex">$deg[i]$</span> lẻ thì cộng, ngược lại thì trừ).</li>
+<li>Giả sử đang xử lý một số <span class="arithmatex">$i$</span> có <span class="arithmatex">$good[i] = true$</span>, tức nó tham gia công thức bao hàm – loại trừ. Duyệt mọi số là bội của <span class="arithmatex">$i$</span>, rồi cộng hoặc trừ <span class="arithmatex">$\lfloor n/i \rfloor$</span> vào <span class="arithmatex">$cnt[]$</span> của chúng (dấu phụ thuộc vào <span class="arithmatex">$deg[i]$</span>: nếu <span class="arithmatex">$deg[i]$</span> lẻ thì cộng, ngược lại thì trừ).</li>
 </ul>
 </li>
 </ol>
-<p><strong>Ghi chú bản dịch:</strong> Ở gạch đầu dòng cuối, nguồn dùng ký hiệu N trong biểu thức lấy phần nguyên, trong khi toàn bộ tiểu mục và đoạn mã bên dưới dùng n. Đây là lỗi ký hiệu; bản dịch giữ nguyên biểu thức nguồn hiện tại và vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.</p>
 <p>Dưới đây là cài đặt C++:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="kt">bool</span><span class="w"> </span><span class="n">good</span><span class="p">[</span><span class="n">MAXN</span><span class="p">];</span>
@@ -8471,8 +8463,7 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
 <p>Rút gọn biểu thức này, ta thu được <strong>biểu thức chính xác và gần đúng cho số hoán vị không có điểm cố định</strong>:</p>
 <div class="arithmatex">$$ n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots \pm \frac{1}{n!} \right ) \approx \frac{n!}{e} $$</div>
 <p>(vì tổng trong ngoặc là <span class="arithmatex">$n+1$</span> hạng đầu của khai triển Taylor của <span class="arithmatex">$e^{-1}$</span>).</p>
-<p>Đáng chú ý, một bài toán tương tự cũng có thể giải theo cách này: yêu cầu các điểm cố định không nằm trong <span class="arithmatex">$m$</span> phần tử đầu tiên của hoán vị (thay vì không nằm ở bất kỳ vị trí nào như bài vừa giải). Công thức thu được giống công thức chính xác ở trên, nhưng tổng chỉ chạy đến <span class="arithmatex">$k$</span> thay vì <span class="arithmatex">$n$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Ở câu trên, nguồn đặt tham số là m nhưng sau đó lại nói tổng chạy đến k; k không được định nghĩa trong biến thể này. Với m vị trí bị cấm làm điểm cố định, bao hàm – loại trừ phải chạy trên m biến cố tương ứng, nên giới hạn đúng là m. Bản dịch giữ nguyên cách viết của nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.</p>
+<p>Đáng chú ý, một bài toán tương tự cũng có thể giải theo cách này: yêu cầu các điểm cố định không nằm trong <span class="arithmatex">$m$</span> phần tử đầu tiên của hoán vị (thay vì không nằm ở bất kỳ vị trí nào như bài vừa giải). Công thức thu được giống công thức chính xác ở trên, nhưng tổng chỉ chạy đến <span class="arithmatex">$m$</span> thay vì <span class="arithmatex">$n$</span>.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <p>Danh sách các bài có thể giải bằng nguyên lý bao hàm – loại trừ:</p>
 <ul>
@@ -8499,7 +8490,7 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.42%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.58%)</li></ul>
 </ul>
                 
               </article>
@@ -8565,6 +8556,8 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

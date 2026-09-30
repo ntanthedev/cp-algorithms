@@ -8005,16 +8005,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Fibonacci Numbers";
@@ -8048,6 +8039,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8110,12 +8105,11 @@ Describe the issue of this article in detail.
 <p>Từ đây, bằng quy nạp ta có thể chứng minh rằng với mọi số nguyên dương <span class="arithmatex">$k$</span>, <span class="arithmatex">$F_{nk}$</span> là bội của <span class="arithmatex">$F_n$</span>.</p>
 </li>
 <li>
-<p>Mệnh đề đảo cũng đúng: nếu <span class="arithmatex">$F_m$</span> là bội của <span class="arithmatex">$F_n$</span>, thì <span class="arithmatex">$m$</span> là bội của <span class="arithmatex">$n$</span>.</p>
+<p>Với <span class="arithmatex">$n \ge 3$</span>, mệnh đề đảo cũng đúng: nếu <span class="arithmatex">$F_m$</span> là bội của <span class="arithmatex">$F_n$</span>, thì <span class="arithmatex">$m$</span> là bội của <span class="arithmatex">$n$</span>.</p>
 </li>
-</ul>
-<p><strong>Ghi chú bản dịch:</strong> Mệnh đề đảo ở trên có ngoại lệ khi chỉ số n bằng 2, vì số Fibonacci thứ 2 bằng 1 nên là ước của mọi số Fibonacci. Chẳng hạn số Fibonacci thứ 3 là bội của số Fibonacci thứ 2 nhưng 3 không phải là bội của 2. Với chỉ số n nguyên dương khác 2, mệnh đề đúng.</p>
-<ul>
-<li>Đồng nhất thức UCLN:</li>
+<li>
+<p>Đồng nhất thức UCLN:</p>
+</li>
 </ul>
 <div class="arithmatex">$$GCD(F_m, F_n) = F_{GCD(m, n)}$$</div>
 <ul>
@@ -8164,7 +8158,7 @@ Ta nối thêm một <span class="arithmatex">$1$</span> vào cuối mã để �
 <p>Do hai công thức này đòi hỏi độ chính xác rất cao khi tính toán với số thực, chúng ít hữu ích trong tính toán thực tế.</p>
 <h3 id="tinh-fibonacci-trong-thoi-gian-tuyen-tinh">Tính Fibonacci trong thời gian tuyến tính<a class="headerlink" href="#tinh-fibonacci-trong-thoi-gian-tuyen-tinh" title="Permanent link">&para;</a></h3>
 <p>Có thể dễ dàng tìm số Fibonacci thứ <span class="arithmatex">$n$</span> trong <span class="arithmatex">$O(n)$</span> bằng cách lần lượt tính các số cho đến <span class="arithmatex">$n$</span>. Tuy nhiên, như ta sẽ thấy, còn có những cách nhanh hơn.</p>
-<p>Ta có thể bắt đầu với cách lặp, tận dụng công thức <span class="arithmatex">$F_n = F_{n-1} + F_{n-2}$</span>; theo mô tả của nguồn, ta sẽ tiền tính các giá trị này trong một mảng và chú ý hai trường hợp cơ sở <span class="arithmatex">$F_0$</span> và <span class="arithmatex">$F_1$</span>.</p>
+<p>Ta có thể bắt đầu với cách lặp dùng công thức <span class="arithmatex">$F_n = F_{n-1} + F_{n-2}$</span>. Cài đặt chỉ cần giữ hai giá trị gần nhất, bắt đầu từ các trường hợp cơ sở <span class="arithmatex">$F_0$</span> và <span class="arithmatex">$F_1$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">fib</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
@@ -8176,8 +8170,7 @@ Ta nối thêm một <span class="arithmatex">$1$</span> vào cuối mã để �
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Theo mô tả nguồn, cách này cho lời giải tuyến tính, thời gian <span class="arithmatex">$O(n)$</span>, đồng thời lưu mọi giá trị đứng trước <span class="arithmatex">$n$</span> trong dãy.</p>
-<p><strong>Ghi chú bản dịch:</strong> Phần mô tả nguồn nói tiền tính trong một mảng và lưu toàn bộ các giá trị trước đó, nhưng phần cài đặt phía trên thực tế chỉ giữ hai số Fibonacci liên tiếp. Vì vậy, chính cài đặt này dùng bộ nhớ hằng số chứ không lưu toàn bộ dãy.</p>
+<p>Như vậy, ta thu được lời giải tuyến tính với thời gian <span class="arithmatex">$O(n)$</span> và bộ nhớ phụ <span class="arithmatex">$O(1)$</span>.</p>
 <h3 id="dang-ma-tran">Dạng ma trận<a class="headerlink" href="#dang-ma-tran" title="Permanent link">&para;</a></h3>
 <p>Để chuyển từ <span class="arithmatex">$(F_n, F_{n-1})$</span> sang <span class="arithmatex">$(F_{n+1}, F_n)$</span>, ta có thể biểu diễn hệ thức truy hồi tuyến tính bằng phép nhân ma trận 2x2:</p>
 <div class="arithmatex">$$
@@ -8331,7 +8324,7 @@ F_{2k} &amp;= F_k(F_{k+1}+F_{k-1}) = F_k (2F_{k+1} - F_{k})\\
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.32%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.68%)</li></ul>
 </ul>
                 
               </article>
@@ -8397,6 +8390,8 @@ F_{2k} &amp;= F_k(F_{k+1}+F_{k-1}) = F_k (2F_{k+1} - F_{k})\\
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

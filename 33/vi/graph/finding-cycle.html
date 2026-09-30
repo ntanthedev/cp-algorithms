@@ -7939,16 +7939,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Checking a graph for acyclicity and finding a cycle in O(M)";
@@ -7987,6 +7978,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8019,8 +8014,7 @@ Describe the issue of this article in detail.
 
 <h1 id="kiem-tra-o-thi-khong-co-chu-trinh-va-tim-mot-chu-trinh-trong-om">Kiểm tra đồ thị không có chu trình và tìm một chu trình trong <span class="arithmatex">$O(M)$</span><a class="headerlink" href="#kiem-tra-o-thi-khong-co-chu-trinh-va-tim-mot-chu-trinh-trong-om" title="Permanent link">&para;</a></h1>
 <p>Xét một đồ thị có hướng hoặc vô hướng không có cạnh khuyên và cạnh song song. Ta cần kiểm tra đồ thị có không chứa chu trình hay không; nếu có chu trình, hãy tìm một chu trình bất kỳ.</p>
-<p>Ta có thể giải bài toán bằng <a href="depth-first-search.html">duyệt theo chiều sâu</a> trong <span class="arithmatex">$O(M)$</span>, với <span class="arithmatex">$M$</span> là số cạnh.</p>
-<p><strong>Ghi chú bản dịch:</strong> Nguồn tiếng Anh ghi độ phức tạp là <span class="arithmatex">$O(M)$</span>. Nếu tính cả bước duyệt qua các đỉnh để khởi động DFS cho từng thành phần, với <span class="arithmatex">$N$</span> là số đỉnh, cách viết tổng quát chặt hơn là <span class="arithmatex">$O(N+M)$</span>. Bản dịch giữ ký hiệu của nguồn và tách correction này để đề xuất sửa upstream.</p>
+<p>Ta có thể giải bài toán bằng <a href="depth-first-search.html">duyệt theo chiều sâu</a> trong <span class="arithmatex">$O(M)$</span>, với <span class="arithmatex">$M$</span> là số cạnh. Một đỉnh cô lập không thể nằm trên chu trình, nên chỉ cần bắt đầu tìm kiếm từ nhiều nhất <span class="arithmatex">$2M$</span> đỉnh kề với ít nhất một cạnh. Cài đặt bên dưới duyệt qua tất cả các đỉnh, làm phát sinh thêm hạng <span class="arithmatex">$O(N)$</span> mà bản thân thuật toán không yêu cầu.</p>
 <h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
 <p>Ta thực hiện một chuỗi các lượt DFS trên đồ thị. Ban đầu, mọi đỉnh được tô trắng (0). Với mỗi đỉnh chưa thăm (màu trắng), bắt đầu DFS từ đỉnh đó; khi đi vào một đỉnh thì tô nó màu xám (1), và khi rời khỏi đỉnh thì tô màu đen (2). Nếu DFS đi tới một đỉnh màu xám, ta đã tìm thấy một chu trình (với đồ thị vô hướng, không xét cạnh nối về đỉnh cha).
 Có thể truy vết chính chu trình đó bằng mảng cha.</p>
@@ -8060,7 +8054,7 @@ Có thể truy vết chính chu trình đó bằng mảng cha.</p>
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cycle_start</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Acyclic&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Acyclic"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cycle</span><span class="p">;</span>
 <span class="w">        </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cycle_start</span><span class="p">);</span>
@@ -8069,9 +8063,9 @@ Có thể truy vết chính chu trình đó bằng mảng cha.</p>
 <span class="w">        </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cycle_start</span><span class="p">);</span>
 <span class="w">        </span><span class="n">reverse</span><span class="p">(</span><span class="n">cycle</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">cycle</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Cycle found: &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Cycle found: "</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">cycle</span><span class="p">)</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
 <span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -8115,7 +8109,7 @@ Do đó có thể thay vector ký tự <code>color</code> bằng vector boolean 
 <span class="w">    </span><span class="p">}</span>
 
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cycle_start</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Acyclic&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Acyclic"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">cycle</span><span class="p">;</span>
 <span class="w">        </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cycle_start</span><span class="p">);</span>
@@ -8123,9 +8117,9 @@ Do đó có thể thay vector ký tự <code>color</code> bằng vector boolean 
 <span class="w">            </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
 <span class="w">        </span><span class="n">cycle</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">cycle_start</span><span class="p">);</span>
 
-<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Cycle found: &quot;</span><span class="p">;</span>
+<span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Cycle found: "</span><span class="p">;</span>
 <span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">cycle</span><span class="p">)</span>
-<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="p">;</span>
+<span class="w">            </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" "</span><span class="p">;</span>
 <span class="w">        </span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">endl</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
@@ -8139,7 +8133,7 @@ Do đó có thể thay vector ký tự <code>color</code> bằng vector boolean 
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.84%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.16%)</li></ul>
 </ul>
                 
               </article>
@@ -8205,6 +8199,8 @@ Do đó có thể thay vector ký tự <code>color</code> bằng vector boolean 
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

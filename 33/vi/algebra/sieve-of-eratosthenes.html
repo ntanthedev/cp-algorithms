@@ -8016,16 +8016,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Sieve of Eratosthenes";
@@ -8059,6 +8050,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8127,7 +8122,7 @@ Do đó, khi đi đến một vị trí chưa bị đánh dấu, số đó khôn
 <p>Đoạn mã trước hết xem mọi số trừ 0 và 1 là ứng viên số nguyên tố, rồi bắt đầu loại các hợp số.
 Thuật toán duyệt qua tất cả các số từ <span class="arithmatex">$2$</span> đến <span class="arithmatex">$n$</span>.
 Nếu số hiện tại <span class="arithmatex">$i$</span> là số nguyên tố, thuật toán đánh dấu mọi bội của <span class="arithmatex">$i$</span> là hợp số, bắt đầu từ <span class="arithmatex">$i^2$</span>.
-Đây là một tối ưu so với cách cài đặt ngây thơ: mọi bội của <span class="arithmatex">$i$</span> nhỏ hơn <span class="arithmatex">$i^2$</span> đều có một thừa số nguyên tố nhỏ hơn <span class="arithmatex">$i$</span>, nên chúng đã bị loại ở các bước trước.
+Đây là một tối ưu so với cách cài đặt ngây thơ: mọi bội nhỏ hơn mức bắt đầu này của <span class="arithmatex">$i$</span> đều có một thừa số nguyên tố nhỏ hơn <span class="arithmatex">$i$</span>, nên chúng đã bị loại ở các bước trước.
 Vì <span class="arithmatex">$i^2$</span> có thể dễ dàng làm tràn kiểu <code>int</code>, điều kiện bổ sung được kiểm tra bằng kiểu <code>long long</code> trước khi chạy vòng lặp lồng bên trong.</p>
 <p>Với cách cài đặt này, thuật toán dùng <span class="arithmatex">$O(n)$</span> bộ nhớ và thực hiện <span class="arithmatex">$O(n \log \log n)$</span> phép toán, như sẽ được phân tích ở phần tiếp theo.</p>
 <h2 id="phan-tich-tiem-can">Phân tích tiệm cận<a class="headerlink" href="#phan-tich-tiem-can" title="Permanent link">&para;</a></h2>
@@ -8192,7 +8187,7 @@ Một nhược điểm khác là kích thước của <code>bitset</code> phải
 Để sàng, chỉ cần lưu các số nguyên tố đến căn bậc hai của <span class="arithmatex">$n$</span>, tức <code>prime[1... sqrt(n)]</code>, chia toàn bộ đoạn thành các khối và sàng từng khối riêng biệt.</p>
 <p>Gọi <span class="arithmatex">$s$</span> là hằng số xác định kích thước khối. Khi đó có tổng cộng <span class="arithmatex">$\lceil {\frac n s} \rceil$</span> khối, và khối <span class="arithmatex">$k$</span> (<span class="arithmatex">$k = 0 ... \lfloor {\frac n s} \rfloor$</span>) chứa các số trong đoạn <span class="arithmatex">$[ks; ks + s - 1]$</span>.
 Ta xử lý lần lượt từng khối: với mỗi khối <span class="arithmatex">$k$</span>, duyệt qua mọi số nguyên tố từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$\sqrt n$</span> và dùng chúng để sàng khối đó.
-Cần điều chỉnh chiến lược một chút khi xử lý các số đầu tiên: thứ nhất, các số nguyên tố trong <span class="arithmatex">$[1; \sqrt n]$</span> không được tự loại chính mình; thứ hai, 0 và 1 phải được đánh dấu là không nguyên tố.
+Cần điều chỉnh chiến lược một chút khi xử lý các số đầu tiên: thứ nhất, các số nguyên tố trong <span class="arithmatex">$[1; \sqrt n]$</span> không được tự loại chính mình; thứ hai, <span class="arithmatex">$0$</span> và <span class="arithmatex">$1$</span> phải được đánh dấu là không nguyên tố.
 Khi xử lý khối cuối, cũng phải nhớ rằng số cuối cần xét là <span class="arithmatex">$n$</span> không nhất thiết nằm ở cuối khối.</p>
 <p>Như đã phân tích, cách cài đặt Sàng Eratosthenes thông thường bị giới hạn bởi tốc độ nạp dữ liệu vào bộ nhớ đệm CPU.
 Bằng cách chia đoạn ứng viên <span class="arithmatex">$[1; n]$</span> thành các khối nhỏ hơn, ta không cần giữ nhiều khối trong bộ nhớ cùng lúc và mọi thao tác trở nên thân thiện với bộ nhớ đệm hơn.
@@ -8243,7 +8238,7 @@ Trong thử nghiệm được nêu ở bài gốc, kích thước khối từ <s
 <p>Đôi khi ta cần tìm tất cả số nguyên tố trong một đoạn <span class="arithmatex">$[L,R]$</span> có độ dài nhỏ, chẳng hạn <span class="arithmatex">$R - L + 1 \approx 1e7$</span>, trong khi <span class="arithmatex">$R$</span> có thể rất lớn, chẳng hạn <span class="arithmatex">$1e12$</span>.</p>
 <p>Ta có thể giải bài toán bằng ý tưởng của sàng phân đoạn.
 Trước hết, sinh tất cả số nguyên tố không vượt quá <span class="arithmatex">$\sqrt R$</span>, sau đó dùng chúng để đánh dấu mọi hợp số trong đoạn <span class="arithmatex">$[L, R]$</span>.</p>
-<p><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">segmentedSieve</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">segmented_sieve</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// generate all primes up to sqrt(R)</span>
 <span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">lim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">mark</span><span class="p">(</span><span class="n">lim</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">false</span><span class="p">);</span>
@@ -8258,23 +8253,23 @@ Trước hết, sinh tất cả số nguyên tố không vượt quá <span clas
 
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">isPrime</span><span class="p">(</span><span class="n">R</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">primes</span><span class="p">)</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
 <span class="w">            </span><span class="n">isPrime</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">L</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="n">isPrime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mf">1L</span><span class="n">L</span><span class="p">);</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">isPrime</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">L</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">isPrime</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 Độ phức tạp thời gian của cách này là <span class="arithmatex">$O((R - L + 1) \log \log (R) + \sqrt R \log \log \sqrt R)$</span>.</p>
 <p>Ta cũng có thể không sinh trước toàn bộ số nguyên tố:</p>
-<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">segmentedSieveNoPreGen</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">segmented_sieve_no_pre_gen</span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">R</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">char</span><span class="o">&gt;</span><span class="w"> </span><span class="n">isPrime</span><span class="p">(</span><span class="n">R</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">lim</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">lim</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
-<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">);</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">R</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
 <span class="w">            </span><span class="n">isPrime</span><span class="p">[</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">L</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">L</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
-<span class="w">        </span><span class="n">isPrime</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">L</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">min</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="mf">1L</span><span class="n">L</span><span class="p">);</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">isPrime</span><span class="p">[</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">L</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">isPrime</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -8287,6 +8282,7 @@ Tuy nhiên, thuật toán đó cũng có những điểm yếu riêng.</p>
 <ul>
 <li><a href="https://leetcode.com/problems/four-divisors/">Leetcode - Four Divisors</a></li>
 <li><a href="https://leetcode.com/problems/count-primes/">Leetcode - Count Primes</a></li>
+<li><a href="https://leetcode.com/problems/closest-prime-numbers-in-range/">Leetcode - Closest Prime Numbers in Range</a></li>
 <li><a href="http://www.spoj.com/problems/TDPRIMES/">SPOJ - Printing Some Primes</a></li>
 <li><a href="http://www.spoj.com/problems/HS08PAUL/">SPOJ - A Conjecture of Paul Erdos</a></li>
 <li><a href="http://www.spoj.com/problems/VECTAR8/">SPOJ - Primal Fear</a></li>
@@ -8307,7 +8303,7 @@ Tuy nhiên, thuật toán đó cũng có những điểm yếu riêng.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (95.39%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (4.61%)</li></ul>
 </ul>
                 
               </article>
@@ -8373,6 +8369,8 @@ Tuy nhiên, thuật toán đó cũng có những điểm yếu riêng.</p>
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

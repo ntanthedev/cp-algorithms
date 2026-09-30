@@ -7944,16 +7944,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Gray code";
@@ -7987,6 +7978,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8092,13 +8087,13 @@ For example, <span class="arithmatex">$G(3) = (010)_2$</span> and <span class="a
 <p>Gray code can be used to solve the Towers of Hanoi problem.
     Let <span class="arithmatex">$n$</span> denote number of disks. Start with Gray code of length <span class="arithmatex">$n$</span> which
     consists of all zeroes (<span class="arithmatex">$G(0)$</span>) and move between consecutive Gray codes (from <span class="arithmatex">$G(i)$</span> to <span class="arithmatex">$G(i+1)$</span>).
-    Let <span class="arithmatex">$i$</span>-th bit of current Gray code represent <span class="arithmatex">$n$</span>-th disk 
+    Let <span class="arithmatex">$i$</span>-th bit of current Gray code represent <span class="arithmatex">$i$</span>-th disk 
     (the least significant bit corresponds to the smallest disk and the most significant bit to the biggest disk). 
     Since exactly one bit changes on each step, we can treat changing <span class="arithmatex">$i$</span>-th bit as moving <span class="arithmatex">$i$</span>-th disk.
     Notice that there is exactly one move option for each disk (except the smallest one) on each step (except start and finish positions).
     There are always two move options for the smallest disk but there is a strategy which will always lead to answer:
     if <span class="arithmatex">$n$</span> is odd then sequence of the smallest disk moves looks like <span class="arithmatex">$f \to t \to r \to f \to t \to r \to ...$</span>
-    where <span class="arithmatex">$f$</span> is the initial rod, <span class="arithmatex">$t$</span> is the terminal rod and <span class="arithmatex">$r$</span> is the remaining rod), and 
+    where <span class="arithmatex">$f$</span> is the initial rod, <span class="arithmatex">$t$</span> is the terminal rod and <span class="arithmatex">$r$</span> is the remaining rod, and 
     if <span class="arithmatex">$n$</span> is even: <span class="arithmatex">$f \to r \to t \to f \to r \to t \to ...$</span>.</p>
 </li>
 <li>
@@ -8113,7 +8108,7 @@ For example, <span class="arithmatex">$G(3) = (010)_2$</span> and <span class="a
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Taras Panychok" data-bi-name="contributorprofile" target="_blank">Taras Panychok</a> (34.67%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (26.67%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (20.0%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (8.0%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (5.33%)</li><li><a href="#" title="frordo" data-bi-name="contributorprofile" target="_blank">frordo</a> (2.67%)</li><li><a href="#" title="Zarif Muhtasim" data-bi-name="contributorprofile" target="_blank">Zarif Muhtasim</a> (1.33%)</li><li><a href="#" title="traxex2" data-bi-name="contributorprofile" target="_blank">traxex2</a> (1.33%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Taras Panychok" data-bi-name="contributorprofile" target="_blank">Taras Panychok</a> (34.67%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (24.0%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (20.0%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (8.0%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (5.33%)</li><li><a href="#" title="frordo" data-bi-name="contributorprofile" target="_blank">frordo</a> (2.67%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (2.67%)</li><li><a href="#" title="Zarif Muhtasim" data-bi-name="contributorprofile" target="_blank">Zarif Muhtasim</a> (1.33%)</li><li><a href="#" title="traxex2" data-bi-name="contributorprofile" target="_blank">traxex2</a> (1.33%)</li></ul>
 </ul>
                 
               </article>
@@ -8179,6 +8174,8 @@ For example, <span class="arithmatex">$G(3) = (010)_2$</span> and <span class="a
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

@@ -7933,16 +7933,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "2-SAT";
@@ -7976,6 +7967,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8035,7 +8030,7 @@ b \Rightarrow a &amp; \lnot b \Rightarrow \lnot a &amp; b \Rightarrow \lnot a &a
 \end{array}$$</div>
 <p>Ta có thể thấy đồ thị kéo theo (implication graph) trong hình sau:</p>
 <div style="text-align: center;">
-  <img src="../../graph/2SAT.png" alt=""Implication Graph of 2-SAT example"">
+  <img src="../../graph/2SAT.png" alt="Implication Graph of 2-SAT example">
 </div>
 
 <p>Một tính chất đáng chú ý của đồ thị kéo theo là:
@@ -8047,16 +8042,14 @@ Ta sẽ chứng minh điều đó trong vài đoạn tiếp theo.
 Nhắc lại rằng nếu đi tới được một đỉnh từ đỉnh thứ hai và cũng đi tới được đỉnh thứ hai từ đỉnh thứ nhất, thì hai đỉnh này nằm trong cùng một thành phần liên thông mạnh.
 Do đó, có thể phát biểu tiêu chuẩn tồn tại lời giải như sau:</p>
 <p>Bài toán 2-SAT có lời giải khi và chỉ khi với mọi biến <span class="arithmatex">$x$</span>, hai đỉnh <span class="arithmatex">$x$</span> và <span class="arithmatex">$\lnot x$</span> nằm trong hai thành phần liên thông mạnh khác nhau của đồ thị kéo theo.</p>
-<p><strong>Ghi chú bản dịch:</strong> Câu tương ứng trong nguồn tiếng Anh có cụm từ thừa “of the strong connection”, nhưng tiêu chuẩn ngay trước và sau đó đều xác định rõ rằng ta đang xét các thành phần liên thông mạnh của đồ thị kéo theo. Bản dịch giữ đúng ý kỹ thuật này; lỗi diễn đạt của nguồn được tách riêng để đề xuất sửa ở upstream.</p>
 <p>Tiêu chuẩn này có thể được kiểm tra trong <span class="arithmatex">$O(n + m)$</span> bằng cách tìm tất cả các thành phần liên thông mạnh.</p>
 <p>Hình sau biểu diễn tất cả các thành phần liên thông mạnh của ví dụ.
 Dễ kiểm tra rằng không thành phần nào trong bốn thành phần chứa đồng thời một đỉnh <span class="arithmatex">$x$</span> và phủ định <span class="arithmatex">$\lnot x$</span> của nó, vì vậy ví dụ có lời giải.
 Trong các đoạn tiếp theo, ta sẽ học cách tính một phép gán hợp lệ; trước mắt, để minh họa, một lời giải là <span class="arithmatex">$a = \text{false}$</span>, <span class="arithmatex">$b = \text{false}$</span>, <span class="arithmatex">$c = \text{false}$</span>.</p>
 <div style="text-align: center;">
-  <img src="../../graph/2SAT_SCC.png" alt=""Strongly Connected Components of the 2-SAT example"">
+  <img src="../../graph/2SAT_SCC.png" alt="Strongly Connected Components of the 2-SAT example">
 </div>
 
-<p><strong>Ghi chú bản dịch:</strong> Hai thẻ ảnh trong nguồn hiện có thuộc tính alt sai cú pháp do dấu ngoặc kép bị lặp. Bản dịch giữ nguyên cấu trúc HTML của nguồn để đồng bộ; lỗi markup này được xử lý riêng ở upstream.</p>
 <p>Bây giờ ta xây dựng thuật toán tìm lời giải của bài toán 2-SAT với giả thiết rằng lời giải tồn tại.</p>
 <p>Lưu ý rằng dù lời giải tồn tại, vẫn có thể xảy ra trường hợp đi tới được <span class="arithmatex">$\lnot x$</span> từ <span class="arithmatex">$x$</span> trong đồ thị kéo theo, hoặc (nhưng không thể đồng thời) đi tới được <span class="arithmatex">$x$</span> từ <span class="arithmatex">$\lnot x$</span>.
 Trong trường hợp đó, một trong hai lựa chọn <span class="arithmatex">$\text{true}$</span> hoặc <span class="arithmatex">$\text{false}$</span> cho <span class="arithmatex">$x$</span> sẽ dẫn tới mâu thuẫn, còn lựa chọn kia thì không.
@@ -8176,7 +8169,7 @@ Trong đồ thị, các đỉnh có chỉ số <span class="arithmatex">$2k$</sp
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.99%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.01%)</li></ul>
 </ul>
                 
               </article>
@@ -8242,6 +8235,8 @@ Trong đồ thị, các đỉnh có chỉ số <span class="arithmatex">$2k$</sp
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

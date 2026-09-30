@@ -6495,6 +6495,62 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#nhay-nhi-phan-tren-cay-ong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nhảy nhị phân trên cây động
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nhảy nhị phân trên cây động">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cai-at_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cài đặt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lca-voi-bo-nho-va-thoi-gian-tien-xu-ly-on" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LCA với bộ nhớ và thời gian tiền xử lý $O(n)$
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LCA với bộ nhớ và thời gian tiền xử lý $O(n)$">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cai-at_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cài đặt
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#bai-tap-luyen-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -7933,16 +7989,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Lowest Common Ancestor - Binary Lifting";
@@ -7976,6 +8023,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8088,6 +8139,219 @@ Do đó, mỗi truy vấn được trả lời trong <span class="arithmatex">$O
 <span class="w">    </span><span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
+<h2 id="nhay-nhi-phan-tren-cay-ong">Nhảy nhị phân trên cây động<a class="headerlink" href="#nhay-nhi-phan-tren-cay-ong" title="Permanent link">&para;</a></h2>
+<p>Đây là một phương pháp tìm LCA khác, cũng hỗ trợ thêm một đỉnh lá vào đỉnh <code>v</code>.</p>
+<p>Phương pháp trước gặp khó khăn với các cập nhật này vì thêm một lá có thể làm thay đổi thời điểm vào và ra của toàn bộ đồ thị.</p>
+<p>Ta tạo mảng <code>depth[u]</code>, chứa khoảng cách từ đỉnh <code>u</code> tới gốc. Có thể tính bằng một lượt DFS trên cây. Tương tự cách trước, ta tiền xử lý mảng <code>up[u][j]</code>.</p>
+<p>Ta xử lý truy vấn LCA như sau: gọi <code>(u, v)</code> là cặp đỉnh cần tìm đáp án. Từ đây giả sử <code>depth[u] ≥ depth[v]</code> (nếu <code>depth[v] &gt; depth[u]</code>, chỉ cần đổi chỗ <code>u</code> và <code>v</code>). Ta đưa <code>u</code> lên một tổ tiên để đạt <code>depth[u] = depth[v]</code>.
+Tổ tiên của <code>u</code> thỏa điều kiện này nằm cao hơn đúng <code>depth[u]-depth[v]</code> đỉnh. Vì vậy, dùng bảng <code>up[u][j]</code> và biểu diễn nhị phân của <code>depth[u]-depth[v]</code>, ta đổi <code>u</code> thành tổ tiên đó.</p>
+<p>Bây giờ ta có bài toán tìm LCA của hai đỉnh <code>(u, v)</code> có cùng độ sâu. Trước hết xét trường hợp đơn giản <code>u = v</code>, khi đó LCA là <code>u</code>. Nếu không, ta tìm đỉnh cao nhất chưa phải tổ tiên chung của <code>(u, v)</code>.</p>
+<p>Giả sử <code>L=ceil(log(N))</code>, trong đó <code>N</code> là số đỉnh tối đa của đồ thị. Đặt <code>i = L</code>. Nếu <code>up[u][i]=up[v][i]</code>, chỉ giảm <code>i</code>. Ngược lại, đặt <code>u = up[u][i]</code> và <code>v = up[v][i]</code>, rồi giảm <code>i</code>.
+Sau tất cả các bước này, ta có hai đỉnh <code>u</code> và <code>v</code> chưa phải LCA của cặp ban đầu, nhưng <code>up[u][0]</code> và <code>up[v][0]</code> thì chính là LCA. Độ phức tạp tiền xử lý vẫn là <span class="arithmatex">$O(N \log N)$</span>, còn truy vấn là <span class="arithmatex">$O( \log N)$</span>.</p>
+<p>Vì sao cách này phù hợp với cây động? Trong thuật toán, ta chỉ cần mảng <code>up[u][j]</code> cho mọi đỉnh và khoảng cách từ mỗi đỉnh tới gốc; cả hai đều dễ dàng tính được từ truy vấn thêm lá trong <span class="arithmatex">$O(\log n)$</span>.</p>
+<p>Đổi lại là tốc độ truy vấn. Phương pháp trước xử lý một truy vấn bằng một vòng lặp giảm dần, vì phép kiểm tra tổ tiên đồng thời xử lý chênh lệch độ sâu và vị trí tách nhánh. Phương pháp này cần hai vòng lặp, vòng thứ hai đưa cả hai đỉnh lên trên, nên đọc <code>up</code> nhiều hơn khoảng ba lần: trên cây có <span class="arithmatex">$10^6$</span> đỉnh, mỗi truy vấn đọc 64 lần so với 22 lần.</p>
+<h3 id="cai-at_1">Cài đặt<a class="headerlink" href="#cai-at_1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">;</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">up</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dist</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">dist</span><span class="p">;</span>
+<span class="w">    </span><span class="n">up</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="n">up</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">up</span><span class="p">[</span><span class="n">up</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="mi">-1</span><span class="p">]][</span><span class="n">i</span><span class="mi">-1</span><span class="p">];</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">u</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">lca</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">up</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">j</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">up</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">j</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">u</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">up</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">up</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">up</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+<span class="w">            </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">up</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">up</span><span class="p">[</span><span class="n">u</span><span class="p">][</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">add_leaf</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">to</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adj</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="n">adj</span><span class="p">[</span><span class="n">to</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="n">adj</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">to</span><span class="p">});</span>
+<span class="w">    </span><span class="n">depth</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">up</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="n">up</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">to</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">l</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
+<span class="w">        </span><span class="n">up</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">up</span><span class="p">[</span><span class="n">up</span><span class="p">[</span><span class="n">v</span><span class="p">][</span><span class="n">i</span><span class="mi">-1</span><span class="p">]][</span><span class="n">i</span><span class="mi">-1</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="c1">//Set max_nodes to the maximum size of the graph</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">preprocess</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">max_nodes</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">depth</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ceil</span><span class="p">(</span><span class="n">log2</span><span class="p">(</span><span class="n">max_nodes</span><span class="p">));</span>
+<span class="w">    </span><span class="n">up</span><span class="p">.</span><span class="n">assign</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="p">(</span><span class="n">l</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">));</span>
+<span class="w">    </span><span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="lca-voi-bo-nho-va-thoi-gian-tien-xu-ly-on">LCA với bộ nhớ và thời gian tiền xử lý <span class="arithmatex">$O(n)$</span><a class="headerlink" href="#lca-voi-bo-nho-va-thoi-gian-tien-xu-ly-on" title="Permanent link">&para;</a></h2>
+<p>Phương pháp này cho phép tính LCA chỉ dùng bộ nhớ <span class="arithmatex">$O(n)$</span>. Ta cũng có thể mở rộng để dùng trên cây động. Phương pháp được Harel và Tarjan đề xuất lần đầu vào năm 1984.</p>
+<p>Tạo mảng <code>depth[]</code> lưu độ sâu của mỗi đỉnh trong cây.
+Với mỗi đỉnh, ta chỉ định nghĩa bước nhảy <strong>nhỏ</strong> và <strong>lớn</strong>. Bước nhảy nhỏ luôn trỏ tới cha trực tiếp (trừ gốc trỏ tới chính nó). Bước nhảy lớn được định nghĩa phức tạp hơn. Ký hiệu <code>big[v]</code> là đỉnh đến sau một bước nhảy lớn từ đỉnh <code>v</code>. Đặt <code>big[root] = root</code>.</p>
+<p>Sau đó ta định nghĩa đệ quy. Đặt <span class="arithmatex">$\ell(v) = \mathtt{depth}[v] - \mathtt{depth}[\mathtt{big}[v]]$</span> là độ dài bước nhảy lớn từ <span class="arithmatex">$v$</span>, và gọi <span class="arithmatex">$p$</span> là cha của <span class="arithmatex">$u$</span>.</p>
+<div class="arithmatex">$$\mathtt{big}[u] = \begin{cases} \mathtt{big}[\mathtt{big}[p]] &amp; \text{if } \ell(p) = \ell(\mathtt{big}[p]) \\
+p &amp; \text{otherwise}\end{cases}$$</div>
+<figure style="margin:1.2em auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 26 700 134" width="700" height="134" style="max-width:100%;height:auto" font-family="Georgia,'Times New Roman',serif" role="img" aria-label="Hai bước nhảy lớn bằng nhau từ p và big của p được ghép thành một bước nhảy dài hai ell cộng một cho u">
+  <defs>
+    <marker id="lcaA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#9575cd"/></marker>
+    <marker id="lcaB" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#ec407a"/></marker>
+  </defs>
+  <g stroke="currentColor" fill="currentColor">
+    <line x1="60" y1="100" x2="660" y2="100" stroke-width="2" opacity=".4"/>
+    <g stroke="none" opacity=".62"><circle cx="140" cy="100" r="4"/><circle cx="260" cy="100" r="4"/><circle cx="320" cy="100" r="4"/><circle cx="440" cy="100" r="4"/><circle cx="500" cy="100" r="4"/></g>
+    <g stroke="none"><circle cx="200" cy="100" r="6.5"/><circle cx="380" cy="100" r="6.5"/><circle cx="560" cy="100" r="6.5"/><circle cx="620" cy="100" r="6.5"/></g>
+    <g font-size="16" text-anchor="middle" stroke="none" font-family="ui-monospace,'DejaVu Sans Mono',monospace">
+      <text x="200" y="152">big[big[p]]</text><text x="380" y="152">big[p]</text><text x="560" y="152">p</text><text x="620" y="152">u</text>
+    </g>
+  </g>
+  <g fill="none" stroke-width="2.2">
+    <path d="M556 110 Q470 162 388 110" stroke="#9575cd" marker-end="url(#lcaA)"/>
+    <path d="M376 110 Q290 162 208 110" stroke="#9575cd" marker-end="url(#lcaA)"/>
+    <path d="M618 90 Q410 22 206 90" stroke="#ec407a" marker-end="url(#lcaB)"/>
+  </g>
+  <g font-size="17" font-style="italic" text-anchor="middle">
+    <text x="470" y="127" fill="#9575cd">&#8467;</text><text x="290" y="127" fill="#9575cd">&#8467;</text>
+    <text x="410" y="46" fill="#ec407a">2&#8467; + 1</text>
+  </g>
+</svg>
+<figcaption>Hai bước nhảy bằng nhau được gộp lại, nên độ dài mỗi bước nhảy bằng một lũy thừa của hai trừ một.</figcaption>
+</figure>
+
+<p>Ta phải tính mảng này theo thứ tự sao cho khi xét một đỉnh, giá trị của mọi tổ tiên của nó đã được tính. Có thể dùng thứ tự preorder vì thứ tự này thỏa tính chất đó.</p>
+<p>Bây giờ, sau phần tiền xử lý, trả lời truy vấn khá đơn giản. Trước hết ta cân bằng hai đỉnh về cùng độ sâu rồi tìm đỉnh thấp nhất chưa phải tổ tiên chung. Cách này rất giống thuật toán LCA động ở trên, nhưng bây giờ ta chỉ kiểm tra xem có thể thực hiện bước nhảy lớn hay không; nếu không thì thực hiện bước nhảy nhỏ. Độ phức tạp thời gian là logarit, vì Harel và Tarjan đã chứng minh trong bài báo rằng ta dùng nhiều nhất <span class="arithmatex">$6\lfloor{\log(d+1)}\rfloor-4$</span> bước nhảy. Độ phức tạp bộ nhớ là tuyến tính.</p>
+<figure style="margin:1.2em auto">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 12 700 200" width="700" height="200" style="max-width:100%;height:auto" font-family="Georgia,'Times New Roman',serif" role="img" aria-label="Bước nhảy lớn của mỗi đỉnh trên đường đi gồm 17 đỉnh; các độ dài 1, 3, 7 và 15 xen kẽ phía trên và dưới đường đi">
+  <g stroke="currentColor" fill="currentColor">
+    <line x1="46" y1="134" x2="654" y2="134" stroke-width="2" opacity=".4"/>
+    <g stroke="none"><circle cx="46" cy="134" r="4.5"/><circle cx="84" cy="134" r="4.5"/><circle cx="122" cy="134" r="4.5"/><circle cx="160" cy="134" r="4.5"/><circle cx="198" cy="134" r="4.5"/><circle cx="236" cy="134" r="4.5"/><circle cx="274" cy="134" r="4.5"/><circle cx="312" cy="134" r="4.5"/><circle cx="350" cy="134" r="4.5"/><circle cx="388" cy="134" r="4.5"/><circle cx="426" cy="134" r="4.5"/><circle cx="464" cy="134" r="4.5"/><circle cx="502" cy="134" r="4.5"/><circle cx="540" cy="134" r="4.5"/><circle cx="578" cy="134" r="4.5"/><circle cx="616" cy="134" r="4.5"/><circle cx="654" cy="134" r="4.5"/></g>
+  </g>
+  <g fill="none" stroke="#9575cd" stroke-width="1.8">
+    <path d="M46 141 A19 14 0 0 0 84 141"/>
+    <path d="M84 141 A19 14 0 0 0 122 141"/>
+    <path d="M46 127 A57 34 0 0 1 160 127"/>
+    <path d="M160 141 A19 14 0 0 0 198 141"/>
+    <path d="M198 141 A19 14 0 0 0 236 141"/>
+    <path d="M160 127 A57 34 0 0 1 274 127"/>
+    <path d="M46 141 A133 46 0 0 0 312 141"/>
+    <path d="M312 141 A19 14 0 0 0 350 141"/>
+    <path d="M350 141 A19 14 0 0 0 388 141"/>
+    <path d="M312 127 A57 34 0 0 1 426 127"/>
+    <path d="M426 141 A19 14 0 0 0 464 141"/>
+    <path d="M464 141 A19 14 0 0 0 502 141"/>
+    <path d="M426 127 A57 34 0 0 1 540 127"/>
+    <path d="M312 141 A133 46 0 0 0 578 141"/>
+    <path d="M46 127 A285 92 0 0 1 616 127"/>
+    <path d="M616 141 A19 14 0 0 0 654 141"/>
+  </g>
+  <g fill="#9575cd" font-size="15" font-style="italic" text-anchor="middle"><text x="179" y="205">7</text><text x="483" y="85">3</text><text x="331" y="27">15</text><text x="635" y="173">1</text></g>
+</svg>
+<figcaption>Các bước nhảy lớn trên một đường đi. Các kích thước lồng nhau, nên chỉ cần ít bước nhảy để đến gốc từ bất kỳ vị trí nào.</figcaption>
+</figure>
+
+<p>Thêm một lá ở đây rẻ hơn so với phần trước. Cả hai con trỏ của đỉnh mới đều được xác định chỉ từ cha của nó, và không đỉnh cũ nào thay đổi, nên mỗi lần thêm mất <span class="arithmatex">$O(1)$</span> và không có bảng nào cần mở rộng.</p>
+<h3 id="cai-at_2">Cài đặt<a class="headerlink" href="#cai-at_2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">l</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">;</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">depth</span><span class="p">;</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">small</span><span class="p">,</span><span class="w"> </span><span class="n">big</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">dfs</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">dist</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dist</span><span class="p">;</span>
+<span class="w">    </span><span class="n">small</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">p</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">p</span><span class="p">]]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">p</span><span class="p">]]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">p</span><span class="p">]]]){</span>
+<span class="w">        </span><span class="n">big</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="w"> </span><span class="n">big</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">p</span><span class="p">]];</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">big</span><span class="p">[</span><span class="n">v</span><span class="p">]</span><span class="o">=</span><span class="n">p</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">adj</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">u</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">p</span><span class="p">)</span>
+<span class="w">            </span><span class="n">dfs</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="n">dist</span><span class="o">+</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">lca</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="n">swap</span><span class="p">(</span><span class="n">u</span><span class="p">,</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">u</span><span class="p">]]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">big</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">small</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="n">u</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">v</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">big</span><span class="p">[</span><span class="n">u</span><span class="p">]</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">big</span><span class="p">[</span><span class="n">v</span><span class="p">])</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">big</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+<span class="w">            </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">big</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span><span class="p">{</span>
+<span class="w">            </span><span class="n">u</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">small</span><span class="p">[</span><span class="n">u</span><span class="p">];</span>
+<span class="w">            </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">small</span><span class="p">[</span><span class="n">v</span><span class="p">];</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">u</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">add_leaf</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">to</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adj</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
+<span class="w">    </span><span class="n">adj</span><span class="p">[</span><span class="n">to</span><span class="p">].</span><span class="n">push_back</span><span class="p">(</span><span class="n">v</span><span class="p">);</span>
+<span class="w">    </span><span class="n">adj</span><span class="p">.</span><span class="n">push_back</span><span class="p">({</span><span class="n">to</span><span class="p">});</span>
+<span class="w">    </span><span class="n">depth</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">small</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">to</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">depth</span><span class="p">[</span><span class="n">to</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">to</span><span class="p">]]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">to</span><span class="p">]]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">depth</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">to</span><span class="p">]]]){</span>
+<span class="w">        </span><span class="n">big</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">big</span><span class="p">[</span><span class="n">big</span><span class="p">[</span><span class="n">to</span><span class="p">]]);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="p">{</span>
+<span class="w">        </span><span class="n">big</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">to</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">preprocess</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">root</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">depth</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">small</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">big</span><span class="p">.</span><span class="n">resize</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+<span class="w">    </span><span class="n">big</span><span class="p">[</span><span class="n">root</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">root</span><span class="p">;</span>
+<span class="w">    </span><span class="n">dfs</span><span class="p">(</span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="n">root</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://leetcode.com/problems/kth-ancestor-of-a-tree-node">LeetCode -  Kth Ancestor of a Tree Node</a></li>
@@ -8097,7 +8361,7 @@ Do đó, mỗi truy vấn được trả lời trong <span class="arithmatex">$O
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (69.79%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (30.21%)</li></ul>
 </ul>
                 
               </article>
@@ -8163,6 +8427,8 @@ Do đó, mỗi truy vấn được trả lời trong <span class="arithmatex">$O
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

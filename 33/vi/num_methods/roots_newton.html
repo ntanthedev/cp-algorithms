@@ -7933,16 +7933,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Newton\u0027s method for finding roots";
@@ -7976,6 +7967,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8049,12 +8044,14 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Một biến thể phổ biến khác là cần tính căn nguyên: với <span class="arithmatex">$n$</span> cho trước, tìm <span class="arithmatex">$x$</span> lớn nhất sao cho <span class="arithmatex">$x^2 \le n$</span>. Ở đây cần thay đổi nhẹ điều kiện dừng vì có thể xảy ra trường hợp <span class="arithmatex">$x$</span> bắt đầu "nhảy" quanh đáp án. Vì vậy, ta thêm điều kiện: nếu ở bước trước giá trị <span class="arithmatex">$x$</span> đã giảm, còn ở bước hiện tại nó lại có xu hướng tăng, thì thuật toán phải dừng.</p>
+<p>Một biến thể phổ biến khác là cần tính căn nguyên: với <span class="arithmatex">$n$</span> không âm cho trước, tìm <span class="arithmatex">$x$</span> lớn nhất sao cho <span class="arithmatex">$x^2 \le n$</span>. Ở đây cần thay đổi nhẹ điều kiện dừng vì có thể xảy ra trường hợp <span class="arithmatex">$x$</span> bắt đầu "nhảy" quanh đáp án. Vì vậy, ta thêm điều kiện: nếu ở bước trước giá trị <span class="arithmatex">$x$</span> đã giảm, còn ở bước hiện tại nó lại có xu hướng tăng, thì thuật toán phải dừng.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">isqrt_newton</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">decreased</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1L</span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">decreased</span><span class="p">)</span>
 <span class="w">            </span><span class="k">break</span><span class="p">;</span>
 <span class="w">        </span><span class="n">decreased</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nx</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
@@ -8065,6 +8062,8 @@ Describe the issue of this article in detail.
 </code></pre></div>
 <p>Cuối cùng là biến thể thứ ba dành cho số nguyên lớn. Vì <span class="arithmatex">$n$</span> có thể rất lớn, ta nên chú ý đến xấp xỉ ban đầu. Hiển nhiên, xấp xỉ càng gần căn thật thì càng nhanh thu được kết quả. Một lựa chọn đơn giản và hiệu quả là lấy xấp xỉ ban đầu bằng <span class="arithmatex">$2^{\textrm{bits}/2}$</span>, trong đó <span class="arithmatex">$\textrm{bits}$</span> là số bit của <span class="arithmatex">$n$</span>. Đoạn code Java sau minh họa biến thể này:</p>
 <div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">BigInteger</span><span class="w"> </span><span class="nf">isqrtNewton</span><span class="p">(</span><span class="n">BigInteger</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">signum</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">BigInteger</span><span class="p">.</span><span class="na">ZERO</span><span class="p">;</span>
 <span class="w">    </span><span class="n">BigInteger</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BigInteger</span><span class="p">.</span><span class="na">ONE</span><span class="p">.</span><span class="na">shiftLeft</span><span class="p">(</span><span class="n">n</span><span class="p">.</span><span class="na">bitLength</span><span class="p">()</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">);</span>
 <span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="n">p_dec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
@@ -8077,7 +8076,6 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú bản dịch:</strong> Hai cài đặt căn bậc hai nguyên ở trên không xử lý riêng trường hợp đầu vào bằng 0. Với trường hợp đó, biến lặp có thể trở thành 0 rồi phép chia ở vòng lặp kế tiếp không còn hợp lệ. Ngoài ra, ở cài đặt C++, phép cộng trung gian được tính bằng kiểu int nên có thể tràn số với đầu vào lớn gần giới hạn của kiểu này. Bản dịch giữ nguyên code nguồn; các correction được tách sang PR upstream.</p>
 <p>Ví dụ, đoạn code này chạy trong <span class="arithmatex">$60$</span> mili giây với <span class="arithmatex">$n = 10^{1000}$</span>; nếu bỏ cách chọn xấp xỉ ban đầu cải tiến và chỉ bắt đầu từ <span class="arithmatex">$1$</span>, thời gian chạy sẽ vào khoảng <span class="arithmatex">$120$</span> mili giây.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
@@ -8086,7 +8084,7 @@ Describe the issue of this article in detail.
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (93.04%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (6.96%)</li></ul>
 </ul>
                 
               </article>
@@ -8152,6 +8150,8 @@ Describe the issue of this article in detail.
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

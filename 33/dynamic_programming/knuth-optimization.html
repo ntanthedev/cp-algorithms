@@ -7994,16 +7994,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Knuth\u0027s Optimization";
@@ -8037,6 +8028,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8162,7 +8157,7 @@ $$</div>
 The inequality reduces to <span class="arithmatex">$dp(a, b) + dp(b, d) \leq dp(a, d)$</span> (This assumes that <span class="arithmatex">$dp(i, i) = 0$</span> for all <span class="arithmatex">$i$</span>, which is the case for all problems using this optimization). Let <span class="arithmatex">$opt(a,d) = z$</span>. </p>
 <ul>
 <li>
-<p>If <span class="arithmatex">$z &lt; j$</span>,<br />
+<p>If <span class="arithmatex">$z &lt; b$</span>,<br />
 Note that</p>
 <div class="arithmatex">$$
 dp(a, b) \leq dp_{z}(a, b) = dp(a, z) + dp(z+1, b) + C(a, b).
@@ -8174,7 +8169,7 @@ $$</div>
 <p>From the induction hypothesis, <span class="arithmatex">$dp(z+1, b) + dp(b, d) \leq dp(z+1, d)$</span>. Also, it is given that <span class="arithmatex">$C(a, b) \leq C(a, d)$</span>. Combining these 2 facts with above inequality yields the desired result.</p>
 </li>
 <li>
-<p>If <span class="arithmatex">$z \geq j$</span>, the proof of this case is symmetric to the previous case.</p>
+<p>If <span class="arithmatex">$z \geq b$</span>, the proof of this case is symmetric to the previous case.</p>
 </li>
 </ul>
 </li>
@@ -8240,7 +8235,7 @@ $$</div>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (70.26%)</li><li><a href="#" title="DrDrunkenstein42" data-bi-name="contributorprofile" target="_blank">DrDrunkenstein42</a> (28.21%)</li><li><a href="#" title="Cecilia Chan" data-bi-name="contributorprofile" target="_blank">Cecilia Chan</a> (0.51%)</li><li><a href="#" title="FloppaInspector" data-bi-name="contributorprofile" target="_blank">FloppaInspector</a> (0.51%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (0.51%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (70.26%)</li><li><a href="#" title="DrDrunkenstein42" data-bi-name="contributorprofile" target="_blank">DrDrunkenstein42</a> (27.18%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (1.03%)</li><li><a href="#" title="Cecilia Chan" data-bi-name="contributorprofile" target="_blank">Cecilia Chan</a> (0.51%)</li><li><a href="#" title="FloppaInspector" data-bi-name="contributorprofile" target="_blank">FloppaInspector</a> (0.51%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (0.51%)</li></ul>
 </ul>
                 
               </article>
@@ -8306,6 +8301,8 @@ $$</div>
         <script src="../javascript/config.js"></script>
       
         <script src="../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       

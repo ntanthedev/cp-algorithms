@@ -8087,16 +8087,7 @@
               
               <article class="md-content__inner md-typeset">
                 
-                  <aside class="sponsor-banner">
-  <p>
-    cp-algorithms is supported by
-    <a href="https://link.coddy.tech/bvMS?af_web_dp=https%3A%2F%2Fcoddy.tech&amp;af_sub1=cp-algorithms.com" rel="sponsored noopener" target="_blank">
-      <img src="../../img/sponsors/coddy-logo.svg" alt="" width="56" height="64">Coddy</a>
-    &mdash; interactive coding practice
-  </p>
-</aside>
-
-<script type="text/javascript">
+                  <script type="text/javascript">
 window.onload = function() {
 	const newIssueURL = "https://github.com/cp-algorithms/cp-algorithms/issues/new";
   const issueTitle = "Problem on article " + "Knapsack Problem";
@@ -8130,6 +8121,10 @@ Describe the issue of this article in detail.
 
 
 
+
+  
+  
+  
 
   
   
@@ -8190,15 +8185,21 @@ tương ứng với hai giá trị nhị phân 0 và 1. Vì vậy dạng bài n�
 <p>Ta có thể dựa trên ý tưởng của Knapsack 0-1 để định nghĩa trạng thái <span class="arithmatex">$f_{i, j}$</span>: giá trị lớn nhất chiếc túi có thể đạt được với sức chứa tối đa <span class="arithmatex">$j$</span> khi dùng <span class="arithmatex">$i$</span> loại vật đầu tiên.</p>
 <p>Cần lưu ý rằng dù định nghĩa trạng thái giống Knapsack 0-1, quy tắc chuyển trạng thái lại khác.</p>
 <h3 id="giai-thich_1">Giải thích<a class="headerlink" href="#giai-thich_1" title="Permanent link">&para;</a></h3>
-<p>Cách trực tiếp là, với <span class="arithmatex">$i$</span> loại vật đầu tiên, duyệt số lần lấy mỗi loại. Độ phức tạp thời gian của cách này là <span class="arithmatex">$O(n^2W)$</span>.</p>
-<p><strong>Ghi chú bản dịch:</strong> Cận độ phức tạp ở câu trên của nguồn không đúng trong trường hợp tổng quát. Với mỗi trạng thái, số lần lấy vật có thể phải duyệt tới bậc <span class="arithmatex">$W$</span>, nên cận tệ nhất là <span class="arithmatex">$O(nW^2)$</span>. Lỗi này đã có một pull request riêng đang mở ở upstream; bản dịch vẫn giữ nguyên biểu thức của nguồn để bảo đảm đồng bộ.</p>
-<p>Ta thu được công thức chuyển sau:</p>
-<div class="arithmatex">$$f_{i, j} = \max\limits_{k=0}^{\infty}(f_{i-1, j-k\cdot w_i} + k\cdot v_i)$$</div>
+<p>Cách trực tiếp là, với <span class="arithmatex">$i$</span> loại vật đầu tiên, duyệt số lần lấy mỗi loại. Ta thu được công thức chuyển trạng thái sau:</p>
+<div class="arithmatex">$$f_{i, j} = \max\limits_{k=0}^{\left\lfloor \frac{j}{w_i} \right\rfloor}(f_{i-1, j-k\cdot w_i} + k\cdot v_i)$$</div>
+<p>Thuật toán này có thể được cài đặt trong <span class="arithmatex">$O(nW^2)$</span> như sau:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">W</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">j</span><span class="p">;</span><span class="w"> </span><span class="n">k</span><span class="o">++</span><span class="p">)</span>
+<span class="w">      </span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">],</span><span class="w"> </span><span class="n">f</span><span class="p">[</span><span class="n">i</span><span class="mi">-1</span><span class="p">][</span><span class="n">j</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">w</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">v</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+</code></pre></div>
 <p>Đồng thời, công thức trên có thể rút gọn thành dạng "phẳng":</p>
 <div class="arithmatex">$$f_{i, j} = \max(f_{i-1, j},f_{i, j-w_i} + v_i)$$</div>
 <p>Lý do là <span class="arithmatex">$f_{i, j-w_i}$</span> đã được cập nhật từ <span class="arithmatex">$f_{i, j-2\cdot w_i}$</span>, và cứ tiếp tục như vậy.</p>
 <p>Tương tự Knapsack 0-1, ta có thể bỏ chiều thứ nhất để tối ưu bộ nhớ. Khi đó ta nhận được cùng quy tắc chuyển như Knapsack 0-1.</p>
 <div class="arithmatex">$$f_j \gets \max(f_j, f_{j-w_i}+v_i)$$</div>
+<p>Quy tắc giống hệt nhau, nhưng bây giờ phải được thực hiện theo thứ tự <strong>tăng dần</strong> của <span class="arithmatex">$j$</span>; đây là điểm khác biệt duy nhất giữa hai bài toán ở dạng này.
+Khi duyệt tăng, <span class="arithmatex">$f_{j-w_i}$</span> đã được cập nhật cho vật <span class="arithmatex">$i$</span>, nên nó tương ứng với <span class="arithmatex">$f_{i,j-w_i}$</span> và ta có thể lấy vật thêm lần nữa; nếu duyệt giảm thì nó vẫn tương ứng với <span class="arithmatex">$f_{i-1,j-w_i}$</span>, và mỗi vật chỉ có thể được lấy nhiều nhất một lần.</p>
 <h3 id="cai-at_1">Cài đặt<a class="headerlink" href="#cai-at_1" title="Permanent link">&para;</a></h3>
 <p>Thuật toán trên có thể được cài đặt trong <span class="arithmatex">$O(nW)$</span> như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
@@ -8253,7 +8254,7 @@ Theo cách này, tổng độ phức tạp của thuật toán giảm xuống <s
 <span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">0-1</span><span class="w"> </span><span class="n">knapsack</span><span class="p">)</span>
 <span class="w">    </span><span class="n">Apply</span><span class="w"> </span><span class="mi">0-1</span><span class="w"> </span><span class="n">knapsack</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
 <span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">complete</span><span class="w"> </span><span class="n">knapsack</span><span class="p">)</span>
-<span class="w">    </span><span class="n">Apply</span><span class="w"> </span><span class="n">complete</span><span class="w"> </span><span class="n">knapsack</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Apply</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">complete</span><span class="w"> </span><span class="n">knapsack</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
 <span class="w">  </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">multiple</span><span class="w"> </span><span class="n">knapsack</span><span class="p">)</span>
 <span class="w">    </span><span class="n">Apply</span><span class="w"> </span><span class="n">multiple</span><span class="w"> </span><span class="n">knapsack</span><span class="w"> </span><span class="n">code</span><span class="p">;</span>
 <span class="p">}</span>
@@ -8272,7 +8273,7 @@ Theo cách này, tổng độ phức tạp của thuật toán giảm xuống <s
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (90.5%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (9.5%)</li></ul>
 </ul>
                 
               </article>
@@ -8338,6 +8339,8 @@ Theo cách này, tổng độ phức tạp của thuật toán giảm xuống <s
         <script src="../../javascript/config.js"></script>
       
         <script src="../../javascript/sidebar-toggle-sync.js"></script>
+      
+        <script src="../../javascript/donation-banner.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
       
