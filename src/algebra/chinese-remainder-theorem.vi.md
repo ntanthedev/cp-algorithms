@@ -4,9 +4,9 @@ tags:
 e_maxx_link: chinese_theorem
 translation:
   source: algebra/chinese-remainder-theorem.md
-  source_commit: 5fb6b73fe4ef5605bc9064b41bc8fb845a9ca617
+  source_commit: be9d72171d4d69d4cab3f874e666442bc1e78a79
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Định lý Thặng dư Trung Hoa
@@ -106,9 +106,7 @@ sau đó tính $b_3 := a \pmod{m_1 m_2 m_3}$ bằng hai đồng dư $a \equiv b_
 
 Có thể xây dựng nghiệm trực tiếp theo cách tương tự nội suy Lagrange.
 
-Gọi $M_i := \prod_{i \neq j} m_j$, là tích của mọi mô-đun trừ $m_i$, và $N_i$ là nghịch đảo mô-đun $N_i := M_i^{-1} \bmod{m_i}$.
-
-**Ghi chú bản dịch:** Ký hiệu tích trong nguồn được viết là $\prod_{i \neq j} m_j$; ý nghĩa theo câu văn và các công thức phía sau là lấy tích trên mọi chỉ số $j \neq i$.
+Gọi $M_i := \prod_{j \neq i} m_j$, là tích của mọi mô-đun trừ $m_i$, và $N_i$ là nghịch đảo mô-đun $N_i := M_i^{-1} \bmod{m_i}$.
 
 Khi đó một nghiệm của hệ đồng dư là:
 

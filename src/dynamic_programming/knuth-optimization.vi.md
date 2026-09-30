@@ -3,9 +3,9 @@ tags:
   - Original
 translation:
   source: dynamic_programming/knuth-optimization.md
-  source_commit: e873732d699a211748066082d25cf785268eb86c
+  source_commit: 3dd2f9c32f6ad42fa4202b0681a6b7ed9c7d1296
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Tối ưu Knuth (Knuth's Optimization)
@@ -115,7 +115,7 @@ khi các điều kiện đã cho được thỏa mãn.
     1. $b = c$  
     Bất đẳng thức rút gọn thành $dp(a, b) + dp(b, d) \leq dp(a, d)$ (điều này giả sử $dp(i, i) = 0$ với mọi $i$, đúng với mọi bài toán sử dụng phép tối ưu này). Đặt $opt(a,d) = z$. 
 
-        - Nếu $z < j$,  
+        - Nếu $z < b$,  
         Ta có
         
             $$
@@ -130,7 +130,7 @@ khi các điều kiện đã cho được thỏa mãn.
 
             Theo giả thiết quy nạp, $dp(z+1, b) + dp(b, d) \leq dp(z+1, d)$. Đồng thời, đề bài cho $C(a, b) \leq C(a, d)$. Kết hợp hai điều này với bất đẳng thức trên, ta thu được kết quả cần chứng minh.
 
-        - Nếu $z \geq j$, chứng minh của trường hợp này đối xứng với trường hợp trước.
+        - Nếu $z \geq b$, chứng minh của trường hợp này đối xứng với trường hợp trước.
 
     2. $b < c$  
     Đặt $opt(b, c) = z$ và $opt(a, d) = y$. 
@@ -152,8 +152,6 @@ khi các điều kiện đã cho được thỏa mãn.
         - Nếu $z > y$, chứng minh của trường hợp này đối xứng với trường hợp trước.
 
     Như vậy bổ đề được chứng minh.
-
-Ghi chú bản dịch: Trong trường hợp 1 của chứng minh trên, nguồn dùng các điều kiện “z < j” và “z ≥ j” dù biến j không được định nghĩa trong thiết lập đó. Theo ngữ cảnh của lập luận, mốc phân trường hợp phải là b. Bản dịch giữ nguyên ký hiệu để đồng bộ với nguồn hiện tại. Vấn đề này đã được báo và đề xuất sửa riêng ở bản tiếng Anh.
 
 Bây giờ xét thiết lập sau. Ta có 2 chỉ số $i \leq p \leq q < j$. Đặt $dp_{k} = C(i, j) + dp(i, k) + dp(k+1, j)$.
 

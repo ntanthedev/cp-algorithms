@@ -4,9 +4,9 @@ tags:
 e_maxx_link: roots_newton
 translation:
   source: num_methods/roots_newton.md
-  source_commit: 225d2555f2d5f9a5c54cdf08f4d9efd0f4e56ec1
+  source_commit: 212a62d5f8f44b2500ae73b859ecc38606300d22
   status: draft
-  last_synced: 2026-08-09
+  last_synced: 2026-09-29
 ---
 
 # Phương pháp Newton để tìm nghiệm
@@ -71,14 +71,16 @@ double sqrt_newton(double n) {
 }
 ```
 
-Một biến thể phổ biến khác là cần tính căn nguyên: với $n$ cho trước, tìm $x$ lớn nhất sao cho $x^2 \le n$. Ở đây cần thay đổi nhẹ điều kiện dừng vì có thể xảy ra trường hợp $x$ bắt đầu "nhảy" quanh đáp án. Vì vậy, ta thêm điều kiện: nếu ở bước trước giá trị $x$ đã giảm, còn ở bước hiện tại nó lại có xu hướng tăng, thì thuật toán phải dừng.
+Một biến thể phổ biến khác là cần tính căn nguyên: với $n$ không âm cho trước, tìm $x$ lớn nhất sao cho $x^2 \le n$. Ở đây cần thay đổi nhẹ điều kiện dừng vì có thể xảy ra trường hợp $x$ bắt đầu "nhảy" quanh đáp án. Vì vậy, ta thêm điều kiện: nếu ở bước trước giá trị $x$ đã giảm, còn ở bước hiện tại nó lại có xu hướng tăng, thì thuật toán phải dừng.
 
 ```cpp
 int isqrt_newton(int n) {
+	if (n == 0)
+		return 0;
 	int x = 1;
 	bool decreased = false;
 	for (;;) {
-		int nx = (x + n / x) >> 1;
+		int nx = (x + 1LL * n / x) >> 1;
 		if (x == nx || nx > x && decreased)
 			break;
 		decreased = nx < x;
@@ -92,6 +94,8 @@ Cuối cùng là biến thể thứ ba dành cho số nguyên lớn. Vì $n$ có
 
 ```java
 public static BigInteger isqrtNewton(BigInteger n) {
+	if (n.signum() == 0)
+		return BigInteger.ZERO;
 	BigInteger a = BigInteger.ONE.shiftLeft(n.bitLength() / 2);
 	boolean p_dec = false;
 	for (;;) {
@@ -104,8 +108,6 @@ public static BigInteger isqrtNewton(BigInteger n) {
 	return a;
 }
 ```
-
-**Ghi chú bản dịch:** Hai cài đặt căn bậc hai nguyên ở trên không xử lý riêng trường hợp đầu vào bằng 0. Với trường hợp đó, biến lặp có thể trở thành 0 rồi phép chia ở vòng lặp kế tiếp không còn hợp lệ. Ngoài ra, ở cài đặt C++, phép cộng trung gian được tính bằng kiểu int nên có thể tràn số với đầu vào lớn gần giới hạn của kiểu này. Bản dịch giữ nguyên code nguồn; các correction được tách sang PR upstream.
 
 Ví dụ, đoạn code này chạy trong $60$ mili giây với $n = 10^{1000}$; nếu bỏ cách chọn xấp xỉ ban đầu cải tiến và chỉ bắt đầu từ $1$, thời gian chạy sẽ vào khoảng $120$ mili giây.
 

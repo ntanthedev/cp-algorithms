@@ -4,9 +4,9 @@ tags:
 e_maxx_link: convex_hull_graham
 translation:
   source: geometry/convex-hull.md
-  source_commit: 0b2fe2fe9f67149c4d220420a9194078290c52ae
+  source_commit: 4db90b0e62ce29d1c2527e96ffddead115ab4bfc
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Xây dựng bao lồi
@@ -27,10 +27,8 @@ Sau đó, ta lần lượt duyệt từng điểm và bảo đảm rằng điể
 
 Ta dùng một ngăn xếp để lưu các điểm. Khi đi đến điểm ban đầu $P_0$, thuật toán kết thúc và trả về ngăn xếp chứa các điểm của bao lồi theo thứ tự chiều kim đồng hồ.
 
-Nếu cần giữ cả các điểm thẳng hàng khi thực hiện Graham scan, ta cần thêm một bước sau khi sắp xếp. Hãy lấy các điểm có “khoảng cách cực” lớn nhất đến $P_0$ (chúng nằm ở cuối vector đã sắp xếp) và thẳng hàng.
-Các điểm trên đường thẳng này cần được đảo thứ tự để ta có thể đưa tất cả các điểm thẳng hàng vào kết quả; nếu không, thuật toán sẽ lấy điểm gần nhất trên đường này rồi dừng xử lý phần còn lại. Không nên thực hiện bước này ở phiên bản không giữ điểm thẳng hàng, vì khi đó kết quả sẽ không còn là bao lồi nhỏ nhất.
-
-**Ghi chú bản dịch:** Ở đoạn trên, nguồn dùng cụm “biggest polar distance”. Tuy nhiên, cài đặt thực tế lấy dãy điểm ở cuối thứ tự góc cực, tức các điểm thẳng hàng theo hướng có góc cực lớn nhất. Cách diễn đạt này đang được đề xuất làm rõ riêng ở bản tiếng Anh.
+Nếu cần giữ cả các điểm thẳng hàng khi thực hiện Graham scan, ta cần thêm một bước sau khi sắp xếp. Hãy lấy nhóm điểm cuối cùng trong vector đã sắp xếp, tức các điểm thẳng hàng với $P_0$ và điểm cuối cùng.
+Các điểm trên tia này cần được đảo thứ tự để ta có thể đưa tất cả các điểm thẳng hàng vào kết quả; nếu không, thuật toán sẽ lấy điểm gần nhất trên đường này rồi dừng xử lý phần còn lại. Không nên thực hiện bước này ở phiên bản không giữ điểm thẳng hàng, vì khi đó kết quả sẽ không còn là bao lồi nhỏ nhất.
 
 ### Cài đặt
 
@@ -87,9 +85,7 @@ void convex_hull(vector<pt>& a, bool include_collinear = false) {
 ```
 
 ## Thuật toán Monotone chain
-Thuật toán trước hết tìm điểm trái nhất và phải nhất, ký hiệu là A và B. Nếu có nhiều điểm như vậy, ta chọn điểm thấp nhất trong các điểm trái nhất (tọa độ Y nhỏ nhất) làm A, và điểm cao nhất trong các điểm phải nhất (tọa độ Y lớn nhất) làm B. Rõ ràng A và B đều phải thuộc bao lồi vì chúng là các điểm nằm xa nhất về hai phía và không thể bị chứa bởi bất kỳ đường thẳng nào đi qua một cặp điểm trong tập đã cho.
-
-**Ghi chú bản dịch:** Cách giải thích “the farthest away” và “contained by any line” trong nguồn khá mơ hồ. Với cách chọn A và B ở đây, lý do trực tiếp là chúng là hai điểm cực trị theo tọa độ x, nên phải nằm trên biên của bao lồi. Cách diễn đạt nguồn đang được đề xuất làm rõ riêng ở bản tiếng Anh.
+Thuật toán trước hết tìm điểm trái nhất và phải nhất, ký hiệu là A và B. Nếu có nhiều điểm như vậy, ta chọn điểm thấp nhất trong các điểm trái nhất (tọa độ Y nhỏ nhất) làm A, và điểm cao nhất trong các điểm phải nhất (tọa độ Y lớn nhất) làm B. Rõ ràng A và B đều phải thuộc bao lồi vì không có điểm nào nằm xa hơn về bên trái so với A hoặc xa hơn về bên phải so với B.
 
 Bây giờ, kẻ đường thẳng qua AB. Đường này chia tất cả các điểm còn lại thành hai tập S1 và S2, trong đó S1 chứa tất cả các điểm phía trên đường nối A và B, còn S2 chứa tất cả các điểm phía dưới. Các điểm nằm trên đường thẳng AB có thể thuộc một trong hai tập. Hai điểm A và B thuộc cả hai tập. Thuật toán lần lượt xây dựng tập trên S1 và tập dưới S2 rồi kết hợp chúng để thu được đáp án. 
 

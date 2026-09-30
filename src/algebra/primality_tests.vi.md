@@ -3,9 +3,9 @@ tags:
     - Original
 translation:
   source: algebra/primality_tests.md
-  source_commit: f10f24adac42be2b45bcbcff6cb4facad6f7b0c0
+  source_commit: fa8a705993b450d7cb68cfba5b1a229d5acddffd
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Kiểm tra tính nguyên tố
@@ -125,8 +125,12 @@ Trong trường hợp đó, cơ số $a$ được gọi là một *cơ số đá
 Nếu một cơ số $a$ thỏa một trong các đẳng thức, $n$ mới chỉ là một *số có khả năng nguyên tố mạnh* (strong probable prime).
 Tuy nhiên, không tồn tại các số tương tự số Carmichael mà mọi cơ số không tầm thường đều đánh lừa phép kiểm tra.
 Thực tế có thể chứng minh rằng nhiều nhất $\frac{1}{4}$ số cơ số có thể là các cơ số đánh lừa mạnh.
-Nếu $n$ là hợp số, một cơ số ngẫu nhiên có xác suất $\ge 75\%$ cho ta biết nó là hợp số.
-Bằng cách thực hiện nhiều vòng lặp với các cơ số ngẫu nhiên khác nhau, ta có thể xác định với xác suất rất cao một số thực sự là nguyên tố hay là hợp số.
+Nếu $n$ là hợp số, một cơ số ngẫu nhiên có xác suất $\ge 75\%$ cho ta biết nó là hợp số; vì vậy, lặp phép kiểm tra với các cơ số ngẫu nhiên giúp giảm xác suất sai xuống nhỏ tùy ý.
+
+Trên một miền bị chặn, ta có thể bỏ hoàn toàn tính ngẫu nhiên: một tập nhỏ các cơ số cố định, tìm được bằng vét cạn, quyết định chính xác tính nguyên tố của mọi số trong miền đó.
+Miller chỉ ra rằng kiểm tra mọi cơ số $\le O((\ln n)^2)$ làm phép kiểm tra trở thành tất định, và Bach đưa ra cận cụ thể $a \le 2\ln(n)^2$.
+Đó vẫn là nhiều cơ số, nên người ta đã dành đáng kể tài nguyên tính toán để tìm các tập nhỏ hơn.
+Với số nguyên 64 bit, bảy cơ số là đủ: 2, 325, 9375, 28178, 450775, 9780504 và 1795265022.
 
 Dưới đây là một cài đặt cho số nguyên 64 bit.
 
@@ -147,6 +151,9 @@ u64 binpower(u64 base, u64 e, u64 mod) {
 }
 
 bool check_composite(u64 n, u64 a, u64 d, int s) {
+    a %= n;
+    if (a == 0) // n divides the base, so this base can say nothing about n
+        return false;
     u64 x = binpower(a, d, n);
     if (x == 1 || x == n - 1)
         return false;
@@ -158,9 +165,9 @@ bool check_composite(u64 n, u64 a, u64 d, int s) {
     return true;
 };
 
-bool MillerRabin(u64 n, int iter=5) { // returns true if n is probably prime, else returns false.
-    if (n < 4)
-        return n == 2 || n == 3;
+bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
+    if (n < 2)
+        return false;
 
     int s = 0;
     u64 d = n - 1;
@@ -169,56 +176,27 @@ bool MillerRabin(u64 n, int iter=5) { // returns true if n is probably prime, el
         s++;
     }
 
-    for (int i = 0; i < iter; i++) {
-        int a = 2 + rand() % (n - 3);
+    for (u64 a : {2, 325, 9375, 28178, 450775, 9780504, 1795265022})
         if (check_composite(n, a, d, s))
             return false;
-    }
     return true;
 }
 ```
 
-Trước khi chạy Miller-Rabin, ta có thể kiểm tra thêm xem một vài số nguyên tố nhỏ đầu tiên có phải ước hay không.
-Điều này có thể tăng tốc đáng kể vì phần lớn hợp số có thừa số nguyên tố rất nhỏ.
-Ví dụ, $88\%$ mọi số có một thừa số nguyên tố nhỏ hơn $100$.
+Ngoài $2$, không cơ số nào trong bảy cơ số là số nguyên tố, nên một cơ số có thể là bội của chính $n$ đang kiểm tra; chẳng hạn $5$ là ước của $9375$ và $13$ là ước của $325$.
+Cơ số như vậy có phần dư bằng $0$ và không cho biết gì về $n$, nên `check_composite` bỏ qua nó và để các cơ số còn lại quyết định.
 
-### Phiên bản tất định
+Điều này hẹp hơn việc bỏ qua mọi phần dư bằng không, và đó là chủ đích.
+Nếu $n$ không phải ước của $a$ nhưng lại là ước của $a^d$ thì $n$ không thể là số nguyên tố, vì một số nguyên tố là ước của $a^d$ phải là ước của $a$.
+Trong trường hợp này, giá trị không là bằng chứng về tính hợp số chứ không phải thiếu thông tin, và hàm sẽ kết luận tương ứng.
+Chỉ nhánh đầu tiên bỏ qua thông tin, vì vậy cùng hàm `check_composite` vẫn đúng nếu nhận các cơ số ngẫu nhiên thay cho tập cố định này.
 
-Miller chứng minh rằng có thể làm thuật toán trở thành tất định bằng cách chỉ kiểm tra mọi cơ số $\le O((\ln n)^2)$.
-Sau đó Bach đưa ra một cận cụ thể: chỉ cần kiểm tra mọi cơ số $a \le 2 \ln(n)^2$.
+Dùng 12 số nguyên tố đầu tiên làm cơ số, 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 và 37, cũng đúng cho số nguyên 64 bit, nhưng tốn thêm năm vòng kiểm tra.
+Với số nguyên 32 bit, bốn cơ số nguyên tố đầu tiên 2, 3, 5 và 7 là đủ; hợp số nhỏ nhất vượt qua chúng là $3\,215\,031\,751 = 151 \cdot 751 \cdot 28351$.
 
-Đây vẫn là một số lượng cơ số khá lớn.
-Vì vậy, người ta đã dành nhiều tài nguyên tính toán để tìm các cận nhỏ hơn.
-Hóa ra, để kiểm tra một số nguyên 32 bit, chỉ cần kiểm tra bốn cơ số nguyên tố đầu tiên: 2, 3, 5 và 7.
-Hợp số nhỏ nhất vượt qua phép kiểm tra này là $3,215,031,751 = 151 \cdot 751 \cdot 28351$.
-Còn để kiểm tra một số nguyên 64 bit, chỉ cần kiểm tra 12 cơ số nguyên tố đầu tiên: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31 và 37.
-
-Từ đó ta có cài đặt tất định sau:
-
-```cpp
-bool MillerRabin(u64 n) { // returns true if n is prime, else returns false.
-    if (n < 2)
-        return false;
-
-    int r = 0;
-    u64 d = n - 1;
-    while ((d & 1) == 0) {
-        d >>= 1;
-        r++;
-    }
-
-    for (int a : {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37}) {
-        if (n == a)
-            return true;
-        if (check_composite(n, a, d, r))
-            return false;
-    }
-    return true;
-}
-```
-
-Cũng có thể kiểm tra chỉ với 7 cơ số: 2, 325, 9375, 28178, 450775, 9780504 và 1795265022.
-Tuy nhiên, vì các số này (trừ 2) không phải số nguyên tố, ta cần kiểm tra thêm xem số đang xét có bằng bất kỳ thừa số nguyên tố nào của các cơ số đó hay không: 2, 3, 5, 13, 19, 73, 193, 407521, 299210837.
+Có thể giảm số vòng hơn nữa bằng cách chọn cơ số từ một bảng nhỏ được đánh chỉ số bằng giá trị băm của $n$, nhờ đó chỉ cần ba phép kiểm tra cho một số 64 bit bất kỳ.
+Xem [`cp-algo/number_theory/primality.hpp`](https://lib.cp-algorithms.com/cp-algo/number_theory/primality.hpp.html), mặc định dùng bảy cơ số trên và chuyển sang bảng băm khi có sẵn, đồng thời dùng bộ cơ số quen thuộc 2, 7 và 61 cho các số nhỏ hơn $2^{32}$ khi không dùng bảng.
+Các bảng do [Bradley Berg](https://www.techneon.com/) xây dựng, mở rộng một phép kiểm tra 32 bit trước đó của Steve Worley.
 
 ## Bài tập luyện tập
 

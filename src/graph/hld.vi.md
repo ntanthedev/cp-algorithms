@@ -4,9 +4,9 @@ tags:
 e_maxx_link: heavy_light
 translation:
   source: graph/hld.md
-  source_commit: cb3d94c520c1fadd62e46ecc7d2c71468b1e3e1e
+  source_commit: cee84afccc5c9044401320450ac25ca7c39b8668
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Heavy-Light Decomposition
@@ -172,7 +172,7 @@ Hàm `decompose` gán cho mỗi đỉnh `v` hai giá trị `head[v]` và `pos[v]
 
 ```cpp
 int query(int a, int b) {
-    int res = 0;
+    int res = segment_tree_query(pos[a], pos[a]);
     for (; head[a] != head[b]; b = parent[head[b]]) {
         if (depth[head[a]] > depth[head[b]])
             swap(a, b);
@@ -186,8 +186,6 @@ int query(int a, int b) {
     return res;
 }
 ```
-
-**Ghi chú bản dịch:** Đoạn truy vấn giá trị lớn nhất trong nguồn khởi tạo kết quả bằng 0. Cách này chỉ đúng khi giá trị cần lấy lớn nhất không âm; nếu mọi giá trị trên đường đi đều âm, kết quả 0 là sai. Bản dịch giữ nguyên code nguồn và lỗi này được tách riêng để đề xuất sửa upstream.
 
 ## Bài tập luyện tập
 

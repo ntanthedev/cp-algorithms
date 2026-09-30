@@ -4,9 +4,9 @@ tags:
 e_maxx_link: longest_increasing_subseq_log
 translation:
   source: dynamic_programming/longest_increasing_subsequence.md
-  source_commit: 9bed1d327f8ecf8ad9bac02ff2d51dbafb261eb8
+  source_commit: 9a27d4e89d7f88ea20c29935d034da2eac57aae2
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Dãy con tăng dài nhất
@@ -193,33 +193,30 @@ Vì vậy chỉ cập nhật khi $a[i] < d[l]$.
 
 Sau khi xử lý mọi phần tử của $a[]$, độ dài dãy con cần tìm là giá trị $l$ lớn nhất thỏa $d[l] < \infty$.
 
+Việc thêm các giá trị $\pm\infty$ chỉ để thuận tiện khi phát biểu hệ thức truy hồi; ta không cần thực sự lưu chúng.
+Trong các cài đặt dưới đây, ta chỉ giữ các phần tử ứng với những độ dài đã đạt được.
+Khi đó $d[]$ tăng nhiều nhất một phần tử sau mỗi bước; việc đi tới vị trí ngay sau cuối mảng tương ứng với điều kiện $d[l] = \infty$ trước đây, và đáp án đơn giản là kích thước của mảng.
+
 ```{.cpp file=lis_method2_n2}
 int lis(vector<int> const& a) {
-    int n = a.size();
-    const int INF = 1e9;
-    vector<int> d(n+1, INF);
-    d[0] = -INF;
-
-    for (int i = 0; i < n; i++) {
-        for (int l = 1; l <= n; l++) {
-            if (d[l-1] < a[i] && a[i] < d[l])
-                d[l] = a[i];
-        }
+    vector<int> d;
+    for (int x : a) {
+        size_t l = 0;
+        while (l < d.size() && d[l] < x)
+            l++;
+        if (l == d.size())
+            d.push_back(x);
+        else
+            d[l] = x;
     }
-
-    int ans = 0;
-    for (int l = 0; l <= n; l++) {
-        if (d[l] < INF)
-            ans = l;
-    }
-    return ans;
+    return d.size();
 }
 ```
 
 Bây giờ ta có hai nhận xét quan trọng.
 
 1.  Mảng $d$ luôn được sắp xếp:
-    $d[l-1] < d[l]$ với mọi $i = 1 \dots n$.
+    $d[l-1] < d[l]$ với mọi $l = 1 \dots n$.
 
     Điều này hiển nhiên vì chỉ cần bỏ phần tử cuối khỏi dãy con tăng độ dài $l$, ta nhận được một dãy con tăng độ dài $l-1$ với phần tử cuối nhỏ hơn.
 
@@ -228,49 +225,69 @@ Bây giờ ta có hai nhận xét quan trọng.
     Điều này suy ra trực tiếp từ cài đặt phía trên.
     Chỉ có thể tồn tại một vị trí trong mảng thỏa $d[l-1] < a[i] < d[l]$.
 
-**Ghi chú bản dịch:** Ở nhận xét thứ nhất, bất đẳng thức được đánh chỉ số theo l nhưng nguồn lại viết “với mọi i”. Ký hiệu đúng trong lượng từ phải là l. Bản dịch giữ nguyên biểu thức của nguồn và chỉ ghi chú lỗi ký hiệu này.
-
 Vì vậy, ta có thể tìm phần tử này trong mảng $d[]$ bằng [tìm kiếm nhị phân](../num_methods/binary_search.md) trong $O(\log n)$.
 Thực tế, ta chỉ cần tìm trong $d[]$ số đầu tiên lớn hơn nghiêm ngặt $a[i]$, rồi thử cập nhật phần tử đó giống như trong cài đặt phía trên.
 
 ### Cài đặt
 
-Ta thu được cài đặt $O(n \log n)$ nhanh hơn:
+Ta thu được cài đặt $O(n \log n)$ nhanh hơn, chỉ khác cài đặt phía trên ở cách tìm vị trí:
 
 ```{.cpp file=lis_method2_nlogn}
 int lis(vector<int> const& a) {
-    int n = a.size();
-    const int INF = 1e9;
-    vector<int> d(n+1, INF);
-    d[0] = -INF;
-
-    for (int i = 0; i < n; i++) {
-        int l = upper_bound(d.begin(), d.end(), a[i]) - d.begin();
-        if (d[l-1] < a[i] && a[i] < d[l])
-            d[l] = a[i];
+    vector<int> d;
+    for (int x : a) {
+        auto it = lower_bound(d.begin(), d.end(), x);
+        if (it == d.end())
+            d.push_back(x);
+        else
+            *it = x;
     }
-
-    int ans = 0;
-    for (int l = 0; l <= n; l++) {
-        if (d[l] < INF)
-            ans = l;
-    }
-    return ans;
+    return d.size();
 }
 ```
 
-**Ghi chú bản dịch:** Hai cài đặt của cách tiếp cận này dùng 1e9 và -1e9 làm hai giá trị canh gác nhưng bài không nêu giới hạn giá trị phần tử. Vì đầu vào là int, các giá trị đủ lớn hoặc đủ nhỏ vẫn hợp lệ nhưng có thể làm giả thiết về hai giá trị canh gác không còn đúng. Bản dịch giữ nguyên code nguồn; vấn đề này được tách để đề xuất sửa ở bản tiếng Anh.
-
 ### Khôi phục dãy con
 
-Cách tiếp cận này cũng có thể khôi phục dãy con.
-Lần này ta cần duy trì hai mảng phụ.
-Một mảng cho biết chỉ số của các phần tử trong $d[]$.
-Và một lần nữa ta tạo mảng các "phần tử trước" $p[i]$.
-$p[i]$ là chỉ số của phần tử trước đó trong dãy con tối ưu kết thúc tại phần tử $i$.
+Ta cũng có thể khôi phục dãy con bằng cách tiếp cận này.
+Cách trực tiếp là duy trì hai mảng phụ: một mảng ánh xạ mỗi vị trí của $d[]$ về chỉ số của nó trong $a[]$, và một mảng "tổ tiên" $p[i]$ lưu chỉ số của phần tử trước trong dãy con tối ưu kết thúc tại $a[i]$.
 
-Hai mảng này có thể được duy trì dễ dàng trong khi duyệt mảng $a[]$ song song với quá trình tính $d[]$.
-Sau cùng, ta có thể dùng chúng để khôi phục dãy con cần tìm.
+Tuy nhiên, có thể khôi phục dãy con tiết kiệm bộ nhớ hơn, chỉ dùng một mảng phụ $p[0 \dots n-1]$, được ghi lại như một kết quả phụ của phép tìm kiếm nhị phân mà thuật toán vốn đã thực hiện.
+Ta đặt $p[i]$ là vị trí trong $d[]$ mà $a[i]$ được đưa vào, nên dãy con tăng dài nhất kết thúc tại $a[i]$ có độ dài $p[i] + 1$.
+
+Giả sử độ dài LIS là $L$. Ta duyệt ngược $a[]$, chọn phần tử cuối cùng thỏa $p[i] = L - 1$, rồi chọn phần tử cuối cùng đứng trước nó thỏa $p[i] = L - 2$, và tiếp tục đến $p[i] = 0$.
+Mỗi phần tử được chọn như vậy đều là phần tử đứng trước hợp lệ của phần tử đã chọn ở bước trước.
+Thật vậy, giả sử đã chọn $a[j]$ với $p[j] = l + 1$, và $a[i]$ là phần tử cuối cùng đứng trước nó có $p[i] = l$.
+Vì $d[l]$ luôn chứa phần tử được đặt vào vị trí $l$ gần nhất, nó bằng $a[i]$ tại thời điểm xử lý $a[j]$.
+Phép tìm kiếm nhị phân đặt $a[j]$ vào vị trí $l + 1$ chính vì $d[l] < a[j]$, do đó $a[i] < a[j]$.
+
+Thu thập các phần tử theo cách này rồi đảo ngược thứ tự cuối cùng cho ta một dãy con tăng dài nhất.
+
+```{.cpp file=lis_method2_nlogn_restore}
+vector<int> lis(vector<int> const& a) {
+    int n = a.size();
+    vector<int> d, p(n);
+
+    for (int i = 0; i < n; i++) {
+        auto it = lower_bound(d.begin(), d.end(), a[i]);
+        p[i] = it - d.begin();
+        if (it == d.end())
+            d.push_back(a[i]);
+        else
+            *it = a[i];
+    }
+
+    int l = d.size() - 1;
+    vector<int> subseq;
+    for (int i = n - 1; i >= 0 && l >= 0; i--) {
+        if (p[i] == l) {
+            subseq.push_back(a[i]);
+            l--;
+        }
+    }
+    reverse(subseq.begin(), subseq.end());
+    return subseq;
+}
+```
 
 ## Lời giải $O(n \log n)$ bằng cấu trúc dữ liệu {data-toc-label="Solution in O(n log n) with data structures"}
 

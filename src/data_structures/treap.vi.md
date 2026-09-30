@@ -4,9 +4,9 @@ tags:
 e_maxx_link: treap
 translation:
   source: data_structures/treap.md
-  source_commit: feccb477db1b297864acde90c74639f8b68a51c2
+  source_commit: 0fd0ddaf4e924ef41dcd19da046489a55e216d7f
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Treap (cây Cartesian)
@@ -135,16 +135,12 @@ void split (pitem t, int key, pitem & l, pitem & r) {
 }
 ```
 
-`t` là Treap cần tách, còn `key` là giá trị BST dùng làm mốc tách. Lưu ý rằng ta không `return` các giá trị kết quả ở đâu cả; thay vào đó, ta chỉ sử dụng chúng như sau:
+`t` là Treap cần tách, còn `key` là giá trị BST dùng làm mốc tách. Lưu ý rằng ta không `return` các kết quả; thay vào đó, hai treap đầu ra được ghi thông qua `l` và `r`, chẳng hạn:
 
 ```cpp
 pitem l = nullptr, r = nullptr;
 split(t, 5, l, r);
-if (l) cout << "Left subtree size: " << (l->size) << endl;
-if (r) cout << "Right subtree size: " << (r->size) << endl;
 ```
-
-Ghi chú bản dịch: Đoạn ví dụ trên truy cập trường size, nhưng cấu trúc item được khai báo ngay trước đó chưa định nghĩa trường này. Vì đây là lỗi của nguồn, bản dịch giữ nguyên đoạn code để đồng bộ.
 
 Hàm `split` này có thể khá khó hiểu vì nó vừa có con trỏ (`pitem`), vừa có tham chiếu tới các con trỏ đó (`pitem &l`). Ta hãy diễn giải bằng lời ý nghĩa của lời gọi `split(t, k, l, r)`: "tách Treap `t` theo giá trị `k` thành hai Treap, rồi lưu Treap bên trái vào `l` và Treap bên phải vào `r`". Bây giờ, hãy áp dụng định nghĩa này cho hai lời gọi đệ quy theo các trường hợp đã phân tích ở phần trước: (Điều kiện if đầu tiên chỉ là trường hợp cơ sở đơn giản khi Treap rỗng)
 
@@ -236,12 +232,10 @@ pitem build (int * a, int n) {
 	t->l = build (a, mid);
 	t->r = build (a + mid + 1, n - mid - 1);
 	heapify (t);
-	upd_cnt(t)
+	upd_cnt(t);
 	return t;
 }
 ```
-
-Ghi chú bản dịch: Dòng gọi upd_cnt(t) trong đoạn code trên thiếu dấu chấm phẩy, nên đoạn code không biên dịch nguyên trạng. Vì đây là lỗi của nguồn, bản dịch giữ nguyên code để đồng bộ.
 
 Lưu ý: lời gọi `upd_cnt(t)` chỉ cần thiết nếu bạn cần kích thước cây con.
 
@@ -254,7 +248,8 @@ Lưu ý rằng trong bài toán này các độ ưu tiên không ngẫu nhiên, 
 
 Một lời giải khả dĩ là, với mỗi phần tử, tìm phần tử gần nhất bên trái và bên phải có độ ưu tiên nhỏ hơn độ ưu tiên của phần tử đó. Trong hai phần tử này, phần tử có độ ưu tiên lớn hơn phải là cha của phần tử hiện tại.
 
-Bài toán này có thể giải bằng một biến thể của [ngăn xếp cực tiểu](./stack_queue_modification.md) trong thời gian tuyến tính:
+Bài toán này có thể giải bằng một biến thể của [ngăn xếp cực tiểu](./stack_queue_modification.md) trong thời gian tuyến tính.
+Cách dựng dưới đây dùng quy ước min-heap cho độ ưu tiên, khác với quy ước max-heap của cài đặt treap thông thường ở trên, và giả sử `item` được mở rộng với con trỏ cha `p` khởi tạo bằng `nullptr`:
 
 ```cpp
 void connect(auto from, auto to) {
@@ -291,8 +286,6 @@ pitem build(int *x, int *y, int n) {
     return nodes[min_element(y, y + n) - y];
 }
 ```
-
-Ghi chú bản dịch: Đoạn dựng tuyến tính này dùng trường p làm con trỏ cha, nhưng cấu trúc item đã khai báo trước đó không có trường p. Ngoài ra, đoạn này dùng quy ước heap cực tiểu theo độ ưu tiên, khác với quy ước heap cực đại ở phần Treap thông thường phía trên. Đây là vấn đề của nguồn; bản dịch giữ nguyên code để đồng bộ.
 
 ## Implicit Treap
 
@@ -351,9 +344,7 @@ Bây giờ hãy xét cách cài đặt các thao tác khác nhau trên Implicit 
 - **Cộng / tô (gán)** trên đoạn.  
  Ta làm tương tự đoạn trước, nhưng thay vì trường F, ta lưu một trường `add` chứa giá trị cần cộng cho cây con (hoặc giá trị mà cây con sẽ được tô thành). Trước khi thực hiện bất kỳ thao tác nào, ta phải "push" giá trị này xuống đúng cách — tức thay đổi $T \rightarrow L \rightarrow add$ và $T \rightarrow R \rightarrow add$, rồi xóa `add` ở nút cha. Nhờ vậy, thông tin sẽ không bị mất sau các thay đổi trên cây.
 - **Đảo ngược** trên đoạn.  
- Thao tác này lại tương tự thao tác trước: ta cần thêm cờ Boolean `rev` và đặt nó thành true khi cây con của nút hiện tại phải bị đảo ngược. Việc "push" giá trị này phức tạp hơn một chút — ta đổi chỗ hai nút con của nút này và đặt cờ tương ứng thành true cho chúng.
-
-Ghi chú bản dịch: Ở mục Đảo ngược phía trên, nguồn mô tả rằng khi đẩy phép đảo ngược ta đặt cờ của các nút con thành true, nhưng code bên dưới thực tế đảo giá trị cờ. Cách trong code mới đúng vì hai phép đảo ngược liên tiếp phải triệt tiêu nhau. Bản dịch giữ mô tả nguồn để đồng bộ.
+ Thao tác này lại tương tự thao tác trước: ta cần thêm cờ Boolean `rev` và đảo giá trị của nó khi cây con của nút hiện tại phải bị đảo ngược. Việc "push" giá trị này phức tạp hơn một chút — ta đổi chỗ hai nút con của nút này và đảo giá trị cờ tương ứng của chúng.
 
 Dưới đây là một cài đặt mẫu của Implicit Treap hỗ trợ đảo ngược một đoạn. Với mỗi nút, ta lưu trường `value`, là giá trị thực tế của phần tử mảng tại vị trí hiện tại. Ta cũng cung cấp cài đặt hàm `output()`, hàm này xuất ra mảng tương ứng với trạng thái hiện tại của Implicit Treap.
 

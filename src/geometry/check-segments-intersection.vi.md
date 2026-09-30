@@ -4,9 +4,9 @@ tags:
 e_maxx_link: segments_intersection_checking
 translation:
   source: geometry/check-segments-intersection.md
-  source_commit: 3ff7fc56816a509359ae7537f5357c24fb41f25a
+  source_commit: 77d91a8daf8dabbecc19801b834c4a0fe5f21e6e
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Kiểm tra hai đoạn thẳng có giao nhau hay không
@@ -54,3 +54,7 @@ bool check_inter(const pt& a, const pt& b, const pt& c, const pt& d) {
            sgn(c.cross(d, a)) != sgn(c.cross(d, b));
 }
 ```
+
+## Bài tập luyện tập
+
+* [CSES - Line Segment Intersection](https://cses.fi/problemset/task/2190)

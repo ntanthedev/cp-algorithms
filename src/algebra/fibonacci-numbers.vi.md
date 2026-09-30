@@ -4,9 +4,9 @@ tags:
 e_maxx_link: fibonacci_numbers
 translation:
   source: algebra/fibonacci-numbers.md
-  source_commit: 6d18015f0fe63987e28d70d027914500a35d506d
+  source_commit: 084b0ce34a4262b09c8baa2651d02249cb607c87
   status: draft
-  last_synced: 2026-08-09
+  last_synced: 2026-09-29
 ---
 
 # Số Fibonacci
@@ -39,9 +39,7 @@ $$F_{2n} = F_n (F_{n+1} + F_{n-1})$$
 
 * Từ đây, bằng quy nạp ta có thể chứng minh rằng với mọi số nguyên dương $k$, $F_{nk}$ là bội của $F_n$.
 
-* Mệnh đề đảo cũng đúng: nếu $F_m$ là bội của $F_n$, thì $m$ là bội của $n$.
-
-**Ghi chú bản dịch:** Mệnh đề đảo ở trên có ngoại lệ khi chỉ số n bằng 2, vì số Fibonacci thứ 2 bằng 1 nên là ước của mọi số Fibonacci. Chẳng hạn số Fibonacci thứ 3 là bội của số Fibonacci thứ 2 nhưng 3 không phải là bội của 2. Với chỉ số n nguyên dương khác 2, mệnh đề đúng.
+* Với $n \ge 3$, mệnh đề đảo cũng đúng: nếu $F_m$ là bội của $F_n$, thì $m$ là bội của $n$.
 
 * Đồng nhất thức UCLN:
   
@@ -106,7 +104,7 @@ Do hai công thức này đòi hỏi độ chính xác rất cao khi tính toán
 
 Có thể dễ dàng tìm số Fibonacci thứ $n$ trong $O(n)$ bằng cách lần lượt tính các số cho đến $n$. Tuy nhiên, như ta sẽ thấy, còn có những cách nhanh hơn.
 
-Ta có thể bắt đầu với cách lặp, tận dụng công thức $F_n = F_{n-1} + F_{n-2}$; theo mô tả của nguồn, ta sẽ tiền tính các giá trị này trong một mảng và chú ý hai trường hợp cơ sở $F_0$ và $F_1$.
+Ta có thể bắt đầu với cách lặp dùng công thức $F_n = F_{n-1} + F_{n-2}$. Cài đặt chỉ cần giữ hai giá trị gần nhất, bắt đầu từ các trường hợp cơ sở $F_0$ và $F_1$.
 
 ```{.cpp file=fibonacci_linear}
 int fib(int n) {
@@ -121,9 +119,7 @@ int fib(int n) {
 }
 ```
 
-Theo mô tả nguồn, cách này cho lời giải tuyến tính, thời gian $O(n)$, đồng thời lưu mọi giá trị đứng trước $n$ trong dãy.
-
-**Ghi chú bản dịch:** Phần mô tả nguồn nói tiền tính trong một mảng và lưu toàn bộ các giá trị trước đó, nhưng phần cài đặt phía trên thực tế chỉ giữ hai số Fibonacci liên tiếp. Vì vậy, chính cài đặt này dùng bộ nhớ hằng số chứ không lưu toàn bộ dãy.
+Như vậy, ta thu được lời giải tuyến tính với thời gian $O(n)$ và bộ nhớ phụ $O(1)$.
 
 ### Dạng ma trận
 

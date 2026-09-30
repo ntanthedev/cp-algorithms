@@ -3,9 +3,9 @@ tags:
   - Original
 translation:
   source: algebra/bit-manipulation.md
-  source_commit: f298103232f0d6efa47db18c11ffce8b04d3e282
+  source_commit: f1ee33ac91de265d8ef0fa1a048cb094ff388b9f
   status: draft
-  last_synced: 2026-08-09
+  last_synced: 2026-09-29
 ---
 # Phép toán bit
 
@@ -56,12 +56,10 @@ Với số nguyên có độ dài cố định, các toán tử dưới đây đ
 -   $|$ : Toán tử OR bao hàm theo bit so sánh từng bit của toán hạng thứ nhất với bit tương ứng của toán hạng thứ hai.
     Nếu ít nhất một trong hai bit bằng 1, bit kết quả tương ứng được đặt thành 1. Ngược lại, bit kết quả bằng 0.
 
--   $\wedge$ : Toán tử OR loại trừ theo bit (XOR) so sánh từng bit của toán hạng thứ nhất với bit tương ứng của toán hạng thứ hai.
+-   $\oplus$ : Toán tử OR loại trừ theo bit (XOR) so sánh từng bit của toán hạng thứ nhất với bit tương ứng của toán hạng thứ hai.
     Nếu một bit bằng 0 còn bit kia bằng 1, bit kết quả tương ứng được đặt thành 1. Ngược lại, bit kết quả bằng 0.
 
 -   $\sim$ : Toán tử bù theo bit (NOT) đảo mọi bit của một số: bit đang bật sẽ bị tắt, còn bit đang tắt sẽ được bật.
-
-**Ghi chú bản dịch:** Nguồn dùng ký hiệu ∧ trong phần mô tả và các công thức cho XOR, trong khi các ví dụ code C++ dùng ký hiệu ^. Trong C++, toán tử XOR theo bit là ^; ký hiệu ∧ ở đây là một điểm trình bày dễ gây nhầm lẫn của nguồn và được giữ nguyên để bảo toàn LaTeX.
 
 Ví dụ:
 
@@ -118,7 +116,7 @@ Dùng phép dịch bit và một số phép toán bit cơ bản, ta có thể d�
 $1 \ll x$ là một số chỉ có bit thứ $x$ được bật, còn $\sim(1 \ll x)$ là một số có mọi bit được bật trừ bit thứ $x$.
 
 - $n ~|~ (1 \ll x)$ bật bit thứ $x$ trong số $n$
-- $n ~\wedge~ (1 \ll x)$ đảo bit thứ $x$ trong số $n$
+- $n ~\oplus~ (1 \ll x)$ đảo bit thứ $x$ trong số $n$
 - $n ~\&~ \sim(1 \ll x)$ tắt bit thứ $x$ trong số $n$
 
 ### Kiểm tra một bit có được bật hay không
@@ -211,25 +209,23 @@ Ta dùng tính chất sau với $2^x$: trong các số từ $1$ đến $2^x - 1$
 
 Ta thấy mọi cột trừ cột ngoài cùng bên trái đều có $4$ bit 1 (tức $2^2$); nói cách khác, đến số $2^3 - 1$, tổng số bit 1 là $3 \cdot 2^{3-1}$.
 
-**Ghi chú bản dịch:** Phần mô tả nguồn gọi x là “lũy thừa lớn nhất của 2”, nhưng các công thức và code thực tế dùng x như số mũ. Ngoài ra, với đầu vào n bằng 1, code cho x bằng 0 rồi thực hiện phép dịch với số vị trí âm; đây là lỗi ca biên của cài đặt nguồn. Bản dịch giữ nguyên code theo quy tắc parity và lỗi này được tách sang PR sửa nguồn riêng.
-
 Từ nhận xét trên, ta có thuật toán sau:
 
-- Tìm lũy thừa lớn nhất của $2$ không vượt quá số đã cho. Gọi số này là $x$.
+- Tìm số mũ $x$ lớn nhất sao cho $2^x$ không vượt quá số đã cho.
 - Tính tổng số bit 1 từ $1$ đến $2^x - 1$ bằng công thức $x \cdot 2^{x-1}$.
 - Đếm số bit 1 ở vị trí cao nhất trong các số từ $2^x$ đến $n$ rồi cộng vào kết quả.
 - Trừ $2^x$ khỏi $n$ và lặp lại các bước trên với $n$ mới.
 
 ```cpp
-int countSetBits(int n) {
-        int count = 0;
-        while (n > 0) {
-            int x = std::bit_width(n) - 1;
-            count += x << (x - 1);
-            n -= 1 << x;
-            count += n + 1;
-        }
-        return count;
+long long popcount_sum(unsigned n) {
+    long long count = 0;
+    while (n > 1) {
+        int x = std::bit_width(n) - 1;
+        count += (long long)x << (x - 1); // set bits below 2^x
+        n -= 1u << x;
+        count += n + 1;                   // leading bits of 2^x..n
+    }
+    return count + n;
 }
 ```
 

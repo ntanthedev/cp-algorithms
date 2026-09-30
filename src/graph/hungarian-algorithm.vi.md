@@ -4,9 +4,9 @@ tags:
 e_maxx_link: assignment_hungary
 translation:
   source: graph/hungarian-algorithm.md
-  source_commit: 1bc57c1f68debfd40b24194c7cfd59ef66be3ac3
+  source_commit: b12a018f36af91d7facb9f16be78e5ee2e8fb94f
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Thuật toán Hungary cho bài toán phân công
@@ -35,8 +35,6 @@ Thuật toán được Harold **Kuhn** phát triển và công bố vào năm 19
 Năm 1957, James **Munkres** chỉ ra rằng thuật toán chạy trong thời gian đa thức (theo nghĩa chặt), không phụ thuộc vào độ lớn của chi phí.<br>
 Vì vậy, trong tài liệu, thuật toán không chỉ được gọi là "Hungarian" mà còn là "Kuhn-Munkres algorithm" hoặc "Munkres algorithm".<br>
 Tuy nhiên, vào năm 2006 người ta phát hiện rằng cùng thuật toán này đã được nhà toán học Đức Carl Gustav **Jacobi** tìm ra **sớm hơn Kuhn một thế kỷ**. Công trình _About the research of the order of a system of arbitrary ordinary differential equations_, được xuất bản sau khi ông qua đời vào năm 1890, có chứa một thuật toán đa thức cho bài toán phân công. Do công trình được viết bằng tiếng Latin, kết quả này đã không được cộng đồng toán học chú ý trong thời gian dài.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh viết sai tên Munkres thành “Mankres” ở hai vị trí. Bản dịch dùng đúng tên **Munkres**; typo này được tách để đề xuất sửa upstream.
 
 Cũng cần lưu ý rằng thuật toán ban đầu của Kuhn có độ phức tạp tiệm cận $\mathcal{O}(n^4)$; về sau Jack **Edmonds** và Richard **Karp** (độc lập với **Tomizawa**) chỉ ra cách cải tiến xuống $\mathcal{O}(n^3)$.
 
@@ -83,8 +81,6 @@ Theo thuật ngữ của bài toán cặp ghép, một đỉnh được gọi l�
 Ta bắt đầu [duyệt theo chiều sâu](depth-first-search.md) hoặc [duyệt theo chiều rộng](breadth-first-search.md) từ mọi đỉnh chưa bão hòa thuộc phần bên trái. Nếu quá trình duyệt đi tới được một đỉnh chưa bão hòa thuộc phần bên phải, ta đã tìm được một đường tăng từ trái sang phải. Nếu thêm các cạnh lẻ trên đường vào cặp ghép và bỏ các cạnh chẵn (tức thêm cạnh thứ nhất, bỏ cạnh thứ hai, thêm cạnh thứ ba, v.v.), số cạnh của cặp ghép tăng thêm một.
 
 Nếu không tồn tại đường tăng, cặp ghép hiện tại $M$ là cực đại trong đồ thị $H$.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh dùng từ “maximal” ở câu trên, nhưng theo bổ đề Berge được chính bài Kuhn sử dụng, không tồn tại đường tăng suy ra cặp ghép hiện tại là **cực đại** (maximum). Bản dịch dùng kết luận đúng và correction này đã được gửi trong upstream PR #1681.
 
 **Bước 3.** Nếu ở bước hiện tại không thể tăng số cạnh của cặp ghép, ta tính lại thế sao cho ở các bước tiếp theo có thêm cơ hội tăng cặp ghép.
 
@@ -253,8 +249,6 @@ Có thể xem thuật toán Hungary là [thuật toán đường đi ngắn nh�
 Thuật toán đường đi ngắn nhất liên tiếp sử dụng một phiên bản sửa đổi của thuật toán Johnson để đổi trọng số. Quá trình này gồm bốn bước:
 
 - Dùng thuật toán [Bellman-Ford](bellman_ford.md), bắt đầu từ nguồn $s$ và với mỗi đỉnh tìm trọng số nhỏ nhất $h(v)$ của một đường đi từ $s$ tới $v$.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh gọi $s$ là “sink” ở câu trên, nhưng ký hiệu và đường đi đều bắt đầu từ $s$; trong ngữ cảnh này phải là **source**. Bản dịch dùng “nguồn” và tách lỗi này để đề xuất sửa upstream.
 
 Với mỗi bước của thuật toán chính:
 

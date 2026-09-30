@@ -4,9 +4,9 @@ tags:
 e_maxx_link: lca_linear
 translation:
   source: graph/lca_farachcoltonbender.md
-  source_commit: 5065093597d0659ea259223bdf29145017354c6e
+  source_commit: a33e80623480a34b0d76064cf1099b269a536ae7
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Tổ tiên chung gần nhất - Thuật toán Farach-Colton và Bender
@@ -26,8 +26,6 @@ Ta duyệt toàn bộ các đỉnh của cây bằng [DFS](depth-first-search.md
 LCA của hai đỉnh $u$ và $v$ chính là đỉnh có độ cao nhỏ nhất nằm giữa hai lần xuất hiện tương ứng của $u$ và $v$ trong Euler tour.
 
 Hình dưới đây minh họa một Euler tour có thể có của một cây; danh sách phía dưới cho biết các đỉnh được thăm và độ cao của chúng.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh ở câu trên dùng “a graph”, nhưng toàn bộ ngữ cảnh của bài LCA và phép duyệt đang xét một cây. Vì vậy hình minh họa phải được hiểu là Euler tour của cây; lỗi diễn đạt này đã được đề xuất sửa trong upstream PR #1679.
 
 <div style="text-align: center;">
   <img src="LCA_Euler.png" alt="LCA_Euler_Tour">

@@ -5,9 +5,9 @@ tags:
 e_maxx_link: modular_factorial
 translation:
   source: algebra/factorial-modulo.md
-  source_commit: 86961ba33631e453e3a2840e65d1ceb2da752e2f
+  source_commit: ed80c1f6e6433686cd1381d3f3ce29c4cc687e99
   status: draft
-  last_synced: 2026-08-09
+  last_synced: 2026-09-29
 ---
 
 # Giai thừa modulo $p$
@@ -29,16 +29,16 @@ Biết cách tính hiệu quả giai thừa biến đổi giúp ta nhanh chóng 
 Hãy viết tường minh giai thừa biến đổi này.
 
 $$\begin{eqnarray}
-n!_{\%p} &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\\
- & &\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\\\
-&=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\\
+n!_{\%p} &=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot (p+1) \cdot (p+2) \cdot \ldots \cdot (2p-1) \cdot \underbrace{2}_{2p} \\
+ & &\quad \cdot (2p+1) \cdot \ldots \cdot (p^2-1) \cdot \underbrace{1}_{p^2} \cdot (p^2 +1) \cdot \ldots \cdot n \pmod{p} \\\
+&=& 1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot \underbrace{1}_{p} \cdot 1 \cdot 2 \cdot \ldots \cdot (p-1) \cdot \underbrace{2}_{2p} \cdot 1 \cdot 2 \\
 & &\quad \cdot \ldots \cdot (p-1) \cdot \underbrace{1}_{p^2} \cdot 1 \cdot 2 \cdot \ldots \cdot (n \bmod p) \pmod{p}
 \end{eqnarray}$$
 
 Có thể thấy rõ rằng giai thừa được chia thành nhiều khối có cùng độ dài, ngoại trừ khối cuối cùng.
 
 $$\begin{eqnarray}
-n!_{\%p}&=& \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}_{2\text{nd}} \cdot \ldots \\\\
+n!_{\%p}&=& \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{1\text{st}} \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 2}_{2\text{nd}} \cdot \ldots \\\
 & & \cdot \underbrace{1 \cdot 2 \cdot 3 \cdot \ldots \cdot (p-2) \cdot (p-1) \cdot 1}_{p\text{th}} \cdot \ldots \cdot \quad \underbrace{1 \cdot 2 \cdot \cdot \ldots \cdot (n \bmod p)}_{\text{tail}} \pmod{p}.
 \end{eqnarray}$$
 
@@ -60,7 +60,7 @@ $$n!_{\%p} = \underbrace{ \ldots \cdot 1 } \cdot \underbrace{ \ldots \cdot 2} \c
 Đây lại là một giai thừa biến đổi, nhưng có kích thước nhỏ hơn nhiều.
 Cụ thể, đó là $\lfloor n / p \rfloor !_{\%p}$.
 
-Như vậy, trong quá trình tính giai thừa biến đổi $n\!_{\%p}$, ta thực hiện $O(p)$ phép toán rồi còn lại bài toán tính $\lfloor n / p \rfloor !_{\%p}$.
+Như vậy, trong quá trình tính giai thừa biến đổi $n!_{\%p}$, ta thực hiện $O(p)$ phép toán rồi còn lại bài toán tính $\lfloor n / p \rfloor !_{\%p}$.
 Ta thu được một công thức đệ quy.
 Độ sâu đệ quy là $O(\log_p n)$, nên độ phức tạp tổng thể của thuật toán là $O(p \log_p n)$.
 
@@ -95,9 +95,7 @@ Ngoài ra, nếu bộ nhớ bị giới hạn và không thể lưu toàn bộ c
 
 ## Số mũ của $p$
 
-Nếu muốn tính hệ số nhị thức modulo $p$, ta còn cần biết số lần $p$ xuất hiện trong $n$, tức số lần $p$ xuất hiện trong phân tích thừa số nguyên tố của $n$, hay số lần ta đã xóa $p$ trong quá trình tính giai thừa biến đổi.
-
-**Ghi chú bản dịch:** Câu nguồn phía trên dùng n, nhưng ngữ cảnh, công thức Legendre ngay dưới và quá trình loại các thừa số p đều đang xét n!. Đại lượng cần ở đây là số mũ của p trong phân tích thừa số nguyên tố của n!.
+Nếu muốn tính hệ số nhị thức modulo $p$, ta còn cần biết số lần $p$ xuất hiện trong $n!$, tức số lần $p$ xuất hiện trong phân tích thừa số nguyên tố của $n!$, hay số lần ta đã xóa $p$ trong quá trình tính giai thừa biến đổi.
 
 [Công thức Legendre](https://en.wikipedia.org/wiki/Legendre%27s_formula) cho phép tính đại lượng này trong thời gian $O(\log_p n)$.
 Công thức cho số mũ $\nu_p$ là:

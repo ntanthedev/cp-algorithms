@@ -4,9 +4,9 @@ tags:
 e_maxx_link: gray_code
 translation:
   source: algebra/gray-code.md
-  source_commit: a7926d30b75ef8481b5068d49cf6b2be628a0312
+  source_commit: c2de452c460c5400ba1ef94f2ae87603ca385f3c
   status: draft
-  last_synced: 2026-08-09
+  last_synced: 2026-09-29
 ---
 
 # Mã Gray
@@ -62,7 +62,7 @@ Mã Gray có nhiều ứng dụng hữu ích, đôi khi khá bất ngờ:
 
 *   Mã Gray có thể được dùng để giải bài toán Tháp Hà Nội.
     Gọi $n$ là số đĩa. Bắt đầu với mã Gray độ dài $n$ gồm toàn bit 0 ($G(0)$), rồi lần lượt chuyển giữa các mã Gray liên tiếp (từ $G(i)$ sang $G(i+1)$).
-    Bit thứ $i$ của mã Gray hiện tại biểu diễn đĩa thứ $n$ 
+    Bit thứ $i$ của mã Gray hiện tại biểu diễn đĩa thứ $i$ 
     (bit thấp nhất tương ứng với đĩa nhỏ nhất và bit cao nhất tương ứng với đĩa lớn nhất). 
     Vì mỗi bước chỉ có đúng một bit thay đổi, ta có thể xem việc đổi bit thứ $i$ là di chuyển đĩa thứ $i$.
     Nhận xét rằng ở mỗi bước (trừ vị trí bắt đầu và kết thúc), mỗi đĩa (trừ đĩa nhỏ nhất) chỉ có đúng một cách di chuyển hợp lệ.
@@ -72,8 +72,6 @@ Mã Gray có nhiều ứng dụng hữu ích, đôi khi khá bất ngờ:
     nếu $n$ chẵn: $f \to r \to t \to f \to r \to t \to ...$.
 
 *   Mã Gray cũng được dùng trong lý thuyết thuật toán di truyền.
-
-**Ghi chú bản dịch:** Trong bullet về Tháp Hà Nội, câu nguồn ghi “bit thứ i” biểu diễn “đĩa thứ n”, nhưng câu kế tiếp lại dùng việc đổi bit thứ i như di chuyển đĩa thứ i. Theo ngữ cảnh, “đĩa thứ n” nhiều khả năng là typo và phải là “đĩa thứ i”.
 
 ## Bài tập luyện tập
 *   <a href="https://cses.fi/problemset/task/2205">Gray Code &nbsp;&nbsp;&nbsp;&nbsp; [Độ khó: dễ]</a>

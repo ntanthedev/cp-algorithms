@@ -5,9 +5,9 @@ tags:
 e_maxx_link: euler_path
 translation:
   source: graph/euler_path.md
-  source_commit: e7b256576411f560daa049ea933b177231b01035
+  source_commit: 0ec783d6b78aa80580a695117a942e5f9bf72c31
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 # Tìm đường đi Euler trong $O(M)$
 
@@ -63,7 +63,7 @@ Sau đây là một bài toán kinh điển về chu trình Euler — bài toán
 
 Có $N$ quân domino. Như thường thấy, trên hai đầu của mỗi quân domino có ghi hai số (thông thường từ 1 đến 6, nhưng trong bài toán này điều đó không quan trọng). Ta muốn xếp tất cả quân domino thành một hàng sao cho với mọi hai quân kề nhau, hai số nằm ở phía tiếp giáp của chúng bằng nhau. Được phép lật các quân domino.
 
-Ta phát biểu lại bài toán. Xem các số xuất hiện trên domino là các đỉnh của đồ thị, còn các quân domino là các cạnh của đồ thị (mỗi quân domino mang hai số $(a,b)$ tương ứng với các cạnh $(a,b)$ và $(b, a)$). Khi đó, bài toán được quy về tìm đường đi Euler trong đồ thị này.
+Ta phát biểu lại bài toán. Xem các số xuất hiện trên domino là các đỉnh của đồ thị, còn các quân domino là các cạnh của đồ thị (mỗi quân domino mang hai số $(a,b)$ tương ứng với các cạnh $(a,b)$ và $(b,a)$). Khi đó, bài toán được quy về tìm đường đi Euler trong đồ thị này.
 
 ## Cài đặt
 
@@ -74,18 +74,15 @@ Trước hết, chương trình kiểm tra bậc các đỉnh: nếu không có 
 Ta tìm chu trình Euler đúng như mô tả ở trên (phiên bản không đệ quy), đồng thời khi thuật toán kết thúc sẽ kiểm tra đồ thị có liên thông hay không (nếu đồ thị không liên thông thì một số cạnh vẫn còn lại, và khi đó cần in $-1$).
 Cuối cùng, chương trình cũng xét trường hợp đồ thị có các đỉnh cô lập.
 
-**Ghi chú bản dịch:** Trong snippet nguồn, biến n được khai báo rồi dùng ngay để tạo ma trận kề trước khi có bước đọc hoặc khởi tạo giá trị của n. Bản dịch giữ nguyên code theo policy; lỗi cài đặt này được tách để đề xuất sửa upstream.
-
 Lưu ý rằng cài đặt này dùng ma trận kề.
 Ngoài ra, cách cài đặt này tìm đỉnh tiếp theo bằng vét cạn, nên phải duyệt đi duyệt lại toàn bộ một hàng của ma trận.
 Một cách tốt hơn là lưu đồ thị bằng danh sách kề, xóa cạnh trong $O(1)$ và đánh dấu các cạnh ngược trong một danh sách riêng.
-Bằng cách đó, ta có thể đạt một thuật toán $O(N)$.
-
-**Ghi chú bản dịch:** Ở câu trên, nguồn dùng $O(N)$ dù toàn bộ đoạn đang phân tích độ phức tạp theo số cạnh và mục tiêu của bài là tuyến tính theo số cạnh. Với ký hiệu của bài, bound phù hợp phải là $O(M)$ (hoặc $O(V+E)$ nếu viết theo số đỉnh và cạnh). Bản dịch giữ wording nguồn và tách correction này để đề xuất sửa upstream.
+Bằng cách đó, ta có thể đạt một thuật toán $O(M)$.
 
 ```cpp
 int main() {
     int n;
+    cin >> n;
     vector<vector<int>> g(n, vector<int>(n));
     // reading the graph in the adjacency matrix
 

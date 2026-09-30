@@ -4,9 +4,9 @@ tags:
 e_maxx_link: 2_sat
 translation:
   source: graph/2SAT.md
-  source_commit: 0dcf8e07ac9e8b0c6c4cbf35d543ae054f26d6b5
+  source_commit: 027f97d5d384980d51640334015a4e70f4955a46
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # 2-SAT 
@@ -45,7 +45,7 @@ b \Rightarrow a & \lnot b \Rightarrow \lnot a & b \Rightarrow \lnot a & c \Right
 Ta có thể thấy đồ thị kéo theo (implication graph) trong hình sau:
 
 <div style="text-align: center;">
-  <img src="2SAT.png" alt=""Implication Graph of 2-SAT example"">
+  <img src="2SAT.png" alt="Implication Graph of 2-SAT example">
 </div>
 
 Một tính chất đáng chú ý của đồ thị kéo theo là:
@@ -60,8 +60,6 @@ Do đó, có thể phát biểu tiêu chuẩn tồn tại lời giải như sau:
 
 Bài toán 2-SAT có lời giải khi và chỉ khi với mọi biến $x$, hai đỉnh $x$ và $\lnot x$ nằm trong hai thành phần liên thông mạnh khác nhau của đồ thị kéo theo.
 
-**Ghi chú bản dịch:** Câu tương ứng trong nguồn tiếng Anh có cụm từ thừa “of the strong connection”, nhưng tiêu chuẩn ngay trước và sau đó đều xác định rõ rằng ta đang xét các thành phần liên thông mạnh của đồ thị kéo theo. Bản dịch giữ đúng ý kỹ thuật này; lỗi diễn đạt của nguồn được tách riêng để đề xuất sửa ở upstream.
-
 Tiêu chuẩn này có thể được kiểm tra trong $O(n + m)$ bằng cách tìm tất cả các thành phần liên thông mạnh.
 
 Hình sau biểu diễn tất cả các thành phần liên thông mạnh của ví dụ.
@@ -69,10 +67,8 @@ Dễ kiểm tra rằng không thành phần nào trong bốn thành phần chứ
 Trong các đoạn tiếp theo, ta sẽ học cách tính một phép gán hợp lệ; trước mắt, để minh họa, một lời giải là $a = \text{false}$, $b = \text{false}$, $c = \text{false}$.
 
 <div style="text-align: center;">
-  <img src="2SAT_SCC.png" alt=""Strongly Connected Components of the 2-SAT example"">
+  <img src="2SAT_SCC.png" alt="Strongly Connected Components of the 2-SAT example">
 </div>
-
-**Ghi chú bản dịch:** Hai thẻ ảnh trong nguồn hiện có thuộc tính alt sai cú pháp do dấu ngoặc kép bị lặp. Bản dịch giữ nguyên cấu trúc HTML của nguồn để đồng bộ; lỗi markup này được xử lý riêng ở upstream.
 
 Bây giờ ta xây dựng thuật toán tìm lời giải của bài toán 2-SAT với giả thiết rằng lời giải tồn tại.
 

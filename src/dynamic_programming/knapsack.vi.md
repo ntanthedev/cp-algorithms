@@ -3,9 +3,9 @@ tags:
   - Original
 translation:
   source: dynamic_programming/knapsack.md
-  source_commit: b3a017bcab9b5504ccc4c1805d1a7aeda5afd03b
+  source_commit: e620ca583a4fb11631d2ff15b0df966046f6c146
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Bài toán cái túi (Knapsack)
@@ -51,7 +51,7 @@ và phải được thực hiện theo thứ tự **giảm dần** của $j$ (đ
 
 Thuật toán trên có thể được cài đặt trong $O(nW)$ như sau:
 
-```.c++
+```cpp
 for (int i = 1; i <= n; i++)
   for (int j = W; j >= w[i]; j--)
     f[j] = max(f[j], f[j - w[i]] + v[i]);
@@ -69,13 +69,18 @@ Cần lưu ý rằng dù định nghĩa trạng thái giống Knapsack 0-1, quy 
 
 ### Giải thích
 
-Cách trực tiếp là, với $i$ loại vật đầu tiên, duyệt số lần lấy mỗi loại. Độ phức tạp thời gian của cách này là $O(n^2W)$.
+Cách trực tiếp là, với $i$ loại vật đầu tiên, duyệt số lần lấy mỗi loại. Ta thu được công thức chuyển trạng thái sau:
 
-**Ghi chú bản dịch:** Cận độ phức tạp ở câu trên của nguồn không đúng trong trường hợp tổng quát. Với mỗi trạng thái, số lần lấy vật có thể phải duyệt tới bậc $W$, nên cận tệ nhất là $O(nW^2)$. Lỗi này đã có một pull request riêng đang mở ở upstream; bản dịch vẫn giữ nguyên biểu thức của nguồn để bảo đảm đồng bộ.
+$$f_{i, j} = \max\limits_{k=0}^{\left\lfloor \frac{j}{w_i} \right\rfloor}(f_{i-1, j-k\cdot w_i} + k\cdot v_i)$$
 
-Ta thu được công thức chuyển sau:
+Thuật toán này có thể được cài đặt trong $O(nW^2)$ như sau:
 
-$$f_{i, j} = \max\limits_{k=0}^{\infty}(f_{i-1, j-k\cdot w_i} + k\cdot v_i)$$
+```cpp
+for (int i = 1; i <= n; i++)
+  for (int j = 0; j <= W; j++)
+    for (int k = 0; k * w[i] <= j; k++)
+      f[i][j] = max(f[i][j], f[i-1][j - k * w[i]] + k * v[i]);
+```
 
 Đồng thời, công thức trên có thể rút gọn thành dạng "phẳng":
 
@@ -87,11 +92,14 @@ Tương tự Knapsack 0-1, ta có thể bỏ chiều thứ nhất để tối ư
 
 $$f_j \gets \max(f_j, f_{j-w_i}+v_i)$$
 
+Quy tắc giống hệt nhau, nhưng bây giờ phải được thực hiện theo thứ tự **tăng dần** của $j$; đây là điểm khác biệt duy nhất giữa hai bài toán ở dạng này.
+Khi duyệt tăng, $f_{j-w_i}$ đã được cập nhật cho vật $i$, nên nó tương ứng với $f_{i,j-w_i}$ và ta có thể lấy vật thêm lần nữa; nếu duyệt giảm thì nó vẫn tương ứng với $f_{i-1,j-w_i}$, và mỗi vật chỉ có thể được lấy nhiều nhất một lần.
+
 ### Cài đặt
 
 Thuật toán trên có thể được cài đặt trong $O(nW)$ như sau:
 
-```.c++
+```cpp
 for (int i = 1; i <= n; i++)
   for (int j = w[i]; j <= W; j++)
     f[j] = max(f[j], f[j - w[i]] + v[i]);
@@ -131,7 +139,7 @@ Tối ưu này cho độ phức tạp $O(W\sum\limits_{i=1}^{n}\log k_i)$.
 
 ### Cài đặt
 
-```c++
+```cpp
 index = 0;
 for (int i = 1; i <= n; i++) {
   int c = 1, p, h, k;
@@ -169,12 +177,12 @@ Bài toán Knapsack hỗn hợp kết hợp ba dạng bài đã trình bày ở 
 
 Bài toán có thể trông phức tạp, nhưng chỉ cần hiểu ý tưởng cốt lõi của các dạng Knapsack ở trên rồi kết hợp chúng lại. Mã giả của lời giải như sau:
 
-```c++
+```cpp
 for (each item) {
   if (0-1 knapsack)
     Apply 0-1 knapsack code;
   else if (complete knapsack)
-    Apply complete knapsack code;
+    Apply the complete knapsack code;
   else if (multiple knapsack)
     Apply multiple knapsack code;
 }

@@ -5,17 +5,15 @@ tags:
 e_maxx_link: finding_cycle
 translation:
   source: graph/finding-cycle.md
-  source_commit: af0ebda9f978bfefd545f19e7b14e7f3e1bc4571
+  source_commit: 3e14772cb62ecc4c7e120d6ac5b7ff29e815b56b
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 # Kiểm tra đồ thị không có chu trình và tìm một chu trình trong $O(M)$
 
 Xét một đồ thị có hướng hoặc vô hướng không có cạnh khuyên và cạnh song song. Ta cần kiểm tra đồ thị có không chứa chu trình hay không; nếu có chu trình, hãy tìm một chu trình bất kỳ.
 
-Ta có thể giải bài toán bằng [duyệt theo chiều sâu](depth-first-search.md) trong $O(M)$, với $M$ là số cạnh.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh ghi độ phức tạp là $O(M)$. Nếu tính cả bước duyệt qua các đỉnh để khởi động DFS cho từng thành phần, với $N$ là số đỉnh, cách viết tổng quát chặt hơn là $O(N+M)$. Bản dịch giữ ký hiệu của nguồn và tách correction này để đề xuất sửa upstream.
+Ta có thể giải bài toán bằng [duyệt theo chiều sâu](depth-first-search.md) trong $O(M)$, với $M$ là số cạnh. Một đỉnh cô lập không thể nằm trên chu trình, nên chỉ cần bắt đầu tìm kiếm từ nhiều nhất $2M$ đỉnh kề với ít nhất một cạnh. Cài đặt bên dưới duyệt qua tất cả các đỉnh, làm phát sinh thêm hạng $O(N)$ mà bản thân thuật toán không yêu cầu.
 
 ## Thuật toán
 

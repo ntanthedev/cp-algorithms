@@ -4,9 +4,9 @@ tags:
 e_maxx_link: min_cost_flow
 translation:
   source: graph/min_cost_flow.md
-  source_commit: b13716d40db706b1c30cc5c457ca953612b237e8
+  source_commit: 1ec4e3862ba323badef04d332884357c9208d166
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Luồng với chi phí cực tiểu - Thuật toán đường đi ngắn nhất liên tiếp
@@ -48,11 +48,9 @@ mạng thặng dư chỉ chứa các cạnh chưa bão hòa (tức các cạnh t
 Bây giờ ta có thể mô tả **thuật toán** tính luồng với chi phí cực tiểu.
 Ở mỗi lần lặp, ta tìm đường đi ngắn nhất trong đồ thị thặng dư từ $s$ tới $t$.
 Khác với Edmonds-Karp, ở đây độ dài đường đi được tính theo chi phí của đường thay vì số cạnh.
-Nếu không còn đường đi nào, thuật toán kết thúc; nguồn tiếng Anh gọi luồng $F$ hiện tại là luồng mong muốn.
+Nếu không còn đường đi như vậy, thuật toán kết thúc. Nếu luồng hiện tại chưa đạt $K$ thì không tồn tại luồng có giá trị $K$; ngược lại, $F$ là luồng mong muốn.
 Nếu tìm được một đường, ta tăng luồng trên đường đó nhiều nhất có thể (tức tìm dung lượng thặng dư nhỏ nhất $R$ trên đường, tăng luồng thêm lượng đó và giảm luồng trên các cạnh ngược cùng một lượng).
 Nếu tại một thời điểm luồng đạt giá trị $K$, ta dừng thuật toán (lưu ý rằng ở lần lặp cuối, chỉ được tăng một lượng vừa đủ để giá trị luồng cuối cùng không vượt quá $K$).
-
-**Ghi chú bản dịch:** Phát biểu “luồng hiện tại là luồng mong muốn” khi không còn đường đi chỉ đúng nếu lượng luồng yêu cầu đã đạt được. Với phiên bản yêu cầu một lượng K cố định, nếu hết đường trước khi đạt K thì không tồn tại luồng khả thi có lượng K; implementation phía dưới cũng xử lý trường hợp này bằng cách trả về -1. Lỗi wording này được tách riêng để đề xuất sửa upstream.
 
 Không khó để thấy rằng nếu đặt $K$ bằng vô hạn thì thuật toán sẽ tìm luồng cực đại với chi phí cực tiểu.
 Vì vậy, cả hai biến thể của bài toán đều có thể giải bằng cùng một thuật toán.
@@ -64,8 +62,6 @@ Thuật toán vẫn hoạt động trên các đồ thị này.
 Tuy nhiên, việc cài đặt trở nên phức tạp hơn một chút.
 
 Một **cạnh vô hướng** $(i, j)$ thực chất tương đương với hai cạnh có hướng $(i, j)$ và $(j, i)$ có cùng dung lượng và chi phí.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh viết “same capacity and values”. Trong ngữ cảnh này, thuộc tính thứ hai đã được định nghĩa là chi phí trên mỗi đơn vị luồng; bản dịch dùng “chi phí” để tránh mơ hồ và correction tương ứng được bổ sung vào PR upstream riêng.
 
 Vì thuật toán luồng với chi phí cực tiểu ở trên sinh một cạnh ngược cho mỗi cạnh có hướng, nên một cạnh vô hướng được tách thành $4$ cạnh có hướng và ta thực sự thu được một **đa đồ thị**.
 
