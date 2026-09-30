@@ -42,3 +42,6 @@ jobs:
           TERM: xterm
         run: timeout 12m ./test.sh
         working-directory: test
+
+      - name: Test English-only snippet extraction
+        run: python3 -B test/test_extract_snippets.py
