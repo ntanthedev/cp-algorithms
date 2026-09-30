@@ -18,7 +18,7 @@ Nhiệm vụ là liệt kê tất cả **các tập con có kích thước $K$**
 ## Sinh tổ hợp $K$ phần tử kế tiếp theo thứ tự từ điển {data-toc-label="Generate next lexicographical K-combination"}
 
 Trước tiên, ta sẽ sinh các tổ hợp theo thứ tự từ điển.
-Thuật toán cho việc này khá đơn giản. Tổ hợp đầu tiên là ${1, 2, ..., K}. Bây giờ hãy xem cách
+Thuật toán cho việc này khá đơn giản. Tổ hợp đầu tiên là ${1, 2, ..., K}$. Bây giờ hãy xem cách
 tìm tổ hợp đứng ngay sau tổ hợp hiện tại theo thứ tự từ điển. Ta xét tổ hợp hiện tại và tìm
 phần tử ngoài cùng bên phải chưa đạt giá trị lớn nhất có thể của nó. Sau khi tìm được phần tử này,
 ta tăng nó thêm $1$, rồi gán cho tất cả các phần tử phía sau những giá trị hợp lệ nhỏ nhất.
@@ -54,7 +54,7 @@ một số và thêm một số).
 
 Ta sẽ chứng minh điều này:
 
-Trong chứng minh, ta nhắc lại rằng dãy $G(N)$ (biểu diễn mã Gray thứ $N$) có thể
+Trong chứng minh, ta nhắc lại rằng dãy $G(N)$ (biểu diễn mã Gray thứ $N$<sup></sup>) có thể
 được xây dựng như sau:
 
 $$G(N) = 0G(N-1) \cup 1G(N-1)^\text{R}$$
