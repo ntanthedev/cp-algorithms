@@ -166,7 +166,7 @@ Tất cả các ngoặc còn lại ($(2n - i - 1 - \text{ndepth})/2$ cặp) có 
 ## Tìm dãy thứ $k$ {data-toc-label="Finding the k-th sequence"}
 
 Gọi $n$ là số cặp ngoặc trong dãy.
-Ta cần tìm dãy ngoặc đúng thứ $k$ trong danh sách tất cả các dãy ngoặc đúng được sắp theo thứ tự từ điển.
+Ta cần tìm dãy ngoặc đúng thứ $k$ trong danh sách tất cả các dãy ngoặc đúng được sắp theo thứ tự từ điển với một $k$ cho trước.
 
 Tương tự mục trước, ta tính mảng phụ $d[i][j]$, là số dãy ngoặc bán cân bằng có độ dài $i$ và độ cân bằng $j$.
 
