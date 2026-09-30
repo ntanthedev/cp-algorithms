@@ -4,9 +4,9 @@ tags:
 e_maxx_link: catalan_numbers
 translation:
   source: combinatorics/catalan-numbers.md
-  source_commit: 90ab1eef0822c79671cc5f9d63ad33efa52faf61
+  source_commit: 4283eb29b38cc82d5ee088ad0a38b84ee3c37bb1
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Số Catalan
@@ -46,13 +46,9 @@ $$C_n = \sum_{k = 0}^{n-1} C_k C_{n-1-k} , {n} \geq 2$$
 
 Có thể suy ra công thức truy hồi dễ dàng từ bài toán dãy ngoặc đúng.
 
-Dấu ngoặc mở ngoài cùng bên trái $l$ tương ứng với một dấu ngoặc đóng $r$ nào đó, chia dãy thành 2 phần mà mỗi phần cũng phải là một dãy ngoặc đúng. Vì vậy công thức cũng tách thành 2 phần. Nếu ký hiệu $k = {r - l - 1}$ thì với $r$ cố định sẽ có đúng $C_k C_{n-1-k}$ dãy ngoặc như vậy. Cộng trên mọi $k's$ hợp lệ, ta thu được hệ thức truy hồi của $C_n$.
+Dấu ngoặc mở ngoài cùng bên trái $l$ tương ứng với một dấu ngoặc đóng $r$ nào đó. Giả sử có $k$ cặp ngoặc nằm giữa $l$ và $r$. Xâu con nằm giữa chúng có thể là bất kỳ dãy ngoặc đúng nào gồm $k$ cặp, còn phần phía sau $r$ có thể là bất kỳ dãy ngoặc đúng nào gồm $n-1-k$ cặp. Do đó, với $k$ cố định, có đúng $C_k C_{n-1-k}$ dãy ngoặc như vậy. Cộng trên mọi $k=0,1,\ldots,n-1$ cho ta hệ thức truy hồi của $C_n$.
 
-Ta cũng có thể hình dung theo cách sau. Theo định nghĩa, $C_n$ là số dãy ngoặc đúng. Bây giờ dãy có thể được chia thành 2 phần có độ dài $k$ và ${n - k}$, mỗi phần đều phải là một dãy ngoặc đúng. Ví dụ:
-
-$( ) ( ( ) )$ có thể được chia thành $( )$ và $( ( ) )$, nhưng không thể chia thành $( ) ($ và $( ) )$. Một lần nữa, cộng trên mọi $k's$ hợp lệ ta thu được hệ thức truy hồi của $C_n$.
-
-**Ghi chú bản dịch:** Đoạn chứng minh ở nguồn nhầm giữa số ký tự và số cặp ngoặc: nếu l và r là vị trí hai ký tự ngoặc thì số cặp ngoặc nằm giữa chúng là $(r-l-1)/2$, trong khi $C_k$ đếm dãy gồm k cặp ngoặc. Cách chứng minh chuẩn là cố định dấu ngoặc đóng khớp với dấu mở đầu tiên, rồi phân chia số cặp nằm bên trong và phía sau. Bản dịch giữ nguyên nội dung nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
+Tương đương, mọi dãy ngoặc đúng không rỗng đều có cách phân tách duy nhất thành $(A)B$, trong đó $A$ và $B$ là các dãy ngoặc đúng. Nếu $A$ chứa $k$ cặp thì $B$ chứa $n-1-k$ cặp, cho ta cùng hệ thức truy hồi.
 
 #### Cài đặt C++
 
@@ -60,7 +56,7 @@ $( ) ( ( ) )$ có thể được chia thành $( )$ và $( ( ) )$, nhưng không 
 const int MOD = ....
 const int MAX = ....
 int catalan[MAX];
-void init() {
+void init(int n) {
     catalan[0] = catalan[1] = 1;
     for (int i=2; i<=n; i++) {
         catalan[i] = 0;
@@ -73,8 +69,6 @@ void init() {
     }
 }
 ```
-
-**Ghi chú bản dịch:** Đoạn mã nguồn sử dụng biến n trong điều kiện vòng lặp nhưng không khai báo hoặc truyền biến này vào hàm. Bản dịch giữ nguyên đoạn mã theo quy tắc đồng bộ nguồn; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
 
 ### Công thức giải tích
 

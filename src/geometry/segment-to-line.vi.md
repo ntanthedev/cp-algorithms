@@ -4,9 +4,9 @@ tags:
 e_maxx_link: segment_to_line
 translation:
   source: geometry/segment-to-line.md
-  source_commit: b9e0917b7d479f6dbbdef83f280c30d51db86d57
+  source_commit: fa664572e322d81183dcd9b981e7f3241fb06de8
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Tìm phương trình đường thẳng đi qua một đoạn thẳng

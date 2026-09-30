@@ -4,9 +4,9 @@ tags:
 e_maxx_link: lines_intersection
 translation:
   source: geometry/lines-intersection.md
-  source_commit: bbfc54ba85f265d16abc8aa04377c30f421fd29e
+  source_commit: 3a3c442aa10234c3bf5c171e5a5a501f2df09f1a
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Giao điểm của hai đường thẳng

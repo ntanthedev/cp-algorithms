@@ -15,7 +15,7 @@ def extract_tests(filepath):
     snippet_start = re.compile(r"^\s*```\{.cpp\s+file=(\S+)\}$")
     snippet_end = re.compile(r"^```$")
 
-    with open(filepath) as f:
+    with open(filepath, encoding="utf-8") as f:
         in_snippet = False;
         for line in f:
             m_start = snippet_start.match(line)
@@ -36,5 +36,5 @@ def extract_tests(filepath):
 if __name__ == '__main__':
     for subdir, dirs, files in os.walk('../src/'):
         for filename in files:
-            if filename.endswith(".md"):
+            if filename.endswith(".md") and not filename.endswith(".vi.md"):
                 extract_tests(os.path.join(subdir, filename))

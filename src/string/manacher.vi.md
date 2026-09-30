@@ -5,9 +5,9 @@ tags:
 e_maxx_link: palindromes_count
 translation:
   source: string/manacher.md
-  source_commit: 1594a352a5b3f52c7d0e47b5a19ffceff8d9047a
+  source_commit: 8fef49ec1878a95b54ec38125b3eb5c58ca8b65e
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 # Thuật toán Manacher - Tìm mọi xâu con đối xứng trong $O(N)$
 
@@ -75,13 +75,11 @@ Ta mô tả thuật toán tìm mọi xâu con đối xứng có độ dài lẻ,
 
 Để tính nhanh, ta duy trì **hai biên loại trừ $(l, r)$** của xâu con đối xứng nằm xa nhất về bên phải đã tìm thấy (tức xâu con đối xứng ngoài cùng bên phải hiện tại là $s[l+1] s[l+2] \dots s[r-1]$). Ban đầu đặt $l = 0, r = 1$, tương ứng với chuỗi rỗng.
 
-**Ghi chú bản dịch:** Với quy ước đoạn nửa mở ở đây, r là biên phải loại trừ, nên chỉ số cuối của xâu đối xứng là r − 1. Vì vậy, câu nguồn phía dưới nói rằng r “biểu diễn chỉ số cuối” cần được hiểu là đang cập nhật biên phải của xâu đối xứng, không phải r chính là chỉ số ký tự cuối.
-
 Giả sử ta muốn tính $d_{odd}[i]$ cho vị trí $i$ tiếp theo, và mọi giá trị trước đó trong $d_{odd}[]$ đã được tính. Ta làm như sau:
 
 * Nếu $i$ nằm ngoài xâu con đối xứng hiện tại, tức $i \geq r$, ta chỉ cần chạy thuật toán ngây thơ.
     
-    Ta tăng dần $d_{odd}[i]$ và mỗi lần kiểm tra xem chuỗi con hiện tại ngoài cùng bên phải $[i - d_{odd}[i]\dots i + d_{odd}[i]]$ có phải xâu đối xứng hay không. Khi gặp cặp ký tự đầu tiên không khớp hoặc chạm biên của $s$, ta dừng lại. Khi đó $d_{odd}[i]$ đã được tính xong. Sau đó, đừng quên cập nhật $(l, r)$. $r$ cần được cập nhật sao cho nó biểu diễn chỉ số cuối của xâu con đối xứng ngoài cùng bên phải hiện tại.
+    Ta tăng dần $d_{odd}[i]$ và mỗi lần kiểm tra xem chuỗi con hiện tại ngoài cùng bên phải $[i - d_{odd}[i]\dots i + d_{odd}[i]]$ có phải xâu đối xứng hay không. Khi gặp cặp ký tự đầu tiên không khớp hoặc chạm biên của $s$, ta dừng lại. Khi đó $d_{odd}[i]$ đã được tính xong. Sau đó, đừng quên cập nhật $(l, r)$. Biên phải loại trừ $r$ cần được cập nhật sao cho $r - 1$ là chỉ số cuối của xâu con đối xứng ngoài cùng bên phải hiện tại.
 
 * Bây giờ xét trường hợp $i \le r$. Ta sẽ cố tận dụng các giá trị đã tính trong $d_{odd}[]$. Hãy tìm vị trí "đối xứng" của $i$ trong xâu con đối xứng $(l, r)$, tức vị trí $j = l + (r - i)$, rồi xét giá trị $d_{odd}[j]$. Vì $j$ đối xứng với $i$ qua $(l+r)/2$, ta **gần như luôn có thể** gán $d_{odd}[i] = d_{odd}[j]$. Hình dưới minh họa điều này (xâu đối xứng quanh $j$ thực chất được "sao chép" sang xâu đối xứng quanh $i$):
     

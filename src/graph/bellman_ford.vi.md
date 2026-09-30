@@ -4,9 +4,9 @@ tags:
 e_maxx_link: ford_bellman
 translation:
   source: graph/bellman_ford.md
-  source_commit: b9f9ab626cc8e7104ee356592084b85993ec9ebb
+  source_commit: 924402c3277e9ba45dd12b6274a3a775d5d4b5bc
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Thuật toán Bellman-Ford
@@ -25,7 +25,7 @@ Trước hết giả sử đồ thị không chứa chu trình âm. Trường h�
 
 Ta tạo mảng khoảng cách $d[0 \ldots n-1]$, sau khi thuật toán kết thúc mảng này sẽ chứa đáp án. Ban đầu đặt $d[v] = 0$, còn mọi phần tử khác của $d[ ]$ bằng vô cực $\infty$.
 
-Thuật toán gồm nhiều pha. Trong mỗi pha, ta duyệt qua toàn bộ các cạnh của đồ thị và cố gắng thực hiện **phép nới lỏng** trên mỗi cạnh $(a,b)$ có trọng số $c$. Nới lỏng cạnh là thử cải thiện giá trị $d[b]$ bằng $d[a] + c$. Nói cách khác, ta cố gắng cải thiện đáp án cho đỉnh $b$ bằng cách đi tới nó qua cạnh $(a,b)$ từ đáp án hiện tại của đỉnh $a$.
+Thuật toán gồm nhiều pha. Trong mỗi pha, ta duyệt qua toàn bộ các cạnh của đồ thị và cố gắng thực hiện **phép nới lỏng** trên mỗi cạnh $(a,b)$ có trọng số $c$. Nới lỏng cạnh là thử cải thiện giá trị $d[b]$ bằng $d[a] + c$. Nói cách khác, ta cố gắng cải thiện đáp án cho đỉnh này bằng cách đi tới nó qua cạnh $(a,b)$ từ đáp án hiện tại của đỉnh $a$.
 
 Ta khẳng định rằng $n-1$ pha là đủ để tính đúng độ dài mọi đường đi ngắn nhất trong đồ thị (vẫn với giả thiết không tồn tại chu trình âm). Với các đỉnh không thể đi tới từ nguồn, khoảng cách $d[ ]$ sẽ vẫn bằng vô cực $\infty$.
 
@@ -137,26 +137,26 @@ Bắt đầu từ đỉnh $t$, ta liên tục đi qua các đỉnh trước cho 
 
 ## Chứng minh thuật toán
 
-Trước hết, với mọi đỉnh $u$ không thể đi tới từ đỉnh bắt đầu $v$, thuật toán vẫn hoạt động đúng: nhãn $d[u]$ giữ nguyên bằng vô cực, vì Bellman-Ford sẽ tìm một đường nào đó tới mọi đỉnh có thể đi tới từ nguồn $v$, còn phép nới lỏng với các đỉnh còn lại sẽ không bao giờ xảy ra.
+Trước hết, với mọi đỉnh $u$ không thể đi tới từ đỉnh bắt đầu, thuật toán vẫn hoạt động đúng: nhãn $d[u]$ giữ nguyên bằng vô cực, vì Bellman-Ford sẽ tìm một đường nào đó tới mọi đỉnh có thể đi tới từ nguồn $v$, còn phép nới lỏng với các đỉnh còn lại sẽ không bao giờ xảy ra.
 
-Ta chứng minh khẳng định sau: sau khi thực hiện pha thứ $i$, Bellman-Ford tìm đúng mọi đường đi ngắn nhất có số cạnh không vượt quá $i$.
+Ta chứng minh khẳng định sau: sau khi thực hiện pha $i_{th}$, Bellman-Ford tìm đúng mọi đường đi ngắn nhất có số cạnh không vượt quá $i$.
 
-Nói cách khác, với một đỉnh bất kỳ $a$, gọi $k$ là số cạnh trên một đường đi ngắn nhất đến nó (nếu có nhiều đường đi ngắn nhất, có thể chọn bất kỳ một đường). Theo khẳng định này, thuật toán bảo đảm sau pha thứ $k$, đường đi ngắn nhất đến $a$ đã được tìm thấy.
+Nói cách khác, với một đỉnh bất kỳ $a$, gọi $k$ là số cạnh trên một đường đi ngắn nhất đến nó (nếu có nhiều đường đi ngắn nhất, có thể chọn bất kỳ một đường). Theo khẳng định này, thuật toán bảo đảm sau pha $k_{th}$, đường đi ngắn nhất đến $a$ đã được tìm thấy.
 
 **Chứng minh**:
-Xét một đỉnh bất kỳ $a$ có thể đi tới từ đỉnh bắt đầu $v$, và xét một đường đi ngắn nhất tới nó $(p_0=v, p_1, \ldots, p_k=a)$. Trước pha đầu tiên, đường đi ngắn nhất tới đỉnh $p_0 = v$ đã được biết chính xác. Trong pha đầu tiên, cạnh $(p_0,p_1)$ được thuật toán xét, nên khoảng cách đến $p_1$ được tính đúng sau pha đầu tiên. Lặp lại lập luận này $k$ lần, ta thấy sau pha thứ $k$, khoảng cách đến đỉnh $p_k = a$ được tính đúng, đúng như cần chứng minh.
+Xét một đỉnh bất kỳ $a$ có thể đi tới từ đỉnh bắt đầu $v$, và xét một đường đi ngắn nhất tới nó $(p_0=v, p_1, \ldots, p_k=a)$. Trước pha đầu tiên, đường đi ngắn nhất tới đỉnh $p_0 = v$ đã được biết chính xác. Trong pha đầu tiên, cạnh $(p_0,p_1)$ được thuật toán xét, nên khoảng cách đến $p_1$ được tính đúng sau pha đầu tiên. Lặp lại lập luận này $k$ lần, ta thấy sau pha $k_{th}$, khoảng cách đến đỉnh $p_k = a$ được tính đúng, đúng như cần chứng minh.
 
-Cuối cùng, một đường đi ngắn nhất không thể có nhiều hơn $n - 1$ cạnh. Vì vậy chạy đến pha thứ $(n-1)$ là đủ; sau đó không còn phép nới lỏng nào có thể cải thiện khoảng cách tới một đỉnh.
+Cuối cùng, một đường đi ngắn nhất không thể có nhiều hơn $n - 1$ cạnh. Vì vậy chạy đến pha $(n-1)_{th}$ là đủ; sau đó không còn phép nới lỏng nào có thể cải thiện khoảng cách tới một đỉnh.
 
 ## Trường hợp có chu trình âm
 
-Ở các phần trên ta giả sử đồ thị không có chu trình âm. Chính xác hơn, điều ta quan tâm là chu trình âm có thể đi tới từ đỉnh bắt đầu $v$; một chu trình âm không thể đi tới từ $v$ không làm thay đổi kết quả đã phân tích ở trên. Khi tồn tại chu trình âm có thể đi tới, phát sinh thêm vấn đề: khoảng cách đến mọi đỉnh trên chu trình, cũng như mọi đỉnh có thể đi tới từ chu trình đó, không được xác định — về mặt ý nghĩa chúng phải bằng âm vô cực $(- \infty)$.
+Ở các phần trên ta giả sử đồ thị không có chu trình âm. Chính xác hơn, điều ta quan tâm là chu trình âm có thể đi tới từ đỉnh bắt đầu $v$; một chu trình âm không thể đi tới từ nguồn không làm thay đổi kết quả đã phân tích ở trên. Khi tồn tại chu trình âm có thể đi tới, phát sinh thêm vấn đề: khoảng cách đến mọi đỉnh trên chu trình, cũng như mọi đỉnh có thể đi tới từ chu trình đó, không được xác định — về mặt ý nghĩa chúng phải bằng âm vô cực $(- \infty)$.
 
 Dễ thấy Bellman-Ford có thể liên tục thực hiện phép nới lỏng giữa các đỉnh của chu trình âm và các đỉnh đi tới được từ chu trình. Vì vậy, nếu không giới hạn số pha ở $n - 1$, thuật toán có thể chạy vô hạn và liên tục giảm khoảng cách của các đỉnh đó.
 
-Từ đây ta có **tiêu chuẩn để phát hiện chu trình âm có thể đi tới từ đỉnh nguồn $v$**: sau pha thứ $(n-1)$, nếu chạy thêm một pha và vẫn thực hiện được ít nhất một phép nới lỏng, thì đồ thị có chu trình âm có thể đi tới từ $v$; nếu không thì không có chu trình như vậy.
+Từ đây ta có **tiêu chuẩn để phát hiện chu trình âm có thể đi tới từ đỉnh nguồn $v$**: sau pha $(n-1)_{th}$, nếu chạy thêm một pha và vẫn thực hiện được ít nhất một phép nới lỏng, thì đồ thị có chu trình âm có thể đi tới từ $v$; nếu không thì không có chu trình như vậy.
 
-Hơn nữa, nếu phát hiện được chu trình như vậy, ta có thể sửa Bellman-Ford để khôi phục chu trình dưới dạng một dãy đỉnh. Chỉ cần nhớ đỉnh cuối cùng $x$ được nới lỏng ở pha thứ $n$. Đỉnh này hoặc nằm trên chu trình âm, hoặc có thể đi tới từ chu trình đó. Để chắc chắn đi vào một đỉnh thuộc chu trình âm, bắt đầu từ $x$ và lần theo đỉnh trước $n$ lần. Khi đó ta tới một đỉnh $y$ được bảo đảm nằm trên chu trình âm. Tiếp tục đi qua các đỉnh trước từ $y$ cho tới khi quay lại chính $y$; điều này chắc chắn xảy ra vì các phép nới lỏng trên chu trình âm diễn ra theo vòng.
+Hơn nữa, nếu phát hiện được chu trình như vậy, ta có thể sửa Bellman-Ford để khôi phục chu trình dưới dạng một dãy đỉnh. Chỉ cần nhớ đỉnh cuối cùng $x$ được nới lỏng ở pha $n_{th}$. Đỉnh này hoặc nằm trên chu trình âm, hoặc có thể đi tới từ chu trình đó. Để chắc chắn đi vào một đỉnh thuộc chu trình âm, bắt đầu từ $x$ và lần theo đỉnh trước $n$ lần. Khi đó ta tới một đỉnh $y$ được bảo đảm nằm trên chu trình âm. Tiếp tục đi qua các đỉnh trước từ $y$ cho tới khi quay lại chính đỉnh đó; điều này chắc chắn xảy ra vì các phép nới lỏng trên chu trình âm diễn ra theo vòng.
 
 ### Cài đặt:
 
@@ -251,7 +251,7 @@ bool spfa(int s, vector<int>& d) {
                     q.push(to);
                     inqueue[to] = true;
                     cnt[to]++;
-                    if (cnt[to] > n)
+                    if (cnt[to] >= n)
                         return false;  // negative cycle
                 }
             }

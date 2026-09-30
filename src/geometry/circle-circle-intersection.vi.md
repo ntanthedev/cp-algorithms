@@ -4,9 +4,9 @@ tags:
 e_maxx_link: circles_intersection
 translation:
   source: geometry/circle-circle-intersection.md
-  source_commit: 26cff5a1e6e4f591364b986a2a1a8c3d7922748a
+  source_commit: ef7ab4e647558ee220ad400fa0cb78309e721fa4
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Giao của hai đường tròn
@@ -41,9 +41,7 @@ C &= x_2^2+y_2^2+r_1^2-r_2^2
 
 Bài toán này có thể được giải như mô tả trong [bài viết tương ứng](circle-line-intersection.md).
 
-Trường hợp suy biến duy nhất cần xét riêng là khi tâm hai đường tròn trùng nhau. Khi đó $x_2=y_2=0$, và phương trình đường thẳng trở thành $C = r_1^2-r_2^2 = 0$. Nếu bán kính hai đường tròn bằng nhau thì có vô số giao điểm; nếu chúng khác nhau thì không có giao điểm.
-
-**Ghi chú bản dịch:** Dấu “= 0” ở câu trên là điều kiện để phương trình còn nghiệm khi hai tâm trùng nhau; điều kiện này chỉ thỏa khi hai bán kính bằng nhau.
+Trường hợp suy biến duy nhất cần xét riêng là khi tâm của hai đường tròn trùng nhau. Khi đó $x_2=y_2=0$, nên $A=B=0$ và phương trình còn lại là $C=r_1^2-r_2^2=0$. Phương trình này được thỏa mãn khi và chỉ khi hai bán kính bằng nhau. Nếu chúng bằng nhau, hai đường tròn trùng nhau và có vô số giao điểm; ngược lại, chúng không có giao điểm.
 
 ## Bài tập luyện tập
 

@@ -3,9 +3,9 @@ tags:
   - Original
 translation:
   source: algebra/factorization.md
-  source_commit: 14715605fc16528ad58cc63f883f28b057336697
+  source_commit: a951d4738b36cabe928b03992dd190d9db9ca3f0
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Phân tích thừa số nguyên tố
@@ -368,7 +368,7 @@ Brent dùng một phương pháp tương tự Floyd với hai con trỏ.
 Ngay khi $2^i$ lớn hơn $\lambda$ và $\mu$, ta sẽ phát hiện được chu trình.
 
 ```text
-function floyd(f, x0):
+function brent(f, x0):
     tortoise = x0
     hare = f(x0)
     l = 1

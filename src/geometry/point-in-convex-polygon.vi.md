@@ -5,9 +5,9 @@ tags:
 e_maxx_link: pt_in_polygon
 translation:
   source: geometry/point-in-convex-polygon.md
-  source_commit: 4b3b4a89883c42237fb667ccdd2ca7543ddfeda7
+  source_commit: 1a9f3b4fff11fd22317ccc1a82e676330445e7fb
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 # Kiểm tra một điểm có thuộc đa giác lồi trong $O(\log N)$ hay không
 
@@ -22,7 +22,7 @@ Khi đó, tất cả các điểm còn lại $p_1,\dots,p_n$ của đa giác đ�
 Nếu điểm cần truy vấn thuộc đa giác, nó sẽ thuộc một tam giác nào đó $p_0, p_i, p_{i + 1}$ (có thể thuộc nhiều hơn một tam giác nếu nằm trên biên của các tam giác).
 Xét tam giác $p_0, p_i, p_{i + 1}$ chứa $p$ và có $i$ lớn nhất trong tất cả các tam giác như vậy.
 
-Có một trường hợp đặc biệt: $p$ nằm trên đoạn $(p_0, p_n)$. Ta sẽ kiểm tra riêng trường hợp này.
+Có một trường hợp đặc biệt: $p$ nằm trên đoạn $(p_0, p_1)$. Ta sẽ kiểm tra riêng trường hợp này.
 Nếu không, tất cả các điểm $p_j$ với $j \le i$ đều nằm ngược chiều kim đồng hồ so với $p$ khi xét quanh $p_0$, còn các điểm khác thì không.
 Điều này cho phép ta tìm kiếm nhị phân điểm $p_i$ sao cho $p_i$ không nằm ngược chiều kim đồng hồ so với $p$ khi xét quanh $p_0$, đồng thời $i$ lớn nhất trong tất cả các điểm thỏa mãn.
 Sau đó, ta kiểm tra xem điểm truy vấn có thực sự nằm trong tam giác đã xác định hay không.
@@ -30,7 +30,7 @@ Sau đó, ta kiểm tra xem điểm truy vấn có thực sự nằm trong tam g
 Dấu của $(a - c) \times (b - c)$ cho biết điểm $a$ nằm theo hay ngược chiều kim đồng hồ so với điểm $b$ khi xét quanh điểm $c$.
 Nếu $(a - c) \times (b - c) > 0$, điểm $a$ nằm bên phải vector đi từ $c$ đến $b$, tức nằm theo chiều kim đồng hồ so với $b$ khi xét quanh $c$.
 Nếu $(a - c) \times (b - c) < 0$, điểm nằm bên trái, tức ngược chiều kim đồng hồ.
-Còn nếu tích có hướng bằng 0, điểm nằm đúng trên đường thẳng đi qua $b$ và $c$.
+Nếu tích có hướng bằng không, điểm $a$ nằm đúng trên đường thẳng đi qua $b$ và $c$.
 
 Quay lại thuật toán:
 Xét một điểm truy vấn $p$.
@@ -44,8 +44,6 @@ Với một điểm $p_i$, điều kiện này được kiểm tra bằng $(p_i 
 Điều này kiểm tra diện tích của tam giác $p_0, p_i, p_{i+1}$ có đúng bằng tổng diện tích các tam giác $p_0, p_i, p$, $p_0, p, p_{i+1}$ và $p_i, p_{i+1}, p$ hay không.
 Nếu $p$ nằm ngoài, tổng diện tích ba tam giác nhỏ sẽ lớn hơn diện tích tam giác ban đầu.
 Nếu $p$ nằm trong, hai giá trị sẽ bằng nhau.
-
-Ghi chú bản dịch: Nguồn hiện tại không nhất quán khi mô tả trường hợp đặc biệt: đoạn đầu ghi “(p_0, p_n)”, trong khi phần thuật toán bên dưới và cài đặt xử lý riêng “(p_0, p_1)”. Bản dịch giữ nguyên cả hai mệnh đề để đồng bộ với nguồn; vấn đề này được báo và đề xuất sửa riêng ở bản tiếng Anh.
 
 ## Cài đặt
 

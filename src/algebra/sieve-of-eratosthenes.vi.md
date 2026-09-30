@@ -4,9 +4,9 @@ tags:
 e_maxx_link: eratosthenes_sieve
 translation:
   source: algebra/sieve-of-eratosthenes.md
-  source_commit: 560d176e7575ee833fe5610406d9bdab1d431e72
+  source_commit: 649cba74c0f97e2fff42a4c65c6cd2a40a7e6d24
   status: draft
-  last_synced: 2026-08-06
+  last_synced: 2026-09-29
 ---
 
 # Sàng Eratosthenes
@@ -50,7 +50,7 @@ for (int i = 2; i <= n; i++) {
 Đoạn mã trước hết xem mọi số trừ 0 và 1 là ứng viên số nguyên tố, rồi bắt đầu loại các hợp số.
 Thuật toán duyệt qua tất cả các số từ $2$ đến $n$.
 Nếu số hiện tại $i$ là số nguyên tố, thuật toán đánh dấu mọi bội của $i$ là hợp số, bắt đầu từ $i^2$.
-Đây là một tối ưu so với cách cài đặt ngây thơ: mọi bội của $i$ nhỏ hơn $i^2$ đều có một thừa số nguyên tố nhỏ hơn $i$, nên chúng đã bị loại ở các bước trước.
+Đây là một tối ưu so với cách cài đặt ngây thơ: mọi bội nhỏ hơn mức bắt đầu này của $i$ đều có một thừa số nguyên tố nhỏ hơn $i$, nên chúng đã bị loại ở các bước trước.
 Vì $i^2$ có thể dễ dàng làm tràn kiểu `int`, điều kiện bổ sung được kiểm tra bằng kiểu `long long` trước khi chạy vòng lặp lồng bên trong.
 
 Với cách cài đặt này, thuật toán dùng $O(n)$ bộ nhớ và thực hiện $O(n \log \log n)$ phép toán, như sẽ được phân tích ở phần tiếp theo.
@@ -151,7 +151,7 @@ Từ tối ưu "chỉ sàng đến căn bậc hai", ta thấy không cần giữ
 
 Gọi $s$ là hằng số xác định kích thước khối. Khi đó có tổng cộng $\lceil {\frac n s} \rceil$ khối, và khối $k$ ($k = 0 ... \lfloor {\frac n s} \rfloor$) chứa các số trong đoạn $[ks; ks + s - 1]$.
 Ta xử lý lần lượt từng khối: với mỗi khối $k$, duyệt qua mọi số nguyên tố từ $1$ đến $\sqrt n$ và dùng chúng để sàng khối đó.
-Cần điều chỉnh chiến lược một chút khi xử lý các số đầu tiên: thứ nhất, các số nguyên tố trong $[1; \sqrt n]$ không được tự loại chính mình; thứ hai, 0 và 1 phải được đánh dấu là không nguyên tố.
+Cần điều chỉnh chiến lược một chút khi xử lý các số đầu tiên: thứ nhất, các số nguyên tố trong $[1; \sqrt n]$ không được tự loại chính mình; thứ hai, $0$ và $1$ phải được đánh dấu là không nguyên tố.
 Khi xử lý khối cuối, cũng phải nhớ rằng số cuối cần xét là $n$ không nhất thiết nằm ở cuối khối.
 
 Như đã phân tích, cách cài đặt Sàng Eratosthenes thông thường bị giới hạn bởi tốc độ nạp dữ liệu vào bộ nhớ đệm CPU.
@@ -212,7 +212,7 @@ Ta có thể giải bài toán bằng ý tưởng của sàng phân đoạn.
 Trước hết, sinh tất cả số nguyên tố không vượt quá $\sqrt R$, sau đó dùng chúng để đánh dấu mọi hợp số trong đoạn $[L, R]$.
 
 ```cpp
-vector<char> segmentedSieve(long long L, long long R) {
+vector<char> segmented_sieve(long long L, long long R) {
     // generate all primes up to sqrt(R)
     long long lim = sqrt(R);
     vector<char> mark(lim + 1, false);
@@ -227,10 +227,10 @@ vector<char> segmentedSieve(long long L, long long R) {
 
     vector<char> isPrime(R - L + 1, true);
     for (long long i : primes)
-        for (long long j = max(i * i, (L + i - 1) / i * i); j <= R; j += i)
+        for (long long j = max(i, (L + i - 1) / i) * i; j <= R; j += i)
             isPrime[j - L] = false;
-    if (L == 1)
-        isPrime[0] = false;
+    for (long long x = L; x <= min(R, 1LL); x++)
+        isPrime[x - L] = false;
     return isPrime;
 }
 ```
@@ -239,14 +239,14 @@ vector<char> segmentedSieve(long long L, long long R) {
 Ta cũng có thể không sinh trước toàn bộ số nguyên tố:
 
 ```cpp
-vector<char> segmentedSieveNoPreGen(long long L, long long R) {
+vector<char> segmented_sieve_no_pre_gen(long long L, long long R) {
     vector<char> isPrime(R - L + 1, true);
     long long lim = sqrt(R);
     for (long long i = 2; i <= lim; ++i)
-        for (long long j = max(i * i, (L + i - 1) / i * i); j <= R; j += i)
+        for (long long j = max(i, (L + i - 1) / i) * i; j <= R; j += i)
             isPrime[j - L] = false;
-    if (L == 1)
-        isPrime[0] = false;
+    for (long long x = L; x <= min(R, 1LL); x++)
+        isPrime[x - L] = false;
     return isPrime;
 }
 ```
@@ -263,6 +263,7 @@ Tuy nhiên, thuật toán đó cũng có những điểm yếu riêng.
 
 * [Leetcode - Four Divisors](https://leetcode.com/problems/four-divisors/)
 * [Leetcode - Count Primes](https://leetcode.com/problems/count-primes/)
+* [Leetcode - Closest Prime Numbers in Range](https://leetcode.com/problems/closest-prime-numbers-in-range/)
 * [SPOJ - Printing Some Primes](http://www.spoj.com/problems/TDPRIMES/)
 * [SPOJ - A Conjecture of Paul Erdos](http://www.spoj.com/problems/HS08PAUL/)
 * [SPOJ - Primal Fear](http://www.spoj.com/problems/VECTAR8/)

@@ -4,9 +4,9 @@ tags:
 e_maxx_link: length_of_segments_union
 translation:
   source: geometry/length-of-segments-union.md
-  source_commit: 2c82fa39bc578f39e0aa48c1efc586c7e518ee21
+  source_commit: 69ccea5ae07915a518a517f301fecd61bd193cca
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Độ dài hợp của các đoạn thẳng

@@ -4,9 +4,9 @@ tags:
 e_maxx_link: inclusion_exclusion_principle
 translation:
   source: combinatorics/inclusion-exclusion.md
-  source_commit: ed6767216f0f81af0bdb0e0174ed3a5d147967e8
+  source_commit: b23f41a0960b37e8692bdae72af62cf52cd7711d
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Nguyên lý bao hàm – loại trừ
@@ -263,17 +263,17 @@ Cộng trên mọi $ans(X)$ sẽ cho đáp án cuối cùng:
 
 $$ ans = \sum_{X ~ : ~ |X| = k} ans(X) $$
 
-Tuy nhiên, độ phức tạp của lời giải này là $O(3^k \cdot k)$. Để cải thiện, lưu ý rằng các phép tính $ans(X)$ khác nhau thường dùng chung rất nhiều tập $Y$.
+Có $\binom{n}{k}$ cách chọn $X$, và mỗi cách có $2^{n-k}$ siêu tập. Nếu xử lý một tập mất $O(n)$, cách trực tiếp này cần thời gian $O\left(\binom{n}{k} 2^{n-k} n\right)$. Để cải thiện, lưu ý rằng các phép tính $ans(X)$ khác nhau thường dùng chung rất nhiều tập $Y$.
 
 Ta đảo thứ tự cộng trong công thức bao hàm – loại trừ và cộng theo các tập $Y$. Khi đó có thể thấy cùng một tập $Y$ được tính trong $ans(X)$ của $\binom{|Y|}{k}$ tập với cùng dấu $(-1)^{|Y| - k}$.
 
 $$ ans = \sum_{Y ~ : ~ |Y| \ge k} (-1)^{|Y|-k} \cdot \binom{|Y|}{k} \cdot f(Y) $$
 
-Lúc này lời giải có độ phức tạp $O(2^k \cdot k)$.
+Lúc này lời giải có độ phức tạp $O(2^n \cdot n)$.
 
 Ta tiếp tục giải phiên bản thứ hai: tìm số xâu khớp **ít nhất** $k$ mẫu.
 
-Dĩ nhiên, có thể dùng lời giải của phiên bản thứ nhất rồi cộng đáp án cho mọi kích thước tập lớn hơn $k$. Tuy nhiên, trong bài này một tập |Y| được xét trong công thức cho mọi tập có kích thước $\ge k$ nằm trong $Y$. Vì vậy, phần biểu thức nhân với $f(Y)$ có thể viết thành:
+Dĩ nhiên, có thể dùng lời giải của phiên bản thứ nhất rồi cộng đáp án cho mọi kích thước tập lớn hơn $k$. Tuy nhiên, trong bài này một tập $Y$ có kích thước $|Y|$ được xét trong công thức cho mọi tập có kích thước $\ge k$ nằm trong $Y$. Vì vậy, phần biểu thức nhân với $f(Y)$ có thể viết thành:
 
 
 $$ (-1)^{|Y|-k} \cdot \binom{|Y|}{k} + (-1)^{|Y|-k-1} \cdot \binom{|Y|}{k+1} + (-1)^{|Y|-k-2} \cdot \binom{|Y|}{k+2} + \cdots + (-1)^{|Y|-|Y|} \cdot \binom{|Y|}{|Y|} $$
@@ -286,11 +286,9 @@ $$ \sum_{k=0}^m (-1)^k \cdot \binom{n}{k} = (-1)^m \cdot \binom{n-1}{m} $$
 
 $$ (-1)^{|Y|-k} \cdot \binom{|Y|-1}{|Y|-k} $$
 
-Vì vậy, bài này cũng có lời giải với độ phức tạp $O(2^k \cdot k)$:
+Vì vậy, bài này cũng có lời giải với độ phức tạp $O(2^n \cdot n)$:
 
 $$ ans = \sum_{Y ~ : ~ |Y| \ge k} (-1)^{|Y|-k} \cdot \binom{|Y|-1}{|Y|-k} \cdot f(Y) $$
-
-**Ghi chú bản dịch:** Ở tiểu mục này, đầu bài dùng n là số mẫu và k là số mẫu cần khớp, nhưng các dòng độ phức tạp của nguồn lại dùng k như kích thước toàn bộ tập mẫu. Theo các vòng duyệt mô tả trong chính bài, các cận độ phức tạp này phải phụ thuộc vào n (ví dụ dạng $O(2^n\cdot n)$ sau khi đảo tổng), không phải chỉ vào k. Bản dịch giữ nguyên các biểu thức của nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
 
 ### Số cách đi từ một ô tới một ô khác
 
@@ -312,7 +310,7 @@ Tuy nhiên, cách này vẫn có độ phức tạp không đa thức $O(2^k \cd
 
 Sau đây là một lời giải đa thức:
 
-Ta dùng quy hoạch động. Để tiện, thêm (1,1) vào đầu và (n,m) vào cuối mảng chướng ngại vật. Tính $d[i]$ — số cách đi từ điểm xuất phát (phần tử thứ $0-th$) tới điểm thứ $i-th$ mà không đi qua bất kỳ chướng ngại vật nào khác (ngoại trừ chính $i$). Ta tính giá trị này cho mọi ô chướng ngại vật và cả ô đích.
+Ta dùng quy hoạch động. Để tiện, thêm (1,1) vào đầu và (n,m) vào cuối mảng chướng ngại vật. Tính $d[i]$ — số cách đi từ điểm xuất phát (chỉ số $0$) tới chỉ số $i$ mà không đi qua bất kỳ chướng ngại vật nào khác (ngoại trừ chính $i$). Ta tính giá trị này cho mọi ô chướng ngại vật và cả ô đích.
 
 Tạm quên các chướng ngại vật và chỉ đếm số đường đi từ ô $0$ tới $i$. Ta cần xét các đường đi "xấu", tức các đường đi đi qua chướng ngại vật, rồi trừ chúng khỏi tổng số cách đi từ $0$ tới $i$.
 
@@ -326,13 +324,11 @@ Cho $n$ số: $a_1, a_2, \ldots, a_n$. Cần đếm số cách chọn bốn số
 
 Ta giải bài toán bù — đếm số bộ bốn "xấu", tức các bộ bốn mà mọi số đều chia hết cho một số $d > 1$.
 
-Ta dùng nguyên lý bao hàm – loại trừ khi cộng trên mọi nhóm bốn số chia hết cho một ước $d$.
+Ta dùng nguyên lý bao hàm – loại trừ khi cộng trên các ước square-free $d > 1$, tức tích của các số nguyên tố phân biệt. Các ước không square-free không tạo ra giao mới của các điều kiện chia hết cho số nguyên tố, nên không được tính riêng.
 
-$$ans = \sum_{d \ge 2} (-1)^{deg(d)-1} \cdot f(d)$$
+$$ans = \sum_{\substack{d \ge 2 \\ d\text{ square-free}}} (-1)^{deg(d)-1} \cdot f(d)$$
 
-trong đó $deg(d)$ là số số nguyên tố trong phân tích thừa số của $d$, còn $f(d)$ là số bộ bốn chia hết cho $d$.
-
-**Ghi chú bản dịch:** Công thức nguồn ở trên chỉ đúng khi tổng chạy trên các số d không chia hết cho bình phương của bất kỳ số nguyên tố nào, tức d là tích của các số nguyên tố phân biệt. Các lũy thừa như 4 hoặc 8 không tạo thêm một giao mới trong bao hàm – loại trừ. Bản dịch giữ nguyên công thức nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
+trong đó $deg(d)$ là số số nguyên tố phân biệt trong phân tích thừa số của $d$, còn $f(d)$ là số bộ bốn chia hết cho $d$.
 
 Để tính $f(d)$, chỉ cần đếm số bội của $d$ (như ở bài trước) rồi dùng [hệ số nhị thức](binomial-coefficients.md) để đếm số cách chọn bốn số trong đó.
 
@@ -368,9 +364,7 @@ Có thể giải nhanh hơn bằng biến thể sau của sàng Eratosthenes:
 
 2. Tiếp theo, cần tính đáp án cho mọi $i$ từ $2$ tới $n$, tức mảng $cnt[]$ — số lượng số nguyên không nguyên tố cùng nhau với $i$.
     * Để làm vậy, nhớ lại công thức bao hàm – loại trừ hoạt động như thế nào — ở đây ta cài đặt cùng ý tưởng nhưng đảo chiều: duyệt một thành phần (tích của các số nguyên tố trong phân tích) rồi cộng hoặc trừ hạng tử tương ứng vào công thức bao hàm – loại trừ của mỗi bội của nó.
-    * Giả sử đang xử lý một số $i$ có $good[i] = true$, tức nó tham gia công thức bao hàm – loại trừ. Duyệt mọi số là bội của $i$, rồi cộng hoặc trừ $\lfloor N/i \rfloor$ vào $cnt[]$ của chúng (dấu phụ thuộc vào $deg[i]$: nếu $deg[i]$ lẻ thì cộng, ngược lại thì trừ).
-
-**Ghi chú bản dịch:** Ở gạch đầu dòng cuối, nguồn dùng ký hiệu N trong biểu thức lấy phần nguyên, trong khi toàn bộ tiểu mục và đoạn mã bên dưới dùng n. Đây là lỗi ký hiệu; bản dịch giữ nguyên biểu thức nguồn hiện tại và vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
+    * Giả sử đang xử lý một số $i$ có $good[i] = true$, tức nó tham gia công thức bao hàm – loại trừ. Duyệt mọi số là bội của $i$, rồi cộng hoặc trừ $\lfloor n/i \rfloor$ vào $cnt[]$ của chúng (dấu phụ thuộc vào $deg[i]$: nếu $deg[i]$ lẻ thì cộng, ngược lại thì trừ).
 
 Dưới đây là cài đặt C++:
 
@@ -445,9 +439,7 @@ $$ n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots \pm \frac{1
 
 (vì tổng trong ngoặc là $n+1$ hạng đầu của khai triển Taylor của $e^{-1}$).
 
-Đáng chú ý, một bài toán tương tự cũng có thể giải theo cách này: yêu cầu các điểm cố định không nằm trong $m$ phần tử đầu tiên của hoán vị (thay vì không nằm ở bất kỳ vị trí nào như bài vừa giải). Công thức thu được giống công thức chính xác ở trên, nhưng tổng chỉ chạy đến $k$ thay vì $n$.
-
-**Ghi chú bản dịch:** Ở câu trên, nguồn đặt tham số là m nhưng sau đó lại nói tổng chạy đến k; k không được định nghĩa trong biến thể này. Với m vị trí bị cấm làm điểm cố định, bao hàm – loại trừ phải chạy trên m biến cố tương ứng, nên giới hạn đúng là m. Bản dịch giữ nguyên cách viết của nguồn hiện tại; vấn đề này đã được gửi đề xuất sửa ở bản tiếng Anh.
+Đáng chú ý, một bài toán tương tự cũng có thể giải theo cách này: yêu cầu các điểm cố định không nằm trong $m$ phần tử đầu tiên của hoán vị (thay vì không nằm ở bất kỳ vị trí nào như bài vừa giải). Công thức thu được giống công thức chính xác ở trên, nhưng tổng chỉ chạy đến $m$ thay vì $n$.
 
 ## Bài tập luyện tập
 

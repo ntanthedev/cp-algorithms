@@ -4,9 +4,9 @@ tags:
 e_maxx_link: edmonds_karp
 translation:
   source: graph/edmonds_karp.md
-  source_commit: 2436fd3f5b0f5c9f995fef848be78d2b56ba9127
+  source_commit: ec10e10083a7893ca0f96a545c0a2d152515bd37
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Luồng cực đại - Ford-Fulkerson và Edmonds-Karp
@@ -55,8 +55,6 @@ Giá trị thứ nhất trên mỗi cạnh là luồng, ban đầu bằng 0; gi�
 Giá trị của luồng trong một mạng là tổng luồng được tạo ra tại nguồn $s$, hay tương đương là tổng luồng được nhận tại đích $t$.
 Một **luồng cực đại** là luồng có giá trị lớn nhất có thể.
 Bài toán ta muốn giải là tìm luồng cực đại của một mạng luồng.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh dùng cụm “maximal flow” ở một số vị trí dù bài toán và tiêu đề đều nói về “maximum flow”. Hai khái niệm này có thể khác nhau trong thuật ngữ toán học; bản dịch dùng nhất quán **luồng cực đại** theo đúng bài toán maximum flow và ghi nhận lỗi nguồn để sửa ở PR upstream riêng.
 
 Trong mô hình ống nước, bài toán có thể phát biểu như sau:
 ta có thể đẩy tối đa bao nhiêu nước qua hệ thống ống từ nguồn tới đích?

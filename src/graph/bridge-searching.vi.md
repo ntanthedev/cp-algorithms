@@ -5,9 +5,9 @@ tags:
 e_maxx_link: bridge_searching
 translation:
   source: graph/bridge-searching.md
-  source_commit: c2d8f0ce6ec86a5f646add2cfed996c7effa4013
+  source_commit: cf59a29bfb11024d89f07ad417a6dbe3187b296f
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 # Tìm cạnh cầu trong đồ thị trong $O(N+M)$
 
@@ -98,9 +98,7 @@ Hàm chính là `find_bridges`; hàm này thực hiện các bước khởi tạ
 
 Hàm `IS_BRIDGE(a, b)` là một hàm dùng để xử lý việc cạnh $(a, b)$ là cạnh cầu, chẳng hạn như in cạnh đó ra.
 
-Lưu ý rằng theo phần mô tả của nguồn, cài đặt này hoạt động sai nếu đồ thị có nhiều cạnh song song vì bỏ qua chúng. Tất nhiên, các cạnh song song sẽ không bao giờ thuộc đáp án, vì vậy `IS_BRIDGE` có thể kiểm tra thêm rằng cạnh cầu được báo không phải là một cạnh song song. Một cách khác là truyền vào `dfs` chỉ số của cạnh dùng để đi vào đỉnh thay vì truyền đỉnh cha (và lưu chỉ số của tất cả các đỉnh).
-
-**Ghi chú bản dịch:** Đoạn trên của nguồn tiếng Anh có hai điểm không còn khớp với cài đặt hiện tại. Thứ nhất, code đã chỉ bỏ qua đúng một cạnh dẫn về cha nên cạnh song song còn lại vẫn được xét. Thứ hai, câu cuối nguồn viết “store the indices of all vertices”, trong khi phương án truyền chỉ số cạnh cần lưu chỉ số của các cạnh. Bản dịch giữ nội dung nguồn trong đoạn chính và nêu rõ hai điểm này ở đây; chúng đã được tách thành PR sửa upstream riêng.
+Cờ `parent_skipped` giúp cài đặt này xử lý nhiều cạnh giữa một đỉnh và cha của nó: cài đặt chỉ bỏ qua cạnh cây DFS dùng để đi vào đỉnh, còn một cạnh song song khác được xử lý như cạnh ngược. Một cách khác là truyền vào `dfs` chỉ số của cạnh dùng để đi vào đỉnh thay vì đỉnh cha (và lưu chỉ số của tất cả các cạnh).
 
 ## Bài tập luyện tập
 

@@ -3,9 +3,9 @@ tags:
   - Original
 translation:
   source: graph/01_bfs.md
-  source_commit: ff481e4614336d073f3032a2d6288141393956b8
+  source_commit: fe701a495399ddc6000240e92b212d756aa19014
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # 0-1 BFS
@@ -55,35 +55,47 @@ Do đó, thứ tự của hàng đợi có dạng:
 $$Q = \underbrace{v}_{d[v]}, \dots, \underbrace{u}_{d[v]}, \underbrace{m}_{d[v]+1} \dots \underbrace{n}_{d[v]+1}$$
 
 Cấu trúc này đơn giản đến mức ta không cần một hàng đợi ưu tiên thực sự; dùng cây nhị phân cân bằng sẽ là quá mức cần thiết.
-Ta chỉ cần một hàng đợi hai đầu: nếu cạnh tương ứng có trọng số $0$, tức $d[u] = d[v]$, ta đưa đỉnh mới vào đầu; nếu cạnh có trọng số $1$, tức $d[u] = d[v] + 1$, ta đưa đỉnh vào cuối.
-Nhờ vậy, hàng đợi luôn được giữ theo thứ tự khoảng cách.
+Vì hàng đợi chỉ chứa hai mức khoảng cách, ta có thể lưu chúng trong hai vector riêng: $q_0$ chứa các đỉnh ở khoảng cách $d[v]$, và $q_1$ chứa các đỉnh ở khoảng cách $d[v] + 1$.
+Cạnh trọng số $0$ thêm đỉnh vào $q_0$, còn cạnh trọng số $1$ thêm vào $q_1$.
+Khi $q_0$ rỗng, mọi đỉnh ở khoảng cách hiện tại đã được xử lý; ta đổi chỗ hai vector và khoảng cách hiện tại tăng thêm một.
 
 ```cpp
 vector<int> d(n, INF);
 d[s] = 0;
-deque<int> q;
-q.push_front(s);
-while (!q.empty()) {
-    int v = q.front();
-    q.pop_front();
+vector<int> q0, q1;
+q0.push_back(s);
+while (!q0.empty()) {
+    int v = q0.back();
+    q0.pop_back();
     for (auto edge : adj[v]) {
         int u = edge.first;
         int w = edge.second;
         if (d[v] + w < d[u]) {
             d[u] = d[v] + w;
-            if (w == 1)
-                q.push_back(u);
+            if (w == 0)
+                q0.push_back(u);
             else
-                q.push_front(u);
+                q1.push_back(u);
         }
     }
+    if (q0.empty())
+        swap(q0, q1);
 }
 ```
+
+Với cách viết này, hai mức khoảng cách được thể hiện tường minh: một đỉnh được thêm vào $q_0$ khi được đến ở khoảng cách hiện tại và vào $q_1$ khi được đến xa hơn một bước, nên cấu trúc của $Q$ ở trên được thể hiện trực tiếp trong code thay vì phải duy trì thủ công.
+Một đỉnh đã được thêm vào $q_1$ rồi được cải thiện về khoảng cách hiện tại vẫn để lại bản sao cũ, nhưng bản sao lỗi thời này không gây hại: khi cuối cùng được lấy ra, phép kiểm tra `d[v] + w < d[u]` không còn tìm được gì để cải thiện.
+Lưu ý rằng $q_0$ được dùng như ngăn xếp thay vì hàng đợi; điều này không ảnh hưởng vì mọi đỉnh của nó cùng khoảng cách, nên thứ tự xử lý không quan trọng.
+
+Cách viết phổ biến hơn của cùng thuật toán dùng một `deque`, thêm vào đầu với trọng số $0$ và vào cuối với trọng số $1$, để `push_front` và `push_back` lần lượt đóng vai trò của $q_0$ và $q_1$.
+Hai vector được ưu tiên trong thực tế vì tránh cách lưu trữ theo khối của deque: trên các đồ thị đủ nhỏ để nằm trong cache, cách này đo được nhanh hơn khoảng $1.15$ lần, giảm xuống khoảng $1.06$ lần trên đồ thị có hàng triệu đỉnh, khi độ trễ bộ nhớ chiếm ưu thế và việc chọn container ít quan trọng hơn (xem [benchmark](https://github.com/ahhz/zero-one-bfs-queue) này).
+
+Nếu không có cạnh trọng số $0$, thuật toán trở thành BFS thông thường; khi đó dùng [BFS](breadth-first-search.md) trực tiếp vừa đơn giản hơn vừa nhanh hơn một chút.
 
 ## Thuật toán Dial
 
 Ta còn có thể mở rộng ý tưởng này khi cho phép trọng số cạnh lớn hơn.
-Nếu mọi cạnh của đồ thị có trọng số $\le k$, thì khoảng cách từ nguồn đến các đỉnh trong hàng đợi chỉ lệch tối đa $k$ so với $d[v]$, tức khoảng cách từ nguồn đến đỉnh $v$.
+Nếu mọi cạnh của đồ thị có trọng số $\le k$, thì khoảng cách từ nguồn đến các đỉnh trong hàng đợi chỉ lệch tối đa $k$ so với khoảng cách từ nguồn đến đỉnh $v$.
 
 **Ghi chú bản dịch:** nguồn tiếng Anh viết “distance of $v$ to the source”, nhưng theo định nghĩa của $d[v]$ xuyên suốt bài, đại lượng ở đây là khoảng cách từ nguồn đến $v$. Bản dịch dùng đúng chiều này để tránh nhầm trên đồ thị có hướng.
 

@@ -4,9 +4,9 @@ tags:
 e_maxx_link: sqrt_decomposition
 translation:
   source: data_structures/sqrt_decomposition.md
-  source_commit: 5b74cb0dd4f684050ad2388086c9a47333c36419
+  source_commit: db5cc1e471a0c5dfb9f131f72bdecd024227b556
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Chia căn

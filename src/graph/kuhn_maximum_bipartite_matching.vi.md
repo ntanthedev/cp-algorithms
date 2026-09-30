@@ -4,9 +4,9 @@ tags:
 e_maxx_link: kuhn_matching
 translation:
   source: graph/kuhn_maximum_bipartite_matching.md
-  source_commit: 25b835ca13720898fd8e69ab100459081dedead0
+  source_commit: 88062c587b4c93cf64b9248fcab13aee78be211d
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Thuật toán Kuhn cho cặp ghép cực đại trên đồ thị hai phía
@@ -38,8 +38,6 @@ Tức là $A \oplus B = (A - B) \cup (B - A) = (A \cup B) - (A \cap B)$.
 ### Bổ đề Berge
 
 Bổ đề này được nhà toán học người Pháp **Claude Berge** chứng minh vào năm 1957, dù trước đó nhà toán học Đan Mạch **Julius Petersen** đã quan sát thấy kết quả này vào năm 1891 và nhà toán học Hungary **Dénes Kőnig** vào năm 1931.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh viết “Denés Kőnig”; tên đúng là **Dénes Kőnig**. Correction này đã được bổ sung vào upstream PR #1681.
 
 #### Phát biểu
 Một cặp ghép $M$ là cực đại $\Leftrightarrow$ không tồn tại đường tăng đối với cặp ghép $M$.
@@ -102,17 +100,13 @@ Trong cài đặt mô tả ở trên, DFS/BFS chỉ bắt đầu từ các đỉ
 Sau đây là một cài đặt của thuật toán dựa trên DFS và nhận đầu vào là một đồ thị hai phía đã được chia tường minh thành hai phần.
 Cài đặt này rất ngắn gọn và đáng để ghi nhớ ở dạng này.
 
-Ở đây $n$ là số đỉnh của phần thứ nhất, $k$ là số đỉnh của phần thứ hai, còn $g[v]$ là danh sách các cạnh của đỉnh thuộc phần thứ nhất tương ứng (tức danh sách số hiệu các đỉnh mà các cạnh từ $v$ đi tới). Các đỉnh trong hai phần được đánh số độc lập: phần thứ nhất từ $1 \ldots n$, phần thứ hai từ $1 \ldots k$.
-
-**Ghi chú bản dịch:** Mô tả đánh số ở câu trên được giữ theo nguồn. Snippet C++ ngay dưới thực tế dùng chỉ số bắt đầu từ 0 cho các mảng và chỉ cộng 1 khi in kết quả; điểm không nhất quán này đã được bổ sung vào upstream PR #1681.
+Ở đây $n$ là số đỉnh của phần thứ nhất, $k$ là số đỉnh của phần thứ hai, còn $g[v]$ là danh sách các cạnh của đỉnh thuộc phần thứ nhất tương ứng (tức danh sách số hiệu các đỉnh mà các cạnh từ $v$ đi tới). Trong cài đặt dưới đây, các đỉnh trong hai phần được đánh chỉ số độc lập từ không: phần thứ nhất dùng $0 \ldots n-1$, phần thứ hai dùng $0 \ldots k-1$. Khi in kết quả, ta cộng thêm một vào các chỉ số này.
 
 Tiếp theo có hai mảng phụ trợ: $\rm mt$ và $\rm used$. Mảng thứ nhất, $\rm mt$, lưu thông tin về cặp ghép hiện tại. Để thuận tiện khi lập trình, ta chỉ lưu thông tin này cho các đỉnh thuộc phần thứ hai: $\textrm{mt[} i \rm]$ là số hiệu đỉnh thuộc phần thứ nhất được ghép với đỉnh $i$ thuộc phần thứ hai (hoặc $-1$ nếu không có cạnh ghép nào kề với nó). Mảng thứ hai là $\rm used$: mảng đánh dấu "đã thăm" thông thường trong DFS (để DFS không đi vào cùng một đỉnh hai lần).
 
 Hàm $\textrm{try_kuhn}$ là một DFS. Hàm trả về $\rm true$ nếu tìm được một đường tăng từ đỉnh $v$, và ta xem như hàm cũng đã thực hiện việc đảo cặp ghép dọc theo đường tìm được.
 
 Bên trong hàm, ta xét mọi cạnh đi ra từ đỉnh $v$ của phần thứ nhất. Nếu cạnh hiện tại dẫn tới một đỉnh chưa bão hòa $to$, hoặc nếu $to$ đã bão hòa nhưng có thể tìm được một đường tăng bằng cách gọi đệ quy từ $\textrm{mt[}to \rm ]$, thì ta đã tìm được một đường tăng. Trước khi trả về $\rm true$, ta đảo cạnh hiện tại bằng cách đổi đỉnh thuộc phần thứ nhất được ghép với $to$ thành $v$.
-
-**Ghi chú bản dịch:** Nguồn tiếng Anh dùng cụm “increasing chain” ở đoạn cài đặt này, nhưng ngữ cảnh và chính thuật toán đang nói về augmenting path; bản dịch dùng nhất quán “đường tăng”. Lỗi wording này được tách để đề xuất sửa upstream.
 
 Chương trình chính trước hết đặt cặp ghép hiện tại là rỗng (mảng $\rm mt$ được điền bằng các giá trị $-1$). Sau đó, với mỗi đỉnh $v$ thuộc phần thứ nhất, ta gọi $\textrm{try_kuhn}$ sau khi đặt lại mảng $\rm used$ về chưa thăm.
 

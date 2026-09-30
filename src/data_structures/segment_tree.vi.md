@@ -4,16 +4,16 @@ tags:
 e_maxx_link: segment_tree
 translation:
   source: data_structures/segment_tree.md
-  source_commit: 2543a30766dac9c0cb8011c345c63bfbb60b1310
+  source_commit: 65cc432135d71f609154f16e8bf01752ac6e5e46
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Cây phân đoạn (Segment Tree)
 
 Cây phân đoạn (Segment Tree) là một cấu trúc dữ liệu lưu thông tin về các đoạn của mảng dưới dạng cây. Nhờ đó ta có thể trả lời hiệu quả các truy vấn trên đoạn, đồng thời vẫn đủ linh hoạt để sửa đổi mảng nhanh chóng.
-Ví dụ, ta có thể tìm tổng của các phần tử liên tiếp $a[l \dots r]$, hoặc tìm phần tử nhỏ nhất trong một đoạn như vậy trong $O(\log n)$.
-Giữa các truy vấn, cây phân đoạn cho phép sửa mảng bằng cách thay thế một phần tử, hoặc thậm chí thay đổi các phần tử của cả một đoạn con (chẳng hạn gán mọi phần tử $a[l \dots r]$ thành một giá trị bất kỳ, hoặc cộng một giá trị vào mọi phần tử trong đoạn con).
+Ví dụ, ta có thể tìm tổng của các phần tử liên tiếp $a[l \dots r)$, hoặc tìm phần tử nhỏ nhất trong một đoạn như vậy trong $O(\log n)$.
+Giữa các truy vấn, cây phân đoạn cho phép sửa mảng bằng cách thay thế một phần tử, hoặc thậm chí thay đổi các phần tử của cả một đoạn con (chẳng hạn gán mọi phần tử $a[l \dots r)$ thành một giá trị bất kỳ, hoặc cộng một giá trị vào mọi phần tử trong đoạn con).
 
 Nhìn chung, cây phân đoạn là một cấu trúc dữ liệu rất linh hoạt và có thể giải được rất nhiều bài toán.
 Ngoài ra, ta còn có thể áp dụng các phép toán phức tạp hơn và trả lời những truy vấn phức tạp hơn (xem [Các phiên bản nâng cao của cây phân đoạn](segment_tree.md#advanced-versions-of-segment-trees)).
@@ -81,32 +81,21 @@ Sẽ thuận tiện hơn nếu mô tả thao tác này theo hướng ngược l�
 
 Ta bắt đầu dựng từ nút gốc, nhờ vậy có thể tính toàn bộ cây phân đoạn.
 
-Độ phức tạp thời gian của quá trình xây dựng là $O(n)$, giả sử phép hợp nhất chạy trong thời gian hằng số (phép hợp nhất được gọi $n$ lần, bằng số nút trong của cây phân đoạn).
-
-Ghi chú bản dịch: Với cây nhị phân đầy đủ có n nút lá, số nút trong thực tế là n-1, nên số lần hợp nhất là n-1 chứ không phải n. Độ phức tạp O(n) của nguồn vẫn đúng.
+Độ phức tạp thời gian của quá trình xây dựng là $O(n)$, giả sử phép hợp nhất chạy trong thời gian hằng số (phép hợp nhất được gọi $n-1$ lần, bằng số nút trong của cây phân đoạn).
 
 ### Truy vấn tổng
 
-Trước mắt, ta sẽ trả lời các truy vấn tổng. Đầu vào là hai số nguyên $l$ và $r$, và ta cần tính tổng của đoạn $a[l \dots r]$ trong $O(\log n)$.
+Trước mắt, ta sẽ trả lời các truy vấn tổng. Đầu vào là hai số nguyên $l$ và $r$, và ta cần tính tổng của đoạn $a[l \dots r)$ trong $O(\log n)$.
 
 Để làm vậy, ta duyệt cây phân đoạn và dùng các tổng của đoạn đã được tính trước.
-Giả sử hiện tại ta đang ở nút quản lý đoạn $a[tl \dots tr]$.
-Có ba trường hợp có thể xảy ra.
+Giả sử hiện tại ta đang ở nút quản lý đoạn $a[tl \dots tr)$.
+Có ba trường hợp:
 
-Trường hợp dễ nhất là đoạn $a[l \dots r]$ trùng với đoạn tương ứng của nút hiện tại (tức $a[l \dots r] = a[tl \dots tr]$). Khi đó ta đã xong và có thể trả về tổng đã được tính trước, đang lưu ở nút này.
+1. $[tl \dots tr)$ nằm hoàn toàn trong $[l \dots r)$: Khi đó, tổng của đoạn này chắc chắn là một phần của đáp án cuối cùng, nên ta trả về tổng đó.
+2. $[tl \dots tr)$ giao một phần với $[l \dots r)$: Khi đó, ta không thể đưa toàn bộ tổng của nút này vào đáp án mà phải xét cả hai nút con. Đầu tiên đi tới nút con trái ($[tl \dots tm)$), tính một phần đáp án tại đây (tức tổng các giá trị thuộc giao của đoạn truy vấn và đoạn của con trái), rồi tới nút con phải ($[tm \dots tr)$), tính phần đáp án tương ứng và cộng hai kết quả.
+3. $[tl \dots tr)$ và $[l \dots r)$ không giao nhau: Đoạn này không đóng góp vào tổng, nên trả về không.
 
-Một khả năng khác là đoạn truy vấn nằm hoàn toàn trong miền của nút con trái hoặc nút con phải.
-Nhắc lại rằng nút con trái quản lý đoạn $a[tl \dots tm]$, còn nút con phải quản lý đoạn $a[tm + 1 \dots tr]$ với $tm = (tl + tr) / 2$.
-Trong trường hợp này, ta chỉ cần đi xuống nút con có đoạn tương ứng bao phủ đoạn truy vấn, rồi chạy thuật toán đang mô tả trên nút đó.
-
-Cuối cùng, đoạn truy vấn có thể giao với cả hai nút con.
-Khi đó ta phải thực hiện hai lời gọi đệ quy, mỗi lời gọi cho một nút con.
-Đầu tiên ta đi sang nút con trái, tính một phần đáp án tại đó (tức tổng các giá trị thuộc giao giữa đoạn truy vấn và đoạn của nút con trái), sau đó đi sang nút con phải, tính phần đáp án còn lại rồi cộng hai kết quả.
-Nói cách khác, vì nút con trái biểu diễn đoạn $a[tl \dots tm]$ và nút con phải biểu diễn đoạn $a[tm+1 \dots tr]$, ta tính truy vấn tổng $a[l \dots tm]$ bằng nút con trái và truy vấn tổng $a[tm+1 \dots r]$ bằng nút con phải.
-
-Như vậy, xử lý truy vấn tổng là một hàm đệ quy tự gọi một lần với nút con trái hoặc phải (không đổi biên truy vấn), hoặc hai lần, một lần cho trái và một lần cho phải (chia truy vấn thành hai truy vấn con).
-Đệ quy dừng khi biên của đoạn truy vấn hiện tại trùng với biên đoạn của nút hiện tại.
-Khi đó, đáp án là giá trị tổng đã tính trước của đoạn này được lưu trong cây.
+Như vậy, xử lý truy vấn tổng là một hàm đệ quy tự gọi với các nút con trái và phải cho tới khi gặp các đoạn hoàn toàn nằm trong hoặc không giao với đoạn truy vấn.
 
 Nói cách khác, việc tính truy vấn là một quá trình duyệt cây, lan qua tất cả các nhánh cần thiết và sử dụng các giá trị tổng của đoạn đã tính sẵn trong cây.
 
@@ -189,16 +178,16 @@ int n, t[4*MAXN];
 
 Thủ tục dựng cây phân đoạn từ mảng $a[]$ cho trước như sau:
 đó là một hàm đệ quy với các tham số $a[]$ (mảng đầu vào), $v$ (chỉ số nút hiện tại), và hai biên $tl$, $tr$ của đoạn hiện tại.
-Trong chương trình chính, hàm này được gọi với các tham số của nút gốc: $v = 1$, $tl = 0$, và $tr = n - 1$.
+Trong chương trình chính, hàm này được gọi với các tham số của nút gốc: $v = 1$, $tl = 0$, và $tr = n$.
 
 ```{.cpp file=segment_tree_implementation_build}
 void build(int a[], int v, int tl, int tr) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = a[tl];
     } else {
         int tm = (tl + tr) / 2;
         build(a, v*2, tl, tm);
-        build(a, v*2+1, tm+1, tr);
+        build(a, v*2+1, tm, tr);
         t[v] = t[v*2] + t[v*2+1];
     }
 }
@@ -209,14 +198,13 @@ Tiếp theo, hàm trả lời truy vấn tổng cũng là hàm đệ quy. Nó nh
 
 ```{.cpp file=segment_tree_implementation_sum}
 int sum(int v, int tl, int tr, int l, int r) {
-    if (l > r) 
-        return 0;
-    if (l == tl && r == tr) {
-        return t[v];
-    }
+    if (r <= tl || tr <= l) return 0;  // no overlap
+    if (l <= tl && tr <= r) return t[v];  // nested segment
+
     int tm = (tl + tr) / 2;
-    return sum(v*2, tl, tm, l, min(r, tm))
-           + sum(v*2+1, tm+1, tr, max(l, tm+1), r);
+    // partial overlap
+    return sum(v * 2, tl, tm, l, r)
+            + sum(v * 2 + 1, tm, tr, l, r);
 }
 ```
 
@@ -224,14 +212,14 @@ Cuối cùng là truy vấn cập nhật. Hàm cũng nhận thông tin về nút
 
 ```{.cpp file=segment_tree_implementation_update}
 void update(int v, int tl, int tr, int pos, int new_val) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = new_val;
     } else {
         int tm = (tl + tr) / 2;
-        if (pos <= tm)
+        if (pos < tm)
             update(v*2, tl, tm, pos, new_val);
         else
-            update(v*2+1, tm+1, tr, pos, new_val);
+            update(v*2+1, tm, tr, pos, new_val);
         t[v] = t[v*2] + t[v*2+1];
     }
 }
@@ -298,35 +286,35 @@ pair<int, int> combine(pair<int, int> a, pair<int, int> b) {
 }
 
 void build(int a[], int v, int tl, int tr) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = make_pair(a[tl], 1);
     } else {
         int tm = (tl + tr) / 2;
         build(a, v*2, tl, tm);
-        build(a, v*2+1, tm+1, tr);
+        build(a, v*2+1, tm, tr);
         t[v] = combine(t[v*2], t[v*2+1]);
     }
 }
 
 pair<int, int> get_max(int v, int tl, int tr, int l, int r) {
-    if (l > r)
+    if (r <= tl || tr <= l)
         return make_pair(-INF, 0);
-    if (l == tl && r == tr)
+    if (l <= tl && tr <= r)
         return t[v];
     int tm = (tl + tr) / 2;
-    return combine(get_max(v*2, tl, tm, l, min(r, tm)), 
-                   get_max(v*2+1, tm+1, tr, max(l, tm+1), r));
+    return combine(get_max(v*2, tl, tm, l, r), 
+                   get_max(v*2+1, tm, tr, l, r));
 }
 
 void update(int v, int tl, int tr, int pos, int new_val) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = make_pair(new_val, 1);
     } else {
         int tm = (tl + tr) / 2;
-        if (pos <= tm)
+        if (pos < tm)
             update(v*2, tl, tm, pos, new_val);
         else
-            update(v*2+1, tm+1, tr, pos, new_val);
+            update(v*2+1, tm, tr, pos, new_val);
         t[v] = combine(t[v*2], t[v*2+1]);
     }
 }
@@ -360,13 +348,13 @@ Trong cài đặt, ta có thể xử lý trường hợp đặc biệt mảng $a
 int find_kth(int v, int tl, int tr, int k) {
     if (k > t[v])
         return -1;
-    if (tl == tr)
+    if (tr - tl == 1)
         return tl;
     int tm = (tl + tr) / 2;
     if (t[v*2] >= k)
         return find_kth(v*2, tl, tm, k);
     else 
-        return find_kth(v*2+1, tm+1, tr, k - t[v*2]);
+        return find_kth(v*2+1, tm, tr, k - t[v*2]);
 }
 ```
 
@@ -385,7 +373,7 @@ Nhờ vậy tìm được đáp án trong $O(\log n)$.
 #### Tìm phần tử đầu tiên lớn hơn một giá trị cho trước
 
 Bài toán như sau:
-với giá trị $x$ và một đoạn $a[l \dots r]$ cho trước, tìm $i$ nhỏ nhất trong đoạn $a[l \dots r]$ sao cho $a[i]$ lớn hơn $x$.
+với giá trị $x$ và một đoạn $a[l \dots r)$ cho trước, tìm $i$ nhỏ nhất trong đoạn $a[l \dots r)$ sao cho $a[i]$ lớn hơn $x$.
 
 Bài toán này có thể giải bằng tìm kiếm nhị phân trên các truy vấn max tiền tố bằng cây phân đoạn.
 Tuy nhiên, cách này cho lời giải $O(\log^2 n)$.
@@ -396,21 +384,21 @@ Nhờ vậy tìm được đáp án trong $O(\log n)$.
 
 ```{.cpp file=segment_tree_first_greater}
 int get_first(int v, int tl, int tr, int l, int r, int x) {
-    if(tl > r || tr < l) return -1;
+    if (r <= tl || tr <= l) return -1;
     if(t[v] <= x) return -1;
     
-    if (tl== tr) return tl;
+    if (tr - tl == 1) return tl;
     
     int tm = tl + (tr-tl)/2;
     int left = get_first(2*v, tl, tm, l, r, x);
     if(left != -1) return left;
-    return get_first(2*v+1, tm+1, tr, l ,r, x);
+    return get_first(2*v+1, tm, tr, l ,r, x);
 }
 ```
 
 #### Tìm đoạn con có tổng lớn nhất
 
-Ở đây, với mỗi truy vấn ta lại nhận một đoạn $a[l \dots r]$; lần này cần tìm một đoạn con $a[l^\prime \dots r^\prime]$ sao cho $l \le l^\prime$ và $r^\prime \le r$, đồng thời tổng các phần tử trên đoạn này là lớn nhất.
+Ở đây, với mỗi truy vấn ta lại nhận một đoạn $a[l \dots r)$; lần này cần tìm một đoạn con $a[l^\prime \dots r^\prime)$ sao cho $l \le l^\prime$ và $r^\prime \le r$, đồng thời tổng các phần tử trên đoạn này là lớn nhất.
 Như trước, ta vẫn muốn có khả năng sửa từng phần tử riêng lẻ của mảng.
 Các phần tử có thể âm, và đoạn con tối ưu có thể rỗng (chẳng hạn nếu mọi phần tử đều âm).
 
@@ -460,25 +448,25 @@ data make_data(int val) {
 }
 
 void build(int a[], int v, int tl, int tr) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = make_data(a[tl]);
     } else {
         int tm = (tl + tr) / 2;
         build(a, v*2, tl, tm);
-        build(a, v*2+1, tm+1, tr);
+        build(a, v*2+1, tm, tr);
         t[v] = combine(t[v*2], t[v*2+1]);
     }
 }
  
 void update(int v, int tl, int tr, int pos, int new_val) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = make_data(new_val);
     } else {
         int tm = (tl + tr) / 2;
-        if (pos <= tm)
+        if (pos < tm)
             update(v*2, tl, tm, pos, new_val);
         else
-            update(v*2+1, tm+1, tr, pos, new_val);
+            update(v*2+1, tm, tr, pos, new_val);
         t[v] = combine(t[v*2], t[v*2+1]);
     }
 }
@@ -490,13 +478,13 @@ Như vậy công việc hoàn toàn giống cây phân đoạn đơn giản, ch�
 
 ```{.cpp file=segment_tree_maximal_sum_subsegments3}
 data query(int v, int tl, int tr, int l, int r) {
-    if (l > r) 
+    if (r <= tl || tr <= l) 
         return make_data(0);
-    if (l == tl && r == tr) 
+    if (l <= tl && tr <= r) 
         return t[v];
     int tm = (tl + tr) / 2;
-    return combine(query(v*2, tl, tm, l, min(r, tm)), 
-                   query(v*2+1, tm+1, tr, max(l, tm+1), r));
+    return combine(query(v*2, tl, tm, l, r), 
+                   query(v*2+1, tm, tr, l, r));
 }
 ```
 
@@ -522,7 +510,7 @@ Một số ứng dụng điển hình được mô tả dưới đây.
 #### Tìm số nhỏ nhất lớn hơn hoặc bằng một số cho trước. Không có truy vấn cập nhật.
 
 Ta muốn trả lời truy vấn dạng sau:
-với ba số $(l, r, x)$, cần tìm số nhỏ nhất trong đoạn $a[l \dots r]$ mà lớn hơn hoặc bằng $x$.
+với ba số $(l, r, x)$, cần tìm số nhỏ nhất trong đoạn $a[l \dots r)$ mà lớn hơn hoặc bằng $x$.
 
 Ta dựng một cây phân đoạn.
 Ở mỗi nút, ta lưu danh sách đã sắp xếp của tất cả các số xuất hiện trong đoạn tương ứng như mô tả ở trên.
@@ -538,12 +526,12 @@ Do cấu trúc cây phân đoạn này giống thuật toán merge sort, cấu t
 vector<int> t[4*MAXN];
 
 void build(int a[], int v, int tl, int tr) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = vector<int>(1, a[tl]);
     } else { 
         int tm = (tl + tr) / 2;
         build(a, v*2, tl, tm);
-        build(a, v*2+1, tm+1, tr);
+        build(a, v*2+1, tm, tr);
         merge(t[v*2].begin(), t[v*2].end(), t[v*2+1].begin(), t[v*2+1].end(),
               back_inserter(t[v]));
     }
@@ -554,7 +542,7 @@ Ta đã biết cây phân đoạn xây theo cách này cần $O(n \log n)$ bộ 
 Nhờ cài đặt trên, quá trình dựng cây cũng mất $O(n \log n)$ thời gian, vì mỗi danh sách được dựng trong thời gian tuyến tính theo kích thước của nó.
 
 Bây giờ xét cách trả lời truy vấn.
-Ta đi xuống cây như với cây phân đoạn thông thường, chia đoạn $a[l \dots r]$ thành một số đoạn con (nhiều nhất $O(\log n)$ đoạn).
+Ta đi xuống cây như với cây phân đoạn thông thường, chia đoạn $a[l \dots r)$ thành một số đoạn con (nhiều nhất $O(\log n)$ đoạn).
 Rõ ràng đáp án toàn cục là giá trị nhỏ nhất trong các đáp án của từng truy vấn con.
 Vì vậy chỉ còn hiểu cách trả lời truy vấn trên một đoạn con tương ứng với một nút của cây.
 
@@ -565,17 +553,17 @@ Do đó, trả lời truy vấn trên một đoạn của cây mất $O(\log n)$
 
 ```{.cpp file=segment_tree_smallest_number_greater2}
 int query(int v, int tl, int tr, int l, int r, int x) {
-    if (l > r)
+    if (r <= tl || tr <= l)
         return INF;
-    if (l == tl && r == tr) {
+    if (l <= tl && tr <= r) {
         vector<int>::iterator pos = lower_bound(t[v].begin(), t[v].end(), x);
         if (pos != t[v].end())
             return *pos;
         return INF;
     }
     int tm = (tl + tr) / 2;
-    return min(query(v*2, tl, tm, l, min(r, tm), x), 
-               query(v*2+1, tm+1, tr, max(l, tm+1), r, x));
+    return min(query(v*2, tl, tm, l, r, x), 
+               query(v*2+1, tm, tr, l, r, x));
 }
 ```
 
@@ -607,10 +595,10 @@ void update(int v, int tl, int tr, int pos, int new_val) {
     t[v].insert(new_val);
     if (tl != tr) {
         int tm = (tl + tr) / 2;
-        if (pos <= tm)
+        if (pos < tm)
             update(v*2, tl, tm, pos, new_val);
         else
-            update(v*2+1, tm+1, tr, pos, new_val);
+            update(v*2+1, tm, tr, pos, new_val);
     } else {
         a[pos] = new_val;
     }
@@ -683,7 +671,7 @@ Tuy nhiên, cây phân đoạn cho phép áp dụng truy vấn cập nhật lên
 
 #### Cộng trên đoạn
 
-Ta bắt đầu bằng dạng bài đơn giản nhất: truy vấn cập nhật cộng một số $x$ vào mọi số trong đoạn $a[l \dots r]$.
+Ta bắt đầu bằng dạng bài đơn giản nhất: truy vấn cập nhật cộng một số $x$ vào mọi số trong đoạn $a[l \dots r)$.
 Truy vấn thứ hai cần trả lời chỉ hỏi giá trị của $a[i]$.
 
 Để làm truy vấn cộng hiệu quả, tại mỗi nút cây phân đoạn ta lưu lượng cần cộng vào mọi số trong đoạn tương ứng.
@@ -695,42 +683,42 @@ Nếu sau đó có truy vấn hỏi giá trị hiện tại của một phần t
 
 ```cpp
 void build(int a[], int v, int tl, int tr) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = a[tl];
     } else {
         int tm = (tl + tr) / 2;
         build(a, v*2, tl, tm);
-        build(a, v*2+1, tm+1, tr);
+        build(a, v*2+1, tm, tr);
         t[v] = 0;
     }
 }
 
 void update(int v, int tl, int tr, int l, int r, int add) {
-    if (l > r)
+    if (r <= tl || tr <= l)
         return;
-    if (l == tl && r == tr) {
+    if (l <= tl && tr <= r) {
         t[v] += add;
     } else {
         int tm = (tl + tr) / 2;
-        update(v*2, tl, tm, l, min(r, tm), add);
-        update(v*2+1, tm+1, tr, max(l, tm+1), r, add);
+        update(v*2, tl, tm, l, r, add);
+        update(v*2+1, tm, tr, l, r, add);
     }
 }
 
 int get(int v, int tl, int tr, int pos) {
-    if (tl == tr)
+    if (tr - tl == 1)
         return t[v];
     int tm = (tl + tr) / 2;
-    if (pos <= tm)
+    if (pos < tm)
         return t[v] + get(v*2, tl, tm, pos);
     else
-        return t[v] + get(v*2+1, tm+1, tr, pos);
+        return t[v] + get(v*2+1, tm, tr, pos);
 }
 ```
 
 #### Gán trên đoạn
 
-Giả sử bây giờ truy vấn cập nhật yêu cầu gán mỗi phần tử của một đoạn $a[l \dots r]$ thành một giá trị $p$.
+Giả sử bây giờ truy vấn cập nhật yêu cầu gán mỗi phần tử của một đoạn $a[l \dots r)$ thành một giá trị $p$.
 Truy vấn thứ hai vẫn là đọc giá trị của phần tử $a[i]$.
 
 Để thực hiện cập nhật trên cả đoạn, ta phải lưu tại mỗi nút xem đoạn tương ứng có hoàn toàn được phủ bởi cùng một giá trị hay không.
@@ -770,29 +758,29 @@ void push(int v) {
 }
 
 void update(int v, int tl, int tr, int l, int r, int new_val) {
-    if (l > r) 
+    if (r <= tl || tr <= l) 
         return;
-    if (l == tl && tr == r) {
+    if (l <= tl && tr <= r) {
         t[v] = new_val;
         marked[v] = true;
     } else {
         push(v);
         int tm = (tl + tr) / 2;
-        update(v*2, tl, tm, l, min(r, tm), new_val);
-        update(v*2+1, tm+1, tr, max(l, tm+1), r, new_val);
+        update(v*2, tl, tm, l, r, new_val);
+        update(v*2+1, tm, tr, l, r, new_val);
     }
 }
 
 int get(int v, int tl, int tr, int pos) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         return t[v];
     }
     push(v);
     int tm = (tl + tr) / 2;
-    if (pos <= tm) 
+    if (pos < tm) 
         return get(v*2, tl, tm, pos);
     else
-        return get(v*2+1, tm+1, tr, pos);
+        return get(v*2+1, tm, tr, pos);
 }
 ```
 
@@ -813,12 +801,12 @@ Ta phải làm điều đó trong cả hàm $\text{update}$ lẫn hàm $\text{qu
 
 ```cpp
 void build(int a[], int v, int tl, int tr) {
-    if (tl == tr) {
+    if (tr - tl == 1) {
         t[v] = a[tl];
     } else {
         int tm = (tl + tr) / 2;
         build(a, v*2, tl, tm);
-        build(a, v*2+1, tm+1, tr);
+        build(a, v*2+1, tm, tr);
         t[v] = max(t[v*2], t[v*2 + 1]);
     }
 }
@@ -832,29 +820,29 @@ void push(int v) {
 }
 
 void update(int v, int tl, int tr, int l, int r, int addend) {
-    if (l > r) 
+    if (r <= tl || tr <= l) 
         return;
-    if (l == tl && tr == r) {
+    if (l <= tl && tr <= r) {
         t[v] += addend;
         lazy[v] += addend;
     } else {
         push(v);
         int tm = (tl + tr) / 2;
-        update(v*2, tl, tm, l, min(r, tm), addend);
-        update(v*2+1, tm+1, tr, max(l, tm+1), r, addend);
+        update(v*2, tl, tm, l, r, addend);
+        update(v*2+1, tm, tr, l, r, addend);
         t[v] = max(t[v*2], t[v*2+1]);
     }
 }
 
 int query(int v, int tl, int tr, int l, int r) {
-    if (l > r)
+    if (r <= tl || tr <= l)
         return -INF;
-    if (l == tl && tr == r)
+    if (l <= tl && tr <= r)
         return t[v];
     push(v);
     int tm = (tl + tr) / 2;
-    return max(query(v*2, tl, tm, l, min(r, tm)), 
-               query(v*2+1, tm+1, tr, max(l, tm+1), r));
+    return max(query(v*2, tl, tm, l, r), 
+               query(v*2+1, tm, tr, l, r));
 }
 ```
 
@@ -872,7 +860,7 @@ Ta dựng một cây phân đoạn 2D: trước hết cây phân đoạn theo t�
 Để quá trình xây dựng dễ hiểu hơn, có thể tạm quên rằng ma trận là hai chiều và chỉ giữ tọa độ thứ nhất.
 Ta dựng một cây phân đoạn một chiều thông thường chỉ theo tọa độ thứ nhất.
 Nhưng thay vì lưu một số trong một đoạn, ta lưu cả một cây phân đoạn:
-tức tại thời điểm này ta nhớ rằng còn một tọa độ thứ hai; do tọa độ thứ nhất đã được cố định trong một khoảng $[l \dots r]$, ta thực chất đang làm việc với dải $a[l \dots r, 0 \dots m-1]$ và dựng một cây phân đoạn cho dải đó.
+tức tại thời điểm này ta nhớ rằng còn một tọa độ thứ hai; do tọa độ thứ nhất đã được cố định trong một khoảng $[l \dots r)$, ta thực chất đang làm việc với dải $a[l \dots r, 0 \dots m-1]$ và dựng một cây phân đoạn cho dải đó.
 
 Dưới đây là cài đặt quá trình dựng cây phân đoạn 2D.
 Thực tế nó gồm hai khối riêng:
@@ -882,26 +870,26 @@ khi đoạn hiện tại của tọa độ thứ nhất $[tlx \dots trx]$ có đ
 
 ```cpp
 void build_y(int vx, int lx, int rx, int vy, int ly, int ry) {
-    if (ly == ry) {
-        if (lx == rx)
+    if (ry - ly == 1) {
+        if (rx - lx == 1)
             t[vx][vy] = a[lx][ly];
         else
             t[vx][vy] = t[vx*2][vy] + t[vx*2+1][vy];
     } else {
         int my = (ly + ry) / 2;
         build_y(vx, lx, rx, vy*2, ly, my);
-        build_y(vx, lx, rx, vy*2+1, my+1, ry);
+        build_y(vx, lx, rx, vy*2+1, my, ry);
         t[vx][vy] = t[vx][vy*2] + t[vx][vy*2+1];
     }
 }
 
 void build_x(int vx, int lx, int rx) {
-    if (lx != rx) {
+    if (rx - lx > 1) {
         int mx = (lx + rx) / 2;
         build_x(vx*2, lx, mx);
-        build_x(vx*2+1, mx+1, rx);
+        build_x(vx*2+1, mx, rx);
     }
-    build_y(vx, lx, rx, 1, 0, m-1);
+    build_y(vx, lx, rx, 1, 0, m);
 }
 ```
 
@@ -913,23 +901,23 @@ trước hết chia truy vấn theo tọa độ thứ nhất, sau đó với m�
 
 ```cpp
 int sum_y(int vx, int vy, int tly, int try_, int ly, int ry) {
-    if (ly > ry) 
+    if (ry <= tly || try_ <= ly) 
         return 0;
-    if (ly == tly && try_ == ry)
+    if (ly <= tly && try_ <= ry)
         return t[vx][vy];
     int tmy = (tly + try_) / 2;
-    return sum_y(vx, vy*2, tly, tmy, ly, min(ry, tmy))
-         + sum_y(vx, vy*2+1, tmy+1, try_, max(ly, tmy+1), ry);
+    return sum_y(vx, vy*2, tly, tmy, ly, ry)
+         + sum_y(vx, vy*2+1, tmy, try_, ly, ry);
 }
 
 int sum_x(int vx, int tlx, int trx, int lx, int rx, int ly, int ry) {
-    if (lx > rx)
+    if (rx <= tlx || trx <= lx)
         return 0;
-    if (lx == tlx && trx == rx)
-        return sum_y(vx, 1, 0, m-1, ly, ry);
+    if (lx <= tlx && trx <= rx)
+        return sum_y(vx, 1, 0, m, ly, ry);
     int tmx = (tlx + trx) / 2;
-    return sum_x(vx*2, tlx, tmx, lx, min(rx, tmx), ly, ry)
-         + sum_x(vx*2+1, tmx+1, trx, max(lx, tmx+1), rx, ly, ry);
+    return sum_x(vx*2, tlx, tmx, lx, rx, ly, ry)
+         + sum_x(vx*2+1, tmx, trx, lx, rx, ly, ry);
 }
 ```
 
@@ -942,8 +930,8 @@ Vì vậy cài đặt không khác nhiều so với trường hợp một chiề
 
 ```cpp
 void update_y(int vx, int lx, int rx, int vy, int ly, int ry, int x, int y, int new_val) {
-    if (ly == ry) {
-        if (lx == rx)
+    if (ry - ly == 1) {
+        if (rx - lx == 1)
             t[vx][vy] = new_val;
         else
             t[vx][vy] = t[vx*2][vy] + t[vx*2+1][vy];
@@ -952,20 +940,20 @@ void update_y(int vx, int lx, int rx, int vy, int ly, int ry, int x, int y, int 
         if (y <= my)
             update_y(vx, lx, rx, vy*2, ly, my, x, y, new_val);
         else
-            update_y(vx, lx, rx, vy*2+1, my+1, ry, x, y, new_val);
+            update_y(vx, lx, rx, vy*2+1, my, ry, x, y, new_val);
         t[vx][vy] = t[vx][vy*2] + t[vx][vy*2+1];
     }
 }
 
 void update_x(int vx, int lx, int rx, int x, int y, int new_val) {
-    if (lx != rx) {
+    if (rx - lx > 1) {
         int mx = (lx + rx) / 2;
         if (x <= mx)
             update_x(vx*2, lx, mx, x, y, new_val);
         else
-            update_x(vx*2+1, mx+1, rx, x, y, new_val);
+            update_x(vx*2+1, mx, rx, x, y, new_val);
     }
-    update_y(vx, lx, rx, 1, 0, m-1, x, y, new_val);
+    update_y(vx, lx, rx, 1, 0, m, x, y, new_val);
 }
 ```
 
@@ -1018,30 +1006,30 @@ struct Vertex {
 };
 
 Vertex* build(int a[], int tl, int tr) {
-    if (tl == tr)
+    if (tr - tl == 1)
         return new Vertex(a[tl]);
     int tm = (tl + tr) / 2;
-    return new Vertex(build(a, tl, tm), build(a, tm+1, tr));
+    return new Vertex(build(a, tl, tm), build(a, tm, tr));
 }
 
 int get_sum(Vertex* v, int tl, int tr, int l, int r) {
-    if (l > r)
+    if (r <= tl || tr <= l)
         return 0;
-    if (l == tl && tr == r)
+    if (l <= tl && tr <= r)
         return v->sum;
     int tm = (tl + tr) / 2;
-    return get_sum(v->l, tl, tm, l, min(r, tm))
-         + get_sum(v->r, tm+1, tr, max(l, tm+1), r);
+    return get_sum(v->l, tl, tm, l, r)
+         + get_sum(v->r, tm, tr, l, r);
 }
 
 Vertex* update(Vertex* v, int tl, int tr, int pos, int new_val) {
-    if (tl == tr)
+    if (tr - tl == 1)
         return new Vertex(new_val);
     int tm = (tl + tr) / 2;
-    if (pos <= tm)
+    if (pos < tm)
         return new Vertex(update(v->l, tl, tm, pos, new_val), v->r);
     else
-        return new Vertex(v->l, update(v->r, tm+1, tr, pos, new_val));
+        return new Vertex(v->l, update(v->r, tm, tr, pos, new_val));
 }
 ```
 
@@ -1053,7 +1041,7 @@ Với cách tiếp cận trên, gần như mọi cây phân đoạn đều có t
 
 #### Tìm số nhỏ thứ $k$ trong một đoạn {data-toc-label="Finding the k-th smallest number in a range"}
 
-Lần này ta phải trả lời truy vấn dạng "Phần tử nhỏ thứ $k$ trong đoạn $a[l \dots r]$ là gì?".
+Lần này ta phải trả lời truy vấn dạng "Phần tử nhỏ thứ $k$ trong đoạn $a[l \dots r)$ là gì?".
 Có thể trả lời truy vấn này bằng tìm kiếm nhị phân kết hợp Merge Sort Tree, nhưng độ phức tạp mỗi truy vấn là $O(\log^3 n)$.
 Ta sẽ hoàn thành cùng bài toán bằng cây phân đoạn persistent trong $O(\log n)$.
 
@@ -1075,9 +1063,9 @@ Với cây này, ta có thể tìm vị trí phần tử thứ $k$ trong $O(\log
 Bây giờ xét phiên bản không bị giới hạn.
 
 Trước hết là giới hạn trên truy vấn:
-thay vì chỉ thực hiện truy vấn trên một tiền tố của $a$, ta muốn dùng một đoạn bất kỳ $a[l \dots r]$.
-Ở đây cần một cây phân đoạn biểu diễn histogram các phần tử trong đoạn $a[l \dots r]$.
-Dễ thấy cây đó chính là hiệu giữa cây phân đoạn có gốc $root_{r}$ và cây phân đoạn có gốc $root_{l-1}$, tức mỗi nút trong cây của đoạn $[l \dots r]$ có thể được tính bằng nút tương ứng ở cây $root_{r}$ trừ nút tương ứng ở cây $root_{l-1}$.
+thay vì chỉ thực hiện truy vấn trên một tiền tố của $a$, ta muốn dùng một đoạn bất kỳ $a[l \dots r)$.
+Ở đây cần một cây phân đoạn biểu diễn histogram các phần tử trong đoạn $a[l \dots r)$.
+Dễ thấy cây đó chính là hiệu giữa cây phân đoạn có gốc $root_{r}$ và cây phân đoạn có gốc $root_{l-1}$, tức mỗi nút trong cây của đoạn $[l \dots r)$ có thể được tính bằng nút tương ứng ở cây $root_{r}$ trừ nút tương ứng ở cây $root_{l-1}$.
 
 Trong cài đặt hàm $\text{find_kth}$, ta xử lý điều này bằng cách truyền hai con trỏ nút và tính số đếm/tổng của đoạn hiện tại bằng hiệu giữa hai số đếm/tổng của hai nút.
 
@@ -1085,29 +1073,29 @@ Dưới đây là các hàm $\text{build}$, $\text{update}$ và $\text{find_kth}
 
 ```{.cpp file=kth_smallest_persistent_segment_tree}
 Vertex* build(int tl, int tr) {
-    if (tl == tr)
+    if (tr - tl == 1)
         return new Vertex(0);
     int tm = (tl + tr) / 2;
-    return new Vertex(build(tl, tm), build(tm+1, tr));
+    return new Vertex(build(tl, tm), build(tm, tr));
 }
 
 Vertex* update(Vertex* v, int tl, int tr, int pos) {
-    if (tl == tr)
+    if (tr - tl == 1)
         return new Vertex(v->sum+1);
     int tm = (tl + tr) / 2;
-    if (pos <= tm)
+    if (pos < tm)
         return new Vertex(update(v->l, tl, tm, pos), v->r);
     else
-        return new Vertex(v->l, update(v->r, tm+1, tr, pos));
+        return new Vertex(v->l, update(v->r, tm, tr, pos));
 }
 
 int find_kth(Vertex* vl, Vertex *vr, int tl, int tr, int k) {
-    if (tl == tr)
+    if (tr - tl == 1)
     	return tl;
     int tm = (tl + tr) / 2, left_count = vr->l->sum - vl->l->sum;
     if (left_count >= k)
     	return find_kth(vl->l, vr->l, tl, tm, k);
-    return find_kth(vl->r, vr->r, tm+1, tr, k-left_count);
+    return find_kth(vl->r, vr->r, tm, tr, k-left_count);
 }
 ```
 

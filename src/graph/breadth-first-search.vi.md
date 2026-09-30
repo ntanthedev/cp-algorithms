@@ -4,9 +4,9 @@ tags:
 e_maxx_link: bfs
 translation:
   source: graph/breadth-first-search.md
-  source_commit: 7d5943c8c1737c6b4aa63aff77bf2dbe4d4b9dbd
+  source_commit: e5eb8df9fd60c4f5182e8eaa7565ab2cbe2f21aa
   status: draft
-  last_synced: 2026-08-06
+  last_synced: 2026-09-29
 ---
 
 # Tìm kiếm theo chiều rộng
@@ -25,11 +25,11 @@ Có thể hình dung thuật toán như một đám cháy lan trên đồ thị:
 
 Cụ thể hơn, ta tạo một hàng đợi $q$ chứa các đỉnh cần xử lý và một mảng Boolean $used[]$ cho biết mỗi đỉnh đã được thăm hay chưa.
 
-Ban đầu, đưa đỉnh nguồn $s$ vào hàng đợi, đặt $used[s] = true$, còn với mọi đỉnh $v$ khác thì đặt $used[v] = false$.
+Ban đầu, đưa đỉnh nguồn $s$ vào hàng đợi, đặt $used[s] = true$, còn với mọi đỉnh khác thì đặt $used[v] = false$.
 Sau đó, lặp cho đến khi hàng đợi rỗng. Trong mỗi vòng lặp, lấy một đỉnh ở đầu hàng đợi, duyệt mọi cạnh đi ra từ đỉnh đó; nếu một cạnh dẫn đến đỉnh chưa được thăm, đánh dấu đỉnh ấy đã được thăm và đưa nó vào hàng đợi.
 
 Khi hàng đợi rỗng, BFS đã thăm mọi đỉnh có thể đi tới từ nguồn $s$, và mỗi đỉnh được tiếp cận theo đường đi ngắn nhất có thể.
-Ta cũng có thể tính độ dài đường đi ngắn nhất bằng cách duy trì mảng khoảng cách $d[]$, đồng thời lưu thông tin để khôi phục các đường đi bằng mảng "cha" $p[]$, trong đó $p[v]$ là đỉnh mà từ đó ta đi tới $v$ lần đầu.
+Ta cũng có thể tính độ dài đường đi ngắn nhất bằng cách duy trì mảng khoảng cách $d[]$, đồng thời lưu thông tin để khôi phục các đường đi bằng mảng "cha" $p[]$, lưu cho mỗi đỉnh đỉnh trước mà từ đó ta đi tới nó.
 
 ## Cài đặt
 
@@ -143,7 +143,7 @@ Trong tất cả các chu trình thu được, nhiều nhất một chu trình t
 Ta chạy hai lần tìm kiếm theo chiều rộng:
 một lần từ $a$ và một lần từ $b$.
 Gọi $d_a []$ là mảng khoảng cách ngắn nhất thu được từ BFS bắt đầu tại $a$, và $d_b []$ là mảng khoảng cách ngắn nhất thu được từ BFS bắt đầu tại $b$.
-Với mỗi cạnh $(u, v)$, có thể kiểm tra dễ dàng cạnh đó có nằm trên một đường đi ngắn nhất giữa $a$ và $b$ hay không bằng điều kiện $d_a [u] + 1 + d_b [v] = d_a [b]$.
+Với mỗi cạnh $(u, v)$, giả sử $d_a [u] < d_a [v]$, tức $u$ đứng trước $v$ khi đi từ $a$ đến $b$. Khi đó có thể kiểm tra dễ dàng cạnh này có nằm trên một đường đi ngắn nhất giữa $a$ và $b$ hay không bằng điều kiện $d_a [u] + 1 + d_b [v] = d_a [b]$.
 
 * Tìm mọi đỉnh nằm trên ít nhất một đường đi ngắn nhất giữa hai đỉnh $(a, b)$.
 Ta cũng chạy hai lần tìm kiếm theo chiều rộng:

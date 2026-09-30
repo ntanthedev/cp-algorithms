@@ -4,9 +4,9 @@ tags:
 e_maxx_link: circle_line_intersection
 translation:
   source: geometry/circle-line-intersection.md
-  source_commit: 58460b2433878ed6238fa4491074f6df453163f7
+  source_commit: 934beff088ede9761b0e0ad0363f48e8266ac6bb
   status: draft
-  last_synced: 2026-08-08
+  last_synced: 2026-09-29
 ---
 
 # Giao của đường tròn và đường thẳng

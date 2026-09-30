@@ -4,9 +4,9 @@ tags:
 e_maxx_link: dsu
 translation:
   source: data_structures/disjoint_set_union.md
-  source_commit: bd6b2c210c27f27d6c35571904c236aed4b802a1
+  source_commit: 6caae3775129776561b677e13631dcb22a2c3c38
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Hợp các tập rời nhau
@@ -548,7 +548,12 @@ ta cài đặt một [DFS](../graph/depth-first-search.md) trả về con trỏ 
 Để tính đáp án cho nút hiện tại (trừ khi nó là lá), gọi DFS cho tất cả các con rồi hợp các tập nhận được.
 Kích thước của tập kết quả chính là đáp án cho nút hiện tại.
 Để hợp nhiều tập hiệu quả, ta chỉ cần áp dụng nguyên tắc trên: thêm các tập nhỏ hơn vào tập lớn hơn.
-Cuối cùng thu được lời giải $O(n \log^2 n)$ vì mỗi số chỉ được thêm vào một tập tối đa $O(\log n)$ lần.
+Cuối cùng thu được lời giải $O(n \log^2 n)$, nhưng cần thận trọng khi giải thích cận này.
+Ta dễ cho rằng mỗi số chỉ được thêm vào một tập $O(\log n)$ lần vì kích thước tập chứa nó tăng gấp đôi sau mỗi lần chuyển, nhưng điều đó không đúng khi tập chỉ chứa các số **phân biệt**: hợp một tập kích thước $k$ vào tập lớn hơn có thể không làm kích thước kết quả tăng lên, nên không có sự tăng gấp đôi.
+Thay vào đó, ta đếm số lần *thử chèn*, vì gặp phần tử trùng vẫn tốn một phép tra cứu.
+Tập của một cây con có số phần tử không vượt quá số đỉnh của cây con đó, và hợp vào con có nhiều số phân biệt nhất không tốn hơn hợp vào con có cây con lớn nhất.
+Với quy tắc sau, lập luận tăng gấp đôi là đúng khi áp dụng cho đỉnh thay vì giá trị: mỗi đỉnh thuộc cây con nhỏ hơn nhiều nhất $O(\log n)$ lần, vì cây con sau khi hợp có kích thước ít nhất gấp đôi cây nhỏ hơn.
+Do đó có $O(n \log n)$ lần chèn, mỗi lần tốn $O(\log n)$ trong một `set`.
 
 ### Lưu DSU đồng thời duy trì cấu trúc cây rõ ràng / Tìm cầu online trong $O(\alpha(n))$ trung bình  {data-toc-label="Storing the DSU by maintaining a clear tree structure / Online bridge finding"}
 

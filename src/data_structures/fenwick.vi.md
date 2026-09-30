@@ -4,9 +4,9 @@ tags:
 e_maxx_link: fenwick_tree
 translation:
   source: data_structures/fenwick.md
-  source_commit: 439885b837b254d9b8ecf206f7e5e99b8691c626
+  source_commit: 8e38831e61c704cc9a4f7e8bdd677cd21cff1aa9
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-09-29
 ---
 
 # Cây Fenwick
@@ -405,10 +405,8 @@ def range_add(l, r, x):
     add(B1, l, x)
     add(B1, r+1, -x)
     add(B2, l, x*(l-1))
-    add(B2, r+1, -x*r))
+    add(B2, r+1, -x*r)
 ```
-
-**Ghi chú bản dịch:** Khối giả mã nguồn ngay phía trên có thừa một dấu ngoặc đóng ở lời gọi cập nhật cuối cùng. Bản dịch giữ nguyên mã nguồn theo quy tắc đồng bộ.
 
 Sau phép cập nhật đoạn $(l, r, x)$, truy vấn tổng đoạn phải trả về các giá trị sau:
 

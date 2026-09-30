@@ -3,9 +3,9 @@ tags:
   - Original
 translation:
   source: geometry/minkowski.md
-  source_commit: f2661d86750662dd835ff1f81cff4ca8f6261de9
+  source_commit: 070c4ebd691ff71bc4547d059f4be1750d238c80
   status: draft
-  last_synced: 2026-08-09
+  last_synced: 2026-09-29
 ---
 
 # Tổng Minkowski của các đa giác lồi
@@ -51,12 +51,10 @@ Dưới đây là một hình minh họa giúp hình dung thuật toán đang l�
 </div>
 
 ## Khoảng cách giữa hai đa giác
-Một trong những ứng dụng phổ biến nhất của tổng Minkowski là tính khoảng cách giữa hai đa giác lồi (hoặc đơn giản là kiểm tra chúng có giao nhau hay không).
-Khoảng cách giữa hai đa giác lồi $P$ và $Q$ được định nghĩa là $\min\limits_{a \in P, b \in Q} ||a - b||$. Có thể nhận thấy rằng
-khoảng cách luôn đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh, nên ta có thể dễ dàng tìm khoảng cách trong $O(|P||Q|)$. Tuy nhiên,
-nếu sử dụng tổng Minkowski một cách khéo léo, ta có thể giảm độ phức tạp xuống $O(|P| + |Q|)$.
 
-**Ghi chú bản dịch:** Mệnh đề “khoảng cách luôn đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh” trong nguồn thiếu trường hợp hai đa giác giao nhau: khoảng cách khi đó bằng 0, chẳng hạn khi hai cạnh cắt nhau tại một điểm nằm bên trong cả hai đoạn cạnh. Phương pháp Minkowski ngay dưới vẫn xử lý đúng trường hợp giao nhau bằng cách kiểm tra gốc tọa độ có nằm trong hoặc trên biên đa giác tổng Minkowski hay không. Vấn đề này được đề xuất sửa riêng ở bản tiếng Anh.
+Một trong những ứng dụng phổ biến nhất của tổng Minkowski là tính khoảng cách giữa hai đa giác lồi (hoặc đơn giản là kiểm tra chúng có giao nhau hay không).
+Khoảng cách giữa hai đa giác lồi $P$ và $Q$ được định nghĩa là $\min\limits_{a \in P, b \in Q} ||a - b||$. Nếu hai đa giác giao nhau, khoảng cách này bằng $0$.
+Ngược lại, khoảng cách nhỏ nhất đạt được giữa hai đỉnh hoặc giữa một đỉnh và một cạnh, nên kiểm tra trực tiếp từng cặp mất thời gian $O(|P||Q|)$. Tuy nhiên, bằng cách sử dụng tổng Minkowski khéo léo, ta có thể giảm độ phức tạp xuống $O(|P| + |Q|)$.
 
 Nếu lấy đối xứng $Q$ qua gốc tọa độ $(0, 0)$ để thu được đa giác $-Q$, bài toán trở thành tìm khoảng cách nhỏ nhất giữa một điểm trong
 $P + (-Q)$ và $(0, 0)$. Ta có thể tìm khoảng cách đó trong thời gian tuyến tính bằng ý tưởng sau.

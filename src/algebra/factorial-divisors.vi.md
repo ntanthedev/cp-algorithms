@@ -4,9 +4,9 @@ tags:
 e_maxx_link: factorial_divisors
 translation:
   source: algebra/factorial-divisors.md
-  source_commit: 8071fab1b3bf96db89e6d6cfbc31e63c921b91ec
+  source_commit: 36776662b0a411f547418cf77e3bd0fd279ed024
   status: draft
-  last_synced: 2026-08-09
+  last_synced: 2026-09-29
 ---
 
 # Tìm số mũ lớn nhất của một ước của giai thừa
@@ -51,6 +51,6 @@ int fact_pow (int n, int k) {
 
 Không thể áp dụng trực tiếp ý tưởng trên. Thay vào đó, ta phân tích $k$ thành thừa số nguyên tố, viết $k = k_1^{p_1} \cdot \ldots \cdot k_m^{p_m}$. Với mỗi $k_i$, dùng thuật toán phía trên để tìm số lần thừa số này xuất hiện trong $n!$; gọi giá trị đó là $a_i$. Đáp án cho trường hợp $k$ hợp số là
 
-$$\min_ {i=1 \ldots m} \dfrac{a_i}{p_i}$$
+$$\min_ {i=1 \ldots m} \left\lfloor \dfrac{a_i}{p_i} \right\rfloor$$
 
 **Ghi chú bản dịch:** Vì bài toán yêu cầu x là số nguyên, biểu thức nguồn phía trên chưa viết tường minh phép lấy phần nguyên. Với mỗi thừa số nguyên tố trong phân tích của k, giới hạn tương ứng của x bằng phần nguyên của tỷ số giữa số mũ của thừa số đó trong n! và số mũ của nó trong k; đáp án là giới hạn nhỏ nhất.

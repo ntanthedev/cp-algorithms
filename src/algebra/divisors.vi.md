@@ -3,9 +3,9 @@ tags:
   - Original
 translation:
   source: algebra/divisors.md
-  source_commit: b426a91f0cab0ac4f1a4836fd90235304c306681
+  source_commit: 700dee08e7a5d97d4f2a1d3f03e3128d8c79fea3
   status: draft
-  last_synced: 2026-08-09
+  last_synced: 2026-09-29
 ---
 
 # Số các ước và tổng các ước
@@ -14,16 +14,14 @@ Trong bài viết này, ta sẽ tìm hiểu cách tính số các ước $d(n)$ 
 
 ## Số các ước
 
-Dễ thấy rằng phân tích thừa số nguyên tố của một ước $d$ phải là một phần của phân tích thừa số nguyên tố của $n$; chẳng hạn $6 = 2 \cdot 3$ là một ước của $60 = 2^2 \cdot 3 \cdot 5$.
-Vì vậy, ta chỉ cần xét tất cả các cách chọn khác nhau từ phân tích thừa số nguyên tố của $n$.
+Các thừa số nguyên tố của một ước $d$, kể cả số lần xuất hiện của chúng, phải tạo thành một đa tập con của các thừa số nguyên tố của $n$; chẳng hạn $6 = 2 \cdot 3$ là một ước của $60 = 2^2 \cdot 3 \cdot 5$.
+Vì vậy, ta chỉ cần đếm tất cả các đa tập con khác nhau của phân tích thừa số nguyên tố của $n$.
 
-Thông thường, một tập có $x$ phần tử có $2^x$ tập con.
-Tuy nhiên, điều này không còn đúng nếu trong tập có các phần tử lặp lại. Trong trường hợp của ta, một số thừa số nguyên tố có thể xuất hiện nhiều lần trong phân tích thừa số nguyên tố của $n$.
+Một tập có $x$ phần tử phân biệt có $2^x$ tập con.
+Tuy nhiên, trong trường hợp này, một số thừa số nguyên tố có thể xuất hiện nhiều lần trong phân tích của $n$, nên ta chọn từ một đa tập chứ không phải một tập hợp.
 
-**Ghi chú bản dịch:** Nguồn gọi cấu trúc đang xét là một tập hợp rồi nói rằng nó có thể chứa phần tử lặp. Về mặt toán học, khi cần giữ cả số lần một thừa số xuất hiện, cách gọi chính xác hơn là đa tập.
-
-Nếu một thừa số nguyên tố $p$ xuất hiện $e$ lần trong phân tích thừa số nguyên tố của $n$, ta có thể dùng thừa số $p$ từ 0 đến $e$ lần khi chọn.
-Do đó, ta có $e+1$ lựa chọn.
+Nếu một thừa số nguyên tố $p$ xuất hiện $e$ lần trong phân tích thừa số nguyên tố của $n$, ta có thể dùng thừa số $p$ từ 0 đến $e$ lần trong đa tập con.
+Như vậy có $e+1$ lựa chọn.
 
 Vì thế, nếu phân tích thừa số nguyên tố của $n$ là $p_1^{e_1} \cdot p_2^{e_2} \cdots p_k^{e_k}$, trong đó $p_i$ là các số nguyên tố đôi một khác nhau, thì số các ước là:
 
