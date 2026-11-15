@@ -31,6 +31,8 @@ Trước hết là các cách cho phép thay đổi mảng giữa các truy vấ
 - [Cây Fenwick](../data_structures/fenwick.md) - trả lời mỗi truy vấn trong $O(\log N)$, tiền xử lý trong $O(N \log N)$.
   Ưu điểm: code ngắn nhất, độ phức tạp thời gian tốt. Nhược điểm: cây Fenwick chuẩn cho RMQ chỉ hỗ trợ truy vấn tiền tố ($L = 1$).
 
+Ghi chú bản dịch: Cây Fenwick tìm min ở dạng đơn giản trong bài liên kết còn yêu cầu mỗi lần cập nhật chỉ giảm giá trị. Chẳng hạn, với mảng [1, 2], nếu tăng phần tử đầu thành 3 thì giá trị min cũ có thể vẫn được lưu; chỉ giới hạn truy vấn tiền tố là chưa đủ để hỗ trợ cập nhật tùy ý.
+
 Tiếp theo là các cách chỉ hoạt động trên mảng tĩnh, tức là không thể thay đổi một giá trị trong mảng mà không tính lại toàn bộ cấu trúc dữ liệu.
 
 - [Sparse Table](../data_structures/sparse-table.md) - trả lời mỗi truy vấn trong $O(1)$, tiền xử lý trong $O(N \log N)$.
@@ -38,6 +40,8 @@ Tiếp theo là các cách chỉ hoạt động trên mảng tĩnh, tức là kh
 - [Sqrt Tree](../data_structures/sqrt-tree.md) - trả lời truy vấn trong $O(1)$, tiền xử lý trong $O(N \log \log N)$. Ưu điểm: nhanh. Nhược điểm: cài đặt phức tạp.
 - [Disjoint Set Union / thủ thuật Arpa](../data_structures/disjoint_set_union.md#arpa) - trả lời truy vấn trong $O(1)$, tiền xử lý trong $O(n)$. Ưu điểm: ngắn gọn, nhanh. Nhược điểm: chỉ hoạt động nếu biết trước tất cả truy vấn, tức là chỉ hỗ trợ xử lý offline.
 - [Cây Cartesian](../graph/rmq_linear.md) và [thuật toán Farach-Colton và Bender](../graph/lca_farachcoltonbender.md) - trả lời truy vấn trong $O(1)$, tiền xử lý trong $O(n)$. Ưu điểm: độ phức tạp tối ưu. Nhược điểm: lượng code lớn.
+
+Ghi chú bản dịch: Mức thời gian hằng số cho mỗi truy vấn của thủ thuật Arpa ở danh sách trên không phải cận xấu nhất cho từng truy vấn trong cách cài đặt DSU dùng nén đường đi. Bài DSU liên kết mô tả độ phức tạp trung bình gần hằng số; tổng thời gian cũng phải tính đến số truy vấn được xử lý.
 
 Lưu ý: Tiền xử lý là bước xử lý ban đầu mảng đã cho bằng cách xây dựng cấu trúc dữ liệu tương ứng.
 
