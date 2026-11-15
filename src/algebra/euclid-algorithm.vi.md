@@ -16,7 +16,7 @@ Cho hai số nguyên không âm $a$ và $b$, ta cần tìm **UCLN** (ước chun
 
 $$\gcd(a, b) = \max \{k > 0 : (k \mid a) \text{ and } (k \mid b) \}$$
 
-(trong đó ký hiệu "$\mid$" biểu thị quan hệ chia hết; chẳng hạn "$k \mid a$" nghĩa là "$k$ chia hết $a$")
+(trong đó ký hiệu "$\mid$" biểu thị quan hệ chia hết; chẳng hạn "$k \mid a$" nghĩa là "$k$ là ước của $a$")
 
 Khi một trong hai số bằng không và số còn lại khác không, theo định nghĩa, ước chung lớn nhất của chúng chính là số còn lại. Khi cả hai số đều bằng không, ước chung lớn nhất không được xác định (vì có thể chọn một số lớn tùy ý), nhưng trong lập trình ta thường quy ước giá trị đó bằng không để bảo toàn tính kết hợp của phép $\gcd$. Vì vậy, ta có quy tắc đơn giản: nếu một số bằng không thì ước chung lớn nhất là số còn lại.
 
@@ -26,13 +26,13 @@ Thuật toán lần đầu được mô tả trong tác phẩm "Elements" của 
 
 ## Thuật toán
 
-Ban đầu, thuật toán Euclid được phát biểu như sau: liên tục lấy số lớn hơn trừ đi số nhỏ hơn cho đến khi một trong hai số bằng không. Thật vậy, nếu $g$ chia hết cả $a$ và $b$ thì $g$ cũng chia hết $a-b$. Ngược lại, nếu $g$ chia hết $a-b$ và $b$, thì $g$ cũng chia hết $a = b + (a-b)$. Do đó, tập các ước chung của $\{a, b\}$ và $\{b,a-b\}$ là như nhau.
+Ban đầu, thuật toán Euclid được phát biểu như sau: liên tục lấy số lớn hơn trừ đi số nhỏ hơn cho đến khi một trong hai số bằng không. Thật vậy, nếu $a$ và $b$ đều chia hết cho $g$ thì hiệu $a-b$ cũng chia hết cho số đó. Ngược lại, nếu $a-b$ và $b$ đều chia hết cho $g$ thì tổng $a = b + (a-b)$ cũng chia hết cho số đó. Do đó, tập các ước chung của $\{a, b\}$ và $\{b,a-b\}$ là như nhau.
 
 Lưu ý rằng $a$ vẫn là số lớn hơn cho đến khi ta trừ $b$ khỏi nó ít nhất $\left\lfloor\frac{a}{b}\right\rfloor$ lần. Vì vậy, để tăng tốc, ta thay $a-b$ bằng $a-\left\lfloor\frac{a}{b}\right\rfloor b = a \bmod b$. Khi đó thuật toán có thể được viết rất gọn:
 
 $$\gcd(a, b) = \begin{cases}a,&\text{if }b = 0 \\ \gcd(b, a \bmod b),&\text{otherwise.}\end{cases}$$
 
-## Cài đặt
+## Cài đặt { #implementation }
 
 ```cpp
 int gcd (int a, int b) {
@@ -75,7 +75,9 @@ Hơn nữa, có thể chứng minh rằng cận trên này là tối ưu. Khi $a
 
 Vì các số Fibonacci tăng theo cấp số nhân, ta suy ra thuật toán Euclid chạy trong $O(\log \min(a, b))$.
 
-Một cách đánh giá khác là nhận thấy rằng trong trường hợp $a \geq b$, giá trị $a \bmod b$ nhỏ hơn $a$ ít nhất hai lần, nên số lớn hơn giảm ít nhất một nửa sau mỗi vòng lặp của thuật toán. Áp dụng lập luận này khi tính UCLN của tập số $a_1,\dots,a_n \leq C$, ta còn có thể đánh giá tổng thời gian là $O(n + \log C)$ thay vì $O(n \log C)$, bởi mỗi vòng lặp không tầm thường đều làm ứng viên UCLN hiện tại giảm ít nhất hai lần.
+Một cách đánh giá khác là nhận thấy rằng trong trường hợp $a \geq b$, giá trị $a \bmod b$ không vượt quá $a$ chia cho $2$, nên số lớn hơn giảm ít nhất một nửa sau mỗi vòng lặp của thuật toán. Áp dụng lập luận này khi tính UCLN của tập số $a_1,\dots,a_n \leq C$, ta còn có thể đánh giá tổng thời gian là $O(n + \log C)$ thay vì $O(n \log C)$, bởi mỗi vòng lặp không tầm thường đều làm ứng viên UCLN hiện tại giảm theo hệ số ít nhất $2$.
+
+**Ghi chú bản dịch:** Số dư không vượt quá một nửa số bị chia. Số lớn hơn trong cặp có thể cần hai phép chia liên tiếp mới giảm còn không quá một nửa.
 
 ## Bội chung nhỏ nhất
 

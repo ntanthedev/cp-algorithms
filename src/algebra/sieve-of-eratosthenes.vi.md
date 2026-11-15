@@ -144,7 +144,7 @@ Các nhận xét tương tự cũng áp dụng cho `bitset`.
 Trong phép đo trên, `bitset` có kết quả kém hơn `vector<bool>` đôi chút.
 Một nhược điểm khác là kích thước của `bitset` phải được biết tại thời điểm biên dịch.
 
-### Sàng phân đoạn
+### Sàng phân đoạn { #segmented-sieve }
 
 Từ tối ưu "chỉ sàng đến căn bậc hai", ta thấy không cần giữ toàn bộ mảng `is_prime[1...n]` trong bộ nhớ mọi lúc.
 Để sàng, chỉ cần lưu các số nguyên tố đến căn bậc hai của $n$, tức `prime[1... sqrt(n)]`, chia toàn bộ đoạn thành các khối và sàng từng khối riêng biệt.
