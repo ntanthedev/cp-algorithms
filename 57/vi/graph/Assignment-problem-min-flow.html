@@ -8089,7 +8089,7 @@ Nó sử dụng <a href="bellman_ford.html">thuật toán SPFA</a> để tìm đ
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">answer</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú bản dịch:</strong> Mã dùng <code>INF = 1000000000</code> và kiểu <code>int</code> cho khoảng cách, chi phí; cần chọn giá trị vô cực và kiểu số phù hợp với dữ liệu, kể cả các phép cộng và trừ, để tránh không relax được cạnh hoặc tràn số. Ví dụ ma trận <span class="arithmatex">$2 \times 2$</span> có mọi chi phí bằng <code>INF</code> khiến mã dừng mà trả về <code>[0, 0]</code>, không phải phân công hợp lệ. Cần kiểm tra tính hợp lệ của kết quả khi dùng mã.</p>
+<p><strong>Ghi chú bản dịch:</strong> Mã dùng INF = 1000000000 và kiểu int cho khoảng cách, chi phí; cần chọn giá trị vô cực và kiểu số phù hợp với dữ liệu, kể cả các phép cộng và trừ, để tránh không relax được cạnh hoặc tràn số. Ví dụ ma trận <span class="arithmatex">$2 \times 2$</span> có mọi chi phí bằng INF khiến mã dừng mà trả về [0, 0], không phải phân công hợp lệ. Cần kiểm tra tính hợp lệ của kết quả khi dùng mã.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
