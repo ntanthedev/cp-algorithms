@@ -78,3 +78,5 @@ int bishop_placements(int N, int K)
 ```
 
 **Ghi chú bản dịch:** Với K = 0, có đúng một cách đặt không quân tượng. Tuy nhiên, hàm trên truy cập D[1][1] ngoài phạm vi vì mỗi hàng của D chỉ có một phần tử. Cần xử lý riêng trường hợp này trước khi gọi hàm.
+
+**Ghi chú bản dịch:** Số cách và các giá trị trung gian có thể vượt phạm vi của int; cần chọn kiểu số hoặc phương pháp tính phù hợp với giới hạn của bài toán.
