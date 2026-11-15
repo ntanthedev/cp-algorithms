@@ -2,7 +2,7 @@
 
 Tài liệu này là **nguồn quy tắc chuẩn** cho việc tạo, đồng bộ và review bản dịch tiếng Việt của cp-algorithms.
 
-Cách vận hành các phiên ChatGPT web, đồng bộ upstream và giảm số PR nằm trong [WORKFLOW_VI.md](WORKFLOW_VI.md); bộ prompt sao chép ở [PROMPTS_VI.md](PROMPTS_VI.md). Các tài liệu đó bổ sung quy trình, không thay thế glossary và quy tắc bảo toàn nội dung ở đây.
+Câu lệnh ngắn được định tuyến bởi [AGENTS.md](AGENTS.md); hướng dẫn [tác giả](docs/translation/TRANSLATE_VI.md) và [reviewer](docs/translation/REVIEW_VI.md) mô tả từng vai trò. [WORKFLOW_VI.md](WORKFLOW_VI.md) quy định gate, đồng bộ upstream và merge; prompt sao chép ở [PROMPTS_VI.md](PROMPTS_VI.md). Các tài liệu đó bổ sung quy trình, không thay thế glossary và quy tắc bảo toàn nội dung ở đây.
 
 ## 0. Cổng bắt đầu một batch dịch mới
 
@@ -13,14 +13,15 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
    - Ưu tiên đồng bộ bản dịch cũ trước khi dịch mới. Không đổi metadata hàng loạt để che phần chưa đồng bộ.
    - Chạy tuần tự/bảo trì chung dùng `agent/vi-work`, tối đa một PR. Khi người duy trì giao 2–3 phiên song song, dùng ba nhánh và phạm vi không giao nhau trong [START_HERE_VI.md](START_HERE_VI.md), tối đa một PR mỗi phiên và ba PR dịch tổng cộng.
    - Mỗi nhánh có một tác giả; các phiên song song không sửa nguồn EN, glossary, tooling hoặc cấu hình chung. Không dùng chung working tree và không coi PR ở phạm vi khác là công việc của mình.
-   - Sau khi PR merge, chỉ fast-forward `agent/vi-work` về `origin/master` sau khi fetch và xác nhận tip của nhánh là ancestor của `origin/master`.
+   - Sau khi PR merge, fetch rồi chỉ fast-forward nhánh dùng lại về `origin/master` khi tip nhánh là ancestor của `origin/master`; nếu phân kỳ thì giữ để kiểm tra, không tự reset.
    - Không force-push hoặc reset `master`.
    - Stacked PR chỉ dùng khi có phụ thuộc kỹ thuật thực sự không thể tránh và phải giải thích lý do trước.
 2. Chọn phạm vi có thể review:
    - một gói PR có thể dùng nhiều phiên chat tác giả/review; không mở nhánh/PR mới theo mỗi phiên;
    - tối đa ba bài dài hoặc có nhiều công thức/cấu trúc đặc biệt;
    - tối đa năm bài cỡ vừa;
-   - từ năm đến mười bài ngắn thuộc cùng nhóm kiến thức.
+   - tối đa mười bài ngắn thuộc cùng nhóm kiến thức; không có số bài tối thiểu;
+   - mặc định dùng cỡ gói nhỏ theo profile Terra/Luna trong START_HERE_VI.md; các giới hạn trên là trần, không phải chỉ tiêu.
 3. Đọc toàn bộ từng file nguồn và kiểm kê:
    - front matter;
    - cấp và thứ tự heading;

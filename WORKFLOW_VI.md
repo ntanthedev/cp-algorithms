@@ -1,10 +1,10 @@
-# Dịch cp-algorithms bằng ChatGPT web
+# Workflow dịch và review tiếng Việt
 
-Đọc [báo cáo khởi động lại](docs/translation/RESTART_2026-09-28.md) trước khi tiếp tục công việc cũ. Các prompt có thể sao chép nằm trong [PROMPTS_VI.md](PROMPTS_VI.md). Quy tắc nội dung và glossary vẫn ở [TRANSLATING_VI.md](TRANSLATING_VI.md).
+Điểm vào cho agent là [AGENTS.md](AGENTS.md). Hướng dẫn theo vai trò: [tác giả](docs/translation/TRANSLATE_VI.md) và [reviewer](docs/translation/REVIEW_VI.md). Prompt ngắn ở [PROMPTS_VI.md](PROMPTS_VI.md); quy tắc nội dung và glossary ở [TRANSLATING_VI.md](TRANSLATING_VI.md).
 
-**Trạng thái hiện hành:** PR #33 đã merge. Để chạy 2–3 phiên dịch, dùng [START_HERE_VI.md](START_HERE_VI.md): mỗi phiên có nhánh và phạm vi riêng, tối đa ba PR độc lập. Các mô tả xử lý #33 và con số stale ngày 2026-09-28 bên dưới là bối cảnh lịch sử; không khởi động lại đợt recovery đã hoàn thành.
+**Vận hành hiện hành:** [START_HERE_VI.md](START_HERE_VI.md) quy định profile Terra/Luna, nhánh và phạm vi; tối đa ba PR dịch độc lập. Các báo cáo có ngày và PR #33 là lịch sử, không phải việc mặc định. Phải xác minh trạng thái thật; không tự nhận các nhánh đang được phiên khác review/dọn dẹp.
 
-**Cách dùng mặc định:** dán prompt 0 trong `PROMPTS_VI.md`. AI tự phát hiện công việc đang dở, chọn phần recovery hoặc bài dịch mới, thực hiện và chuẩn bị prompt review có URL/SHA thật. Bạn chỉ chuyển nguyên prompt đó sang reviewer và dán kết quả trở lại; không cần điền template. Review PASS không tự cấp quyền merge: khi muốn merge, bạn chỉ cần nói “Đồng ý merge bản vừa được review”, gắn với gói và SHA vừa được trình bày rõ ràng.
+**Cách dùng mặc định:** “Tự chọn gói bài phù hợp và dịch theo workflow của repo.” Khi cần review, mở phiên riêng và nói “Review nhánh x”. Reviewer tự lấy PR/SHA/nguồn, không cần prompt bàn giao dài. Dán kết quả về tác giả để sửa. Review PASS không cấp quyền merge; “Đồng ý merge bản vừa được review” chỉ áp dụng cho gói/SHA vừa được trình bày rõ ràng.
 
 ## 1. Mô hình làm việc
 
@@ -16,11 +16,10 @@
 | `ntanthedev/cp-algorithms:master` | Bản đã merge của dự án Việt; remote `origin` |
 | `agent/vi-work` | Nhánh dùng lại cho bảo trì chung hoặc chế độ tuần tự; PR #33 đã merge |
 | `upstream/fix-<topic>` | Một lỗi hoặc nhóm lỗi nguồn liên quan, tạo từ upstream `main` |
-| `codex/translation-workflow` | Nhánh cục bộ chuẩn bị workflow và sửa lỗi phát hiện khi khảo sát |
 
 Một **phiên chat** là đơn vị xử lý ngữ cảnh, không bắt buộc là một nhánh hay một PR. Một **gói PR** là phạm vi đã chốt có thể review trọn vẹn. Có thể dùng nhiều phiên để hoàn thiện cùng gói và cập nhật cùng PR, không mở PR mới theo mỗi lần chat.
 
-Mặc định mỗi gói: 1–3 bài dài/nặng công thức, tối đa 5 bài vừa, hoặc 5–10 bài ngắn cùng chủ đề. Segment Tree hoặc bài có thay đổi quy ước chỉ số nên đi một mình. Đếm mức phức tạp và dung lượng diff, không cố đủ số bài. Đợt khôi phục có nhiều bài cũ được chia thành các phần review nhỏ, không tuyên bố đã review cả đợt chỉ vì một phần đạt.
+Mặc định chọn gói nhỏ theo profile trong START_HERE_VI.md; không biết profile thì 1–2 bài ngắn/vừa. Trần cũ vẫn là tối đa 3 bài dài, 5 bài vừa hoặc 10 bài ngắn cùng chủ đề, không phải chỉ tiêu phải đủ. Segment Tree hoặc bài đổi quy ước chỉ số đi một mình. Đợt khôi phục nhiều bài chia thành phần review nhỏ, không tuyên bố đã review cả đợt vì một phần đạt.
 
 ## 2. Dùng trên web
 
@@ -28,7 +27,7 @@ Trong môi trường có Git và quyền ghi GitHub, dùng prompt để đọc f
 
 Nếu phiên ChatGPT chỉ đọc được GitHub hoặc xử lý file: vẫn dùng cùng prompt, nhưng đầu ra phải là các file đầy đủ hoặc patch, manifest và nội dung PR; chuyển chúng sang phiên có GitHub write để thực thi. Không được báo đã tạo PR nếu chưa có URL và head SHA thật. Không đưa PAT/token vào prompt.
 
-Các file workflow đang ở máy sẽ không tự xuất hiện trong phiên web. Trước khi chúng có trên một branch GitHub đã push, hãy đính kèm `WORKFLOW_VI.md`, `PROMPTS_VI.md`, `TRANSLATING_VI.md` và báo cáo khởi động lại, hoặc dán phần prompt cần dùng. Nếu phiên không đọc được một file bắt buộc, phải báo rõ thay vì giả định đã đọc.
+Phiên cần đọc được bộ file liệt kê trong START_HERE_VI.md. File cục bộ chưa push không tự xuất hiện trên remote; dùng checkout hiện hành hoặc đính kèm bộ file. Nếu phiên không đọc được file bắt buộc, phải báo rõ. Chỉ đọc báo cáo khởi động lại khi đang xử lý đúng công việc lịch sử đó.
 
 ## 3. Cổng bắt đầu: nguồn và công việc đang dở
 
@@ -44,15 +43,15 @@ Các file workflow đang ở máy sẽ không tự xuất hiện trong phiên we
    ```
 
    Script chỉ đọc ref đã fetch, không tự gọi mạng. Nó đối chiếu **blob nguồn đã dịch**, **blob nguồn trong fork**, **blob upstream**. Kết quả không bao gồm sửa đổi chưa commit. Chạy validator riêng cho working tree.
-4. Nếu có PR dịch mở của phiên/phạm vi mình: tiếp tục PR ấy trước. Chế độ song song chỉ xét PR đúng nhánh trong `START_HERE_VI.md`; không nhận hoặc chặn việc của phiên khác. PR #33 đã hoàn tất đồng bộ và merge, không dùng làm việc mặc định nữa.
-5. Nếu còn nguồn đã dịch khác upstream: lập hàng đợi bảo trì trước khi chọn bài mới. Với các PR đang làm, xử lý theo tình trạng nguồn của từng gói như hướng dẫn ở START_HERE_VI.md. Phân biệt đổi code/công thức/điều kiện biên, bổ sung mục, sửa nghĩa, typo và link. `draft` không có nghĩa là fresh; blob khớp không có nghĩa là chất lượng tốt.
+4. Nếu có PR dịch mở của chính phiên hoặc được bàn giao rõ ràng: tiếp tục PR ấy trước. Chế độ song song chỉ xét PR đúng nhánh trong START_HERE_VI.md; không nhận hoặc chặn việc của phiên khác. Nhánh/PR cũ không mặc nhiên vô chủ; không tự tiếp quản việc đang được review/dọn dẹp.
+5. Nếu còn nguồn đã dịch khác upstream: tạo hàng đợi sửa cũ; mặc định chưa dịch mới. Phiên dịch báo cần bảo trì chung, chỉ sửa nguồn khi có yêu cầu bảo trì riêng. Với gói đã mở, tiếp tục review/sửa VI nếu nguồn của gói còn khớp; nếu nguồn đó lệch thì chờ bảo trì đồng bộ trước khi chốt review. Phân biệt đổi code/công thức/điều kiện biên, bổ sung mục, sửa nghĩa, typo và link. `draft` không có nghĩa là fresh; blob khớp không có nghĩa là chất lượng tốt.
 6. Mọi ghi chú từng nói “nguồn có lỗi” phải được xét lại. Upstream có thể đã sửa, hoặc chẩn đoán cũ có thể sai.
 
 ## 4. Đồng bộ mà không làm mất bản Việt
 
-Đợt 2026-09-28 có 47/86 nguồn đã đổi; không thể coi là pull thuần túy. Dùng merge upstream trong nhánh làm việc, giải quyết xung đột, rồi cập nhật từng cặp EN/VI và test liên quan. Chỉ merge về `master` khi cả phạm vi đạt gate. Có thể xem trước bằng `git merge-tree --write-tree origin/master upstream/main`, không đổi checkout.
+Mục này dành cho yêu cầu bảo trì nguồn riêng. Dùng merge upstream trong nhánh làm việc, giải quyết xung đột, rồi cập nhật từng cặp EN/VI và test liên quan. Chỉ merge về `master` khi cả phạm vi đạt gate. Có thể xem trước bằng `git merge-tree --write-tree origin/master upstream/main`, không đổi checkout.
 
-Đối với một nhóm bài có delta nhỏ, có thể nhập riêng các blob bài nguồn từ upstream, cập nhật các bản Việt tương ứng và ghi rõ SHA cùng phạm vi đã nhập. Đánh giá thay đổi hệ thống build hoặc triển khai upstream trong phạm vi bảo trì riêng.
+Nếu chỉ lấy một số blob nguồn từ upstream, ghi rõ commit và phạm vi, cập nhật các bản Việt tương ứng; không mô tả việc đó là đã merge toàn bộ upstream. Thay đổi hệ thống build hoặc triển khai upstream được đánh giá trong phạm vi bảo trì riêng. Các bước recovery riêng của PR #33 chỉ còn trong báo cáo lịch sử.
 
 Khi merge rộng:
 
@@ -66,15 +65,15 @@ Khi merge rộng:
 
 ## 5. Dịch và review độc lập
 
-Phiên tác giả mặc định dùng prompt 0 để tự điều phối các chế độ A/B/D; khi có kết quả review được dán vào thì tự chuyển sang xử lý F. Không cần người dùng tự chọn chế độ hay gõ URL. Tác giả tạo một prompt review hoàn chỉnh từ C, đã điền repo/PR/base/head/source blobs/phạm vi bằng dữ liệu thật; phiên mới nhận nguyên khối đó. Nếu dùng C trực tiếp không kèm bàn giao, reviewer tự tìm PR dịch/maintenance mở; chỉ tự chọn khi xác định được duy nhất công việc phù hợp. Không chọn ngẫu nhiên nếu nhiều PR độc lập.
+Phiên tác giả theo TRANSLATE_VI.md, phiên reviewer theo REVIEW_VI.md. Câu “Review nhánh x” xác định nhánh cần kiểm; reviewer tự tìm PR đúng head repo/branch và base, chốt snapshot. Không chuyển sang PR khác nếu nhánh không có PR mở. Nếu nhiều đối tượng không phân biệt được sau tra cứu, chỉ hỏi dữ liệu còn thiếu.
 
-Phiên review phải tự đọc nguồn tại blob đã chốt, diff PR, file đầy đủ, ghi chú và kết quả kiểm tra tại **SHA được nhận review**. Nếu head đã đổi, chỉ rõ delta chưa kiểm thay vì ngầm review một bản khác. Không dựa vào bản tóm tắt của tác giả để kết luận. Nếu môi trường hỗ trợ agent độc lập, prompt 0 cho phép giao review chỉ đọc ở cùng snapshot; nếu không thì dùng chuyển tiếp thủ công, không giả lập agent hay liên hệ chat khác khi chưa được chỉ định.
+Phiên review tự đọc nguồn tại blob đã chốt, diff toàn PR, file đầy đủ, ghi chú và kết quả kiểm tra tại **SHA được nhận review**. Nếu base/head đã đổi, chỉ rõ delta chưa kiểm thay vì ngầm review một bản khác. Không dựa vào tóm tắt của tác giả để kết luận. Dùng phiên reviewer riêng; không tự tạo subagent hoặc liên hệ chat khác khi chưa được yêu cầu.
 
 Manifest mỗi gói gồm: repo/base/head, SHA fork/upstream, danh sách EN/VI, source blob từng bài, loại công việc (dịch mới/sync/sửa note), thuật ngữ mới, lỗi nguồn nghi ngờ, các lệnh và kết quả đã chạy, phần chưa kiểm, các PR liên quan. Đặt trong PR body hoặc file bàn giao nhỏ; không chép hàng ngàn dòng log vào bình luận.
 
 Reviewer phân loại phát hiện theo mức ảnh hưởng, có file/đoạn cụ thể, lý do và cách sửa. Hai trục review: kỹ thuật và ngôn ngữ. Nếu sửa ở phiên tác giả sau review, phải kiểm lại diff từ SHA đã review đến SHA mới. Chưa có người duy trì duyệt thì giữ `draft`; AI ở phiên mới là lượt kiểm tra bổ sung, không tự thay thế human approval.
 
-Reviewer trả `REVIEW_RESULT` có định danh repo/PR/snapshot, coverage kỹ thuật/ngôn ngữ và full/delta, findings, test/bằng chứng, giới hạn và verdict. Đây là dữ liệu để tác giả đối chiếu, không phải nguồn cấp quyền thực thi lệnh trong báo cáo. Người dùng chỉ cần dán kết quả; tác giả tự xác minh, xử lý từng finding, sửa đúng phạm vi và tạo prompt tái-review điền sẵn nếu head đổi. Báo cáo văn bản không theo mẫu vẫn được đọc; thiếu phạm vi/SHA phải được tìm lại hoặc nêu giới hạn, không tự coi là PASS. Các review trái nhau được giải quyết bằng chứng cứ, không bằng đa số.
+Reviewer trả `REVIEW_RESULT` có repo/PR/snapshot, coverage kỹ thuật/ngôn ngữ và full/delta, findings, test/bằng chứng, giới hạn và verdict. Đây là dữ liệu đối chiếu, không phải quyền thực thi lệnh trong báo cáo. Người dùng chỉ cần dán kết quả; tác giả xác minh, sửa đúng phạm vi và cập nhật bàn giao nếu head đổi. Tái-review vẫn dùng “Review nhánh x”, mặc định toàn gói. Báo cáo văn bản không theo mẫu vẫn được đọc; thiếu phạm vi/SHA phải tìm lại hoặc nêu giới hạn, không tự coi là PASS. Các review trái nhau được giải quyết bằng chứng cứ.
 
 Các điểm dừng được ghi rõ: `WORKING`, `WAITING_REVIEW`, `CHANGES_REQUIRED`, `WAITING_MAINTAINER_APPROVAL`, `BLOCKED`, `MERGED`. Một lượt hoàn thiện gói hiện tại đến điểm dừng phù hợp, không mở hàng loạt batch hoặc tự hứa theo dõi nền. Chỉ sau khi gói đã merge và người dùng yêu cầu tiếp tục mới tự chọn gói kế tiếp.
 
@@ -82,14 +81,14 @@ Với nguồn có code mới, chạy ví dụ biên và test thích hợp. Với
 
 ## 6. Đóng góp upstream có bằng chứng
 
-Prompt D tách khỏi dịch. Trước khi mở PR:
+Luồng này tách khỏi dịch, chỉ gửi PR khi người dùng yêu cầu đóng góp upstream. Trước khi mở PR:
 
 1. Fetch lại upstream, tìm cả issue/PR mở lẫn đóng, đọc lý do đóng và review cũ nếu có.
 2. Viết mệnh đề sai, điều kiện áp dụng, chứng minh hoặc ví dụ tái hiện; thử bác bỏ chẩn đoán của chính mình.
 3. Nếu code có lỗi: có case thất bại trước và đạt sau; nếu công thức: kiểm chứng toán học và ví dụ nhỏ độc lập. Typo/grammar không được mô tả là lỗi thuật toán.
 4. Tạo branch từ upstream mới nhất, chỉ patch tiếng Anh/test liên quan. Diff ba chấm với upstream phải không có bất kỳ file i18n nào.
 5. Gộp các lỗi nhỏ liên quan cùng bài/chủ đề; lỗi độc lập, đặc biệt lỗi thuật toán, có PR riêng để maintainer dễ xử lý. Không mở lại chẩn đoán cũ bị đóng khi chưa có bằng chứng mới.
-6. Chỉ mở PR nếu prompt hiện tại cho phép gửi và có công cụ ghi thật. Đọc lại PR để xác minh base/head, danh sách file và CI. Không tự merge upstream.
+6. Chỉ mở PR nếu yêu cầu hiện tại cho phép gửi và có công cụ ghi thật. Đọc lại PR để xác minh base/head, danh sách file và CI. Không tự merge upstream.
 
 Ví dụ chống false positive: với k > 0 và m = φ(n) > 0, `k | l*m` tương đương `lcm(k,m) | l*m`, vì `m | l*m` luôn đúng. PR #1673 từng gọi hai điều kiện này không tương đương; đó là chẩn đoán sai, dù vấn đề định dạng `printf` trong cùng PR cần xét riêng. Không suy đoán đây là lý do maintainer đóng PR nếu không có lời giải thích của họ.
 
@@ -110,12 +109,16 @@ python -B scripts/check_vi_rendered_pages.py
 Linux/Codex cloud: `git submodule update --init --recursive`, môi trường Python riêng, `bash scripts/install-mkdocs.sh`; thay cú pháp `$env:` bằng `export`. Theo bản repo hiện tại thay vì giả định mọi công cụ đã cài.
 
 - Checker staleness cũ hash byte CRLF và báo sai trên Windows; bản sửa dùng `git hash-object --path` để áp dụng clean filter và vẫn phát hiện nguồn chưa commit bị sửa.
-- Checker áp dụng đối chiếu LaTeX chính xác cho file đổi trong phạm vi so sánh. CI dùng SHA base của PR hoặc SHA trước lần push. Khi kiểm tra local, truyền `--base-ref <base-SHA-đã-chốt>` để bao phủ cả gói và thay đổi chưa commit.
+- Checker áp dụng đối chiếu LaTeX chính xác cho file đổi trong phạm vi so sánh. CI dùng SHA base của PR hoặc SHA trước lần push. Khi kiểm tra local, truyền `--base-ref <base-SHA-đã-chốt>` để bao phủ cả gói và thay đổi chưa commit. Không có tùy chọn này trên nhánh cũ thì cần tự đối chiếu công thức toàn bộ phạm vi.
 - Checker ảnh xác minh file local tồn tại; không chứng minh ảnh/MathJax đã tải trong browser hay mọi anchor đều đúng. Phải render và kiểm riêng.
 - Không ghi “all tests pass” khi chỉ chạy validator. Đợt đổi nguồn còn cần `Test`; dịch thuần cần translations, sync và Build theo policy.
 - Chạy lại gate trên SHA cuối, đọc review threads, review submissions và conversation comments lần cuối. Comment đến muộn phải được xử lý.
 
 ## 8. Merge và giảm hoạt động gây nhiễu
+
+Chỉ merge sau khi người duy trì duyệt một PR/head cụ thể. Câu “Đồng ý merge bản vừa được review” lấy định danh từ duy nhất gói WAITING_MAINTAINER_APPROVAL vừa trình bày; không lấy một PR bất kỳ. Trước merge: fetch lại, kiểm base/head thật, review kỹ thuật/ngôn ngữ bao phủ toàn gói, mọi review thread/submission/conversation đã được xử lý và CI bắt buộc ở head cuối xanh. Head đổi sau duyệt thì không coi approval cũ bao phủ bản mới.
+
+Merge lần lượt. Nếu base mới cần tích hợp, dùng merge thông thường trong nhánh tác giả, chạy lại gate và review delta; không mang PASS cũ sang head mới. Khi đạt và được duyệt, merge commit vào master, xác minh commit đã nằm trên master, rồi kiểm deploy để phân biệt “đã merge” với “đã triển khai”. Không tự xóa nhánh; sau đó dừng, chỉ chọn gói mới khi có yêu cầu tiếp tục.
 
 Chế độ tuần tự dùng một PR trên `agent/vi-work`. Chế độ 2–3 phiên theo `START_HERE_VI.md` dùng tối đa ba PR, một PR và một tác giả trên mỗi nhánh riêng, phạm vi file không giao nhau. Giữ các nhánh để dùng lại; viết commit có ý nghĩa, push theo phần đã kiểm thay vì mỗi đoạn. Cập nhật PR body hiện có; chỉ thêm comment khi có thông tin cần phản hồi. Draft vẫn là hoạt động công khai, không phải chế độ ẩn. Bảo trì nguồn/tooling chung không chạy đồng thời với các phiên dịch chưa được phối hợp.
 

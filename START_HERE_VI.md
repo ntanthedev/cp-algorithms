@@ -1,83 +1,74 @@
-# Bắt đầu 2–3 phiên dịch song song
+# Bắt đầu dịch bằng prompt ngắn
 
-PR đồng bộ [#33](https://github.com/ntanthedev/cp-algorithms/pull/33) đã merge ngày 2026-09-30. Đây là hướng dẫn vận hành hiện hành; các báo cáo ngày 2026-09-28 là lịch sử, không phải hàng đợi công việc chưa hoàn tất.
+Chọn model **6.1 Terra** hoặc **6.0 Luna** cho phiên làm việc, rồi gửi:
 
-Mỗi phiên dùng **một prompt riêng dưới đây**, không cần điền đường dẫn bài, URL PR hoặc SHA. Hai phiên thì dùng 1 và 2; ba phiên thì thêm 3. Mỗi phiên tự chọn bài trong phạm vi riêng. Không mở hai phiên tác giả cùng một số.
+```text
+Tự chọn gói bài phù hợp và dịch theo workflow của repo.
+```
 
-| Phiên | Nhánh dùng lại | Thư mục nguồn được chọn |
+Trong một phiên reviewer riêng, chỉ cần thay tên nhánh thật vào câu:
+
+```text
+Review nhánh "agent/vi-graph".
+```
+
+[AGENTS.md](AGENTS.md) dẫn tới đúng hướng dẫn theo vai trò. Tác giả tự chọn bài,
+chạy kiểm tra và chuẩn bị Draft PR; reviewer tự lấy PR, base/head SHA và nguồn.
+Không cần người dùng điền URL/SHA hay chuyển một prompt review dài.
+Giữ luồng cũ: **dịch → review độc lập → sửa → duyệt merge → gói tiếp theo**.
+
+## Chọn kích thước gói
+
+Đây là cấu hình vận hành thận trọng, không phải khẳng định về năng lực model.
+Hai model dùng cùng quy tắc chất lượng và gate:
+
+| Profile | Gói khởi đầu | Khi bài phức tạp |
 |---|---|---|
+| Terra — 6.1 Terra | 2–3 bài vừa hoặc 3–5 bài ngắn cùng chủ đề | Một bài dài/nặng chứng minh mỗi gói |
+| Luna — 6.0 Luna | 1–2 bài ngắn/vừa, ít cấu trúc đặc biệt | Một bài mỗi gói; ghi rõ điểm cần reviewer kiểm kỹ |
+
+Nếu không biết model/profile, chọn 1–2 bài ngắn/vừa, không cần hỏi lại. Có thể ghi
+“Dịch tiếp, profile Luna.” để chọn cỡ gói; câu này không tự đổi model của phiên.
+“Hàng loạt” là nhiều gói có thể review, không gom toàn bộ bài còn lại vào một PR.
+Mỗi lượt hoàn thiện gói hiện tại rồi dừng để review/duyệt.
+
+## Nhánh và các phiên song song
+
+| Phiên | Nhánh dùng lại | Phạm vi tương đối từ `src/` |
+|---|---|---|
+| Không ghi số — tuần tự | `agent/vi-work` | Tự chọn một chủ đề; chỉ dùng khi không có tác giả song song |
 | 1 — Đồ thị | `agent/vi-graph` | `graph/` |
 | 2 — Số học và cấu trúc dữ liệu | `agent/vi-math-ds` | `algebra/`, `combinatorics/`, `data_structures/`, `dynamic_programming/`, `sequences/` |
-| 3 — Hình học và các chủ đề còn lại | `agent/vi-geometry-other` | `geometry/`, `linear_algebra/`, `num_methods/`, `others/`, `schedules/`, `game_theory/`, `string/` |
+| 3 — Các chủ đề còn lại | `agent/vi-geometry-other` | `geometry/`, `linear_algebra/`, `num_methods/`, `others/`, `schedules/`, `game_theory/`, `string/` |
 
-Các đường dẫn trong bảng tương đối từ `src/`. Ba phạm vi không giao nhau. `agent/vi-work` được giữ cho bảo trì chung hoặc chạy tuần tự; không chạy thêm tác giả ở nhánh này đồng thời với ba phiên trên.
+Gửi “Dịch phiên 1.”, “Dịch phiên 2.” hoặc “Dịch phiên 3.” vào các chat riêng nếu
+muốn chạy song song; không mở hai tác giả cùng số. Tối đa ba PR dịch, một PR mỗi
+phiên. Chỉ ghi `.vi.md` trong phạm vi được giao. PR ở phạm vi khác không chặn phiên
+mình; vẫn loại mọi bài đang được xử lý khỏi danh sách chọn mới.
 
-## Quy tắc chung cho chế độ song song
+Mỗi tác giả dùng checkout/worktree riêng. Nếu nhánh đã có việc của chính phiên
+mình hoặc được bàn giao rõ ràng thì tiếp tục; không suy ra nhánh cũ vô chủ vì PR
+đã đóng. Khi phiên khác đang review/dọn nhánh đó, để nguyên và chỉ hỏi phần phân
+công còn thiếu nếu không tìm được phạm vi độc lập. Không tự chọn nhánh khác để
+lách một gói đang chờ review. Sau merge, chỉ fast-forward nhánh khi không còn
+commit riêng cần giữ; không tự xóa nhánh.
 
-1. Mỗi nhánh chỉ có một phiên tác giả và tối đa một Draft PR mở vào `master`. Tối đa ba PR dịch song song; PR của phiên khác không chặn phiên mình. Dùng nhiều lượt chat để hoàn thiện cùng gói, không tạo PR theo mỗi lần trả lời.
-2. Mỗi phiên chỉ tạo/sửa `src/**/*.vi.md` trong phạm vi của mình. Không sửa nguồn EN, glossary, workflow, scripts, cấu hình site hoặc tài liệu chung. Đề xuất thuật ngữ mới và lỗi nguồn ghi trong PR body/bàn giao; bảo trì chung xử lý chúng riêng.
-3. Fetch cả fork và upstream rồi tra PR/nhánh của chính phiên trên GitHub. Nếu đã có PR, tiếp tục đúng head đang mở. Khi không có PR, kiểm tra cả commit riêng trên nhánh local và remote. Trong checkout riêng đã sạch, nếu tip của lane là ancestor của `origin/master` (`git merge-base --is-ancestor HEAD origin/master` trả 0), cập nhật bằng `git merge --ff-only origin/master` trước khi chọn bài. Lane có commit riêng thì đọc và tiếp tục công việc đó. Nếu local và remote phân kỳ hoặc đã có tác giả của lane, làm rõ trạng thái trước khi ghi.
-4. Mỗi phiên dùng checkout/môi trường riêng nếu có Git. Không để hai phiên đổi branch hoặc sửa chung một working tree. Không suy ra rằng mỗi chat mặc nhiên có checkout riêng; kiểm tra trước khi thao tác.
-5. Đối chiếu nguồn đã dịch trên `master` và nguồn của PR đang làm với upstream. Nợ đồng bộ toàn repo chặn việc chọn bài mới. Khi nguồn của PR đang làm vẫn khớp, tiếp tục review và sửa bản Việt trong phạm vi đã chốt. Khi chính nguồn đó lệch, bàn giao các cặp EN/VI bị ảnh hưởng cho phiên bảo trì chung và chờ đồng bộ trước khi chốt review. Ghi nhận các PR đang mở để tránh sửa cùng file.
-6. Khi không còn nợ đồng bộ, tự chọn gói 1–3 bài dài, tối đa 5 bài vừa hoặc 5–10 bài ngắn cùng chủ đề; một bài rất dài đi riêng. Loại redirect, bài đã có VI và bài đang được dịch. Các gợi ý khởi đầu dưới đây không phải danh sách bắt buộc; phải kiểm tra trạng thái thật.
-7. Giữ `status: draft`; chạy đủ kiểm tra theo `TRANSLATING_VI.md`. Chỉ cập nhật source blob sau khi thực sự dịch/đồng bộ. Không coi metadata `draft` của các bài cũ là hàng đợi để tự viết lại mọi bài.
-8. Tạo sẵn prompt reviewer chứa URL PR, base/head SHA thật, nguồn và phạm vi. Người dùng chỉ chuyển prompt sang chat reviewer rồi dán kết quả trở lại. Nếu cùng Project, reviewer vẫn phải tự đối chiếu nguồn/diff thay vì tin kết luận tác giả.
-9. Merge lần lượt, không merge đồng thời. Trước mỗi merge, fetch `master`, tích hợp base mới bằng merge thông thường nếu cần và kiểm tra lại head/gate. Review cũ không bao phủ delta mới. Chỉ merge khi người duy trì cho phép.
-10. Sau merge, giữ nhánh để dùng lại; fast-forward về `master` nếu được và chắc chắn không có công việc riêng cần giữ. Không force-push `master`, không tự xóa nhánh của phiên khác.
+Trước gói mới, fetch rồi đối chiếu cả local và remote của lane. Trong checkout
+riêng sạch, nếu tip lane là ancestor của `origin/master`
+(`git merge-base --is-ancestor HEAD origin/master` trả 0), cập nhật bằng
+`git merge --ff-only origin/master`. Nếu local/remote phân kỳ thì đối chiếu commit
+trước khi ghi, không tự reset. Việc review/sửa gói đang mở có nguồn còn khớp được
+tiếp tục dù repo có nợ đồng bộ ở bài khác; nợ đó chỉ chặn chọn bài mới. Nếu chính
+nguồn của gói lệch, bàn giao các cặp EN/VI cho bảo trì và chờ đồng bộ trước khi chốt review.
 
-## Phiên 1 — Sao chép nguyên khối
+## File cần có trong phiên
 
-```text
-Tôi giao cho bạn phiên dịch số 1 — Đồ thị của ntanthedev/cp-algorithms.
-Fork: https://github.com/ntanthedev/cp-algorithms, base master.
-Upstream: https://github.com/cp-algorithms/cp-algorithms, main.
-Nhánh riêng của phiên: agent/vi-graph. Chỉ được tạo/sửa bản dịch .vi.md thuộc src/graph/.
+Các file: `AGENTS.md`, `START_HERE_VI.md`, `WORKFLOW_VI.md`, `TRANSLATING_VI.md`,
+`docs/translation/TRANSLATE_VI.md`, `docs/translation/REVIEW_VI.md`.
+[PROMPTS_VI.md](PROMPTS_VI.md) chỉ là danh sách câu lệnh sao chép, không bắt buộc
+đọc mỗi lượt. Nếu môi trường không tự đọc AGENTS.md, thêm “Đọc AGENTS.md trước.”
+vào prompt lần đầu. Nếu nhánh cũ chưa có bộ file này, cung cấp bản hiện hành từ
+checkout chung hoặc đính kèm chúng; không giả định file đã có trên remote.
 
-Đọc START_HERE_VI.md, WORKFLOW_VI.md, TRANSLATING_VI.md và PROMPTS_VI.md từ master mới nhất hoặc file dự án. Áp dụng prompt 0 theo chế độ song song của START_HERE_VI.md: chỉ tiếp tục PR của nhánh phiên mình; PR ở hai phiên khác không phải lý do dừng hay nhận việc của họ. Không ghi vào agent/vi-work, nguồn EN, glossary hoặc cấu hình chung.
-
-Tự fetch, xác minh quyền và checkout riêng, kiểm tra nguồn còn đồng bộ, rồi tự chọn gói chưa dịch trong phạm vi. Gợi ý đầu tiên là search-for-connected-components.md, mst_kruskal_with_dsu.md và second_best_mst.md nếu vẫn chưa dịch; điều chỉnh số bài theo độ dài và prerequisite, không hỏi tôi điền tên bài. Nếu nhánh đã có công việc/PR thì hoàn thiện nó trước. Không reset công việc chưa merge.
-
-Được phép dịch, kiểm tra, commit/push nhánh riêng và tạo/cập nhật một Draft PR vào master. Tuân thủ glossary, code/LaTeX/links/metadata và giấy phép. Không tự merge/ready. Nếu thiếu công cụ ghi, xuất file/patch và bàn giao thật, không bịa thao tác GitHub.
-
-Khi đủ điều kiện review, xuất prompt review hoàn chỉnh đã điền URL/SHA/phạm vi thật. Khi tôi dán review trở lại, tự kiểm chứng và sửa findings đúng, chạy lại gate, cập nhật cùng PR và tạo prompt tái-review nếu head đổi. Không cần tôi điền URL hoặc viết thêm yêu cầu sửa. Dừng sau gói hiện tại để review/duyệt; không mở hàng loạt PR.
-```
-
-## Phiên 2 — Sao chép nguyên khối
-
-```text
-Tôi giao cho bạn phiên dịch số 2 — Số học và cấu trúc dữ liệu của ntanthedev/cp-algorithms.
-Fork: https://github.com/ntanthedev/cp-algorithms, base master.
-Upstream: https://github.com/cp-algorithms/cp-algorithms, main.
-Nhánh riêng của phiên: agent/vi-math-ds. Chỉ được tạo/sửa bản dịch .vi.md trong src/algebra/, src/combinatorics/, src/data_structures/, src/dynamic_programming/ và src/sequences/.
-
-Đọc START_HERE_VI.md, WORKFLOW_VI.md, TRANSLATING_VI.md và PROMPTS_VI.md từ master mới nhất hoặc file dự án. Áp dụng prompt 0 theo chế độ song song của START_HERE_VI.md: chỉ tiếp tục PR của nhánh phiên mình; PR ở hai phiên khác không phải lý do dừng hay nhận việc của họ. Không ghi vào agent/vi-work, nguồn EN, glossary hoặc cấu hình chung.
-
-Tự fetch, xác minh quyền và checkout riêng, kiểm tra nguồn còn đồng bộ, rồi tự chọn gói chưa dịch trong phạm vi. Gợi ý đầu tiên là combinatorics/generating_combinations.md, combinatorics/stars_and_bars.md và combinatorics/bracket_sequences.md nếu vẫn chưa dịch; điều chỉnh số bài theo độ dài và prerequisite, không hỏi tôi điền tên bài. Nếu nhánh đã có công việc/PR thì hoàn thiện nó trước. Không reset công việc chưa merge.
-
-Được phép dịch, kiểm tra, commit/push nhánh riêng và tạo/cập nhật một Draft PR vào master. Tuân thủ glossary, code/LaTeX/links/metadata và giấy phép. Không tự merge/ready. Nếu thiếu công cụ ghi, xuất file/patch và bàn giao thật, không bịa thao tác GitHub.
-
-Khi đủ điều kiện review, xuất prompt review hoàn chỉnh đã điền URL/SHA/phạm vi thật. Khi tôi dán review trở lại, tự kiểm chứng và sửa findings đúng, chạy lại gate, cập nhật cùng PR và tạo prompt tái-review nếu head đổi. Không cần tôi điền URL hoặc viết thêm yêu cầu sửa. Dừng sau gói hiện tại để review/duyệt; không mở hàng loạt PR.
-```
-
-## Phiên 3 — Sao chép nguyên khối
-
-```text
-Tôi giao cho bạn phiên dịch số 3 — Hình học và các chủ đề còn lại của ntanthedev/cp-algorithms.
-Fork: https://github.com/ntanthedev/cp-algorithms, base master.
-Upstream: https://github.com/cp-algorithms/cp-algorithms, main.
-Nhánh riêng của phiên: agent/vi-geometry-other. Chỉ được tạo/sửa bản dịch .vi.md trong src/geometry/, src/linear_algebra/, src/num_methods/, src/others/, src/schedules/, src/game_theory/ và src/string/.
-
-Đọc START_HERE_VI.md, WORKFLOW_VI.md, TRANSLATING_VI.md và PROMPTS_VI.md từ master mới nhất hoặc file dự án. Áp dụng prompt 0 theo chế độ song song của START_HERE_VI.md: chỉ tiếp tục PR của nhánh phiên mình; PR ở hai phiên khác không phải lý do dừng hay nhận việc của họ. Không ghi vào agent/vi-work, nguồn EN, glossary hoặc cấu hình chung.
-
-Tự fetch, xác minh quyền và checkout riêng, kiểm tra nguồn còn đồng bộ, rồi tự chọn gói chưa dịch trong phạm vi. Ưu tiên geometry/basic-geometry.md nếu vẫn chưa dịch: đây là bài nền tảng dài nên có thể dành riêng cả gói. Nếu bài này đã xong, tự chọn bài tiếp theo theo prerequisite và độ hữu ích, không hỏi tôi điền tên bài. Nếu nhánh đã có công việc/PR thì hoàn thiện nó trước. Không reset công việc chưa merge.
-
-Được phép dịch, kiểm tra, commit/push nhánh riêng và tạo/cập nhật một Draft PR vào master. Tuân thủ glossary, code/LaTeX/links/metadata và giấy phép. Không tự merge/ready. Nếu thiếu công cụ ghi, xuất file/patch và bàn giao thật, không bịa thao tác GitHub.
-
-Khi đủ điều kiện review, xuất prompt review hoàn chỉnh đã điền URL/SHA/phạm vi thật. Khi tôi dán review trở lại, tự kiểm chứng và sửa findings đúng, chạy lại gate, cập nhật cùng PR và tạo prompt tái-review nếu head đổi. Không cần tôi điền URL hoặc viết thêm yêu cầu sửa. Dừng sau gói hiện tại để review/duyệt; không mở hàng loạt PR.
-```
-
-## File dự án và bàn giao
-
-Nếu dùng Project trên web, cập nhật bộ file chung thành bản mới nhất của `START_HERE_VI.md`, `PROMPTS_VI.md`, `WORKFLOW_VI.md`, `TRANSLATING_VI.md`. Bản tải lên là snapshot, nên prompt luôn yêu cầu kiểm GitHub trước khi hành động. Không đặt prompt của riêng phiên 1/2/3 vào instructions chung của Project; chỉ gửi vào chat tương ứng. Phiên review nhận gói bàn giao của đúng PR, không tự chọn nhánh khác.
-
-Tạo Project không tự cung cấp quyền ghi GitHub hoặc checkout riêng. Nếu công cụ không có khả năng thao tác repo, tác giả phải bàn giao file/patch để phiên có quyền ghi tiếp nhận. Không cần và không nên dán token vào prompt.
+File đính kèm là snapshot; luôn xác minh Git/PR thật. Báo cáo trong
+`docs/translation/` có ngày tháng là lịch sử, không phải hàng đợi hiện tại.
