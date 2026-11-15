@@ -33,7 +33,7 @@ Trong hình dưới đây là một mảng có độ dài 10 và cây Cartesian 
   <img src="CartesianTree.png" alt="Minh họa cây Cartesian">
 </div>
 
-Truy vấn tìm giá trị nhỏ nhất trên đoạn `[l, r]` tương đương với truy vấn tổ tiên chung gần nhất trên đoạn `[l', r']`, trong đó `l'` là nút ứng với phần tử `A[l]` và `r'` là nút ứng với phần tử `A[r]`.
+Truy vấn tìm giá trị nhỏ nhất trên đoạn `[l, r]` tương đương với truy vấn tổ tiên chung gần nhất của hai nút `[l', r']`, trong đó `l'` là nút ứng với phần tử `A[l]` và `r'` là nút ứng với phần tử `A[r]`.
 Nút ứng với phần tử nhỏ nhất trong đoạn phải là tổ tiên của mọi nút trong đoạn, nên cũng là tổ tiên của `l'` và `r'`.
 Điều này suy ra trực tiếp từ tính chất đống tối tiểu.
 Nút đó cũng phải là tổ tiên chung thấp nhất; nếu không, `l'` và `r'` sẽ cùng nằm trong cây con trái hoặc cùng nằm trong cây con phải, dẫn đến mâu thuẫn vì khi ấy phần tử nhỏ nhất không thể nằm trong đoạn truy vấn.
