@@ -34,6 +34,8 @@ Việc này gồm hai bước:
 6. Nếu tại một thời điểm chúng trỏ tới cùng một nút, danh sách liên kết có chu trình.
 7. Nếu gặp null, danh sách liên kết không có chu trình.
 
+**Ghi chú bản dịch:** Hai con trỏ ban đầu cùng trỏ tới đầu danh sách, nên chỉ so sánh sau khi đã di chuyển. Trước mỗi lần di chuyển cần kiểm tra điều kiện null như trong mã bên dưới.
+
 <div style="text-align: center;">
   <img src="tortoise_hare_cycle_found.png" alt=""Found cycle"">
 </div>
