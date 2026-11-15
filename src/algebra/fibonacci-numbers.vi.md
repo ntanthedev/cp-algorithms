@@ -4,9 +4,9 @@ tags:
 e_maxx_link: fibonacci_numbers
 translation:
   source: algebra/fibonacci-numbers.md
-  source_commit: 084b0ce34a4262b09c8baa2651d02249cb607c87
+  source_commit: 85110ddbdef6b58bdd5c1372eaebdf67ffe907f8
   status: draft
-  last_synced: 2026-09-29
+  last_synced: 2026-11-15
 ---
 
 # Số Fibonacci
@@ -82,7 +82,7 @@ Có thể mã hóa một số nguyên $n$ bằng thuật toán tham lam đơn gi
 Để giải mã một từ mã, trước hết bỏ số $1$ cuối cùng. Sau đó, nếu bit thứ $i$ được bật (đánh chỉ số từ 0, từ bit trái nhất sang bit phải nhất), cộng $F_{i+2}$ vào số cần tìm.
 
 
-## Công thức cho số Fibonacci thứ $n^{\text{th}}$ { data-toc-label="Formulas for the <script type='math/tex'>n</script>-th Fibonacci number" }
+## Công thức cho số Fibonacci thứ $n^{\text{th}}$
 
 ### Biểu thức dạng đóng
 

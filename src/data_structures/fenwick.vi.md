@@ -4,9 +4,9 @@ tags:
 e_maxx_link: fenwick_tree
 translation:
   source: data_structures/fenwick.md
-  source_commit: 8e38831e61c704cc9a4f7e8bdd677cd21cff1aa9
+  source_commit: 31b6dac9f7e50a3f158de96a20bfa4ade958e9b5
   status: draft
-  last_synced: 2026-09-29
+  last_synced: 2026-11-15
 ---
 
 # Cây Fenwick
@@ -85,7 +85,7 @@ Ta cũng có thể chọn $g(i) = 0$.
 Trường hợp này tương ứng với mảng tổng tiền tố (khi đó tìm tổng trên đoạn $[0, i]$ chỉ mất thời gian hằng số, nhưng cập nhật lại chậm).
 Điểm khéo léo của cây Fenwick nằm ở cách định nghĩa đặc biệt hàm $g$ để xử lý cả hai thao tác trong $O(\log N)$ thời gian.
 
-### Định nghĩa $g(i)$ { data-toc-label='Definition of <script type="math/tex">g(i)</script>' }
+### Định nghĩa $g(i)$
 
 Ta tính $g(i)$ bằng thao tác đơn giản sau:
 thay mọi bit $1$ ở cuối biểu diễn nhị phân của $i$ bằng bit $0$.
@@ -201,7 +201,7 @@ FenwickTree(vector<int> const &a) : FenwickTree(a.size()){
 }
 ```
 
-### Tìm giá trị nhỏ nhất trên $[0, r]$ trong mảng một chiều { data-toc-label='Finding minimum of <script type="math/tex">[0, r]</script> in one-dimensional array' }
+### Tìm giá trị nhỏ nhất trên $[0, r]$ trong mảng một chiều
 
 Rõ ràng không có cách đơn giản để tìm giá trị nhỏ nhất trên đoạn $[l, r]$ bằng cây Fenwick, vì cây Fenwick chỉ có thể trả lời truy vấn dạng $[0, r]$.
 Ngoài ra, mỗi khi một giá trị được `update`, giá trị mới phải nhỏ hơn giá trị hiện tại.

@@ -4,9 +4,9 @@ tags:
 e_maxx_link: gray_code
 translation:
   source: algebra/gray-code.md
-  source_commit: c2de452c460c5400ba1ef94f2ae87603ca385f3c
+  source_commit: 09c17aa5fb5d5d245ceec093548ba4705a5d534a
   status: draft
-  last_synced: 2026-09-29
+  last_synced: 2026-11-15
 ---
 
 # Mã Gray
@@ -14,7 +14,7 @@ translation:
 Mã Gray là một hệ biểu diễn nhị phân trong đó hai giá trị liên tiếp chỉ khác nhau đúng một bit. 
 
 Ký hiệu $G(n)$ là biểu diễn của số $n$ bằng mã Gray. Dãy mã Gray của các số 3 bit là: 000, 001, 011, 010, 110, 111, 101, 100, nên $G(4) = (110)_2 = 6$. 
-Chẳng hạn, $G(3) = (010)_2$ và $G(4) = (110)_2$ khác nhau đúng một bit, là bit ngoài cùng bên trái. Tương tự, $G(4) = 110$ và $G(5) = (111)_2$ khác nhau đúng một bit, là bit ngoài cùng bên phải. Tính chất này đúng với mọi cặp số liên tiếp. 
+Chẳng hạn, $G(3) = (010)_2$ và $G(4) = (110)_2$ khác nhau đúng một bit, là bit ngoài cùng bên trái. Tương tự, $G(4) = (110)_2$ và $G(5) = (111)_2$ khác nhau đúng một bit, là bit ngoài cùng bên phải. Tính chất này đúng với mọi cặp số liên tiếp.
 
 Mã này được Frank Gray phát minh vào năm 1953.
 

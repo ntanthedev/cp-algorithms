@@ -4,9 +4,9 @@ tags:
 e_maxx_link: binary_pow
 translation:
   source: algebra/binary-exp.md
-  source_commit: 789e889fdf35777ef20030db2a398b300c65e302
+  source_commit: c6c09719d2847eecf9cd79464084e8cbf527ff0b
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-11-15
 ---
 
 # Lũy thừa nhị phân
@@ -132,7 +132,7 @@ chuyển từ $F_i$ và $F_{i+1}$ sang $F_{i+1}$ và $F_{i+2}$.
 Chẳng hạn, áp dụng phép biến đổi này lên cặp $F_0$ và $F_1$ sẽ cho $F_1$ và $F_2$.
 Do đó ta có thể nâng ma trận biến đổi lên lũy thừa $n$ để tìm $F_n$ trong thời gian $O(\log n)$.
 
-### Áp dụng một hoán vị $k$ lần { data-toc-label='Applying a permutation <script type="math/tex">k</script> times' }
+### Áp dụng một hoán vị $k$ lần
 
 **Bài toán:** Cho một dãy độ dài $n$. Áp dụng một hoán vị đã cho lên dãy đó $k$ lần.
 
@@ -225,7 +225,7 @@ $$\begin{pmatrix}
 Khi mọi phép biến đổi đã được biểu diễn dưới dạng ma trận, cả chuỗi phép biến đổi có thể biểu diễn bằng tích các ma trận đó, còn một "loop" lặp $k$ lần có thể biểu diễn bằng cách nâng ma trận lên lũy thừa $k$, tính bằng lũy thừa nhị phân trong $O(\log{k})$. Ta có thể tính trước ma trận đại diện cho toàn bộ phép biến đổi trong $O(m \log{k})$, sau đó áp dụng nó lên mỗi điểm trong số $n$ điểm trong $O(n)$, cho tổng độ phức tạp $O(n + m \log{k})$.
 
 
-### Số đường đi độ dài $k$ trong đồ thị { data-toc-label='Number of paths of length <script type="math/tex">k</script> in a graph' }
+### Số đường đi độ dài $k$ trong đồ thị
 
 **Bài toán:** Cho một đồ thị có hướng không trọng số gồm $n$ đỉnh, tìm số đường đi độ dài $k$ từ một đỉnh $u$ bất kỳ tới một đỉnh $v$ bất kỳ.
 
@@ -236,7 +236,7 @@ Thay vì phép nhân ma trận thông thường, ta dùng một phép toán bi�
 thay phép nhân hai giá trị bằng phép cộng, và thay phép cộng tổng bằng phép lấy nhỏ nhất.
 Cụ thể: $result_{ij} = \min\limits_{1\ \leq\ k\ \leq\ n}(a_{ik} + b_{kj})$.
 
-### Biến thể của lũy thừa nhị phân: nhân hai số theo mô-đun $m$ { data-toc-label='Variation of binary exponentiation: multiplying two numbers modulo <script type="math/tex">m</script>' }
+### Biến thể của lũy thừa nhị phân: nhân hai số theo mô-đun $m$
 
 **Bài toán:** Nhân hai số $a$ và $b$ theo mô-đun $m$. $a$ và $b$ vừa với các kiểu dữ liệu có sẵn, nhưng tích của chúng quá lớn để chứa trong số nguyên 64 bit. Mục tiêu là tính $a \cdot b \pmod m$ mà không dùng số nguyên độ chính xác tùy ý.
 

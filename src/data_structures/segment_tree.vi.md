@@ -4,9 +4,9 @@ tags:
 e_maxx_link: segment_tree
 translation:
   source: data_structures/segment_tree.md
-  source_commit: 65cc432135d71f609154f16e8bf01752ac6e5e46
+  source_commit: 5dbc925efa1078469fd8c4790ae307d5824f9ff2
   status: draft
-  last_synced: 2026-09-29
+  last_synced: 2026-11-15
 ---
 
 # Cây phân đoạn (Segment Tree)
@@ -1181,6 +1181,7 @@ Rõ ràng ý tưởng này có thể được mở rộng theo rất nhiều cá
 ## Bài tập luyện tập
 
 * [SPOJ - KQUERY](http://www.spoj.com/problems/KQUERY/) [Persistent segment tree / Merge sort tree]
+* [Codeforces - The Brega Game](https://codeforces.com/gym/106667/problem/J)
 * [Codeforces - Xenia and Bit Operations](https://codeforces.com/problemset/problem/339/D)
 * [UVA 11402 - Ahoy, Pirates!](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=2397)
 * [SPOJ - GSS3](http://www.spoj.com/problems/GSS3/)
