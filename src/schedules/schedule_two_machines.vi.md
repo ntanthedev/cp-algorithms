@@ -66,6 +66,8 @@ $$\max(K_j, K_{j+1}) \le \max(K_j', K_{j+1}')$$
 (Việc đổi chỗ hai công việc cũng có thể không ảnh hưởng gì.
 Điều kiện trên chỉ là điều kiện đủ, không phải điều kiện cần.)
 
+**Ghi chú bản dịch:** Bất đẳng thức trên là điều kiện đủ để tổng thời gian nhàn rỗi sau khi đổi chỗ không giảm (có thể bằng trước). Nó không cần thiết cho kết luận không giảm này: một giá trị $K$ ngoài cặp có thể chi phối giá trị lớn nhất cả trước và sau khi đổi chỗ.
+
 Sau khi trừ $\sum_{i=1}^{j+1} a_i - \sum_{i=1}^{j-1} b_i$ ở cả hai vế, ta được:
 
 $$\max(-a_{j+1}, -b_j) \le \max(-b_{j+1}, -a_j)$$
