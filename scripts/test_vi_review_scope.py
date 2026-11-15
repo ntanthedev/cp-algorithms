@@ -28,7 +28,7 @@ class ReviewScopeTests(unittest.TestCase):
             (root / "src/source.md").write_text("# Example\n", encoding="utf-8")
             commit()
             base = git("rev-parse", "HEAD")
-            for name in ("first", "second"):
+            for name in ("first", "đồ-thị"):
                 (root / f"src/{name}.vi.md").write_text("# Draft\n", encoding="utf-8")
                 commit()
             (root / "src/untracked.vi.md").write_text("# Draft\n", encoding="utf-8")
@@ -37,8 +37,12 @@ class ReviewScopeTests(unittest.TestCase):
                 checker.ROOT = root
                 self.assertEqual(checker.changed_translation_paths(base), {
                     (root / f"src/{name}.vi.md").resolve()
-                    for name in ("first", "second", "untracked")
+                    for name in ("first", "đồ-thị", "untracked")
                 })
+                self.assertEqual(
+                    checker.changed_translation_paths("0" * 40),
+                    checker.changed_translation_paths(base),
+                )
                 with self.assertRaises(ValueError):
                     checker.changed_translation_paths("refs/heads/missing")
             finally:

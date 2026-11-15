@@ -3,17 +3,20 @@
 
 from __future__ import annotations
 
-import re
 import subprocess
 import sys
 from pathlib import Path
 
+from check_vi_translations import (
+    FRONT_MATTER_RE,
+    SOURCE_COMMIT_RE,
+    SOURCE_RE,
+    STATUS_RE,
+    VALID_STATUSES,
+)
+
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / "src"
-FRONT_MATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)
-SOURCE_RE = re.compile(r"^\s{2}source:\s*(\S+)\s*$", re.MULTILINE)
-SOURCE_COMMIT_RE = re.compile(r"^\s{2}source_commit:\s*([0-9a-f]{40})\s*$", re.MULTILINE)
-STATUS_RE = re.compile(r"^\s{2}status:\s*([a-z-]+)\s*$", re.MULTILINE)
 
 
 def git_blob_sha(path: Path) -> str:
@@ -30,19 +33,27 @@ def git_blob_sha(path: Path) -> str:
 def main() -> int:
     failures: list[str] = []
     for translated in sorted(DOCS.rglob("*.vi.md")):
-        text = translated.read_text(encoding="utf-8")
-        front = FRONT_MATTER_RE.match(text)
-        if not front:
-            continue
-        metadata = front.group(1)
+        path = translated.relative_to(ROOT)
+        front = FRONT_MATTER_RE.match(translated.read_text(encoding="utf-8"))
+        metadata = front.group(1) if front else ""
+
         source_match = SOURCE_RE.search(metadata)
         commit_match = SOURCE_COMMIT_RE.search(metadata)
         status_match = STATUS_RE.search(metadata)
-        if not source_match or not commit_match or not status_match:
+        if (
+            not source_match or not commit_match or not status_match
+            or status_match.group(1) not in VALID_STATUSES
+        ):
+            failures.append(f"{path} needs a source path, a 40-digit source blob SHA and a valid status.")
             continue
 
-        source = DOCS / source_match.group(1)
+        relative = Path(source_match.group(1))
+        if relative.is_absolute() or ".." in relative.parts:
+            failures.append(f"{path} must name a source relative to src/.")
+            continue
+        source = DOCS / relative
         if not source.is_file():
+            failures.append(f"{path} names a missing source: src/{relative}.")
             continue
         expected = commit_match.group(1)
         current = git_blob_sha(source)
@@ -50,13 +61,13 @@ def main() -> int:
 
         if current != expected and status != "stale":
             failures.append(
-                f"{translated.relative_to(ROOT)} is out of date: "
+                f"{path} is out of date: "
                 f"source blob is {current}, metadata records {expected}. "
                 "Update the translation or set status: stale."
             )
         elif current == expected and status == "stale":
             failures.append(
-                f"{translated.relative_to(ROOT)} is marked stale although its source blob matches."
+                f"{path} is marked stale although its source blob matches."
             )
 
     if failures:

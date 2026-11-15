@@ -34,25 +34,25 @@ Các file workflow đang ở máy sẽ không tự xuất hiện trong phiên we
 
 1. Đọc quy tắc repo, `git status`, remote, worktree và PR mở. Giữ mọi thay đổi chưa commit. Xác minh default branch bằng API; fork này là `master`, không phải `main`.
 2. Fetch `origin` và `upstream` với `--prune`. Không dùng Sync fork/force update để ghi đè lịch sử i18n. Không reset branch đang có PR.
-3. Ghi commit SHA của fork/upstream và head SHA PR. Chạy:
+3. Ghi commit SHA của fork/upstream và head SHA PR. Đặt biến `translationRef` thành SHA head của PR đang làm hoặc ref của lane hiện tại sau fetch (`origin/agent/vi-work` cho chế độ tuần tự). Chạy:
 
    ```powershell
    git fetch origin --prune
    git fetch upstream --prune
    python -B scripts/audit_vi_upstream.py
-   python -B scripts/audit_vi_upstream.py --translation-ref origin/agent/vi-work
+   python -B scripts/audit_vi_upstream.py --translation-ref $translationRef
    ```
 
    Script chỉ đọc ref đã fetch, không tự gọi mạng. Nó đối chiếu **blob nguồn đã dịch**, **blob nguồn trong fork**, **blob upstream**. Kết quả không bao gồm sửa đổi chưa commit. Chạy validator riêng cho working tree.
 4. Nếu có PR dịch mở của phiên/phạm vi mình: tiếp tục PR ấy trước. Chế độ song song chỉ xét PR đúng nhánh trong `START_HERE_VI.md`; không nhận hoặc chặn việc của phiên khác. PR #33 đã hoàn tất đồng bộ và merge, không dùng làm việc mặc định nữa.
-5. Nếu còn nguồn đã dịch khác upstream: tạo hàng đợi sửa cũ; mặc định chưa dịch mới. Phân biệt đổi code/công thức/điều kiện biên, bổ sung mục, sửa nghĩa, typo và link. `draft` không có nghĩa là fresh; blob khớp không có nghĩa là chất lượng tốt.
+5. Nếu còn nguồn đã dịch khác upstream: lập hàng đợi bảo trì trước khi chọn bài mới. Với các PR đang làm, xử lý theo tình trạng nguồn của từng gói như hướng dẫn ở START_HERE_VI.md. Phân biệt đổi code/công thức/điều kiện biên, bổ sung mục, sửa nghĩa, typo và link. `draft` không có nghĩa là fresh; blob khớp không có nghĩa là chất lượng tốt.
 6. Mọi ghi chú từng nói “nguồn có lỗi” phải được xét lại. Upstream có thể đã sửa, hoặc chẩn đoán cũ có thể sai.
 
 ## 4. Đồng bộ mà không làm mất bản Việt
 
 Đợt 2026-09-28 có 47/86 nguồn đã đổi; không thể coi là pull thuần túy. Dùng merge upstream trong nhánh làm việc, giải quyết xung đột, rồi cập nhật từng cặp EN/VI và test liên quan. Chỉ merge về `master` khi cả phạm vi đạt gate. Có thể xem trước bằng `git merge-tree --write-tree origin/master upstream/main`, không đổi checkout.
 
-Với PR #33 đang mở, có thể đưa riêng các phiên bản nguồn Newton/Simpson đã được upstream chấp nhận vào PR để đồng bộ cặp EN/VI và review nó trước. Ghi rõ đây là cập nhật nguồn từ commit upstream nào, không phải sửa code tự phát trong batch dịch. Sau #33 mới mở đợt đồng bộ rộng. Việc lấy một số file không được mô tả là đã merge toàn bộ upstream.
+Đối với một nhóm bài có delta nhỏ, có thể nhập riêng các blob bài nguồn từ upstream, cập nhật các bản Việt tương ứng và ghi rõ SHA cùng phạm vi đã nhập. Đánh giá thay đổi hệ thống build hoặc triển khai upstream trong phạm vi bảo trì riêng.
 
 Khi merge rộng:
 
@@ -110,7 +110,7 @@ python -B scripts/check_vi_rendered_pages.py
 Linux/Codex cloud: `git submodule update --init --recursive`, môi trường Python riêng, `bash scripts/install-mkdocs.sh`; thay cú pháp `$env:` bằng `export`. Theo bản repo hiện tại thay vì giả định mọi công cụ đã cài.
 
 - Checker staleness cũ hash byte CRLF và báo sai trên Windows; bản sửa dùng `git hash-object --path` để áp dụng clean filter và vẫn phát hiện nguồn chưa commit bị sửa.
-- Checker cấu trúc mặc định kiểm LaTeX chính xác cho file đổi ở commit cuối/working tree; trong GitHub PR nó dựa vào merge commit tổng hợp. Khi review local một PR nhiều commit, dùng `--base-ref <base-SHA-đã-chốt>` để bao phủ toàn bộ diff. Ví dụ trên dùng `origin/master` đã fetch; bản tooling mới cũng kiểm bản dịch chưa được Git track. Không có tùy chọn này trên nhánh cũ thì cần tự đối chiếu công thức toàn bộ phạm vi.
+- Checker áp dụng đối chiếu LaTeX chính xác cho file đổi trong phạm vi so sánh. CI dùng SHA base của PR hoặc SHA trước lần push. Khi kiểm tra local, truyền `--base-ref <base-SHA-đã-chốt>` để bao phủ cả gói và thay đổi chưa commit.
 - Checker ảnh xác minh file local tồn tại; không chứng minh ảnh/MathJax đã tải trong browser hay mọi anchor đều đúng. Phải render và kiểm riêng.
 - Không ghi “all tests pass” khi chỉ chạy validator. Đợt đổi nguồn còn cần `Test`; dịch thuần cần translations, sync và Build theo policy.
 - Chạy lại gate trên SHA cuối, đọc review threads, review submissions và conversation comments lần cuối. Comment đến muộn phải được xử lý.

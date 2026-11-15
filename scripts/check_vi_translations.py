@@ -32,7 +32,7 @@ VALID_STATUSES = {
 
 FRONT_MATTER_RE = re.compile(r"\A---\s*\n(.*?)\n---\s*\n", re.DOTALL)
 SOURCE_RE = re.compile(r"^\s{2}source:\s*(\S+)\s*$", re.MULTILINE)
-SOURCE_COMMIT_RE = re.compile(r"^\s{2}source_commit:\s*([0-9a-f]{7,40})\s*$", re.MULTILINE)
+SOURCE_COMMIT_RE = re.compile(r"^\s{2}source_commit:\s*([0-9a-f]{40})\s*$", re.MULTILINE)
 STATUS_RE = re.compile(r"^\s{2}status:\s*([a-z-]+)\s*$", re.MULTILINE)
 LAST_SYNCED_RE = re.compile(r"^\s{2}last_synced:\s*(\d{4}-\d{2}-\d{2})\s*$", re.MULTILINE)
 HEADING_RE = re.compile(r"^(#{1,6})\s+", re.MULTILINE)
@@ -220,36 +220,39 @@ def math_mismatch_locations(source_text: str, translated_text: str, source_math:
 def changed_translation_paths(base_ref: str | None = None) -> set[Path]:
     """Return .vi.md files touched by the current PR/commit plus local changes.
 
-    GitHub pull_request workflows check out a synthetic merge commit. With
-    fetch-depth 2, diffing HEAD^1..HEAD yields every translation changed by the
-    PR while avoiding legacy mismatches in untouched translations.
+    CI supplies the PR base or previous push head to cover every commit in
+    the update. A new branch push has a zero before SHA and checks all files.
     """
     changed: set[Path] = set()
-    if base_ref:
+    if base_ref == "0" * 40:
+        committed = ["git", "ls-files", "-z", "--cached", "--", "src"]
+    else:
+        reference = base_ref or "HEAD^1"
         result = subprocess.run(
-            ["git", "rev-parse", "--verify", f"{base_ref}^{{commit}}"],
+            ["git", "rev-parse", "--verify", "--end-of-options", f"{reference}^{{commit}}"],
             cwd=ROOT, text=True, capture_output=True, check=False,
         )
         if result.returncode != 0:
-            raise ValueError(f"Cannot resolve --base-ref {base_ref!r}; fetch it first.")
-        base_ref = result.stdout.strip()
+            raise ValueError(f"Cannot resolve comparison base {reference!r}; fetch it first.")
+        committed = ["git", "diff", "--name-only", "-z", result.stdout.strip(), "HEAD", "--", "src"]
+    # HEAD vs working tree can miss a staged change reverted in the working copy.
     commands = [
-        ["git", "diff", "--name-only", base_ref or "HEAD^1", "HEAD", "--", "src"],
-        ["git", "diff", "--name-only", "HEAD", "--", "src"],
-        ["git", "diff", "--cached", "--name-only", "--", "src"],
-        ["git", "ls-files", "--others", "--exclude-standard", "--", "src"],
+        committed,
+        ["git", "diff", "--name-only", "-z", "--", "src"],
+        ["git", "diff", "--cached", "--name-only", "-z", "--", "src"],
+        ["git", "ls-files", "-z", "--others", "--exclude-standard", "--", "src"],
     ]
     for command in commands:
         result = subprocess.run(
             command,
             cwd=ROOT,
-            text=True,
+            encoding="utf-8",
             capture_output=True,
             check=False,
         )
         if result.returncode != 0:
-            continue
-        for line in result.stdout.splitlines():
+            raise ValueError(f"Could not determine changed translations: {result.stderr.strip()}")
+        for line in result.stdout.split("\0"):
             if line.endswith(".vi.md"):
                 changed.add((ROOT / line).resolve())
     return changed

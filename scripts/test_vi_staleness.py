@@ -1,9 +1,12 @@
-"""Regression: CRLF checkouts must match Git blobs without hiding source edits."""
+"""Regression tests for Git blob normalization and source metadata validation."""
+import contextlib
 import importlib.util
+import io
 import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 spec = importlib.util.spec_from_file_location(
     "staleness", Path(__file__).with_name("check_vi_staleness.py")
@@ -34,6 +37,22 @@ class StalenessHashTests(unittest.TestCase):
                 self.assertNotEqual(staleness.git_blob_sha(source), expected)
             finally:
                 staleness.ROOT = previous_root
+
+    def test_short_blob_fails_sync_instead_of_skipping_the_file(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            docs = root / "src"
+            docs.mkdir()
+            (docs / "source.md").write_text("# Source\n", encoding="utf-8")
+            (docs / "source.vi.md").write_text(
+                "---\ntranslation:\n  source: source.md\n"
+                "  source_commit: abcdef0\n  status: draft\n---\n# Translation\n",
+                encoding="utf-8",
+            )
+            output = io.StringIO()
+            with patch.multiple(staleness, ROOT=root, DOCS=docs), contextlib.redirect_stdout(output):
+                self.assertEqual(staleness.main(), 1)
+            self.assertIn("40-digit source blob SHA", output.getvalue())
 
 
 if __name__ == "__main__":

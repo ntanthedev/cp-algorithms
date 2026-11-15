@@ -5,6 +5,7 @@ on:
     paths:
       - 'src/**/*.md'
       - 'scripts/check_vi_staleness.py'
+      - 'scripts/check_vi_translations.py'
       - 'scripts/test_vi_staleness.py'
       - '.github/workflows/translation-sync.yml'
   push:
@@ -13,6 +14,7 @@ on:
     paths:
       - 'src/**/*.md'
       - 'scripts/check_vi_staleness.py'
+      - 'scripts/check_vi_translations.py'
       - 'scripts/test_vi_staleness.py'
       - '.github/workflows/translation-sync.yml'
 
