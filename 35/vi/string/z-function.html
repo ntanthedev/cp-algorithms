@@ -30,7 +30,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -38,10 +38,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -8146,7 +8146,7 @@ Describe the issue of this article in detail.
 <p>Ta nhận thấy các chuỗi con <span class="arithmatex">$s[l \dots r)$</span> và <span class="arithmatex">$s[0 \dots r-l)$</span> <strong>trùng nhau</strong>. Vì vậy, một xấp xỉ ban đầu cho <span class="arithmatex">$z[i]$</span> có thể lấy từ giá trị đã tính cho đoạn tương ứng trong <span class="arithmatex">$s[0 \dots r-l)$</span>, tức <span class="arithmatex">$z[i-l]$</span>.</p>
 <p>Tuy nhiên <span class="arithmatex">$z[i-l]$</span> có thể quá lớn: khi áp dụng tại vị trí <span class="arithmatex">$i$</span>, nó có thể vượt qua chỉ số <span class="arithmatex">$r$</span>. Điều này không hợp lệ vì ta chưa biết gì về các ký tự bên phải <span class="arithmatex">$r$</span>: chúng có thể không khớp với các ký tự cần thiết.</p>
 <p>Đây là <strong>một ví dụ</strong> cho tình huống như vậy:</p>
-<div class="arithmatex">$$ s = "aaaabaa" $$</div>
+<div class="arithmatex">$$ s = &quot;aaaabaa&quot; $$</div>
 <p>Khi tới vị trí cuối cùng (<span class="arithmatex">$i = 6$</span>), đoạn khớp hiện tại sẽ là <span class="arithmatex">$[5, 7)$</span>. Vị trí <span class="arithmatex">$6$</span> khi đó tương ứng với vị trí <span class="arithmatex">$6 - 5 = 1$</span>, nơi giá trị hàm Z là <span class="arithmatex">$z[1] = 3$</span>. Rõ ràng ta không thể khởi tạo <span class="arithmatex">$z[6]$</span> thành <span class="arithmatex">$3$</span>, vì như vậy sẽ sai hoàn toàn. Giá trị lớn nhất có thể khởi tạo là <span class="arithmatex">$1$</span> -- vì đó là giá trị lớn nhất không đưa ta vượt qua chỉ số <span class="arithmatex">$r$</span> của đoạn khớp <span class="arithmatex">$[l, r)$</span>.</p>
 <p>Vì vậy, một <strong>xấp xỉ ban đầu</strong> an toàn cho <span class="arithmatex">$z[i]$</span> là:</p>
 <div class="arithmatex">$$ z_0[i] = \min(r - i,\; z[i-l]) $$</div>
@@ -8312,10 +8312,10 @@ Describe the issue of this article in detail.
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.integrate", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.integrate", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../javascript/config.js"></script>
       
