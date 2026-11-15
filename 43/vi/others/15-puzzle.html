@@ -7983,6 +7983,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8021,11 +8025,11 @@ Describe the issue of this article in detail.
 <p>Xét bài toán sau: cho một trạng thái trên bảng, hãy xác định liệu có tồn tại một dãy nước đi đưa bảng về trạng thái đích hay không.</p>
 <p>Giả sử ta có một trạng thái như sau:</p>
 <div class="arithmatex">$$\begin{matrix} a_1 &amp; a_2 &amp; a_3 &amp; a_4 \\ a_5 &amp; a_6 &amp; a_7 &amp; a_8 \\ a_9 &amp; a_{10} &amp; a_{11} &amp; a_{12} \\ a_{13} &amp; a_{14} &amp; a_{15} &amp; a_{16} \end{matrix}$$</div>
-<p>trong đó một phần tử bằng 0 và biểu thị ô trống <span class="arithmatex">$a_z  = 0$</span>.</p>
+<p>trong đó ô trống được ký hiệu <span class="arithmatex">$a_z  = 0$</span>.</p>
 <p>Xét hoán vị:</p>
 <div class="arithmatex">$$a_1 a_2 ... a_{z-1} a_{z+1} ... a_{15} a_{16}$$</div>
 <p>tức là hoán vị của các số tương ứng với vị trí trên bảng sau khi bỏ phần tử 0.</p>
-<p>Gọi <span class="arithmatex">$N$</span> là số nghịch thế của hoán vị này (tức số cặp phần tử <span class="arithmatex">$a_i$</span> và <span class="arithmatex">$a_j$</span> sao cho <span class="arithmatex">$i &lt; j$</span> nhưng <span class="arithmatex">$a_i  &gt; a_j$</span>).</p>
+<p>Gọi <span class="arithmatex">$N$</span> là số lượng cặp <span class="arithmatex">$a_i$</span> và <span class="arithmatex">$a_j$</span> sao cho <span class="arithmatex">$i &lt; j$</span> nhưng <span class="arithmatex">$a_i  &gt; a_j$</span> (nghịch thế).</p>
 <p>Gọi <span class="arithmatex">$K$</span> là chỉ số hàng chứa ô trống (theo quy ước của ta, <span class="arithmatex">$K = (z - 1) \div \ 4 + 1$</span>).</p>
 <p>Khi đó, <strong>bài toán có lời giải khi và chỉ khi <span class="arithmatex">$N + K$</span> chẵn</strong>.</p>
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
@@ -8047,7 +8051,7 @@ Describe the issue of this article in detail.
 <span class="n">puts</span><span class="w"> </span><span class="p">((</span><span class="n">inv</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">"No Solution"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"Solution Exists"</span><span class="p">);</span>
 </code></pre></div>
 <h2 id="chung-minh">Chứng minh<a class="headerlink" href="#chung-minh" title="Permanent link">&para;</a></h2>
-<p>Năm 1879, Johnson chứng minh rằng nếu <span class="arithmatex">$N + K$</span> lẻ thì bài toán không có lời giải; cùng năm đó, Story chứng minh rằng mọi trạng thái có <span class="arithmatex">$N + K$</span> chẵn đều có lời giải.</p>
+<p>Năm 1879, Johnson chứng minh: nếu <span class="arithmatex">$N + K$</span> lẻ thì vô nghiệm; cùng năm, Story chứng minh mọi trạng thái có <span class="arithmatex">$N + K$</span> chẵn đều có lời giải.</p>
 <p>Tuy nhiên, các chứng minh này khá phức tạp.</p>
 <p>Năm 1999, Archer đưa ra một chứng minh đơn giản hơn nhiều (có thể tải bài báo của ông <a href="http://www.cs.cmu.edu/afs/cs/academic/class/15859-f01/www/notes/15-puzzle.pdf">tại đây</a>).</p>
 <h2 id="bai-tap-thuc-hanh">Bài tập thực hành<a class="headerlink" href="#bai-tap-thuc-hanh" title="Permanent link">&para;</a></h2>
@@ -8057,7 +8061,7 @@ Describe the issue of this article in detail.
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (95.95%)</li><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (4.05%)</li></ul>
 </ul>
                 
               </article>
