@@ -76,7 +76,7 @@ T order_statistics (std::vector<T> a, unsigned n, unsigned k)
 * [std::nth_element](https://en.cppreference.com/w/cpp/algorithm/nth_element) giải bài toán này trong C++, nhưng bản cài đặt của gcc chạy trong thời gian $O(n \log n )$ ở trường hợp xấu nhất.
 * Có thể quy việc tìm $K$ phần tử nhỏ nhất về tìm phần tử thứ $K$ với chi phí phụ tuyến tính, vì chúng chính là các phần tử nhỏ hơn phần tử thứ $K$.
 
-Ghi chú bản dịch: Code dùng chỉ số từ 1 đến n và trả về phần tử thứ k theo thứ tự không giảm, trong khi phần mở đầu nói số lớn thứ K. Cần cấp phát mảng có phần tử tại các chỉ số này và chọn 1 ≤ k ≤ n. Mệnh đề cuối ở trên cũng cần xét giá trị bằng phần tử thứ K: chẳng hạn với các giá trị trùng nhau, không phải cả K phần tử nhỏ nhất đều nhỏ hơn nghiêm ngặt phần tử thứ K.
+Ghi chú bản dịch: Code dùng chỉ số từ 1 đến n và trả về phần tử thứ k theo thứ tự không giảm, trong khi phần mở đầu nói số lớn thứ K. Cần cấp phát mảng có phần tử tại các chỉ số này và chọn 1 ≤ k ≤ n. Xáo trộn ngẫu nhiên giúp đạt thời gian kỳ vọng tuyến tính; code với chốt tất định vẫn đúng trên đầu vào hợp lệ nhưng có thể mất thời gian bậc hai trong trường hợp xấu nhất. Mệnh đề cuối ở trên cũng cần xét giá trị bằng phần tử thứ K: để lấy đủ K phần tử nhỏ nhất, cần chọn cả một số phần tử bằng ngưỡng nếu có giá trị trùng nhau.
 
 ## Bài tập luyện tập
 - [Leetcode: Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/description/)
