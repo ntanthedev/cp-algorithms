@@ -13,7 +13,7 @@ translation:
 
 !["Máy tính Setun sử dụng hệ tam phân cân bằng"](https://earltcampbell.files.wordpress.com/2014/12/setun.jpeg?w=300)
 
-Đây là một **hệ ghi số** không phổ biến nhưng vẫn là hệ định vị. Điểm đặc biệt là các chữ số có thể nhận một trong ba giá trị `-1`, `0` và `1`.
+Đây là một **hệ ghi số theo vị trí** khác thường. Điểm đặc biệt là các chữ số có thể nhận một trong ba giá trị `-1`, `0` và `1`.
 Tuy vậy, cơ số của hệ vẫn là `3` (vì có ba giá trị chữ số có thể có). Do viết `-1` thành một chữ số không thuận tiện,
 ở phần sau ta dùng chữ cái `Z` để biểu diễn giá trị này. Nếu thấy hệ này khá lạ, hãy xem hình: một trong những máy tính đã sử dụng nó.
 
