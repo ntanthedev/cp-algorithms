@@ -34,9 +34,7 @@ Trong hình dưới đây là một mảng có độ dài 10 và cây Cartesian 
 </div>
 
 Truy vấn tìm giá trị nhỏ nhất trên đoạn `[l, r]` tương đương với truy vấn tổ tiên chung gần nhất của hai nút `[l', r']`, trong đó `l'` là nút ứng với phần tử `A[l]` và `r'` là nút ứng với phần tử `A[r]`.
-Nút ứng với phần tử nhỏ nhất trong đoạn phải là tổ tiên của mọi nút trong đoạn, nên cũng là tổ tiên của `l'` và `r'`.
-Điều này suy ra trực tiếp từ tính chất đống tối tiểu.
-Nút đó cũng phải là tổ tiên chung thấp nhất; nếu không, `l'` và `r'` sẽ cùng nằm trong cây con trái hoặc cùng nằm trong cây con phải, dẫn đến mâu thuẫn vì khi ấy phần tử nhỏ nhất không thể nằm trong đoạn truy vấn.
+Theo thứ tự duyệt trái–nút–phải, nút LCA của `l'` và `r'` nằm trong đoạn truy vấn. Mọi nút trong đoạn giữa `l'` và `r'` đều nằm trong cây con của LCA đó, nên tính chất min-heap cho biết giá trị tại LCA không lớn hơn giá trị của chúng. Do đó, giá trị tại LCA là giá trị nhỏ nhất trong đoạn. Nếu có nhiều phần tử cùng đạt giá trị nhỏ nhất, không nhất thiết mọi nút tương ứng đều là tổ tiên của các nút còn lại.
 
 Hình dưới đây minh họa các truy vấn LCA ứng với hai truy vấn RMQ `[1, 3]` và `[5, 9]`.
 Trong truy vấn thứ nhất, LCA của các nút `A[1]` và `A[3]` là nút ứng với `A[2]`, có giá trị 2.
