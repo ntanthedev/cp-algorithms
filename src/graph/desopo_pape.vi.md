@@ -92,6 +92,8 @@ void shortest_paths(int v0, vector<int>& d, vector<int>& p) {
 
 ```
 
+**Ghi chú bản dịch:** Cài đặt dùng INF = 1e9 làm giá trị vô cực và dùng kiểu int cho khoảng cách. Cần chọn kiểu và giá trị vô cực phù hợp với giới hạn dữ liệu; các phép cộng cũng phải nằm trong miền biểu diễn của kiểu được chọn.
+
 ## Độ phức tạp
 
 Thuật toán thường chạy khá nhanh — trong hầu hết trường hợp, nó còn nhanh hơn Dijkstra.
