@@ -23,6 +23,8 @@ Ta duyệt tất cả các cạnh (theo thứ tự đã sắp xếp) và với m
 Cuối cùng, ta cần hợp hai cây (hai tập), khi đó hàm `union_sets` của DSU được gọi - cũng mất $O(1)$.
 Vì vậy, tổng độ phức tạp thời gian là $O(M \log N + N + M)$ = $O(M \log N)$.
 
+**Ghi chú bản dịch:** Khi kết hợp nén đường đi với hợp theo hạng, chi phí mỗi thao tác DSU là $O(\alpha(N))$ theo phân tích khấu hao. Khởi tạo, sắp xếp và xử lý cạnh có tổng chi phí $O(N + M\log M + M\alpha(N))$, tức $O(M\log N)$ đối với đồ thị đơn liên thông có ít nhất hai đỉnh.
+
 ## Cài đặt
 
 Dưới đây là một cài đặt thuật toán Kruskal sử dụng hợp theo hạng (Union by Rank).

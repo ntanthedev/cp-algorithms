@@ -81,6 +81,9 @@ Sau khi làm tương tự với tất cả các cạnh khác không thuộc MST 
 Chọn cạnh có trọng số 14 sẽ làm trọng số của cây tăng 7, chọn cạnh có trọng số 27 làm tăng 14, chọn cạnh có trọng số 28 làm tăng 21, còn chọn cạnh có trọng số 39 sẽ làm cây tăng 5.
 
 ## Cài đặt
+
+**Ghi chú bản dịch:** Đoạn mã được viết để tìm trọng số nhỏ nhất lớn hơn hẳn trọng số MST. Nếu bài toán chấp nhận một cây khác có cùng trọng số, chẳng hạn một cây khác trong tam giác có ba cạnh trọng số 1, cách cài đặt này không trả lời bài toán đó. Đoạn mã giả định đồ thị liên thông và dùng các giá trị âm để đánh dấu cạnh không tồn tại, nên không dùng trực tiếp cho cạnh có trọng số âm. Nếu không có cây khung nặng hơn, như khi đồ thị chỉ có đúng các cạnh của một cây, mã in giá trị khởi tạo 10 mũ 18. Hàm hợp nhất hai tập unite_set của DSU cũng cần được bổ sung trước khi biên dịch.
+
 ```cpp
 struct edge {
     int s, e, w, id;
