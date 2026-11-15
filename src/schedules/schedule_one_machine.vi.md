@@ -25,7 +25,7 @@ $$F(\pi) = f_{\pi_1}(0) + f_{\pi_2}(t_{\pi_1}) + f_{\pi_3}(t_{\pi_1} + t_{\pi_2}
 Trước tiên, ta xét trường hợp mọi hàm phạt $f_i(t)$ đều tuyến tính, tức có dạng $f_i(t) = c_i \cdot t$, trong đó $c_i$ là số không âm.
 Lưu ý các hàm này không có hằng số tự do. Nếu có, ta có thể cộng tổng các hằng số đó vào kết quả rồi giải bài toán sau khi bỏ các hằng số.
 
-Cố định một hoán vị $\pi$ bất kỳ và xét chỉ số $i = 1 \dots n-1$.
+Chọn $\pi$ bất kỳ và xét $i = 1 \dots n-1$.
 Gọi $\pi'$ là hoán vị thu được từ $\pi$ bằng cách đổi chỗ hai công việc ở vị trí $i$ và $i+1$.
 Ta hãy tính mức phạt thay đổi bao nhiêu.
 
