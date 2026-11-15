@@ -155,6 +155,8 @@ struct QueryTree {
 };
 ```
 
+**Ghi chú bản dịch:** Cài đặt này giả sử T > 0. Nếu không có truy vấn, cần xử lý riêng và trả về kết quả rỗng trước khi gọi solve().
+
 ## Bài toán
 
 - [Codeforces - Connect and Disconnect](https://codeforces.com/gym/100551/problem/A)
