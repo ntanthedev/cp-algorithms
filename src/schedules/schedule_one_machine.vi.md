@@ -49,7 +49,7 @@ $$\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \for
 
 Do đó, ta có **lịch tối ưu** bằng cách **sắp xếp** các công việc theo tỉ số $\frac{c_i}{t_i}$ theo thứ tự không tăng.
 
-Cần lưu ý rằng thuật toán này được xây dựng bằng phương pháp hoán vị:
+Cần lưu ý rằng thuật toán này được xây dựng bằng lập luận hoán đổi (permutation method):
 ta thử đổi chỗ hai phần tử kề nhau, tính mức phạt thay đổi bao nhiêu, rồi suy ra thuật toán tìm lời giải tối ưu.
 
 ### Hàm phạt mũ
@@ -60,7 +60,7 @@ $$f_i(t) = c_i \cdot e^{\alpha \cdot t},$$
 
 trong đó mọi $c_i$ không âm và hằng số $\alpha$ dương.
 
-Áp dụng phương pháp hoán vị, ta dễ dàng xác định rằng cần sắp xếp các công việc theo giá trị sau theo thứ tự không tăng:
+Áp dụng lập luận hoán đổi, ta dễ dàng xác định rằng cần sắp xếp các công việc theo giá trị sau theo thứ tự không tăng:
 
 $$v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}$$
 
@@ -72,7 +72,7 @@ Hiển nhiên, trong trường hợp này, lịch tối ưu sắp xếp các cô
 
 ## Định lý Livshits-Kladov
 
-Định lý Livshits-Kladov khẳng định rằng phương pháp hoán vị chỉ áp dụng được cho ba trường hợp đã nêu, cụ thể là:
+Định lý Livshits-Kladov khẳng định rằng lập luận hoán đổi chỉ áp dụng được cho ba trường hợp đã nêu, cụ thể là:
 
 - Trường hợp tuyến tính: $f_i(t) = c_i(t) + d_i$, trong đó $c_i$ là các hằng số không âm.
 - Trường hợp mũ: $f_i(t) = c_i \cdot e_{\alpha \cdot t} + d_i$, trong đó $c_i$ và $\alpha$ là các hằng số dương.
@@ -80,4 +80,4 @@ Hiển nhiên, trong trường hợp này, lịch tối ưu sắp xếp các cô
 
 Định lý được chứng minh với giả thiết các hàm phạt đủ trơn (tồn tại đạo hàm cấp ba).
 
-Trong cả ba trường hợp, ta áp dụng phương pháp hoán vị để tìm lịch tối ưu bằng cách sắp xếp, do đó độ phức tạp là $O(n \log n)$.
+Trong cả ba trường hợp, ta áp dụng lập luận hoán đổi để tìm lịch tối ưu bằng cách sắp xếp, do đó độ phức tạp là $O(n \log n)$.
