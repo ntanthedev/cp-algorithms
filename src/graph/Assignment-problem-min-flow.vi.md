@@ -118,4 +118,4 @@ vector<int> assignment(vector<vector<int>> a) {
 }
 ```
 
-**Ghi chú bản dịch:** Mã dùng `INF = 1000000000` và kiểu `int` cho khoảng cách, chi phí; cần chọn giá trị vô cực và kiểu số phù hợp với dữ liệu, kể cả các phép cộng và trừ, để tránh không relax được cạnh hoặc tràn số. Ví dụ ma trận $2 \times 2$ có mọi chi phí bằng `INF` khiến mã dừng mà trả về `[0, 0]`, không phải phân công hợp lệ. Cần kiểm tra tính hợp lệ của kết quả khi dùng mã.
+**Ghi chú bản dịch:** Mã dùng INF = 1000000000 và kiểu int cho khoảng cách, chi phí; cần chọn giá trị vô cực và kiểu số phù hợp với dữ liệu, kể cả các phép cộng và trừ, để tránh không relax được cạnh hoặc tràn số. Ví dụ ma trận $2 \times 2$ có mọi chi phí bằng INF khiến mã dừng mà trả về [0, 0], không phải phân công hợp lệ. Cần kiểm tra tính hợp lệ của kết quả khi dùng mã.
