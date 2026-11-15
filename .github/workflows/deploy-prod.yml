@@ -59,6 +59,9 @@ jobs:
   deploy_github_pages:
     runs-on: ubuntu-latest
     if: github.event.workflow_run.conclusion == 'success'
+    concurrency:
+      group: gh-pages-preview-deploy
+      queue: max
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
