@@ -38,7 +38,7 @@ Tiếp theo là các cách chỉ hoạt động trên mảng tĩnh, tức là kh
 - [Sparse Table](../data_structures/sparse-table.md) - trả lời mỗi truy vấn trong $O(1)$, tiền xử lý trong $O(N \log N)$.
   Ưu điểm: cấu trúc dữ liệu đơn giản, độ phức tạp thời gian rất tốt.
 - [Sqrt Tree](../data_structures/sqrt-tree.md) - trả lời truy vấn trong $O(1)$, tiền xử lý trong $O(N \log \log N)$. Ưu điểm: nhanh. Nhược điểm: cài đặt phức tạp.
-- [Disjoint Set Union / thủ thuật Arpa](../data_structures/disjoint_set_union.md#arpa) - trả lời truy vấn trong $O(1)$, tiền xử lý trong $O(n)$. Ưu điểm: ngắn gọn, nhanh. Nhược điểm: chỉ hoạt động nếu biết trước tất cả truy vấn, tức là chỉ hỗ trợ xử lý offline.
+- [Disjoint Set Union / thủ thuật Arpa](../data_structures/disjoint_set_union.md#arpa) - nguồn ghi trả lời truy vấn trong $O(1)$, tiền xử lý trong $O(n)$; xem ghi chú bên dưới về cận thời gian. Ưu điểm: ngắn gọn, nhanh. Nhược điểm: chỉ hoạt động nếu biết trước tất cả truy vấn, tức là chỉ hỗ trợ xử lý offline.
 - [Cây Cartesian](../graph/rmq_linear.md) và [thuật toán Farach-Colton và Bender](../graph/lca_farachcoltonbender.md) - trả lời truy vấn trong $O(1)$, tiền xử lý trong $O(n)$. Ưu điểm: độ phức tạp tối ưu. Nhược điểm: lượng code lớn.
 
 Ghi chú bản dịch: Mức thời gian hằng số cho mỗi truy vấn của thủ thuật Arpa ở danh sách trên không phải cận xấu nhất cho từng truy vấn trong cách cài đặt DSU dùng nén đường đi. Bài DSU liên kết mô tả độ phức tạp trung bình gần hằng số; tổng thời gian cũng phải tính đến số truy vấn được xử lý.
