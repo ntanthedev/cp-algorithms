@@ -121,6 +121,8 @@ Như có thể thấy trong hình dưới đây, hình chiếu này chính là $
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Dot_Product.svg/300px-Dot_Product.svg.png" alt="">
 </div>
 
+**Ghi chú bản dịch:** Theo công thức trên, $|\mathbf a|\cos\theta$ là hình chiếu vô hướng có dấu của $\mathbf a$ lên hướng của $\mathbf b$. Nhân giá trị đó với độ dài của $\mathbf b$ để tính tích vô hướng.
+
 Tích vô hướng có một số tính chất đáng chú ý:
 
 1. $\mathbf a \cdot \mathbf b = \mathbf b \cdot \mathbf a$
@@ -189,7 +191,7 @@ Ta có thể thấy đây chính xác là tập các điểm có hình chiếu l
 Trong hình dưới đây ở trường hợp 2D, ta có thể thấy vector $\mathbf a$ cùng một số vector khác có cùng tích vô hướng với nó:
 
 <div style="text-align: center;">
-  <img src="https://i.imgur.com/eyO7St4.png" alt="Vectors having same dot product with a">
+  <img src="https://i.imgur.com/eyO7St4.png" alt="Các vector có cùng tích vô hướng với vector a">
 </div>
 
 Trong 2D, các vector này tạo thành một đường thẳng; trong 3D, chúng tạo thành một mặt phẳng.
@@ -202,7 +204,7 @@ Tương tự, ta có thể định nghĩa một mặt phẳng trong 3D.
 
 Giả sử ta có ba vector $\mathbf a$, $\mathbf b$ và $\mathbf c$ trong không gian 3D, ghép thành một hình hộp song song như trong hình dưới đây:
 <div style="text-align: center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Parallelepiped_volume.svg/250px-Parallelepiped_volume.svg.png" alt="Three vectors">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Parallelepiped_volume.svg/250px-Parallelepiped_volume.svg.png" alt="Ba vector xác định một hình hộp">
 </div>
 
 Ta sẽ tính thể tích của nó như thế nào?
@@ -211,7 +213,7 @@ Từ kiến thức phổ thông, ta biết cần nhân diện tích đáy với 
 Để quy ước nhất quán, ta chọn hướng của $\mathbf b\times \mathbf c$ sao cho phép quay từ vector $\mathbf b$ sang vector $\mathbf c$, khi nhìn từ phía đầu mút của $\mathbf b\times \mathbf c$, luôn ngược chiều kim đồng hồ (xem hình dưới đây).
 
 <div style="text-align: center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Cross_product_vector.svg/250px-Cross_product_vector.svg.png" alt="cross product">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Cross_product_vector.svg/250px-Cross_product_vector.svg.png" alt="Vector tích có hướng vuông góc với hai vector ban đầu">
 </div>
 
 Điều này định nghĩa tích có hướng (cross product, hay vector product) $\mathbf b\times \mathbf c$ của hai vector $\mathbf b$ và $\mathbf c$, cũng như tích hỗn tạp (triple product) $\mathbf a\cdot(\mathbf b\times \mathbf c)$ của ba vector $\mathbf a$, $\mathbf b$ và $\mathbf c$.
@@ -298,6 +300,8 @@ Với đường thẳng thứ hai, mọi điểm trên nó phải thỏa mãn $(
 
 $$(\mathbf a_1 + t \cdot \mathbf d_1 - \mathbf a_2)\times \mathbf d_2=0 \quad\Rightarrow\quad t = \dfrac{(\mathbf a_2 - \mathbf a_1)\times\mathbf d_2}{\mathbf d_1\times \mathbf d_2}$$
 
+**Ghi chú bản dịch:** Công thức giao điểm duy nhất bên trên cần mẫu số khác không. Nếu hai vector chỉ phương song song, hai đường thẳng có thể trùng nhau hoặc không có giao điểm.
+
 Hãy cài đặt hàm tìm giao điểm của hai đường thẳng.
 
 ```{.cpp file=basic_line_intersection}
@@ -313,6 +317,8 @@ Ví dụ, giả sử ta có ba mặt phẳng được xác định bởi các đ
 Ta có thể nhận thấy rằng chỉ cần giải hệ phương trình:
 
 $$\begin{cases}\mathbf r\cdot \mathbf n_1 = \mathbf a_1\cdot \mathbf n_1, \\ \mathbf r\cdot \mathbf n_2 = \mathbf a_2\cdot \mathbf n_2, \\ \mathbf r\cdot \mathbf n_3 = \mathbf a_3\cdot \mathbf n_3\end{cases}$$
+
+**Ghi chú bản dịch:** Trong hệ trên, $\mathbf n_i$ là vector pháp tuyến của mặt phẳng đi qua $\mathbf a_i$. Công thức phía dưới tìm giao điểm duy nhất khi định thức của ba vector pháp tuyến khác không.
 
 Thay vì tiếp tục tìm một cách giải hình học, ta có thể chuyển ngay sang cách giải đại số.
 Chẳng hạn, nếu đã cài đặt lớp điểm, ta có thể dễ dàng giải hệ này bằng quy tắc Cramer vì tích hỗn tạp chính là định thức của ma trận có các vector làm cột:
