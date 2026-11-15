@@ -49,6 +49,8 @@ $$\frac{c_{\pi_i}}{t_{\pi_i}} \ge \frac{c_{\pi_{i+1}}}{t_{\pi_{i+1}}} \quad \for
 
 Do đó, ta có **lịch tối ưu** bằng cách **sắp xếp** các công việc theo tỉ số $\frac{c_i}{t_i}$ theo thứ tự không tăng.
 
+**Ghi chú bản dịch:** Tỉ số trên chỉ xác định khi thời gian xử lý khác 0. Với công việc có thời gian xử lý bằng 0, cần xử lý riêng khi sắp xếp.
+
 Cần lưu ý rằng thuật toán này được xây dựng bằng lập luận hoán đổi (permutation method):
 ta thử đổi chỗ hai phần tử kề nhau, tính mức phạt thay đổi bao nhiêu, rồi suy ra thuật toán tìm lời giải tối ưu.
 
@@ -63,6 +65,8 @@ trong đó mọi $c_i$ không âm và hằng số $\alpha$ dương.
 Áp dụng lập luận hoán đổi, ta dễ dàng xác định rằng cần sắp xếp các công việc theo giá trị sau theo thứ tự không tăng:
 
 $$v_i = \frac{1 - e^{\alpha \cdot t_i}}{c_i}$$
+
+**Ghi chú bản dịch:** Công thức trên chỉ xác định khi hệ số phạt khác 0. Nguồn cho phép hệ số bằng 0 nên cần xử lý riêng trường hợp đó khi sắp xếp.
 
 ### Hàm phạt đơn điệu giống nhau
 
