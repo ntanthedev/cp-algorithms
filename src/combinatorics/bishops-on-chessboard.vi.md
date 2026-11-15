@@ -76,3 +76,5 @@ int bishop_placements(int N, int K)
     return ans;
 }
 ```
+
+**Ghi chú bản dịch:** Với `K = 0`, có đúng một cách đặt không quân tượng. Tuy nhiên, hàm trên truy cập `D[1][1]` ngoài phạm vi vì mỗi hàng của `D` chỉ có một phần tử. Cần xử lý riêng trường hợp này trước khi gọi hàm.
