@@ -50,6 +50,8 @@ trong đó
 
 $$K_i = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i.$$
 
+**Ghi chú bản dịch:** Hai công thức trên dùng chỉ số chưa nhất quán. Để chỉ số được xác định, có thể viết $K_k = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i$ và $F(x) = \max_{1 \le k \le n} K_k$.
+
 Có thể dễ dàng kiểm chứng điều này bằng quy nạp.
 
 Bây giờ ta dùng **phương pháp hoán đổi**:
