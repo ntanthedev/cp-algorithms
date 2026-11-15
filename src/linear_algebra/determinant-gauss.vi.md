@@ -21,7 +21,7 @@ Ta thực hiện các bước như khi giải hệ phương trình tuyến tính
 
 Sau khi áp dụng phép khử Gauss, ta thu được ma trận đường chéo; định thức của ma trận này bằng tích các phần tử trên đường chéo. Như đã nói, dấu được xác định bởi số lần đổi chỗ hàng: nếu số lần này lẻ thì ta đổi dấu định thức. Do đó, thuật toán Gauss tính định thức có độ phức tạp $O(N^3)$.
 
-Lưu ý rằng nếu tại một bước nào đó không tìm được ô khác 0 trong cột hiện tại, thuật toán phải dừng và trả về 0.
+Lưu ý rằng nếu tại một bước nào đó không tìm được ô khác 0 trong cột hiện tại, xét từ hàng hiện tại trở xuống, thuật toán phải dừng và trả về 0.
 
 ## Cài đặt
 
