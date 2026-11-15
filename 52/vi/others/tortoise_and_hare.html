@@ -8058,6 +8058,7 @@ Việc này gồm hai bước:
 <li>Nếu tại một thời điểm chúng trỏ tới cùng một nút, danh sách liên kết có chu trình.</li>
 <li>Nếu gặp null, danh sách liên kết không có chu trình.</li>
 </ol>
+<p><strong>Ghi chú bản dịch:</strong> Hai con trỏ ban đầu cùng trỏ tới đầu danh sách, nên chỉ so sánh sau khi đã di chuyển. Trước mỗi lần di chuyển cần kiểm tra điều kiện null như trong mã bên dưới.</p>
 <div style="text-align: center;">
   <img src="../../others/tortoise_hare_cycle_found.png" alt=""Found cycle"">
 </div>
