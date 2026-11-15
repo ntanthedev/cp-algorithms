@@ -30,7 +30,7 @@
         <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../feed_rss_updated.xml">
       
       <link rel="icon" href="../../favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
@@ -38,10 +38,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -8067,6 +8067,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8188,6 +8192,7 @@ Như có thể thấy trong hình dưới đây, hình chiếu này chính là <
   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Dot_Product.svg/300px-Dot_Product.svg.png" alt="">
 </div>
 
+<p><strong>Ghi chú bản dịch:</strong> Theo công thức trên, <span class="arithmatex">$|\mathbf a|\cos\theta$</span> là hình chiếu vô hướng có dấu của <span class="arithmatex">$\mathbf a$</span> lên hướng của <span class="arithmatex">$\mathbf b$</span>. Nhân giá trị đó với độ dài của <span class="arithmatex">$\mathbf b$</span> để tính tích vô hướng.</p>
 <p>Tích vô hướng có một số tính chất đáng chú ý:</p>
 <ol>
 <li><span class="arithmatex">$\mathbf a \cdot \mathbf b = \mathbf b \cdot \mathbf a$</span></li>
@@ -8241,7 +8246,7 @@ Ví dụ:</p>
 Ta có thể thấy đây chính xác là tập các điểm có hình chiếu lên <span class="arithmatex">$\mathbf a$</span> tại điểm <span class="arithmatex">$C \cdot \dfrac{\mathbf a}{|\mathbf a| ^ 2}$</span>, và chúng tạo thành một siêu phẳng trực giao với <span class="arithmatex">$\mathbf a$</span>.
 Trong hình dưới đây ở trường hợp 2D, ta có thể thấy vector <span class="arithmatex">$\mathbf a$</span> cùng một số vector khác có cùng tích vô hướng với nó:</p>
 <div style="text-align: center;">
-  <img src="https://i.imgur.com/eyO7St4.png" alt="Vectors having same dot product with a">
+  <img src="https://i.imgur.com/eyO7St4.png" alt="Các vector có cùng tích vô hướng với vector a">
 </div>
 
 <p>Trong 2D, các vector này tạo thành một đường thẳng; trong 3D, chúng tạo thành một mặt phẳng.
@@ -8251,7 +8256,7 @@ Tương tự, ta có thể định nghĩa một mặt phẳng trong 3D.</p>
 <h3 id="inh-nghia_1">Định nghĩa<a class="headerlink" href="#inh-nghia_1" title="Permanent link">&para;</a></h3>
 <p>Giả sử ta có ba vector <span class="arithmatex">$\mathbf a$</span>, <span class="arithmatex">$\mathbf b$</span> và <span class="arithmatex">$\mathbf c$</span> trong không gian 3D, ghép thành một hình hộp song song như trong hình dưới đây:</p>
 <div style="text-align: center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Parallelepiped_volume.svg/250px-Parallelepiped_volume.svg.png" alt="Three vectors">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Parallelepiped_volume.svg/250px-Parallelepiped_volume.svg.png" alt="Ba vector xác định một hình hộp">
 </div>
 
 <p>Ta sẽ tính thể tích của nó như thế nào?
@@ -8259,7 +8264,7 @@ Từ kiến thức phổ thông, ta biết cần nhân diện tích đáy với 
 Điều đó có nghĩa là nếu ta định nghĩa <span class="arithmatex">$\mathbf b \times \mathbf c$</span> là vector vuông góc với cả <span class="arithmatex">$\mathbf b$</span> và <span class="arithmatex">$\mathbf c$</span>, có độ dài bằng diện tích hình bình hành tạo bởi <span class="arithmatex">$\mathbf b$</span> và <span class="arithmatex">$\mathbf c$</span>, thì <span class="arithmatex">$|\mathbf a\cdot (\mathbf b\times\mathbf c)|$</span> sẽ bằng thể tích của hình hộp song song.
 Để quy ước nhất quán, ta chọn hướng của <span class="arithmatex">$\mathbf b\times \mathbf c$</span> sao cho phép quay từ vector <span class="arithmatex">$\mathbf b$</span> sang vector <span class="arithmatex">$\mathbf c$</span>, khi nhìn từ phía đầu mút của <span class="arithmatex">$\mathbf b\times \mathbf c$</span>, luôn ngược chiều kim đồng hồ (xem hình dưới đây).</p>
 <div style="text-align: center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Cross_product_vector.svg/250px-Cross_product_vector.svg.png" alt="cross product">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Cross_product_vector.svg/250px-Cross_product_vector.svg.png" alt="Vector tích có hướng vuông góc với hai vector ban đầu">
 </div>
 
 <p>Điều này định nghĩa tích có hướng (cross product, hay vector product) <span class="arithmatex">$\mathbf b\times \mathbf c$</span> của hai vector <span class="arithmatex">$\mathbf b$</span> và <span class="arithmatex">$\mathbf c$</span>, cũng như tích hỗn tạp (triple product) <span class="arithmatex">$\mathbf a\cdot(\mathbf b\times \mathbf c)$</span> của ba vector <span class="arithmatex">$\mathbf a$</span>, <span class="arithmatex">$\mathbf b$</span> và <span class="arithmatex">$\mathbf c$</span>.</p>
@@ -8325,6 +8330,7 @@ Ví dụ, giả sử ta có hai đường thẳng và muốn tìm giao điểm c
 Ta có thể nói mọi điểm trên đường thẳng thứ nhất đều có thể được tham số hóa dưới dạng <span class="arithmatex">$\mathbf r = \mathbf a_1 + t \cdot \mathbf d_1$</span>, trong đó <span class="arithmatex">$\mathbf a_1$</span> là điểm ban đầu, <span class="arithmatex">$\mathbf d_1$</span> là vector chỉ phương và <span class="arithmatex">$t$</span> là một tham số thực.
 Với đường thẳng thứ hai, mọi điểm trên nó phải thỏa mãn <span class="arithmatex">$(\mathbf r - \mathbf a_2)\times \mathbf d_2=0$</span>. Từ đó, ta có thể dễ dàng tìm tham số <span class="arithmatex">$t$</span>:</p>
 <div class="arithmatex">$$(\mathbf a_1 + t \cdot \mathbf d_1 - \mathbf a_2)\times \mathbf d_2=0 \quad\Rightarrow\quad t = \dfrac{(\mathbf a_2 - \mathbf a_1)\times\mathbf d_2}{\mathbf d_1\times \mathbf d_2}$$</div>
+<p><strong>Ghi chú bản dịch:</strong> Công thức giao điểm duy nhất bên trên cần mẫu số khác không. Nếu hai vector chỉ phương song song, hai đường thẳng có thể trùng nhau hoặc không có giao điểm.</p>
 <p>Hãy cài đặt hàm tìm giao điểm của hai đường thẳng.</p>
 <div class="highlight"><pre><span></span><code><span class="n">point2d</span><span class="w"> </span><span class="nf">intersect</span><span class="p">(</span><span class="n">point2d</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">point2d</span><span class="w"> </span><span class="n">d1</span><span class="p">,</span><span class="w"> </span><span class="n">point2d</span><span class="w"> </span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="n">point2d</span><span class="w"> </span><span class="n">d2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cross</span><span class="p">(</span><span class="n">a2</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">d2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">cross</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="w"> </span><span class="n">d2</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">d1</span><span class="p">;</span>
@@ -8335,6 +8341,7 @@ Với đường thẳng thứ hai, mọi điểm trên nó phải thỏa mãn <s
 Ví dụ, giả sử ta có ba mặt phẳng được xác định bởi các điểm ban đầu <span class="arithmatex">$\mathbf a_i$</span> và các hướng <span class="arithmatex">$\mathbf d_i$</span>, và muốn tìm giao điểm của chúng.
 Ta có thể nhận thấy rằng chỉ cần giải hệ phương trình:</p>
 <div class="arithmatex">$$\begin{cases}\mathbf r\cdot \mathbf n_1 = \mathbf a_1\cdot \mathbf n_1, \\ \mathbf r\cdot \mathbf n_2 = \mathbf a_2\cdot \mathbf n_2, \\ \mathbf r\cdot \mathbf n_3 = \mathbf a_3\cdot \mathbf n_3\end{cases}$$</div>
+<p><strong>Ghi chú bản dịch:</strong> Trong hệ trên, <span class="arithmatex">$\mathbf n_i$</span> là vector pháp tuyến của mặt phẳng đi qua <span class="arithmatex">$\mathbf a_i$</span>. Công thức phía dưới tìm giao điểm duy nhất khi định thức của ba vector pháp tuyến khác không.</p>
 <p>Thay vì tiếp tục tìm một cách giải hình học, ta có thể chuyển ngay sang cách giải đại số.
 Chẳng hạn, nếu đã cài đặt lớp điểm, ta có thể dễ dàng giải hệ này bằng quy tắc Cramer vì tích hỗn tạp chính là định thức của ma trận có các vector làm cột:</p>
 <div class="highlight"><pre><span></span><code><span class="n">point3d</span><span class="w"> </span><span class="nf">intersect</span><span class="p">(</span><span class="n">point3d</span><span class="w"> </span><span class="n">a1</span><span class="p">,</span><span class="w"> </span><span class="n">point3d</span><span class="w"> </span><span class="n">n1</span><span class="p">,</span><span class="w"> </span><span class="n">point3d</span><span class="w"> </span><span class="n">a2</span><span class="p">,</span><span class="w"> </span><span class="n">point3d</span><span class="w"> </span><span class="n">n2</span><span class="p">,</span><span class="w"> </span><span class="n">point3d</span><span class="w"> </span><span class="n">a3</span><span class="p">,</span><span class="w"> </span><span class="n">point3d</span><span class="w"> </span><span class="n">n3</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8351,7 +8358,7 @@ Chẳng hạn, nếu đã cài đặt lớp điểm, ta có thể dễ dàng gi�
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.34%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.66%)</li></ul>
 </ul>
                 
               </article>
@@ -8409,10 +8416,10 @@ Chẳng hạn, nếu đã cài đặt lớp điểm, ta có thể dễ dàng gi�
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.integrate", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["toc.integrate", "search.suggest", "content.code.copy"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u0110\u00e3 sao ch\u00e9p", "clipboard.copy": "Sao ch\u00e9p v\u00e0o b\u1ed9 nh\u1edb t\u1ea1m", "search.result.more.one": "1 t\u1eeb kh\u00e1c trong trang", "search.result.more.other": "# t\u1eeb kh\u00e1c trong trang", "search.result.none": "Kh\u00f4ng t\u00ecm th\u1ea5y t\u00e0i li\u1ec7u li\u00ean quan", "search.result.one": "1 t\u00e0i li\u1ec7u li\u00ean quan", "search.result.other": "# t\u00e0i li\u1ec7u li\u00ean quan", "search.result.placeholder": "Nh\u1eadp \u0111\u1ec3 b\u1eaft \u0111\u1ea7u t\u00ecm ki\u1ebfm", "search.result.term.missing": "Kh\u00f4ng", "select.version": "Ch\u1ecdn phi\u00ean b\u1ea3n"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
         <script src="../../javascript/config.js"></script>
       
