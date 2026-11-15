@@ -23,7 +23,7 @@ Mảng $d$ lưu độ dài đường đi ngắn nhất hiện tại, tức $d_i$
 Ban đầu, mọi phần tử của mảng đều bằng vô cực, ngoại trừ $d_{v_0} = 0$.
 Sau khi thuật toán kết thúc, mảng này lưu các khoảng cách ngắn nhất.
 
-Mảng $p$ lưu các đỉnh tiền nhiệm hiện tại, tức $p_i$ là đỉnh ngay trước $i$ trên đường đi ngắn nhất hiện tại từ $v_0$ đến $i$.
+Mảng $p$ lưu thông tin về đỉnh đứng ngay trước mỗi đỉnh trên đường đi, cụ thể $p_i$ là đỉnh ngay trước $i$ trên đường đi ngắn nhất hiện tại từ $v_0$ đến $i$.
 Giống như mảng $d$, mảng $p$ thay đổi trong quá trình thuật toán chạy và nhận giá trị cuối cùng khi thuật toán kết thúc.
 
 Ở mỗi bước, thuật toán duy trì ba tập đỉnh:
