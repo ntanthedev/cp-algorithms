@@ -165,6 +165,8 @@ Tất cả các ngoặc còn lại ($(2n - i - 1 - \text{ndepth})/2$ cặp) có 
 
 ## Tìm dãy thứ $k$ {data-toc-label="Finding the k-th sequence"}
 
+**Ghi chú bản dịch:** Hai đoạn mã bên dưới đánh số từ 1 và giả định thứ hạng đầu vào hợp lệ. Kiểu số nguyên có dấu trong bảng đếm và phép dịch bit có thể tràn khi số cặp ngoặc lớn. Khi áp dụng, cần dùng kiểu đủ rộng hoặc chặn từng số đếm tại thứ hạng cần tìm, kể cả khi nhân số cách chọn loại ngoặc.
+
 Gọi $n$ là số cặp ngoặc trong dãy.
 Ta cần tìm dãy ngoặc đúng thứ $k$ trong danh sách tất cả các dãy ngoặc đúng được sắp theo thứ tự từ điển với một $k$ cho trước.
 

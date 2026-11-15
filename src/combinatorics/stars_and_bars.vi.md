@@ -68,6 +68,8 @@ Sau khi đặt $x_i' := x_i - a_i$, ta nhận được phương trình biến đ
 
 $$(x_1' + a_i) + (x_2' + a_i) + \dots + (x_k' + a_k) = n$$
 
+**Ghi chú bản dịch:** Hai số hạng đầu trong phương trình của bản gốc dùng nhầm chỉ số. Đọc chúng lần lượt là $(x_1' + a_1)$ và $(x_2' + a_2)$, như phép biến đổi ở dòng tiếp theo.
+
 $$\Leftrightarrow ~ ~ x_1' + x_2' + \dots + x_k' = n - a_1 - a_2 - \dots - a_k$$
 
 với $x_i' \ge 0$.

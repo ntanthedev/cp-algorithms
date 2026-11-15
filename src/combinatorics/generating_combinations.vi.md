@@ -74,6 +74,8 @@ Tiếp theo, ta cần chỉ ra rằng mọi cặp mã kề nhau cũng khác nhau
 
 Điều này suy ra từ việc ta biết mask cuối cùng của nửa thứ nhất và mask đầu tiên của nửa thứ hai. Mask cuối cùng của nửa thứ nhất có dạng $1$, tiếp theo là $(N-K-1)$ bit $0$, rồi đến $K-1$ bit $1$. Mask đầu tiên của nửa thứ hai có dạng $0$, tiếp theo là $(N-K-2)$ bit $0$, rồi đến $K$ bit $1$. Vì vậy, khi so sánh hai mask này, ta thấy có đúng hai bit khác nhau.
 
+**Ghi chú bản dịch:** Trong chứng minh, $G(N)$ là cả dãy mã Gray $N$ bit. Với $1 < K < N$, hai mask đầy đủ ở điểm nối lần lượt là $01\,0^{N-K-1}1^{K-1}$ và $11\,0^{N-K}1^{K-2}$, trong đó số mũ là số lần lặp bit. Với $K=1$, chúng lần lượt có đúng một bit $1$ ở vị trí thứ hai và vị trí đầu. Khi $K=0$ hoặc $K=N$ chỉ có một tổ hợp, nên không có cặp mask kề phân biệt.
+
 Dưới đây là một cài đặt đơn giản bằng cách sinh toàn bộ $2^{n}$ tập con có thể có rồi chọn những tập con có kích thước
 $K$.
 
