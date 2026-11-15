@@ -11,7 +11,7 @@ translation:
 
 # Đặt quân tượng lên bàn cờ
 
-Hãy tìm số cách đặt $K$ quân tượng lên bàn cờ $N \times N$ sao cho không có hai quân nào ăn được nhau.
+Đếm cách đặt $K$ quân tượng lên bàn cờ $N \times N$ sao cho không có hai quân nào ăn được nhau.
 
 ## Thuật toán
 
