@@ -78,6 +78,8 @@ Hiển nhiên, trong trường hợp này, lịch tối ưu sắp xếp các cô
 - Trường hợp mũ: $f_i(t) = c_i \cdot e_{\alpha \cdot t} + d_i$, trong đó $c_i$ và $\alpha$ là các hằng số dương.
 - Trường hợp hàm giống nhau: $f_i(t) = \phi(t)$, trong đó $\phi$ là hàm đơn điệu tăng.
 
+Trong mọi trường hợp khác, phương pháp này không áp dụng được.
+
 Định lý được chứng minh với giả thiết các hàm phạt đủ trơn (tồn tại đạo hàm cấp ba).
 
 Trong cả ba trường hợp, ta áp dụng lập luận hoán đổi để tìm lịch tối ưu bằng cách sắp xếp, do đó độ phức tạp là $O(n \log n)$.
