@@ -34,7 +34,12 @@ jobs:
         run: scripts/install-mkdocs.sh
 
       - name: Validate Vietnamese translations
-        run: python scripts/check_vi_translations.py
+        env:
+          BASE_REF: ${{ github.event.before || 'HEAD^1' }}
+        run: python scripts/check_vi_translations.py --base-ref "$BASE_REF"
+
+      - name: Check Vietnamese source hashes
+        run: python scripts/check_vi_staleness.py
 
       - name: Build site
         env:

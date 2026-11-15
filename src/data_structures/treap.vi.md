@@ -4,9 +4,9 @@ tags:
 e_maxx_link: treap
 translation:
   source: data_structures/treap.md
-  source_commit: 0fd0ddaf4e924ef41dcd19da046489a55e216d7f
+  source_commit: 84d55134aef7eea909055d97e7c724c181b5998d
   status: draft
-  last_synced: 2026-09-29
+  last_synced: 2026-11-15
 ---
 
 # Treap (cây Cartesian)
@@ -437,3 +437,4 @@ void output (pitem t) {
 * [Codeforces - T-Shirts](https://codeforces.com/contest/702/problem/F)
 * [Codeforces - Wizards and Roads](https://codeforces.com/problemset/problem/167/D)
 * [Codeforces - Yaroslav and Points](https://codeforces.com/contest/295/problem/E)
+* [Codeforces - KiaKio and Energy Intervals](https://codeforces.com/contest/2268/problem/C)

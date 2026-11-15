@@ -4,9 +4,9 @@ tags:
 e_maxx_link: diofant_2_equation
 translation:
   source: algebra/linear-diophantine-equation.md
-  source_commit: 72a35898bc5ab07b2559cde952383c878b7787ae
+  source_commit: 1115312ec980b7c565fb99d5230620ab631aec09
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-11-15
 ---
 
 # Phương trình Diophantine tuyến tính
@@ -147,7 +147,7 @@ Ký hiệu giá trị nhỏ nhất này của $x$ là $l_{x1}$.
 
 Tương tự, ta có thể tìm giá trị lớn nhất của $x$ thỏa mãn $x \le max_x$. Ký hiệu giá trị này là $r_{x1}$.
 
-Tương tự, ta tìm giá trị nhỏ nhất của $y$ với $y \ge min_y$ và giá trị lớn nhất của $y$ với $y \le max_y$. Ký hiệu các giá trị $x$ tương ứng là $l_{x2}$ và $r_{x2}$.
+Tương tự, ta tìm giá trị nhỏ nhất của $y$ với $(y \ge min_y)$ và giá trị lớn nhất của $y$ với $(y \le max_y)$. Ký hiệu các giá trị $x$ tương ứng là $l_{x2}$ và $r_{x2}$.
 
 Nghiệm cuối cùng là tất cả các nghiệm có $x$ thuộc giao của $[l_{x1}, r_{x1}]$ và $[l_{x2}, r_{x2}]$. Ký hiệu giao này là $[l_x, r_x]$.
 
@@ -208,7 +208,7 @@ int find_all_solutions(int a, int b, int c, int minx, int maxx, int miny, int ma
 
 Khi đã có $l_x$ và $r_x$, việc liệt kê tất cả nghiệm cũng đơn giản. Chỉ cần duyệt $x = l_x + k \cdot \frac{b}{g}$ với mọi $k \ge 0$ cho đến khi $x = r_x$, rồi tìm các giá trị $y$ tương ứng từ phương trình $a x + b y = c$.
 
-## Tìm nghiệm có giá trị $x + y$ nhỏ nhất { data-toc-label='Find the solution with minimum value of <script type="math/tex">x + y</script>' }
+## Tìm nghiệm có giá trị $x + y$ nhỏ nhất
 
 Ở đây, $x$ và $y$ cũng cần có một số ràng buộc; nếu không, đáp án có thể tiến tới âm vô cùng.
 

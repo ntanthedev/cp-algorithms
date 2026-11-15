@@ -3,9 +3,9 @@ tags:
   - Original
 translation:
   source: algebra/factorization.md
-  source_commit: a951d4738b36cabe928b03992dd190d9db9ca3f0
+  source_commit: f8ccb97e5cc171535461aa5f77c168bcf2e9ebdc
   status: draft
-  last_synced: 2026-09-29
+  last_synced: 2026-11-15
 ---
 
 # Phân tích thừa số nguyên tố
@@ -162,7 +162,7 @@ Dù vậy, vẫn có nhiều cách tối ưu hướng tiếp cận này.
 Bằng cách xét các số chính phương $a^2$ modulo một số nhỏ cố định, ta có thể nhận ra một số giá trị $a$ không cần xét vì chúng không thể tạo ra một số chính phương $a^2 - n$.
 
 
-## Phương pháp Pollard $p - 1$ { data-toc-label="Pollard's <script type='math/tex'>p - 1</script> method" }
+## Phương pháp Pollard $p - 1$
 
 Một số $n$ thường có ít nhất một thừa số nguyên tố $p$ sao cho $p - 1$ là $\mathrm{B}$**-powersmooth** với $\mathrm{B}$ nhỏ. Một số nguyên $m$ được gọi là $\mathrm{B}$-powersmooth nếu mọi lũy thừa nguyên tố là ước của $m$ đều không vượt quá $\mathrm{B}$. Chính xác hơn, cho $\mathrm{B} \geqslant 1$ và số nguyên dương $m$. Giả sử phân tích thừa số nguyên tố của $m$ là $m = \prod {q_i}^{e_i}$, trong đó mỗi $q_i$ là số nguyên tố và $e_i \geqslant 1$. Khi đó $m$ là $\mathrm{B}$-powersmooth nếu với mọi $i$, ${q_i}^{e_i} \leqslant \mathrm{B}$.
 Ví dụ, phân tích thừa số nguyên tố của $4817191$ là $1303 \cdot 3697$.

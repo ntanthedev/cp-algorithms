@@ -13,7 +13,7 @@ Không bắt đầu dịch ngay sau khi chọn tên bài. Mỗi batch phải ho�
    - Ưu tiên đồng bộ bản dịch cũ trước khi dịch mới. Không đổi metadata hàng loạt để che phần chưa đồng bộ.
    - Chạy tuần tự/bảo trì chung dùng `agent/vi-work`, tối đa một PR. Khi người duy trì giao 2–3 phiên song song, dùng ba nhánh và phạm vi không giao nhau trong [START_HERE_VI.md](START_HERE_VI.md), tối đa một PR mỗi phiên và ba PR dịch tổng cộng.
    - Mỗi nhánh có một tác giả; các phiên song song không sửa nguồn EN, glossary, tooling hoặc cấu hình chung. Không dùng chung working tree và không coi PR ở phạm vi khác là công việc của mình.
-   - Sau khi PR merge, chỉ reset/di chuyển `agent/vi-work` về `master` mới nhất khi đã xác nhận branch không còn commit riêng chưa merge.
+   - Sau khi PR merge, chỉ fast-forward `agent/vi-work` về `origin/master` sau khi fetch và xác nhận tip của nhánh là ancestor của `origin/master`.
    - Không force-push hoặc reset `master`.
    - Stacked PR chỉ dùng khi có phụ thuộc kỹ thuật thực sự không thể tránh và phải giải thích lý do trước.
 2. Chọn phạm vi có thể review:

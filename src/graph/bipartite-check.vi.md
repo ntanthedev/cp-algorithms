@@ -4,9 +4,9 @@ tags:
 e_maxx_link: bipartite_checking
 translation:
   source: graph/bipartite-check.md
-  source_commit: a5af6c1846c9009af5d6d2851d90d1a48b9fd206
+  source_commit: 0854fc27a6a2143845231ec0221a19cab70043a2
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-11-15
 ---
 
 # Kiểm tra đồ thị hai phía
@@ -55,6 +55,7 @@ cout << (is_bipartite ? "YES" : "NO") << endl;
 ### Bài tập luyện tập:
 
 - [SPOJ - BUGLIFE](http://www.spoj.com/problems/BUGLIFE/)
+- [Codeforces - Beautiful Graph](https://codeforces.com/contest/1093/problem/D)
 - [Codeforces - Graph Without Long Directed Paths](https://codeforces.com/contest/1144/problem/F)
 - [Codeforces - String Coloring (easy version)](https://codeforces.com/contest/1296/problem/E1)
 - [CSES : Building Teams](https://cses.fi/problemset/task/1668)

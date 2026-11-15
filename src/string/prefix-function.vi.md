@@ -4,18 +4,33 @@ tags:
 e_maxx_link: prefix_function
 translation:
   source: string/prefix-function.md
-  source_commit: 94d3efc3e3f788f47aa1815e77e17c9ecb71fbd5
+  source_commit: e1d1cf0343c0573c45170bb4eab37b164c4895dd
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-11-15
 ---
 
 # Hàm tiền tố. Thuật toán Knuth–Morris–Pratt
 
+## Động cơ
+
+Giả sử ta muốn tìm mọi lần chuỗi không rỗng $s$ xuất hiện trong văn bản $t$.
+Bắt đầu ở vị trí $0$, ta so sánh $s[0]$ với $t[0]$, $s[1]$ với $t[1]$, rồi tiếp tục cho đến khi gặp một cặp ký tự khác nhau hoặc khớp toàn bộ $s$.
+Khi chuyển sang vị trí ứng viên kế tiếp, ta muốn tận dụng tối đa các phép so sánh đã làm.
+
+Giả sử vị trí ứng viên hiện tại là $i$ và ta đã khớp đến vị trí $j$, nên $t[i \dots j] = s[0 \dots j-i]$.
+Sau khi gặp một ký tự không khớp hoặc báo một lần khớp đầy đủ, một vị trí bắt đầu muộn hơn trong đoạn này chỉ còn khả thi nếu hậu tố chồng lấp của $t[i \dots j]$ là một tiền tố của $s$.
+Hậu tố dài nhất thỏa điều kiện và ngắn hơn cả đoạn cho ta vị trí bắt đầu sớm nhất chưa bị loại bởi các ký tự đã khớp. Nếu hậu tố rỗng, vị trí đó là $j+1$.
+Ở phép so sánh kế tiếp, ta so $t[j+1]$ với ký tự ngay sau tiền tố này trong $s$, bỏ qua phần đã khớp.
+Vì đoạn đã khớp trùng với một tiền tố của $s$, các phần chồng lấp khả dĩ chỉ phụ thuộc vào $s$ và độc lập với $t$.
+Hàm tiền tố lưu độ dài của phần chồng lấp dài nhất như vậy cho mỗi tiền tố của $s$.
+
+**Ghi chú bản dịch:** Nếu ký tự đầu tiên đã không khớp, ta chuyển sang vị trí bắt đầu kế tiếp. Khi đã tới cuối văn bản, không còn ký tự $t[j+1]$ để so sánh.
+
 ## Định nghĩa hàm tiền tố
 
 Cho một chuỗi $s$ có độ dài $n$.
-**Hàm tiền tố** của chuỗi này được định nghĩa là một mảng $\pi$ có độ dài $n$, trong đó $\pi[i]$ là độ dài của tiền tố thực sự dài nhất của chuỗi con $s[0 \dots i]$ đồng thời cũng là hậu tố của chính chuỗi con đó.
-Một tiền tố thực sự của một chuỗi là tiền tố không bằng toàn bộ chuỗi.
+**Hàm tiền tố** của chuỗi này là một mảng $\pi$ có độ dài $n$, trong đó $\pi[i]$ là độ dài của tiền tố dài nhất của $s$ khớp với một chuỗi con kết thúc tại vị trí $i$, ngoại trừ toàn bộ chuỗi con $s[0 \dots i]$.
+Đoạn khớp là một **tiền tố thực sự** của $s[0 \dots i]$ (một tiền tố ngắn hơn toàn bộ chuỗi con), đồng thời cũng là hậu tố của chuỗi con này.
 Theo định nghĩa, $\pi[0] = 0$.
 
 Về mặt toán học, định nghĩa của hàm tiền tố có thể được viết như sau:
@@ -135,20 +150,14 @@ Thuật toán vẫn cần lưu chính chuỗi và các giá trị hàm tiền t�
 
 ### Tìm một chuỗi con trong chuỗi. Thuật toán Knuth–Morris–Pratt
 
-Đây là ứng dụng kinh điển của hàm tiền tố.
-
-Cho một văn bản $t$ và một chuỗi $s$, ta muốn tìm và in ra vị trí của mọi lần chuỗi $s$ xuất hiện trong văn bản $t$.
-
-Để thuận tiện, gọi $n$ là độ dài chuỗi s và $m$ là độ dài văn bản $t$.
+Bây giờ ta dùng hàm tiền tố để giải bài toán tìm chuỗi con đã nêu ở phần động cơ.
+Đặt $n = |s|$ và $m = |t|$.
 
 Ta tạo chuỗi $s + \# + t$, trong đó $\#$ là ký tự phân cách không xuất hiện trong cả $s$ lẫn $t$.
 Hãy tính hàm tiền tố cho chuỗi này.
-Bây giờ xét ý nghĩa của các giá trị hàm tiền tố, ngoại trừ $n + 1$ phần tử đầu tiên (thuộc chuỗi $s$ và ký tự phân cách).
-Theo định nghĩa, giá trị $\pi[i]$ cho biết độ dài lớn nhất của một chuỗi con kết thúc tại vị trí $i$ và trùng với tiền tố.
-Trong trường hợp này, đó chính là khối dài nhất trùng với $s$ và kết thúc tại vị trí $i$.
-Độ dài này không thể lớn hơn $n$ do có ký tự phân cách.
-Nếu đạt $\pi[i] = n$, điều đó có nghĩa chuỗi $s$ xuất hiện đầy đủ tại đây, tức kết thúc ở vị trí $i$.
-Chỉ cần nhớ rằng các vị trí đang được đánh chỉ số trong chuỗi $s + \# + t$.
+Với một vị trí $i$ trong phần văn bản, ký tự phân cách bảo đảm $\pi[i] \le n$.
+Theo định nghĩa, $\pi[i] = n$ cho biết một lần xuất hiện đầy đủ của $s$ kết thúc tại đó.
+Các vị trí ở đây được đánh chỉ số trong chuỗi ghép $s + \# + t$.
 
 Vì vậy, nếu tại vị trí $i$ ta có $\pi[i] = n$, thì trong chuỗi $t$, chuỗi $s$ xuất hiện tại vị trí $i - (n + 1) - n + 1 = i - 2n$.
 

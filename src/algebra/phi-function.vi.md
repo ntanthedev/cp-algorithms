@@ -4,9 +4,9 @@ tags:
 e_maxx_link: euler_function
 translation:
   source: algebra/phi-function.md
-  source_commit: 8c6fb03460ee8509d86d43eaf359205164573df3
+  source_commit: 066c1499da3a3bf9b8f0efc6859a06e94a8c9719
   status: draft
-  last_synced: 2026-08-07
+  last_synced: 2026-11-15
 ---
 
 # Phi hàm Euler
@@ -76,7 +76,7 @@ int phi(int n) {
 }
 ```
 
-## Phi hàm Euler từ $1$ đến $n$ trong $O(n \log\log{n})$ { #etf_1_to_n data-toc-label="Euler totient function from 1 to n in <script type=\"math/tex\">O(n log log n)</script>" }
+## Phi hàm Euler từ $1$ đến $n$ trong $O(n \log\log{n})$ { #etf_1_to_n }
 
 Nếu cần tính hàm phi của mọi số từ $1$ đến $n$, việc phân tích thừa số riêng cho cả $n$ số là không hiệu quả.
 Ta có thể dùng cùng ý tưởng với [Sàng Eratosthenes](sieve-of-eratosthenes.md).
