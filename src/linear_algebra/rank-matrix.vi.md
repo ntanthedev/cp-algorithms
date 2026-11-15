@@ -27,6 +27,8 @@ Ngược lại, nếu trong bước thứ $i$ ta tìm được một hàng có p
 
 Thuật toán này chạy trong thời gian $\mathcal{O}(n^3)$.
 
+**Ghi chú bản dịch:** Trong mã dưới đây, `n` là số hàng và `m` là số cột. Với ma trận chữ nhật không rỗng, thời gian chạy phụ thuộc cả hai kích thước và có cận trên $O(nm\min(n,m))$. Khi ma trận vuông, cận này trở thành $O(n^3)$.
+
 ## Cài đặt
 
 ```{.cpp file=matrix-rank}
