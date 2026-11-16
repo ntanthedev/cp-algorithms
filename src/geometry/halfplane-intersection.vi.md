@@ -14,7 +14,7 @@ Trong bài này, ta xét bài toán tính giao của một tập nửa mặt ph�
 
 Bạn đọc rất nên nắm vững các đối tượng và phép toán hình học cơ bản như điểm, vector, giao của các đường thẳng. Ngoài ra, kiến thức về [bao lồi](../geometry/convex-hull.md) hoặc [kỹ thuật bao lồi (Convex Hull Trick)](../geometry/convex_hull_trick.md) có thể giúp hiểu bài tốt hơn, nhưng hoàn toàn không phải điều kiện tiên quyết.
 
-## Một số làm rõ và định nghĩa ban đầu
+## Quy ước và định nghĩa ban đầu
 
 Trong toàn bài, ta đưa ra một số giả thiết sau, trừ khi có chỉ định khác:
 
@@ -35,7 +35,7 @@ Có thể thấy vì sao cách này hoạt động: các đỉnh của đa giác
 
 ## Cách làm tăng dần - $O(N^2)$ {data-toc-label="Incremental approach - O(N^2)"}
 
-Một cách khá trực tiếp khác là xây dựng giao tăng dần, mỗi lần thêm một nửa mặt phẳng. Về cơ bản, cách này tương đương với việc cắt một đa giác lồi bằng một đường thẳng $N$ lần và loại các nửa mặt phẳng dư thừa sau mỗi bước. Ta có thể biểu diễn đa giác lồi bằng danh sách các đoạn thẳng. Để cắt nó bằng một nửa mặt phẳng, chỉ cần tìm giao điểm của các đoạn với đường thẳng biên của nửa mặt phẳng (chỉ có hai giao điểm nếu đường thẳng cắt đa giác theo cách thông thường), rồi thay mọi đoạn nằm giữa hai giao điểm bằng đoạn mới tương ứng với nửa mặt phẳng. Vì thao tác này có thể cài đặt trong thời gian tuyến tính, ta có thể bắt đầu với một hộp bao lớn rồi lần lượt cắt nó bằng từng nửa mặt phẳng, đạt tổng độ phức tạp thời gian $O(N^2)$.
+Một cách khá trực tiếp khác là xây dựng giao tăng dần, mỗi lần thêm một nửa mặt phẳng. Về cơ bản, cách này tương đương với việc cắt một đa giác lồi bằng một đường thẳng $N$ lần và loại các nửa mặt phẳng dư thừa sau mỗi bước. Ta có thể biểu diễn đa giác lồi bằng danh sách các đoạn thẳng. Để cắt nó bằng một nửa mặt phẳng, chỉ cần tìm giao điểm của các đoạn với đường thẳng biên của nửa mặt phẳng (chỉ có hai giao điểm nếu đường thẳng đi qua phần trong của đa giác), rồi thay mọi đoạn nằm giữa hai giao điểm bằng đoạn mới tương ứng với nửa mặt phẳng. Vì thao tác này có thể cài đặt trong thời gian tuyến tính, ta có thể bắt đầu với một hộp bao lớn rồi lần lượt cắt nó bằng từng nửa mặt phẳng, đạt tổng độ phức tạp thời gian $O(N^2)$.
 
 Đây là một bước tiến lớn, nhưng việc phải duyệt qua $O(N)$ nửa mặt phẳng ở mỗi bước có vẻ lãng phí. Tiếp theo, ta sẽ thấy một số nhận xét giúp tái sử dụng ý tưởng của phương pháp tăng dần để tạo thuật toán $O(N \log N)$.
 
@@ -252,7 +252,7 @@ Những bài toán kiểu “xác định xem một số đoạn thẳng có nh�
 Sau đây là một bài toán liên quan và thú vị hơn, được Artem Vasilyev trình bày trong một [bài giảng tại Brazilian ICPC Summer School](https://youtu.be/WKyZSitpm6M?t=6463):
 Cho tập $p$ gồm các điểm $p_1, p_2\ \dots \ p_n$ trên mặt phẳng, xác định có điểm $q$ nào để ta đứng tại đó và nhìn thấy tất cả điểm của $p$ từ trái sang phải theo thứ tự chỉ số tăng dần hay không.
 
-Ta giải bằng nhận xét: nhìn thấy điểm $p_i$ ở bên trái $p_j$ tương đương với nhìn thấy phía bên phải của đoạn thẳng từ $p_i$ đến $p_j$, hoặc tương đương là phía bên trái của đoạn từ $p_j$ đến $p_i$. Do đó chỉ cần tạo một nửa mặt phẳng cho mỗi đoạn $p_i p_{i+1}$ hoặc $p_{i+1} p_i$ tùy hướng chọn, rồi kiểm tra giao của toàn bộ tập có rỗng hay không.
+Ta giải bằng nhận xét: nhìn thấy điểm $p_i$ ở bên trái $p_j$ tương đương với việc điểm quan sát nằm bên phải đường thẳng có hướng từ $p_i$ đến $p_j$, hoặc tương đương là bên trái đường thẳng có hướng từ $p_j$ đến $p_i$. Do đó chỉ cần tạo một nửa mặt phẳng cho mỗi đoạn $p_i p_{i+1}$ hoặc $p_{i+1} p_i$ tùy hướng chọn, rồi kiểm tra giao của toàn bộ tập có rỗng hay không.
 
 ### Giao nửa mặt phẳng kết hợp tìm kiếm nhị phân
 
