@@ -179,7 +179,7 @@ Hàm `intersect ()` kiểm tra hai đoạn có giao nhau hay không bằng **thu
 
 Hàng đợi các đoạn là biến toàn cục `s`, một `set<event>`. Các iterator xác định vị trí của mỗi đoạn trong hàng đợi (để thuận tiện khi xóa) được lưu trong mảng toàn cục `where`.
 
-**Ghi chú bản dịch:** Bài gốc ghi kiểu của `s` là `set<event>`, nhưng theo khai báo trong code, kiểu đúng là `set<seg>`.
+**Ghi chú của người dịch:** Kiểu hàng đợi được mô tả ở trên không khớp với code: phần tử của nó là đoạn thẳng, không phải sự kiện.
 
 Hai hàm phụ `prev()` và `next()` trả về iterator tới phần tử trước và sau (hoặc `end()` nếu không tồn tại).
 
