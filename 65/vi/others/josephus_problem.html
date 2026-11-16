@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#josephus-problem" class="md-skip">
+        <a href="#bai-toan-josephus" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7808,10 +7808,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#statement" class="md-nav__link">
+  <a href="#e-bai" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Statement
+        Đề bài
       
     </span>
   </a>
@@ -7819,10 +7819,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeling-a-on-solution" class="md-nav__link">
+  <a href="#xay-dung-loi-giai-on" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeling a $O(n)$ solution
+        Xây dựng lời giải $O(n)$
       
     </span>
   </a>
@@ -7830,10 +7830,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7841,10 +7841,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#modeling-a-ok-log-n-solution" class="md-nav__link">
+  <a href="#xay-dung-loi-giai-ok-log-n" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Modeling a $O(k \log n)$ solution
+        Xây dựng lời giải $O(k \log n)$
       
     </span>
   </a>
@@ -7852,10 +7852,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#analytical-solution-for-k-2" class="md-nav__link">
+  <a href="#loi-giai-giai-tich-cho-k-2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Analytical solution for $k = 2$
+        Lời giải giải tích cho $k = 2$
       
     </span>
   </a>
@@ -7863,10 +7863,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#analytical-solution-for-k-2_1" class="md-nav__link">
+  <a href="#loi-giai-giai-tich-cho-k-2_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Analytical solution for $k &gt; 2$
+        Lời giải giải tích cho $k &gt; 2$
       
     </span>
   </a>
@@ -7983,13 +7983,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/others/josephus_problem.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/others/josephus_problem.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/others/josephus_problem.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/others/josephus_problem.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -8000,26 +8000,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8055,21 +8035,14 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="josephus-problem">Josephus Problem<a class="headerlink" href="#josephus-problem" title="Permanent link">&para;</a></h1>
-<h2 id="statement">Statement<a class="headerlink" href="#statement" title="Permanent link">&para;</a></h2>
-<p>We are given the natural numbers <span class="arithmatex">$n$</span> and <span class="arithmatex">$k$</span>.
-All natural numbers from <span class="arithmatex">$1$</span> to <span class="arithmatex">$n$</span> are written in a circle. 
-First, count the <span class="arithmatex">$k$</span>-th number starting from the first one and delete it.
-Then <span class="arithmatex">$k$</span> numbers are counted starting from the next one and the <span class="arithmatex">$k$</span>-th one is removed again, and so on.
-The process stops when one number remains.
-It is required to find the last number.</p>
-<p>This task was set by <strong>Flavius Josephus</strong> in the 1st century (though in a somewhat narrower formulation: for <span class="arithmatex">$k = 2$</span>).</p>
-<p>This problem can be solved by modeling the procedure.
-Brute force modeling will work <span class="arithmatex">$O(n^{2})$</span>. Using a <a href="../data_structures/segment_tree.html">Segment Tree</a>, we can improve it to <span class="arithmatex">$O(n \log n)$</span>.
-We want something better though.</p>
-<h2 id="modeling-a-on-solution">Modeling a <span class="arithmatex">$O(n)$</span> solution<a class="headerlink" href="#modeling-a-on-solution" title="Permanent link">&para;</a></h2>
-<p>We will try to find a pattern expressing the answer for the problem <span class="arithmatex">$J_{n, k}$</span> through the solution of the previous problems.</p>
-<p>Using brute force modeling we can construct a table of values, for example, the following:</p>
+<h1 id="bai-toan-josephus">Bài toán Josephus<a class="headerlink" href="#bai-toan-josephus" title="Permanent link">&para;</a></h1>
+<h2 id="e-bai">Đề bài<a class="headerlink" href="#e-bai" title="Permanent link">&para;</a></h2>
+<p>Cho hai số tự nhiên <span class="arithmatex">$n$</span> và <span class="arithmatex">$k$</span>. Viết các số tự nhiên từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span> thành một vòng tròn. Trước tiên, đếm từ số đầu tiên và xóa số thứ <span class="arithmatex">$k$</span>. Sau đó tiếp tục đếm <span class="arithmatex">$k$</span> số từ số kế tiếp rồi lại xóa số thứ <span class="arithmatex">$k$</span>, cứ thế tiếp tục. Quá trình dừng khi chỉ còn một số. Hãy tìm số cuối cùng đó.</p>
+<p>Bài toán do <strong>Flavius Josephus</strong> đặt ra vào thế kỷ thứ nhất, dù dưới dạng hẹp hơn một chút: <span class="arithmatex">$k = 2$</span>.</p>
+<p>Ta có thể giải bằng cách mô phỏng quá trình. Mô phỏng trực tiếp mất <span class="arithmatex">$O(n^{2})$</span>. Dùng <a href="../data_structures/segment_tree.html">cây đoạn</a>, ta có thể cải thiện xuống <span class="arithmatex">$O(n \log n)$</span>. Tuy nhiên, ta muốn một cách tốt hơn.</p>
+<h2 id="xay-dung-loi-giai-on">Xây dựng lời giải <span class="arithmatex">$O(n)$</span><a class="headerlink" href="#xay-dung-loi-giai-on" title="Permanent link">&para;</a></h2>
+<p>Ta thử tìm quy luật biểu diễn đáp án của bài toán <span class="arithmatex">$J_{n, k}$</span> thông qua lời giải của các bài toán trước.</p>
+<p>Bằng mô phỏng trực tiếp, ta có thể lập bảng giá trị, chẳng hạn:</p>
 <div class="arithmatex">$$\begin{array}{ccccccccccc}
 n\setminus k &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &amp; 9 &amp; 10 \\
 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
@@ -8083,19 +8056,19 @@ n\setminus k &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &am
 9 &amp; 9 &amp; 3 &amp; 1 &amp; 1 &amp; 8 &amp; 7 &amp; 2 &amp; 3 &amp; 8 &amp; 8 \\
 10 &amp; 10 &amp; 5 &amp; 4 &amp; 5 &amp; 3 &amp; 3 &amp; 9 &amp; 1 &amp; 7 &amp; 8 \\
 \end{array}$$</div>
-<p>And here we can clearly see the following <strong>pattern</strong>:</p>
+<p>Từ đó ta thấy rõ <strong>quy luật</strong> sau:</p>
 <div class="arithmatex">$$J_{n,k} = \left( (J_{n-1,k} + k - 1) \bmod n \right) + 1$$</div>
 <div class="arithmatex">$$J_{1,k} = 1$$</div>
-<p>Here, 1-indexing makes for a somewhat messy formula; if you instead number the positions from 0, you get a very elegant formula:</p>
+<p>Việc đánh số từ 1 khiến công thức hơi rườm rà; nếu đánh số từ 0, ta thu được công thức gọn hơn:</p>
 <div class="arithmatex">$$J_{n,k} = (J_{n-1,k} + k) \bmod n$$</div>
-<p>So, we found a solution to the problem of Josephus, working in <span class="arithmatex">$O(n)$</span> operations.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Simple <strong>recursive implementation</strong> (in 1-indexing)</p>
+<p>Vậy ta đã tìm được lời giải bài toán Josephus với <span class="arithmatex">$O(n)$</span> phép toán.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p><strong>Cài đặt đệ quy</strong> đơn giản (đánh số từ 1)</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">josephus</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="p">(</span><span class="n">josephus</span><span class="p">(</span><span class="n">n</span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Non-recursive form</strong> :</p>
+<p><strong>Dạng không đệ quy</strong>:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">josephus</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
@@ -8103,21 +8076,12 @@ n\setminus k &amp; 1 &amp; 2 &amp; 3 &amp; 4 &amp; 5 &amp; 6 &amp; 7 &amp; 8 &am
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>This formula can also be found analytically.
-Again here we assume 0-indexing.
-After we delete the first number, we have <span class="arithmatex">$n-1$</span> numbers left.
-When we repeat the procedure, we will start with the number that had originally the index <span class="arithmatex">$k \bmod n$</span>.
-<span class="arithmatex">$J_{n-1, k}$</span> would be the answer for the remaining circle, if we start counting at <span class="arithmatex">$0$</span>, but because we actually start with <span class="arithmatex">$k$</span> we have <span class="arithmatex">$J_{n, k} = (J_{n-1,k} + k) \ \bmod n$</span>.</p>
-<h2 id="modeling-a-ok-log-n-solution">Modeling a <span class="arithmatex">$O(k \log n)$</span> solution<a class="headerlink" href="#modeling-a-ok-log-n-solution" title="Permanent link">&para;</a></h2>
-<p>For relatively small <span class="arithmatex">$k$</span> we can come up with a better solution than the above recursive solution in <span class="arithmatex">$O(n)$</span>.
-If <span class="arithmatex">$k$</span> is a lot smaller than <span class="arithmatex">$n$</span>, then we can delete multiple numbers (<span class="arithmatex">$\lfloor \frac{n}{k} \rfloor$</span>) in one run without looping over.
-Afterwards we have <span class="arithmatex">$n - \lfloor \frac{n}{k} \rfloor$</span> numbers left, and we start with the <span class="arithmatex">$(\lfloor \frac{n}{k} \rfloor \cdot k)$</span>-th number.
-So we have to shift by that many.
-We can notice that <span class="arithmatex">$\lfloor \frac{n}{k} \rfloor \cdot k$</span> is simply <span class="arithmatex">$-n \bmod k$</span>.
-And because we removed every <span class="arithmatex">$k$</span>-th number, we have to add the number of numbers that we removed before the result index.
-Which we can compute by dividing the result index by <span class="arithmatex">$k - 1$</span>.</p>
-<p>Also, we need to handle the case when <span class="arithmatex">$n$</span> becomes less than <span class="arithmatex">$k$</span>. In this case, the above optimization would cause an infinite loop.</p>
-<p><strong>Implementation</strong> (for convenience in 0-indexing):</p>
+<p>Ta cũng có thể tìm công thức này bằng phân tích. Ở đây tiếp tục giả sử các chỉ số bắt đầu từ 0. Sau khi xóa số đầu tiên, còn lại <span class="arithmatex">$n-1$</span> số. Khi lặp lại quá trình, ta sẽ bắt đầu từ số ban đầu có chỉ số <span class="arithmatex">$k \bmod n$</span>. <span class="arithmatex">$J_{n-1, k}$</span> là đáp án trên vòng tròn còn lại nếu bắt đầu đếm từ <span class="arithmatex">$0$</span>, nhưng thực tế ta bắt đầu từ <span class="arithmatex">$k$</span>, nên ta có <span class="arithmatex">$J_{n, k} = (J_{n-1,k} + k) \ \bmod n$</span>.</p>
+<h2 id="xay-dung-loi-giai-ok-log-n">Xây dựng lời giải <span class="arithmatex">$O(k \log n)$</span><a class="headerlink" href="#xay-dung-loi-giai-ok-log-n" title="Permanent link">&para;</a></h2>
+<p>Với <span class="arithmatex">$k$</span> tương đối nhỏ, ta có thể tìm lời giải tốt hơn lời giải đệ quy <span class="arithmatex">$O(n)$</span> ở trên. Nếu <span class="arithmatex">$k$</span> nhỏ hơn nhiều so với <span class="arithmatex">$n$</span>, ta có thể xóa nhiều số (<span class="arithmatex">$\lfloor \frac{n}{k} \rfloor$</span>) trong một lượt mà không cần duyệt từng số. Sau đó còn lại <span class="arithmatex">$n - \lfloor \frac{n}{k} \rfloor$</span> số và ta bắt đầu từ số thứ <span class="arithmatex">$(\lfloor \frac{n}{k} \rfloor \cdot k)$</span>. Do đó ta cần dịch đi tương ứng. Ta có thể nhận thấy <span class="arithmatex">$\lfloor \frac{n}{k} \rfloor \cdot k$</span> chính là <span class="arithmatex">$-n \bmod k$</span>. Vì đã xóa mỗi số thứ <span class="arithmatex">$k$</span>, ta phải cộng thêm số lượng các số đã xóa trước chỉ số kết quả; số này tính được bằng cách chia chỉ số kết quả cho <span class="arithmatex">$k - 1$</span>.</p>
+<p><strong>Ghi chú của người dịch:</strong> Khẳng định hai đại lượng ở trên bằng nhau không đúng nói chung. Chẳng hạn, với mười số và bước nhảy ba, đại lượng thứ nhất bằng chín, còn phần dư không âm của âm mười theo mô-đun ba bằng hai. Cách dịch chỉ số trong mã cần được xét riêng.</p>
+<p>Ta cũng cần xử lý trường hợp <span class="arithmatex">$n$</span> nhỏ hơn <span class="arithmatex">$k$</span>. Khi đó phép tối ưu trên sẽ gây vòng lặp vô hạn.</p>
+<p><strong>Cài đặt</strong> (đánh số từ 0 cho thuận tiện):</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">josephus</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">k</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
@@ -8135,28 +8099,28 @@ Which we can compute by dividing the result index by <span class="arithmatex">$k
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">res</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Let us estimate the <strong>complexity</strong> of this algorithm. Immediately note that the case <span class="arithmatex">$n &lt; k$</span> is analyzed by the old solution, which will work in this case for <span class="arithmatex">$O(k)$</span>. Now consider the algorithm itself. In fact, after every iteration, instead of <span class="arithmatex">$n$</span> numbers, we are left with <span class="arithmatex">$n \left( 1 - \frac{1}{k} \right)$</span> numbers, so the total number of iterations <span class="arithmatex">$x$</span> of the algorithm can be found roughly from the following equation:</p>
+<p>Ta hãy ước lượng <strong>độ phức tạp</strong> của thuật toán. Trước hết, trường hợp <span class="arithmatex">$n &lt; k$</span> được xử lý bằng lời giải cũ, mất <span class="arithmatex">$O(k)$</span>. Giờ xét phần thuật toán còn lại. Sau mỗi vòng lặp, thay vì <span class="arithmatex">$n$</span> số, ta còn <span class="arithmatex">$n \left( 1 - \frac{1}{k} \right)$</span> số, do đó số vòng lặp <span class="arithmatex">$x$</span> có thể được ước lượng từ phương trình sau:</p>
 <div class="arithmatex">$$ n \left(1 - \frac{1}{k} \right) ^ x = 1, $$</div>
-<p>on taking logarithm on both sides, we obtain:</p>
+<p>Lấy logarit hai vế, ta được:</p>
 <div class="arithmatex">$$\ln n + x \ln \left(1 - \frac{1}{k} \right) = 0,$$ 
 $$x = - \frac{\ln n}{\ln \left(1 - \frac{1}{k} \right)},$$</div>
-<p>using the decomposition of the logarithm into Taylor series, we obtain an approximate estimate:</p>
+<p>Khai triển logarit thành chuỗi Taylor, ta được ước lượng gần đúng:</p>
 <div class="arithmatex">$$x \approx k \ln n$$</div>
-<p>Thus, the complexity of the algorithm is actually <span class="arithmatex">$O (k \log n)$</span>.</p>
-<h2 id="analytical-solution-for-k-2">Analytical solution for <span class="arithmatex">$k = 2$</span><a class="headerlink" href="#analytical-solution-for-k-2" title="Permanent link">&para;</a></h2>
-<p>In this particular case (in which this task was set by Josephus Flavius) the problem is solved much easier.</p>
-<p>In the case of even <span class="arithmatex">$n$</span> we get that all even numbers will be crossed out, and then there will be a problem remaining for <span class="arithmatex">$\frac{n}{2}$</span>, then the answer for <span class="arithmatex">$n$</span> will be obtained from the answer for <span class="arithmatex">$\frac{n}{2}$</span> by multiplying by two and subtracting one (by shifting positions):</p>
+<p>Do đó, độ phức tạp của thuật toán là <span class="arithmatex">$O (k \log n)$</span>.</p>
+<h2 id="loi-giai-giai-tich-cho-k-2">Lời giải giải tích cho <span class="arithmatex">$k = 2$</span><a class="headerlink" href="#loi-giai-giai-tich-cho-k-2" title="Permanent link">&para;</a></h2>
+<p>Trong trường hợp riêng này, cũng là dạng Josephus Flavius nêu ra, bài toán được giải dễ hơn nhiều.</p>
+<p>Với <span class="arithmatex">$n$</span> chẵn, tất cả các số chẵn bị xóa và còn lại bài toán kích thước <span class="arithmatex">$\frac{n}{2}$</span>. Khi đó, đáp án cho <span class="arithmatex">$n$</span> được tính từ đáp án cho <span class="arithmatex">$\frac{n}{2}$</span> bằng cách nhân hai rồi trừ một để dịch vị trí.</p>
 <div class="arithmatex">$$ J_{2n, 2} = 2 J_{n, 2} - 1 $$</div>
-<p>Similarly, in the case of an odd <span class="arithmatex">$n$</span>, all even numbers will be crossed out, then the first number, and the problem for <span class="arithmatex">$\frac{n-1}{2}$</span> will remain, and taking into account the shift of positions, we obtain the second formula:</p>
+<p>Tương tự, với <span class="arithmatex">$n$</span> lẻ, tất cả số chẵn rồi số đầu tiên bị xóa, để lại bài toán kích thước <span class="arithmatex">$\frac{n-1}{2}$</span>; tính đến việc dịch vị trí, ta có công thức thứ hai:</p>
 <div class="arithmatex">$$J_{2n+1,2} = 2 J_{n, 2} + 1 $$</div>
-<p>We can use this recurrent dependency directly in our implementation. This pattern can be translated into another form: <span class="arithmatex">$J_{n, 2}$</span> represents a sequence of all odd numbers, "restarting" from one whenever <span class="arithmatex">$n$</span> turns out to be a power of two. This can be written as a single formula:</p>
+<p>Ta có thể dùng trực tiếp hệ thức truy hồi này khi cài đặt. Quy luật còn có thể được viết dưới dạng khác: <span class="arithmatex">$J_{n, 2}$</span> biểu diễn dãy các số lẻ, bắt đầu lại từ một mỗi khi <span class="arithmatex">$n$</span> là lũy thừa của hai. Ta viết thành công thức duy nhất:</p>
 <div class="arithmatex">$$J_{n, 2} = 1 + 2 \left(n-2^{\lfloor \log_2 n \rfloor} \right)$$</div>
-<h2 id="analytical-solution-for-k-2_1">Analytical solution for <span class="arithmatex">$k &gt; 2$</span><a class="headerlink" href="#analytical-solution-for-k-2_1" title="Permanent link">&para;</a></h2>
-<p>Despite the simple form of the problem and a large number of articles on this and related problems, a simple analytical representation of the solution of Josephus' problem has not yet been found. For small <span class="arithmatex">$k$</span>, some formulas are derived, but apparently they are all difficult to apply in practice (for example, see Halbeisen, Hungerbuhler "The Josephus Problem" and Odlyzko, Wilf "Functional iteration and the Josephus problem").</p>
+<h2 id="loi-giai-giai-tich-cho-k-2_1">Lời giải giải tích cho <span class="arithmatex">$k &gt; 2$</span><a class="headerlink" href="#loi-giai-giai-tich-cho-k-2_1" title="Permanent link">&para;</a></h2>
+<p>Dù bài toán có dạng đơn giản và có nhiều bài viết về nó cùng các bài toán liên quan, vẫn chưa tìm được biểu diễn giải tích đơn giản cho lời giải Josephus. Với các giá trị nhỏ của <span class="arithmatex">$k$</span>, một số công thức đã được suy ra nhưng dường như khó áp dụng trong thực tế (chẳng hạn, xem Halbeisen, Hungerbuhler "The Josephus Problem" và Odlyzko, Wilf "Functional iteration and the Josephus problem").</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Amandeep Singh" data-bi-name="contributorprofile" target="_blank">Amandeep Singh</a> (63.76%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (16.78%)</li><li><a href="#" title="Abhijeet Krishnan" data-bi-name="contributorprofile" target="_blank">Abhijeet Krishnan</a> (12.75%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (4.7%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (1.34%)</li><li><a href="#" title="Dikson Santos" data-bi-name="contributorprofile" target="_blank">Dikson Santos</a> (0.67%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>
