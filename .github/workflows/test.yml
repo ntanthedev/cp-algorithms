@@ -32,7 +32,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Check preinstalled toolchain
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check toolchain versions
         run: |
           python3 --version
           g++ --version
