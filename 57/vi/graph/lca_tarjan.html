@@ -8004,8 +8004,8 @@ Cụ thể, truy vấn <span class="arithmatex">$(u, v)$</span> được trả l
 <p>Giả sử hiện ta ở đỉnh <span class="arithmatex">$v$</span>, đã thực hiện các lời gọi DFS đệ quy và cũng đã thăm đỉnh còn lại <span class="arithmatex">$u$</span> trong truy vấn <span class="arithmatex">$(u, v)$</span>.
 Hãy xét cách tìm LCA của hai đỉnh này.</p>
 <p>Lưu ý rằng <span class="arithmatex">$\text{LCA}(u, v)$</span> là đỉnh <span class="arithmatex">$v$</span> hoặc một tổ tiên của nó.
-Vì vậy cần tìm đỉnh thấp nhất trong các tổ tiên của <span class="arithmatex">$v$</span> (kể cả <span class="arithmatex">$v$</span>) mà <span class="arithmatex">$u$</span> là hậu duệ của đỉnh đó. 
-Với <span class="arithmatex">$v$</span> cố định, các đỉnh đã thăm của cây được chia thành các tập rời nhau. 
+Vì vậy cần tìm đỉnh thấp nhất trong các tổ tiên của <span class="arithmatex">$v$</span> (kể cả <span class="arithmatex">$v$</span>) mà <span class="arithmatex">$u$</span> là hậu duệ của đỉnh đó.
+Với <span class="arithmatex">$v$</span> cố định, các đỉnh đã thăm của cây được chia thành các tập rời nhau.
 Mỗi tổ tiên <span class="arithmatex">$p$</span> của <span class="arithmatex">$v$</span> có một tập riêng chứa chính nó và mọi cây con gốc tại những con của nó không nằm trên đường từ <span class="arithmatex">$v$</span> đến gốc cây.
 Tập chứa đỉnh <span class="arithmatex">$u$</span> xác định <span class="arithmatex">$\text{LCA}(u, v)$</span>:
 LCA là đại diện của tập, cụ thể là đỉnh nằm trên đường từ <span class="arithmatex">$v$</span> đến gốc cây.</p>
@@ -8021,7 +8021,7 @@ Có thể thực hiện bằng hàm <code>union_sets</code> và phép gán <code
 <p>Cuối cùng, sau khi xử lý mọi đỉnh con, ta có thể trả lời mọi truy vấn dạng <span class="arithmatex">$(u, v)$</span> mà <span class="arithmatex">$u$</span> đã được thăm.
 Đáp án, tức LCA của <span class="arithmatex">$u$</span> và <span class="arithmatex">$v$</span>, là đỉnh <code>ancestor[find_set(u)]</code>.
 Dễ thấy một truy vấn chỉ được trả lời một lần.</p>
-<p>Hãy xác định độ phức tạp thời gian của thuật toán. 
+<p>Hãy xác định độ phức tạp thời gian của thuật toán.
 Trước hết, DFS tốn <span class="arithmatex">$O(n)$</span>.
 Tiếp theo, <code>union_sets</code> được gọi <span class="arithmatex">$n$</span> lần, cũng mất <span class="arithmatex">$O(n)$</span>.
 Cuối cùng, các lời gọi <code>find_set</code> cho mỗi truy vấn mất <span class="arithmatex">$O(m)$</span>.

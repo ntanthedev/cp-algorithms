@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#maximum-flow-push-relabel-method-improved" class="md-skip">
+        <a href="#luong-cuc-ai-cai-tien-phuong-phap-ay-nang" class="md-skip">
           Bỏ qua
         </a>
       
@@ -6696,10 +6696,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
+  <a href="#mo-ta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Description
+        Mô tả
       
     </span>
   </a>
@@ -6707,10 +6707,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/push-relabel-faster.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/push-relabel-faster.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/push-relabel-faster.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/push-relabel-faster.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,14 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -7999,17 +7991,17 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="maximum-flow-push-relabel-method-improved">Maximum flow - Push-relabel method improved<a class="headerlink" href="#maximum-flow-push-relabel-method-improved" title="Permanent link">&para;</a></h1>
-<p>We will modify the <a href="push-relabel.html">push-relabel method</a> to achieve a better runtime.</p>
-<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>The modification is extremely simple:
-In the previous article we chosen a vertex with excess without any particular rule.
-But it turns out, that if we always choose the vertices with the <strong>greatest height</strong>, and apply push and relabel operations on them, then the complexity will become better.
-Moreover, to select the vertices with the greatest height we actually don't need any data structures, we simply store the vertices with the greatest height in a list, and recalculate the list once all of them are processed (then vertices with already lower height will be added to the list), or whenever a new vertex with excess and a greater height appears (after relabeling a vertex).</p>
-<p>Despite the simplicity, this modification reduces the complexity by a lot.
-To be precise, the complexity of the resulting algorithm is <span class="arithmatex">$O(V E + V^2 \sqrt{E})$</span>, which in the worst case is <span class="arithmatex">$O(V^3)$</span>.</p>
-<p>This modification was proposed by Cheriyan and Maheshwari in 1989.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<h1 id="luong-cuc-ai-cai-tien-phuong-phap-ay-nang">Luồng cực đại - Cải tiến phương pháp đẩy - nâng<a class="headerlink" href="#luong-cuc-ai-cai-tien-phuong-phap-ay-nang" title="Permanent link">&para;</a></h1>
+<p>Ta sẽ cải tiến <a href="push-relabel.html">phương pháp đẩy - nâng</a> để đạt thời gian chạy tốt hơn.</p>
+<h2 id="mo-ta">Mô tả<a class="headerlink" href="#mo-ta" title="Permanent link">&para;</a></h2>
+<p>Cách cải tiến rất đơn giản:
+Trong bài trước, ta chọn một đỉnh có lượng dư mà không theo quy tắc cụ thể nào.
+Tuy nhiên, nếu luôn chọn các đỉnh có <strong>độ cao lớn nhất</strong> và thực hiện các phép đẩy và nâng trên chúng thì độ phức tạp sẽ tốt hơn.
+Hơn nữa, để chọn các đỉnh có độ cao lớn nhất, thực ra ta không cần cấu trúc dữ liệu nào: chỉ cần lưu chúng vào một danh sách và tính lại danh sách khi đã xử lý hết các đỉnh trong đó (khi ấy những đỉnh vốn có độ cao thấp hơn sẽ được thêm vào danh sách), hoặc khi xuất hiện một đỉnh có lượng dư và độ cao lớn hơn (sau khi nâng một đỉnh).</p>
+<p>Dù đơn giản, cải tiến này làm giảm đáng kể độ phức tạp.
+Cụ thể, độ phức tạp của thuật toán thu được là <span class="arithmatex">$O(V E + V^2 \sqrt{E})$</span>, trong trường hợp xấu nhất là <span class="arithmatex">$O(V^3)$</span>.</p>
+<p>Cải tiến này do Cheriyan và Maheshwari đề xuất năm 1989.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">inf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000000000</span><span class="p">;</span>
 
 <span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
@@ -8084,7 +8076,7 @@ To be precise, the complexity of the resulting algorithm is <span class="arithma
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (92.71%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (6.25%)</li><li><a href="#" title="algorithm-apprentice" data-bi-name="contributorprofile" target="_blank">algorithm-apprentice</a> (1.04%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>
