@@ -179,6 +179,8 @@ Hàm `intersect ()` kiểm tra hai đoạn có giao nhau hay không bằng **thu
 
 Hàng đợi các đoạn là biến toàn cục `s`, một `set<event>`. Các iterator xác định vị trí của mỗi đoạn trong hàng đợi (để thuận tiện khi xóa) được lưu trong mảng toàn cục `where`.
 
+**Ghi chú bản dịch:** Bài gốc ghi kiểu của `s` là `set<event>`, nhưng theo khai báo trong code, kiểu đúng là `set<seg>`.
+
 Hai hàm phụ `prev()` và `next()` trả về iterator tới phần tử trước và sau (hoặc `end()` nếu không tồn tại).
 
 Hằng số `EPS` biểu thị sai số khi so sánh hai số thực (chủ yếu được dùng khi kiểm tra giao nhau giữa hai đoạn).
