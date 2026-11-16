@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lowest-common-ancestor-osqrtn-and-olog-n-with-on-preprocessing" class="md-skip">
+        <a href="#to-tien-chung-gan-nhat-osqrtn-va-olog-n-voi-tien-xu-ly-on" class="md-skip">
           Bỏ qua
         </a>
       
@@ -6445,10 +6445,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-idea-of-the-algorithm" class="md-nav__link">
+  <a href="#y-tuong-thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The Idea of the Algorithm
+        Ý tưởng thuật toán
       
     </span>
   </a>
@@ -6456,10 +6456,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -6467,10 +6467,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/lca.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/lca.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/lca.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/lca.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,46 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8042,29 +8002,29 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="lowest-common-ancestor-osqrtn-and-olog-n-with-on-preprocessing">Lowest Common Ancestor - <span class="arithmatex">$O(\sqrt{N})$</span> and <span class="arithmatex">$O(\log N)$</span> with <span class="arithmatex">$O(N)$</span> preprocessing<a class="headerlink" href="#lowest-common-ancestor-osqrtn-and-olog-n-with-on-preprocessing" title="Permanent link">&para;</a></h1>
-<p>Given a tree <span class="arithmatex">$G$</span>. Given queries of the form <span class="arithmatex">$(v_1, v_2)$</span>, for each query you need to find the lowest common ancestor (or least common ancestor), i.e. a vertex <span class="arithmatex">$v$</span> that lies on the path from the root to <span class="arithmatex">$v_1$</span> and the path from the root to <span class="arithmatex">$v_2$</span>, and the vertex should be the lowest. In other words, the desired vertex <span class="arithmatex">$v$</span> is the most bottom ancestor of <span class="arithmatex">$v_1$</span> and <span class="arithmatex">$v_2$</span>. It is obvious that their lowest common ancestor lies on a shortest path from <span class="arithmatex">$v_1$</span> and <span class="arithmatex">$v_2$</span>. Also, if <span class="arithmatex">$v_1$</span> is the ancestor of <span class="arithmatex">$v_2$</span>, <span class="arithmatex">$v_1$</span> is their lowest common ancestor.</p>
-<h3 id="the-idea-of-the-algorithm">The Idea of the Algorithm<a class="headerlink" href="#the-idea-of-the-algorithm" title="Permanent link">&para;</a></h3>
-<p>Before answering the queries, we need to <strong>preprocess</strong> the tree.
-We make a <a href="depth-first-search.html">DFS</a> traversal starting at the root and we build a list <span class="arithmatex">$\text{euler}$</span> which stores the order of the vertices that we visit (a vertex is added to the list when we first visit it, and after the return of the DFS traversals to its children).
-This is also called an Euler tour of the tree.
-It is clear that the size of this list will be <span class="arithmatex">$O(N)$</span>.
-We also need to build an array <span class="arithmatex">$\text{first}[0..N-1]$</span> which stores for each vertex <span class="arithmatex">$i$</span> its first occurrence in <span class="arithmatex">$\text{euler}$</span>.
-That is, the first position in <span class="arithmatex">$\text{euler}$</span> such that <span class="arithmatex">$\text{euler}[\text{first}[i]] = i$</span>.
-Also by using the DFS we can find the height of each node (distance from root to it) and store it in the array <span class="arithmatex">$\text{height}[0..N-1]$</span>.</p>
-<p>So how can we answer queries using the Euler tour and the additional two arrays?
-Suppose the query is a pair of <span class="arithmatex">$v_1$</span> and <span class="arithmatex">$v_2$</span>.
-Consider the vertices that we visit in the Euler tour between the first visit of <span class="arithmatex">$v_1$</span> and the first visit of <span class="arithmatex">$v_2$</span>.
-It is easy to see, that the <span class="arithmatex">$\text{LCA}(v_1, v_2)$</span> is the vertex with the lowest height on this path.
-We already noticed, that the LCA has to be part of the shortest path between <span class="arithmatex">$v_1$</span> and <span class="arithmatex">$v_2$</span>.
-Clearly it also has to be the vertex with the smallest height.
-And in the Euler tour we essentially use the shortest path, except that we additionally visit all subtrees that we find on the path.
-But all vertices in these subtrees are lower in the tree than the LCA and therefore have a larger height.
-So the <span class="arithmatex">$\text{LCA}(v_1, v_2)$</span> can be uniquely determined by finding the vertex with the smallest height in the Euler tour between <span class="arithmatex">$\text{first}(v_1)$</span> and <span class="arithmatex">$\text{first}(v_2)$</span>.</p>
-<p>Let's illustrate this idea.
-Consider the following graph and the Euler tour with the corresponding heights:</p>
+<h1 id="to-tien-chung-gan-nhat-osqrtn-va-olog-n-voi-tien-xu-ly-on">Tổ tiên chung gần nhất - <span class="arithmatex">$O(\sqrt{N})$</span> và <span class="arithmatex">$O(\log N)$</span> với tiền xử lý <span class="arithmatex">$O(N)$</span><a class="headerlink" href="#to-tien-chung-gan-nhat-osqrtn-va-olog-n-voi-tien-xu-ly-on" title="Permanent link">&para;</a></h1>
+<p>Cho một cây <span class="arithmatex">$G$</span> và các truy vấn dạng <span class="arithmatex">$(v_1, v_2)$</span>. Với mỗi truy vấn, cần tìm tổ tiên chung gần nhất (lowest common ancestor, LCA), tức là đỉnh <span class="arithmatex">$v$</span> nằm trên cả đường đi từ gốc đến <span class="arithmatex">$v_1$</span> lẫn đường đi từ gốc đến <span class="arithmatex">$v_2$</span>, đồng thời nằm thấp nhất. Nói cách khác, đỉnh <span class="arithmatex">$v$</span> cần tìm là tổ tiên ở thấp nhất của <span class="arithmatex">$v_1$</span> và <span class="arithmatex">$v_2$</span>. Rõ ràng tổ tiên chung gần nhất của chúng nằm trên đường đi ngắn nhất từ <span class="arithmatex">$v_1$</span> đến <span class="arithmatex">$v_2$</span>. Nếu <span class="arithmatex">$v_1$</span> là tổ tiên của <span class="arithmatex">$v_2$</span> thì <span class="arithmatex">$v_1$</span> chính là tổ tiên chung gần nhất của hai đỉnh.</p>
+<h3 id="y-tuong-thuat-toan">Ý tưởng thuật toán<a class="headerlink" href="#y-tuong-thuat-toan" title="Permanent link">&para;</a></h3>
+<p>Trước khi trả lời truy vấn, ta cần <strong>tiền xử lý</strong> cây.
+Ta duyệt <a href="depth-first-search.html">DFS</a> từ gốc và xây dựng danh sách <span class="arithmatex">$\text{euler}$</span> lưu thứ tự các đỉnh được thăm (một đỉnh được thêm vào danh sách khi được thăm lần đầu và sau khi DFS trở về từ mỗi con của nó).
+Cách duyệt này còn được gọi là hành trình Euler trên cây.
+Rõ ràng danh sách có kích thước <span class="arithmatex">$O(N)$</span>.
+Ta cũng cần xây dựng mảng <span class="arithmatex">$\text{first}[0..N-1]$</span> lưu lần xuất hiện đầu tiên của mỗi đỉnh <span class="arithmatex">$i$</span> trong <span class="arithmatex">$\text{euler}$</span>.
+Đó là vị trí đầu tiên trong <span class="arithmatex">$\text{euler}$</span> sao cho <span class="arithmatex">$\text{euler}[\text{first}[i]] = i$</span>.
+Bằng DFS, ta cũng có thể tìm độ cao của mỗi đỉnh (khoảng cách từ gốc đến đỉnh đó) và lưu vào mảng <span class="arithmatex">$\text{height}[0..N-1]$</span>.</p>
+<p>Vậy làm thế nào để trả lời truy vấn bằng hành trình Euler và hai mảng bổ sung?
+Giả sử truy vấn là cặp <span class="arithmatex">$v_1$</span> và <span class="arithmatex">$v_2$</span>.
+Xét các đỉnh được thăm trong hành trình Euler từ lần thăm đầu tiên của <span class="arithmatex">$v_1$</span> đến lần thăm đầu tiên của <span class="arithmatex">$v_2$</span>.
+Dễ thấy <span class="arithmatex">$\text{LCA}(v_1, v_2)$</span> là đỉnh có độ cao nhỏ nhất trên đoạn hành trình này.
+Ta đã nhận thấy LCA phải thuộc đường đi ngắn nhất giữa <span class="arithmatex">$v_1$</span> và <span class="arithmatex">$v_2$</span>.
+Rõ ràng nó cũng phải là đỉnh có độ cao nhỏ nhất.
+Hành trình Euler về cơ bản đi theo đường đi ngắn nhất đó, chỉ khác là còn thăm thêm tất cả cây con gặp trên đường.
+Nhưng mọi đỉnh trong những cây con này đều nằm thấp hơn LCA và do đó có độ cao lớn hơn.
+Vì vậy, có thể xác định duy nhất <span class="arithmatex">$\text{LCA}(v_1, v_2)$</span> bằng cách tìm đỉnh có độ cao nhỏ nhất trong hành trình Euler giữa <span class="arithmatex">$\text{first}(v_1)$</span> và <span class="arithmatex">$\text{first}(v_2)$</span>.</p>
+<p>Ta minh họa ý tưởng này.
+Xét đồ thị sau cùng hành trình Euler và các độ cao tương ứng:</p>
 <div style="text-align: center;">
-  <img src="../../graph/LCA_Euler.png" alt="LCA_Euler_Tour">
+  <img src="../../graph/LCA_Euler.png" alt="Hành trình Euler tìm LCA">
 </div>
 
 <div class="arithmatex">$$\begin{array}{|l|c|c|c|c|c|c|c|c|c|c|c|c|c|}
@@ -8072,16 +8032,16 @@ Consider the following graph and the Euler tour with the corresponding heights:<
 \text{Vertices:}   &amp; 1 &amp; 2 &amp; 5 &amp; 2 &amp; 6 &amp; 2 &amp; 1 &amp; 3 &amp; 1 &amp; 4 &amp; 7 &amp; 4 &amp; 1 \\ \hline
 \text{Heights:} &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 3 &amp; 2 &amp; 1 &amp; 2 &amp; 1 &amp; 2 &amp; 3 &amp; 2 &amp; 1 \\ \hline
 \end{array}$$</div>
-<p>The tour starting at vertex <span class="arithmatex">$6$</span> and ending at <span class="arithmatex">$4$</span> we visit the vertices <span class="arithmatex">$[6, 2, 1, 3, 1, 4]$</span>.
-Among those vertices the vertex <span class="arithmatex">$1$</span> has the lowest height, therefore <span class="arithmatex">$\text{LCA(6, 4) = 1}$</span>.</p>
-<p>To recap:
-to answer a query we just need <strong>to find the vertex with smallest height</strong> in the array <span class="arithmatex">$\text{euler}$</span> in the range from <span class="arithmatex">$\text{first}[v_1]$</span> to <span class="arithmatex">$\text{first}[v_2]$</span>.
-Thus, <strong>the LCA problem is reduced to the RMQ problem</strong> (finding the minimum in an range problem).</p>
-<p>Using <a href="../data_structures/sqrt_decomposition.html">Sqrt-Decomposition</a>, it is possible to obtain a solution answering each query in <span class="arithmatex">$O(\sqrt{N})$</span> with preprocessing in <span class="arithmatex">$O(N)$</span> time.</p>
-<p>Using a <a href="../data_structures/segment_tree.html">Segment Tree</a> you can answer each query in <span class="arithmatex">$O(\log N)$</span> with preprocessing in <span class="arithmatex">$O(N)$</span> time.</p>
-<p>Since there will almost never be any update to the stored values, a <a href="../data_structures/sparse-table.html">Sparse Table</a> might be a better choice, allowing <span class="arithmatex">$O(1)$</span> query answering with <span class="arithmatex">$O(N\log N)$</span> build time.</p>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
-<p>In the following implementation of the LCA algorithm a Segment Tree is used.</p>
+<p>Trên hành trình bắt đầu tại đỉnh <span class="arithmatex">$6$</span> và kết thúc tại <span class="arithmatex">$4$</span>, ta thăm các đỉnh <span class="arithmatex">$[6, 2, 1, 3, 1, 4]$</span>.
+Trong số đó, đỉnh <span class="arithmatex">$1$</span> có độ cao nhỏ nhất, do đó <span class="arithmatex">$\text{LCA(6, 4) = 1}$</span>.</p>
+<p>Tóm lại:
+để trả lời một truy vấn, ta chỉ cần <strong>tìm đỉnh có độ cao nhỏ nhất</strong> trong mảng <span class="arithmatex">$\text{euler}$</span> trên đoạn từ <span class="arithmatex">$\text{first}[v_1]$</span> đến <span class="arithmatex">$\text{first}[v_2]$</span>.
+Vậy <strong>bài toán LCA được quy về bài toán RMQ</strong> (tìm giá trị nhỏ nhất trên đoạn).</p>
+<p>Với <a href="../data_structures/sqrt_decomposition.html">chia căn</a>, ta có thể trả lời mỗi truy vấn trong <span class="arithmatex">$O(\sqrt{N})$</span> sau khi tiền xử lý trong thời gian <span class="arithmatex">$O(N)$</span>.</p>
+<p>Với <a href="../data_structures/segment_tree.html">cây phân đoạn</a>, ta có thể trả lời mỗi truy vấn trong <span class="arithmatex">$O(\log N)$</span> sau khi tiền xử lý trong thời gian <span class="arithmatex">$O(N)$</span>.</p>
+<p>Do các giá trị được lưu hầu như không bao giờ cần cập nhật, <a href="../data_structures/sparse-table.html">Sparse Table</a> có thể là lựa chọn tốt hơn, cho phép trả lời truy vấn trong <span class="arithmatex">$O(1)$</span> với thời gian xây dựng <span class="arithmatex">$O(N\log N)$</span>.</p>
+<h3 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h3>
+<p>Trong đoạn cài đặt thuật toán LCA sau đây, ta sử dụng cây phân đoạn.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">LCA</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"> </span><span class="n">euler</span><span class="p">,</span><span class="w"> </span><span class="n">first</span><span class="p">,</span><span class="w"> </span><span class="n">segtree</span><span class="p">;</span>
 <span class="w">    </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">visited</span><span class="p">;</span>
@@ -8146,7 +8106,7 @@ Thus, <strong>the LCA problem is reduced to the RMQ problem</strong> (finding th
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap">Bài tập<a class="headerlink" href="#bai-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/LCA/">SPOJ: LCA</a></li>
 <li><a href="http://www.spoj.com/problems/DISQUERY/">SPOJ: DISQUERY</a></li>
@@ -8171,7 +8131,7 @@ Thus, <strong>the LCA problem is reduced to the RMQ problem</strong> (finding th
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (34.93%)</li><li><a href="#" title="Manuel Pineda" data-bi-name="contributorprofile" target="_blank">Manuel Pineda</a> (31.51%)</li><li><a href="#" title="Anthony" data-bi-name="contributorprofile" target="_blank">Anthony</a> (13.7%)</li><li><a href="#" title="Morass" data-bi-name="contributorprofile" target="_blank">Morass</a> (7.53%)</li><li><a href="#" title="Sunil Sangwan" data-bi-name="contributorprofile" target="_blank">Sunil Sangwan</a> (4.11%)</li><li><a href="#" title="Gabriel Silva Simões" data-bi-name="contributorprofile" target="_blank">Gabriel Silva Simões</a> (2.05%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (2.05%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (2.05%)</li><li><a href="#" title="Gaurang Tandon" data-bi-name="contributorprofile" target="_blank">Gaurang Tandon</a> (1.36%)</li><li><a href="#" title="Vineet Kumar" data-bi-name="contributorprofile" target="_blank">Vineet Kumar</a> (0.68%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>
