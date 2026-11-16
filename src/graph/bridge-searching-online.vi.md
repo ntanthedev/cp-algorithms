@@ -81,7 +81,7 @@ Ta lần lượt phân tích từng phép toán cần cài đặt:
   
   * Nối hai cây bởi một cạnh $(a, b)$.
     Vì có thể cả $a$ và $b$ đều không phải gốc cây tương ứng, cách duy nhất để nối hai cây là đổi gốc một cây.
-    Chẳng hạn ta đổi gốc cây chứa $a$ thành a, rồi gắn nó vào cây kia bằng cách đặt cha của $a$ là $b$.
+    Chẳng hạn ta đổi gốc cây chứa $a$ thành chính đỉnh đó, rồi gắn nó vào cây kia bằng cách đặt cha của $a$ là $b$.
   
     Tuy nhiên, cần xét hiệu quả của phép đổi gốc:
     để đổi gốc cây từ $r$ sang đỉnh $v$, ta phải duyệt tất cả các đỉnh trên đường từ $v$ đến $r$ và đảo chiều các con trỏ `par[]`, đồng thời thay đổi các tham chiếu đến cha trong DSU quản lý các thành phần liên thông.

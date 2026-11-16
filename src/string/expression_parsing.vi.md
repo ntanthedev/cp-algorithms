@@ -170,6 +170,8 @@ trong đó `left_assoc` là hàm quyết định một toán tử có kết hợ
 
 Dưới đây là một cài đặt cho các toán tử hai ngôi $+$ $-$ $*$ $/$ và các toán tử một ngôi $+$ và $-$.
 
+**Ghi chú bản dịch:** Cài đặt dưới đây dùng giá trị âm của kiểu char để đánh dấu toán tử một ngôi. Nó phụ thuộc vào việc char có dấu; nếu char mặc định không dấu, cách nhận biết này không hoạt động đúng.
+
 ```{.cpp file=expression_parsing_unary}
 bool delim(char c) {
     return c == ' ';
