@@ -60,10 +60,10 @@ Bây giờ giả sử $r - l + 1 \ge 4$. Trước tiên, ta giải đệ quy $L 
 Các cạnh chéo có cấu trúc như thế nào? Tất cả những cạnh này phải cắt một đường thẳng song song với trục y và đi qua hoành độ phân chia. Điều này xác lập thứ tự tuyến tính trên các cạnh chéo, vì thế ta có thể nói tới các cạnh chéo liên tiếp, cạnh chéo dưới cùng, v.v. Thuật toán sẽ thêm các cạnh chéo theo thứ tự từ dưới lên. Lưu ý rằng hai cạnh chéo kề nhau bất kỳ có chung một đầu mút, và cạnh thứ ba của tam giác do chúng tạo thành đi từ L sang L hoặc từ R sang R. Ta gọi cạnh chéo hiện tại là cạnh cơ sở. Cạnh kế tiếp của cạnh cơ sở sẽ đi từ đầu mút bên trái của cạnh cơ sở tới một trong các điểm kề thuộc R của đầu mút bên phải, hoặc ngược lại.
 Xét đường tròn ngoại tiếp cạnh cơ sở và cạnh chéo trước đó.
 Giả sử đường tròn này biến đổi thành các đường tròn khác vẫn nhận cạnh cơ sở làm dây cung nhưng nằm xa hơn theo hướng Oy.
-Đường tròn sẽ đi lên một đoạn, nhưng trừ khi cạnh cơ sở là tiếp tuyến chung phía trên của L và R, ta sẽ gặp một điểm thuộc L hoặc R tạo thành một tam giác mới mà đường tròn ngoại tiếp không chứa điểm nào.
+Đường tròn sẽ đi lên một đoạn, nhưng trừ khi cạnh cơ sở là tiếp tuyến chung phía trên của L và R, ta sẽ gặp một điểm thuộc L hoặc R tạo thành một tam giác mới mà không có điểm nào của tập nằm bên trong đường tròn ngoại tiếp.
 Cạnh L-R mới của tam giác này là cạnh chéo tiếp theo được thêm vào.
 Để thực hiện hiệu quả, ta tính hai cạnh `lcand` và `rcand` sao cho `lcand` trỏ tới điểm L đầu tiên gặp được trong quá trình này, còn `rcand` trỏ tới điểm R đầu tiên.
-Sau đó ta chọn điểm sẽ gặp trước. Ban đầu cạnh cơ sở hướng tới tiếp tuyến chung phía dưới của L và R.
+Sau đó ta chọn điểm sẽ gặp trước. Ban đầu, cạnh cơ sở là đoạn nối hai điểm tiếp xúc của tiếp tuyến chung phía dưới của L và R.
 
 ## Cài đặt
 
