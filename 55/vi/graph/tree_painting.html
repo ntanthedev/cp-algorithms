@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#paint-the-edges-of-the-tree" class="md-skip">
+        <a href="#to-mau-cac-canh-cua-cay" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7142,10 +7142,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Thuật toán
       
     </span>
   </a>
@@ -7153,10 +7153,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/tree_painting.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/tree_painting.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/tree_painting.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/tree_painting.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,22 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8007,37 +7991,20 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="paint-the-edges-of-the-tree">Paint the edges of the tree<a class="headerlink" href="#paint-the-edges-of-the-tree" title="Permanent link">&para;</a></h1>
-<p>This is a fairly common task. Given a tree <span class="arithmatex">$G$</span> with <span class="arithmatex">$N$</span> vertices. There are two types of queries: the first one is to paint an edge, the second one is to query the number of colored edges between two vertices.</p>
-<p>Here we will describe a fairly simple solution (using a <a href="../data_structures/segment_tree.html">segment tree</a>) that will answer each query in <span class="arithmatex">$O(\log N)$</span> time.
-The preprocessing step will take <span class="arithmatex">$O(N)$</span> time.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>First, we need to find the <a href="lca.html">LCA</a> to reduce each query of the second kind <span class="arithmatex">$(i,j)$</span> into two queries <span class="arithmatex">$(l,i)$</span> and <span class="arithmatex">$(l,j)$</span>, where <span class="arithmatex">$l$</span> is the LCA of <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span>.
-The answer of the query <span class="arithmatex">$(i,j)$</span> will be the sum of both subqueries.
-Both these queries have a special structure, the first vertex is an ancestor of the second one.
-For the rest of the article we will only talk about these special kind of queries.</p>
-<p>We will start by describing the <strong>preprocessing</strong> step.
-Run a depth-first search from the root of the tree and record the Euler tour of this depth-first search (each vertex is added to the list when the search visits it first and every time we return from one of its children).
-The same technique can be used in the LCA preprocessing.</p>
-<p>This list will contain each edge (in the sense that if <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span> are the ends of the edge, then there will be a place in the list where <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span> are neighbors in the list), and it appear exactly two times: in the forward direction (from <span class="arithmatex">$i$</span> to <span class="arithmatex">$j$</span>, where vertex <span class="arithmatex">$i$</span> is closer to the root than vertex <span class="arithmatex">$j$</span>) and in the opposite direction (from <span class="arithmatex">$j$</span> to <span class="arithmatex">$i$</span>).</p>
-<p>We will build two lists for these edges.
-The first one will store the color of all edges in the forward direction, and the second one the color of all edges in the opposite direction.
-We will use <span class="arithmatex">$1$</span> if the edge is colored, and <span class="arithmatex">$0$</span> otherwise.
-Over these two lists we will build each a segment tree (for sum with a single modification), let's call them <span class="arithmatex">$T1$</span> and <span class="arithmatex">$T2$</span>.</p>
-<p>Let us answer a query of the form <span class="arithmatex">$(i,j)$</span>, where <span class="arithmatex">$i$</span> is the ancestor of <span class="arithmatex">$j$</span>.
-We need to determine how many edges are painted on the path between <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span>.
-Let's find <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span> in the Euler tour for the first time, let it be the positions <span class="arithmatex">$p$</span> and <span class="arithmatex">$q$</span> (this can be done in <span class="arithmatex">$O(1)$</span> if we calculate these positions in advance during preprocessing).
-Then the <strong>answer</strong> to the query is the sum <span class="arithmatex">$T1[p..q-1]$</span> minus the sum <span class="arithmatex">$T2[p..q-1]$</span>.</p>
-<p><strong>Why?</strong>
-Consider the segment <span class="arithmatex">$[p;q]$</span> in the Euler tour.
-It contains all edges of the path we need from <span class="arithmatex">$i$</span> to <span class="arithmatex">$j$</span> but also contains a set of edges that lie on other paths from <span class="arithmatex">$i$</span>.
-However there is one big difference between the edges we need and the rest of the edges: the edges we need will be listed only once in the forward direction, and all the other edges appear twice: once in the forward and once in the opposite direction.
-Hence, the difference <span class="arithmatex">$T1[p..q-1] - T2[p..q-1]$</span> will give us the correct answer (minus one is necessary because otherwise, we will capture an extra edge going out from vertex <span class="arithmatex">$j$</span>).
-The sum query in the segment tree is executed in <span class="arithmatex">$O(\log N)$</span>.</p>
-<p>Answering the <strong>first type of query</strong> (painting an edge) is even easier - we just need to update <span class="arithmatex">$T1$</span> and <span class="arithmatex">$T2$</span>, namely to perform a single update of the element that corresponds to our edge (finding the edge in the list, again, is possible in <span class="arithmatex">$O(1)$</span>, if you perform this search during preprocessing).
-A single modification in the segment tree is performed in <span class="arithmatex">$O(\log N)$</span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Here is the full implementation of the solution, including LCA computation:</p>
+<h1 id="to-mau-cac-canh-cua-cay">Tô màu các cạnh của cây<a class="headerlink" href="#to-mau-cac-canh-cua-cay" title="Permanent link">&para;</a></h1>
+<p>Đây là một bài toán khá thường gặp. Cho cây <span class="arithmatex">$G$</span> có <span class="arithmatex">$N$</span> đỉnh. Có hai loại truy vấn: tô màu một cạnh và hỏi số cạnh được tô màu giữa hai đỉnh.</p>
+<p>Ta mô tả một lời giải khá đơn giản (dùng <a href="../data_structures/segment_tree.html">cây đoạn</a>) để trả lời mỗi truy vấn trong <span class="arithmatex">$O(\log N)$</span> thời gian. Bước tiền xử lý mất <span class="arithmatex">$O(N)$</span> thời gian.</p>
+<h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Trước hết, ta cần tìm <a href="lca.html">LCA</a> để đưa mỗi truy vấn loại hai <span class="arithmatex">$(i,j)$</span> về hai truy vấn <span class="arithmatex">$(l,i)$</span> và <span class="arithmatex">$(l,j)$</span>, trong đó <span class="arithmatex">$l$</span> là LCA của <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span>. Kết quả của truy vấn <span class="arithmatex">$(i,j)$</span> là tổng kết quả hai truy vấn con. Hai truy vấn này đều có cấu trúc đặc biệt: đỉnh đầu tiên là tổ tiên của đỉnh thứ hai. Trong phần còn lại, ta chỉ xét các truy vấn đặc biệt này.</p>
+<p>Ta bắt đầu bằng bước <strong>tiền xử lý</strong>. Chạy tìm kiếm theo chiều sâu từ gốc cây và ghi lại hành trình Euler của phép tìm kiếm (mỗi đỉnh được thêm vào danh sách khi được thăm lần đầu và mỗi khi ta quay về từ một trong các con của nó). Kỹ thuật tương tự có thể dùng khi tiền xử lý LCA.</p>
+<p>Danh sách này chứa mỗi cạnh (nghĩa là nếu <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span> là hai đầu cạnh thì có một vị trí trong danh sách mà <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span> nằm cạnh nhau), và cạnh xuất hiện đúng hai lần: theo chiều thuận (từ <span class="arithmatex">$i$</span> đến <span class="arithmatex">$j$</span>, với đỉnh <span class="arithmatex">$i$</span> gần gốc hơn đỉnh <span class="arithmatex">$j$</span>) và theo chiều ngược (từ <span class="arithmatex">$j$</span> đến <span class="arithmatex">$i$</span>).</p>
+<p>Ta xây dựng hai danh sách cho các cạnh này. Danh sách thứ nhất lưu màu của tất cả các cạnh theo chiều thuận, danh sách thứ hai lưu màu theo chiều ngược. Ta dùng <span class="arithmatex">$1$</span> nếu cạnh được tô màu, và <span class="arithmatex">$0$</span> trong trường hợp ngược lại. Trên mỗi danh sách, xây dựng một cây đoạn (tính tổng và cập nhật một phần tử), gọi chúng là <span class="arithmatex">$T1$</span> và <span class="arithmatex">$T2$</span>.</p>
+<p>Xét truy vấn dạng <span class="arithmatex">$(i,j)$</span>, trong đó <span class="arithmatex">$i$</span> là tổ tiên của <span class="arithmatex">$j$</span>. Ta cần xác định số cạnh được tô màu trên đường đi giữa <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span>. Tìm lần xuất hiện đầu tiên của <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span> trong hành trình Euler, lần lượt ở các vị trí <span class="arithmatex">$p$</span> và <span class="arithmatex">$q$</span> (có thể làm trong <span class="arithmatex">$O(1)$</span> nếu tính trước các vị trí này khi tiền xử lý). Khi đó <strong>đáp án</strong> là tổng <span class="arithmatex">$T1[p..q-1]$</span> trừ tổng <span class="arithmatex">$T2[p..q-1]$</span>.</p>
+<p><strong>Tại sao?</strong> Xét đoạn <span class="arithmatex">$[p;q]$</span> trong hành trình Euler. Nó chứa mọi cạnh trên đường đi cần tìm từ <span class="arithmatex">$i$</span> đến <span class="arithmatex">$j$</span>, nhưng cũng chứa các cạnh thuộc những đường đi khác từ <span class="arithmatex">$i$</span>. Có một khác biệt lớn giữa hai nhóm: các cạnh cần tìm chỉ xuất hiện một lần theo chiều thuận, còn mọi cạnh khác xuất hiện hai lần: một lần theo chiều thuận và một lần theo chiều ngược. Vì vậy hiệu <span class="arithmatex">$T1[p..q-1] - T2[p..q-1]$</span> cho đáp án đúng (cần trừ một ở chỉ số cuối vì nếu không ta sẽ lấy thêm một cạnh đi ra từ đỉnh <span class="arithmatex">$j$</span>). Truy vấn tổng trên cây đoạn mất <span class="arithmatex">$O(\log N)$</span>.</p>
+<p>Trả lời <strong>truy vấn loại một</strong> (tô màu một cạnh) còn dễ hơn: ta chỉ cần cập nhật <span class="arithmatex">$T1$</span> và <span class="arithmatex">$T2$</span>, cụ thể là cập nhật một phần tử tương ứng với cạnh đó (việc tìm cạnh trong danh sách cũng có thể thực hiện trong <span class="arithmatex">$O(1)$</span> nếu tìm trước khi tiền xử lý). Một lần cập nhật trên cây đoạn mất <span class="arithmatex">$O(\log N)$</span>.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Sau đây là toàn bộ cài đặt của lời giải, bao gồm cả tính LCA:</p>
+<p>Ghi chú bản dịch: Phần xử lý truy vấn trong hàm chính là mã khung chưa hoàn chỉnh: điều kiện rẽ nhánh và các biến truy vấn cần được cung cấp. Việc cập nhật cũng giả định thao tác làm thay đổi trạng thái tô của cạnh.</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">INF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000</span><span class="p">;</span>
 
 <span class="k">typedef</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">graph</span><span class="p">;</span>
@@ -8197,7 +8164,7 @@ A single modification in the segment tree is performed in <span class="arithmate
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Amandeep Singh" data-bi-name="contributorprofile" target="_blank">Amandeep Singh</a> (95.17%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (2.9%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (0.97%)</li><li><a href="#" title="Anton Älgmyr" data-bi-name="contributorprofile" target="_blank">Anton Älgmyr</a> (0.48%)</li><li><a href="#" title="polyomino" data-bi-name="contributorprofile" target="_blank">polyomino</a> (0.48%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

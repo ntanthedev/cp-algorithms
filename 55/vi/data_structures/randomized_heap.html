@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#randomized-heap" class="md-skip">
+        <a href="#heap-ngau-nhien" class="md-skip">
           Bỏ qua
         </a>
       
@@ -2172,10 +2172,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#data-structure" class="md-nav__link">
+  <a href="#cau-truc-du-lieu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data structure
+        Cấu trúc dữ liệu
       
     </span>
   </a>
@@ -2183,10 +2183,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#operations" class="md-nav__link">
+  <a href="#cac-thao-tac" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Operations
+        Các thao tác
       
     </span>
   </a>
@@ -2194,22 +2194,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#complexity" class="md-nav__link">
+  <a href="#o-phuc-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Complexity
+        Độ phức tạp
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Complexity">
+    <nav class="md-nav" aria-label="Độ phức tạp">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#expected-value" class="md-nav__link">
+  <a href="#gia-tri-ky-vong" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Expected value
+        Giá trị kỳ vọng
       
     </span>
   </a>
@@ -2217,10 +2217,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#exceeding-the-expected-value" class="md-nav__link">
+  <a href="#vuot-qua-gia-tri-ky-vong" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Exceeding the expected value
+        Vượt quá giá trị kỳ vọng
       
     </span>
   </a>
@@ -2228,10 +2228,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#complexity-of-the-algorithm" class="md-nav__link">
+  <a href="#o-phuc-tap-cua-thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Complexity of the algorithm
+        Độ phức tạp của thuật toán
       
     </span>
   </a>
@@ -7989,13 +7989,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/data_structures/randomized_heap.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/data_structures/randomized_heap.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/data_structures/randomized_heap.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/data_structures/randomized_heap.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -8006,14 +8006,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8049,50 +8041,50 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="randomized-heap">Randomized Heap<a class="headerlink" href="#randomized-heap" title="Permanent link">&para;</a></h1>
-<p>A randomized heap is a heap that, through using randomization, allows to perform all operations in expected logarithmic time.</p>
-<p>A <strong>min heap</strong> is a binary tree in which the value of each vertex is less than or equal to the values of its children.
-Thus the minimum of the tree is always in the root vertex.</p>
-<p>A max heap can be defined in a similar way: by replacing less with greater.</p>
-<p>The default operations of a heap are:</p>
+<h1 id="heap-ngau-nhien">Heap ngẫu nhiên<a class="headerlink" href="#heap-ngau-nhien" title="Permanent link">&para;</a></h1>
+<p>Heap ngẫu nhiên là một heap sử dụng tính ngẫu nhiên để thực hiện mọi thao tác trong thời gian kỳ vọng logarit.</p>
+<p><strong>Min heap</strong> là một cây nhị phân trong đó giá trị của mỗi đỉnh không lớn hơn giá trị của các đỉnh con.
+Vì vậy giá trị nhỏ nhất của cây luôn nằm ở đỉnh gốc.</p>
+<p>Ta có thể định nghĩa max heap tương tự bằng cách thay quan hệ nhỏ hơn bằng lớn hơn.</p>
+<p>Các thao tác thông thường của heap là:</p>
 <ul>
-<li>Adding a value</li>
-<li>Extracting the minimum</li>
-<li>Removing the minimum</li>
-<li>Merging two heaps (without deleting duplicates)</li>
-<li>Removing an arbitrary element (if its position in the tree is known)</li>
+<li>Thêm một giá trị</li>
+<li>Lấy giá trị nhỏ nhất</li>
+<li>Xóa giá trị nhỏ nhất</li>
+<li>Gộp hai heap (không xóa các phần tử trùng nhau)</li>
+<li>Xóa một phần tử bất kỳ (nếu biết vị trí của nó trong cây)</li>
 </ul>
-<p>A randomized heap can perform all these operations in expected <span class="arithmatex">$O(\log n)$</span> time with a very simple implementation.</p>
-<h2 id="data-structure">Data structure<a class="headerlink" href="#data-structure" title="Permanent link">&para;</a></h2>
-<p>We can immediately describe the structure of the binary heap:</p>
+<p>Heap ngẫu nhiên có thể thực hiện tất cả các thao tác này trong thời gian kỳ vọng <span class="arithmatex">$O(\log n)$</span> với cách cài đặt rất đơn giản.</p>
+<h2 id="cau-truc-du-lieu">Cấu trúc dữ liệu<a class="headerlink" href="#cau-truc-du-lieu" title="Permanent link">&para;</a></h2>
+<p>Ta có thể mô tả ngay cấu trúc của heap nhị phân:</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Tree</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Tree</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">l</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="w">    </span><span class="n">Tree</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">nullptr</span><span class="p">;</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>In the vertex we store a value.
-In addition we have pointers to the left and right children, which point to null if the corresponding child doesn't exist.</p>
-<h2 id="operations">Operations<a class="headerlink" href="#operations" title="Permanent link">&para;</a></h2>
-<p>It is not difficult to see, that all operations can be reduced to a single one: <strong>merging</strong> two heaps into one.
-Indeed, adding a new value to the heap is equivalent to merging the heap with a heap consisting of a single vertex with that value. 
-Finding a minimum doesn't require any operation at all - the minimum is simply the value at the root.
-Removing the minimum is equivalent to the result of merging the left and right children of the root vertex.
-And removing an arbitrary element is similar.
-We merge the children of the vertex and replace the vertex with the result of the merge.</p>
-<p>So we actually only need to implement the operation of merging two heaps.
-All other operations are trivially reduced to this operation.</p>
-<p>Let two heaps <span class="arithmatex">$T_1$</span> and <span class="arithmatex">$T_2$</span> be given.
-It is clear that the root of each of these heaps contains its minimum.
-So the root of the resulting heap will be the minimum of these two values.
-So we compare both values, and use the smaller one as the new root.
-Now we have to combine the children of the selected vertex with the remaining heap.
-For this we select one of the children, and merge it with the remaining heap.
-Thus we again have the operation of merging two heaps.
-Sooner or later this process will end (the number of such steps is limited by the sum of the heights of the two heaps)</p>
-<p>To achieve logarithmic complexity on average, we need to specify a method for choosing one of the two children so that the average path length is logarithmic.
-It is not difficult to guess, that we will make this decision <strong>randomly</strong>.
-Thus the implementation of the merging operation is as follows:</p>
+<p>Tại mỗi đỉnh ta lưu một giá trị.
+Ngoài ra, ta có các con trỏ tới đỉnh con trái và phải, mang giá trị null nếu đỉnh con tương ứng không tồn tại.</p>
+<h2 id="cac-thao-tac">Các thao tác<a class="headerlink" href="#cac-thao-tac" title="Permanent link">&para;</a></h2>
+<p>Dễ thấy mọi thao tác đều có thể đưa về một thao tác duy nhất: <strong>gộp</strong> hai heap thành một.
+Thật vậy, thêm một giá trị vào heap tương đương với gộp heap đó với một heap chỉ gồm một đỉnh có giá trị ấy.
+Tìm giá trị nhỏ nhất không cần thao tác gì: nó chính là giá trị ở gốc.
+Xóa giá trị nhỏ nhất tương đương với kết quả gộp hai cây con trái và phải của đỉnh gốc.
+Việc xóa một phần tử bất kỳ cũng tương tự.
+Ta gộp hai cây con của đỉnh đó rồi thay đỉnh bằng kết quả gộp.</p>
+<p>Vì vậy ta chỉ cần cài đặt thao tác gộp hai heap.
+Tất cả thao tác khác đều dễ dàng đưa về thao tác này.</p>
+<p>Cho hai heap <span class="arithmatex">$T_1$</span> và <span class="arithmatex">$T_2$</span>.
+Rõ ràng gốc của mỗi heap chứa giá trị nhỏ nhất của nó.
+Vì vậy gốc của heap kết quả sẽ chứa giá trị nhỏ hơn trong hai giá trị đó.
+Ta so sánh hai giá trị và chọn giá trị nhỏ hơn làm gốc mới.
+Bây giờ ta cần kết hợp các cây con của đỉnh được chọn với heap còn lại.
+Để làm vậy, ta chọn một trong hai cây con và gộp nó với heap còn lại.
+Như vậy ta lại có thao tác gộp hai heap.
+Quá trình này cuối cùng sẽ kết thúc (số bước như vậy bị chặn bởi tổng chiều cao của hai heap).</p>
+<p>Để đạt độ phức tạp logarit trung bình, ta cần chọn một trong hai cây con sao cho độ dài đường đi trung bình là logarit.
+Dễ đoán rằng ta sẽ quyết định điều này một cách <strong>ngẫu nhiên</strong>.
+Do đó, thao tác gộp được cài đặt như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="n">Tree</span><span class="o">*</span><span class="w"> </span><span class="nf">merge</span><span class="p">(</span><span class="n">Tree</span><span class="o">*</span><span class="w"> </span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">Tree</span><span class="o">*</span><span class="w"> </span><span class="n">t2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">t1</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="o">!</span><span class="n">t2</span><span class="p">)</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">t1</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">t2</span><span class="p">;</span>
@@ -8104,43 +8096,43 @@ Thus the implementation of the merging operation is as follows:</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">t1</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Here first we check if one of the heaps is empty, then we don't need to perform any merge action at all.
-Otherwise we make the heap <code>t1</code> the one with the smaller value (by swapping <code>t1</code> and <code>t2</code> if necessary).
-We want to merge the left child of <code>t1</code> with <code>t2</code>, therefore we randomly swap the children of <code>t1</code>, and then perform the merge.</p>
-<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h2>
-<p>We introduce the random variable <span class="arithmatex">$h(T)$</span> which will denote the <strong>length of the random path</strong> from the root to the leaf (the length in the number of edges).
-It is clear that the algorithm <code>merge</code> performs <span class="arithmatex">$O(h(T_1) + h(T_2))$</span> steps.
-Therefore to understand the complexity of the operations, we must look into the random variable <span class="arithmatex">$h(T)$</span>.</p>
-<h3 id="expected-value">Expected value<a class="headerlink" href="#expected-value" title="Permanent link">&para;</a></h3>
-<p>We assume that the expectation <span class="arithmatex">$h(T)$</span> can be estimated from above by the logarithm of the number of vertices in the heap:</p>
+<p>Đầu tiên ta kiểm tra xem một trong hai heap có rỗng hay không; nếu có thì không cần thực hiện thao tác gộp nào.
+Ngược lại, ta đưa heap có giá trị nhỏ hơn về <code>t1</code> (bằng cách hoán đổi <code>t1</code> và <code>t2</code> nếu cần).
+Ta muốn gộp cây con trái của <code>t1</code> với <code>t2</code>, nên ta hoán đổi ngẫu nhiên hai cây con của <code>t1</code>, rồi thực hiện phép gộp.</p>
+<h2 id="o-phuc-tap">Độ phức tạp<a class="headerlink" href="#o-phuc-tap" title="Permanent link">&para;</a></h2>
+<p>Ta đưa vào biến ngẫu nhiên <span class="arithmatex">$h(T)$</span>, biểu thị <strong>độ dài đường đi ngẫu nhiên</strong> từ gốc đến lá (độ dài tính bằng số cạnh).
+Rõ ràng thuật toán <code>merge</code> thực hiện <span class="arithmatex">$O(h(T_1) + h(T_2))$</span> bước.
+Do đó, để hiểu độ phức tạp của các thao tác, ta cần xét biến ngẫu nhiên <span class="arithmatex">$h(T)$</span>.</p>
+<h3 id="gia-tri-ky-vong">Giá trị kỳ vọng<a class="headerlink" href="#gia-tri-ky-vong" title="Permanent link">&para;</a></h3>
+<p>Ta giả sử kỳ vọng của <span class="arithmatex">$h(T)$</span> có thể được chặn trên bởi logarit của số đỉnh trong heap:</p>
 <div class="arithmatex">$$\mathbf{E} h(T) \le \log(n+1)$$</div>
-<p>This can be easily proven by induction.
-Let <span class="arithmatex">$L$</span> and <span class="arithmatex">$R$</span> be the left and the right subtrees of the root <span class="arithmatex">$T$</span>, and <span class="arithmatex">$n_L$</span> and <span class="arithmatex">$n_R$</span> the number of vertices in them (<span class="arithmatex">$n = n_L + n_R + 1$</span>).</p>
-<p>The following shows the induction step:</p>
+<p>Điều này dễ được chứng minh bằng quy nạp.
+Gọi <span class="arithmatex">$L$</span> và <span class="arithmatex">$R$</span> là cây con trái và phải của gốc <span class="arithmatex">$T$</span>, còn <span class="arithmatex">$n_L$</span> và <span class="arithmatex">$n_R$</span> là số đỉnh trong chúng (<span class="arithmatex">$n = n_L + n_R + 1$</span>).</p>
+<p>Bước quy nạp như sau:</p>
 <div class="arithmatex">$$\begin{align}
 \mathbf{E} h(T) &amp;= 1 + \frac{\mathbf{E} h(L) + \mathbf{E} h(R)}{2} 
 \le 1 + \frac{\log(n_L + 1) + \log(n_R + 1)}{2} \\\\
 &amp;= 1 + \log\sqrt{(n_L + 1)(n_R + 1)} = \log 2\sqrt{(n_L + 1)(n_R + 1)} \\\\
 &amp;\le \log \frac{2\left((n_L + 1) + (n_R + 1)\right)}{2} = \log(n_L + n_R + 2) = \log(n+1)
 \end{align}$$</div>
-<h3 id="exceeding-the-expected-value">Exceeding the expected value<a class="headerlink" href="#exceeding-the-expected-value" title="Permanent link">&para;</a></h3>
-<p>Of course we are still not happy.
-The expected value of <span class="arithmatex">$h(T)$</span> doesn't say anything about the worst case.
-It is still possible that the paths from the root to the vertices is on average much greater than <span class="arithmatex">$\log(n + 1)$</span> for a specific tree.</p>
-<p>Let us prove that the probability of exceeding the expected value is indeed very small:</p>
+<h3 id="vuot-qua-gia-tri-ky-vong">Vượt quá giá trị kỳ vọng<a class="headerlink" href="#vuot-qua-gia-tri-ky-vong" title="Permanent link">&para;</a></h3>
+<p>Tất nhiên ta vẫn chưa hài lòng.
+Giá trị kỳ vọng của <span class="arithmatex">$h(T)$</span> không cho biết điều gì về trường hợp xấu nhất.
+Với một cây cụ thể, độ dài trung bình của các đường đi từ gốc tới các đỉnh vẫn có thể lớn hơn rất nhiều so với <span class="arithmatex">$\log(n + 1)$</span>.</p>
+<p>Hãy chứng minh xác suất vượt quá giá trị kỳ vọng thực sự rất nhỏ:</p>
 <div class="arithmatex">$${\cal P}(h(T) &gt; (c+1) \log n) &lt; \frac{1}{n^c}$$</div>
-<p>for any positive constant <span class="arithmatex">$c$</span>.</p>
-<p>Here we denote by <span class="arithmatex">$P$</span> the set of paths from the root of the heap to the leaves where the length exceeds <span class="arithmatex">$(c+1) \log n$</span>.
-Note that for any path <span class="arithmatex">$p$</span> of length <span class="arithmatex">$|p|$</span> the probability that it will be chosen as random path is <span class="arithmatex">$2^{-|p|}$</span>.
-Therefore we get:</p>
+<p>với mọi hằng số dương <span class="arithmatex">$c$</span>.</p>
+<p>Ở đây <span class="arithmatex">$P$</span> là tập các đường đi từ gốc heap đến các lá có độ dài lớn hơn <span class="arithmatex">$(c+1) \log n$</span>.
+Với mỗi đường đi <span class="arithmatex">$p$</span> có độ dài <span class="arithmatex">$|p|$</span>, xác suất nó được chọn làm đường đi ngẫu nhiên là <span class="arithmatex">$2^{-|p|}$</span>.
+Do đó:</p>
 <div class="arithmatex">$${\cal P}(h(T) &gt; (c+1) \log n) = \sum_{p \in P} 2^{-|p|} &lt; \sum_{p \in P} 2^{-(c+1) \log n} = |P| n^{-(c+1)} \le n^{-c}$$</div>
-<h3 id="complexity-of-the-algorithm">Complexity of the algorithm<a class="headerlink" href="#complexity-of-the-algorithm" title="Permanent link">&para;</a></h3>
-<p>Thus the algorithm <code>merge</code>, and hence all other operations expressed with it, can be performed in <span class="arithmatex">$O(\log n)$</span> on average.</p>
-<p>Moreover for any positive constant <span class="arithmatex">$\epsilon$</span> there is a positive constant <span class="arithmatex">$c$</span>, such that the probability that the operation will require more than <span class="arithmatex">$c \log n$</span> steps is less than <span class="arithmatex">$n^{-\epsilon}$</span> (in some sense this describes the worst case behavior of the algorithm).</p>
+<h3 id="o-phuc-tap-cua-thuat-toan">Độ phức tạp của thuật toán<a class="headerlink" href="#o-phuc-tap-cua-thuat-toan" title="Permanent link">&para;</a></h3>
+<p>Vậy thuật toán <code>merge</code>, và do đó tất cả các thao tác được biểu diễn bằng nó, có thể được thực hiện trong thời gian trung bình <span class="arithmatex">$O(\log n)$</span>.</p>
+<p>Hơn nữa, với mọi hằng số dương <span class="arithmatex">$\epsilon$</span>, tồn tại hằng số dương <span class="arithmatex">$c$</span> sao cho xác suất một thao tác cần nhiều hơn <span class="arithmatex">$c \log n$</span> bước nhỏ hơn <span class="arithmatex">$n^{-\epsilon}$</span> (theo một nghĩa nào đó điều này mô tả hành vi trường hợp xấu nhất của thuật toán).</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (90.7%)</li><li><a href="#" title="Martin" data-bi-name="contributorprofile" target="_blank">Martin</a> (4.65%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (4.65%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

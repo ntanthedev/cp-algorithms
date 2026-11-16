@@ -7900,6 +7900,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -7930,7 +7934,10 @@ Describe the issue of this article in detail.
           $("#previewArea").html(data + "\n" + refresh_script);
           $("#previewBtn").html("Preview (Ctrl + Enter)");
         },
-        error: function() {$("#previewArea").html("Internal error!")}
+        error: function() {
+          $("#previewArea").html('The preview could not be loaded. Wait 1 minute and try again. If it still fails, <a href="https://github.com/cp-algorithms/cp-algorithms/issues">open an issue</a>.');
+          $("#previewBtn").html("Preview (Ctrl + Enter)");
+        }
       });
     });
 
@@ -7942,7 +7949,7 @@ Describe the issue of this article in detail.
   });
 </script>
 <h1 id="article-preview">Article Preview<a class="headerlink" href="#article-preview" title="Permanent link">&para;</a></h1>
-<p><a href="contrib.html">Information for contributors</a></p>
+<p><a href="contrib.html">How to Contribute</a></p>
 <center>
 <form>
   <textarea style="width:100%;height:300px;" id="markdownInput">
@@ -7971,7 +7978,7 @@ int gcd (int a, int b) {
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (91.67%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (8.33%)</li></ul>
 </ul>
                 
               </article>
