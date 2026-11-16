@@ -87,7 +87,7 @@ Ta muốn tìm tất cả các đoạn lặp bắt đầu ở nửa đầu chu�
 
 $$s = u + v$$
 
-Độ dài của chúng xấp xỉ bằng độ dài của $s$ chia hai.
+Độ dài của mỗi nửa xấp xỉ bằng độ dài của $s$ chia hai.
 
 Xét một đoạn lặp bất kỳ và nhìn vào ký tự giữa (chính xác hơn là ký tự đầu tiên của nửa sau đoạn lặp).
 Tức nếu đoạn lặp là xâu con $s[i \dots j]$, thì ký tự giữa ở vị trí $(i + j + 1) / 2$.
@@ -197,6 +197,8 @@ Nếu chỉ muốn tìm số đoạn lặp trong chuỗi hoặc chỉ muốn tì
 
 Lưu ý rằng nếu muốn khai triển các bộ này để lấy vị trí bắt đầu và kết thúc của từng đoạn lặp thì thời gian chạy sẽ là $O(n^2)$ (nhớ rằng có thể có $O(n^2)$ đoạn lặp).
 Trong cài đặt này, ta sẽ làm vậy và lưu tất cả các đoạn lặp tìm được trong một vector các cặp chỉ số bắt đầu và kết thúc.
+
+**Ghi chú bản dịch:** Cài đặt dưới đây cần chuỗi đầu vào không rỗng và không chứa ký tự phân cách #. Với chuỗi rỗng, điều kiện dừng không được thỏa nên lời gọi đệ quy không kết thúc; nếu chuỗi chứa ký tự phân cách, kết quả có thể sai.
 
 ```{.cpp file=main_lorentz}
 vector<int> z_function(string const& s) {

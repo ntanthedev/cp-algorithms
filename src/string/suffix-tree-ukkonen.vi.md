@@ -120,6 +120,8 @@ void build_tree() {
 
 Cài đặt rút gọn này do [freopen](http://codeforces.com/profile/freopen) đề xuất.
 
+**Ghi chú bản dịch:** Cả hai phiên bản rút gọn dưới đây chỉ nhận chữ cái thường từ a đến z; hằng số N cũng giới hạn số nút có thể lưu. Cần bảo đảm đầu vào và kích thước cây phù hợp các giới hạn đó.
+
 ```cpp
 const int N=1000000,INF=1000000000;
 string a;
