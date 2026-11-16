@@ -165,6 +165,8 @@ Nhưng dấu nào cho biết $z$ nằm trong hay ngoài đường tròn? Như đ
 2. $\angle bca > 0^\circ$, $c$ khác phía $ab$ với $z$. Khi đó $\angle azb > 0^\circ$ và $\angle azb + \angle bca > 180^\circ$ với các điểm trong đường tròn.
 4. $\angle bca < 0^\circ$, $c$ khác phía $ab$ với $z$. Khi đó $\angle azb < 0^\circ$ và $\angle azb + \angle bca < 180^\circ$ với các điểm trong đường tròn.
 
+**Ghi chú của người dịch:** Bất đẳng thức ở trường hợp thứ tư trong bài gốc thiếu dấu trừ: tổng hai góc phải nhỏ hơn âm 180 độ. Lỗi này đã được báo trong issue #1755 của kho nguồn.
+
 Nói cách khác, nếu $\angle bca$ dương thì các điểm trong đường tròn có $\angle azb + \angle bca < 0^\circ$, nếu không chúng có $\angle azb + \angle bca > 0^\circ$, giả sử ta chuẩn hóa các góc giữa $-180^\circ$ và $180^\circ$. Điều này có thể được kiểm tra qua dấu phần ảo của $I_2=(a-c)\overline{(b-c)}$ và $I_1 = I_0 I_2$.
 
 **Lưu ý**: Vì ta nhân bốn số phức để được $I_1$, các hệ số trung gian có thể lớn tới $O(A^4)$, với $A$ là trị tuyệt đối lớn nhất của tọa độ đầu vào. Mặt khác, nếu đầu vào là số nguyên thì cả hai phép kiểm tra trên đều có thể thực hiện hoàn toàn bằng số nguyên.
