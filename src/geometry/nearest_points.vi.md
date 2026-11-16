@@ -42,7 +42,7 @@ $$A_1 = \{p_i \ | \ i = 0 \ldots m \}$$
 
 $$A_2 = \{p_i \ | \ i = m + 1 \ldots n-1 \}.$$ 
 
-**Ghi chú của người dịch:** Cách chia trong phần mô tả đặt cả điểm giữa vào nửa đầu; với hai điểm, cách chia này không làm nhỏ bài toán. Code bên dưới chia tại chỉ số giữa theo hai đoạn nửa kín, nên hai nửa đều nhỏ hơn khi cần đệ quy.
+**Ghi chú bản dịch:** Cách chia trong phần mô tả đặt cả điểm giữa vào nửa đầu; với hai điểm, cách chia này không làm nhỏ bài toán. Code bên dưới chia tại chỉ số giữa theo hai đoạn nửa kín, nên hai nửa đều nhỏ hơn khi cần đệ quy.
 
 Gọi đệ quy trên từng tập $A_1$ và $A_2$ để tìm các đáp án $h_1$ và $h_2$ tương ứng, rồi chọn đáp án tốt hơn: $h = \min(h_1, h_2)$.
 
@@ -79,7 +79,7 @@ Ta chứng minh mỗi hình vuông chứa không quá bốn điểm. Chẳng h�
 
 Vậy trong hình chữ nhật $2h \times h$ có không quá $4 \cdot 2 = 8$ điểm, và do đó kích thước của $C(p_i)$ không vượt quá $7$, như cần chứng minh.
 
-**Ghi chú của người dịch:** Theo định nghĩa ở trên, tập đang xét có thể chứa chính điểm hiện tại; cận bảy áp dụng cho các điểm khác điểm hiện tại. Phần cài đặt chỉ kiểm tra các điểm đã được duyệt trước đó.
+**Ghi chú bản dịch:** Theo định nghĩa ở trên, tập đang xét có thể chứa chính điểm hiện tại; cận bảy áp dụng cho các điểm khác điểm hiện tại. Phần cài đặt chỉ kiểm tra các điểm đã được duyệt trước đó.
 
 ## Cài đặt
 
@@ -120,6 +120,8 @@ void upd_ans(const pt & a, const pt & b) {
     }
 }
 ```
+
+**Ghi chú bản dịch:** Trong code trên, các phép trừ và nhân tọa độ được thực hiện bằng kiểu số nguyên trước khi chuyển kết quả sang số thực. Với tọa độ đủ lớn, các phép tính này có thể tràn; cần giới hạn miền tọa độ hoặc chuyển sang kiểu đủ rộng trước khi tính.
 
 Tiếp theo là cài đặt hàm đệ quy. Giả sử trước khi gọi hàm, mảng $a[]$ đã được sắp theo hoành độ $x$. Mỗi lời gọi nhận hai chỉ số $l, r$, cho biết cần tìm đáp án trên $a[l \ldots r)$. Nếu khoảng cách giữa $r$ và $l$ quá nhỏ, dừng đệ quy, dùng thuật toán đơn giản để tìm cặp gần nhất rồi sắp xếp đoạn con theo tung độ $y$.
 
@@ -213,7 +215,7 @@ Ta cần $d$ xấp xỉ khoảng cách nhỏ nhất $d$. Richard Lipton đề xu
 	
 	Cuối cùng, $\mathbb{E}[C(d)] = \mathbb{E}[\lambda(d) \, n] \le 16n$ và thời gian chạy kỳ vọng là $O(n)$ với hệ số hằng hợp lý. $\quad \blacksquare$
 
-**Ghi chú của người dịch:** Lập luận về tính đơn điệu của chi phí lưới ở trên cần được xem xét lại: khi đổi kích thước ô, các ranh giới cũng thay đổi và các ô mới không nhất thiết chỉ là hợp của các ô cũ. Chẳng hạn, trên cùng một hàng, hai điểm có hoành độ 2 và 3 nằm cùng ô khi cạnh ô bằng 2, nhưng nằm ở hai ô khác nhau khi cạnh ô bằng 2,5. Do đó bước suy ra tính đơn điệu trong bài nguồn chưa được chứng minh bởi lập luận này.
+**Ghi chú bản dịch:** Lập luận về tính đơn điệu của chi phí lưới ở trên cần được xem xét lại: khi đổi kích thước ô, các ranh giới cũng thay đổi và các ô mới không nhất thiết chỉ là hợp của các ô cũ. Chẳng hạn, trên cùng một hàng, hai điểm có hoành độ 2 và 3 nằm cùng ô khi cạnh ô bằng 2, nhưng nằm ở hai ô khác nhau khi cạnh ô bằng 2,5. Do đó bước suy ra tính đơn điệu trong bài nguồn chưa được chứng minh bởi lập luận này.
 
 #### Cài đặt thuật toán
 
@@ -353,6 +355,8 @@ Ta giới thiệu một thuật toán ngẫu nhiên khác, ít thực tế hơn 
 		- Lưu các điểm $p_1, \dots, p_i$ vào các ô tương ứng
 	- Ngược lại, lưu $p_i$ vào ô tương ứng
 - Xuất $\delta$
+
+**Ghi chú bản dịch:** Nếu phát hiện hai điểm trùng nhau, khoảng cách nhỏ nhất bằng không và có thể trả lời ngay; không thể chia mặt phẳng thành các ô có cạnh bằng không như mô tả ở trên. Khi xét một điểm mới, cần tìm khoảng cách nhỏ nhất trong toàn bộ các ứng viên đã xét trước khi dựng lại lưới. Nếu chỉ lấy một ứng viên gần hơn bất kỳ, chẳng hạn với ba điểm có hoành độ lần lượt là 0, 10 và 4 trên cùng một đường thẳng, ta có thể chọn khoảng cách 6 thay vì khoảng cách nhỏ nhất là 4.
 
 Tính đúng đắn suy ra từ việc tại mọi thời điểm ta đã có một cặp cách nhau $\delta$, nên chỉ cần tìm các cặp mới có khoảng cách nhỏ hơn $\delta$. Vì mỗi ô có cạnh $\delta/2$, một cặp ứng viên chỉ có thể cách nhau nhiều nhất $2$ ô; do đó, với mỗi điểm ta kiểm tra các ứng viên trong $25$ ô xung quanh. Mọi điểm trong ô xa hơn luôn có khoảng cách lớn hơn $\delta$.
 
