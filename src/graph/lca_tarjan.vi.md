@@ -29,8 +29,8 @@ Giả sử hiện ta ở đỉnh $v$, đã thực hiện các lời gọi DFS đ
 Hãy xét cách tìm LCA của hai đỉnh này.
 
 Lưu ý rằng $\text{LCA}(u, v)$ là đỉnh $v$ hoặc một tổ tiên của nó.
-Vì vậy cần tìm đỉnh thấp nhất trong các tổ tiên của $v$ (kể cả $v$) mà $u$ là hậu duệ của đỉnh đó. 
-Với $v$ cố định, các đỉnh đã thăm của cây được chia thành các tập rời nhau. 
+Vì vậy cần tìm đỉnh thấp nhất trong các tổ tiên của $v$ (kể cả $v$) mà $u$ là hậu duệ của đỉnh đó.
+Với $v$ cố định, các đỉnh đã thăm của cây được chia thành các tập rời nhau.
 Mỗi tổ tiên $p$ của $v$ có một tập riêng chứa chính nó và mọi cây con gốc tại những con của nó không nằm trên đường từ $v$ đến gốc cây.
 Tập chứa đỉnh $u$ xác định $\text{LCA}(u, v)$:
 LCA là đại diện của tập, cụ thể là đỉnh nằm trên đường từ $v$ đến gốc cây.
@@ -50,7 +50,7 @@ Cuối cùng, sau khi xử lý mọi đỉnh con, ta có thể trả lời mọi
 Đáp án, tức LCA của $u$ và $v$, là đỉnh `ancestor[find_set(u)]`.
 Dễ thấy một truy vấn chỉ được trả lời một lần.
 
-Hãy xác định độ phức tạp thời gian của thuật toán. 
+Hãy xác định độ phức tạp thời gian của thuật toán.
 Trước hết, DFS tốn $O(n)$.
 Tiếp theo, `union_sets` được gọi $n$ lần, cũng mất $O(n)$.
 Cuối cùng, các lời gọi `find_set` cho mỗi truy vấn mất $O(m)$.
