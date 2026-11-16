@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#d-esopo-pape-algorithm" class="md-skip">
+        <a href="#thuat-toan-d-esopo-pape" class="md-skip">
           Bỏ qua
         </a>
       
@@ -5889,10 +5889,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
+  <a href="#mo-ta" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Description
+        Mô tả
       
     </span>
   </a>
@@ -5900,10 +5900,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -5911,10 +5911,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#complexity" class="md-nav__link">
+  <a href="#o-phuc-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Complexity
+        Độ phức tạp
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/desopo_pape.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/desopo_pape.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/desopo_pape.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/desopo_pape.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,18 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8014,40 +8002,39 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="d-esopo-pape-algorithm">D´Esopo-Pape algorithm<a class="headerlink" href="#d-esopo-pape-algorithm" title="Permanent link">&para;</a></h1>
-<p>Given a graph with <span class="arithmatex">$n$</span> vertices and <span class="arithmatex">$m$</span> edges with weights <span class="arithmatex">$w_i$</span> and a starting vertex <span class="arithmatex">$v_0$</span>.
-The task is to find the shortest path from the vertex <span class="arithmatex">$v_0$</span> to every other vertex.</p>
-<p>The algorithm from D´Esopo-Pape will work faster than <a href="dijkstra.html">Dijkstra's algorithm</a> and the <a href="bellman_ford.html">Bellman-Ford algorithm</a> in most cases, and will also work for negative edges.
-However not for negative cycles.</p>
-<h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">&para;</a></h2>
-<p>Let the array <span class="arithmatex">$d$</span> contain the shortest path lengths, i.e. <span class="arithmatex">$d_i$</span> is the current length of the shortest path from the vertex <span class="arithmatex">$v_0$</span> to the vertex <span class="arithmatex">$i$</span>.
-Initially this array is filled with infinity for every vertex, except <span class="arithmatex">$d_{v_0} = 0$</span>.
-After the algorithm finishes, this array will contain the shortest distances.</p>
-<p>Let the array <span class="arithmatex">$p$</span> contain the current ancestors, i.e. <span class="arithmatex">$p_i$</span> is the direct ancestor of the vertex <span class="arithmatex">$i$</span> on the current shortest path from <span class="arithmatex">$v_0$</span> to <span class="arithmatex">$i$</span>.
-Just like the array <span class="arithmatex">$d$</span>, the array <span class="arithmatex">$p$</span> changes gradually during the algorithm and at the end takes its final values.</p>
-<p>Now to the algorithm.
-At each step three sets of vertices are maintained:</p>
+<h1 id="thuat-toan-d-esopo-pape">Thuật toán D´Esopo-Pape<a class="headerlink" href="#thuat-toan-d-esopo-pape" title="Permanent link">&para;</a></h1>
+<p>Cho đồ thị có <span class="arithmatex">$n$</span> đỉnh và <span class="arithmatex">$m$</span> cạnh, trong đó cạnh thứ i có trọng số <span class="arithmatex">$w_i$</span>, cùng với đỉnh xuất phát <span class="arithmatex">$v_0$</span>.
+Bài toán yêu cầu tìm đường đi ngắn nhất từ đỉnh <span class="arithmatex">$v_0$</span> đến mọi đỉnh còn lại.</p>
+<p>Trong hầu hết trường hợp, thuật toán D´Esopo-Pape chạy nhanh hơn <a href="dijkstra.html">thuật toán Dijkstra</a> và <a href="bellman_ford.html">thuật toán Bellman-Ford</a>; thuật toán cũng xử lý được các cạnh có trọng số âm.
+Tuy nhiên, thuật toán không xử lý được chu trình âm.</p>
+<h2 id="mo-ta">Mô tả<a class="headerlink" href="#mo-ta" title="Permanent link">&para;</a></h2>
+<p>Mảng <span class="arithmatex">$d$</span> lưu độ dài đường đi ngắn nhất hiện tại, tức <span class="arithmatex">$d_i$</span> là độ dài đường đi ngắn nhất hiện biết từ đỉnh <span class="arithmatex">$v_0$</span> đến đỉnh <span class="arithmatex">$i$</span>.
+Ban đầu, mọi phần tử của mảng đều bằng vô cực, ngoại trừ <span class="arithmatex">$d_{v_0} = 0$</span>.
+Sau khi thuật toán kết thúc, mảng này lưu các khoảng cách ngắn nhất.</p>
+<p>Mảng <span class="arithmatex">$p$</span> lưu thông tin về đỉnh đứng ngay trước mỗi đỉnh trên đường đi, cụ thể <span class="arithmatex">$p_i$</span> là đỉnh ngay trước <span class="arithmatex">$i$</span> trên đường đi ngắn nhất hiện tại từ <span class="arithmatex">$v_0$</span> đến <span class="arithmatex">$i$</span>.
+Giống như mảng <span class="arithmatex">$d$</span>, mảng <span class="arithmatex">$p$</span> thay đổi trong quá trình thuật toán chạy và nhận giá trị cuối cùng khi thuật toán kết thúc.</p>
+<p>Ở mỗi bước, thuật toán duy trì ba tập đỉnh:</p>
 <ul>
-<li><span class="arithmatex">$M_0$</span> - vertices, for which the distance has already been calculated (although it might not be the final distance)</li>
-<li><span class="arithmatex">$M_1$</span> - vertices, for which the distance currently is calculated</li>
-<li><span class="arithmatex">$M_2$</span> - vertices, for which the distance has not yet been calculated</li>
+<li><span class="arithmatex">$M_0$</span> — các đỉnh đã được xử lý (dù khoảng cách của chúng có thể chưa phải kết quả cuối cùng).</li>
+<li><span class="arithmatex">$M_1$</span> — các đỉnh đang được xử lý.</li>
+<li><span class="arithmatex">$M_2$</span> — các đỉnh chưa được xử lý.</li>
 </ul>
-<p>The vertices in the set <span class="arithmatex">$M_1$</span> are stored in a bidirectional queue (deque).</p>
-<p>At each step of the algorithm we take a vertex from the set <span class="arithmatex">$M_1$</span> (from the front of the queue).
-Let <span class="arithmatex">$u$</span> be the selected vertex.
-We put this vertex <span class="arithmatex">$u$</span> into the set <span class="arithmatex">$M_0$</span>.
-Then we iterate over all edges coming out of this vertex.
-Let <span class="arithmatex">$v$</span> be the second end of the current edge, and <span class="arithmatex">$w$</span> its weight.</p>
+<p>Các đỉnh trong tập <span class="arithmatex">$M_1$</span> được lưu trong một hàng đợi hai đầu (deque).</p>
+<p>Mỗi bước, ta lấy một đỉnh ở đầu hàng đợi, thuộc tập <span class="arithmatex">$M_1$</span>.
+Gọi đỉnh đó là <span class="arithmatex">$u$</span>.
+Ta chuyển <span class="arithmatex">$u$</span> vào tập <span class="arithmatex">$M_0$</span>.
+Sau đó, ta duyệt mọi cạnh đi ra từ u.
+Gọi <span class="arithmatex">$v$</span> là đầu mút còn lại của cạnh đang xét và <span class="arithmatex">$w$</span> là trọng số của cạnh đó.</p>
 <ul>
-<li>If <span class="arithmatex">$v$</span> belongs to <span class="arithmatex">$M_2$</span>, then <span class="arithmatex">$v$</span> is inserted into the set <span class="arithmatex">$M_1$</span> by inserting it at the back of the queue.
-<span class="arithmatex">$d_v$</span> is set to <span class="arithmatex">$d_u + w$</span>.</li>
-<li>If <span class="arithmatex">$v$</span> belongs to <span class="arithmatex">$M_1$</span>, then we try to improve the value of <span class="arithmatex">$d_v$</span>: <span class="arithmatex">$d_v = \min(d_v, d_u + w)$</span>.
-Since <span class="arithmatex">$v$</span> is already in <span class="arithmatex">$M_1$</span>, we don't need to insert it into <span class="arithmatex">$M_1$</span> and the queue.</li>
-<li>If <span class="arithmatex">$v$</span> belongs to <span class="arithmatex">$M_0$</span>, and if <span class="arithmatex">$d_v$</span> can be improved <span class="arithmatex">$d_v &gt; d_u + w$</span>, then we improve <span class="arithmatex">$d_v$</span> and insert the vertex <span class="arithmatex">$v$</span> back to the set <span class="arithmatex">$M_1$</span>, placing it at the beginning of the queue.</li>
+<li>Nếu <span class="arithmatex">$v$</span> thuộc <span class="arithmatex">$M_2$</span>, ta thêm <span class="arithmatex">$v$</span> vào cuối hàng đợi và chuyển nó vào <span class="arithmatex">$M_1$</span>.
+<span class="arithmatex">$d_v$</span> được đặt bằng <span class="arithmatex">$d_u + w$</span>.</li>
+<li>Nếu <span class="arithmatex">$v$</span> thuộc <span class="arithmatex">$M_1$</span>, ta thử cải thiện <span class="arithmatex">$d_v$</span>: <span class="arithmatex">$d_v = \min(d_v, d_u + w)$</span>.
+Vì <span class="arithmatex">$v$</span> đã thuộc <span class="arithmatex">$M_1$</span>, ta không cần thêm lại nó vào <span class="arithmatex">$M_1$</span> hay hàng đợi.</li>
+<li>Nếu <span class="arithmatex">$v$</span> thuộc <span class="arithmatex">$M_0$</span> và có thể cải thiện <span class="arithmatex">$d_v$</span> (tức <span class="arithmatex">$d_v &gt; d_u + w$</span>), ta cập nhật <span class="arithmatex">$d_v$</span> rồi đưa <span class="arithmatex">$v$</span> trở lại tập <span class="arithmatex">$M_1$</span>, đồng thời thêm nó vào đầu hàng đợi.</li>
 </ul>
-<p>And of course, with each update in the array <span class="arithmatex">$d$</span> we also have to update the corresponding element in the array <span class="arithmatex">$p$</span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>We will use an array <span class="arithmatex">$m$</span> to store in which set each vertex is currently.</p>
+<p>Mỗi khi cập nhật một phần tử trong mảng <span class="arithmatex">$d$</span>, ta cũng phải cập nhật phần tử tương ứng trong mảng <span class="arithmatex">$p$</span>.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Ta dùng mảng <span class="arithmatex">$m$</span> để lưu mỗi đỉnh hiện thuộc tập nào.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Edge</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">to</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="p">;</span>
 <span class="p">};</span>
@@ -8085,13 +8072,15 @@ Since <span class="arithmatex">$v$</span> is already in <span class="arithmatex"
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="complexity">Complexity<a class="headerlink" href="#complexity" title="Permanent link">&para;</a></h2>
-<p>The algorithm usually performs quite fast - in most cases, even faster than Dijkstra's algorithm.
-However there exist cases for which the algorithm takes exponential time, making it unsuitable in the worst-case. See discussions on <a href="https://stackoverflow.com/a/67642821">Stack Overflow</a> and <a href="https://codeforces.com/blog/entry/3793">Codeforces</a> for reference.</p>
+<p><strong>Ghi chú bản dịch:</strong> Cài đặt dùng INF = 1e9 làm giá trị vô cực và dùng kiểu int cho khoảng cách. Cần chọn kiểu và giá trị vô cực phù hợp với giới hạn dữ liệu; các phép cộng cũng phải nằm trong miền biểu diễn của kiểu được chọn.</p>
+<h2 id="o-phuc-tap">Độ phức tạp<a class="headerlink" href="#o-phuc-tap" title="Permanent link">&para;</a></h2>
+<p>Thuật toán thường chạy khá nhanh — trong hầu hết trường hợp, nó còn nhanh hơn Dijkstra.
+Tuy nhiên, có những trường hợp thuật toán cần thời gian theo hàm mũ, nên không phù hợp khi cần bảo đảm thời gian chạy trong trường hợp xấu nhất.
+Xem thêm các thảo luận trên <a href="https://stackoverflow.com/a/67642821">Stack Overflow</a> và <a href="https://codeforces.com/blog/entry/3793">Codeforces</a>.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (89.25%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (7.53%)</li><li><a href="#" title="Koustav Chowdhury" data-bi-name="contributorprofile" target="_blank">Koustav Chowdhury</a> (2.15%)</li><li><a href="#" title="jxu" data-bi-name="contributorprofile" target="_blank">jxu</a> (1.08%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

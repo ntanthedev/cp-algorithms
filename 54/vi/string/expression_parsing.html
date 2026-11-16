@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#expression-parsing" class="md-skip">
+        <a href="#phan-tich-bieu-thuc" class="md-skip">
           Bỏ qua
         </a>
       
@@ -3114,10 +3114,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#reverse-polish-notation" class="md-nav__link">
+  <a href="#ky-phap-ba-lan-nguoc" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Reverse Polish notation
+        Ký pháp Ba Lan ngược
       
     </span>
   </a>
@@ -3125,10 +3125,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#parsing-of-simple-expressions" class="md-nav__link">
+  <a href="#phan-tich-bieu-thuc-on-gian" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parsing of simple expressions
+        Phân tích biểu thức đơn giản
       
     </span>
   </a>
@@ -3136,10 +3136,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#unary-operators" class="md-nav__link">
+  <a href="#toan-tu-mot-ngoi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Unary operators
+        Toán tử một ngôi
       
     </span>
   </a>
@@ -3147,10 +3147,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#right-associativity" class="md-nav__link">
+  <a href="#tinh-ket-hop-phai" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Right-associativity
+        Tính kết hợp phải
       
     </span>
   </a>
@@ -7961,13 +7961,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/string/expression_parsing.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/string/expression_parsing.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/string/expression_parsing.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/string/expression_parsing.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7978,18 +7978,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8025,38 +8013,38 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="expression-parsing">Expression parsing<a class="headerlink" href="#expression-parsing" title="Permanent link">&para;</a></h1>
-<p>A string containing a mathematical expression containing numbers and various operators is given.
-We have to compute the value of it in <span class="arithmatex">$O(n)$</span>, where <span class="arithmatex">$n$</span> is the length of the string.</p>
-<p>The algorithm discussed here translates an expression into the so-called <strong>reverse Polish notation</strong> (explicitly or implicitly), and evaluates this expression.</p>
-<h2 id="reverse-polish-notation">Reverse Polish notation<a class="headerlink" href="#reverse-polish-notation" title="Permanent link">&para;</a></h2>
-<p>The reverse Polish notation is a form of writing mathematical expressions, in which the operators are located after their operands.
-For example the following expression</p>
+<h1 id="phan-tich-bieu-thuc">Phân tích biểu thức<a class="headerlink" href="#phan-tich-bieu-thuc" title="Permanent link">&para;</a></h1>
+<p>Cho một chuỗi chứa biểu thức toán học gồm các số và nhiều toán tử.
+Ta cần tính giá trị của biểu thức trong <span class="arithmatex">$O(n)$</span>, với <span class="arithmatex">$n$</span> là độ dài chuỗi.</p>
+<p>Thuật toán ở đây chuyển biểu thức sang <strong>ký pháp Ba Lan ngược</strong> (một cách tường minh hoặc ngầm định), rồi tính giá trị của biểu thức.</p>
+<h2 id="ky-phap-ba-lan-nguoc">Ký pháp Ba Lan ngược<a class="headerlink" href="#ky-phap-ba-lan-nguoc" title="Permanent link">&para;</a></h2>
+<p>Ký pháp Ba Lan ngược là cách viết biểu thức toán học trong đó các toán tử đứng sau các toán hạng của chúng.
+Ví dụ, biểu thức sau</p>
 <div class="arithmatex">$$a + b * c * d + (e - f) * (g * h + i)$$</div>
-<p>can be written in reverse Polish notation in the following way:</p>
+<p>có thể được viết bằng ký pháp Ba Lan ngược như sau:</p>
 <div class="arithmatex">$$a b c * d * + e f - g h * i + * +$$</div>
-<p>The reverse Polish notation was developed by the Australian philosopher and computer science specialist Charles Hamblin in the mid 1950s on the basis of the Polish notation, which was proposed in 1920 by the Polish mathematician Jan Łukasiewicz.</p>
-<p>The convenience of the reverse Polish notation is, that expressions in this form are very <strong>easy to evaluate</strong> in linear time.
-We use a stack, which is initially empty.
-We will iterate over the operands and operators of the expression in reverse Polish notation.
-If the current element is a number, then we put the value on top of the stack, if the current element is an operator, then we get the top two elements from the stack, perform the operation, and put the result back on top of the stack.
-In the end there will be exactly one element left in the stack, which will be the value of the expression.</p>
-<p>Obviously this simple evaluation runs in <span class="arithmatex">$O(n)$</span> time.</p>
-<h2 id="parsing-of-simple-expressions">Parsing of simple expressions<a class="headerlink" href="#parsing-of-simple-expressions" title="Permanent link">&para;</a></h2>
-<p>For the time being we only consider a simplified problem:
-we assume that all operators are <strong>binary</strong> (i.e. they take two arguments), and all are <strong>left-associative</strong> (if the priorities are equal, they get executed from left to right).
-Parentheses are allowed.</p>
-<p>We will set up two stacks: one for numbers, and one for operators and parentheses.
-Initially both stacks are empty.
-For the second stack we will maintain the condition that all operations are ordered by strict descending priority.
-If there are parenthesis on the stack, than each block of operators (corresponding to one pair of parenthesis) is ordered, and the entire stack is not necessarily ordered.</p>
-<p>We will iterate over the characters of the expression from left to right.
-If the current character is a digit, then we put the value of this number on the stack.
-If the current character is an opening parenthesis, then we put it on the stack.
-If the current character is a closing parenthesis, the we execute all operators on the stack until we reach the opening bracket (in other words we perform all operations inside the parenthesis).
-Finally if the current character is an operator, then while the top of the stack has an operator with the same or higher priority, we will execute this operation, and put the new operation on the stack.</p>
-<p>After we processed the entire string, some operators might still be in the stack, so we execute them.</p>
-<p>Here is the implementation of this method for the four operators <span class="arithmatex">$+$</span> <span class="arithmatex">$-$</span> <span class="arithmatex">$*$</span> <span class="arithmatex">$/$</span>:</p>
+<p>Ký pháp Ba Lan ngược được nhà triết học và chuyên gia khoa học máy tính người Úc Charles Hamblin phát triển vào giữa thập niên 1950, dựa trên ký pháp Ba Lan do nhà toán học người Ba Lan Jan Łukasiewicz đề xuất năm 1920.</p>
+<p>Điểm thuận tiện của ký pháp Ba Lan ngược là các biểu thức dạng này rất <strong>dễ tính giá trị</strong> trong thời gian tuyến tính.
+Ta dùng một ngăn xếp, ban đầu rỗng.
+Ta duyệt các toán hạng và toán tử của biểu thức theo ký pháp Ba Lan ngược.
+Nếu phần tử hiện tại là số, ta đưa giá trị đó lên đỉnh ngăn xếp; nếu là toán tử, ta lấy hai phần tử trên cùng ra, thực hiện phép toán và đưa kết quả trở lại đỉnh ngăn xếp.
+Cuối cùng, ngăn xếp còn đúng một phần tử, chính là giá trị của biểu thức.</p>
+<p>Hiển nhiên cách tính đơn giản này chạy trong thời gian <span class="arithmatex">$O(n)$</span>.</p>
+<h2 id="phan-tich-bieu-thuc-on-gian">Phân tích biểu thức đơn giản<a class="headerlink" href="#phan-tich-bieu-thuc-on-gian" title="Permanent link">&para;</a></h2>
+<p>Trước hết, ta chỉ xét một bài toán đơn giản hơn:
+giả sử mọi toán tử đều là <strong>hai ngôi</strong> (tức là nhận hai đối số) và đều <strong>kết hợp trái</strong> (nếu cùng độ ưu tiên thì được thực hiện từ trái sang phải).
+Biểu thức được phép có dấu ngoặc.</p>
+<p>Ta tạo hai ngăn xếp: một cho các số, một cho các toán tử và dấu ngoặc.
+Ban đầu cả hai đều rỗng.
+Với ngăn xếp thứ hai, ta duy trì điều kiện các phép toán được sắp theo độ ưu tiên giảm nghiêm ngặt.
+Nếu có dấu ngoặc trong ngăn xếp thì mỗi khối toán tử (tương ứng với một cặp ngoặc) được sắp thứ tự, nhưng toàn bộ ngăn xếp không nhất thiết được sắp.</p>
+<p>Ta duyệt các ký tự của biểu thức từ trái sang phải.
+Nếu ký tự hiện tại là chữ số, ta đưa giá trị của số đó vào ngăn xếp.
+Nếu ký tự hiện tại là dấu ngoặc mở, ta đưa nó vào ngăn xếp.
+Nếu ký tự hiện tại là dấu ngoặc đóng, ta thực hiện các toán tử trong ngăn xếp cho tới khi gặp dấu ngoặc mở (nói cách khác là thực hiện mọi phép toán bên trong cặp ngoặc).
+Cuối cùng, nếu ký tự hiện tại là một toán tử, ta thực hiện các toán tử ở đỉnh ngăn xếp chừng nào chúng có độ ưu tiên bằng hoặc cao hơn, rồi đưa toán tử mới vào ngăn xếp.</p>
+<p>Sau khi duyệt hết chuỗi, một số toán tử vẫn có thể còn trong ngăn xếp, nên ta thực hiện chúng.</p>
+<p>Dưới đây là cài đặt phương pháp này với bốn toán tử <span class="arithmatex">$+$</span> <span class="arithmatex">$-$</span> <span class="arithmatex">$*$</span> <span class="arithmatex">$/$</span>:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">delim</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">' '</span><span class="p">;</span>
 <span class="p">}</span>
@@ -8122,36 +8110,37 @@ Finally if the current character is an operator, then while the top of the stack
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">st</span><span class="p">.</span><span class="n">top</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Thus we learned how to calculate the value of an expression in <span class="arithmatex">$O(n)$</span>, at the same time we implicitly used the reverse Polish notation.
-By slightly modifying the above implementation it is also possible to obtain the expression in reverse Polish notation in an explicit form.</p>
-<h2 id="unary-operators">Unary operators<a class="headerlink" href="#unary-operators" title="Permanent link">&para;</a></h2>
-<p>Now suppose that the expression also contains <strong>unary</strong> operators (operators that take one argument).
-The unary plus and unary minus are common examples of such operators.</p>
-<p>One of the differences in this case, is that we need to determine whether the current operator is a unary or a binary one.</p>
-<p>You can notice, that before an unary operator, there always is another operator or an opening parenthesis, or nothing at all (if it is at the very beginning of the expression).
-On the contrary before a binary operator there will always be an operand (number) or a closing parenthesis.
-Thus it is easy to flag whether the next operator can be unary or not. </p>
-<p>Additionally we need to execute a unary and a binary operator differently.
-And we need to chose the priority of a unary operator higher than all of the binary operators.</p>
-<p>In addition it should be noted, that some unary operators (e.g. unary plus and unary minus) are actually <strong>right-associative</strong>.</p>
-<h2 id="right-associativity">Right-associativity<a class="headerlink" href="#right-associativity" title="Permanent link">&para;</a></h2>
-<p>Right-associative means, that whenever the priorities are equal, the operators must be evaluated from right to left.</p>
-<p>As noted above, unary operators are usually right-associative.
-Another example for an right-associative operator is the exponentiation operator (<span class="arithmatex">$a \wedge b \wedge c$</span> is usually perceived as <span class="arithmatex">$a^{b^c}$</span> and not as <span class="arithmatex">$(a^b)^c$</span>).</p>
-<p>What difference do we need to make in order to correctly handle right-associative operators?
-It turns out that the changes are very minimal.
-The only difference will be, if the priorities are equal we will postpone the execution of the right-associative operation.</p>
-<p>The only line that needs to be replaced is
+<p>Như vậy, ta đã biết cách tính giá trị biểu thức trong <span class="arithmatex">$O(n)$</span>, đồng thời sử dụng ngầm ký pháp Ba Lan ngược.
+Bằng cách sửa đôi chút cài đặt trên, ta cũng có thể thu được biểu thức dưới dạng ký pháp Ba Lan ngược một cách tường minh.</p>
+<h2 id="toan-tu-mot-ngoi">Toán tử một ngôi<a class="headerlink" href="#toan-tu-mot-ngoi" title="Permanent link">&para;</a></h2>
+<p>Bây giờ giả sử biểu thức còn chứa các toán tử <strong>một ngôi</strong> (toán tử nhận một đối số).
+Dấu cộng và dấu trừ một ngôi là những ví dụ thường gặp.</p>
+<p>Một khác biệt trong trường hợp này là ta phải xác định toán tử hiện tại là một ngôi hay hai ngôi.</p>
+<p>Ta có thể nhận thấy trước một toán tử một ngôi luôn là một toán tử khác, một dấu ngoặc mở, hoặc không có gì (nếu nó ở ngay đầu biểu thức).
+Ngược lại, trước một toán tử hai ngôi luôn là một toán hạng (số) hoặc dấu ngoặc đóng.
+Vì vậy, ta dễ dàng đánh dấu liệu toán tử tiếp theo có thể là một ngôi hay không.</p>
+<p>Ngoài ra, ta phải thực hiện toán tử một ngôi và hai ngôi theo cách khác nhau.
+Ta cũng phải chọn độ ưu tiên của toán tử một ngôi cao hơn mọi toán tử hai ngôi.</p>
+<p>Cần lưu ý rằng một số toán tử một ngôi (chẳng hạn dấu cộng và dấu trừ một ngôi) thực ra <strong>kết hợp phải</strong>.</p>
+<h2 id="tinh-ket-hop-phai">Tính kết hợp phải<a class="headerlink" href="#tinh-ket-hop-phai" title="Permanent link">&para;</a></h2>
+<p>Kết hợp phải nghĩa là khi độ ưu tiên bằng nhau, các toán tử phải được tính từ phải sang trái.</p>
+<p>Như đã nói ở trên, các toán tử một ngôi thường kết hợp phải.
+Một ví dụ khác là toán tử lũy thừa (<span class="arithmatex">$a \wedge b \wedge c$</span> thường được hiểu là <span class="arithmatex">$a^{b^c}$</span> chứ không phải <span class="arithmatex">$(a^b)^c$</span>).</p>
+<p>Ta cần thay đổi gì để xử lý đúng toán tử kết hợp phải?
+Hóa ra chỉ cần thay đổi rất ít.
+Điểm khác biệt duy nhất là khi độ ưu tiên bằng nhau, ta sẽ trì hoãn thực hiện toán tử kết hợp phải.</p>
+<p>Dòng duy nhất cần thay là
 <div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">op</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">priority</span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="n">top</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">priority</span><span class="p">(</span><span class="n">cur_op</span><span class="p">))</span>
 </code></pre></div>
-with
+bằng
 <div class="highlight"><pre><span></span><code><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">op</span><span class="p">.</span><span class="n">empty</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span>
 <span class="w">        </span><span class="p">(</span><span class="n">left_assoc</span><span class="p">(</span><span class="n">cur_op</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">priority</span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="n">top</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">priority</span><span class="p">(</span><span class="n">cur_op</span><span class="p">))</span><span class="w"> </span><span class="o">||</span>
 <span class="w">        </span><span class="p">(</span><span class="o">!</span><span class="n">left_assoc</span><span class="p">(</span><span class="n">cur_op</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">priority</span><span class="p">(</span><span class="n">op</span><span class="p">.</span><span class="n">top</span><span class="p">())</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">priority</span><span class="p">(</span><span class="n">cur_op</span><span class="p">))</span>
 <span class="w">    </span><span class="p">))</span>
 </code></pre></div>
-where <code>left_assoc</code> is a function that decides if an operator is left_associative or not.</p>
-<p>Here is an implementation for the binary operators <span class="arithmatex">$+$</span> <span class="arithmatex">$-$</span> <span class="arithmatex">$*$</span> <span class="arithmatex">$/$</span> and the unary  operators <span class="arithmatex">$+$</span> and <span class="arithmatex">$-$</span>.</p>
+trong đó <code>left_assoc</code> là hàm quyết định một toán tử có kết hợp trái hay không.</p>
+<p>Dưới đây là một cài đặt cho các toán tử hai ngôi <span class="arithmatex">$+$</span> <span class="arithmatex">$-$</span> <span class="arithmatex">$*$</span> <span class="arithmatex">$/$</span> và các toán tử một ngôi <span class="arithmatex">$+$</span> và <span class="arithmatex">$-$</span>.</p>
+<p><strong>Ghi chú bản dịch:</strong> Cài đặt dưới đây dùng giá trị âm của kiểu char để đánh dấu toán tử một ngôi. Nó phụ thuộc vào việc char có dấu; nếu char mặc định không dấu, cách nhận biết này không hoạt động đúng.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="nf">delim</span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">' '</span><span class="p">;</span>
 <span class="p">}</span>
@@ -8244,7 +8233,7 @@ where <code>left_assoc</code> is a function that decides if an operator is left_
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (96.9%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (2.33%)</li><li><a href="#" title="Piyush Naithani" data-bi-name="contributorprofile" target="_blank">Piyush Naithani</a> (0.39%)</li><li><a href="#" title="wiktorkuchta" data-bi-name="contributorprofile" target="_blank">wiktorkuchta</a> (0.39%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

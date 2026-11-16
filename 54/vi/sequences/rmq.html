@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#range-minimum-query" class="md-skip">
+        <a href="#truy-van-gia-tri-nho-nhat-tren-oan" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7363,10 +7363,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#loi-giai" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        Lời giải
       
     </span>
   </a>
@@ -7374,10 +7374,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap-luyen-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập luyện tập
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/sequences/rmq.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/sequences/rmq.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/sequences/rmq.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/sequences/rmq.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,30 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8015,32 +7991,34 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="range-minimum-query">Range Minimum Query<a class="headerlink" href="#range-minimum-query" title="Permanent link">&para;</a></h1>
-<p>You are given an array <span class="arithmatex">$A[1..N]$</span>.
-You have to answer incoming queries of the form <span class="arithmatex">$(L, R)$</span>, which ask to find the minimum element in array <span class="arithmatex">$A$</span> between positions <span class="arithmatex">$L$</span> and <span class="arithmatex">$R$</span> inclusive.</p>
-<p>RMQ can appear in problems directly or can be applied in some other tasks, e.g. the <a href="../graph/lca.html">Lowest Common Ancestor</a> problem.</p>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">&para;</a></h2>
-<p>There are lots of possible approaches and data structures that you can use to solve the RMQ task.</p>
-<p>The ones that are explained on this site are listed below.</p>
-<p>First the approaches that allow modifications to the array between answering queries.</p>
+<h1 id="truy-van-gia-tri-nho-nhat-tren-oan">Truy vấn giá trị nhỏ nhất trên đoạn<a class="headerlink" href="#truy-van-gia-tri-nho-nhat-tren-oan" title="Permanent link">&para;</a></h1>
+<p>Cho một mảng <span class="arithmatex">$A[1..N]$</span>.
+Ta cần trả lời các truy vấn dạng <span class="arithmatex">$(L, R)$</span>: tìm phần tử nhỏ nhất trong mảng <span class="arithmatex">$A$</span> từ vị trí <span class="arithmatex">$L$</span> đến <span class="arithmatex">$R$</span>, tính cả hai đầu mút.</p>
+<p>RMQ có thể xuất hiện trực tiếp trong bài toán hoặc được áp dụng vào các bài toán khác, chẳng hạn bài toán <a href="../graph/lca.html">tổ tiên chung thấp nhất</a>.</p>
+<h2 id="loi-giai">Lời giải<a class="headerlink" href="#loi-giai" title="Permanent link">&para;</a></h2>
+<p>Có nhiều cách tiếp cận và cấu trúc dữ liệu có thể dùng để giải bài toán RMQ.</p>
+<p>Dưới đây là những cách được giải thích trên trang này.</p>
+<p>Trước hết là các cách cho phép thay đổi mảng giữa các truy vấn.</p>
 <ul>
-<li><a href="../data_structures/sqrt_decomposition.html">Sqrt-decomposition</a> - answers each query in <span class="arithmatex">$O(\sqrt{N})$</span>, preprocessing done in <span class="arithmatex">$O(N)$</span>.
-  Pros: a very simple data structure. Cons: worse complexity.</li>
-<li><a href="../data_structures/segment_tree.html">Segment tree</a> - answers each query in <span class="arithmatex">$O(\log N)$</span>, preprocessing done in <span class="arithmatex">$O(N)$</span>.
-  Pros: good time complexity. Cons: larger amount of code compared to the other data structures.</li>
-<li><a href="../data_structures/fenwick.html">Fenwick tree</a> - answers each query in <span class="arithmatex">$O(\log N)$</span>, preprocessing done in <span class="arithmatex">$O(N \log N)$</span>.
-  Pros: the shortest code, good time complexity. Cons: the standard Fenwick tree for RMQ only supports prefix queries (<span class="arithmatex">$L = 1$</span>).</li>
+<li><a href="../data_structures/sqrt_decomposition.html">Phân hoạch căn bậc hai</a> - trả lời mỗi truy vấn trong <span class="arithmatex">$O(\sqrt{N})$</span>, tiền xử lý trong <span class="arithmatex">$O(N)$</span>.
+  Ưu điểm: cấu trúc dữ liệu rất đơn giản. Nhược điểm: độ phức tạp kém hơn.</li>
+<li><a href="../data_structures/segment_tree.html">Cây đoạn</a> - trả lời mỗi truy vấn trong <span class="arithmatex">$O(\log N)$</span>, tiền xử lý trong <span class="arithmatex">$O(N)$</span>.
+  Ưu điểm: độ phức tạp thời gian tốt. Nhược điểm: lượng code lớn hơn so với các cấu trúc dữ liệu khác.</li>
+<li><a href="../data_structures/fenwick.html">Cây Fenwick</a> - trả lời mỗi truy vấn trong <span class="arithmatex">$O(\log N)$</span>, tiền xử lý trong <span class="arithmatex">$O(N \log N)$</span>.
+  Ưu điểm: code ngắn nhất, độ phức tạp thời gian tốt. Nhược điểm: cây Fenwick chuẩn cho RMQ chỉ hỗ trợ truy vấn tiền tố (<span class="arithmatex">$L = 1$</span>).</li>
 </ul>
-<p>And here are the approaches that only work on static arrays, i.e. it is not possible to change a value in the array without recomputing the complete data structure.</p>
+<p>Ghi chú bản dịch: Cây Fenwick tìm min ở dạng đơn giản trong bài liên kết còn yêu cầu mỗi lần cập nhật chỉ giảm giá trị. Chẳng hạn, với mảng [1, 2], nếu tăng phần tử đầu thành 3 thì giá trị min cũ có thể vẫn được lưu; chỉ giới hạn truy vấn tiền tố là chưa đủ để hỗ trợ cập nhật tùy ý.</p>
+<p>Tiếp theo là các cách chỉ hoạt động trên mảng tĩnh, tức là không thể thay đổi một giá trị trong mảng mà không tính lại toàn bộ cấu trúc dữ liệu.</p>
 <ul>
-<li><a href="../data_structures/sparse-table.html">Sparse Table</a> - answers each query in <span class="arithmatex">$O(1)$</span>, preprocessing done in <span class="arithmatex">$O(N \log N)$</span>.
-  Pros: simple data structure, excellent time complexity.</li>
-<li><a href="../data_structures/sqrt-tree.html">Sqrt Tree</a> - answers queries in <span class="arithmatex">$O(1)$</span>, preprocessing done in <span class="arithmatex">$O(N \log \log N)$</span>. Pros: fast. Cons: Complicated to implement.</li>
-<li><a href="../data_structures/disjoint_set_union.html#arpa">Disjoint Set Union / Arpa's Trick</a> - answers queries in <span class="arithmatex">$O(1)$</span>, preprocessing in <span class="arithmatex">$O(n)$</span>. Pros: short, fast. Cons: only works if all queries are known in advance, i.e. only supports off-line processing of the queries.</li>
-<li><a href="../graph/rmq_linear.html">Cartesian Tree</a> and <a href="../graph/lca_farachcoltonbender.html">Farach-Colton and Bender algorithm</a> - answers queries in <span class="arithmatex">$O(1)$</span>, preprocessing in <span class="arithmatex">$O(n)$</span>. Pros: optimal complexity. Cons: large amount of code.</li>
+<li><a href="../data_structures/sparse-table.html">Sparse Table</a> - trả lời mỗi truy vấn trong <span class="arithmatex">$O(1)$</span>, tiền xử lý trong <span class="arithmatex">$O(N \log N)$</span>.
+  Ưu điểm: cấu trúc dữ liệu đơn giản, độ phức tạp thời gian rất tốt.</li>
+<li><a href="../data_structures/sqrt-tree.html">Sqrt Tree</a> - trả lời truy vấn trong <span class="arithmatex">$O(1)$</span>, tiền xử lý trong <span class="arithmatex">$O(N \log \log N)$</span>. Ưu điểm: nhanh. Nhược điểm: cài đặt phức tạp.</li>
+<li><a href="../data_structures/disjoint_set_union.html#arpa">Disjoint Set Union / thủ thuật Arpa</a> - nguồn ghi trả lời truy vấn trong <span class="arithmatex">$O(1)$</span>, tiền xử lý trong <span class="arithmatex">$O(n)$</span>; xem ghi chú bên dưới về cận thời gian. Ưu điểm: ngắn gọn, nhanh. Nhược điểm: chỉ hoạt động nếu biết trước tất cả truy vấn, tức là chỉ hỗ trợ xử lý offline.</li>
+<li><a href="../graph/rmq_linear.html">Cây Cartesian</a> và <a href="../graph/lca_farachcoltonbender.html">thuật toán Farach-Colton và Bender</a> - trả lời truy vấn trong <span class="arithmatex">$O(1)$</span>, tiền xử lý trong <span class="arithmatex">$O(n)$</span>. Ưu điểm: độ phức tạp tối ưu. Nhược điểm: lượng code lớn.</li>
 </ul>
-<p>Note: Preprocessing is the preliminary processing of the given array by building the corresponding data structure for it.</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<p>Ghi chú bản dịch: Mức thời gian hằng số cho mỗi truy vấn của thủ thuật Arpa ở danh sách trên không phải cận xấu nhất cho từng truy vấn trong cách cài đặt DSU dùng nén đường đi. Bài DSU liên kết mô tả độ phức tạp trung bình gần hằng số; tổng thời gian cũng phải tính đến số truy vấn được xử lý.</p>
+<p>Lưu ý: Tiền xử lý là bước xử lý ban đầu mảng đã cho bằng cách xây dựng cấu trúc dữ liệu tương ứng.</p>
+<h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/RMQSQ/">SPOJ: Range Minimum Query</a></li>
 <li><a href="https://www.codechef.com/problems/FRMQ">CODECHEF: Chef And Array</a></li>
@@ -8049,7 +8027,7 @@ You have to answer incoming queries of the form <span class="arithmatex">$(L, R)
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (45.24%)</li><li><a href="#" title="Anthony" data-bi-name="contributorprofile" target="_blank">Anthony</a> (19.05%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (14.29%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (9.52%)</li><li><a href="#" title="Kartikay singh" data-bi-name="contributorprofile" target="_blank">Kartikay singh</a> (7.14%)</li><li><a href="#" title="Abhay Mahalle" data-bi-name="contributorprofile" target="_blank">Abhay Mahalle</a> (2.38%)</li><li><a href="#" title="Tanmay Sinha" data-bi-name="contributorprofile" target="_blank">Tanmay Sinha</a> (2.38%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

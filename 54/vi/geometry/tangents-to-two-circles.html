@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#finding-common-tangents-to-two-circles" class="md-skip">
+        <a href="#tim-cac-tiep-tuyen-chung-cua-hai-uong-tron" class="md-skip">
           Bỏ qua
         </a>
       
@@ -4527,10 +4527,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-number-of-common-tangents" class="md-nav__link">
+  <a href="#so-luong-tiep-tuyen-chung" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The number of common tangents
+        Số lượng tiếp tuyến chung
       
     </span>
   </a>
@@ -4538,10 +4538,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Thuật toán
       
     </span>
   </a>
@@ -4549,10 +4549,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -4560,10 +4560,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#problems" class="md-nav__link">
+  <a href="#bai-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problems
+        Bài tập
       
     </span>
   </a>
@@ -7961,13 +7961,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/geometry/tangents-to-two-circles.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/geometry/tangents-to-two-circles.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/geometry/tangents-to-two-circles.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/geometry/tangents-to-two-circles.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7978,22 +7978,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8029,52 +8013,52 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="finding-common-tangents-to-two-circles">Finding common tangents to two circles<a class="headerlink" href="#finding-common-tangents-to-two-circles" title="Permanent link">&para;</a></h1>
-<p>Given two circles. It is required to find all their common tangents, i.e. all such lines that touch both circles simultaneously.</p>
-<p>The described algorithm will also work in the case when one (or both) circles degenerate into points. Thus, this algorithm can also be used to find tangents to a circle passing through a given point.</p>
-<h2 id="the-number-of-common-tangents">The number of common tangents<a class="headerlink" href="#the-number-of-common-tangents" title="Permanent link">&para;</a></h2>
-<p>The number of common tangents to two circles can be <strong>0,1,2,3,4</strong> and <strong>infinite</strong>.
-Look at the images for different cases.</p>
+<h1 id="tim-cac-tiep-tuyen-chung-cua-hai-uong-tron">Tìm các tiếp tuyến chung của hai đường tròn<a class="headerlink" href="#tim-cac-tiep-tuyen-chung-cua-hai-uong-tron" title="Permanent link">&para;</a></h1>
+<p>Cho hai đường tròn. Hãy tìm tất cả các tiếp tuyến chung của chúng, tức là những đường thẳng tiếp xúc với cả hai đường tròn.</p>
+<p>Thuật toán dưới đây cũng hoạt động khi một hoặc cả hai đường tròn suy biến thành điểm. Vì vậy, ta cũng có thể dùng thuật toán để tìm các tiếp tuyến của một đường tròn đi qua một điểm cho trước.</p>
+<h2 id="so-luong-tiep-tuyen-chung">Số lượng tiếp tuyến chung<a class="headerlink" href="#so-luong-tiep-tuyen-chung" title="Permanent link">&para;</a></h2>
+<p>Số tiếp tuyến chung của hai đường tròn có thể là <strong>0, 1, 2, 3, 4</strong> hoặc <strong>vô số</strong>.
+Hình sau minh họa các trường hợp khác nhau.</p>
 <div style="text-align: center;">
   <img src="../../geometry/tangents-to-two-circles.png" alt=""Different cases of tangents common to two circles"">
 </div>
 
-<p>Here, we won't be considering <strong>degenerate</strong> cases, i.e <em>when the circles coincide (in this case they have infinitely many common tangents), or one circle lies inside the other (in this case they have no common tangents, or if the circles are tangent, there is one common tangent).</em></p>
-<p>In most cases, two circles have <strong>four</strong> common tangents.</p>
-<p>If the circles <strong>are tangent</strong> , then they will have three common tangents, but this can be understood as a degenerate case: as if the two tangents coincided.</p>
-<p>Moreover, the algorithm described below will work in the case when one or both circles have zero radius: in this case there will be, respectively, two or one common tangent.</p>
-<p>Summing up, we will always look for <strong>four tangents</strong> for all cases except infinite tangents case (The infinite tangents case needs to be handled separately and it is not discussed here). In degenerate cases, some of tangents will coincide, but nevertheless, these cases will also fit into the big picture.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>For the sake of simplicity of the algorithm, we will assume, without losing generality, that the center of the first circle has coordinates <span class="arithmatex">$(0, 0)$</span>. (If this is not the case, then this can be achieved by simply shifting the whole picture, and after finding a solution, by shifting the obtained straight lines back.)</p>
-<p>Denote <span class="arithmatex">$r_1$</span> and <span class="arithmatex">$r_2$</span> the radii of the first and second circles, and by <span class="arithmatex">$(v_x,v_y)$</span> the coordinates of the center of the second circle and point <span class="arithmatex">$v$</span> different from origin. (Note: we are not considering the case in which both the circles are same).</p>
-<p>To solve the problem, we approach it purely <strong>algebraically</strong> . We need to find all the lines of the form <span class="arithmatex">$ax + by + c = 0$</span> that lie at a distance <span class="arithmatex">$r_1$</span> from the origin of coordinates, and at a distance <span class="arithmatex">$r_2$</span> from a point <span class="arithmatex">$v$</span>. In addition, we impose the condition of normalization of the straight line: the sum of the squares of the coefficients and must be equal to one (this is necessary, otherwise the same straight line will correspond to infinitely many representations of the form <span class="arithmatex">$ax + by + c = 0$</span>). Total we get such a system of equations for the desired <span class="arithmatex">$a, b, c$</span>:</p>
+<p>Ở đây, ta không xét các trường hợp <strong>suy biến</strong>, tức là <em>hai đường tròn trùng nhau (khi đó có vô số tiếp tuyến chung), hoặc một đường tròn nằm trong đường tròn kia (khi đó không có tiếp tuyến chung, hoặc có một tiếp tuyến chung nếu hai đường tròn tiếp xúc nhau).</em></p>
+<p>Trong phần lớn trường hợp, hai đường tròn có <strong>bốn</strong> tiếp tuyến chung.</p>
+<p>Nếu hai đường tròn <strong>tiếp xúc nhau</strong> thì chúng có ba tiếp tuyến chung. Có thể hiểu đây là trường hợp suy biến khi hai tiếp tuyến trùng nhau.</p>
+<p>Hơn nữa, thuật toán bên dưới vẫn hoạt động khi một hoặc cả hai đường tròn có bán kính bằng không: khi đó tương ứng sẽ có hai hoặc một tiếp tuyến chung.</p>
+<p>Tóm lại, ta luôn tìm <strong>bốn tiếp tuyến</strong> trong mọi trường hợp trừ trường hợp có vô số tiếp tuyến (trường hợp này cần xử lý riêng và không được bàn ở đây). Trong các trường hợp suy biến, một số tiếp tuyến sẽ trùng nhau, nhưng vẫn phù hợp với cách tiếp cận chung.</p>
+<h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Để đơn giản hóa thuật toán, không mất tính tổng quát, ta giả sử tâm đường tròn thứ nhất có tọa độ <span class="arithmatex">$(0, 0)$</span>. (Nếu chưa như vậy, ta chỉ cần tịnh tiến toàn bộ hình và sau khi tìm được lời giải thì tịnh tiến các đường thẳng thu được trở lại.)</p>
+<p>Gọi <span class="arithmatex">$r_1$</span> và <span class="arithmatex">$r_2$</span> là bán kính của đường tròn thứ nhất và thứ hai, còn <span class="arithmatex">$(v_x,v_y)$</span> là tọa độ tâm của đường tròn thứ hai; điểm <span class="arithmatex">$v$</span> khác gốc tọa độ. (Lưu ý: ta không xét trường hợp hai đường tròn trùng nhau.)</p>
+<p>Ta giải bài toán bằng phương pháp hoàn toàn <strong>đại số</strong>. Cần tìm mọi đường thẳng dạng <span class="arithmatex">$ax + by + c = 0$</span> có khoảng cách đến gốc tọa độ là <span class="arithmatex">$r_1$</span> và đến điểm <span class="arithmatex">$v$</span> là <span class="arithmatex">$r_2$</span>. Ngoài ra, ta chuẩn hóa đường thẳng: tổng bình phương các hệ số phải bằng một (điều này cần thiết vì nếu không, cùng một đường thẳng sẽ có vô số biểu diễn dạng <span class="arithmatex">$ax + by + c = 0$</span>). Ta thu được hệ phương trình sau cho các hệ số <span class="arithmatex">$a, b, c$</span> cần tìm:</p>
 <div class="arithmatex">$$\begin{align}
 a^2 + b^2 &amp;= 1 \\
 \mid a \cdot 0 + b \cdot 0 + c \mid &amp;= r_1 \\
 \mid a \cdot v_x + b \cdot v_y + c \mid &amp;= r_2
 \end{align}$$</div>
-<p>To get rid of the modulus, note that there are only four ways to open the modulus in this system. All these methods can be considered by the general case, if we understand the opening of the modulus as the fact that the coefficient on the right-hand side may be multiplied by -1. In other words, we turn to this system:</p>
+<p>Để bỏ dấu giá trị tuyệt đối, nhận xét rằng chỉ có bốn cách bỏ dấu trong hệ này. Ta có thể xét chung các cách đó bằng cách cho phép nhân vế phải với -1. Nói cách khác, ta chuyển sang hệ:</p>
 <div class="arithmatex">$$\begin{align}
 a^2 + b^2 &amp;= 1 \\
 c &amp;= \pm r_1 \\
 a \cdot v_x + b \cdot v_y + c &amp;= \pm r_2
 \end{align}$$</div>
-<p>Entering the notation <span class="arithmatex">$d_1 = \pm r_1$</span> and <span class="arithmatex">$d_2 = \pm r_2$</span> , we come to the conclusion that the system must have four solutions:</p>
+<p>Đặt <span class="arithmatex">$d_1 = \pm r_1$</span> và <span class="arithmatex">$d_2 = \pm r_2$</span>, ta đi đến kết luận rằng hệ phải có bốn nghiệm:</p>
 <div class="arithmatex">$$\begin{align}
 a^2 + b^2 &amp;= 1 \\
 c &amp;= d_1 \\
 a \cdot v_x + b \cdot v_y + c &amp;= d_2
 \end{align}$$</div>
-<p>The solution of this system is reduced to solving a quadratic equation. We will omit all the cumbersome calculations, and immediately give a ready answer:</p>
+<p>Giải hệ này quy về giải một phương trình bậc hai. Ta bỏ qua các phép tính dài dòng và nêu ngay kết quả:</p>
 <div class="arithmatex">$$\begin{align}
 a &amp;= {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} } \\
 b &amp;= {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} } \\
 c &amp;= d_1
 \end{align}$$</div>
-<p>Total we got eight solutions instead four. However, it is easy to understand where superfluous decisions arise: in fact, in the latter system, it is enough to take only one solution (for example, the first). In fact, the geometric meaning of what we take <span class="arithmatex">$\pm r_1$</span> and <span class="arithmatex">$\pm r_2$</span> is clear: we are actually sorting out which side of each circle there is a straight line. Therefore, the two methods that arise when solving the latter system are redundant: it is enough to choose one of the two solutions (only, of course, in all four cases, you must choose the same family of solutions).</p>
-<p>The last thing that we have not yet considered is <strong>how to shift the straight lines</strong> in the case when the first circle was not originally located at the origin. However, everything is simple here: it follows from the linearity of the equation of a straight line that the value <span class="arithmatex">$a \cdot x_0 + b \cdot y_0$</span> (where <span class="arithmatex">$x_0$</span> and <span class="arithmatex">$y_0$</span> are the coordinates of the original center of the first circle) must be subtracted from the coefficient <span class="arithmatex">$c$</span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>We first describe all the necessary data structures and other auxiliary definitions:</p>
+<p>Tổng cộng ta thu được tám nghiệm thay vì bốn. Tuy nhiên, dễ hiểu vì sao xuất hiện các nghiệm thừa: ở hệ sau cùng, chỉ cần lấy một nghiệm (chẳng hạn nghiệm thứ nhất). Ý nghĩa hình học của việc lấy <span class="arithmatex">$\pm r_1$</span> và <span class="arithmatex">$\pm r_2$</span> là ta đang xét đường thẳng nằm về phía nào của mỗi đường tròn. Vì vậy, hai cách xuất hiện khi giải hệ sau cùng là dư thừa: chỉ cần chọn một trong hai nghiệm, nhưng phải chọn cùng một họ nghiệm trong cả bốn trường hợp.</p>
+<p>Điều cuối cùng ta chưa xét là <strong>cách tịnh tiến các đường thẳng</strong> khi tâm đường tròn thứ nhất ban đầu không ở gốc tọa độ. Từ tính tuyến tính của phương trình đường thẳng, ta cần trừ giá trị <span class="arithmatex">$a \cdot x_0 + b \cdot y_0$</span> khỏi hệ số <span class="arithmatex">$c$</span>, trong đó <span class="arithmatex">$x_0$</span> và <span class="arithmatex">$y_0$</span> là tọa độ tâm ban đầu của đường tròn thứ nhất.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Trước tiên, ta mô tả các cấu trúc dữ liệu và định nghĩa phụ trợ cần thiết:</p>
 <p><div class="highlight"><pre><span></span><code>struct pt {
     double x, y;
 
@@ -8098,7 +8082,7 @@ double sqr (double a) {
     return a * a;
 }
 </code></pre></div>
-Then the solution itself can be written this way (where the main function for the call is the second; and the first function is an auxiliary):</p>
+Sau đó có thể viết lời giải như sau (hàm thứ hai là hàm chính để gọi, còn hàm thứ nhất là hàm phụ trợ):</p>
 <div class="highlight"><pre><span></span><code>void tangents (pt c, double r1, double r2, vector&lt;line&gt; &amp; ans) {
     double r = r2 - r1;
     double z = sqr(c.x) + sqr(c.y);
@@ -8122,12 +8106,12 @@ vector&lt;line&gt; tangents (circle a, circle b) {
     return ans;
 }
 </code></pre></div>
-<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap">Bài tập<a class="headerlink" href="#bai-tap" title="Permanent link">&para;</a></h2>
 <p><a href="https://acm.timus.ru/problem.aspx?space=1&amp;num=1163">TIMUS 1163 Chapaev</a></p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Prakash Jha" data-bi-name="contributorprofile" target="_blank">Prakash Jha</a> (74.05%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (16.03%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (4.58%)</li><li><a href="#" title="Yury Semenov" data-bi-name="contributorprofile" target="_blank">Yury Semenov</a> (3.05%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (2.29%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

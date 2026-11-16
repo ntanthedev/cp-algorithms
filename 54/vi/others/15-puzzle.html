@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#15-puzzle-game-existence-of-the-solution" class="md-skip">
+        <a href="#tro-choi-15-puzzle-bai-toan-co-loi-giai-hay-khong" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7836,10 +7836,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#existence-of-the-solution" class="md-nav__link">
+  <a href="#ton-tai-loi-giai" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Existence Of The Solution
+        Tồn tại lời giải
       
     </span>
   </a>
@@ -7847,10 +7847,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7858,10 +7858,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#proof" class="md-nav__link">
+  <a href="#chung-minh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Proof
+        Chứng minh
       
     </span>
   </a>
@@ -7869,10 +7869,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap-thuc-hanh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập thực hành
       
     </span>
   </a>
@@ -7961,13 +7961,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/others/15-puzzle.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/others/15-puzzle.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/others/15-puzzle.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/others/15-puzzle.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7978,22 +7978,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8029,23 +8013,23 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="15-puzzle-game-existence-of-the-solution">15 Puzzle Game: Existence Of The Solution<a class="headerlink" href="#15-puzzle-game-existence-of-the-solution" title="Permanent link">&para;</a></h1>
-<p>This game is played on a <span class="arithmatex">$4 \times 4$</span> board. On this board there are <span class="arithmatex">$15$</span> playing tiles numbered from 1 to 15. One cell is left empty (denoted by 0). You need to get the board to the position presented below by repeatedly moving one of the tiles to the free space:</p>
+<h1 id="tro-choi-15-puzzle-bai-toan-co-loi-giai-hay-khong">Trò chơi 15-puzzle: bài toán có lời giải hay không<a class="headerlink" href="#tro-choi-15-puzzle-bai-toan-co-loi-giai-hay-khong" title="Permanent link">&para;</a></h1>
+<p>Trò chơi này diễn ra trên một bảng <span class="arithmatex">$4 \times 4$</span>. Trên bảng có <span class="arithmatex">$15$</span> quân được đánh số từ 1 đến 15. Một ô để trống (ký hiệu là 0). Mục tiêu là đưa bảng về trạng thái dưới đây bằng cách lần lượt di chuyển một quân vào ô trống:</p>
 <div class="arithmatex">$$\begin{matrix} 1 &amp; 2 &amp; 3 &amp; 4 \\ 5 &amp; 6 &amp; 7 &amp; 8 \\ 9 &amp; 10 &amp; 11 &amp; 12 \\ 13 &amp; 14 &amp; 15 &amp; 0 \end{matrix}$$</div>
-<p>The game "15 Puzzle” was created by Noyes Chapman in 1880.</p>
-<h2 id="existence-of-the-solution">Existence Of The Solution<a class="headerlink" href="#existence-of-the-solution" title="Permanent link">&para;</a></h2>
-<p>Let's consider this problem: given a position on the board, determine whether a sequence of moves which leads to a solution exists.</p>
-<p>Suppose we have some position on the board:</p>
+<p>Trò chơi "15 Puzzle" do Noyes Chapman tạo ra vào năm 1880.</p>
+<h2 id="ton-tai-loi-giai">Tồn tại lời giải<a class="headerlink" href="#ton-tai-loi-giai" title="Permanent link">&para;</a></h2>
+<p>Xét bài toán sau: cho một trạng thái trên bảng, hãy xác định liệu có tồn tại một dãy nước đi đưa bảng về trạng thái đích hay không.</p>
+<p>Giả sử ta có một trạng thái như sau:</p>
 <div class="arithmatex">$$\begin{matrix} a_1 &amp; a_2 &amp; a_3 &amp; a_4 \\ a_5 &amp; a_6 &amp; a_7 &amp; a_8 \\ a_9 &amp; a_{10} &amp; a_{11} &amp; a_{12} \\ a_{13} &amp; a_{14} &amp; a_{15} &amp; a_{16} \end{matrix}$$</div>
-<p>where one of the elements equals zero and indicates an empty cell <span class="arithmatex">$a_z  = 0$</span></p>
-<p>Let’s consider the permutation:</p>
+<p>trong đó ô trống được ký hiệu <span class="arithmatex">$a_z  = 0$</span>.</p>
+<p>Xét hoán vị:</p>
 <div class="arithmatex">$$a_1 a_2 ... a_{z-1} a_{z+1} ... a_{15} a_{16}$$</div>
-<p>i.e. the permutation of numbers corresponding to the position on the board without a zero element</p>
-<p>Let <span class="arithmatex">$N$</span> be the number of inversions in this permutation (i.e. the number of such elements <span class="arithmatex">$a_i$</span>  and <span class="arithmatex">$a_j$</span>  that <span class="arithmatex">$i &lt; j$</span>, but <span class="arithmatex">$a_i  &gt; a_j$</span>).</p>
-<p>Suppose <span class="arithmatex">$K$</span> is an index of a row where the empty element is located (i.e. using our convention, <span class="arithmatex">$K = (z - 1) \div \ 4 + 1$</span>).</p>
-<p>Then, <strong>the solution exists iff <span class="arithmatex">$N + K$</span> is even</strong>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>The algorithm above can be illustrated with the following program code:</p>
+<p>tức là hoán vị của các số tương ứng với vị trí trên bảng sau khi bỏ phần tử 0.</p>
+<p>Gọi <span class="arithmatex">$N$</span> là số lượng cặp <span class="arithmatex">$a_i$</span> và <span class="arithmatex">$a_j$</span> sao cho <span class="arithmatex">$i &lt; j$</span> nhưng <span class="arithmatex">$a_i  &gt; a_j$</span> (nghịch thế).</p>
+<p>Gọi <span class="arithmatex">$K$</span> là chỉ số hàng chứa ô trống (theo quy ước của ta, <span class="arithmatex">$K = (z - 1) \div \ 4 + 1$</span>).</p>
+<p>Khi đó, <strong>bài toán có lời giải khi và chỉ khi <span class="arithmatex">$N + K$</span> chẵn</strong>.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Đoạn mã dưới đây minh họa thuật toán trên:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">16</span><span class="p">];</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="mi">16</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span>
 <span class="w">    </span><span class="n">cin</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
@@ -8062,18 +8046,18 @@ Describe the issue of this article in detail.
 
 <span class="n">puts</span><span class="w"> </span><span class="p">((</span><span class="n">inv</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="s">"No Solution"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"Solution Exists"</span><span class="p">);</span>
 </code></pre></div>
-<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
-<p>In 1879 Johnson proved that if <span class="arithmatex">$N + K$</span> is odd, then the solution doesn’t exist, and in the same year Story proved that all positions when <span class="arithmatex">$N + K$</span> is even have a solution.</p>
-<p>However, all these proofs were quite complex.</p>
-<p>In 1999 Archer proposed a much simpler proof (you can download his article <a href="http://www.cs.cmu.edu/afs/cs/academic/class/15859-f01/www/notes/15-puzzle.pdf">here</a>).</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<h2 id="chung-minh">Chứng minh<a class="headerlink" href="#chung-minh" title="Permanent link">&para;</a></h2>
+<p>Năm 1879, Johnson chứng minh: nếu <span class="arithmatex">$N + K$</span> lẻ thì vô nghiệm; cùng năm, Story chứng minh mọi trạng thái có <span class="arithmatex">$N + K$</span> chẵn đều có lời giải.</p>
+<p>Tuy nhiên, các chứng minh này khá phức tạp.</p>
+<p>Năm 1999, Archer đưa ra một chứng minh đơn giản hơn nhiều (có thể tải bài báo của ông <a href="http://www.cs.cmu.edu/afs/cs/academic/class/15859-f01/www/notes/15-puzzle.pdf">tại đây</a>).</p>
+<h2 id="bai-tap-thuc-hanh">Bài tập thực hành<a class="headerlink" href="#bai-tap-thuc-hanh" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.hackerrank.com/challenges/n-puzzle">Hackerrank - N-puzzle</a></li>
 </ul>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ellen-interpret" data-bi-name="contributorprofile" target="_blank">ellen-interpret</a> (68.12%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (14.49%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (8.7%)</li><li><a href="#" title="Abhijeet Krishnan" data-bi-name="contributorprofile" target="_blank">Abhijeet Krishnan</a> (5.8%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (2.9%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

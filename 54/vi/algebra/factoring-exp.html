@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#binary-exponentiation-by-factoring" class="md-skip">
+        <a href="#luy-thua-nhi-phan-bang-phan-tich-thua-so" class="md-skip">
           Bỏ qua
         </a>
       
@@ -1756,10 +1756,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#computing-4lx-from-x" class="md-nav__link">
+  <a href="#tinh-4lx-tu-x" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Computing 4L(x) from x
+        Tính 4L(x) từ x
       
     </span>
   </a>
@@ -1767,10 +1767,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#computing-x-from-4lx" class="md-nav__link">
+  <a href="#tinh-x-tu-4lx" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Computing x from 4L(x)
+        Tính x từ 4L(x)
       
     </span>
   </a>
@@ -1778,10 +1778,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#further-optimizations" class="md-nav__link">
+  <a href="#toi-uu-them" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Further optimizations
+        Tối ưu thêm
       
     </span>
   </a>
@@ -1789,10 +1789,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#computing-logarithm-table" class="md-nav__link">
+  <a href="#tinh-bang-logarit" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Computing logarithm table
+        Tính bảng logarit
       
     </span>
   </a>
@@ -1800,10 +1800,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#tai-lieu-tham-khao" class="md-nav__link">
     <span class="md-ellipsis">
       
-        References
+        Tài liệu tham khảo
       
     </span>
   </a>
@@ -7972,13 +7972,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/algebra/factoring-exp.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/algebra/factoring-exp.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/algebra/factoring-exp.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/algebra/factoring-exp.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7989,10 +7989,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
 
   
   
@@ -8016,25 +8012,25 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="binary-exponentiation-by-factoring">Binary Exponentiation by Factoring<a class="headerlink" href="#binary-exponentiation-by-factoring" title="Permanent link">&para;</a></h1>
-<p>Consider a problem of computing <span class="arithmatex">$ax^y \pmod{2^d}$</span>, given integers <span class="arithmatex">$a$</span>, <span class="arithmatex">$x$</span>, <span class="arithmatex">$y$</span> and <span class="arithmatex">$d \geq 3$</span>, where <span class="arithmatex">$x$</span> is odd.</p>
-<p>The algorithm below allows to solve this problem with <span class="arithmatex">$O(d)$</span> additions and binary operations and a single multiplication by <span class="arithmatex">$y$</span>.</p>
-<p>Due to the structure of the multiplicative group modulo <span class="arithmatex">$2^d$</span>, any number <span class="arithmatex">$x$</span> such that <span class="arithmatex">$x \equiv 1 \pmod 4$</span> can be represented as</p>
+<h1 id="luy-thua-nhi-phan-bang-phan-tich-thua-so">Lũy thừa nhị phân bằng phân tích thừa số<a class="headerlink" href="#luy-thua-nhi-phan-bang-phan-tich-thua-so" title="Permanent link">&para;</a></h1>
+<p>Xét bài toán tính <span class="arithmatex">$ax^y \pmod{2^d}$</span> với các số nguyên <span class="arithmatex">$a$</span>, <span class="arithmatex">$x$</span>, <span class="arithmatex">$y$</span> và <span class="arithmatex">$d \geq 3$</span>, trong đó <span class="arithmatex">$x$</span> là số lẻ.</p>
+<p>Thuật toán dưới đây giải bài toán bằng <span class="arithmatex">$O(d)$</span> phép cộng và phép toán nhị phân cùng một phép nhân với <span class="arithmatex">$y$</span>.</p>
+<p>Do cấu trúc của nhóm nhân modulo <span class="arithmatex">$2^d$</span>, mọi số <span class="arithmatex">$x$</span> thỏa mãn <span class="arithmatex">$x \equiv 1 \pmod 4$</span> đều có thể biểu diễn dưới dạng</p>
 <div class="arithmatex">$$
 x \equiv b^{L(x)} \pmod{2^d},
 $$</div>
-<p>where <span class="arithmatex">$b \equiv 5 \pmod 8$</span>. Without loss of generality we assume that <span class="arithmatex">$x \equiv 1 \pmod 4$</span>, as we can reduce <span class="arithmatex">$x \equiv 3 \pmod 4$</span> to <span class="arithmatex">$x \equiv 1 \pmod 4$</span> by substituting <span class="arithmatex">$x \mapsto -x$</span> and <span class="arithmatex">$a \mapsto (-1)^{y} a$</span>. In this notion, <span class="arithmatex">$ax^y$</span> is represented as</p>
+<p>trong đó <span class="arithmatex">$b \equiv 5 \pmod 8$</span>. Không mất tính tổng quát, giả sử <span class="arithmatex">$x \equiv 1 \pmod 4$</span>, vì có thể đưa trường hợp <span class="arithmatex">$x \equiv 3 \pmod 4$</span> về <span class="arithmatex">$x \equiv 1 \pmod 4$</span> bằng cách thay <span class="arithmatex">$x \mapsto -x$</span> và <span class="arithmatex">$a \mapsto (-1)^{y} a$</span>. Khi đó, <span class="arithmatex">$ax^y$</span> được biểu diễn thành</p>
 <div class="arithmatex">$$
 a x^y \equiv a b^{yL(x)} \pmod{2^d}.
 $$</div>
-<p>The core idea of the algorithm is to simplify the computation of <span class="arithmatex">$L(x)$</span> and <span class="arithmatex">$b^{y L(x)}$</span> using the fact that we're working modulo <span class="arithmatex">$2^d$</span>. For reasons that will be apparent later on, we'll be working with <span class="arithmatex">$4L(x)$</span> rather than <span class="arithmatex">$L(x)$</span>, but taken modulo <span class="arithmatex">$2^d$</span> instead of <span class="arithmatex">$2^{d-2}$</span>.</p>
-<p>In this article, we will cover the implementation for <span class="arithmatex">$32$</span>-bit integers. Let</p>
+<p>Ý tưởng chính là đơn giản hóa phép tính <span class="arithmatex">$L(x)$</span> và <span class="arithmatex">$b^{y L(x)}$</span> nhờ làm việc theo modulo <span class="arithmatex">$2^d$</span>. Vì lý do sẽ thấy sau, ta dùng <span class="arithmatex">$4L(x)$</span> thay cho <span class="arithmatex">$L(x)$</span>, và lấy modulo <span class="arithmatex">$2^d$</span> thay vì <span class="arithmatex">$2^{d-2}$</span>.</p>
+<p>Trong bài này ta xét cài đặt cho số nguyên <span class="arithmatex">$32$</span> bit. Gọi</p>
 <ul>
-<li><code>mbin_log_32(r, x)</code> be a function that computes <span class="arithmatex">$r+4L(x) \pmod{2^d}$</span>;</li>
-<li><code>mbin_exp_32(r, x)</code> be a function that computes <span class="arithmatex">$r b^{\frac{x}{4}} \pmod{2^d}$</span>;</li>
-<li><code>mbin_power_odd_32(a, x, y)</code> be a function that computes <span class="arithmatex">$ax^y \pmod{2^d}$</span>.</li>
+<li><code>mbin_log_32(r, x)</code> là hàm tính <span class="arithmatex">$r+4L(x) \pmod{2^d}$</span>;</li>
+<li><code>mbin_exp_32(r, x)</code> là hàm tính <span class="arithmatex">$r b^{\frac{x}{4}} \pmod{2^d}$</span>;</li>
+<li><code>mbin_power_odd_32(a, x, y)</code> là hàm tính <span class="arithmatex">$ax^y \pmod{2^d}$</span>.</li>
 </ul>
-<p>Then <code>mbin_power_odd_32</code> is implemented as follows:</p>
+<p>Khi đó <code>mbin_power_odd_32</code> được cài đặt như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">mbin_power_odd_32</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">rem</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">base</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">exp</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">base</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="cm">/* divider is considered negative */</span>
@@ -8047,17 +8043,17 @@ $$</div>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">mbin_exp_32</span><span class="p">(</span><span class="n">rem</span><span class="p">,</span><span class="w"> </span><span class="n">mbin_log_32</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">base</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">exp</span><span class="p">));</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="computing-4lx-from-x">Computing 4L(x) from x<a class="headerlink" href="#computing-4lx-from-x" title="Permanent link">&para;</a></h2>
-<p>Let <span class="arithmatex">$x$</span> be an odd number such that <span class="arithmatex">$x \equiv 1 \pmod 4$</span>. It can be represented as </p>
+<h2 id="tinh-4lx-tu-x">Tính 4L(x) từ x<a class="headerlink" href="#tinh-4lx-tu-x" title="Permanent link">&para;</a></h2>
+<p>Cho số lẻ <span class="arithmatex">$x$</span> thỏa mãn <span class="arithmatex">$x \equiv 1 \pmod 4$</span>. Ta có thể biểu diễn số này dưới dạng</p>
 <div class="arithmatex">$$
 x \equiv (2^{a_1}+1)\dots(2^{a_k}+1) \pmod{2^d},
 $$</div>
-<p>where <span class="arithmatex">$1 &lt; a_1 &lt; \dots &lt; a_k &lt; d$</span>. Here <span class="arithmatex">$L(\cdot)$</span> is well-defined for each multiplier, as they're equal to <span class="arithmatex">$1$</span> modulo <span class="arithmatex">$4$</span>. Hence,</p>
+<p>trong đó <span class="arithmatex">$1 &lt; a_1 &lt; \dots &lt; a_k &lt; d$</span>. Hàm <span class="arithmatex">$L(\cdot)$</span> được xác định với mỗi thừa số, vì chúng đều bằng <span class="arithmatex">$1$</span> theo modulo <span class="arithmatex">$4$</span>. Do đó,</p>
 <div class="arithmatex">$$
 4L(x) \equiv 4L(2^{a_1}+1)+\dots+4L(2^{a_k}+1) \pmod{2^{d}}.
 $$</div>
-<p>So, if we precompute <span class="arithmatex">$t_k = 4L(2^n+1)$</span> for all <span class="arithmatex">$1 &lt; k &lt; d$</span>, we will be able to compute <span class="arithmatex">$4L(x)$</span> for any number <span class="arithmatex">$x$</span>.</p>
-<p>For 32-bit integers, we can use the following table:</p>
+<p>Vì vậy, nếu tính trước <span class="arithmatex">$t_k = 4L(2^n+1)$</span> với mọi <span class="arithmatex">$1 &lt; k &lt; d$</span>, ta có thể tính <span class="arithmatex">$4L(x)$</span> cho mọi số <span class="arithmatex">$x$</span>.</p>
+<p>Với số nguyên 32 bit, ta có thể dùng bảng sau:</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">mbin_log_32_table</span><span class="p">[</span><span class="mi">32</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="mh">0x00000000</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00000000</span><span class="p">,</span><span class="w"> </span><span class="mh">0xd3cfd984</span><span class="p">,</span><span class="w"> </span><span class="mh">0x9ee62e18</span><span class="p">,</span>
 <span class="w">    </span><span class="mh">0xe83d9070</span><span class="p">,</span><span class="w"> </span><span class="mh">0xb59e81e0</span><span class="p">,</span><span class="w"> </span><span class="mh">0xa17407c0</span><span class="p">,</span><span class="w"> </span><span class="mh">0xce601f80</span><span class="p">,</span>
@@ -8069,12 +8065,12 @@ $$</div>
 <span class="w">    </span><span class="mh">0xf0000000</span><span class="p">,</span><span class="w"> </span><span class="mh">0xe0000000</span><span class="p">,</span><span class="w"> </span><span class="mh">0xc0000000</span><span class="p">,</span><span class="w"> </span><span class="mh">0x80000000</span><span class="p">,</span>
 <span class="p">};</span>
 </code></pre></div>
-<p>On practice, a slightly different approach is used than described above. Rather than finding the factorization for <span class="arithmatex">$x$</span>, we will consequently multiply <span class="arithmatex">$x$</span> with <span class="arithmatex">$2^n+1$</span> until we turn it into <span class="arithmatex">$1$</span> modulo <span class="arithmatex">$2^d$</span>. In this way, we will find the representation of <span class="arithmatex">$x^{-1}$</span>, that is</p>
+<p>Trong thực tế, cách làm hơi khác mô tả trên. Thay vì tìm cách phân tích <span class="arithmatex">$x$</span>, ta lần lượt nhân <span class="arithmatex">$x$</span> với <span class="arithmatex">$2^n+1$</span> cho đến khi nó trở thành <span class="arithmatex">$1$</span> theo modulo <span class="arithmatex">$2^d$</span>. Bằng cách này, ta tìm được biểu diễn của <span class="arithmatex">$x^{-1}$</span>, tức là</p>
 <div class="arithmatex">$$
 x (2^{a_1}+1)\dots(2^{a_k}+1) \equiv 1 \pmod {2^d}.
 $$</div>
-<p>To do this, we iterate over <span class="arithmatex">$n$</span> such that <span class="arithmatex">$1 &lt; n &lt; d$</span>. If the current <span class="arithmatex">$x$</span> has <span class="arithmatex">$n$</span>-th bit set, we multiply <span class="arithmatex">$x$</span> with <span class="arithmatex">$2^n+1$</span>, which is conveniently done in C++ as <code>x = x + (x &lt;&lt; n)</code>. This won't change bits lower than <span class="arithmatex">$n$</span>, but will turn the <span class="arithmatex">$n$</span>-th bit to zero, because <span class="arithmatex">$x$</span> is odd.</p>
-<p>With all this in mind, the function <code>mbin_log_32(r, x)</code> is implemented as follows:</p>
+<p>Để làm vậy, ta duyệt các <span class="arithmatex">$n$</span> thỏa mãn <span class="arithmatex">$1 &lt; n &lt; d$</span>. Nếu bit thứ <span class="arithmatex">$n$</span> của <span class="arithmatex">$x$</span> hiện tại bằng 1, ta nhân <span class="arithmatex">$x$</span> với <span class="arithmatex">$2^n+1$</span>; trong C++ có thể viết gọn là <code>x = x + (x &lt;&lt; n)</code>. Việc này không đổi các bit thấp hơn <span class="arithmatex">$n$</span>, nhưng đưa bit thứ <span class="arithmatex">$n$</span> về 0 vì <span class="arithmatex">$x$</span> là số lẻ.</p>
+<p>Từ đó, hàm <code>mbin_log_32(r, x)</code> được cài đặt như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">mbin_log_32</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 
@@ -8088,23 +8084,23 @@ $$</div>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Note that <span class="arithmatex">$4L(x) = -4L(x^{-1})$</span>, so instead of adding <span class="arithmatex">$4L(2^n+1)$</span>, we subtract it from <span class="arithmatex">$r$</span>, which initially equates to <span class="arithmatex">$0$</span>.</p>
-<h2 id="computing-x-from-4lx">Computing x from 4L(x)<a class="headerlink" href="#computing-x-from-4lx" title="Permanent link">&para;</a></h2>
-<p>Note that for <span class="arithmatex">$k \geq 1$</span> it holds that</p>
+<p>Lưu ý <span class="arithmatex">$4L(x) = -4L(x^{-1})$</span>, nên thay vì cộng <span class="arithmatex">$4L(2^n+1)$</span>, ta trừ giá trị đó khỏi <span class="arithmatex">$r$</span>, ban đầu bằng <span class="arithmatex">$0$</span>.</p>
+<h2 id="tinh-x-tu-4lx">Tính x từ 4L(x)<a class="headerlink" href="#tinh-x-tu-4lx" title="Permanent link">&para;</a></h2>
+<p>Với <span class="arithmatex">$k \geq 1$</span>, ta có</p>
 <div class="arithmatex">$$
 (a 2^{k}+1)^2 = a^2 2^{2k} +a 2^{k+1}+1 = b2^{k+1}+1,
 $$</div>
-<p>from which (by repeated squaring) we can deduce that</p>
+<p>từ đó, bằng cách liên tiếp bình phương, suy ra</p>
 <div class="arithmatex">$$
 (2^a+1)^{2^b} \equiv 1 \pmod{2^{a+b}}.
 $$</div>
-<p>Applying this result to <span class="arithmatex">$a=2^n+1$</span> and <span class="arithmatex">$b=d-k$</span> we deduce that the multiplicative order of <span class="arithmatex">$2^n+1$</span> is a divisor of <span class="arithmatex">$2^{d-n}$</span>.</p>
-<p>This, in turn, means that <span class="arithmatex">$L(2^n+1)$</span> must be divisible by <span class="arithmatex">$2^{n}$</span>, as the order of <span class="arithmatex">$b$</span> is <span class="arithmatex">$2^{d-2}$</span> and the order of <span class="arithmatex">$b^y$</span> is <span class="arithmatex">$2^{d-2-v}$</span>, where <span class="arithmatex">$2^v$</span> is the highest power of <span class="arithmatex">$2$</span> that divides <span class="arithmatex">$y$</span>, so we need</p>
+<p>Áp dụng kết quả này với <span class="arithmatex">$a=2^n+1$</span> và <span class="arithmatex">$b=d-k$</span>, ta suy ra cấp nhân của <span class="arithmatex">$2^n+1$</span> là một ước của <span class="arithmatex">$2^{d-n}$</span>.</p>
+<p>Điều này có nghĩa là <span class="arithmatex">$L(2^n+1)$</span> phải chia hết cho <span class="arithmatex">$2^{n}$</span>, vì cấp của <span class="arithmatex">$b$</span> là <span class="arithmatex">$2^{d-2}$</span> và cấp của <span class="arithmatex">$b^y$</span> là <span class="arithmatex">$2^{d-2-v}$</span>, trong đó <span class="arithmatex">$2^v$</span> là lũy thừa lớn nhất của <span class="arithmatex">$2$</span> là ước của <span class="arithmatex">$y$</span>, nên ta cần</p>
 <div class="arithmatex">$$
 2^{d-k} \equiv 0 \pmod{2^{d-2-v}},
 $$</div>
-<p>thus <span class="arithmatex">$v$</span> must be greater or equal than <span class="arithmatex">$k-2$</span>. This is a bit ugly and to mitigate this we said in the beginning that we multiply <span class="arithmatex">$L(x)$</span> by <span class="arithmatex">$4$</span>. Now if we know <span class="arithmatex">$4L(x)$</span>, we can uniquely decomposing it into a sum of <span class="arithmatex">$4L(2^n+1)$</span> by consequentially checking bits in <span class="arithmatex">$4L(x)$</span>. If the <span class="arithmatex">$n$</span>-th bit is set to <span class="arithmatex">$1$</span>, we will multiply the result with <span class="arithmatex">$2^n+1$</span> and reduce the current <span class="arithmatex">$4L(x)$</span> by <span class="arithmatex">$4L(2^n+1)$</span>.</p>
-<p>Thus, <code>mbin_exp_32</code> is implemented as follows:</p>
+<p>vì vậy <span class="arithmatex">$v$</span> phải lớn hơn hoặc bằng <span class="arithmatex">$k-2$</span>. Biểu thức này hơi bất tiện; để khắc phục, từ đầu ta đã nhân <span class="arithmatex">$L(x)$</span> với <span class="arithmatex">$4$</span>. Khi biết <span class="arithmatex">$4L(x)$</span>, ta có thể phân tích duy nhất nó thành tổng các <span class="arithmatex">$4L(2^n+1)$</span> bằng cách lần lượt xét các bit của <span class="arithmatex">$4L(x)$</span>. Nếu bit thứ <span class="arithmatex">$n$</span> bằng <span class="arithmatex">$1$</span>, ta nhân kết quả với <span class="arithmatex">$2^n+1$</span> và trừ <span class="arithmatex">$4L(2^n+1)$</span> khỏi giá trị <span class="arithmatex">$4L(x)$</span> hiện tại.</p>
+<p>Do đó, <code>mbin_exp_32</code> được cài đặt như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">mbin_exp_32</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 
@@ -8118,12 +8114,12 @@ $$</div>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="further-optimizations">Further optimizations<a class="headerlink" href="#further-optimizations" title="Permanent link">&para;</a></h2>
-<p>It is possible to halve the number of iterations if you note that <span class="arithmatex">$4L(2^{d-1}+1)=2^{d-1}$</span> and that for <span class="arithmatex">$2k \geq d$</span> it holds that</p>
+<h2 id="toi-uu-them">Tối ưu thêm<a class="headerlink" href="#toi-uu-them" title="Permanent link">&para;</a></h2>
+<p>Có thể giảm một nửa số vòng lặp nếu nhận thấy <span class="arithmatex">$4L(2^{d-1}+1)=2^{d-1}$</span> và với <span class="arithmatex">$2k \geq d$</span> ta có</p>
 <div class="arithmatex">$$
 (2^n+1)^2 \equiv 2^{2n} + 2^{n+1}+1 \equiv 2^{n+1}+1 \pmod{2^d},
 $$</div>
-<p>which allows to deduce that <span class="arithmatex">$4L(2^n+1)=2^n$</span> for <span class="arithmatex">$2n \geq d$</span>. So, you could simplify the algorithm by only going up to <span class="arithmatex">$\frac{d}{2}$</span> and then use the fact above to compute the remaining part with bitwise operations:</p>
+<p>từ đó suy ra <span class="arithmatex">$4L(2^n+1)=2^n$</span> khi <span class="arithmatex">$2n \geq d$</span>. Do đó, có thể đơn giản hóa thuật toán bằng cách chỉ duyệt đến <span class="arithmatex">$\frac{d}{2}$</span> rồi dùng tính chất trên để tính phần còn lại bằng các phép toán bit:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">uint32_t</span><span class="w"> </span><span class="nf">mbin_log_32</span><span class="p">(</span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 
@@ -8154,30 +8150,31 @@ $$</div>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="computing-logarithm-table">Computing logarithm table<a class="headerlink" href="#computing-logarithm-table" title="Permanent link">&para;</a></h2>
-<p>To compute log-table, one could modify the <a href="https://en.wikipedia.org/wiki/Pohlig–Hellman_algorithm">Pohlig–Hellman algorithm</a> for the case when modulo is a power of <span class="arithmatex">$2$</span>.</p>
-<p>Our main task here is to compute <span class="arithmatex">$x$</span> such that <span class="arithmatex">$g^x \equiv y \pmod{2^d}$</span>, where <span class="arithmatex">$g=5$</span> and <span class="arithmatex">$y$</span> is a number of kind <span class="arithmatex">$2^n+1$</span>. </p>
-<p>Squaring both parts <span class="arithmatex">$k$</span> times we arrive to</p>
+<h2 id="tinh-bang-logarit">Tính bảng logarit<a class="headerlink" href="#tinh-bang-logarit" title="Permanent link">&para;</a></h2>
+<p>Để tính bảng logarit, có thể điều chỉnh thuật toán <a href="https://en.wikipedia.org/wiki/Pohlig–Hellman_algorithm">Pohlig–Hellman algorithm</a> cho trường hợp modulo là lũy thừa của <span class="arithmatex">$2$</span>.</p>
+<p>Nhiệm vụ chính là tính <span class="arithmatex">$x$</span> sao cho <span class="arithmatex">$g^x \equiv y \pmod{2^d}$</span>, với <span class="arithmatex">$g=5$</span> và <span class="arithmatex">$y$</span> có dạng <span class="arithmatex">$2^n+1$</span>.</p>
+<p>Bình phương hai vế <span class="arithmatex">$k$</span> lần, ta được</p>
 <div class="arithmatex">$$
 g^{2^k x} \equiv y^{2^k} \pmod{2^d}.
 $$</div>
-<p>Note that the order of <span class="arithmatex">$g$</span> is not greater than <span class="arithmatex">$2^{d}$</span> (in fact, than <span class="arithmatex">$2^{d-2}$</span>, but we will stick to <span class="arithmatex">$2^d$</span> for convenience), hence using <span class="arithmatex">$k=d-1$</span> we will have either <span class="arithmatex">$g^1$</span> or <span class="arithmatex">$g^0$</span> on the left hand side which allows us to determine the smallest bit of <span class="arithmatex">$x$</span> by comparing <span class="arithmatex">$y^{2^k}$</span> to <span class="arithmatex">$g$</span>. Now assume that <span class="arithmatex">$x=x_0 + 2^k x_1$</span>, where <span class="arithmatex">$x_0$</span> is a known part and <span class="arithmatex">$x_1$</span> is not yet known. Then</p>
+<p>Lưu ý cấp của <span class="arithmatex">$g$</span> không lớn hơn <span class="arithmatex">$2^{d}$</span> (thực ra không lớn hơn <span class="arithmatex">$2^{d-2}$</span>, nhưng ta dùng <span class="arithmatex">$2^d$</span> cho thuận tiện), do đó với <span class="arithmatex">$k=d-1$</span>, vế trái sẽ là <span class="arithmatex">$g^1$</span> hoặc <span class="arithmatex">$g^0$</span>. Điều này cho phép xác định bit thấp nhất của <span class="arithmatex">$x$</span> bằng cách so sánh <span class="arithmatex">$y^{2^k}$</span> với <span class="arithmatex">$g$</span>. Giờ giả sử <span class="arithmatex">$x=x_0 + 2^k x_1$</span>, trong đó <span class="arithmatex">$x_0$</span> là phần đã biết và <span class="arithmatex">$x_1$</span> chưa biết. Khi đó</p>
 <div class="arithmatex">$$
 g^{x_0+2^k x_1} \equiv y \pmod{2^d}.
 $$</div>
-<p>Multiplying both parts with <span class="arithmatex">$g^{-x_0}$</span>, we get</p>
+<p>Nhân hai vế với <span class="arithmatex">$g^{-x_0}$</span>, ta được</p>
 <div class="arithmatex">$$
 g^{2^k x_1} \equiv (g^{-x_0} y) \pmod{2^d}.
 $$</div>
-<p>Now, squaring both sides <span class="arithmatex">$d-k-1$</span> times we can obtain the next bit of <span class="arithmatex">$x$</span>, eventually recovering all its bits.</p>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>Bây giờ, bình phương hai vế <span class="arithmatex">$d-k-1$</span> lần để tìm bit tiếp theo của <span class="arithmatex">$x$</span>, cuối cùng khôi phục được toàn bộ các bit.</p>
+<p><strong>Ghi chú bản dịch:</strong> Bài gốc có một số điểm cần thận trọng. Với cơ số b bằng 5 và n bằng 2, logarit của 5 bằng 1, nên phát biểu rằng logarit đó chia hết cho 4 là sai; lập luận ngay sau đó chỉ dẫn tới bậc chia hết yếu hơn. Các chỉ số n và k cũng không nhất quán trong định nghĩa bảng và phép thế vào công thức. Trong mục tính bảng logarit, nếu cấp của 5 là lũy thừa thứ d trừ hai của 2 thì nâng 5 lên lũy thừa thứ d trừ một của 2 luôn cho 1, nên lập luận được nêu không phân biệt được bit. Mã dùng số nguyên không dấu 32 bit và phép tràn tự nhiên theo modulo lũy thừa thứ 32 của 2; không mặc nhiên tổng quát sang mọi d.</p>
+<h2 id="tai-lieu-tham-khao">Tài liệu tham khảo<a class="headerlink" href="#tai-lieu-tham-khao" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://ia601602.us.archive.org/29/items/B-001-001-251/B-001-001-251.pdf#page=640">M30, Hans Petter Selasky, 2009</a></li>
 </ul>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (80.18%)</li><li><a href="#" title="Hans Petter Selasky" data-bi-name="contributorprofile" target="_blank">Hans Petter Selasky</a> (19.82%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#point-location-in-olog-n" class="md-skip">
+        <a href="#inh-vi-iem-trong-olog-n" class="md-skip">
           Bỏ qua
         </a>
       
@@ -5083,10 +5083,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Thuật toán
       
     </span>
   </a>
@@ -5094,10 +5094,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
+  <a href="#ghi-chu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes
+        Ghi chú
       
     </span>
   </a>
@@ -5105,10 +5105,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -5116,10 +5116,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#problems" class="md-nav__link">
+  <a href="#bai-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problems
+        Bài tập
       
     </span>
   </a>
@@ -7961,13 +7961,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/geometry/point-location.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/geometry/point-location.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/geometry/point-location.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/geometry/point-location.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7978,26 +7978,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8021,64 +8001,64 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="point-location-in-olog-n">Point location in <span class="arithmatex">$O(log n)$</span><a class="headerlink" href="#point-location-in-olog-n" title="Permanent link">&para;</a></h1>
-<p>Consider the following problem: you are given a <a href="https://en.wikipedia.org/wiki/Planar_straight-line_graph">planar subdivision</a> without any vertices of degree one and zero, and a lot of queries.
-Each query is a point, for which we should determine the face of the subdivision it belongs to.
-We will answer each query in <span class="arithmatex">$O(\log n)$</span> offline.<br>
-This problem may arise when you need to locate some points in a Voronoi diagram or in some simple polygon.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>Firstly, for each query point <span class="arithmatex">$p\ (x_0, y_0)$</span> we want to find such an edge that if the point belongs to any edge, the point lies on the edge we found, otherwise this edge must intersect the line <span class="arithmatex">$x = x_0$</span> at some unique point <span class="arithmatex">$(x_0, y)$</span> where <span class="arithmatex">$y &lt; y_0$</span> and this <span class="arithmatex">$y$</span> is maximum among all such edges.
-The following image shows both cases.</p>
+<h1 id="inh-vi-iem-trong-olog-n">Định vị điểm trong <span class="arithmatex">$O(log n)$</span><a class="headerlink" href="#inh-vi-iem-trong-olog-n" title="Permanent link">&para;</a></h1>
+<p>Xét bài toán sau: cho một <a href="https://en.wikipedia.org/wiki/Planar_straight-line_graph">phân hoạch phẳng</a> không có đỉnh bậc một hoặc bậc không, cùng nhiều truy vấn.
+Mỗi truy vấn là một điểm, và ta cần xác định mặt của phân hoạch chứa điểm đó.
+Ta sẽ trả lời mỗi truy vấn ngoại tuyến trong <span class="arithmatex">$O(\log n)$</span>.<br>
+Bài toán này có thể xuất hiện khi cần định vị các điểm trong một biểu đồ Voronoi hoặc một đa giác đơn.</p>
+<h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Trước tiên, với mỗi điểm truy vấn <span class="arithmatex">$p\ (x_0, y_0)$</span>, ta muốn tìm một cạnh thỏa mãn: nếu điểm nằm trên một cạnh thì nó nằm trên cạnh tìm được; nếu không, cạnh này phải cắt đường thẳng <span class="arithmatex">$x = x_0$</span> tại đúng một điểm <span class="arithmatex">$(x_0, y)$</span> với <span class="arithmatex">$y &lt; y_0$</span> và <span class="arithmatex">$y$</span> lớn nhất trong số các cạnh như vậy.
+Hình sau minh họa cả hai trường hợp.</p>
 <div style="text-align: center;">
-  <img src="../../geometry/point_location_goal.png" alt="Image of Goal">
+  <img src="../../geometry/point_location_goal.png" alt="Minh họa mục tiêu cần tìm">
 </div>
 
-<p>We will solve this problem offline using the sweep line algorithm. Let's iterate over x-coordinates of query points and edges' endpoints in increasing order and keep a set of edges <span class="arithmatex">$s$</span>. For each x-coordinate we will add some events beforehand.</p>
-<p>The events will be of four types: <em>add</em>, <em>remove</em>, <em>vertical</em>, <em>get</em>.
-For each vertical edge (both endpoints have the same x-coordinate) we will add one <em>vertical</em> event for the corresponding x-coordinate.
-For every other edge we will add one <em>add</em> event for the minimum of x-coordinates of the endpoints and one <em>remove</em> event for the maximum of x-coordinates of the endpoints.
-Finally, for each query point we will add one <em>get</em> event for its x-coordinate.</p>
-<p>For each x-coordinate we will sort the events by their types in order (<em>vertical</em>, <em>get</em>, <em>remove</em>, <em>add</em>).
-The following image shows all events in sorted order for each x-coordinate.</p>
+<p>Ta giải bài toán ngoại tuyến bằng thuật toán đường quét. Duyệt các hoành độ của điểm truy vấn và đầu mút các cạnh theo thứ tự tăng dần, đồng thời duy trì một tập cạnh <span class="arithmatex">$s$</span>. Với mỗi hoành độ, ta tạo trước một số sự kiện.</p>
+<p>Có bốn loại sự kiện: <em>add</em>, <em>remove</em>, <em>vertical</em>, <em>get</em>.
+Với mỗi cạnh thẳng đứng (hai đầu mút có cùng hoành độ), thêm một sự kiện <em>vertical</em> tại hoành độ tương ứng.
+Với mỗi cạnh còn lại, thêm một sự kiện <em>add</em> tại hoành độ nhỏ hơn của hai đầu mút và một sự kiện <em>remove</em> tại hoành độ lớn hơn.
+Cuối cùng, với mỗi điểm truy vấn, thêm một sự kiện <em>get</em> tại hoành độ của điểm đó.</p>
+<p>Tại mỗi hoành độ, ta sắp xếp các sự kiện theo loại theo thứ tự (<em>vertical</em>, <em>get</em>, <em>remove</em>, <em>add</em>).
+Hình sau minh họa tất cả các sự kiện sau khi sắp xếp tại mỗi hoành độ.</p>
 <div style="text-align: center;">
-  <img src="../../geometry/point_location_events.png" alt="Image of Events">
+  <img src="../../geometry/point_location_events.png" alt="Minh họa các sự kiện">
 </div>
 
-<p>We will keep two sets during the sweep-line process.
-A set <span class="arithmatex">$t$</span> for all non-vertical edges, and one set <span class="arithmatex">$vert$</span> especially for the vertical ones.
-We will clear the set <span class="arithmatex">$vert$</span> at the beginning of processing each x-coordinate.</p>
-<p>Now let's process the events for a fixed x-coordinate.</p>
+<p>Trong quá trình quét, ta duy trì hai tập.
+Tập <span class="arithmatex">$t$</span> dành cho tất cả các cạnh không thẳng đứng, còn tập <span class="arithmatex">$vert$</span> dành riêng cho các cạnh thẳng đứng.
+Ta xóa các phần tử trong <span class="arithmatex">$vert$</span> khi bắt đầu xử lý mỗi hoành độ.</p>
+<p>Xét cách xử lý các sự kiện tại một hoành độ cố định.</p>
 <ul>
-<li>If we got a <em>vertical</em> event, we will simply insert the minimum y-coordinate of the corresponding edge's endpoints to <span class="arithmatex">$vert$</span>.</li>
-<li>If we got a <em>remove</em> or <em>add</em> event, we will remove the corresponding edge from <span class="arithmatex">$t$</span> or add it to <span class="arithmatex">$t$</span>.</li>
-<li>Finally, for each <em>get</em> event we must check if the point lies on some vertical edge by performing a binary search in <span class="arithmatex">$vert$</span>.
-If the point doesn't lie on any vertical edge, we must find the answer for this query in <span class="arithmatex">$t$</span>.
-To do this, we again make a binary search.
-In order to handle some degenerate cases (e.g. in case of the triangle <span class="arithmatex">$(0,~0)$</span>, <span class="arithmatex">$(0,~2)$</span>, <span class="arithmatex">$(1, 1)$</span> when we query the point <span class="arithmatex">$(0,~0)$</span>), we must answer all <em>get</em> events again after we processed all the events for this x-coordinate and choose the best of two answers.</li>
+<li>Khi gặp sự kiện <em>vertical</em>, ta chèn tung độ nhỏ hơn của hai đầu mút cạnh tương ứng vào <span class="arithmatex">$vert$</span>.</li>
+<li>Khi gặp sự kiện <em>remove</em> hoặc <em>add</em>, ta xóa cạnh tương ứng khỏi <span class="arithmatex">$t$</span> hoặc thêm cạnh đó vào <span class="arithmatex">$t$</span>.</li>
+<li>Cuối cùng, với mỗi sự kiện <em>get</em>, ta kiểm tra điểm có nằm trên một cạnh thẳng đứng nào không bằng tìm kiếm nhị phân trong <span class="arithmatex">$vert$</span>.
+Nếu điểm không nằm trên cạnh thẳng đứng nào, ta phải tìm câu trả lời cho truy vấn trong <span class="arithmatex">$t$</span>.
+Để làm vậy, ta lại dùng tìm kiếm nhị phân.
+Để xử lý một số trường hợp suy biến (chẳng hạn tam giác <span class="arithmatex">$(0,~0)$</span>, <span class="arithmatex">$(0,~2)$</span>, <span class="arithmatex">$(1, 1)$</span> khi truy vấn điểm <span class="arithmatex">$(0,~0)$</span>), ta phải trả lời lại tất cả các sự kiện <em>get</em> sau khi xử lý xong mọi sự kiện tại hoành độ này và chọn câu trả lời tốt hơn trong hai lần.</li>
 </ul>
-<p>Now let's choose a comparator for the set <span class="arithmatex">$t$</span>.
-This comparator should check if one edge doesn't lie above other for every x-coordinate they both cover. Suppose that we have two edges <span class="arithmatex">$(a, b)$</span> and <span class="arithmatex">$(c, d)$</span>. Then the comparator is (in pseudocode):<br></p>
+<p>Tiếp theo, ta chọn hàm so sánh cho tập <span class="arithmatex">$t$</span>.
+Hàm này cần kiểm tra xem một cạnh có không nằm phía trên cạnh kia tại mọi hoành độ mà cả hai cùng phủ hay không. Giả sử có hai cạnh <span class="arithmatex">$(a, b)$</span> và <span class="arithmatex">$(c, d)$</span>. Khi đó hàm so sánh có dạng mã giả:<br></p>
 <p><span class="arithmatex">$val = sgn((b - a)\times(c - a)) + sgn((b - a)\times(d - a))$</span><br>
 <b>if</b> <span class="arithmatex">$val \neq 0$</span><br>
 <b>then return</b> <span class="arithmatex">$val &gt; 0$</span><br>
 <span class="arithmatex">$val = sgn((d - c)\times(a - c)) + sgn((d - c)\times(b - c))$</span><br>
 <b>return</b> <span class="arithmatex">$val &lt; 0$</span><br></p>
-<p>Now for every query we have the corresponding edge.
-How to find the face?
-If we couldn't find the edge it means that the point is in the outer face.
-If the point belongs to the edge we found, the face is not unique.
-Otherwise, there are two candidates - the faces that are bounded by this edge.
-How to check which one is the answer? Note that the edge is not vertical.
-Then the answer is the face that is above this edge.
-Let's find such a face for each non-vertical edge.
-Consider a counter-clockwise traversal of each face.
-If during this traversal we increased x-coordinate while passing through the edge, then this face is the face we need to find for this edge.</p>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
-<p>Actually, with persistent trees this approach can be used to answer the queries online.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>The following code is implemented for integers, but it can be easily modified to work with doubles (by changing the compare methods and the point type).
-This implementation assumes that the subdivision is correctly stored inside a <a href="https://en.wikipedia.org/wiki/Doubly_connected_edge_list">DCEL</a> and the outer face is numbered <span class="arithmatex">$-1$</span>.<br>
-For each query a pair <span class="arithmatex">$(1, i)$</span> is returned if the point lies strictly inside the face number <span class="arithmatex">$i$</span>, and a pair <span class="arithmatex">$(0, i)$</span> is returned if the point lies on the edge number <span class="arithmatex">$i$</span>.</p>
+<p>Giờ đây mỗi truy vấn đã có cạnh tương ứng.
+Làm thế nào để tìm mặt?
+Nếu không tìm được cạnh thì điểm nằm trong mặt ngoài.
+Nếu điểm thuộc cạnh tìm được thì mặt chứa điểm không duy nhất.
+Trong trường hợp còn lại có hai ứng viên: hai mặt có cạnh này trên biên.
+Làm thế nào để biết mặt nào là đáp án? Lưu ý rằng cạnh này không thẳng đứng.
+Khi đó đáp án là mặt nằm phía trên cạnh.
+Ta tìm mặt như vậy cho mỗi cạnh không thẳng đứng.
+Xét một lượt duyệt ngược chiều kim đồng hồ quanh mỗi mặt.
+Nếu trong lượt duyệt đó hoành độ tăng khi đi qua cạnh thì mặt này là mặt cần tìm cho cạnh ấy.</p>
+<h2 id="ghi-chu">Ghi chú<a class="headerlink" href="#ghi-chu" title="Permanent link">&para;</a></h2>
+<p>Thực ra, với cây lưu phiên bản (persistent tree), cách tiếp cận này có thể trả lời truy vấn trực tuyến.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Đoạn code sau dùng số nguyên nhưng có thể dễ dàng sửa để dùng số thực kiểu double (bằng cách thay đổi các hàm so sánh và kiểu điểm).
+Cài đặt giả sử phân hoạch đã được lưu đúng trong một <a href="https://en.wikipedia.org/wiki/Doubly_connected_edge_list">DCEL</a> và mặt ngoài được đánh số <span class="arithmatex">$-1$</span>.<br>
+Với mỗi truy vấn, trả về cặp <span class="arithmatex">$(1, i)$</span> nếu điểm nằm thực sự bên trong mặt số <span class="arithmatex">$i$</span>, và cặp <span class="arithmatex">$(0, i)$</span> nếu điểm nằm trên cạnh số <span class="arithmatex">$i$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">typedef</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ll</span><span class="p">;</span>
 
 <span class="kt">bool</span><span class="w"> </span><span class="nf">ge</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">ll</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">ll</span><span class="o">&amp;</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
@@ -8296,7 +8276,7 @@ For each query a pair <span class="arithmatex">$(1, i)$</span> is returned if th
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ans</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap">Bài tập<a class="headerlink" href="#bai-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://acm.timus.ru/problem.aspx?space=1&amp;num=1848&amp;locale=en">TIMUS 1848 Fly Hunt</a></li>
 <li><a href="https://onlinejudge.org/index.php?option=com_onlinejudge&amp;Itemid=8&amp;category=297&amp;page=show_problem&amp;problem=3732">UVA 12310 Point Location</a></li>
@@ -8304,7 +8284,7 @@ For each query a pair <span class="arithmatex">$(1, i)$</span> is returned if th
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Yury Semenov" data-bi-name="contributorprofile" target="_blank">Yury Semenov</a> (94.33%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (2.33%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (2.0%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (0.67%)</li><li><a href="#" title="JustAnAverageGuy" data-bi-name="contributorprofile" target="_blank">JustAnAverageGuy</a> (0.33%)</li><li><a href="#" title="wiktorkuchta" data-bi-name="contributorprofile" target="_blank">wiktorkuchta</a> (0.33%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

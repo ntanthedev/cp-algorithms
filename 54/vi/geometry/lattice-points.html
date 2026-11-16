@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lattice-points-inside-non-lattice-polygon" class="md-skip">
+        <a href="#iem-nguyen-ben-trong-a-giac-khong-phai-a-giac-luoi" class="md-skip">
           Bỏ qua
         </a>
       
@@ -4778,10 +4778,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#complexity-analysis" class="md-nav__link">
+  <a href="#phan-tich-o-phuc-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Complexity analysis
+        Phân tích độ phức tạp
       
     </span>
   </a>
@@ -4789,10 +4789,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/geometry/lattice-points.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/geometry/lattice-points.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/geometry/lattice-points.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/geometry/lattice-points.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,18 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -7991,58 +7979,58 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="lattice-points-inside-non-lattice-polygon">Lattice points inside non-lattice polygon<a class="headerlink" href="#lattice-points-inside-non-lattice-polygon" title="Permanent link">&para;</a></h1>
-<p>For lattice polygons there is Pick's formula to enumerate the lattice points inside the polygon.
-What about polygons with arbitrary vertices?</p>
-<p>Let's process each of the polygon's edges individually, and after that we may sum up the amounts of lattice points under each edge considering its orientations to choose a sign (like in calculating the area of a polygon using trapezoids).</p>
-<p>First of all we should note that if current edge has endpoints in <span class="arithmatex">$A=(x_1;y_1)$</span> and <span class="arithmatex">$B=(x_2;y_2)$</span> then it can be represented as a linear function:</p>
+<h1 id="iem-nguyen-ben-trong-a-giac-khong-phai-a-giac-luoi">Điểm nguyên bên trong đa giác không phải đa giác lưới<a class="headerlink" href="#iem-nguyen-ben-trong-a-giac-khong-phai-a-giac-luoi" title="Permanent link">&para;</a></h1>
+<p>Với đa giác lưới, ta có công thức Pick để đếm các điểm nguyên bên trong đa giác.
+Vậy với đa giác có các đỉnh tùy ý thì sao?</p>
+<p>Ta xử lý riêng từng cạnh của đa giác, sau đó cộng số điểm nguyên phía dưới mỗi cạnh, chọn dấu theo hướng của cạnh đó (tương tự cách tính diện tích đa giác bằng các hình thang).</p>
+<p>Trước hết, nếu cạnh đang xét có hai đầu mút <span class="arithmatex">$A=(x_1;y_1)$</span> và <span class="arithmatex">$B=(x_2;y_2)$</span>, ta có thể biểu diễn nó bằng một hàm bậc nhất:</p>
 <div class="arithmatex">$$y=y_1+(y_2-y_1) \cdot \dfrac{x-x_1}{x_2-x_1}=\left(\dfrac{y_2-y_1}{x_2-x_1}\right)\cdot x + \left(\dfrac{y_1x_2-x_1y_2}{x_2-x_1}\right)$$</div>
 <div class="arithmatex">$$y = k \cdot x + b,~k = \dfrac{y_2-y_1}{x_2-x_1},~b = \dfrac{y_1x_2-x_1y_2}{x_2-x_1}$$</div>
-<p>Now we will perform a substitution <span class="arithmatex">$x=x'+\lceil x_1 \rceil$</span> so that <span class="arithmatex">$b' = b + k \cdot \lceil x_1 \rceil$</span>.
-This allows us to work with <span class="arithmatex">$x_1'=0$</span> and <span class="arithmatex">$x_2'=x_2 - \lceil x_1 \rceil$</span>.
-Let's denote <span class="arithmatex">$n = \lfloor x_2' \rfloor$</span>.</p>
-<p>We will not sum up points at <span class="arithmatex">$x = n$</span> and on <span class="arithmatex">$y = 0$</span> for the integrity of the algorithm.
-They may be added manually afterwards.
-Thus we have to sum up <span class="arithmatex">$\sum\limits_{x'=0}^{n - 1} \lfloor k' \cdot x' + b'\rfloor$</span>. We also assume that <span class="arithmatex">$k' \geq 0$</span> and <span class="arithmatex">$b'\geq 0$</span>.
-Otherwise one should substitute <span class="arithmatex">$x'=-t$</span> and add <span class="arithmatex">$\lceil|b'|\rceil$</span> to <span class="arithmatex">$b'$</span>.</p>
-<p>Let's discuss how we can evaluate a sum <span class="arithmatex">$\sum\limits_{x=0}^{n - 1} \lfloor k \cdot x + b\rfloor$</span>.
-We have two cases:</p>
+<p>Ta đổi biến <span class="arithmatex">$x=x'+\lceil x_1 \rceil$</span>, khi đó <span class="arithmatex">$b' = b + k \cdot \lceil x_1 \rceil$</span>.
+Nhờ đó ta làm việc với <span class="arithmatex">$x_1'=0$</span> và <span class="arithmatex">$x_2'=x_2 - \lceil x_1 \rceil$</span>.
+Đặt <span class="arithmatex">$n = \lfloor x_2' \rfloor$</span>.</p>
+<p>Để thuật toán nhất quán, ta không tính các điểm tại <span class="arithmatex">$x = n$</span> và trên <span class="arithmatex">$y = 0$</span>.
+Có thể cộng thêm các điểm đó sau.
+Vậy ta cần tính tổng <span class="arithmatex">$\sum\limits_{x'=0}^{n - 1} \lfloor k' \cdot x' + b'\rfloor$</span>. Ta cũng giả sử <span class="arithmatex">$k' \geq 0$</span> và <span class="arithmatex">$b'\geq 0$</span>.
+Nếu không, ta cần đổi biến <span class="arithmatex">$x'=-t$</span> và cộng <span class="arithmatex">$\lceil|b'|\rceil$</span> vào <span class="arithmatex">$b'$</span>.</p>
+<p>Ta xét cách tính tổng <span class="arithmatex">$\sum\limits_{x=0}^{n - 1} \lfloor k \cdot x + b\rfloor$</span>.
+Có hai trường hợp:</p>
 <ul>
 <li>
-<p><span class="arithmatex">$k \geq 1$</span> or <span class="arithmatex">$b \geq 1$</span>.</p>
-<p>Then we should start with summing up points below <span class="arithmatex">$y=\lfloor k \rfloor \cdot x + \lfloor b \rfloor$</span>. Their amount equals to</p>
+<p><span class="arithmatex">$k \geq 1$</span> hoặc <span class="arithmatex">$b \geq 1$</span>.</p>
+<p>Khi đó, trước tiên ta đếm các điểm phía dưới <span class="arithmatex">$y=\lfloor k \rfloor \cdot x + \lfloor b \rfloor$</span>. Số điểm này bằng</p>
 <div class="arithmatex">$$ \sum\limits_{x=0}^{n - 1} \lfloor k \rfloor \cdot x + \lfloor b \rfloor=\dfrac{(\lfloor k \rfloor(n-1)+2\lfloor b \rfloor) n}{2}. $$</div>
-<p>Now we are interested only in points <span class="arithmatex">$(x;y)$</span> such that <span class="arithmatex">$\lfloor k \rfloor \cdot x + \lfloor b \rfloor &lt; y \leq k\cdot x + b$</span>.
-This amount is the same as the number of points such that <span class="arithmatex">$0 &lt; y \leq (k - \lfloor k \rfloor) \cdot x + (b - \lfloor b \rfloor)$</span>.
-So we reduced our problem to <span class="arithmatex">$k'= k - \lfloor k \rfloor$</span>, <span class="arithmatex">$b' = b - \lfloor b \rfloor$</span> and both <span class="arithmatex">$k'$</span> and <span class="arithmatex">$b'$</span> less than <span class="arithmatex">$1$</span> now.
-Here is a picture, we just summed up blue points and subtracted the blue linear function from the black one to reduce problem to smaller values for <span class="arithmatex">$k$</span> and <span class="arithmatex">$b$</span>:
+<p>Bây giờ ta chỉ quan tâm đến các điểm <span class="arithmatex">$(x;y)$</span> thỏa mãn <span class="arithmatex">$\lfloor k \rfloor \cdot x + \lfloor b \rfloor &lt; y \leq k\cdot x + b$</span>.
+Số lượng này bằng số điểm thỏa mãn <span class="arithmatex">$0 &lt; y \leq (k - \lfloor k \rfloor) \cdot x + (b - \lfloor b \rfloor)$</span>.
+Vậy ta đưa bài toán về <span class="arithmatex">$k'= k - \lfloor k \rfloor$</span>, <span class="arithmatex">$b' = b - \lfloor b \rfloor$</span>, trong đó cả <span class="arithmatex">$k'$</span> và <span class="arithmatex">$b'$</span> đều nhỏ hơn <span class="arithmatex">$1$</span>.
+Hình sau minh họa: ta vừa đếm các điểm màu xanh và trừ hàm bậc nhất màu xanh khỏi hàm màu đen để đưa bài toán về các giá trị <span class="arithmatex">$k$</span> và <span class="arithmatex">$b$</span> nhỏ hơn:
 <div style="text-align: center;">
-  <img src="../../geometry/lattice.png" alt="Subtracting floored linear function">
+  <img src="../../geometry/lattice.png" alt="Trừ hàm bậc nhất đã lấy phần nguyên">
 </div></p>
 </li>
 <li>
-<p><span class="arithmatex">$k &lt; 1$</span> and <span class="arithmatex">$b &lt; 1$</span>.</p>
-<p>If <span class="arithmatex">$\lfloor k \cdot n + b\rfloor$</span> equals <span class="arithmatex">$0$</span>, we can safely return <span class="arithmatex">$0$</span>.
-If this is not the case, we can say that there are no lattice points such that <span class="arithmatex">$x &lt; 0$</span> and <span class="arithmatex">$0 &lt; y \leq k \cdot x + b$</span>.
-That means that we will have the same answer if we consider new reference system in which <span class="arithmatex">$O'=(n;\lfloor k\cdot n + b\rfloor)$</span>, axis <span class="arithmatex">$x'$</span> is directed down and axis <span class="arithmatex">$y'$</span> is directed to the left.
-For this reference system we are interested in lattice points on the set</p>
+<p><span class="arithmatex">$k &lt; 1$</span> và <span class="arithmatex">$b &lt; 1$</span>.</p>
+<p>Nếu <span class="arithmatex">$\lfloor k \cdot n + b\rfloor$</span> bằng <span class="arithmatex">$0$</span>, ta có thể trả về <span class="arithmatex">$0$</span>.
+Nếu không, ta có thể nói rằng không có điểm nguyên nào thỏa mãn <span class="arithmatex">$x &lt; 0$</span> và <span class="arithmatex">$0 &lt; y \leq k \cdot x + b$</span>.
+Vì vậy kết quả không đổi nếu ta xét hệ tọa độ mới có <span class="arithmatex">$O'=(n;\lfloor k\cdot n + b\rfloor)$</span>, trục <span class="arithmatex">$x'$</span> hướng xuống và trục <span class="arithmatex">$y'$</span> hướng sang trái.
+Trong hệ tọa độ này, ta quan tâm đến các điểm nguyên thuộc tập</p>
 <div class="arithmatex">$$ \left\{(x;y)~\bigg|~0 \leq x &lt; \lfloor k \cdot n + b\rfloor,~ 0 &lt; y \leq \dfrac{x+(k\cdot n+b)-\lfloor k\cdot n + b \rfloor}{k}\right\} $$</div>
-<p>which returns us back to the case <span class="arithmatex">$k&gt;1$</span>.
-You can see new reference point <span class="arithmatex">$O'$</span> and axes <span class="arithmatex">$X'$</span> and <span class="arithmatex">$Y'$</span> in the picture below:
+<p>từ đó đưa ta trở lại trường hợp <span class="arithmatex">$k&gt;1$</span>.
+Hình dưới cho thấy gốc tọa độ mới <span class="arithmatex">$O'$</span> và các trục <span class="arithmatex">$X'$</span> và <span class="arithmatex">$Y'$</span>:
 <div style="text-align: center;">
-  <img src="../../geometry/mirror.png" alt="New reference and axes">
+  <img src="../../geometry/mirror.png" alt="Gốc tọa độ và các trục mới">
 </div>
-As you see, in new reference system linear function will have coefficient <span class="arithmatex">$\tfrac 1 k$</span> and its zero will be in the point <span class="arithmatex">$\lfloor k\cdot n + b \rfloor-(k\cdot n+b)$</span> which makes formula above correct.</p>
+Trong hệ tọa độ mới, hàm bậc nhất có hệ số <span class="arithmatex">$\tfrac 1 k$</span> và nghiệm tại <span class="arithmatex">$\lfloor k\cdot n + b \rfloor-(k\cdot n+b)$</span>, nên công thức trên là đúng.</p>
 </li>
 </ul>
-<h2 id="complexity-analysis">Complexity analysis<a class="headerlink" href="#complexity-analysis" title="Permanent link">&para;</a></h2>
-<p>We have to count at most <span class="arithmatex">$\dfrac{(k(n-1)+2b)n}{2}$</span> points.
-Among them we will count <span class="arithmatex">$\dfrac{\lfloor k \rfloor (n-1)+2\lfloor b \rfloor}{2}$</span> on the very first step.
-We may consider that <span class="arithmatex">$b$</span> is negligibly small because we can start with making it less than <span class="arithmatex">$1$</span>.
-In that case we cay say that we count about <span class="arithmatex">$\dfrac{\lfloor k \rfloor}{k} \geq \dfrac 1 2$</span>  of all points.
-Thus we will finish in <span class="arithmatex">$O(\log n)$</span> steps.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Here is simple function which calculates number of integer points <span class="arithmatex">$(x;y)$</span> such for <span class="arithmatex">$0 \leq x &lt; n$</span> and <span class="arithmatex">$0 &lt; y \leq \lfloor k x+b\rfloor$</span>:</p>
+<h2 id="phan-tich-o-phuc-tap">Phân tích độ phức tạp<a class="headerlink" href="#phan-tich-o-phuc-tap" title="Permanent link">&para;</a></h2>
+<p>Ta cần đếm nhiều nhất <span class="arithmatex">$\dfrac{(k(n-1)+2b)n}{2}$</span> điểm.
+Trong số đó, ngay ở bước đầu ta đếm được <span class="arithmatex">$\dfrac{\lfloor k \rfloor (n-1)+2\lfloor b \rfloor}{2}$</span> điểm.
+Có thể coi <span class="arithmatex">$b$</span> rất nhỏ vì ta có thể bắt đầu bằng cách đưa nó xuống dưới <span class="arithmatex">$1$</span>.
+Khi đó có thể nói ta đếm được khoảng <span class="arithmatex">$\dfrac{\lfloor k \rfloor}{k} \geq \dfrac 1 2$</span> tổng số điểm.
+Vì vậy thuật toán kết thúc sau <span class="arithmatex">$O(\log n)$</span> bước.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Hàm đơn giản sau tính số điểm nguyên <span class="arithmatex">$(x;y)$</span> thỏa mãn <span class="arithmatex">$0 \leq x &lt; n$</span> và <span class="arithmatex">$0 &lt; y \leq \lfloor k x+b\rfloor$</span>:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">count_lattices</span><span class="p">(</span><span class="n">Fraction</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">Fraction</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">fk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">k</span><span class="p">.</span><span class="n">floor</span><span class="p">();</span>
 <span class="w">    </span><span class="k">auto</span><span class="w"> </span><span class="n">fb</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">.</span><span class="n">floor</span><span class="p">();</span>
@@ -8060,14 +8048,14 @@ Thus we will finish in <span class="arithmatex">$O(\log n)$</span> steps.</p>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cnt</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Here <code>Fraction</code> is some class handling rational numbers.
-On practice it seems that if all denominators and numerators are at most <span class="arithmatex">$C$</span> by absolute value then in the recursive calls they will be at most <span class="arithmatex">$C^2$</span> if you keep dividing numerators and denominators by their greatest common divisor.
-Given this assumption we can say that one may use doubles and require accuracy of <span class="arithmatex">$\varepsilon^2$</span> where <span class="arithmatex">$\varepsilon$</span> is accuracy with which <span class="arithmatex">$k$</span> and <span class="arithmatex">$b$</span> are given.
-That means that in floor one should consider numbers as integer if they differs at most by <span class="arithmatex">$\varepsilon^2$</span> from an integer.</p>
+<p>Ở đây <code>Fraction</code> là một lớp xử lý số hữu tỉ.
+Trong thực tế, dường như nếu trị tuyệt đối của mọi tử số và mẫu số không vượt quá <span class="arithmatex">$C$</span>, thì trong các lời gọi đệ quy chúng sẽ không vượt quá <span class="arithmatex">$C^2$</span> nếu luôn chia tử và mẫu cho ước chung lớn nhất của chúng.
+Với giả định đó, ta có thể dùng số thực double và yêu cầu độ chính xác <span class="arithmatex">$\varepsilon^2$</span>, trong đó <span class="arithmatex">$\varepsilon$</span> là độ chính xác của <span class="arithmatex">$k$</span> và <span class="arithmatex">$b$</span> đầu vào.
+Nghĩa là khi lấy phần nguyên dưới, ta nên coi một số là số nguyên nếu nó cách một số nguyên không quá <span class="arithmatex">$\varepsilon^2$</span>.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Alexander Kulkov" data-bi-name="contributorprofile" target="_blank">Alexander Kulkov</a> (78.95%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (9.47%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (6.32%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (5.26%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

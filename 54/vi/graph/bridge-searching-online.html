@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#finding-bridges-online" class="md-skip">
+        <a href="#tim-canh-cau-truc-tuyen" class="md-skip">
           Bỏ qua
         </a>
       
@@ -5610,10 +5610,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Thuật toán
       
     </span>
   </a>
@@ -5621,10 +5621,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#data-structures-for-storing-the-forest" class="md-nav__link">
+  <a href="#cau-truc-du-lieu-luu-rung" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Data Structures for storing the forest
+        Cấu trúc dữ liệu lưu rừng
       
     </span>
   </a>
@@ -5632,10 +5632,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/bridge-searching-online.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/bridge-searching-online.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/bridge-searching-online.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/bridge-searching-online.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,38 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8034,113 +8002,113 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="finding-bridges-online">Finding Bridges Online<a class="headerlink" href="#finding-bridges-online" title="Permanent link">&para;</a></h1>
-<p>We are given an undirected graph.
-A bridge is an edge whose removal makes the graph disconnected (or, more precisely, increases the number of connected components).
-Our task is to find all the bridges in the given graph.</p>
-<p>Informally this task can be put as follows:
-we have to find all the "important" roads on the given road map, i.e. such roads that the removal of any of them will lead to some cities being unreachable from others.</p>
-<p>There is already the article <a href="bridge-searching.html">Finding Bridges in <span class="arithmatex">$O(N+M)$</span></a> which solves this task with a <a href="depth-first-search.html">Depth First Search</a> traversal.
-This algorithm will be much more complicated, but it has one big advantage:
-the algorithm described in this article works online, which means that the input graph doesn't have to be known in advance.
-The edges are added once at a time, and after each addition the algorithm recounts all the bridges in the current graph.
-In other words the algorithm is designed to work efficiently on a dynamic, changing graph.</p>
-<p>More rigorously the statement of the problem is as follows:
-Initially the graph is empty and consists of <span class="arithmatex">$n$</span> vertices.
-Then we receive pairs of vertices <span class="arithmatex">$(a, b)$</span>, which denote an edge added to the graph.
-After each received edge, i.e. after adding each edge, output the current number of bridges in the graph.</p>
-<p>It is also possible to maintain a list of all bridges as well as explicitly support the 2-edge-connected components.</p>
-<p>The algorithm described below works in <span class="arithmatex">$O(n \log n + m)$</span> time, where <span class="arithmatex">$m$</span> is the number of edges.
-The algorithm is based on the data structure <a href="../data_structures/disjoint_set_union.html">Disjoint Set Union</a>.
-However the implementation in this article takes <span class="arithmatex">$O(n \log n + m \log n)$</span> time, because it uses the simplified version of the DSU without Union by Rank.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>First let's define a <span class="arithmatex">$k$</span>-edge-connected component:
-it is a connected component that remains connected whenever you remove fewer than <span class="arithmatex">$k$</span> edges.</p>
-<p>It is very easy to see, that the bridges partition the graph into 2-edge-connected components.
-If we compress each of those 2-edge-connected components into vertices and only leave the bridges as edges in the compressed graph, then we obtain an acyclic graph, i.e. a forest.</p>
-<p>The algorithm described below maintains this forest explicitly as well as the 2-edge-connected components.</p>
-<p>It is clear that initially, when the graph is empty, it contains <span class="arithmatex">$n$</span> 2-edge-connected components, which by themselves are not connect.</p>
-<p>When adding the next edge <span class="arithmatex">$(a, b)$</span> there can occur three situations:</p>
+<h1 id="tim-canh-cau-truc-tuyen">Tìm cạnh cầu trực tuyến<a class="headerlink" href="#tim-canh-cau-truc-tuyen" title="Permanent link">&para;</a></h1>
+<p>Cho một đồ thị vô hướng.
+Cạnh cầu là cạnh mà khi xóa đi thì đồ thị bị mất liên thông (hay chính xác hơn là số thành phần liên thông tăng lên).
+Ta cần tìm tất cả các cạnh cầu trong đồ thị đã cho.</p>
+<p>Có thể phát biểu bài toán một cách không hình thức như sau:
+ta cần tìm tất cả các con đường "quan trọng" trên bản đồ đường sá, tức những con đường mà khi xóa bất kỳ đường nào thì một số thành phố không thể đi đến từ các thành phố khác.</p>
+<p>Bài <a href="bridge-searching.html">Tìm cạnh cầu trong <span class="arithmatex">$O(N+M)$</span></a> đã giải bài toán này bằng phép duyệt <a href="depth-first-search.html">tìm kiếm theo chiều sâu</a>.
+Thuật toán sau đây phức tạp hơn nhiều nhưng có một ưu điểm lớn:
+nó hoạt động trực tuyến, nghĩa là không cần biết trước đồ thị đầu vào.
+Các cạnh được thêm vào từng cạnh một, và sau mỗi lần thêm, thuật toán đếm lại tất cả các cạnh cầu trong đồ thị hiện tại.
+Nói cách khác, thuật toán được thiết kế để hoạt động hiệu quả trên đồ thị động, thay đổi theo thời gian.</p>
+<p>Phát biểu bài toán chính xác hơn như sau:
+Ban đầu đồ thị rỗng và gồm <span class="arithmatex">$n$</span> đỉnh.
+Sau đó ta nhận các cặp đỉnh <span class="arithmatex">$(a, b)$</span>, biểu thị một cạnh được thêm vào đồ thị.
+Sau mỗi cạnh nhận được, tức sau khi thêm mỗi cạnh, hãy xuất số cạnh cầu hiện tại trong đồ thị.</p>
+<p>Ta cũng có thể duy trì danh sách tất cả các cạnh cầu cũng như hỗ trợ tường minh các thành phần liên thông 2 cạnh.</p>
+<p>Thuật toán dưới đây chạy trong thời gian <span class="arithmatex">$O(n \log n + m)$</span>, với <span class="arithmatex">$m$</span> là số cạnh.
+Thuật toán dựa trên cấu trúc dữ liệu <a href="../data_structures/disjoint_set_union.html">hợp các tập rời nhau</a> (DSU).
+Tuy nhiên, cài đặt trong bài chạy trong thời gian <span class="arithmatex">$O(n \log n + m \log n)$</span> vì dùng phiên bản DSU đơn giản hóa không có hợp theo hạng.</p>
+<h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Trước tiên, định nghĩa thành phần liên thông <span class="arithmatex">$k$</span> cạnh:
+đó là một thành phần liên thông vẫn liên thông mỗi khi xóa ít hơn <span class="arithmatex">$k$</span> cạnh.</p>
+<p>Có thể dễ dàng thấy các cạnh cầu chia đồ thị thành các thành phần liên thông 2 cạnh.
+Nếu co mỗi thành phần liên thông 2 cạnh thành một đỉnh và chỉ giữ các cạnh cầu làm cạnh của đồ thị đã co, ta được một đồ thị không chu trình, tức là một rừng.</p>
+<p>Thuật toán dưới đây duy trì tường minh rừng này cùng với các thành phần liên thông 2 cạnh.</p>
+<p>Rõ ràng ban đầu khi đồ thị rỗng, nó có <span class="arithmatex">$n$</span> thành phần liên thông 2 cạnh không nối với nhau.</p>
+<p>Khi thêm cạnh tiếp theo <span class="arithmatex">$(a, b)$</span>, có thể xảy ra ba trường hợp:</p>
 <ul>
 <li>
-<p>Both vertices <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> are in the same 2-edge-connected component - then this edge is not a bridge, and does not change anything in the forest structure, so we can just skip this edge.</p>
-<p>Thus, in this case the number of bridges does not change.</p>
+<p>Hai đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> thuộc cùng một thành phần liên thông 2 cạnh. Khi đó cạnh này không phải cầu và không làm thay đổi cấu trúc rừng, nên ta có thể bỏ qua.</p>
+<p>Do đó trong trường hợp này số cạnh cầu không đổi.</p>
 </li>
 <li>
-<p>The vertices <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> are in completely different connected components, i.e. each one is part of a different tree.
-    In this case, the edge <span class="arithmatex">$(a, b)$</span> becomes a new bridge, and these two trees are combined into one (and all the old bridges remain).</p>
-<p>Thus, in this case the number of bridges increases by one.</p>
+<p>Các đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> thuộc hai thành phần liên thông khác nhau, tức mỗi đỉnh thuộc một cây khác nhau.
+    Khi đó cạnh <span class="arithmatex">$(a, b)$</span> trở thành một cạnh cầu mới, hai cây được gộp thành một (và tất cả các cạnh cầu cũ vẫn còn).</p>
+<p>Do đó trong trường hợp này số cạnh cầu tăng một.</p>
 </li>
 <li>
-<p>The vertices <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> are in one connected component, but in different 2-edge-connected components.
-    In this case, this edge forms a cycle along with some of the old bridges.
-    All these bridges end being bridges, and the resulting cycle must be compressed into a new 2-edge-connected component.</p>
-<p>Thus, in this case the number of bridges decreases by one or more.</p>
+<p>Các đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> thuộc cùng một thành phần liên thông nhưng thuộc hai thành phần liên thông 2 cạnh khác nhau.
+    Khi đó cạnh này cùng một số cạnh cầu cũ tạo thành một chu trình.
+    Tất cả các cạnh cầu đó không còn là cầu, và chu trình tạo thành phải được co thành một thành phần liên thông 2 cạnh mới.</p>
+<p>Do đó trong trường hợp này số cạnh cầu giảm một hoặc nhiều hơn.</p>
 </li>
 </ul>
-<p>Consequently the whole task is reduced to the effective implementation of all these operations over the forest of 2-edge-connected components.</p>
-<h2 id="data-structures-for-storing-the-forest">Data Structures for storing the forest<a class="headerlink" href="#data-structures-for-storing-the-forest" title="Permanent link">&para;</a></h2>
-<p>The only data structure that we need is <a href="../data_structures/disjoint_set_union.html">Disjoint Set Union</a>.
-In fact we will make two copies of this structure:
-one will be to maintain the connected components, the other to maintain the 2-edge-connected components.
-And in addition we store the structure of the trees in the forest of 2-edge-connected components via pointers:
-Each 2-edge-connected component will store the index <code>par[]</code> of its ancestor in the tree.</p>
-<p>We will now consistently disassemble every operation that we need to learn to implement:</p>
+<p>Vì vậy, toàn bộ bài toán được quy về việc cài đặt hiệu quả các phép toán này trên rừng các thành phần liên thông 2 cạnh.</p>
+<h2 id="cau-truc-du-lieu-luu-rung">Cấu trúc dữ liệu lưu rừng<a class="headerlink" href="#cau-truc-du-lieu-luu-rung" title="Permanent link">&para;</a></h2>
+<p>Cấu trúc dữ liệu duy nhất ta cần là <a href="../data_structures/disjoint_set_union.html">hợp các tập rời nhau</a>.
+Thực tế ta sẽ dùng hai bản của cấu trúc này:
+một bản duy trì các thành phần liên thông, bản còn lại duy trì các thành phần liên thông 2 cạnh.
+Ngoài ra, ta lưu cấu trúc các cây trong rừng thành phần liên thông 2 cạnh bằng các con trỏ:
+mỗi thành phần liên thông 2 cạnh lưu chỉ số <code>par[]</code> của đỉnh cha trong cây.</p>
+<p>Ta lần lượt phân tích từng phép toán cần cài đặt:</p>
 <ul>
 <li>
-<p>Check whether the two vertices lie in the same connected / 2-edge-connected component.
-    It is done with the usual DSU algorithm, we just find and compare the representatives of the DSUs.</p>
+<p>Kiểm tra hai đỉnh có cùng thành phần liên thông / thành phần liên thông 2 cạnh hay không.
+    Ta dùng thuật toán DSU thông thường: tìm và so sánh các phần tử đại diện của DSU.</p>
 </li>
 <li>
-<p>Joining two trees for some edge <span class="arithmatex">$(a, b)$</span>.
-    Since it could turn out that neither the vertex <span class="arithmatex">$a$</span> nor the vertex <span class="arithmatex">$b$</span> are the roots of their trees, the only way to connect these two trees is to re-root one of them.
-    For example you can re-root the tree of vertex <span class="arithmatex">$a$</span>, and then attach it to another tree by setting the ancestor of <span class="arithmatex">$a$</span> to <span class="arithmatex">$b$</span>.</p>
-<p>However the question about the effectiveness of the re-rooting operation arises:
-in order to re-root the tree with the root <span class="arithmatex">$r$</span> to the vertex <span class="arithmatex">$v$</span>, it is necessary to visit all vertices on the path between <span class="arithmatex">$v$</span> and <span class="arithmatex">$r$</span> and redirect the pointers <code>par[]</code> in the opposite direction, and also change the references to the ancestors in the DSU that is responsible for the connected components.</p>
-<p>Thus, the cost of re-rooting is <span class="arithmatex">$O(h)$</span>, where <span class="arithmatex">$h$</span> is the height of the tree.
-You can make an even worse estimate by saying that the cost is <span class="arithmatex">$O(\text{size})$</span> where <span class="arithmatex">$\text{size}$</span> is the number of vertices in the tree.
-The final complexity will not differ.</p>
-<p>We now apply a standard technique: we re-root the tree that contains fewer vertices.
-Then it is intuitively clear that the worst case is when two trees of approximately equal sizes are combined, but then the result is a tree of twice the size.
-This does not allow this situation to happen many times.</p>
-<p>In general the total cost can be written in the form of a recurrence:</p>
+<p>Nối hai cây bởi một cạnh <span class="arithmatex">$(a, b)$</span>.
+    Vì có thể cả <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> đều không phải gốc cây tương ứng, cách duy nhất để nối hai cây là đổi gốc một cây.
+    Chẳng hạn ta đổi gốc cây chứa <span class="arithmatex">$a$</span> thành chính đỉnh đó, rồi gắn nó vào cây kia bằng cách đặt cha của <span class="arithmatex">$a$</span> là <span class="arithmatex">$b$</span>.</p>
+<p>Tuy nhiên, cần xét hiệu quả của phép đổi gốc:
+để đổi gốc cây từ <span class="arithmatex">$r$</span> sang đỉnh <span class="arithmatex">$v$</span>, ta phải duyệt tất cả các đỉnh trên đường từ <span class="arithmatex">$v$</span> đến <span class="arithmatex">$r$</span> và đảo chiều các con trỏ <code>par[]</code>, đồng thời thay đổi các tham chiếu đến cha trong DSU quản lý các thành phần liên thông.</p>
+<p>Như vậy, chi phí đổi gốc là <span class="arithmatex">$O(h)$</span>, với <span class="arithmatex">$h$</span> là chiều cao cây.
+Ta có thể dùng cận kém hơn là <span class="arithmatex">$O(\text{size})$</span>, với <span class="arithmatex">$\text{size}$</span> là số đỉnh trong cây.
+Độ phức tạp cuối cùng sẽ không khác.</p>
+<p>Bây giờ ta áp dụng một kỹ thuật chuẩn: đổi gốc cây chứa ít đỉnh hơn.
+Khi đó, trực giác cho thấy trường hợp xấu nhất là gộp hai cây có kích thước xấp xỉ nhau, nhưng kết quả lại là cây có kích thước gấp đôi.
+Vì vậy trường hợp này không thể xảy ra nhiều lần.</p>
+<p>Nói chung, tổng chi phí có thể viết dưới dạng truy hồi:</p>
 <div class="arithmatex">$$ T(n) = \max_{k = 1 \ldots n-1} \left\{ T(k) + T(n - k) + O(\min(k, n - k))\right\} $$</div>
-<p><span class="arithmatex">$T(n)$</span> is the number of operations necessary to obtain a tree with <span class="arithmatex">$n$</span> vertices by means of re-rooting and unifying trees.
-A tree of size <span class="arithmatex">$n$</span> can be created by combining two smaller trees of size <span class="arithmatex">$k$</span> and <span class="arithmatex">$n - k$</span>.
-This recurrence is has the solution <span class="arithmatex">$T(n) = O (n \log n)$</span>.</p>
-<p>Thus, the total time spent on all re-rooting operations will be <span class="arithmatex">$O(n \log n)$</span> if we always re-root the smaller of the two trees.</p>
-<p>We will have to maintain the size of each connected component, but the data structure DSU makes this possible without difficulty.</p>
+<p><span class="arithmatex">$T(n)$</span> là số phép toán cần để thu được một cây có <span class="arithmatex">$n$</span> đỉnh bằng cách đổi gốc và gộp cây.
+Có thể tạo cây kích thước <span class="arithmatex">$n$</span> bằng cách gộp hai cây nhỏ hơn có kích thước <span class="arithmatex">$k$</span> và <span class="arithmatex">$n - k$</span>.
+Hệ thức truy hồi này có nghiệm <span class="arithmatex">$T(n) = O (n \log n)$</span>.</p>
+<p>Do đó tổng thời gian dành cho mọi phép đổi gốc là <span class="arithmatex">$O(n \log n)$</span> nếu luôn đổi gốc cây nhỏ hơn.</p>
+<p>Ta phải duy trì kích thước mỗi thành phần liên thông, nhưng cấu trúc DSU cho phép làm điều đó dễ dàng.</p>
 </li>
 <li>
-<p>Searching for the cycle formed by adding a new edge <span class="arithmatex">$(a, b)$</span>.
-    Since <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> are already connected in the tree we need to find the <a href="lca.html">Lowest Common Ancestor</a> of the vertices <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span>.
-    The cycle will consist of the paths from <span class="arithmatex">$b$</span> to the LCA, from the LCA to <span class="arithmatex">$a$</span> and the edge <span class="arithmatex">$a$</span> to <span class="arithmatex">$b$</span>.</p>
-<p>After finding the cycle we compress all vertices of the detected cycle into one vertex.
-This means that we already have a complexity proportional to the cycle length, which means that we also can use any LCA algorithm proportional to the length, and don't have to use any fast one.</p>
-<p>Since all information about the structure of the tree is available in the ancestor array <code>par[]</code>, the only reasonable LCA algorithm is the following:
-mark the vertices <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> as visited, then we go to their ancestors <code>par[a]</code> and <code>par[b]</code> and mark them, then advance to their ancestors and so on, until we reach an already marked vertex.
-This vertex is the LCA that we are looking for, and we can find the vertices on the cycle by traversing the path from <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> to the LCA again.</p>
-<p>It is obvious that the complexity of this algorithm is proportional to the length of the desired cycle.</p>
+<p>Tìm chu trình hình thành khi thêm cạnh mới <span class="arithmatex">$(a, b)$</span>.
+    Vì <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> đã được nối trong cây, ta cần tìm <a href="lca.html">tổ tiên chung gần nhất</a> của hai đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span>.
+    Chu trình gồm các đường từ <span class="arithmatex">$b$</span> đến LCA, từ LCA đến <span class="arithmatex">$a$</span> và cạnh từ <span class="arithmatex">$a$</span> đến <span class="arithmatex">$b$</span>.</p>
+<p>Sau khi tìm thấy chu trình, ta co tất cả các đỉnh của nó thành một đỉnh.
+Vì vậy ta đã có độ phức tạp tỉ lệ với độ dài chu trình; ta cũng có thể dùng bất kỳ thuật toán LCA nào có độ phức tạp tỉ lệ với độ dài đó mà không cần dùng thuật toán nhanh.</p>
+<p>Vì mọi thông tin về cấu trúc cây đều có trong mảng cha <code>par[]</code>, thuật toán LCA hợp lý duy nhất là:
+đánh dấu các đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> đã thăm, rồi đi đến cha của chúng là <code>par[a]</code> và <code>par[b]</code> và đánh dấu; tiếp tục đi lên các cha như vậy cho tới khi gặp một đỉnh đã được đánh dấu.
+Đỉnh này là LCA cần tìm; ta có thể tìm các đỉnh trên chu trình bằng cách duyệt lại đường từ <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> đến LCA.</p>
+<p>Rõ ràng độ phức tạp của thuật toán này tỉ lệ với độ dài chu trình cần tìm.</p>
 </li>
 <li>
-<p>Compression of the cycle by adding a new edge <span class="arithmatex">$(a, b)$</span> in a tree.</p>
-<p>We need to create a new 2-edge-connected component, which will consist of all vertices of the detected cycle (also the detected cycle itself could consist of some 2-edge-connected components, but this does not change anything).
-In addition it is necessary to compress them in such a way that the structure of the tree is not disturbed, and all pointers <code>par[]</code> and two DSUs are still correct.</p>
-<p>The easiest way to achieve this is to compress all the vertices of the cycle to their LCA.
-In fact the LCA is the highest of the vertices, i.e. its ancestor pointer <code>par[]</code> remains unchanged.
-For all the other vertices of the loop the ancestors do not need to be updated, since these vertices simply cease to exists.
-But in the DSU of the 2-edge-connected components all these vertices will simply point to the LCA.</p>
-<p>We will implement the DSU of the 2-edge-connected components without the Union by rank optimization, therefore we will get the complexity <span class="arithmatex">$O(\log n)$</span> on average per query.
-To achieve the complexity <span class="arithmatex">$O(1)$</span> on average per query, we need to combine the vertices of the cycle according to Union by rank, and then assign <code>par[]</code> accordingly.</p>
+<p>Co chu trình hình thành khi thêm cạnh <span class="arithmatex">$(a, b)$</span> trong một cây.</p>
+<p>Ta cần tạo một thành phần liên thông 2 cạnh mới gồm tất cả các đỉnh của chu trình đã tìm thấy (bản thân chu trình cũng có thể gồm một số thành phần liên thông 2 cạnh, nhưng điều đó không thay đổi gì).
+Ngoài ra, cần co chúng sao cho cấu trúc cây không bị phá vỡ, tất cả các con trỏ <code>par[]</code> và cả hai DSU vẫn đúng.</p>
+<p>Cách dễ nhất là co tất cả các đỉnh trên chu trình về LCA của chúng.
+LCA là đỉnh cao nhất trong số đó, tức con trỏ cha <code>par[]</code> của nó không đổi.
+Với các đỉnh khác trên chu trình, không cần cập nhật cha vì những đỉnh này không còn tồn tại.
+Nhưng trong DSU của các thành phần liên thông 2 cạnh, tất cả các đỉnh này sẽ trỏ đến LCA.</p>
+<p>Ta sẽ cài đặt DSU cho các thành phần liên thông 2 cạnh mà không tối ưu hợp theo hạng, vì thế độ phức tạp trung bình mỗi truy vấn là <span class="arithmatex">$O(\log n)$</span>.
+Để đạt độ phức tạp trung bình <span class="arithmatex">$O(1)$</span> mỗi truy vấn, ta cần hợp các đỉnh trên chu trình theo hạng, rồi gán <code>par[]</code> tương ứng.</p>
 </li>
 </ul>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Here is the final implementation of the whole algorithm.</p>
-<p>As mentioned before, for the sake of simplicity the DSU of the 2-edge-connected components is written without Union by rank, therefore the resulting complexity will be <span class="arithmatex">$O(\log n)$</span> on average.</p>
-<p>Also in this implementation the bridges themselves are not stored, only their count <code>bridges</code>.
-However it will not be difficult to create a <code>set</code> of all bridges.</p>
-<p>Initially you call the function <code>init()</code>, which initializes the two DSUs (creating a separate set for each vertex, and setting the size equal to one), and sets the ancestors <code>par</code>.</p>
-<p>The main function is <code>add_edge(a, b)</code>, which processes and adds a new edge.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Dưới đây là cài đặt hoàn chỉnh của thuật toán.</p>
+<p>Như đã nói, để đơn giản, DSU của các thành phần liên thông 2 cạnh được viết không dùng hợp theo hạng, nên độ phức tạp thu được trung bình là <span class="arithmatex">$O(\log n)$</span>.</p>
+<p>Ngoài ra, cài đặt này không lưu bản thân các cạnh cầu, mà chỉ lưu số lượng của chúng trong <code>bridges</code>.
+Tuy vậy, không khó để tạo một <code>set</code> chứa tất cả các cạnh cầu.</p>
+<p>Ban đầu gọi hàm <code>init()</code> để khởi tạo hai DSU (tạo một tập riêng cho mỗi đỉnh và đặt kích thước bằng một) và đặt các cha <code>par</code>.</p>
+<p>Hàm chính là <code>add_edge(a, b)</code>, xử lý và thêm một cạnh mới.</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">par</span><span class="p">,</span><span class="w"> </span><span class="n">dsu_2ecc</span><span class="p">,</span><span class="w"> </span><span class="n">dsu_cc</span><span class="p">,</span><span class="w"> </span><span class="n">dsu_cc_size</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">bridges</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">lca_iteration</span><span class="p">;</span>
@@ -8251,29 +8219,29 @@ However it will not be difficult to create a <code>set</code> of all bridges.</p
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>The DSU for the 2-edge-connected components is stored in the vector <code>dsu_2ecc</code>, and the function returning the representative is <code>find_2ecc(v)</code>.
-This function is used many times in the rest of the code, since after the compression of several vertices into one all these vertices cease to exist, and instead only the leader has the correct ancestor <code>par</code> in the forest of 2-edge-connected components.</p>
-<p>The DSU for the connected components is stored in the vector <code>dsu_cc</code>, and there is also an additional vector <code>dsu_cc_size</code> to store the component sizes.
-The function <code>find_cc(v)</code> returns the leader of the connectivity component (which is actually the root of the tree).</p>
-<p>The re-rooting of a tree <code>make_root(v)</code> works as described above:
-if traverses from the vertex <span class="arithmatex">$v$</span> via the ancestors to the root vertex, each time redirecting the ancestor <code>par</code> in the opposite direction.
-The link to the representative of the connected component <code>dsu_cc</code> is also updated, so that it points to the new root vertex.
-After re-rooting we have to assign the new root the correct size of the connected component.
-Also we have to be careful that we call <code>find_2ecc()</code> to get the representatives of the 2-edge-connected component, rather than some other vertex that have already been compressed.</p>
-<p>The cycle finding and compression function <code>merge_path(a, b)</code> is also implemented as described above.
-It searches for the LCA of <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> be rising these nodes in parallel, until we meet a vertex for the second time.
-For efficiency purposes we choose a unique identifier for each LCA finding call, and mark the traversed vertices with it.
-This works in <span class="arithmatex">$O(1)$</span>, while other approaches like using <span class="arithmatex">$set$</span> perform worse.
-The passed paths are stored in the vectors <code>path_a</code> and <code>path_b</code>, and we use them to walk through them a second time up to the LCA, thereby obtaining all vertices of the cycle.
-All the vertices of the cycle get compressed by attaching them to the LCA, hence the average complexity is <span class="arithmatex">$O(\log n)$</span> (since we don't use Union by rank).
-All the edges we pass have been bridges, so we subtract 1 for each edge in the cycle.</p>
-<p>Finally the query function <code>add_edge(a, b)</code> determines the connected components in which the vertices <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> lie.
-If they lie in different connectivity components, then a smaller tree is re-rooted and then attached to the larger tree.
-Otherwise if the vertices <span class="arithmatex">$a$</span> and <span class="arithmatex">$b$</span> lie in one tree, but in different 2-edge-connected components, then the function <code>merge_path(a, b)</code> is called, which will detect the cycle and compress it into one 2-edge-connected component. </p>
+<p>DSU cho các thành phần liên thông 2 cạnh được lưu trong vector <code>dsu_2ecc</code>, và hàm trả về phần tử đại diện là <code>find_2ecc(v)</code>.
+Hàm này được dùng nhiều lần trong phần còn lại của mã vì sau khi co nhiều đỉnh thành một, các đỉnh đó không còn tồn tại; thay vào đó, chỉ phần tử đại diện mới có cha <code>par</code> đúng trong rừng các thành phần liên thông 2 cạnh.</p>
+<p>DSU cho các thành phần liên thông được lưu trong vector <code>dsu_cc</code>; ngoài ra vector <code>dsu_cc_size</code> lưu kích thước các thành phần.
+Hàm <code>find_cc(v)</code> trả về phần tử đại diện của thành phần liên thông (thực ra là gốc của cây).</p>
+<p>Phép đổi gốc cây <code>make_root(v)</code> hoạt động như đã mô tả:
+nó đi từ đỉnh <span class="arithmatex">$v$</span> qua các đỉnh cha lên đến gốc, mỗi lần đảo chiều con trỏ cha <code>par</code>.
+Liên kết đến phần tử đại diện của thành phần liên thông <code>dsu_cc</code> cũng được cập nhật để trỏ tới đỉnh gốc mới.
+Sau khi đổi gốc, ta phải gán cho gốc mới kích thước đúng của thành phần liên thông.
+Ta cũng phải chú ý gọi <code>find_2ecc()</code> để lấy phần tử đại diện của thành phần liên thông 2 cạnh, thay vì một đỉnh khác đã bị co.</p>
+<p>Hàm tìm và co chu trình <code>merge_path(a, b)</code> cũng được cài đặt như trên.
+Nó tìm LCA của <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> bằng cách đồng thời đi lên từ hai đỉnh này cho tới khi gặp một đỉnh lần thứ hai.
+Để hiệu quả, ta chọn một mã định danh duy nhất cho mỗi lần tìm LCA và dùng mã đó đánh dấu các đỉnh đã đi qua.
+Việc này chạy trong <span class="arithmatex">$O(1)$</span>, trong khi các cách khác như dùng <span class="arithmatex">$set$</span> kém hiệu quả hơn.
+Các đường đã đi được lưu trong vector <code>path_a</code> và <code>path_b</code>; ta dùng chúng để duyệt lại đến LCA, từ đó thu được tất cả các đỉnh trên chu trình.
+Mọi đỉnh của chu trình được co bằng cách gắn vào LCA, do đó độ phức tạp trung bình là <span class="arithmatex">$O(\log n)$</span> (vì ta không dùng hợp theo hạng).
+Tất cả các cạnh đi qua đều từng là cầu, nên ta trừ 1 cho mỗi cạnh trên chu trình.</p>
+<p>Cuối cùng hàm truy vấn <code>add_edge(a, b)</code> xác định các thành phần liên thông chứa các đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span>.
+Nếu chúng thuộc các thành phần liên thông khác nhau, cây nhỏ hơn được đổi gốc và gắn vào cây lớn hơn.
+Nếu <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> thuộc cùng một cây nhưng khác thành phần liên thông 2 cạnh, hàm <code>merge_path(a, b)</code> được gọi để tìm chu trình và co nó thành một thành phần liên thông 2 cạnh.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (92.42%)</li><li><a href="#" title="0utkarsh" data-bi-name="contributorprofile" target="_blank">0utkarsh</a> (2.53%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (2.17%)</li><li><a href="#" title="Le Bao Hiep" data-bi-name="contributorprofile" target="_blank">Le Bao Hiep</a> (0.72%)</li><li><a href="#" title="fffelix-huang" data-bi-name="contributorprofile" target="_blank">fffelix-huang</a> (0.72%)</li><li><a href="#" title="Abanoub Ashraf" data-bi-name="contributorprofile" target="_blank">Abanoub Ashraf</a> (0.36%)</li><li><a href="#" title="Avinash Pandey" data-bi-name="contributorprofile" target="_blank">Avinash Pandey</a> (0.36%)</li><li><a href="#" title="Nafis" data-bi-name="contributorprofile" target="_blank">Nafis</a> (0.36%)</li><li><a href="#" title="wiktorkuchta" data-bi-name="contributorprofile" target="_blank">wiktorkuchta</a> (0.36%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

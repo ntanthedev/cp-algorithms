@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#flows-with-demands" class="md-skip">
+        <a href="#luong-co-can-duoi" class="md-skip">
           Bỏ qua
         </a>
       
@@ -6780,10 +6780,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#finding-an-arbitrary-flow" class="md-nav__link">
+  <a href="#tim-mot-luong-bat-ky" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Finding an arbitrary flow
+        Tìm một luồng bất kỳ
       
     </span>
   </a>
@@ -6791,10 +6791,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#minimal-flow" class="md-nav__link">
+  <a href="#luong-nho-nhat" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Minimal flow
+        Luồng nhỏ nhất
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/flow_with_demands.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/flow_with_demands.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/flow_with_demands.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/flow_with_demands.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,10 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
 
   
   
@@ -7995,54 +7991,56 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="flows-with-demands">Flows with demands<a class="headerlink" href="#flows-with-demands" title="Permanent link">&para;</a></h1>
-<p>In a normal flow network the flow of an edge is only limited by the capacity <span class="arithmatex">$c(e)$</span> from above and by 0 from below.
-In this article we will discuss flow networks, where we additionally require the flow of each edge to have a certain amount, i.e. we bound the flow from below by a <strong>demand</strong> function <span class="arithmatex">$d(e)$</span>:</p>
+<h1 id="luong-co-can-duoi">Luồng có cận dưới<a class="headerlink" href="#luong-co-can-duoi" title="Permanent link">&para;</a></h1>
+<p>Trong mạng luồng thông thường, luồng trên một cạnh chỉ bị chặn trên bởi khả năng thông qua <span class="arithmatex">$c(e)$</span> và chặn dưới bởi 0.
+Bài này xét mạng luồng có thêm yêu cầu về lượng luồng trên mỗi cạnh, tức là luồng bị chặn dưới bởi một hàm <strong>nhu cầu</strong> <span class="arithmatex">$d(e)$</span>:</p>
 <div class="arithmatex">$$ d(e) \le f(e) \le c(e)$$</div>
-<p>So next each edge has a minimal flow value, that we have to pass along the edge.</p>
-<p>This is a generalization of the normal flow problem, since setting <span class="arithmatex">$d(e) = 0$</span> for all edges <span class="arithmatex">$e$</span> gives a normal flow network.
-Notice, that in the normal flow network it is extremely trivial to find a valid flow, just setting <span class="arithmatex">$f(e) = 0$</span> is already a valid one.
-However if the flow of each edge has to satisfy a demand, than suddenly finding a valid flow is already pretty complicated.</p>
-<p>We will consider two problems:</p>
+<p>Do đó mỗi cạnh có một giá trị luồng tối thiểu phải đi qua cạnh ấy.</p>
+<p>Đây là dạng tổng quát của bài toán luồng thông thường, vì đặt <span class="arithmatex">$d(e) = 0$</span> cho mọi cạnh <span class="arithmatex">$e$</span> sẽ cho ta mạng luồng thông thường.
+Trong mạng luồng thông thường, việc tìm một luồng hợp lệ rất đơn giản: chỉ cần đặt <span class="arithmatex">$f(e) = 0$</span>.
+Tuy nhiên, khi luồng trên mỗi cạnh phải đáp ứng một nhu cầu, việc tìm luồng hợp lệ trở nên khá phức tạp.</p>
+<p>Ta sẽ xét hai bài toán:</p>
 <ol>
-<li>finding an arbitrary flow that satisfies all constraints</li>
-<li>finding a minimal flow that satisfies all constraints</li>
+<li>tìm một luồng bất kỳ thỏa mãn mọi ràng buộc</li>
+<li>tìm một luồng nhỏ nhất thỏa mãn mọi ràng buộc</li>
 </ol>
-<h2 id="finding-an-arbitrary-flow">Finding an arbitrary flow<a class="headerlink" href="#finding-an-arbitrary-flow" title="Permanent link">&para;</a></h2>
-<p>We make the following changes in the network.
-We add a new source <span class="arithmatex">$s'$</span> and a new sink <span class="arithmatex">$t'$</span>, a new edge from the source <span class="arithmatex">$s'$</span> to every other vertex, a new edge for every vertex to the sink <span class="arithmatex">$t'$</span>, and one edge from <span class="arithmatex">$t$</span> to <span class="arithmatex">$s$</span>.
-Additionally we define the new capacity function <span class="arithmatex">$c'$</span> as:</p>
+<h2 id="tim-mot-luong-bat-ky">Tìm một luồng bất kỳ<a class="headerlink" href="#tim-mot-luong-bat-ky" title="Permanent link">&para;</a></h2>
+<p>Ta thay đổi mạng như sau.
+Thêm nguồn mới <span class="arithmatex">$s'$</span>, đích mới <span class="arithmatex">$t'$</span>, một cạnh từ <span class="arithmatex">$s'$</span> tới mỗi đỉnh khác, một cạnh từ mỗi đỉnh tới <span class="arithmatex">$t'$</span>, và một cạnh từ <span class="arithmatex">$t$</span> tới <span class="arithmatex">$s$</span>.
+Đồng thời định nghĩa hàm khả năng thông qua mới <span class="arithmatex">$c'$</span> như sau:</p>
 <ul>
-<li><span class="arithmatex">$c'((s', v)) = \sum_{u \in V} d((u, v))$</span> for each edge <span class="arithmatex">$(s', v)$</span>.</li>
-<li><span class="arithmatex">$c'((v, t')) = \sum_{w \in V} d((v, w))$</span> for each edge <span class="arithmatex">$(v, t')$</span>.</li>
-<li><span class="arithmatex">$c'((u, v)) = c((u, v)) - d((u, v))$</span> for each edge <span class="arithmatex">$(u, v)$</span> in the old network.</li>
+<li><span class="arithmatex">$c'((s', v)) = \sum_{u \in V} d((u, v))$</span> với mỗi cạnh <span class="arithmatex">$(s', v)$</span>.</li>
+<li><span class="arithmatex">$c'((v, t')) = \sum_{w \in V} d((v, w))$</span> với mỗi cạnh <span class="arithmatex">$(v, t')$</span>.</li>
+<li><span class="arithmatex">$c'((u, v)) = c((u, v)) - d((u, v))$</span> với mỗi cạnh <span class="arithmatex">$(u, v)$</span> trong mạng cũ.</li>
 <li><span class="arithmatex">$c'((t, s)) = \infty$</span></li>
 </ul>
-<p>If the new network has a saturating flow (a flow where each edge outgoing from <span class="arithmatex">$s'$</span> is completely filled, which is equivalent to every edge incoming to <span class="arithmatex">$t'$</span> is completely filled), then the network with demands has a valid flow, and the actual flow can be easily reconstructed from the new network.
-Otherwise there doesn't exist a flow that satisfies all conditions.
-Since a saturating flow has to be a maximum flow, it can be found by any maximum flow algorithm, like the <a href="edmonds_karp.html">Edmonds-Karp algorithm</a> or the <a href="push-relabel.html">Push-relabel algorithm</a>.</p>
-<p>The correctness of these transformations is more difficult to understand.
-We can think of it in the following way:
-Each edge <span class="arithmatex">$e = (u, v)$</span> with <span class="arithmatex">$d(e) &gt; 0$</span> is originally replaced by two edges: one with the capacity <span class="arithmatex">$d(i)$</span> , and the other with <span class="arithmatex">$c(i) - d(i)$</span>.
-We want to find a flow that saturates the first edge (i.e. the flow along this edge must be equal to its capacity).
-The second edge is less important - the flow along it can be anything, assuming that it doesn't exceed its capacity.
-Consider each edge that has to be saturated, and we perform the following operation:
-we draw the edge from the new source <span class="arithmatex">$s'$</span> to its end <span class="arithmatex">$v$</span>, draw the edge from its start <span class="arithmatex">$u$</span> to the new sink <span class="arithmatex">$t'$</span>, remove the edge itself, and from the old sink <span class="arithmatex">$t$</span> to the old source <span class="arithmatex">$s$</span> we draw an edge of infinite capacity.
-By these actions we simulate the fact that this edge is saturated - from <span class="arithmatex">$v$</span> there will be an additionally <span class="arithmatex">$d(e)$</span> flow outgoing (we simulate it with a new source that feeds the right amount of flow to <span class="arithmatex">$v$</span>), and <span class="arithmatex">$u$</span> will also push <span class="arithmatex">$d(e)$</span> additional flow (but instead along the old edge, this flow will go directly to the new sink <span class="arithmatex">$t'$</span>).
-A flow with the value <span class="arithmatex">$d(e)$</span>, that originally flowed along the path <span class="arithmatex">$s - \dots - u - v - \dots t$</span> can now take the new path <span class="arithmatex">$s' - v - \dots - t - s - \dots - u - t'$</span>.
-The only thing that got simplified in the definition of the new network, is that if procedure created multiple edges between the same pair of vertices, then they are combined to one single edge with the summed capacity.</p>
-<h2 id="minimal-flow">Minimal flow<a class="headerlink" href="#minimal-flow" title="Permanent link">&para;</a></h2>
-<p>Note that along the edge <span class="arithmatex">$(t, s)$</span> (from the old sink to the old source) with the capacity <span class="arithmatex">$\infty$</span> flows the entire flow of the corresponding old network.
-I.e. the capacity of this edge effects the flow value of the old network.
-By giving this edge a sufficient large capacity (i.e. <span class="arithmatex">$\infty$</span>), the flow of the old network is unlimited.
-By limiting this edge by smaller capacities, the flow value will decrease.
-However if we limit this edge by a too small value, than the network will not have a saturated solution, e.g. the corresponding solution for the original network will not satisfy the demand of the edges.
-Obviously here can use a binary search to find the lowest value with which all constraints are still satisfied.
-This gives the minimal flow of the original network.</p>
+<p>Nếu mạng mới có luồng bão hòa (mỗi cạnh đi ra từ <span class="arithmatex">$s'$</span> đều đầy, tương đương với mỗi cạnh đi vào <span class="arithmatex">$t'$</span> đều đầy), thì mạng có nhu cầu có một luồng hợp lệ, và có thể dễ dàng khôi phục luồng đó từ mạng mới.
+Ngược lại, không tồn tại luồng thỏa mãn mọi điều kiện.
+Vì luồng bão hòa phải là luồng cực đại, ta có thể tìm nó bằng bất kỳ thuật toán luồng cực đại nào, chẳng hạn <a href="edmonds_karp.html">thuật toán Edmonds-Karp</a> hoặc <a href="push-relabel.html">thuật toán Push-relabel</a>.</p>
+<p>Tính đúng đắn của các phép biến đổi này khó hiểu hơn.
+Ta có thể hình dung như sau:
+Ban đầu, mỗi cạnh <span class="arithmatex">$e = (u, v)$</span> có <span class="arithmatex">$d(e) &gt; 0$</span> được thay bằng hai cạnh: một cạnh có khả năng thông qua <span class="arithmatex">$d(i)$</span>, cạnh còn lại có khả năng thông qua <span class="arithmatex">$c(i) - d(i)$</span>.
+<strong>Ghi chú bản dịch:</strong> Ký hiệu <span class="arithmatex">$i$</span> trong <span class="arithmatex">$d(i)$</span> và <span class="arithmatex">$c(i)$</span> ở câu trên chưa được nguồn định nghĩa; theo ngữ cảnh, các biểu thức này tương ứng với <span class="arithmatex">$d(e)$</span> và <span class="arithmatex">$c(e)$</span>.</p>
+<p>Ta muốn tìm một luồng bão hòa cạnh thứ nhất (tức luồng trên cạnh này phải bằng khả năng thông qua của nó).
+Cạnh thứ hai ít quan trọng hơn: luồng trên nó có thể tùy ý, miễn là không vượt quá khả năng thông qua.
+Với mỗi cạnh cần bão hòa, ta thực hiện thao tác sau:
+vẽ cạnh từ nguồn mới <span class="arithmatex">$s'$</span> đến điểm cuối <span class="arithmatex">$v$</span>, vẽ cạnh từ điểm đầu <span class="arithmatex">$u$</span> đến đích mới <span class="arithmatex">$t'$</span>, xóa chính cạnh đó, và vẽ một cạnh có khả năng thông qua vô hạn từ đích cũ <span class="arithmatex">$t$</span> đến nguồn cũ <span class="arithmatex">$s$</span>.
+Các thao tác này mô phỏng việc cạnh đó bão hòa: từ <span class="arithmatex">$v$</span> sẽ có thêm <span class="arithmatex">$d(e)$</span> luồng đi ra (ta mô phỏng bằng nguồn mới cấp đúng lượng luồng cho <span class="arithmatex">$v$</span>), còn <span class="arithmatex">$u$</span> cũng đẩy thêm <span class="arithmatex">$d(e)$</span> luồng (nhưng thay vì theo cạnh cũ, lượng luồng này đi thẳng tới đích mới <span class="arithmatex">$t'$</span>).
+Một luồng có giá trị <span class="arithmatex">$d(e)$</span> vốn đi theo đường <span class="arithmatex">$s - \dots - u - v - \dots t$</span> giờ có thể đi theo đường mới <span class="arithmatex">$s' - v - \dots - t - s - \dots - u - t'$</span>.
+Định nghĩa mạng mới chỉ đơn giản hóa ở chỗ: nếu quá trình tạo ra nhiều cạnh giữa cùng một cặp đỉnh, chúng được gộp thành một cạnh với khả năng thông qua bằng tổng của chúng.</p>
+<h2 id="luong-nho-nhat">Luồng nhỏ nhất<a class="headerlink" href="#luong-nho-nhat" title="Permanent link">&para;</a></h2>
+<p>Lưu ý rằng toàn bộ luồng của mạng cũ tương ứng đi qua cạnh <span class="arithmatex">$(t, s)$</span> (từ đích cũ tới nguồn cũ) có khả năng thông qua <span class="arithmatex">$\infty$</span>.
+Tức là khả năng thông qua của cạnh này ảnh hưởng tới giá trị luồng của mạng cũ.
+Khi cho cạnh này khả năng thông qua đủ lớn (tức <span class="arithmatex">$\infty$</span>), luồng của mạng cũ không bị giới hạn.
+Khi giới hạn cạnh này bằng các khả năng thông qua nhỏ hơn, giá trị luồng sẽ giảm.
+Tuy nhiên, nếu giới hạn quá nhỏ, mạng sẽ không có lời giải bão hòa; chẳng hạn lời giải tương ứng của mạng ban đầu sẽ không đáp ứng nhu cầu của các cạnh.
+Có thể dùng tìm kiếm nhị phân để tìm giá trị nhỏ nhất mà tại đó mọi ràng buộc vẫn được thỏa mãn.
+Giá trị đó cho ta luồng nhỏ nhất của mạng ban đầu.</p>
+<p><strong>Ghi chú bản dịch:</strong> Cách thêm cạnh <span class="arithmatex">$(t, s)$</span> ở trên xét luồng <span class="arithmatex">$s$</span>–<span class="arithmatex">$t$</span> có giá trị không âm. Nếu cho phép giá trị âm, phép dựng này có thể bỏ sót nghiệm: chẳng hạn mạng chỉ có cạnh từ <span class="arithmatex">$t$</span> đến <span class="arithmatex">$s$</span> với cận dưới và cận trên đều bằng 1. Tìm kiếm nhị phân chính xác cần miền giá trị rời rạc, ví dụ các cận nguyên và tìm trên số nguyên, đồng thời cần kiểm tra trước rằng có luồng hợp lệ. Với miền số thực, cần xác định sai số tìm kiếm.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (89.83%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (10.17%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

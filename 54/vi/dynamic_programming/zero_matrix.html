@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#finding-the-largest-zero-submatrix" class="md-skip">
+        <a href="#tim-ma-tran-con-toan-so-0-lon-nhat" class="md-skip">
           Bỏ qua
         </a>
       
@@ -2615,22 +2615,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Thuật toán
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Algorithm">
+    <nav class="md-nav" aria-label="Thuật toán">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#step-1-auxiliary-dynamic" class="md-nav__link">
+  <a href="#buoc-1-quy-hoach-ong-phu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1: Auxiliary dynamic
+        Bước 1: Quy hoạch động phụ
       
     </span>
   </a>
@@ -2638,10 +2638,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#step-2-problem-solving" class="md-nav__link">
+  <a href="#buoc-2-giai-bai-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2: Problem solving
+        Bước 2: Giải bài toán
       
     </span>
   </a>
@@ -2649,10 +2649,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7967,13 +7967,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/dynamic_programming/zero_matrix.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/dynamic_programming/zero_matrix.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/dynamic_programming/zero_matrix.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/dynamic_programming/zero_matrix.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7984,10 +7984,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
 
   
   
@@ -8023,13 +8019,14 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="finding-the-largest-zero-submatrix">Finding the largest zero submatrix<a class="headerlink" href="#finding-the-largest-zero-submatrix" title="Permanent link">&para;</a></h1>
-<p>You are given a matrix with <code>n</code> rows and <code>m</code> columns. Find the largest submatrix consisting of only zeros (a submatrix is a rectangular area of the matrix).</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>Elements of the matrix will be <code>a[i][j]</code>, where <code>i = 0...n - 1</code>, <code>j = 0... m - 1</code>. For simplicity, we will consider all non-zero elements equal to 1.</p>
-<h3 id="step-1-auxiliary-dynamic">Step 1: Auxiliary dynamic<a class="headerlink" href="#step-1-auxiliary-dynamic" title="Permanent link">&para;</a></h3>
-<p>First, we calculate the following auxiliary matrix: <code>d[i][j]</code>, nearest row that has a 1 above <code>a[i][j]</code>. Formally speaking, <code>d[i][j]</code> is the largest row number (from <code>0</code> to <code>i - 1</code>), in which there is a element equal to <code>1</code> in the <code>j</code>-th column. 
-While iterating from top-left to bottom-right, when we stand in row <code>i</code>, we know the values from the previous row, so, it is enough to update just the elements with value <code>1</code>. We can save the values in a simple array <code>d[i]</code>, <code>i = 1...m - 1</code>, because in the further algorithm we will process the matrix one row at a time and only need the values of the current row.</p>
+<h1 id="tim-ma-tran-con-toan-so-0-lon-nhat">Tìm ma trận con toàn số 0 lớn nhất<a class="headerlink" href="#tim-ma-tran-con-toan-so-0-lon-nhat" title="Permanent link">&para;</a></h1>
+<p>Cho một ma trận có <code>n</code> hàng và <code>m</code> cột. Hãy tìm ma trận con lớn nhất chỉ gồm các số 0 (ma trận con là một vùng hình chữ nhật của ma trận).</p>
+<h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Gọi các phần tử của ma trận là <code>a[i][j]</code>, với <code>i = 0...n - 1</code>, <code>j = 0... m - 1</code>. Để đơn giản, ta coi mọi phần tử khác 0 đều bằng 1.</p>
+<h3 id="buoc-1-quy-hoach-ong-phu">Bước 1: Quy hoạch động phụ<a class="headerlink" href="#buoc-1-quy-hoach-ong-phu" title="Permanent link">&para;</a></h3>
+<p>Trước tiên, ta tính ma trận phụ <code>d[i][j]</code>: hàng gần nhất phía trên <code>a[i][j]</code> có phần tử bằng 1. Cụ thể, <code>d[i][j]</code> là chỉ số hàng lớn nhất (từ <code>0</code> đến <code>i - 1</code>) có phần tử bằng <code>1</code> ở cột thứ <code>j</code>.
+Khi duyệt từ trên trái xuống dưới phải, tại hàng <code>i</code>, ta đã biết các giá trị của hàng trước nên chỉ cần cập nhật các phần tử có giá trị <code>1</code>. Ta có thể lưu các giá trị trong một mảng đơn giản <code>d[i]</code>, <code>i = 1...m - 1</code>, vì ở phần sau thuật toán xử lý từng hàng và chỉ cần các giá trị của hàng hiện tại.</p>
+<p>Ghi chú bản dịch: Mã cập nhật cả hàng hiện tại: sau khi cập nhật, d[j] là chỉ số hàng gần nhất không vượt quá i có giá trị 1 ở cột j, hoặc -1 nếu không có. Mảng được truy cập với chỉ số từ 0 đến m - 1. Mã chỉ kiểm tra phần tử bằng 1; đầu vào có giá trị khác 0 cần được chuẩn hóa thành 1 trước khi gọi hàm. Mã cũng giả sử ma trận có ít nhất một hàng vì truy cập a[0].</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">d</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="mi">-1</span><span class="p">);</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">n</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">m</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8039,19 +8036,21 @@ While iterating from top-left to bottom-right, when we stand in row <code>i</cod
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="step-2-problem-solving">Step 2: Problem solving<a class="headerlink" href="#step-2-problem-solving" title="Permanent link">&para;</a></h3>
-<p>We can solve the problem in <span class="arithmatex">$O(n m^2)$</span> iterating through rows, considering every possible left and right columns for a submatrix. The bottom of the rectangle will be the current row, and using <code>d[i][j]</code> we can find the top row. However, it is possible to go further and significantly improve the complexity of the solution.</p>
-<p>It is clear that the desired zero submatrix is bounded on all four sides by some ones, which prevent it from increasing in size and improving the answer. Therefore,  we will not miss the answer if we act as follows: for every cell <code>j</code> in row <code>i</code> (the bottom row of a potential zero submatrix) we will have <code>d[i][j]</code> as the top row of the current zero submatrix. It now remains to determine the optimal left and right boundaries of the zero submatrix, i.e. maximally push this submatrix to the left and right of the <code>j</code>-th column. </p>
-<p>What does it mean to push the maximum to the left? It means to find an index <code>k1</code> for which <code>d[i][k1] &gt; d[i][j]</code>, and at the same time <code>k1</code> - the closest one to the left of the index <code>j</code>. It is clear that then <code>k1 + 1</code> gives the number of the left column of the required zero submatrix. If there is no such index at all, then put <code>k1</code> = <code>-1</code>(this means that we were able to extend the current zero submatrix to the left all the way to the border of matrix <code>a</code>).</p>
-<p>Symmetrically, you can define an index <code>k2</code> for the right border: this is the closest index to the right of <code>j</code> such that <code>d[i][k2] &gt; d[i][j]</code> (or <code>m</code>, if there is no such index).</p>
-<p>So, the indices <code>k1</code> and <code>k2</code>, if we learn to search for them effectively, will give us all the necessary information about the current zero submatrix. In particular, its area will be equal to <code>(i - d[i][j]) * (k2 - k1 - 1)</code>.</p>
-<p>How to look for these indexes <code>k1</code> and <code>k2</code> effectively with fixed <code>i</code> and <code>j</code>? We can do that in <span class="arithmatex">$O(1)$</span> on average.</p>
-<p>To achieve such complexity, you can use the stack as follows. Let's first learn how to search for an index <code>k1</code>, and save its value for each index <code>j</code> within the current row <code>i</code> in matrix <code>d1[i][j]</code>. To do this, we will look through all the columns <code>j</code> from left to right, and we will store in the stack only those columns that have <code>d[][]</code> strictly greater than <code>d[i][j]</code>. It is clear that when moving from a column <code>j</code> to the next column, it is necessary to update the content of the stack. When there is an inappropriate element at the top of the stack (i.e. <code>d[][] &lt;= d[i][j]</code>) pop it. It is easy to understand that it is enough to remove from the stack only from its top, and from none of its other places (because the stack will contain an increasing <code>d</code> sequence of columns).</p>
-<p>The value <code>d1[i][j]</code> for each <code>j</code> will be equal to the value lying at that moment on top of the stack.</p>
-<p>The dynamics <code>d2[i][j]</code> for finding the indices <code>k2</code> is considered similar, only you need to view the columns from right to left.</p>
-<p>It is clear that since there are exactly <code>m</code> pieces added to the stack on each line, there could not be more deletions either, the sum of complexities will be linear, so the final complexity of the algorithm is <span class="arithmatex">$O(nm)$</span>.</p>
-<p>It should also be noted that this algorithm consumes <span class="arithmatex">$O(m)$</span> memory (not counting the input data - the matrix <code>a[][]</code>).</p>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
+<h3 id="buoc-2-giai-bai-toan">Bước 2: Giải bài toán<a class="headerlink" href="#buoc-2-giai-bai-toan" title="Permanent link">&para;</a></h3>
+<p>Ta có thể giải trong <span class="arithmatex">$O(n m^2)$</span> bằng cách duyệt từng hàng và xét mọi cặp cột trái, phải của ma trận con. Cạnh dưới của hình chữ nhật là hàng hiện tại, còn <code>d[i][j]</code> giúp ta tìm hàng trên cùng. Tuy nhiên, ta có thể cải thiện đáng kể độ phức tạp.</p>
+<p>Ma trận con toàn số 0 cần tìm bị chặn ở cả bốn phía bởi các số 1, khiến ta không thể mở rộng nó để cải thiện đáp án. Vì vậy, ta sẽ không bỏ sót đáp án nếu làm như sau: với mỗi ô <code>j</code> của hàng <code>i</code> (hàng dưới cùng của một ma trận con toàn số 0 có thể chọn), lấy <code>d[i][j]</code> làm hàng trên cùng của ma trận con hiện tại. Khi đó, ta cần xác định biên trái và phải tối ưu, tức mở rộng ma trận con này sang trái và phải của cột <code>j</code> nhiều nhất có thể.</p>
+<p>Mở rộng tối đa sang trái nghĩa là gì? Ta tìm chỉ số <code>k1</code> sao cho <code>d[i][k1] &gt; d[i][j]</code>, đồng thời <code>k1</code> gần <code>j</code> nhất về phía trái. Khi đó <code>k1 + 1</code> là chỉ số cột trái của ma trận con cần tìm. Nếu không có chỉ số như vậy, đặt <code>k1</code> = <code>-1</code> (nghĩa là có thể mở rộng sang trái đến tận biên ma trận <code>a</code>).</p>
+<p>Tương tự, chỉ số <code>k2</code> cho biên phải là chỉ số gần <code>j</code> nhất về phía phải thỏa mãn <code>d[i][k2] &gt; d[i][j]</code> (hoặc <code>m</code> nếu không có).</p>
+<p>Nếu tìm hiệu quả được <code>k1</code> và <code>k2</code>, ta sẽ có mọi thông tin cần thiết về ma trận con toàn số 0 hiện tại. Cụ thể, diện tích của nó bằng <code>(i - d[i][j]) * (k2 - k1 - 1)</code>.</p>
+<p>Ghi chú bản dịch: Với cách định nghĩa và mã ở trên, d[i][j] là hàng chặn ngay phía trên ma trận con; hàng trên cùng của ma trận con là d[i][j] + 1. Biên ma trận cũng có thể giới hạn khả năng mở rộng.</p>
+<p>Làm thế nào để tìm hiệu quả các chỉ số <code>k1</code> và <code>k2</code> với <code>i</code> và <code>j</code> cố định? Ta có thể làm trong thời gian trung bình <span class="arithmatex">$O(1)$</span>.</p>
+<p>Để đạt độ phức tạp này, ta dùng stack như sau. Trước tiên xét cách tìm <code>k1</code> và lưu giá trị của nó ứng với mỗi chỉ số <code>j</code> trong hàng hiện tại <code>i</code> vào ma trận <code>d1[i][j]</code>. Ta duyệt các cột <code>j</code> từ trái sang phải và chỉ giữ trong stack các cột có <code>d[][]</code> lớn hơn hẳn <code>d[i][j]</code>. Khi chuyển từ cột <code>j</code> sang cột tiếp theo, ta cần cập nhật stack. Khi phần tử trên đỉnh stack không còn phù hợp (tức là <code>d[][] &lt;= d[i][j]</code>), lấy nó ra. Chỉ cần lấy phần tử ở đỉnh, không cần lấy ở vị trí khác, vì stack chứa một dãy cột có <code>d</code> tăng dần.</p>
+<p>Giá trị <code>d1[i][j]</code> của mỗi <code>j</code> bằng giá trị ở đỉnh stack tại thời điểm đó.</p>
+<p>Quy hoạch động <code>d2[i][j]</code> để tìm <code>k2</code> được tính tương tự, chỉ khác là duyệt các cột từ phải sang trái.</p>
+<p>Vì mỗi hàng có đúng <code>m</code> phần tử được đưa vào stack nên số lần lấy ra cũng không thể nhiều hơn. Tổng độ phức tạp là tuyến tính, do đó độ phức tạp cuối cùng của thuật toán là <span class="arithmatex">$O(nm)$</span>.</p>
+<p>Thuật toán cũng dùng <span class="arithmatex">$O(m)$</span> bộ nhớ (không tính dữ liệu đầu vào là ma trận <code>a[][]</code>).</p>
+<p>Ghi chú bản dịch: Trong mã, khi stack rỗng, d1 và d2 lần lượt nhận -1 và m. Độ phức tạp bộ nhớ nêu trên không tính bản sao ma trận do tham số a được truyền theo giá trị. Các giá trị d trong stack giảm dần từ đáy lên đỉnh.</p>
+<h3 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">zero_matrix</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">.</span><span class="n">size</span><span class="p">();</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">size</span><span class="p">();</span>
@@ -8092,7 +8091,7 @@ While iterating from top-left to bottom-right, when we stand in row <code>i</cod
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Vlad Tiberiu Mihailescu" data-bi-name="contributorprofile" target="_blank">Vlad Tiberiu Mihailescu</a> (93.62%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (6.38%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

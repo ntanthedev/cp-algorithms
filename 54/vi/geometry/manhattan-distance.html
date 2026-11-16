@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#manhattan-distance" class="md-skip">
+        <a href="#khoang-cach-manhattan" class="md-skip">
           Bỏ qua
         </a>
       
@@ -5278,10 +5278,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
+  <a href="#inh-nghia" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Definition
+        Định nghĩa
       
     </span>
   </a>
@@ -5289,10 +5289,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#farthest-pair-of-points-in-manhattan-distance" class="md-nav__link">
+  <a href="#cap-iem-xa-nhau-nhat-theo-khoang-cach-manhattan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Farthest pair of points in Manhattan distance
+        Cặp điểm xa nhau nhất theo khoảng cách Manhattan
       
     </span>
   </a>
@@ -5300,10 +5300,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#rotating-the-points-and-chebyshev-distance" class="md-nav__link">
+  <a href="#phep-quay-cac-iem-va-khoang-cach-chebyshev" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Rotating the points and Chebyshev distance
+        Phép quay các điểm và khoảng cách Chebyshev
       
     </span>
   </a>
@@ -5311,10 +5311,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#manhattan-minimum-spanning-tree" class="md-nav__link">
+  <a href="#cay-khung-nho-nhat-manhattan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Manhattan Minimum Spanning Tree
+        Cây khung nhỏ nhất Manhattan
       
     </span>
   </a>
@@ -5322,10 +5322,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#nearest-neighbor-in-each-octant-in-on-log-n" class="md-nav__link">
+  <a href="#lang-gieng-gan-nhat-trong-moi-bat-phan-trong-on-log-n" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Nearest Neighbor in each Octant in O(n log n)
+        Láng giềng gần nhất trong mỗi bát phân trong O(n log n)
       
     </span>
   </a>
@@ -5333,10 +5333,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#problems" class="md-nav__link">
+  <a href="#bai-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problems
+        Bài tập
       
     </span>
   </a>
@@ -7983,13 +7983,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/geometry/manhattan-distance.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/geometry/manhattan-distance.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/geometry/manhattan-distance.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/geometry/manhattan-distance.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -8000,34 +8000,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8051,27 +8023,27 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="manhattan-distance">Manhattan Distance<a class="headerlink" href="#manhattan-distance" title="Permanent link">&para;</a></h1>
-<h2 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">&para;</a></h2>
-<p>For points <span class="arithmatex">$p$</span> and <span class="arithmatex">$q$</span> on a plane, we can define the distance between them as the sum of the differences between their <span class="arithmatex">$x$</span> and <span class="arithmatex">$y$</span> coordinates: </p>
+<h1 id="khoang-cach-manhattan">Khoảng cách Manhattan<a class="headerlink" href="#khoang-cach-manhattan" title="Permanent link">&para;</a></h1>
+<h2 id="inh-nghia">Định nghĩa<a class="headerlink" href="#inh-nghia" title="Permanent link">&para;</a></h2>
+<p>Với hai điểm <span class="arithmatex">$p$</span> và <span class="arithmatex">$q$</span> trên mặt phẳng, ta có thể định nghĩa khoảng cách giữa chúng là tổng độ chênh lệch giữa các tọa độ <span class="arithmatex">$x$</span> và <span class="arithmatex">$y$</span>: </p>
 <div class="arithmatex">$$d(p,q) = |x_p - x_q| + |y_p - y_q|$$</div>
-<p>Defined this way, the distance corresponds to the so-called <a href="https://en.wikipedia.org/wiki/Taxicab_geometry">Manhattan (taxicab) geometry</a>, in which the points are considered intersections in a well designed city, like Manhattan, where you can only move on the streets horizontally or vertically, as shown in the image below:</p>
+<p>Khoảng cách này tương ứng với <a href="https://en.wikipedia.org/wiki/Taxicab_geometry">hình học Manhattan (taxicab)</a>, trong đó các điểm được coi là những giao lộ của một thành phố có quy hoạch như Manhattan, nơi ta chỉ có thể di chuyển theo đường ngang hoặc dọc như hình dưới:</p>
 <div style="text-align: center;">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Manhattan_distance.svg" alt="Manhattan Distance">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Manhattan_distance.svg" alt="Khoảng cách Manhattan">
 </div>
 
-<p>This images show some of the smallest paths from one black point to the other, all of them with length <span class="arithmatex">$12$</span>.</p>
-<p>There are some interesting tricks and algorithms that can be done with this distance, and we will show some of them here.</p>
-<h2 id="farthest-pair-of-points-in-manhattan-distance">Farthest pair of points in Manhattan distance<a class="headerlink" href="#farthest-pair-of-points-in-manhattan-distance" title="Permanent link">&para;</a></h2>
-<p>Given <span class="arithmatex">$n$</span> points <span class="arithmatex">$P$</span>, we want to find the pair of points <span class="arithmatex">$p,q$</span> that are farther apart, that is, maximize <span class="arithmatex">$|x_p - x_q| + |y_p - y_q|$</span>.</p>
-<p>Let's think first in one dimension, so <span class="arithmatex">$y=0$</span>. The main observation is that we can bruteforce if <span class="arithmatex">$|x_p - x_q|$</span> is equal to <span class="arithmatex">$x_p - x_q$</span> or <span class="arithmatex">$-x_p + x_q$</span>, because if we "miss the sign" of the absolute value, we will get only a smaller value, so it can't affect the answer. More formally, it holds that:</p>
+<p>Hình minh họa một số đường đi ngắn nhất giữa hai điểm màu đen, tất cả đều có độ dài <span class="arithmatex">$12$</span>.</p>
+<p>Có một số mẹo và thuật toán thú vị với khoảng cách này; dưới đây ta sẽ tìm hiểu một vài cách.</p>
+<h2 id="cap-iem-xa-nhau-nhat-theo-khoang-cach-manhattan">Cặp điểm xa nhau nhất theo khoảng cách Manhattan<a class="headerlink" href="#cap-iem-xa-nhau-nhat-theo-khoang-cach-manhattan" title="Permanent link">&para;</a></h2>
+<p>Cho <span class="arithmatex">$n$</span> điểm <span class="arithmatex">$P$</span>, ta muốn tìm cặp điểm <span class="arithmatex">$p,q$</span> xa nhau nhất, tức là cực đại hóa <span class="arithmatex">$|x_p - x_q| + |y_p - y_q|$</span>.</p>
+<p>Trước hết xét một chiều, tức là <span class="arithmatex">$y=0$</span>. Nhận xét chính là ta có thể thử cả hai khả năng <span class="arithmatex">$|x_p - x_q|$</span> bằng <span class="arithmatex">$x_p - x_q$</span> hoặc <span class="arithmatex">$-x_p + x_q$</span>: nếu chọn sai dấu của giá trị tuyệt đối thì ta chỉ thu được giá trị nhỏ hơn, nên không ảnh hưởng tới đáp án. Cụ thể:</p>
 <div class="arithmatex">$$|x_p - x_q| = \max(x_p - x_q, -x_p + x_q)$$</div>
-<p>So, for example, we can try to have <span class="arithmatex">$p$</span> such that <span class="arithmatex">$x_p$</span> has the plus sign, and then <span class="arithmatex">$q$</span> must have the negative sign. This way we want to find:</p>
+<p>Chẳng hạn, ta có thể thử để <span class="arithmatex">$x_p$</span> mang dấu cộng, khi đó <span class="arithmatex">$q$</span> phải mang dấu trừ. Như vậy ta cần tìm:</p>
 <div class="arithmatex">$$\max\limits_{p, q \in P}(x_p + (-x_q)) = \max\limits_{p \in P}(x_p) + \max\limits_{q \in P}( - x_q ).$$</div>
-<p>Notice that we can extend this idea further for 2 (or more!) dimensions. For <span class="arithmatex">$d$</span> dimensions, we must bruteforce <span class="arithmatex">$2^d$</span> possible values of the signs. For example, if we are in <span class="arithmatex">$2$</span> dimensions and bruteforce that <span class="arithmatex">$p$</span> has both the plus signs we want to find: </p>
+<p>Ta có thể mở rộng ý tưởng này cho 2 chiều hoặc nhiều hơn. Với <span class="arithmatex">$d$</span> chiều, ta cần thử tất cả <span class="arithmatex">$2^d$</span> cách chọn dấu. Chẳng hạn, ở <span class="arithmatex">$2$</span> chiều, nếu thử trường hợp <span class="arithmatex">$p$</span> mang cả hai dấu cộng thì ta cần tìm: </p>
 <div class="arithmatex">$$\max\limits_{p, q \in P} [(x_p + (-x_q)) + (y_p + (-y_q))] = \max\limits_{p \in P}(x_p + y_p) + \max\limits_{q \in P}(-x_q - y_q).$$</div>
-<p>As we made <span class="arithmatex">$p$</span> and <span class="arithmatex">$q$</span> independent, it is now easy to find the <span class="arithmatex">$p$</span> and <span class="arithmatex">$q$</span> that maximize the expression.</p>
-<p>The code below generalizes this to <span class="arithmatex">$d$</span> dimensions and runs in <span class="arithmatex">$O(n \cdot 2^d \cdot d)$</span>.</p>
+<p>Vì đã làm cho <span class="arithmatex">$p$</span> và <span class="arithmatex">$q$</span> độc lập, giờ đây ta dễ dàng tìm được <span class="arithmatex">$p$</span> và <span class="arithmatex">$q$</span> cực đại hóa biểu thức.</p>
+<p>Đoạn code dưới đây tổng quát hóa cách làm cho <span class="arithmatex">$d$</span> chiều và chạy trong <span class="arithmatex">$O(n \cdot 2^d \cdot d)$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">msk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">msk</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">d</span><span class="p">);</span><span class="w"> </span><span class="n">msk</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">mx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MIN</span><span class="p">,</span><span class="w"> </span><span class="n">mn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">LLONG_MAX</span><span class="p">;</span>
@@ -8087,69 +8059,69 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="n">ans</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span><span class="w"> </span><span class="n">mx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mn</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="rotating-the-points-and-chebyshev-distance">Rotating the points and Chebyshev distance<a class="headerlink" href="#rotating-the-points-and-chebyshev-distance" title="Permanent link">&para;</a></h2>
-<p>It's well known that, for all <span class="arithmatex">$m, n \in \mathbb{R}$</span>,</p>
+<h2 id="phep-quay-cac-iem-va-khoang-cach-chebyshev">Phép quay các điểm và khoảng cách Chebyshev<a class="headerlink" href="#phep-quay-cac-iem-va-khoang-cach-chebyshev" title="Permanent link">&para;</a></h2>
+<p>Ta biết rằng với mọi <span class="arithmatex">$m, n \in \mathbb{R}$</span>,</p>
 <div class="arithmatex">$$|m| + |n| = \text{max}(|m + n|, |m - n|).$$</div>
-<p>To prove this, we just need to analyze the signs of <span class="arithmatex">$m$</span> and <span class="arithmatex">$n$</span>. And it's left as an exercise.</p>
-<p>We may apply this equation to the Manhattan distance formula to find out that</p>
+<p>Để chứng minh, chỉ cần xét dấu của <span class="arithmatex">$m$</span> và <span class="arithmatex">$n$</span>. Phần chứng minh được dành làm bài tập.</p>
+<p>Áp dụng đẳng thức này vào công thức khoảng cách Manhattan, ta được</p>
 <div class="arithmatex">$$d((x_1, y_1), (x_2, y_2)) = |x_1 - x_2| + |y_1 - y_2| = \text{max}(|(x_1 + y_1) - (x_2 + y_2)|, |(y_1 - x_1) - (y_2 - x_2)|).$$</div>
-<p>The last expression in the previous equation is the <a href="https://en.wikipedia.org/wiki/Chebyshev_distance">Chebyshev distance</a> of the points <span class="arithmatex">$(x_1 + y_1, y_1 - x_1)$</span> and <span class="arithmatex">$(x_2 + y_2, y_2 - x_2)$</span>. This means that, after applying the transformation</p>
+<p>Biểu thức cuối trong đẳng thức trên là <a href="https://en.wikipedia.org/wiki/Chebyshev_distance">khoảng cách Chebyshev</a> giữa hai điểm <span class="arithmatex">$(x_1 + y_1, y_1 - x_1)$</span> và <span class="arithmatex">$(x_2 + y_2, y_2 - x_2)$</span>. Nghĩa là sau khi áp dụng phép biến đổi</p>
 <div class="arithmatex">$$\alpha : (x, y) \to (x + y, y - x),$$</div>
-<p>the Manhattan distance between the points <span class="arithmatex">$p$</span> and <span class="arithmatex">$q$</span> turns into the Chebyshev distance between <span class="arithmatex">$\alpha(p)$</span> and <span class="arithmatex">$\alpha(q)$</span>.</p>
-<p>Also, we may realize that <span class="arithmatex">$\alpha$</span> is a <a href="https://en.wikipedia.org/wiki/Spiral_similarity">spiral similarity</a> (rotation of the plane followed by a dilation about a center <span class="arithmatex">$O$</span>) with center <span class="arithmatex">$(0, 0)$</span>, rotation angle of <span class="arithmatex">$45^{\circ}$</span> in clockwise direction and dilation by <span class="arithmatex">$\sqrt{2}$</span>.</p>
-<p>Here's an image to help visualizing the transformation:</p>
+<p>khoảng cách Manhattan giữa <span class="arithmatex">$p$</span> và <span class="arithmatex">$q$</span> trở thành khoảng cách Chebyshev giữa <span class="arithmatex">$\alpha(p)$</span> và <span class="arithmatex">$\alpha(q)$</span>.</p>
+<p>Ta cũng nhận thấy <span class="arithmatex">$\alpha$</span> là một <a href="https://en.wikipedia.org/wiki/Spiral_similarity">phép đồng dạng xoắn</a> (phép quay mặt phẳng rồi vị tự theo tâm <span class="arithmatex">$O$</span>), với tâm <span class="arithmatex">$(0, 0)$</span>, góc quay <span class="arithmatex">$45^{\circ}$</span> theo chiều kim đồng hồ và tỉ số vị tự <span class="arithmatex">$\sqrt{2}$</span>.</p>
+<p>Hình dưới giúp trực quan hóa phép biến đổi:</p>
 <div style="text-align: center;">
-  <img src="../../geometry/chebyshev-transformation.png" alt="Chebyshev transformation">
+  <img src="../../geometry/chebyshev-transformation.png" alt="Phép biến đổi Chebyshev">
 </div>
 
-<h2 id="manhattan-minimum-spanning-tree">Manhattan Minimum Spanning Tree<a class="headerlink" href="#manhattan-minimum-spanning-tree" title="Permanent link">&para;</a></h2>
-<p>The Manhattan MST problem consists of, given some points in the plane, find the edges that connect all the points and have a minimum total sum of weights. The weight of an edge that connects two points is their Manhattan distance. For simplicity, we assume that all points have different locations.
-Here we show a way of finding the MST in <span class="arithmatex">$O(n \log{n})$</span> by finding for each point its nearest neighbor in each octant, as represented by the image below. This will give us <span class="arithmatex">$O(n)$</span> candidate edges, which, as we show below, will guarantee that they contain the MST. The final step is then using some standard MST, for example, <a href="https://cp-algorithms.com/graph/mst_kruskal_with_dsu.html">Kruskal algorithm using disjoint set union</a>.</p>
+<h2 id="cay-khung-nho-nhat-manhattan">Cây khung nhỏ nhất Manhattan<a class="headerlink" href="#cay-khung-nho-nhat-manhattan" title="Permanent link">&para;</a></h2>
+<p>Bài toán cây khung nhỏ nhất Manhattan yêu cầu tìm các cạnh nối tất cả các điểm cho trước trên mặt phẳng sao cho tổng trọng số nhỏ nhất. Trọng số cạnh nối hai điểm là khoảng cách Manhattan giữa chúng. Để đơn giản, giả sử các điểm đều có vị trí khác nhau.
+Dưới đây là cách tìm cây khung nhỏ nhất trong <span class="arithmatex">$O(n \log{n})$</span> bằng cách tìm với mỗi điểm láng giềng gần nhất của nó trong từng bát phân, như hình dưới. Ta thu được <span class="arithmatex">$O(n)$</span> cạnh ứng viên; như sẽ trình bày bên dưới, chúng được đảm bảo chứa cây khung nhỏ nhất. Bước cuối là dùng một thuật toán cây khung nhỏ nhất thông thường, chẳng hạn <a href="https://cp-algorithms.com/graph/mst_kruskal_with_dsu.html">thuật toán Kruskal dùng cấu trúc hợp nhất tập rời nhau</a>.</p>
 <div style="text-align: center;">
-  <img src="../../geometry/manhattan-mst-octants.png" alt="8 octants picture">
-  *The 8 octants relative to a point S*
+  <img src="../../geometry/manhattan-mst-octants.png" alt="Hình tám bát phân">
+  *Tám bát phân đối với điểm S*
 </div>
 
-<p>The algorithm shown here was first presented in a paper from <a href="https://ieeexplore.ieee.org/document/913303">H. Zhou, N. Shenoy, and W. Nichollos (2002)</a>. There is also another know algorithm that uses a Divide and conquer approach by <a href="https://www.academia.edu/15667173/On_computing_all_north_east_nearest_neighbors_in_the_L1_metric">J. Stolfi</a>, which is also very interesting and only differ in the way they find the nearest neighbor in each octant. They both have the same complexity, but the one presented here is easier to implement and has a lower constant factor.</p>
-<p>First, let's understand why it is enough to consider only the nearest neighbor in each octant. The idea is to show that for a point <span class="arithmatex">$s$</span> and any two other points <span class="arithmatex">$p$</span> and <span class="arithmatex">$q$</span> in the same octant, <span class="arithmatex">$d(p, q) &lt; \max(d(s, p), d(s, q))$</span>. This is important, because it shows that if there was a MST where <span class="arithmatex">$s$</span> is connected to both <span class="arithmatex">$p$</span> and <span class="arithmatex">$q$</span>, we could erase one of these edges and add the edge <span class="arithmatex">$(p,q)$</span>, which would decrease the total cost. To prove this, we assume without loss of generality that <span class="arithmatex">$p$</span> and <span class="arithmatex">$q$</span> are in the octanct <span class="arithmatex">$R_1$</span>, which is defined by: <span class="arithmatex">$x_s \leq x$</span> and <span class="arithmatex">$x_s - y_s &gt; x -  y$</span>, and then do some casework. The image below give some intuition on why this is true.</p>
+<p>Thuật toán này được trình bày lần đầu trong bài báo của <a href="https://ieeexplore.ieee.org/document/913303">H. Zhou, N. Shenoy và W. Nichollos (2002)</a>. Một thuật toán khác của <a href="https://www.academia.edu/15667173/On_computing_all_north_east_nearest_neighbors_in_the_L1_metric">J. Stolfi</a> dùng chia để trị cũng rất thú vị và chỉ khác ở cách tìm láng giềng gần nhất trong từng bát phân. Cả hai có cùng độ phức tạp, nhưng thuật toán ở đây dễ cài đặt hơn và có hằng số nhỏ hơn.</p>
+<p>Trước hết, hãy xem vì sao chỉ cần xét láng giềng gần nhất trong mỗi bát phân. Ý tưởng là chứng minh rằng với điểm <span class="arithmatex">$s$</span> và hai điểm khác <span class="arithmatex">$p$</span> và <span class="arithmatex">$q$</span> trong cùng bát phân, ta có <span class="arithmatex">$d(p, q) &lt; \max(d(s, p), d(s, q))$</span>. Điều này quan trọng vì nếu có cây khung nhỏ nhất mà <span class="arithmatex">$s$</span> nối với cả <span class="arithmatex">$p$</span> và <span class="arithmatex">$q$</span>, ta có thể xóa một trong hai cạnh và thêm cạnh <span class="arithmatex">$(p,q)$</span>, làm giảm tổng chi phí. Để chứng minh, không mất tính tổng quát, giả sử <span class="arithmatex">$p$</span> và <span class="arithmatex">$q$</span> thuộc bát phân <span class="arithmatex">$R_1$</span> được xác định bởi <span class="arithmatex">$x_s \leq x$</span> và <span class="arithmatex">$x_s - y_s &gt; x -  y$</span>, rồi xét từng trường hợp. Hình dưới cho trực giác về kết quả này.</p>
 <div style="text-align: center;">
-  <img src="../../geometry/manhattan-mst-uniqueness.png" alt="unique nearest neighbor">
-  *Intuitively, the limitation of the octant makes it impossible that $p$ and $q$ are both closer to $s$ than to each other*
+  <img src="../../geometry/manhattan-mst-uniqueness.png" alt="láng giềng gần nhất duy nhất">
+  *Trực giác: giới hạn của bát phân khiến $p$ và $q$ không thể đồng thời gần $s$ hơn là gần nhau*
 </div>
 
-<p>Therefore, the main question is how to find the nearest neighbor in each octant for every single of the <span class="arithmatex">$n$</span> points.</p>
-<h2 id="nearest-neighbor-in-each-octant-in-on-log-n">Nearest Neighbor in each Octant in O(n log n)<a class="headerlink" href="#nearest-neighbor-in-each-octant-in-on-log-n" title="Permanent link">&para;</a></h2>
-<p>For simplicity we focus on the NNE octant (<span class="arithmatex">$R_1$</span> in the image above). All other directions can be found with the same algorithm by rotating the input.</p>
-<p>We will use a sweep-line approach. We process the points from south-west to north-east, that is, by non-decreasing <span class="arithmatex">$x + y$</span>. We also keep a set of points which don't have their nearest neighbor yet, which we call "active set". We add the images below to help visualize the algorithm.</p>
+<p>Vậy câu hỏi chính là làm sao tìm láng giềng gần nhất trong từng bát phân cho mỗi một trong <span class="arithmatex">$n$</span> điểm.</p>
+<h2 id="lang-gieng-gan-nhat-trong-moi-bat-phan-trong-on-log-n">Láng giềng gần nhất trong mỗi bát phân trong O(n log n)<a class="headerlink" href="#lang-gieng-gan-nhat-trong-moi-bat-phan-trong-on-log-n" title="Permanent link">&para;</a></h2>
+<p>Để đơn giản, ta tập trung vào bát phân bắc–đông bắc (<span class="arithmatex">$R_1$</span> trong hình trên). Có thể tìm các hướng còn lại bằng cùng thuật toán sau khi quay đầu vào.</p>
+<p>Ta dùng phương pháp đường quét. Ta xử lý các điểm từ tây nam sang đông bắc, tức theo thứ tự <span class="arithmatex">$x + y$</span> không giảm. Ta cũng duy trì tập các điểm chưa tìm được láng giềng gần nhất, gọi là "tập hoạt động". Các hình sau giúp trực quan hóa thuật toán.</p>
 <div style="text-align: center;">
-  <img src="../../geometry/manhattan-mst-sweep-line-1.png" alt="manhattan-mst-sweep">
-  *In black with an arrow you can see the direction of the line-sweep. All the points below this lines are in the active set, and the points above are still not processed. In green we see the points which are in the octant of the processed point. In red the points that are not in the searched octant.*
+  <img src="../../geometry/manhattan-mst-sweep-line-1.png" alt="đường quét cho cây khung Manhattan">
+  *Mũi tên đen cho biết hướng quét. Các điểm dưới đường thẳng thuộc tập hoạt động, còn các điểm phía trên chưa được xử lý. Màu xanh chỉ các điểm thuộc bát phân của điểm đang xử lý; màu đỏ chỉ các điểm không thuộc bát phân cần tìm.*
 </div>
 
 <div style="text-align: center;">
-  <img src="../../geometry/manhattan-mst-sweep-line-2.png" alt="manhattan-mst-sweep">
-  *In this image we see the active set after processing the point $p$. Note that the $2$ green points of the previous image had $p$ in its north-north-east octant and are not in the active set anymore, because they already found their nearest neighbor.*
+  <img src="../../geometry/manhattan-mst-sweep-line-2.png" alt="đường quét cho cây khung Manhattan">
+  *Hình này cho thấy tập hoạt động sau khi xử lý điểm $p$.  $2$ điểm xanh ở hình trước có $p$ trong bát phân bắc–đông bắc và không còn thuộc tập hoạt động vì đã tìm được láng giềng gần nhất.*
 </div>
 
-<p>When we add a new point point <span class="arithmatex">$p$</span>, for every point <span class="arithmatex">$s$</span> that has it in its octant we can safely assign <span class="arithmatex">$p$</span> as the nearest neighbor. This is true because their distance is <span class="arithmatex">$d(p,s) = |x_p - x_s| + |y_p - y_s| = (x_p + y_p) - (x_s + y_s)$</span>, because <span class="arithmatex">$p$</span> is in the north-north-east octant. As all the next points will not have a smaller value of <span class="arithmatex">$x + y$</span> because of the sorting step, <span class="arithmatex">$p$</span> is guaranteed to have the smaller distance. We can then remove all such points from the active set, and finally add <span class="arithmatex">$p$</span> to the active set.</p>
-<p>The next question is how to efficiently find which points <span class="arithmatex">$s$</span> have <span class="arithmatex">$p$</span> in the north-north-east octant. That is, which points <span class="arithmatex">$s$</span> satisfy:</p>
+<p>Khi thêm điểm mới <span class="arithmatex">$p$</span>, với mọi điểm <span class="arithmatex">$s$</span> có <span class="arithmatex">$p$</span> trong bát phân đang xét, ta có thể gán <span class="arithmatex">$p$</span> làm láng giềng gần nhất. Thật vậy, khoảng cách giữa chúng là <span class="arithmatex">$d(p,s) = |x_p - x_s| + |y_p - y_s| = (x_p + y_p) - (x_s + y_s)$</span> vì <span class="arithmatex">$p$</span> nằm trong bát phân bắc–đông bắc. Do đã sắp xếp, các điểm sau không có giá trị <span class="arithmatex">$x + y$</span> nhỏ hơn, nên <span class="arithmatex">$p$</span> được đảm bảo có khoảng cách nhỏ hơn. Ta xóa các điểm đó khỏi tập hoạt động, rồi thêm <span class="arithmatex">$p$</span> vào tập.</p>
+<p>Câu hỏi tiếp theo là tìm hiệu quả các điểm <span class="arithmatex">$s$</span> có <span class="arithmatex">$p$</span> trong bát phân bắc–đông bắc, tức là những điểm <span class="arithmatex">$s$</span> thỏa mãn:</p>
 <ul>
 <li><span class="arithmatex">$x_s \leq x_p$</span></li>
 <li><span class="arithmatex">$x_p - y_p &lt; x_s - y_s$</span></li>
 </ul>
-<p>Because no points in the active set are in the <span class="arithmatex">$R_1$</span> region of another, we also have that for two points <span class="arithmatex">$q_1$</span> and <span class="arithmatex">$q_2$</span> in the active set, <span class="arithmatex">$x_{q_1} \neq x_{q_2}$</span> and their ordering implies <span class="arithmatex">$x_{q_1} &lt; x_{q_2} \implies x_{q_1} - y_{q_1} \leq x_{q_2} - y_{q_2}$</span>.</p>
-<p>You can try to visualize this on the images above by thinking of the ordering of <span class="arithmatex">$x - y$</span> as a "sweep-line" that goes from the north-west to the south-east, so perpendicular to the one that is drawn.</p>
-<p>This means that if we keep the active set ordered by <span class="arithmatex">$x$</span> the candidates <span class="arithmatex">$s$</span> are consecutively placed. We can then find the largest <span class="arithmatex">$x_s \leq x_p$</span> and process the points in decreasing order of <span class="arithmatex">$x$</span> until the second condition <span class="arithmatex">$x_p - y_p &lt; x_s - y_s$</span> breaks (we can actually allow that <span class="arithmatex">$x_p - y_p = x_s - y_s$</span> and that deals with the case of points with equal coordinates). Notice that because we remove from the set right after processing, this will have an amortized complexity of <span class="arithmatex">$O(n \log(n))$</span>.
-    Now that we have the nearest point in the north-east direction, we rotate the points and repeat. It is possible to show that actually we also find this way the nearest point in the south-west direction, so we can repeat only 4 times, instead of 8.</p>
-<p>In summary we:</p>
+<p>Vì không điểm nào trong tập hoạt động nằm trong vùng <span class="arithmatex">$R_1$</span> của điểm khác, với hai điểm <span class="arithmatex">$q_1$</span> và <span class="arithmatex">$q_2$</span> trong tập này ta có <span class="arithmatex">$x_{q_1} \neq x_{q_2}$</span> và thứ tự của chúng thỏa mãn <span class="arithmatex">$x_{q_1} &lt; x_{q_2} \implies x_{q_1} - y_{q_1} \leq x_{q_2} - y_{q_2}$</span>.</p>
+<p>Có thể hình dung điều này qua các hình trên bằng cách xem thứ tự <span class="arithmatex">$x - y$</span> như một "đường quét" đi từ tây bắc xuống đông nam, vuông góc với đường được vẽ.</p>
+<p>Điều này có nghĩa là nếu giữ tập hoạt động theo thứ tự <span class="arithmatex">$x$</span>, các ứng viên <span class="arithmatex">$s$</span> nằm liên tiếp. Ta có thể tìm <span class="arithmatex">$x_s \leq x_p$</span> lớn nhất rồi xử lý các điểm theo thứ tự <span class="arithmatex">$x$</span> giảm dần cho đến khi điều kiện thứ hai <span class="arithmatex">$x_p - y_p &lt; x_s - y_s$</span> không còn đúng (thực ra ta có thể cho phép <span class="arithmatex">$x_p - y_p = x_s - y_s$</span> để xử lý trường hợp các điểm có tọa độ bằng nhau). Vì xóa điểm khỏi tập ngay sau khi xử lý, độ phức tạp khấu hao là <span class="arithmatex">$O(n \log(n))$</span>.
+    Sau khi có điểm gần nhất ở hướng đông bắc, ta quay các điểm và lặp lại. Có thể chứng minh rằng cách này đồng thời tìm được điểm gần nhất ở hướng tây nam, nên chỉ cần lặp 4 lần thay vì 8.</p>
+<p>Tóm lại:</p>
 <ul>
-<li>Sort the points by <span class="arithmatex">$x + y$</span> in non-decreasing order;</li>
-<li>For every point, we iterate over the active set starting with the point with the largest <span class="arithmatex">$x$</span> such that <span class="arithmatex">$x \leq x_p$</span>, and we break the loop if  <span class="arithmatex">$x_p - y_p \geq x_s - y_s$</span>. For every valid point <span class="arithmatex">$s$</span> we add the edge <span class="arithmatex">$(s,p, d(s,p))$</span> in our list;</li>
-<li>We add the point <span class="arithmatex">$p$</span> to the active set;</li>
-<li>Rotate the points and repeat until we iterate over all the octants.</li>
-<li>Apply Kruskal algorithm in the list of edges to get the MST. </li>
+<li>Sắp xếp các điểm theo <span class="arithmatex">$x + y$</span> không giảm;</li>
+<li>Với mỗi điểm, duyệt tập hoạt động từ điểm có <span class="arithmatex">$x$</span> lớn nhất thỏa mãn <span class="arithmatex">$x \leq x_p$</span> và dừng nếu <span class="arithmatex">$x_p - y_p \geq x_s - y_s$</span>. Với mỗi điểm <span class="arithmatex">$s$</span> hợp lệ, thêm cạnh <span class="arithmatex">$(s,p, d(s,p))$</span> vào danh sách;</li>
+<li>Thêm điểm <span class="arithmatex">$p$</span> vào tập hoạt động;</li>
+<li>Quay các điểm và lặp lại cho đến khi duyệt tất cả các bát phân.</li>
+<li>Áp dụng thuật toán Kruskal trên danh sách cạnh để tìm cây khung nhỏ nhất. </li>
 </ul>
-<p>Below you can find a implementation, based on the one from <a href="https://github.com/kth-competitive-programming/kactl/blob/main/content/geometry/ManhattanMST.h">KACTL</a>.</p>
+<p>Dưới đây là một bản cài đặt dựa trên <a href="https://github.com/kth-competitive-programming/kactl/blob/main/content/geometry/ManhattanMST.h">KACTL</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">point</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
 <span class="p">};</span>
@@ -8183,7 +8155,7 @@ Here we show a way of finding the MST in <span class="arithmatex">$O(n \log{n})$
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">edges</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="problems">Problems<a class="headerlink" href="#problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap">Bài tập<a class="headerlink" href="#bai-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://atcoder.jp/contests/abc178/tasks/abc178_e">AtCoder Beginner Contest 178E - Dist Max</a></li>
 <li><a href="https://codeforces.com/contest/1093/problem/G">CodeForces 1093G - Multidimensional Queries</a></li>
@@ -8195,7 +8167,7 @@ Here we show a way of finding the MST in <span class="arithmatex">$O(n \log{n})$
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="NaimSS" data-bi-name="contributorprofile" target="_blank">NaimSS</a> (71.95%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (11.11%)</li><li><a href="#" title="Gabriel Ribeiro Paiva" data-bi-name="contributorprofile" target="_blank">Gabriel Ribeiro Paiva</a> (10.05%)</li><li><a href="#" title="Izan Beltran" data-bi-name="contributorprofile" target="_blank">Izan Beltran</a> (3.7%)</li><li><a href="#" title="Shoot" data-bi-name="contributorprofile" target="_blank">Shoot</a> (1.59%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (1.06%)</li><li><a href="#" title="DjukicAleksej" data-bi-name="contributorprofile" target="_blank">DjukicAleksej</a> (0.53%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

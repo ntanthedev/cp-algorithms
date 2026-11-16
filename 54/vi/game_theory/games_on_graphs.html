@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#games-on-arbitrary-graphs" class="md-skip">
+        <a href="#tro-choi-tren-o-thi-bat-ky" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7530,10 +7530,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#description-of-the-algorithm" class="md-nav__link">
+  <a href="#mo-ta-thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Description of the algorithm
+        Mô tả thuật toán
       
     </span>
   </a>
@@ -7541,10 +7541,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7552,10 +7552,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example-policeman-and-thief" class="md-nav__link">
+  <a href="#vi-du-canh-sat-va-ke-trom" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example: "Policeman and thief"
+        Ví dụ: "Cảnh sát và kẻ trộm"
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/game_theory/games_on_graphs.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/game_theory/games_on_graphs.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/game_theory/games_on_graphs.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/game_theory/games_on_graphs.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,14 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8010,44 +8002,28 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="games-on-arbitrary-graphs">Games on arbitrary graphs<a class="headerlink" href="#games-on-arbitrary-graphs" title="Permanent link">&para;</a></h1>
-<p>Let a game be played by two players on an arbitrary graph <span class="arithmatex">$G$</span>.
-I.e. the current state of the game is a certain vertex.
-The players perform moves by turns, and move from the current vertex to an adjacent vertex using a connecting edge.
-Depending on the game, the person that is unable to move will either lose or win the game.</p>
-<p>We consider the most general case, the case of an arbitrary directed graph with cycles.
-It is our task to determine, given an initial state, who will win the game if both players play with optimal strategies or determine that the result of the game will be a draw.</p>
-<p>We will solve this problem very efficiently.
-We will find the solution for all possible starting vertices of the graph in linear time with respect to the number of edges: <span class="arithmatex">$O(m)$</span>.</p>
-<h2 id="description-of-the-algorithm">Description of the algorithm<a class="headerlink" href="#description-of-the-algorithm" title="Permanent link">&para;</a></h2>
-<p>We will call a vertex a winning vertex, if the player starting at this state will win the game, if they play optimally (regardless of what turns the other player makes).
-Similarly, we will call a vertex a losing vertex, if the player starting at this vertex will lose the game, if the opponent plays optimally.</p>
-<p>For some of the vertices of the graph, we already know in advance that they are winning or losing vertices: namely all vertices that have no outgoing edges.</p>
-<p>Also we have the following <strong>rules</strong>:</p>
+<h1 id="tro-choi-tren-o-thi-bat-ky">Trò chơi trên đồ thị bất kỳ<a class="headerlink" href="#tro-choi-tren-o-thi-bat-ky" title="Permanent link">&para;</a></h1>
+<p>Xét một trò chơi có hai người chơi trên đồ thị bất kỳ <span class="arithmatex">$G$</span>. Trạng thái hiện tại của trò chơi là một đỉnh. Hai người lần lượt đi, mỗi lượt di chuyển từ đỉnh hiện tại đến một đỉnh kề qua một cạnh nối chúng. Tùy trò chơi, người không thể đi tiếp sẽ thua hoặc thắng.</p>
+<p>Ta xét trường hợp tổng quát nhất: đồ thị có hướng bất kỳ, có thể có chu trình. Với một trạng thái ban đầu, nhiệm vụ của ta là xác định ai sẽ thắng nếu cả hai chơi tối ưu, hoặc xác định kết quả hòa.</p>
+<p>Ta sẽ giải bài toán này rất hiệu quả: tìm kết quả cho mọi đỉnh xuất phát trong thời gian tuyến tính theo số cạnh, tức <span class="arithmatex">$O(m)$</span>.</p>
+<p><strong>Ghi chú của người dịch:</strong> Với đồ thị tùy ý, việc duyệt hoặc khởi tạo tất cả các đỉnh cũng cần được tính vào độ phức tạp. Cận tổng quát là tuyến tính theo tổng số đỉnh và số cạnh; chẳng hạn, một đồ thị có nhiều đỉnh cô lập nhưng không có cạnh vẫn cần xử lý các đỉnh đó.</p>
+<h2 id="mo-ta-thuat-toan">Mô tả thuật toán<a class="headerlink" href="#mo-ta-thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Ta gọi một đỉnh là đỉnh thắng nếu người bắt đầu ở trạng thái đó sẽ thắng khi chơi tối ưu, bất kể đối thủ đi thế nào. Tương tự, một đỉnh là đỉnh thua nếu người bắt đầu ở đó sẽ thua khi đối thủ chơi tối ưu.</p>
+<p>Với một số đỉnh, ta đã biết trước chúng là đỉnh thắng hay thua: đó là các đỉnh không có cạnh đi ra.</p>
+<p>Ta còn có các <strong>quy tắc</strong> sau:</p>
 <ul>
-<li>if a vertex has an outgoing edge that leads to a losing vertex, then the vertex itself is a winning vertex.</li>
-<li>if all outgoing edges of a certain vertex lead to winning vertices, then the vertex itself is a losing vertex.</li>
-<li>if at some point there are still undefined vertices, and neither will fit the first or the second rule, then each of these vertices, when used as a starting vertex, will lead to a draw if both player play optimally.</li>
+<li>Nếu một đỉnh có cạnh đi ra dẫn tới đỉnh thua, thì bản thân nó là đỉnh thắng.</li>
+<li>Nếu mọi cạnh đi ra từ một đỉnh đều dẫn tới đỉnh thắng, thì đỉnh đó là đỉnh thua.</li>
+<li>Nếu tại một thời điểm vẫn còn các đỉnh chưa xác định và không đỉnh nào áp dụng được một trong hai quy tắc đầu, thì mỗi đỉnh đó khi được chọn làm điểm xuất phát sẽ dẫn đến hòa nếu cả hai chơi tối ưu.</li>
 </ul>
-<p>Thus, we can define an algorithm which runs in <span class="arithmatex">$O(n m)$</span> time immediately.
-We go through all vertices and try to apply the first or second rule, and repeat.</p>
-<p>However, we can accelerate this procedure, and get the complexity down to <span class="arithmatex">$O(m)$</span>.</p>
-<p>We will go over all the vertices, for which we initially know if they are winning or losing states.
-For each of them, we start a <a href="../graph/depth-first-search.html">depth first search</a>.
-This DFS will move back over the reversed edges.
-First of all, it will not enter vertices which already are defined as winning or losing vertices.
-And further, if the search goes from a losing vertex to an undefined vertex, then we mark this one as a winning vertex, and continue the DFS using this new vertex.
-If we go from a winning vertex to an undefined vertex, then we must check whether all edges from this one leads to winning vertices.
-We can perform this test in <span class="arithmatex">$O(1)$</span> by storing the number of edges that lead to a winning vertex for each vertex.
-So if we go from a winning vertex to an undefined one, then we increase the counter, and check if this number is equal to the number of outgoing edges.
-If this is the case, we can mark this vertex as a losing vertex, and continue the DFS from this vertex.
-Otherwise we don't know yet, if this vertex is a winning or losing vertex, and therefore it doesn't make sense to keep continuing the DFS using it.</p>
-<p>In total we visit every winning and every losing vertex exactly once (undefined vertices are not visited), and we go over each edge also at most one time.
-Hence the complexity is <span class="arithmatex">$O(m)$</span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Here is the implementation of such a DFS.
-We assume that the variable <code>adj_rev</code> stores the adjacency list for the graph in <strong>reversed</strong> form, i.e. instead of storing the edge <span class="arithmatex">$(i, j)$</span> of the graph, we store <span class="arithmatex">$(j, i)$</span>.
-Also for each vertex we assume that the outgoing degree is already computed.</p>
+<p>Từ đây, ta có ngay thuật toán thời gian <span class="arithmatex">$O(n m)$</span>: duyệt mọi đỉnh, thử áp dụng hai quy tắc đầu rồi lặp lại.</p>
+<p>Tuy nhiên, ta có thể tăng tốc để đạt độ phức tạp <span class="arithmatex">$O(m)$</span>.</p>
+<p>Ta duyệt mọi đỉnh mà ta đã biết từ đầu là thắng hay thua. Với mỗi đỉnh, ta bắt đầu một lượt <a href="../graph/depth-first-search.html">tìm kiếm theo chiều sâu</a>. DFS này đi ngược theo các cạnh đảo chiều. Trước hết, nó không đi vào những đỉnh đã được xác định là thắng hoặc thua.</p>
+<p>Nếu lượt tìm kiếm đi từ một đỉnh thua đến một đỉnh chưa xác định, ta đánh dấu đỉnh mới là thắng và tiếp tục DFS từ đó. Nếu đi từ một đỉnh thắng đến một đỉnh chưa xác định, ta phải kiểm tra xem mọi cạnh đi ra từ đỉnh mới có dẫn tới đỉnh thắng hay không. Ta có thể kiểm tra trong <span class="arithmatex">$O(1)$</span> bằng cách lưu số cạnh dẫn tới đỉnh thắng cho mỗi đỉnh.</p>
+<p>Vì vậy, khi đi từ một đỉnh thắng đến một đỉnh chưa xác định, ta tăng bộ đếm và so sánh với số cạnh đi ra. Nếu hai số bằng nhau, ta đánh dấu đỉnh này là thua và tiếp tục DFS từ đó. Nếu không, ta chưa biết đỉnh đó thắng hay thua, nên chưa tiếp tục DFS từ nó.</p>
+<p>Mỗi đỉnh thắng hoặc thua được thăm đúng một lần, các đỉnh chưa xác định không được thăm, và mỗi cạnh cũng được xét nhiều nhất một lần. Do đó độ phức tạp là <span class="arithmatex">$O(m)$</span>.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Sau đây là cách cài đặt DFS. Giả sử biến <code>adj_rev</code> lưu danh sách kề của đồ thị ở dạng <strong>đảo chiều</strong>, tức thay vì lưu cạnh <span class="arithmatex">$(i, j)$</span> ta lưu <span class="arithmatex">$(j, i)$</span>. Ta cũng giả sử đã tính sẵn bậc ra của mỗi đỉnh.</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">adj_rev</span><span class="p">;</span>
 
 <span class="n">vector</span><span class="o">&lt;</span><span class="kt">bool</span><span class="o">&gt;</span><span class="w"> </span><span class="n">winning</span><span class="p">;</span>
@@ -8070,32 +8046,13 @@ Also for each vertex we assume that the outgoing degree is already computed.</p>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="example-policeman-and-thief">Example: "Policeman and thief"<a class="headerlink" href="#example-policeman-and-thief" title="Permanent link">&para;</a></h2>
-<p>Here is a concrete example of such a game.</p>
-<p>There is <span class="arithmatex">$m \times n$</span> board.
-Some of the cells cannot be entered.
-The initial coordinates of the police officer and of the thief are known.
-One of the cells is the exit.
-If the policeman and the thief are located at the same cell at any moment, the policeman wins.
-If the thief is at the exit cell (without the policeman also being on the cell), then the thief wins.
-The policeman can walk in all 8 directions, the thief only in 4 (along the coordinate axis).
-Both the policeman and the thief will take turns moving.
-However they also can skip a turn if they want to.
-The first move is made by the policeman.</p>
-<p>We will now <strong>construct the graph</strong>.
-For this we must formalize the rules of the game.
-The current state of the game is determined by the coordinates of the police offices <span class="arithmatex">$P$</span>, the coordinates of the thief <span class="arithmatex">$T$</span>, and also by whose turn it is, let's call this variable <span class="arithmatex">$P_{\text{turn}}$</span> (which is true when it is the policeman's turn).
-Therefore a vertex of the graph is determined by the triple <span class="arithmatex">$(P, T, P_{\text{turn}})$</span>
-The graph then can be easily constructed, simply by following the rules of the game.</p>
-<p>Next we need to determine which vertices are winning and which are losing ones initially.
-There is a <strong>subtle point</strong> here.
-The winning / losing vertices depend, in addition to the coordinates, also on <span class="arithmatex">$P_{\text{turn}}$</span> - whose turn it.
-If it is the policeman's turn, then the vertex is a winning vertex, if the coordinates of the policeman and the thief coincide, and the vertex is a losing one if it is not a winning one and the thief is on the exit vertex.
-If it is the thief's turn, then a vertex is a losing vertex, if the coordinates of the two players coincide, and it is a winning vertex if it is not a losing one, and the thief is at the exit vertex.</p>
-<p>The only point before implementing is not, that you need to decide if you want to build the graph <strong>explicitly</strong> or just construct it <strong>on the fly</strong>.
-On one hand, building the graph explicitly will be a lot easier and there is less chance of making mistakes.
-On the other hand, it will increase the amount of code and the running time will be slower than if you build the graph on the fly.</p>
-<p>The following implementation will construct the graph explicitly:</p>
+<h2 id="vi-du-canh-sat-va-ke-trom">Ví dụ: "Cảnh sát và kẻ trộm"<a class="headerlink" href="#vi-du-canh-sat-va-ke-trom" title="Permanent link">&para;</a></h2>
+<p>Đây là một ví dụ cụ thể của trò chơi trên.</p>
+<p>Có một bàn cờ kích thước <span class="arithmatex">$m \times n$</span>. Một số ô không thể đi vào. Biết tọa độ ban đầu của cảnh sát và kẻ trộm, và có một ô là lối thoát. Nếu tại bất kỳ thời điểm nào cảnh sát và kẻ trộm ở cùng ô, cảnh sát thắng. Nếu kẻ trộm ở ô lối thoát mà cảnh sát không cùng ở ô đó, kẻ trộm thắng. Cảnh sát có thể đi theo cả 8 hướng, còn kẻ trộm chỉ đi theo 4 hướng dọc các trục tọa độ. Hai người đi luân phiên, nhưng cũng có thể bỏ lượt nếu muốn. Cảnh sát đi trước.</p>
+<p>Giờ ta sẽ <strong>xây dựng đồ thị</strong>. Để làm điều đó, ta cần hình thức hóa luật chơi. Trạng thái hiện tại được xác định bởi tọa độ cảnh sát <span class="arithmatex">$P$</span>, tọa độ kẻ trộm <span class="arithmatex">$T$</span> và người đến lượt; gọi biến biểu thị người đến lượt là <span class="arithmatex">$P_{\text{turn}}$</span> (đúng khi đến lượt cảnh sát). Do đó mỗi đỉnh của đồ thị được xác định bởi bộ ba <span class="arithmatex">$(P, T, P_{\text{turn}})$</span>. Sau đó có thể dễ dàng dựng đồ thị theo luật chơi.</p>
+<p>Tiếp theo ta cần xác định những đỉnh thắng và thua ban đầu. Có một <strong>điểm cần chú ý</strong>: ngoài tọa độ, tính thắng/thua còn phụ thuộc vào <span class="arithmatex">$P_{\text{turn}}$</span>, tức người đến lượt. Nếu đến lượt cảnh sát, đỉnh là thắng khi tọa độ cảnh sát và kẻ trộm trùng nhau; nếu không phải đỉnh thắng mà kẻ trộm ở lối thoát thì đó là đỉnh thua. Nếu đến lượt kẻ trộm, đỉnh là thua khi tọa độ hai người trùng nhau; nếu không phải đỉnh thua mà kẻ trộm ở lối thoát thì đó là đỉnh thắng.</p>
+<p>Trước khi cài đặt, ta cần quyết định dựng đồ thị <strong>tường minh</strong> hay chỉ xây dựng <strong>khi cần</strong>. Dựng tường minh dễ hơn và ít có khả năng mắc lỗi hơn. Mặt khác, cách này làm tăng lượng mã và thời gian chạy so với dựng khi cần.</p>
+<p>Phần cài đặt sau dựng đồ thị tường minh:</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">State</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">P</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">;</span>
 <span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">Pstep</span><span class="p">;</span>
@@ -8207,7 +8164,7 @@ On the other hand, it will increase the amount of code and the running time will
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (94.17%)</li><li><a href="#" title="Abhijeet Krishnan" data-bi-name="contributorprofile" target="_blank">Abhijeet Krishnan</a> (3.14%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (2.69%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

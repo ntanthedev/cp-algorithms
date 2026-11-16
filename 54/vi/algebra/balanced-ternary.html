@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#balanced-ternary" class="md-skip">
+        <a href="#he-tam-phan-can-bang" class="md-skip">
           Bỏ qua
         </a>
       
@@ -1477,10 +1477,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#conversion-algorithm" class="md-nav__link">
+  <a href="#thuat-toan-chuyen-oi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Conversion algorithm
+        Thuật toán chuyển đổi
       
     </span>
   </a>
@@ -1488,10 +1488,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap-thuc-hanh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập thực hành
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/algebra/balanced-ternary.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/algebra/balanced-ternary.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/algebra/balanced-ternary.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/algebra/balanced-ternary.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,34 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8019,13 +7991,12 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="balanced-ternary">Balanced Ternary<a class="headerlink" href="#balanced-ternary" title="Permanent link">&para;</a></h1>
-<p><img alt="&quot;Setun computer using Balanced Ternary system&quot;" src="https://earltcampbell.files.wordpress.com/2014/12/setun.jpeg?w=300" /></p>
-<p>This is a non-standard but still positional <strong>numeral system</strong>. Its feature is that digits can have one of the values <code>-1</code>, <code>0</code> and <code>1</code>.
-Nevertheless, its base is still <code>3</code> (because there are three possible values). Since it is not convenient to write <code>-1</code> as a digit,
-we'll use letter <code>Z</code> further for this purpose. If you think it is quite a strange system - look at the picture - here is one of the
-computers utilizing it.</p>
-<p>So here are few first numbers written in balanced ternary:</p>
+<h1 id="he-tam-phan-can-bang">Hệ tam phân cân bằng<a class="headerlink" href="#he-tam-phan-can-bang" title="Permanent link">&para;</a></h1>
+<p><img alt="&quot;Máy tính Setun sử dụng hệ tam phân cân bằng&quot;" src="https://earltcampbell.files.wordpress.com/2014/12/setun.jpeg?w=300" /></p>
+<p>Đây là một <strong>hệ ghi số theo vị trí</strong> khác thường. Điểm đặc biệt là các chữ số có thể nhận một trong ba giá trị <code>-1</code>, <code>0</code> và <code>1</code>.
+Tuy vậy, cơ số của hệ vẫn là <code>3</code> (vì có ba giá trị chữ số có thể có). Do viết <code>-1</code> thành một chữ số không thuận tiện,
+ở phần sau ta dùng chữ cái <code>Z</code> để biểu diễn giá trị này. Nếu thấy hệ này khá lạ, hãy xem hình: một trong những máy tính đã sử dụng nó.</p>
+<p>Dưới đây là một vài số đầu tiên viết trong <strong>hệ tam phân cân bằng (balanced ternary)</strong>:</p>
 <div class="highlight"><pre><span></span><code>    0    0
     1    1
     2    1Z
@@ -8037,49 +8008,48 @@ computers utilizing it.</p>
     8    10Z
     9    100
 </code></pre></div>
-<p>This system allows you to write negative values without leading minus sign: you can simply invert digits in any positive number.</p>
+<p>Hệ này cho phép viết số âm mà không cần dấu trừ đứng đầu: chỉ cần đổi dấu các chữ số của một số dương bất kỳ.</p>
 <div class="highlight"><pre><span></span><code>    -1   Z
     -2   Z1
     -3   Z0
     -4   ZZ
     -5   Z11
 </code></pre></div>
-<p>Note that a negative number starts with <code>Z</code> and positive with <code>1</code>.</p>
-<h2 id="conversion-algorithm">Conversion algorithm<a class="headerlink" href="#conversion-algorithm" title="Permanent link">&para;</a></h2>
-<p>It is easy to represent a given number in <strong>balanced ternary</strong> via temporary representing it in normal ternary number system. When value is
-in standard ternary, its digits are either <code>0</code> or <code>1</code> or <code>2</code>. Iterating from the lowest digit we can safely skip any <code>0</code>s and <code>1</code>s,
-however <code>2</code> should be turned into <code>Z</code> with adding <code>1</code> to the next digit. Digits <code>3</code> should be turned into <code>0</code> on the same terms -
-such digits are not present in the number initially but they can be encountered after increasing some <code>2</code>s.</p>
-<p><strong>Example 1:</strong> Let us convert <code>64</code> to balanced ternary. At first we use normal ternary to rewrite the number:</p>
+<p>Lưu ý rằng số âm bắt đầu bằng <code>Z</code>, còn số dương bắt đầu bằng <code>1</code>.</p>
+<h2 id="thuat-toan-chuyen-oi">Thuật toán chuyển đổi<a class="headerlink" href="#thuat-toan-chuyen-oi" title="Permanent link">&para;</a></h2>
+<p>Ta có thể dễ dàng biểu diễn một số cho trước trong <strong>hệ tam phân cân bằng</strong> bằng cách tạm thời biểu diễn nó trong hệ tam phân thông thường. Trong
+hệ tam phân thông thường, các chữ số là <code>0</code>, <code>1</code> hoặc <code>2</code>. Duyệt từ chữ số thấp nhất, ta có thể giữ nguyên các chữ số <code>0</code> và <code>1</code>,
+nhưng phải đổi <code>2</code> thành <code>Z</code> và cộng <code>1</code> vào chữ số kế tiếp bên trái. Các chữ số <code>3</code> được đổi thành <code>0</code> theo cách tương tự: ban đầu số không có chữ số 3, nhưng chúng có thể xuất hiện sau khi tăng một chữ số <code>2</code>.</p>
+<p><strong>Ví dụ 1:</strong> Hãy đổi <code>64</code> sang hệ tam phân cân bằng. Trước hết, ta viết lại số trong hệ tam phân thông thường:</p>
 <div class="arithmatex">$$ 64_{10} = 02101_{3} $$</div>
-<p>Let us process it from the least significant (rightmost) digit:</p>
+<p>Ta xử lý từ chữ số thấp nhất (ngoài cùng bên phải):</p>
 <ul>
-<li><code>1</code>, <code>0</code> and <code>1</code> are skipped as they are. (Because <code>0</code> and <code>1</code> are allowed in balanced ternary)</li>
-<li><code>2</code> is turned into <code>Z</code> increasing the digit to its left, so we get <code>1Z101</code>.</li>
+<li>Giữ nguyên <code>1</code>, <code>0</code> và <code>1</code>. (Vì <code>0</code> và <code>1</code> đều là chữ số hợp lệ trong hệ tam phân cân bằng.)</li>
+<li>Đổi <code>2</code> thành <code>Z</code> và tăng chữ số bên trái lên 1; ta được <code>1Z101</code>.</li>
 </ul>
-<p>The final result is <code>1Z101</code>.</p>
-<p>Let us convert it back to the decimal system by adding the weighted positional values:</p>
+<p>Kết quả cuối cùng là <code>1Z101</code>.</p>
+<p>Ta có thể đổi số này về hệ thập phân bằng cách cộng các giá trị theo vị trí:</p>
 <div class="arithmatex">$$ 1Z101 = 81 \cdot 1 + 27 \cdot (-1) + 9 \cdot 1 + 3 \cdot 0 + 1 \cdot 1 = 64_{10} $$</div>
-<p><strong>Example 2:</strong> Let us convert <code>237</code> to balanced ternary. At first we use normal ternary to rewrite the number:</p>
+<p><strong>Ví dụ 2:</strong> Hãy đổi <code>237</code> sang hệ tam phân cân bằng. Trước hết, ta viết lại số trong hệ tam phân thông thường:</p>
 <div class="arithmatex">$$ 237_{10} = 22210_{3} $$</div>
-<p>Let us process it from the least significant (rightmost) digit:</p>
+<p>Ta xử lý từ chữ số thấp nhất (ngoài cùng bên phải):</p>
 <ul>
-<li><code>0</code> and <code>1</code> are skipped as they are. (Because <code>0</code> and <code>1</code> are allowed in balanced ternary)</li>
-<li><code>2</code> is turned into <code>Z</code> increasing the digit to its left, so we get <code>23Z10</code>.</li>
-<li><code>3</code> is turned into <code>0</code> increasing the digit to its left, so we get <code>30Z10</code>.</li>
-<li><code>3</code> is turned into <code>0</code> increasing the digit to its left (which is by default <code>0</code>), and so we get <code>100Z10</code>.</li>
+<li>Giữ nguyên <code>0</code> và <code>1</code>. (Vì <code>0</code> và <code>1</code> đều là chữ số hợp lệ trong hệ tam phân cân bằng.)</li>
+<li>Đổi <code>2</code> thành <code>Z</code> và tăng chữ số bên trái lên 1; ta được <code>23Z10</code>.</li>
+<li>Đổi <code>3</code> thành <code>0</code> và tăng chữ số bên trái lên 1; ta được <code>30Z10</code>.</li>
+<li>Tiếp tục đổi <code>3</code> thành <code>0</code> và tăng chữ số bên trái lên 1 (mặc định chữ số này là <code>0</code>), ta được <code>100Z10</code>.</li>
 </ul>
-<p>The final result is <code>100Z10</code>.</p>
-<p>Let us convert it back to the decimal system by adding the weighted positional values:</p>
+<p>Kết quả cuối cùng là <code>100Z10</code>.</p>
+<p>Ta có thể đổi số này về hệ thập phân bằng cách cộng các giá trị theo vị trí:</p>
 <div class="arithmatex">$$ 100Z10 = 243 \cdot 1 + 81 \cdot 0 + 27 \cdot 0 + 9 \cdot (-1) + 3 \cdot 1 + 1 \cdot 0 = 237_{10} $$</div>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap-thuc-hanh">Bài tập thực hành<a class="headerlink" href="#bai-tap-thuc-hanh" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://community.topcoder.com/stat?c=problem_statement&amp;pm=12917&amp;rd=15837">Topcoder SRM 604, Div1-250</a></li>
 </ul>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="RodionGork" data-bi-name="contributorprofile" target="_blank">RodionGork</a> (45.24%)</li><li><a href="#" title="gampu" data-bi-name="contributorprofile" target="_blank">gampu</a> (32.14%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (7.14%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (4.76%)</li><li><a href="#" title="thanhtnguyen" data-bi-name="contributorprofile" target="_blank">thanhtnguyen</a> (4.76%)</li><li><a href="#" title="Bhuvnesh Jain" data-bi-name="contributorprofile" target="_blank">Bhuvnesh Jain</a> (2.38%)</li><li><a href="#" title="zakaria-zoulati" data-bi-name="contributorprofile" target="_blank">zakaria-zoulati</a> (2.38%)</li><li><a href="#" title="wiktorkuchta" data-bi-name="contributorprofile" target="_blank">wiktorkuchta</a> (1.19%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

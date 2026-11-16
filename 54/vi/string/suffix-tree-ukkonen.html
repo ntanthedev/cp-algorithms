@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#suffix-tree-ukkonens-algorithm" class="md-skip">
+        <a href="#cay-hau-to-thuat-toan-ukkonen" class="md-skip">
           Bỏ qua
         </a>
       
@@ -2975,10 +2975,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#compressed-implementation" class="md-nav__link">
+  <a href="#cai-at-rut-gon" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Compressed Implementation
+        Cài đặt rút gọn
       
     </span>
   </a>
@@ -2986,10 +2986,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap-luyen-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập luyện tập
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/string/suffix-tree-ukkonen.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/string/suffix-tree-ukkonen.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/string/suffix-tree-ukkonen.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/string/suffix-tree-ukkonen.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,18 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8003,17 +7991,17 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="suffix-tree-ukkonens-algorithm">Suffix Tree. Ukkonen's Algorithm<a class="headerlink" href="#suffix-tree-ukkonens-algorithm" title="Permanent link">&para;</a></h1>
-<p><em>This article is a stub and doesn't contain any descriptions. For a description of the algorithm, refer to other sources, such as <a href="https://www.cs.cmu.edu/afs/cs/project/pscico-guyb/realworld/www/slidesF06/cmuonly/gusfield.pdf">Algorithms on Strings, Trees, and Sequences</a> by Dan Gusfield.</em></p>
-<p>This algorithm builds a suffix tree for a given string <span class="arithmatex">$s$</span> of length <span class="arithmatex">$n$</span> in <span class="arithmatex">$O(n\log(k))$</span>) time, where <span class="arithmatex">$k$</span> is the size of the alphabet (if <span class="arithmatex">$k$</span> is considered to be a constant, the asymptotic behavior is linear).</p>
-<p>The input to the algorithm are the string <span class="arithmatex">$s$</span> and its length <span class="arithmatex">$n$</span>, which are passed as global variables.</p>
-<p>The main function <code>build_tree</code> builds a suffix tree. It is stored as an array of structures <code>node</code>, where <code>node[0]</code> is the root of the tree.</p>
-<p>In order to simplify the code, the edges are stored in the same structures: for each vertex its structure <code>node</code> stores the information about the edge between it and its parent. Overall each <code>node</code> stores the following information: </p>
+<h1 id="cay-hau-to-thuat-toan-ukkonen">Cây hậu tố. Thuật toán Ukkonen<a class="headerlink" href="#cay-hau-to-thuat-toan-ukkonen" title="Permanent link">&para;</a></h1>
+<p><em>Bài này còn sơ lược và không chứa phần mô tả. Để tìm hiểu thuật toán, hãy tham khảo các nguồn khác, chẳng hạn <a href="https://www.cs.cmu.edu/afs/cs/project/pscico-guyb/realworld/www/slidesF06/cmuonly/gusfield.pdf">Algorithms on Strings, Trees, and Sequences</a> của Dan Gusfield.</em></p>
+<p>Thuật toán này xây dựng cây hậu tố cho chuỗi <span class="arithmatex">$s$</span> có độ dài <span class="arithmatex">$n$</span> trong thời gian <span class="arithmatex">$O(n\log(k))$</span>, với <span class="arithmatex">$k$</span> là kích thước bảng chữ cái (nếu coi <span class="arithmatex">$k$</span> là hằng số thì độ phức tạp tiệm cận là tuyến tính).</p>
+<p>Đầu vào của thuật toán là chuỗi <span class="arithmatex">$s$</span> và độ dài <span class="arithmatex">$n$</span> của nó, được truyền dưới dạng biến toàn cục.</p>
+<p>Hàm chính <code>build_tree</code> xây dựng cây hậu tố. Cây được lưu dưới dạng mảng các cấu trúc <code>node</code>, trong đó <code>node[0]</code> là gốc cây.</p>
+<p>Để đơn giản hóa mã, các cạnh được lưu trong cùng các cấu trúc: với mỗi đỉnh, cấu trúc <code>node</code> của nó lưu thông tin về cạnh nối đỉnh đó với cha. Mỗi <code>node</code> lưu các thông tin sau:</p>
 <ul>
-<li><code>(l, r)</code> - left and right boundaries of the substring <code>s[l..r-1]</code> which correspond to the edge to this node,</li>
-<li><code>par</code> - the parent node,</li>
-<li><code>link</code> - the suffix link,</li>
-<li><code>next</code> - the list of edges going out from this node.</li>
+<li><code>(l, r)</code> - biên trái và phải của xâu con <code>s[l..r-1]</code> tương ứng với cạnh nối tới nút này,</li>
+<li><code>par</code> - nút cha,</li>
+<li><code>link</code> - liên kết hậu tố,</li>
+<li><code>next</code> - danh sách các cạnh đi ra từ nút này.</li>
 </ul>
 <div class="highlight"><pre><span></span><code><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
@@ -8103,8 +8091,9 @@ Describe the issue of this article in detail.
 <span class="w">        </span><span class="n">tree_extend</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="compressed-implementation">Compressed Implementation<a class="headerlink" href="#compressed-implementation" title="Permanent link">&para;</a></h2>
-<p>This compressed implementation was proposed by <a href="http://codeforces.com/profile/freopen">freopen</a>.</p>
+<h2 id="cai-at-rut-gon">Cài đặt rút gọn<a class="headerlink" href="#cai-at-rut-gon" title="Permanent link">&para;</a></h2>
+<p>Cài đặt rút gọn này do <a href="http://codeforces.com/profile/freopen">freopen</a> đề xuất.</p>
+<p><strong>Ghi chú bản dịch:</strong> Cả hai phiên bản rút gọn dưới đây chỉ nhận chữ cái thường từ a đến z; hằng số N cũng giới hạn số nút có thể lưu. Cần bảo đảm đầu vào và kích thước cây phù hợp các giới hạn đó.</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="n">INF</span><span class="o">=</span><span class="mi">1000000000</span><span class="p">;</span>
 <span class="n">string</span><span class="w"> </span><span class="n">a</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">t</span><span class="p">[</span><span class="n">N</span><span class="p">][</span><span class="mi">26</span><span class="p">],</span><span class="n">l</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="n">r</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="n">p</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="n">s</span><span class="p">[</span><span class="n">N</span><span class="p">],</span><span class="n">tv</span><span class="p">,</span><span class="n">tp</span><span class="p">,</span><span class="n">ts</span><span class="p">,</span><span class="n">la</span><span class="p">;</span>
@@ -8143,7 +8132,7 @@ Describe the issue of this article in detail.
 <span class="w">        </span><span class="n">ukkadd</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">la</span><span class="p">]</span><span class="o">-</span><span class="sc">'a'</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Same code with comments:</p>
+<p>Cùng đoạn mã trên, có thêm chú thích:</p>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span><span class="w">    </span><span class="c1">// maximum possible number of nodes in suffix tree</span>
 <span class="w">    </span><span class="n">INF</span><span class="o">=</span><span class="mi">1000000000</span><span class="p">;</span><span class="w"> </span><span class="c1">// infinity constant</span>
 <span class="n">string</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w">       </span><span class="c1">// input string for which the suffix tree is being built</span>
@@ -8204,14 +8193,14 @@ Describe the issue of this article in detail.
 <span class="w">        </span><span class="n">ukkadd</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="n">la</span><span class="p">]</span><span class="o">-</span><span class="sc">'a'</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://uva.onlinejudge.org/index.php?option=onlinejudge&amp;page=show_problem&amp;problem=1620">UVA 10679 - I Love Strings!!!</a></li>
 </ul>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Chirag Agarwal" data-bi-name="contributorprofile" target="_blank">Chirag Agarwal</a> (59.82%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (37.05%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (2.68%)</li><li><a href="#" title="Dustin Miao" data-bi-name="contributorprofile" target="_blank">Dustin Miao</a> (0.45%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>
