@@ -74,7 +74,7 @@ T order_statistics (std::vector<T> a, unsigned n, unsigned k)
 ## Ghi chú
 * Thuật toán ngẫu nhiên ở trên được gọi là [quickselect](https://en.wikipedia.org/wiki/Quickselect). Nên xáo trộn ngẫu nhiên $A$ trước khi gọi hoặc dùng một phần tử ngẫu nhiên làm chốt để thuật toán hoạt động đúng cách. Cũng có những thuật toán tất định giải bài toán đã nêu trong thời gian tuyến tính, chẳng hạn [median of medians](https://en.wikipedia.org/wiki/Median_of_medians).
 * [std::nth_element](https://en.cppreference.com/w/cpp/algorithm/nth_element) giải bài toán này trong C++, nhưng bản cài đặt của gcc chạy trong thời gian $O(n \log n )$ ở trường hợp xấu nhất.
-* Có thể quy việc tìm $K$ phần tử nhỏ nhất về tìm phần tử thứ $K$ với chi phí phụ tuyến tính, vì chúng chính là các phần tử nhỏ hơn phần tử thứ $K$.
+* Có thể quy việc tìm $K$ phần tử nhỏ nhất về tìm phần tử thứ $K$ với chi phí bổ sung tuyến tính, vì chúng chính là các phần tử nhỏ hơn phần tử thứ $K$.
 
 Ghi chú bản dịch: Code dùng chỉ số từ 1 đến n và trả về phần tử thứ k theo thứ tự không giảm, trong khi phần mở đầu nói số lớn thứ K. Cần cấp phát mảng có phần tử tại các chỉ số này và chọn 1 ≤ k ≤ n. Xáo trộn ngẫu nhiên giúp đạt thời gian kỳ vọng tuyến tính; code với chốt tất định vẫn đúng trên đầu vào hợp lệ nhưng có thể mất thời gian bậc hai trong trường hợp xấu nhất. Mệnh đề cuối ở trên cũng cần xét giá trị bằng phần tử thứ K: để lấy đủ K phần tử nhỏ nhất, cần chọn cả một số phần tử bằng ngưỡng nếu có giá trị trùng nhau.
 
