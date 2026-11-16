@@ -79,7 +79,7 @@ return slow; // the starting point of the cycle.
 
 ### Bước 1: Xác định có chu trình
 Vì con trỏ $fast$ di chuyển nhanh gấp đôi $slow$, tại mọi thời điểm, quãng đường $fast$ đã đi gấp đôi quãng đường $slow$ đã đi.
-Ta cũng suy ra hiệu giữa quãng đường hai con trỏ đã đi tăng thêm $1$ mỗi bước. 
+Ta cũng suy ra hiệu giữa quãng đường hai con trỏ đã đi tăng thêm $1$ mỗi bước.
 ```
 slow: 0 --> 1 --> 2 --> 3 --> 4 (distance covered)
 fast: 0 --> 2 --> 4 --> 6 --> 8 (distance covered)
@@ -126,4 +126,3 @@ Vì ta cho con trỏ chậm bắt đầu từ đầu danh sách liên kết, sau
 - [Happy Number (Easy)](https://leetcode.com/problems/happy-number/)
 - [Find the Duplicate Number (Medium)](https://leetcode.com/problems/find-the-duplicate-number/)
 - [Linked List Cycle II](https://leetcode.com/problems/linked-list-cycle-ii/)
-

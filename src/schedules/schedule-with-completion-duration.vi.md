@@ -19,6 +19,8 @@ Thuật toán sử dụng phương pháp **tham lam**. Sắp xếp tất cả c�
 
 Giả sử ta đang xét công việc thứ $i$. Trước hết đưa nó vào $q$. Xét khoảng thời gian giữa thời hạn của công việc thứ $i$ và thời hạn của công việc thứ $i-1$. Khoảng này có độ dài $T$. Ta lấy các công việc ra khỏi $q$ (theo thứ tự tăng dần của thời lượng còn lại) và thực hiện cho đến khi lấp đầy khoảng $T$. Lưu ý: nếu tại một thời điểm, công việc được lấy ra chỉ có thể thực hiện một phần trước khi khoảng $T$ được lấp đầy, ta thực hiện nó nhiều nhất có thể, tức là trong thời gian $T$, rồi đưa phần còn lại của công việc trở lại $q$.
 
+**Ghi chú bản dịch:** Việc chia thời lượng ở đây là bước tính toán khi xét ngược các khoảng thời gian, không có nghĩa lịch thực tế được phép ngắt công việc. Sau khi chọn xong tập công việc, có thể sắp xếp chúng theo thời hạn để lập lịch không ngắt như phần cài đặt nêu.
+
 Khi thuật toán kết thúc, ta sẽ chọn được lời giải tối ưu (hoặc ít nhất là một trong nhiều lời giải tối ưu). Thời gian chạy của thuật toán là $O(n \log n)$.
 
 ## Cài đặt
