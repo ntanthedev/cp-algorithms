@@ -65,7 +65,7 @@ Có thể xây dựng một đồ thị như vậy như sau:
 Ngoài ra, ta nối hai clique bằng $\lambda$ cạnh sao cho các cạnh này dùng $\lambda$ đỉnh khác nhau ở clique thứ nhất và chỉ $\kappa$ đỉnh ở clique thứ hai.
 Đồ thị thu được sẽ có ba đặc trưng trên.
 
-Ghi chú bản dịch: Với bộ ba bằng 0, hoặc khi κ = 0 và λ > 0, cách dựng và phát biểu về mọi bộ ba trong nguồn không áp dụng như đã nêu; đồ thị không liên thông có cả độ liên thông cạnh và đỉnh bằng 0.
+Ghi chú bản dịch: Khi κ = 0 và λ > 0, cách dựng và phát biểu về mọi bộ ba trong nguồn không áp dụng như đã nêu; đồ thị không liên thông có cả độ liên thông cạnh và đỉnh bằng 0.
 
 ### Định lý Ford-Fulkerson
 
