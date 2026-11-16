@@ -75,6 +75,8 @@ Trong một **trò chơi misère**, mục tiêu bị đảo ngược: người l
 
 Trong trò chơi chuẩn, ta nên chọn nước đi để sau đó có số chẵn đống chứa một que. Tuy nhiên, trong misère ta chọn nước đi để số đống chứa một que là lẻ. Chiến lược này hiệu quả vì trạng thái cần đổi chiến lược luôn xuất hiện và là trạng thái thắng: nó chứa đúng một đống có nhiều hơn một que, nên tổng Nim khác 0.
 
+**Ghi chú bản dịch:** Nhận định trong bài gốc rằng trạng thái cần đổi chiến lược luôn xuất hiện không bao gồm trường hợp ban đầu mọi đống đều có nhiều nhất một que, ví dụ hai đống mỗi đống một que. Với trạng thái như vậy, áp dụng ngay quy tắc chẵn/lẻ của misère; không cần chờ xuất hiện một đống có nhiều hơn một que.
+
 ## Sự tương đương giữa trò chơi vô tư và Nim (định lý Sprague-Grundy)
 
 Bây giờ ta sẽ tìm hiểu cách tìm, với mỗi trạng thái của một trò chơi vô tư bất kỳ, một trạng thái Nim tương ứng.
@@ -142,6 +144,8 @@ Tuy nhiên, giá trị Grundy không phải *lúc nào* cũng có những quy lu
 Do đó giá trị Grundy $g(n)$ có dạng:
 
 $$g(n) = \text{mex} \Bigl( \{ g(n-2) \} \cup \{g(i-2) \oplus g(n-i-1) \mid 2 \leq i \leq n-1\} \Bigr) .$$
+
+**Ghi chú bản dịch:** Theo luật chơi, dải rỗng có giá trị Grundy g(0) = 0; dải một ô có một nước đi tới dải rỗng nên g(1) = mex({g(0)}) = 1. Công thức trong bài gốc cần xét từ n ≥ 2 và xử lý riêng hai giá trị biên này, tránh dùng chỉ số âm.
 
 Vậy ta có lời giải $O(n^2)$.
 

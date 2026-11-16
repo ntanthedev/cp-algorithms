@@ -39,7 +39,7 @@ a_{21} x_1 + a_{22} x_2 + &\dots + a_{2m} x_m \equiv b_2 \pmod p \\
 a_{n1} x_1 + a_{n2} x_2 + &\dots + a_{nm} x_m \equiv b_n \pmod p
 \end{align}$$
 
-> **Ghi chú bản dịch:** Khẳng định về modulo bất kỳ trong bài gốc cần thận trọng: với modulo hợp số, một phần tử khác không chưa chắc có nghịch đảo, nên không thể luôn thực hiện phép chia dùng trong thuật toán dưới đây.
+**Ghi chú bản dịch:** Khẳng định về modulo bất kỳ trong bài gốc cần thận trọng: với modulo hợp số, một phần tử khác không chưa chắc có nghịch đảo, nên không thể luôn thực hiện phép chia dùng trong thuật toán dưới đây.
 
 ## Gauss
 
