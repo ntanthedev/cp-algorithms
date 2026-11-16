@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#number-of-paths-of-fixed-length-shortest-paths-of-fixed-length" class="md-skip">
+        <a href="#so-uong-i-co-o-dai-co-inh-uong-i-ngan-nhat-co-o-dai-co-inh" class="md-skip">
           Bỏ qua
         </a>
       
@@ -6000,10 +6000,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#number-of-paths-of-a-fixed-length" class="md-nav__link">
+  <a href="#so-uong-i-co-o-dai-co-inh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Number of paths of a fixed length
+        Số đường đi có độ dài cố định
       
     </span>
   </a>
@@ -6011,10 +6011,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#shortest-paths-of-a-fixed-length" class="md-nav__link">
+  <a href="#uong-i-ngan-nhat-co-o-dai-co-inh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Shortest paths of a fixed length
+        Đường đi ngắn nhất có độ dài cố định
       
     </span>
   </a>
@@ -6022,7 +6022,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#generalization-of-the-problems-for-paths-with-length-up-to-k" class="md-nav__link">
+  <a href="#tong-quat-hoa-hai-bai-toan-cho-uong-i-co-o-dai-khong-qua-k" class="md-nav__link">
     <span class="md-ellipsis">
       
         Generalization of the problems for paths with length up to k
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/fixed_length_paths.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/fixed_length_paths.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/fixed_length_paths.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/fixed_length_paths.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,22 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8018,67 +8002,59 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="number-of-paths-of-fixed-length-shortest-paths-of-fixed-length">Number of paths of fixed length / Shortest paths of fixed length<a class="headerlink" href="#number-of-paths-of-fixed-length-shortest-paths-of-fixed-length" title="Permanent link">&para;</a></h1>
-<p>The following article describes solutions to these two problems built on the same idea:
-reduce the problem to the construction of matrix and compute the solution with the usual matrix multiplication or with a modified multiplication.</p>
-<h2 id="number-of-paths-of-a-fixed-length">Number of paths of a fixed length<a class="headerlink" href="#number-of-paths-of-a-fixed-length" title="Permanent link">&para;</a></h2>
-<p>We are given a directed, unweighted graph <span class="arithmatex">$G$</span> with <span class="arithmatex">$n$</span> vertices and we are given an integer <span class="arithmatex">$k$</span>.
-The task is the following:
-for each pair of vertices <span class="arithmatex">$(i, j)$</span> we have to find the number of paths of length <span class="arithmatex">$k$</span> between these vertices.
-Paths don't have to be simple, i.e. vertices and edges can be visited any number of times in a single path.</p>
-<p>We assume that the graph is specified with an adjacency matrix, i.e. the matrix <span class="arithmatex">$G[][]$</span> of size <span class="arithmatex">$n \times n$</span>, where each element <span class="arithmatex">$G[i][j]$</span> equal to <span class="arithmatex">$1$</span> if the vertex <span class="arithmatex">$i$</span> is connected with <span class="arithmatex">$j$</span> by an edge, and <span class="arithmatex">$0$</span> is they are not connected by an edge.
-The following algorithm works also in the case of multiple edges:
-if some pair of vertices <span class="arithmatex">$(i, j)$</span> is connected with <span class="arithmatex">$m$</span> edges, then we can record this in the adjacency matrix by setting <span class="arithmatex">$G[i][j] = m$</span>.
-Also the algorithm works if the graph contains loops (a loop is an edge that connect a vertex with itself).</p>
-<p>It is obvious that the constructed adjacency matrix is the answer to the problem for the case <span class="arithmatex">$k = 1$</span>.
-It contains the number of paths of length <span class="arithmatex">$1$</span> between each pair of vertices.</p>
-<p>We will build the solution iteratively:
-Let's assume we know the answer for some <span class="arithmatex">$k$</span>.
-Here we describe a method how we can construct the answer for <span class="arithmatex">$k + 1$</span>.
-Denote by <span class="arithmatex">$C_k$</span> the matrix for the case <span class="arithmatex">$k$</span>, and by <span class="arithmatex">$C_{k+1}$</span> the matrix we want to construct.
-With the following formula we can compute every entry of <span class="arithmatex">$C_{k+1}$</span>:</p>
+<h1 id="so-uong-i-co-o-dai-co-inh-uong-i-ngan-nhat-co-o-dai-co-inh">Số đường đi có độ dài cố định / Đường đi ngắn nhất có độ dài cố định<a class="headerlink" href="#so-uong-i-co-o-dai-co-inh-uong-i-ngan-nhat-co-o-dai-co-inh" title="Permanent link">&para;</a></h1>
+<p>Bài viết này trình bày lời giải cho hai bài toán dựa trên cùng một ý tưởng: quy bài toán về việc dựng ma trận, rồi tính kết quả bằng phép nhân ma trận thông thường hoặc một phép nhân đã được biến đổi.</p>
+<h2 id="so-uong-i-co-o-dai-co-inh">Số đường đi có độ dài cố định<a class="headerlink" href="#so-uong-i-co-o-dai-co-inh" title="Permanent link">&para;</a></h2>
+<p>Cho đồ thị có hướng, không trọng số <span class="arithmatex">$G$</span> với <span class="arithmatex">$n$</span> đỉnh và một số nguyên <span class="arithmatex">$k$</span>.
+Với mỗi cặp đỉnh <span class="arithmatex">$(i, j)$</span>, ta cần tìm số đường đi độ dài <span class="arithmatex">$k$</span> giữa chúng.
+Đường đi không cần đơn: trong một đường đi, ta có thể đi qua một đỉnh hoặc một cạnh tùy ý số lần.</p>
+<p>Ta biểu diễn đồ thị bằng ma trận kề <span class="arithmatex">$G[][]$</span> kích thước <span class="arithmatex">$n \times n$</span>; mỗi phần tử <span class="arithmatex">$G[i][j]$</span> bằng <span class="arithmatex">$1$</span> nếu có cạnh nối đỉnh <span class="arithmatex">$i$</span> với đỉnh <span class="arithmatex">$j$</span>, và bằng <span class="arithmatex">$0$</span> nếu không có cạnh.
+Thuật toán cũng áp dụng được khi đồ thị có nhiều cạnh song song: nếu một cặp đỉnh <span class="arithmatex">$(i, j)$</span> được nối bằng <span class="arithmatex">$m$</span> cạnh, ta đặt <span class="arithmatex">$G[i][j] = m$</span>.
+Thuật toán cũng áp dụng được khi đồ thị có cạnh nối một đỉnh với chính nó.</p>
+<p>Ma trận kề đã dựng chính là đáp án khi <span class="arithmatex">$k = 1$</span>: nó chứa số đường đi có độ dài <span class="arithmatex">$1$</span> giữa mọi cặp đỉnh.</p>
+<p>Ta xây dựng lời giải theo từng bước.
+Giả sử đã biết đáp án ứng với <span class="arithmatex">$k$</span>; sau đây ta tính đáp án ứng với <span class="arithmatex">$k + 1$</span>.
+Gọi <span class="arithmatex">$C_k$</span> là ma trận ứng với <span class="arithmatex">$k$</span>, còn <span class="arithmatex">$C_{k+1}$</span> là ma trận cần dựng.
+Công thức sau tính từng phần tử của <span class="arithmatex">$C_{k+1}$</span>:</p>
 <div class="arithmatex">$$C_{k+1}[i][j] = \sum_{p = 1}^{n} C_k[i][p] \cdot G[p][j]$$</div>
-<p>It is easy to see that the formula computes nothing other than the product of the matrices <span class="arithmatex">$C_k$</span> and <span class="arithmatex">$G$</span>:</p>
+<p>Ta thấy công thức này chính là tích hai ma trận <span class="arithmatex">$C_k$</span> và <span class="arithmatex">$G$</span>:</p>
 <div class="arithmatex">$$C_{k+1} = C_k \cdot G$$</div>
-<p>Thus the solution of the problem can be represented as follows:</p>
+<p>Vì vậy, có thể biểu diễn lời giải như sau:</p>
 <div class="arithmatex">$$C_k = \underbrace{G \cdot G \cdots G}_{k \text{ times}} = G^k$$</div>
-<p>It remains to note that the matrix products can be raised to a high power efficiently using <a href="../algebra/binary-exp.html">Binary exponentiation</a>.
-This gives a solution with <span class="arithmatex">$O(n^3 \log k)$</span> complexity.</p>
-<h2 id="shortest-paths-of-a-fixed-length">Shortest paths of a fixed length<a class="headerlink" href="#shortest-paths-of-a-fixed-length" title="Permanent link">&para;</a></h2>
-<p>We are given a directed weighted graph <span class="arithmatex">$G$</span> with <span class="arithmatex">$n$</span> vertices and an integer <span class="arithmatex">$k$</span>.
-For each pair of vertices <span class="arithmatex">$(i, j)$</span> we have to find the length of the shortest path between <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span> that consists of exactly <span class="arithmatex">$k$</span> edges.</p>
-<p>We assume that the graph is specified by an adjacency matrix, i.e. via the matrix <span class="arithmatex">$G[][]$</span> of size <span class="arithmatex">$n \times n$</span> where each element <span class="arithmatex">$G[i][j]$</span> contains the length of the edges from the vertex <span class="arithmatex">$i$</span> to the vertex <span class="arithmatex">$j$</span>.
-If there is no edge between two vertices, then the corresponding element of the matrix will be assigned to infinity <span class="arithmatex">$\infty$</span>.</p>
-<p>It is obvious that in this form the adjacency matrix is the answer to the problem for <span class="arithmatex">$k = 1$</span>.
-It contains the lengths of shortest paths between each pair of vertices, or <span class="arithmatex">$\infty$</span> if a path consisting of one edge doesn't exist.</p>
-<p>Again we can build the solution to the problem iteratively:
-Let's assume we know the answer for some <span class="arithmatex">$k$</span>.
-We show how we can compute the answer for <span class="arithmatex">$k+1$</span>.
-Let us denote <span class="arithmatex">$L_k$</span> the matrix for <span class="arithmatex">$k$</span> and <span class="arithmatex">$L_{k+1}$</span> the matrix we want to build.
-Then the following formula computes each entry of <span class="arithmatex">$L_{k+1}$</span>:</p>
+<p>Có thể tính lũy thừa ma trận hiệu quả bằng <a href="../algebra/binary-exp.html">lũy thừa nhị phân</a>.
+Độ phức tạp của lời giải là <span class="arithmatex">$O(n^3 \log k)$</span>.</p>
+<h2 id="uong-i-ngan-nhat-co-o-dai-co-inh">Đường đi ngắn nhất có độ dài cố định<a class="headerlink" href="#uong-i-ngan-nhat-co-o-dai-co-inh" title="Permanent link">&para;</a></h2>
+<p>Cho đồ thị có hướng, có trọng số <span class="arithmatex">$G$</span> với <span class="arithmatex">$n$</span> đỉnh và một số nguyên <span class="arithmatex">$k$</span>.
+Với mỗi cặp đỉnh <span class="arithmatex">$(i, j)$</span>, ta cần tìm độ dài đường đi ngắn nhất từ <span class="arithmatex">$i$</span> đến <span class="arithmatex">$j$</span> gồm đúng <span class="arithmatex">$k$</span> cạnh.</p>
+<p>Ta biểu diễn đồ thị bằng ma trận kề <span class="arithmatex">$G[][]$</span> kích thước <span class="arithmatex">$n \times n$</span>, trong đó mỗi phần tử <span class="arithmatex">$G[i][j]$</span> lưu độ dài các cạnh đi từ đỉnh <span class="arithmatex">$i$</span> đến đỉnh <span class="arithmatex">$j$</span>.
+Nếu không có cạnh nối hai đỉnh, phần tử tương ứng trong ma trận được gán bằng vô cực <span class="arithmatex">$\infty$</span>.</p>
+<p>Ma trận kề ở dạng này là đáp án khi <span class="arithmatex">$k = 1$</span>.
+Nó chứa độ dài đường đi ngắn nhất gồm một cạnh giữa mọi cặp đỉnh, hoặc <span class="arithmatex">$\infty$</span> nếu không có đường đi gồm một cạnh.</p>
+<p>Ta tiếp tục xây dựng lời giải theo từng bước.
+Giả sử đã biết đáp án ứng với <span class="arithmatex">$k$</span>; ta sẽ tính đáp án ứng với <span class="arithmatex">$k+1$</span>.
+Gọi <span class="arithmatex">$L_k$</span> là ma trận ứng với <span class="arithmatex">$k$</span>, còn <span class="arithmatex">$L_{k+1}$</span> là ma trận cần dựng.
+Công thức sau tính từng phần tử của <span class="arithmatex">$L_{k+1}$</span>:</p>
 <div class="arithmatex">$$L_{k+1}[i][j] = \min_{p = 1 \ldots n} \left(L_k[i][p] + G[p][j]\right)$$</div>
-<p>When looking closer at this formula, we can draw an analogy with the matrix multiplication:
-in fact the matrix <span class="arithmatex">$L_k$</span> is multiplied by the matrix <span class="arithmatex">$G$</span>, the only difference is that instead in the multiplication operation we take the minimum instead of the sum, and the sum instead of the multiplication as the inner operation.</p>
+<p>Quan sát công thức, ta thấy đây là phép nhân ma trận <span class="arithmatex">$L_k$</span> với ma trận <span class="arithmatex">$G$</span>, nhưng dùng phép lấy giá trị nhỏ nhất thay cho phép cộng, và dùng phép cộng thay cho phép nhân các phần tử.</p>
 <div class="arithmatex">$$L_{k+1} = L_k \odot G,$$</div>
-<p>where the operation <span class="arithmatex">$\odot$</span> is defined as follows:</p>
+<p>trong đó phép toán <span class="arithmatex">$\odot$</span> được định nghĩa như sau:</p>
 <div class="arithmatex">$$A \odot B = C~~\Longleftrightarrow~~C_{i j} = \min_{p = 1 \ldots n}\left(A_{i p} + B_{p j}\right)$$</div>
-<p>Thus the solution of the task can be represented using the modified multiplication:</p>
+<p>Do đó, có thể biểu diễn bài toán bằng phép nhân đã biến đổi:</p>
 <div class="arithmatex">$$L_k = \underbrace{G \odot \ldots \odot G}_{k~\text{times}} = G^{\odot k}$$</div>
-<p>It remains to note that we also can compute this exponentiation efficiently with <a href="../algebra/binary-exp.html">Binary exponentiation</a>, because the modified multiplication is obviously associative.
-So also this solution has <span class="arithmatex">$O(n^3 \log k)$</span> complexity.</p>
-<h2 id="generalization-of-the-problems-for-paths-with-length-up-to-k">Generalization of the problems for paths with length up to <span class="arithmatex">$k$</span><a class="headerlink" href="#generalization-of-the-problems-for-paths-with-length-up-to-k" title="Permanent link">&para;</a></h2>
-<p>The above solutions solve the problems for a fixed <span class="arithmatex">$k$</span>.
-However the solutions can be adapted for solving problems for which the paths are allowed to contain no more than <span class="arithmatex">$k$</span> edges.</p>
-<p>This can be done by slightly modifying the input graph.</p>
-<p>We duplicate each vertex:
-for each vertex <span class="arithmatex">$v$</span> we create one more vertex <span class="arithmatex">$v'$</span> and add the edge <span class="arithmatex">$(v, v')$</span> and the loop <span class="arithmatex">$(v', v')$</span>.
-The number of paths between <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span> with at most <span class="arithmatex">$k$</span> edges is the same number as the number of paths between <span class="arithmatex">$i$</span> and <span class="arithmatex">$j'$</span> with exactly <span class="arithmatex">$k + 1$</span> edges, since there is a bijection that maps every path <span class="arithmatex">$[p_0 = i,~p_1,~\ldots,~p_{m-1},~p_m = j]$</span> of length <span class="arithmatex">$m \le k$</span> to the path <span class="arithmatex">$[p_0 = i,~p_1,~\ldots,~p_{m-1},~p_m = j, j', \ldots, j']$</span> of length <span class="arithmatex">$k + 1$</span>.</p>
-<p>The same trick can be applied to compute the shortest paths with at most <span class="arithmatex">$k$</span> edges.
-We again duplicate each vertex and add the two mentioned edges with weight <span class="arithmatex">$0$</span>.</p>
+<p>Phép nhân biến đổi này có tính kết hợp, nên ta cũng có thể tính lũy thừa hiệu quả bằng <a href="../algebra/binary-exp.html">lũy thừa nhị phân</a>.
+Lời giải này cũng có độ phức tạp <span class="arithmatex">$O(n^3 \log k)$</span>.</p>
+<h2 id="tong-quat-hoa-hai-bai-toan-cho-uong-i-co-o-dai-khong-qua-k">Tổng quát hóa hai bài toán cho đường đi có độ dài không quá <span class="arithmatex">$k$</span><a class="headerlink" href="#tong-quat-hoa-hai-bai-toan-cho-uong-i-co-o-dai-khong-qua-k" title="Permanent link">&para;</a></h2>
+<p>Các lời giải trên áp dụng cho đường đi có độ dài cố định <span class="arithmatex">$k$</span>.
+Ta có thể điều chỉnh chúng để giải các bài toán cho phép đường đi có không quá <span class="arithmatex">$k$</span> cạnh.</p>
+<p>Để làm vậy, ta chỉnh sửa nhẹ đồ thị đầu vào.</p>
+<p>Ta nhân đôi mỗi đỉnh: với mỗi đỉnh <span class="arithmatex">$v$</span>, tạo thêm một đỉnh <span class="arithmatex">$v'$</span> rồi thêm cạnh <span class="arithmatex">$(v, v')$</span> và cạnh nối đỉnh này với chính nó <span class="arithmatex">$(v', v')$</span>.
+Số đường đi từ <span class="arithmatex">$i$</span> đến <span class="arithmatex">$j$</span> có không quá <span class="arithmatex">$k$</span> cạnh bằng số đường đi từ <span class="arithmatex">$i$</span> đến <span class="arithmatex">$j'$</span> có đúng <span class="arithmatex">$k + 1$</span> cạnh, vì có song ánh biến mỗi đường đi <span class="arithmatex">$[p_0 = i,~p_1,~\ldots,~p_{m-1},~p_m = j]$</span> độ dài <span class="arithmatex">$m \le k$</span> thành đường đi <span class="arithmatex">$[p_0 = i,~p_1,~\ldots,~p_{m-1},~p_m = j, j', \ldots, j']$</span> độ dài <span class="arithmatex">$k + 1$</span>.</p>
+<p>Ta cũng có thể dùng mẹo tương tự để tính đường đi ngắn nhất có không quá <span class="arithmatex">$k$</span> cạnh.
+Ta lại nhân đôi mỗi đỉnh và thêm hai cạnh vừa nêu với trọng số <span class="arithmatex">$0$</span>.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (90.32%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (7.53%)</li><li><a href="#" title="Shashank Sahu" data-bi-name="contributorprofile" target="_blank">Shashank Sahu</a> (1.08%)</li><li><a href="#" title="wiktorkuchta" data-bi-name="contributorprofile" target="_blank">wiktorkuchta</a> (1.08%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

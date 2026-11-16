@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kth-order-statistic-in-on" class="md-skip">
+        <a href="#thong-ke-thu-tu-thu-k-trong-on" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7419,10 +7419,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#implementation-not-recursive" class="md-nav__link">
+  <a href="#cai-at-khong-e-quy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation (not recursive)
+        Cài đặt (không đệ quy)
       
     </span>
   </a>
@@ -7430,10 +7430,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
+  <a href="#ghi-chu" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Notes
+        Ghi chú
       
     </span>
   </a>
@@ -7441,10 +7441,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap-luyen-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập luyện tập
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/sequences/k-th.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/sequences/k-th.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/sequences/k-th.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/sequences/k-th.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,34 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8030,10 +8002,10 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="kth-order-statistic-in-on"><span class="arithmatex">$K$</span>th order statistic in <span class="arithmatex">$O(N)$</span><a class="headerlink" href="#kth-order-statistic-in-on" title="Permanent link">&para;</a></h1>
-<p>Given an array <span class="arithmatex">$A$</span> of size <span class="arithmatex">$N$</span> and a number <span class="arithmatex">$K$</span>. The problem is to find <span class="arithmatex">$K$</span>-th largest number in the array, i.e., <span class="arithmatex">$K$</span>-th order statistic.</p>
-<p>The basic idea - to use the idea of quick sort algorithm. Actually, the algorithm is simple, it is more difficult to prove that it runs in an average of <span class="arithmatex">$O(N)$</span>, in contrast to the quick sort.</p>
-<h2 id="implementation-not-recursive">Implementation (not recursive)<a class="headerlink" href="#implementation-not-recursive" title="Permanent link">&para;</a></h2>
+<h1 id="thong-ke-thu-tu-thu-k-trong-on">Thống kê thứ tự thứ <span class="arithmatex">$K$</span> trong <span class="arithmatex">$O(N)$</span><a class="headerlink" href="#thong-ke-thu-tu-thu-k-trong-on" title="Permanent link">&para;</a></h1>
+<p>Cho một mảng <span class="arithmatex">$A$</span> có kích thước <span class="arithmatex">$N$</span> và một số <span class="arithmatex">$K$</span>. Bài toán là tìm số lớn thứ <span class="arithmatex">$K$</span> trong mảng, tức thống kê thứ tự thứ <span class="arithmatex">$K$</span>.</p>
+<p>Ý tưởng cơ bản là dùng ý tưởng của thuật toán quick sort. Bản thân thuật toán đơn giản; phần khó hơn là chứng minh thời gian chạy trung bình của nó là <span class="arithmatex">$O(N)$</span>, khác với quick sort.</p>
+<h2 id="cai-at-khong-e-quy">Cài đặt (không đệ quy)<a class="headerlink" href="#cai-at-khong-e-quy" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">template</span><span class="w"> </span><span class="o">&lt;</span><span class="k">class</span><span class="w"> </span><span class="nc">T</span><span class="o">&gt;</span>
 <span class="n">T</span><span class="w"> </span><span class="n">order_statistics</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="n">k</span><span class="p">)</span>
 <span class="p">{</span>
@@ -8086,13 +8058,14 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h2>
+<h2 id="ghi-chu">Ghi chú<a class="headerlink" href="#ghi-chu" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The randomized algorithm above is named <a href="https://en.wikipedia.org/wiki/Quickselect">quickselect</a>. You should do random shuffle on <span class="arithmatex">$A$</span> before calling it or use a random element as a barrier for it to run properly. There are also deterministic algorithms that solve the specified problem in linear time, such as <a href="https://en.wikipedia.org/wiki/Median_of_medians">median of medians</a>.</li>
-<li><a href="https://en.cppreference.com/w/cpp/algorithm/nth_element">std::nth_element</a> solves this in C++ but gcc's implementation runs in worst case <span class="arithmatex">$O(n \log n )$</span> time.</li>
-<li>Finding <span class="arithmatex">$K$</span> smallest elements can be reduced to finding <span class="arithmatex">$K$</span>-th element with a linear overhead, as they're exactly the elements that are smaller than <span class="arithmatex">$K$</span>-th.</li>
+<li>Thuật toán ngẫu nhiên ở trên được gọi là <a href="https://en.wikipedia.org/wiki/Quickselect">quickselect</a>. Nên xáo trộn ngẫu nhiên <span class="arithmatex">$A$</span> trước khi gọi hoặc dùng một phần tử ngẫu nhiên làm chốt để thuật toán hoạt động đúng cách. Cũng có những thuật toán tất định giải bài toán đã nêu trong thời gian tuyến tính, chẳng hạn <a href="https://en.wikipedia.org/wiki/Median_of_medians">median of medians</a>.</li>
+<li><a href="https://en.cppreference.com/w/cpp/algorithm/nth_element">std::nth_element</a> giải bài toán này trong C++, nhưng bản cài đặt của gcc chạy trong thời gian <span class="arithmatex">$O(n \log n )$</span> ở trường hợp xấu nhất.</li>
+<li>Có thể quy việc tìm <span class="arithmatex">$K$</span> phần tử nhỏ nhất về tìm phần tử thứ <span class="arithmatex">$K$</span> với chi phí bổ sung tuyến tính, vì chúng chính là các phần tử nhỏ hơn phần tử thứ <span class="arithmatex">$K$</span>.</li>
 </ul>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<p>Ghi chú bản dịch: Code dùng chỉ số từ 1 đến n và trả về phần tử thứ k theo thứ tự không giảm, trong khi phần mở đầu nói số lớn thứ K. Cần cấp phát mảng có phần tử tại các chỉ số này và chọn 1 ≤ k ≤ n. Xáo trộn ngẫu nhiên giúp đạt thời gian kỳ vọng tuyến tính; code với chốt tất định vẫn đúng trên đầu vào hợp lệ nhưng có thể mất thời gian bậc hai trong trường hợp xấu nhất. Mệnh đề cuối ở trên cũng cần xét giá trị bằng phần tử thứ K: để lấy đủ K phần tử nhỏ nhất, cần chọn cả một số phần tử bằng ngưỡng nếu có giá trị trùng nhau.</p>
+<h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/description/">Leetcode: Kth Largest Element in an Array</a></li>
 <li><a href="https://www.codechef.com/problems/CD1IT1">CODECHEF: Median</a></li>
@@ -8100,7 +8073,7 @@ Describe the issue of this article in detail.
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Yerzhan Dyussenaliyev" data-bi-name="contributorprofile" target="_blank">Yerzhan Dyussenaliyev</a> (73.68%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (11.84%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (5.26%)</li><li><a href="#" title="Bhuvnesh Jain" data-bi-name="contributorprofile" target="_blank">Bhuvnesh Jain</a> (2.63%)</li><li><a href="#" title="shark_s" data-bi-name="contributorprofile" target="_blank">shark_s</a> (2.63%)</li><li><a href="#" title="Michael Hayter" data-bi-name="contributorprofile" target="_blank">Michael Hayter</a> (1.32%)</li><li><a href="#" title="Shadab Zafar" data-bi-name="contributorprofile" target="_blank">Shadab Zafar</a> (1.32%)</li><li><a href="#" title="random1001guy" data-bi-name="contributorprofile" target="_blank">random1001guy</a> (1.32%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

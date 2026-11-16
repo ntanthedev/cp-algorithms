@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#counting-labeled-graphs" class="md-skip">
+        <a href="#em-o-thi-co-nhan" class="md-skip">
           Bỏ qua
         </a>
       
@@ -3890,10 +3890,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#labeled-graphs" class="md-nav__link">
+  <a href="#o-thi-co-nhan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Labeled graphs
+        Đồ thị có nhãn
       
     </span>
   </a>
@@ -3901,10 +3901,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#connected-labeled-graphs" class="md-nav__link">
+  <a href="#o-thi-lien-thong-co-nhan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Connected labeled graphs
+        Đồ thị liên thông có nhãn
       
     </span>
   </a>
@@ -3912,7 +3912,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#labeled-graphs-with-k-connected-components" class="md-nav__link">
+  <a href="#o-thi-co-nhan-voi-k-thanh-phan-lien-thong" class="md-nav__link">
     <span class="md-ellipsis">
       
         Labeled graphs with k connected components
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/combinatorics/counting_labeled_graphs.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/combinatorics/counting_labeled_graphs.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/combinatorics/counting_labeled_graphs.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/combinatorics/counting_labeled_graphs.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,10 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
 
   
   
@@ -8006,43 +8002,43 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="counting-labeled-graphs">Counting labeled graphs<a class="headerlink" href="#counting-labeled-graphs" title="Permanent link">&para;</a></h1>
-<h2 id="labeled-graphs">Labeled graphs<a class="headerlink" href="#labeled-graphs" title="Permanent link">&para;</a></h2>
-<p>Let the number of vertices in a graph be <span class="arithmatex">$n$</span>.
-We have to compute the number <span class="arithmatex">$G_n$</span> of labeled graphs with <span class="arithmatex">$n$</span> vertices (labeled means that the vertices are marked with the numbers from <span class="arithmatex">$1$</span> to <span class="arithmatex">$n$</span>).
-The edges of the graphs are considered undirected, and loops and multiple edges are forbidden.</p>
-<p>We consider the set of all possible edges of the graph.
-For each edge <span class="arithmatex">$(i, j)$</span> we can assume that <span class="arithmatex">$i &lt; j$</span> (because the graph is undirected, and there are no loops).
-Therefore the set of all edges has the cardinality <span class="arithmatex">$\binom{n}{2}$</span>, i.e. <span class="arithmatex">$\frac{n(n-1)}{2}$</span>.</p>
-<p>Since any labeled graph is uniquely determined by its edges, the number of labeled graphs with <span class="arithmatex">$n$</span> vertices is equal to:</p>
+<h1 id="em-o-thi-co-nhan">Đếm đồ thị có nhãn<a class="headerlink" href="#em-o-thi-co-nhan" title="Permanent link">&para;</a></h1>
+<h2 id="o-thi-co-nhan">Đồ thị có nhãn<a class="headerlink" href="#o-thi-co-nhan" title="Permanent link">&para;</a></h2>
+<p>Cho một đồ thị có <span class="arithmatex">$n$</span> đỉnh.
+Ta cần tính số lượng <span class="arithmatex">$G_n$</span> đồ thị có nhãn với <span class="arithmatex">$n$</span> đỉnh (có nhãn nghĩa là các đỉnh được đánh số từ <span class="arithmatex">$1$</span> đến <span class="arithmatex">$n$</span>).
+Các cạnh được coi là vô hướng; không cho phép khuyên và đa cạnh.</p>
+<p>Xét tập hợp tất cả các cạnh có thể có của đồ thị.
+Với mỗi cạnh <span class="arithmatex">$(i, j)$</span>, ta có thể giả sử <span class="arithmatex">$i &lt; j$</span> (vì đồ thị vô hướng và không có khuyên).
+Do đó tập hợp tất cả các cạnh có lực lượng <span class="arithmatex">$\binom{n}{2}$</span>, tức <span class="arithmatex">$\frac{n(n-1)}{2}$</span>.</p>
+<p>Vì mỗi đồ thị có nhãn được xác định duy nhất bởi các cạnh của nó, số đồ thị có nhãn với <span class="arithmatex">$n$</span> đỉnh bằng:</p>
 <div class="arithmatex">$$G_n = 2^{\frac{n(n-1)}{2}}$$</div>
-<h2 id="connected-labeled-graphs">Connected labeled graphs<a class="headerlink" href="#connected-labeled-graphs" title="Permanent link">&para;</a></h2>
-<p>Here, we additionally impose the restriction that the graph has to be connected.</p>
-<p>Let's denote the required number of connected graphs with <span class="arithmatex">$n$</span> vertices as <span class="arithmatex">$C_n$</span>.</p>
-<p>We will first discuss how many <strong>disconnected</strong> graphs exists.
-Then the number of connected graphs will be <span class="arithmatex">$G_n$</span> minus the number of disconnected graphs.
-Even more, we will count the number of <strong>disconnected, rooted graphs</strong>.A rooted graph is a graph, where we emphasize one vertex by labeling it as root.
-Obviously we have <span class="arithmatex">$n$</span> possibilities to root a graph with <span class="arithmatex">$n$</span> labeled vertices, therefore we will need to divide the number of disconnected rooted graphs by <span class="arithmatex">$n$</span> at the end to get the number of disconnected graphs.</p>
-<p>The root vertex will appear in a connected component of size <span class="arithmatex">$1, \dots n-1$</span>.
-There are <span class="arithmatex">$k \binom{n}{k} C_k G_{n-k}$</span> graphs such that the root vertex is in a connected component with <span class="arithmatex">$k$</span> vertices (there are <span class="arithmatex">$\binom{n}{k}$</span> ways to choose <span class="arithmatex">$k$</span> vertices for the component, these are connected in one of <span class="arithmatex">$C_k$</span> ways, the root vertex can be any of the <span class="arithmatex">$k$</span> vertices, and the remainder <span class="arithmatex">$n-k$</span> vertices can be connected/disconnected in any way, which gives a factor of <span class="arithmatex">$G_{n-k}$</span>).
-Therefore the number of disconnected graphs with <span class="arithmatex">$n$</span> vertices is:</p>
+<h2 id="o-thi-lien-thong-co-nhan">Đồ thị liên thông có nhãn<a class="headerlink" href="#o-thi-lien-thong-co-nhan" title="Permanent link">&para;</a></h2>
+<p>Ở đây, ta thêm điều kiện đồ thị phải liên thông.</p>
+<p>Gọi số đồ thị liên thông cần tìm với <span class="arithmatex">$n$</span> đỉnh là <span class="arithmatex">$C_n$</span>.</p>
+<p>Trước hết, ta xét có bao nhiêu đồ thị <strong>không liên thông</strong>.
+Khi đó số đồ thị liên thông bằng <span class="arithmatex">$G_n$</span> trừ đi số đồ thị không liên thông.
+Cụ thể hơn, ta sẽ đếm số <strong>đồ thị không liên thông có gốc</strong>. Đồ thị có gốc là đồ thị trong đó một đỉnh được chọn làm gốc.
+Rõ ràng có <span class="arithmatex">$n$</span> cách chọn gốc cho đồ thị có <span class="arithmatex">$n$</span> đỉnh được gán nhãn; vì vậy cuối cùng ta cần chia số đồ thị không liên thông có gốc cho <span class="arithmatex">$n$</span> để được số đồ thị không liên thông.</p>
+<p>Đỉnh gốc nằm trong một thành phần liên thông có kích thước thuộc <span class="arithmatex">$1, \dots n-1$</span>.
+Có <span class="arithmatex">$k \binom{n}{k} C_k G_{n-k}$</span> đồ thị mà đỉnh gốc nằm trong thành phần liên thông có <span class="arithmatex">$k$</span> đỉnh (có <span class="arithmatex">$\binom{n}{k}$</span> cách chọn <span class="arithmatex">$k$</span> đỉnh cho thành phần, nối chúng thành đồ thị liên thông theo một trong <span class="arithmatex">$C_k$</span> cách, chọn bất kỳ một trong <span class="arithmatex">$k$</span> đỉnh làm gốc, và nối hoặc không nối <span class="arithmatex">$n-k$</span> đỉnh còn lại tùy ý, tạo ra thừa số <span class="arithmatex">$G_{n-k}$</span>).
+Do đó số đồ thị không liên thông với <span class="arithmatex">$n$</span> đỉnh là:</p>
 <div class="arithmatex">$$\frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}$$</div>
-<p>And finally the number of connected graphs is:</p>
+<p>Cuối cùng, số đồ thị liên thông là:</p>
 <div class="arithmatex">$$C_n = G_n - \frac{1}{n} \sum_{k=1}^{n-1} k \binom{n}{k} C_k G_{n-k}$$</div>
-<h2 id="labeled-graphs-with-k-connected-components">Labeled graphs with <span class="arithmatex">$k$</span> connected components<a class="headerlink" href="#labeled-graphs-with-k-connected-components" title="Permanent link">&para;</a></h2>
-<p>Based on the formula from the previous section, we will learn how to count the number of labeled graphs with <span class="arithmatex">$n$</span> vertices and <span class="arithmatex">$k$</span> connected components.</p>
-<p>This number can be computed using dynamic programming.
-We will compute <span class="arithmatex">$D[i][j]$</span> - the number of labeled graphs with <span class="arithmatex">$i$</span> vertices and <span class="arithmatex">$j$</span> components - for each <span class="arithmatex">$i \le n$</span> and <span class="arithmatex">$j \le k$</span>.</p>
-<p>Let's discuss how to compute the next element <span class="arithmatex">$D[n][k]$</span> if we already know the previous values.
-We use a common approach, we take the last vertex (index <span class="arithmatex">$n$</span>).
-This vertex belongs to some component.
-If the size of this component be <span class="arithmatex">$s$</span>, then there are <span class="arithmatex">$\binom{n-1}{s-1}$</span> ways to choose such a set of vertices, and <span class="arithmatex">$C_s$</span> ways to connect them.After removing this component from the graph we have <span class="arithmatex">$n-s$</span> remaining vertices with <span class="arithmatex">$k-1$</span> connected components.
-Therefore we obtain the following recurrence relation:</p>
+<h2 id="o-thi-co-nhan-voi-k-thanh-phan-lien-thong">Đồ thị có nhãn với <span class="arithmatex">$k$</span> thành phần liên thông<a class="headerlink" href="#o-thi-co-nhan-voi-k-thanh-phan-lien-thong" title="Permanent link">&para;</a></h2>
+<p>Dựa trên công thức ở phần trước, ta sẽ tìm cách đếm số đồ thị có nhãn với <span class="arithmatex">$n$</span> đỉnh và <span class="arithmatex">$k$</span> thành phần liên thông.</p>
+<p>Có thể tính số này bằng quy hoạch động.
+Ta tính <span class="arithmatex">$D[i][j]$</span> — số đồ thị có nhãn với <span class="arithmatex">$i$</span> đỉnh và <span class="arithmatex">$j$</span> thành phần — với mỗi <span class="arithmatex">$i \le n$</span> và <span class="arithmatex">$j \le k$</span>.</p>
+<p>Xét cách tính phần tử tiếp theo <span class="arithmatex">$D[n][k]$</span> khi đã biết các giá trị trước đó.
+Ta dùng một cách tiếp cận phổ biến: lấy đỉnh cuối cùng (có chỉ số <span class="arithmatex">$n$</span>).
+Đỉnh này thuộc một thành phần nào đó.
+Nếu kích thước thành phần là <span class="arithmatex">$s$</span>, có <span class="arithmatex">$\binom{n-1}{s-1}$</span> cách chọn tập đỉnh như vậy và <span class="arithmatex">$C_s$</span> cách nối chúng thành đồ thị liên thông. Sau khi loại thành phần này khỏi đồ thị, còn lại <span class="arithmatex">$n-s$</span> đỉnh với <span class="arithmatex">$k-1$</span> thành phần liên thông.
+Vì vậy ta được công thức truy hồi sau:</p>
 <div class="arithmatex">$$D[n][k] = \sum_{s=1}^{n} \binom{n-1}{s-1} C_s D[n-s][k-1]$$</div>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (89.47%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (10.53%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

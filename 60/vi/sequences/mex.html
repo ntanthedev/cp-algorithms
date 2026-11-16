@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mex-minimal-excluded-of-a-sequence" class="md-skip">
+        <a href="#mex-so-khong-xuat-hien-nho-nhat-cua-mot-day" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7447,10 +7447,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7458,10 +7458,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#mex-with-array-updates" class="md-nav__link">
+  <a href="#mex-khi-cap-nhat-mang" class="md-nav__link">
     <span class="md-ellipsis">
       
-        MEX with array updates
+        MEX khi cập nhật mảng
       
     </span>
   </a>
@@ -7469,10 +7469,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap-luyen-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập luyện tập
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/sequences/mex.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/sequences/mex.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/sequences/mex.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/sequences/mex.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,18 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8002,8 +7990,8 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="mex-minimal-excluded-of-a-sequence">MEX (minimal excluded) of a sequence<a class="headerlink" href="#mex-minimal-excluded-of-a-sequence" title="Permanent link">&para;</a></h1>
-<p>Given an array <span class="arithmatex">$A$</span> of size <span class="arithmatex">$N$</span>. You have to find the minimal non-negative element that is not present in the array. That number is commonly called the <strong>MEX</strong> (minimal excluded).</p>
+<h1 id="mex-so-khong-xuat-hien-nho-nhat-cua-mot-day">MEX (số không xuất hiện nhỏ nhất) của một dãy<a class="headerlink" href="#mex-so-khong-xuat-hien-nho-nhat-cua-mot-day" title="Permanent link">&para;</a></h1>
+<p>Cho mảng <span class="arithmatex">$A$</span> gồm <span class="arithmatex">$N$</span> phần tử. Ta cần tìm số nguyên không âm nhỏ nhất không xuất hiện trong mảng. Số đó thường được gọi là <strong>MEX</strong> (minimal excluded).</p>
 <div class="arithmatex">$$
 \begin{align}
 \text{mex}(\{0, 1, 2, 4, 5\}) &amp;= 3 \\
@@ -8011,11 +7999,11 @@ Describe the issue of this article in detail.
 \text{mex}(\{1, 2, 3, 4, 5\}) &amp;= 0 \\
 \end{align}
 $$</div>
-<p>Notice, that the MEX of an array of size <span class="arithmatex">$N$</span> can never be bigger than <span class="arithmatex">$N$</span> itself.</p>
-<p>The easiest approach is to create a set of all elements in the array <span class="arithmatex">$A$</span>, so that we can quickly check if a number is part of the array or not.
-Then we can check all numbers from <span class="arithmatex">$0$</span> to <span class="arithmatex">$N$</span>, if the current number is not present in the set, return it.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>The following algorithm runs in <span class="arithmatex">$O(N \log N)$</span> time.</p>
+<p>Lưu ý rằng MEX của một mảng có kích thước <span class="arithmatex">$N$</span> không bao giờ lớn hơn <span class="arithmatex">$N$</span>.</p>
+<p>Cách đơn giản nhất là tạo một tập hợp chứa mọi phần tử của mảng <span class="arithmatex">$A$</span> để có thể kiểm tra nhanh một số có thuộc mảng hay không.
+Sau đó, ta kiểm tra các số từ <span class="arithmatex">$0$</span> đến <span class="arithmatex">$N$</span>; nếu số đang xét không thuộc tập hợp thì trả về số đó.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Thuật toán sau chạy trong thời gian <span class="arithmatex">$O(N \log N)$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">mex</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">set</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">(</span><span class="n">A</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
 
@@ -8025,8 +8013,8 @@ Then we can check all numbers from <span class="arithmatex">$0$</span> to <span 
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>If an algorithm requires a <span class="arithmatex">$O(N)$</span> MEX computation, it is possible by using a boolean vector instead of a set.
-Notice, that the array needs to be as big as the biggest possible array size.</p>
+<p>Nếu cần tính MEX trong <span class="arithmatex">$O(N)$</span>, ta có thể dùng mảng boolean thay cho tập hợp.
+Lưu ý rằng mảng này cần có kích thước tương ứng với kích thước lớn nhất có thể của mảng đầu vào.</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">mex</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">A</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">used</span><span class="p">[</span><span class="n">MAX_N</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">};</span>
 
@@ -8050,21 +8038,22 @@ Notice, that the array needs to be as big as the biggest possible array size.</p
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">result</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>This approach is fast, but only works well if you have to compute the MEX once.
-If you need to compute the MEX over and over, e.g. because your array keeps changing, then it is not effective.
-For that, we need something better.</p>
-<h2 id="mex-with-array-updates">MEX with array updates<a class="headerlink" href="#mex-with-array-updates" title="Permanent link">&para;</a></h2>
-<p>In the problem you need to change individual numbers in the array, and compute the new MEX of the array after each such update.</p>
-<p>There is a need for a better data structure that handles such queries efficiently.</p>
-<p>One approach would be take the frequency of each number from <span class="arithmatex">$0$</span> to <span class="arithmatex">$N$</span>, and build a tree-like data structure over it.
-E.g. a segment tree or a treap.
-Each node represents a range of numbers, and together to total frequency in the range, you additionally store the amount of distinct numbers in that range.
-It's possible to update this data structure in <span class="arithmatex">$O(\log N)$</span> time, and also find the MEX in <span class="arithmatex">$O(\log N)$</span> time, by doing a binary search for the MEX.
-If the node representing the range <span class="arithmatex">$[0, \lfloor N/2 \rfloor)$</span> doesn't contain <span class="arithmatex">$\lfloor N/2 \rfloor$</span> many distinct numbers, then one is missing and the MEX is smaller than <span class="arithmatex">$\lfloor N/2 \rfloor$</span>, and you can recurse in the left branch of the tree. Otherwise it is at least <span class="arithmatex">$\lfloor N/2 \rfloor$</span>, and you can recurse in the right branch of the tree.</p>
-<p>It's also possible to use the standard library data structures <code>map</code> and <code>set</code> (based on an approach explained <a href="https://codeforces.com/blog/entry/81287?#comment-677837">here</a>).
-With a <code>map</code> we will remember the frequency of each number, and with the <code>set</code> we represent the numbers that are currently missing from the array.
-Since a <code>set</code> is ordered, <code>*set.begin()</code> will be the MEX.
-In total we need <span class="arithmatex">$O(N \log N)$</span> precomputation, and afterwards the MEX can be computed in <span class="arithmatex">$O(1)$</span> and an update can be performed in <span class="arithmatex">$O(\log N)$</span>.</p>
+<p>Ghi chú bản dịch: Đoạn code trên giả sử các phần tử không âm và kích thước đầu vào không vượt quá MAX_N. Nếu có phần tử âm, phép truy cập used[x] vượt phạm vi mảng.</p>
+<p>Cách này nhanh, nhưng chỉ hoạt động tốt khi cần tính MEX một lần.
+Nếu cần tính MEX nhiều lần, ví dụ do mảng liên tục thay đổi, cách này không hiệu quả.
+Khi đó ta cần một cách tốt hơn.</p>
+<h2 id="mex-khi-cap-nhat-mang">MEX khi cập nhật mảng<a class="headerlink" href="#mex-khi-cap-nhat-mang" title="Permanent link">&para;</a></h2>
+<p>Trong bài toán này, ta cần thay đổi từng phần tử của mảng và tính MEX mới sau mỗi lần cập nhật.</p>
+<p>Ta cần một cấu trúc dữ liệu tốt hơn để xử lý các truy vấn này hiệu quả.</p>
+<p>Một cách là lấy tần suất của từng số từ <span class="arithmatex">$0$</span> đến <span class="arithmatex">$N$</span> rồi xây dựng một cấu trúc dữ liệu dạng cây trên đó.
+Ví dụ, ta có thể dùng cây đoạn hoặc treap.
+Mỗi nút biểu diễn một khoảng các số; ngoài tổng tần suất trong khoảng, ta lưu thêm số lượng giá trị phân biệt trong khoảng đó.
+Có thể cập nhật cấu trúc này trong <span class="arithmatex">$O(\log N)$</span> và tìm MEX trong <span class="arithmatex">$O(\log N)$</span> bằng tìm kiếm nhị phân trên cây.
+Nếu nút biểu diễn khoảng <span class="arithmatex">$[0, \lfloor N/2 \rfloor)$</span> không chứa đủ <span class="arithmatex">$\lfloor N/2 \rfloor$</span> số phân biệt, thì có một số bị thiếu và MEX nhỏ hơn <span class="arithmatex">$\lfloor N/2 \rfloor$</span>; ta tiếp tục đệ quy ở nhánh trái. Ngược lại, MEX ít nhất bằng <span class="arithmatex">$\lfloor N/2 \rfloor$</span> và ta tiếp tục ở nhánh phải.</p>
+<p>Ta cũng có thể dùng các cấu trúc <code>map</code> và <code>set</code> trong thư viện chuẩn (dựa trên cách được giải thích <a href="https://codeforces.com/blog/entry/81287?#comment-677837">tại đây</a>).
+Ta dùng <code>map</code> để lưu tần suất mỗi số và <code>set</code> để biểu diễn các số hiện không có trong mảng.
+Vì <code>set</code> được sắp thứ tự, <code>*set.begin()</code> sẽ là MEX.
+Tổng thời gian tiền xử lý là <span class="arithmatex">$O(N \log N)$</span>; sau đó có thể lấy MEX trong <span class="arithmatex">$O(1)$</span> và thực hiện một lần cập nhật trong <span class="arithmatex">$O(\log N)$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Mex</span><span class="w"> </span><span class="p">{</span>
 <span class="k">private</span><span class="o">:</span>
 <span class="w">    </span><span class="n">map</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">frequency</span><span class="p">;</span>
@@ -8095,7 +8084,8 @@ In total we need <span class="arithmatex">$O(N \log N)$</span> precomputation, a
 <span class="w">    </span><span class="p">}</span>
 <span class="p">};</span>
 </code></pre></div>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<p>Ghi chú bản dịch: Trong Mex::update, nếu giá trị cũ nằm ngoài đoạn từ 0 đến N, code vẫn đưa nó vào missing_numbers khi tần suất về 0. Vì vậy ví dụ này cần giả sử các giá trị cập nhật và ban đầu nằm trong đoạn đó; nếu không, tập hợp có thể chứa số âm và trả về MEX sai.</p>
+<h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://atcoder.jp/contests/hhkb2020/tasks/hhkb2020_c">AtCoder: Neq Min</a></li>
 <li><a href="https://codeforces.com/contest/1935/problem/B">Codeforces: Informatics in MAC</a></li>
@@ -8106,7 +8096,7 @@ In total we need <span class="arithmatex">$O(N \log N)$</span> precomputation, a
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (78.57%)</li><li><a href="#" title="Alex Maksimov" data-bi-name="contributorprofile" target="_blank">Alex Maksimov</a> (19.05%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (1.59%)</li><li><a href="#" title="Harsh Kumar" data-bi-name="contributorprofile" target="_blank">Harsh Kumar</a> (0.79%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

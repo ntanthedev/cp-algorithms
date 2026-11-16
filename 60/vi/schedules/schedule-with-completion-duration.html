@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#optimal-schedule-of-jobs-given-their-deadlines-and-durations" class="md-skip">
+        <a href="#lap-lich-toi-uu-cho-cac-cong-viec-co-thoi-han-va-thoi-luong" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7697,10 +7697,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#solving" class="md-nav__link">
+  <a href="#loi-giai" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solving
+        Lời giải
       
     </span>
   </a>
@@ -7708,10 +7708,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/schedules/schedule-with-completion-duration.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/schedules/schedule-with-completion-duration.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/schedules/schedule-with-completion-duration.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/schedules/schedule-with-completion-duration.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,14 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -7999,15 +7991,16 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="optimal-schedule-of-jobs-given-their-deadlines-and-durations">Optimal schedule of jobs given their deadlines and durations<a class="headerlink" href="#optimal-schedule-of-jobs-given-their-deadlines-and-durations" title="Permanent link">&para;</a></h1>
-<p>Suppose, we have a set of jobs, and we are aware of every job’s deadline and its duration. The execution of a job cannot be interrupted prior to its ending. It is required to create such a schedule to accomplish the biggest number of jobs.</p>
-<h2 id="solving">Solving<a class="headerlink" href="#solving" title="Permanent link">&para;</a></h2>
-<p>The algorithm of the solving is <strong>greedy</strong>. Let’s sort all the jobs by their deadlines and look at them in descending order. Also, let’s create a queue <span class="arithmatex">$q$</span>, in which we’ll gradually put the jobs and extract one with the least run-time (for instance, we can use set or priority_queue). Initially, <span class="arithmatex">$q$</span> is empty.</p>
-<p>Suppose, we’re looking at the <span class="arithmatex">$i$</span>-th job. First of all, let’s put it into <span class="arithmatex">$q$</span>. Let’s consider the period of time between the deadline of <span class="arithmatex">$i$</span>-th job and the deadline of <span class="arithmatex">$i-1$</span>-th job. That is the segment of some length <span class="arithmatex">$T$</span>. We will extract jobs from <span class="arithmatex">$q$</span> (in their left duration ascending order) and execute them until the whole segment <span class="arithmatex">$T$</span> is filled. Important: if at any moment of time the extracted job can only be partly executed until segment <span class="arithmatex">$T$</span> is filled, then we execute this job partly just as far as possible, i.e., during the <span class="arithmatex">$T$</span>-time, and we put the remaining part of a job back into <span class="arithmatex">$q$</span>.</p>
-<p>On the algorithm’s completion we’ll choose the optimal solution (or, at least, one of several solutions). The running time of algorithm is <span class="arithmatex">$O(n \log n)$</span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>The following function takes a vector of jobs (consisting of a deadline, a duration, and the job's index) and computes a vector containing all indices of the used jobs in the optimal schedule.
-Notice that you still need to sort these jobs by their deadline, if you want to write down the plan explicitly.</p>
+<h1 id="lap-lich-toi-uu-cho-cac-cong-viec-co-thoi-han-va-thoi-luong">Lập lịch tối ưu cho các công việc có thời hạn và thời lượng<a class="headerlink" href="#lap-lich-toi-uu-cho-cac-cong-viec-co-thoi-han-va-thoi-luong" title="Permanent link">&para;</a></h1>
+<p>Giả sử ta có một tập công việc, biết thời hạn và thời lượng của mỗi công việc. Một công việc đã bắt đầu thì không thể bị ngắt trước khi kết thúc. Cần lập lịch để hoàn thành được nhiều công việc nhất.</p>
+<h2 id="loi-giai">Lời giải<a class="headerlink" href="#loi-giai" title="Permanent link">&para;</a></h2>
+<p>Thuật toán sử dụng phương pháp <strong>tham lam</strong>. Sắp xếp tất cả công việc theo thời hạn và xét theo thứ tự giảm dần. Ta cũng tạo một hàng đợi <span class="arithmatex">$q$</span>, lần lượt đưa các công việc vào đó và lấy ra công việc có thời gian chạy nhỏ nhất (chẳng hạn có thể dùng set hoặc priority_queue). Ban đầu, <span class="arithmatex">$q$</span> rỗng.</p>
+<p>Giả sử ta đang xét công việc thứ <span class="arithmatex">$i$</span>. Trước hết đưa nó vào <span class="arithmatex">$q$</span>. Xét khoảng thời gian giữa thời hạn của công việc thứ <span class="arithmatex">$i$</span> và thời hạn của công việc thứ <span class="arithmatex">$i-1$</span>. Khoảng này có độ dài <span class="arithmatex">$T$</span>. Ta lấy các công việc ra khỏi <span class="arithmatex">$q$</span> (theo thứ tự tăng dần của thời lượng còn lại) và thực hiện cho đến khi lấp đầy khoảng <span class="arithmatex">$T$</span>. Lưu ý: nếu tại một thời điểm, công việc được lấy ra chỉ có thể thực hiện một phần trước khi khoảng <span class="arithmatex">$T$</span> được lấp đầy, ta thực hiện nó nhiều nhất có thể, tức là trong thời gian <span class="arithmatex">$T$</span>, rồi đưa phần còn lại của công việc trở lại <span class="arithmatex">$q$</span>.</p>
+<p><strong>Ghi chú bản dịch:</strong> Việc chia thời lượng ở đây là bước tính toán khi xét ngược các khoảng thời gian, không có nghĩa lịch thực tế được phép ngắt công việc. Sau khi chọn xong tập công việc, có thể sắp xếp chúng theo thời hạn để lập lịch không ngắt như phần cài đặt nêu.</p>
+<p>Khi thuật toán kết thúc, ta sẽ chọn được lời giải tối ưu (hoặc ít nhất là một trong nhiều lời giải tối ưu). Thời gian chạy của thuật toán là <span class="arithmatex">$O(n \log n)$</span>.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Hàm sau nhận một vector các công việc (gồm thời hạn, thời lượng và chỉ số của công việc) và tính vector chứa mọi chỉ số của các công việc được dùng trong lịch tối ưu.
+Lưu ý rằng bạn vẫn cần sắp xếp các công việc này theo thời hạn nếu muốn viết lịch một cách tường minh.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Job</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">deadline</span><span class="p">,</span><span class="w"> </span><span class="n">duration</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">;</span>
 
@@ -8042,7 +8035,7 @@ Notice that you still need to sort these jobs by their deadline, if you want to 
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (45.45%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (43.64%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (10.91%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

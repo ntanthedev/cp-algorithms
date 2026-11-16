@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#calculating-the-determinant-of-a-matrix-by-gauss" class="md-skip">
+        <a href="#tinh-inh-thuc-ma-tran-bang-phuong-phap-gauss" class="md-skip">
           Bỏ qua
         </a>
       
@@ -3335,10 +3335,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#algorithm" class="md-nav__link">
+  <a href="#thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Algorithm
+        Thuật toán
       
     </span>
   </a>
@@ -3346,10 +3346,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -3357,10 +3357,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap-thuc-hanh" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập thực hành
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/linear_algebra/determinant-gauss.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/linear_algebra/determinant-gauss.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/linear_algebra/determinant-gauss.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/linear_algebra/determinant-gauss.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,22 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8018,14 +8002,14 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="calculating-the-determinant-of-a-matrix-by-gauss">Calculating the determinant of a matrix by Gauss<a class="headerlink" href="#calculating-the-determinant-of-a-matrix-by-gauss" title="Permanent link">&para;</a></h1>
-<p>Problem: Given a matrix <span class="arithmatex">$A$</span> of size <span class="arithmatex">$N \times N$</span>. Compute its determinant.</p>
-<h2 id="algorithm">Algorithm<a class="headerlink" href="#algorithm" title="Permanent link">&para;</a></h2>
-<p>We use the ideas of <a href="linear-system-gauss.html">Gauss method for solving systems of linear equations</a></p>
-<p>We will perform the same steps as in the solution of systems of linear equations, excluding only the division of the current line to <span class="arithmatex">$a_{ij}$</span>. These operations will not change the absolute value of the determinant of the matrix. When we exchange two lines of the matrix, however, the sign of the determinant can change.</p>
-<p>After applying Gauss on the matrix, we receive a diagonal matrix, whose determinant is just the product of the elements on the diagonal. The sign, as previously mentioned, can be determined by the number of exchanged rows (if odd, then the sign of the determinant should be reversed). Thus, we can use the Gauss algorithm to compute the determinant of the matrix in complexity <span class="arithmatex">$O(N^3)$</span>.</p>
-<p>It should be noted that if at some point, we do not find non-zero cell in current column, the algorithm should stop and returns 0.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<h1 id="tinh-inh-thuc-ma-tran-bang-phuong-phap-gauss">Tính định thức ma trận bằng phương pháp Gauss<a class="headerlink" href="#tinh-inh-thuc-ma-tran-bang-phuong-phap-gauss" title="Permanent link">&para;</a></h1>
+<p>Bài toán: Cho ma trận <span class="arithmatex">$A$</span> kích thước <span class="arithmatex">$N \times N$</span>. Hãy tính định thức của ma trận.</p>
+<h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Ta sử dụng ý tưởng của <a href="linear-system-gauss.html">phương pháp Gauss để giải hệ phương trình tuyến tính</a>.</p>
+<p>Ta thực hiện các bước như khi giải hệ phương trình tuyến tính, chỉ bỏ thao tác chia hàng hiện tại cho <span class="arithmatex">$a_{ij}$</span>. Các phép biến đổi này không làm thay đổi giá trị tuyệt đối của định thức ma trận. Tuy nhiên, khi đổi chỗ hai hàng, dấu của định thức có thể thay đổi.</p>
+<p>Sau khi áp dụng phép khử Gauss, ta thu được ma trận đường chéo; định thức của ma trận này bằng tích các phần tử trên đường chéo. Như đã nói, dấu được xác định bởi số lần đổi chỗ hàng: nếu số lần này lẻ thì ta đổi dấu định thức. Do đó, thuật toán Gauss tính định thức có độ phức tạp <span class="arithmatex">$O(N^3)$</span>.</p>
+<p>Lưu ý rằng nếu tại một bước nào đó không tìm được ô khác 0 trong cột hiện tại, xét từ hàng hiện tại trở xuống, thuật toán phải dừng và trả về 0.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">EPS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1E-9</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
 <span class="n">vector</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">));</span>
@@ -8054,14 +8038,14 @@ Describe the issue of this article in detail.
 
 <span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">det</span><span class="p">;</span>
 </code></pre></div>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap-thuc-hanh">Bài tập thực hành<a class="headerlink" href="#bai-tap-thuc-hanh" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://codeforces.com/contest/167/problem/E">Codeforces - Wizards and Bets</a></li>
 </ul>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="thanhtnguyen" data-bi-name="contributorprofile" target="_blank">thanhtnguyen</a> (77.78%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (11.11%)</li><li><a href="#" title="Bhuvnesh Jain" data-bi-name="contributorprofile" target="_blank">Bhuvnesh Jain</a> (5.56%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (3.7%)</li><li><a href="#" title="Turfa Auliarachman" data-bi-name="contributorprofile" target="_blank">Turfa Auliarachman</a> (1.85%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

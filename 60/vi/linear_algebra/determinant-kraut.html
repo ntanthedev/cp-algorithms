@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#calculating-the-determinant-using-kraut-method-in-on3" class="md-skip">
+        <a href="#tinh-inh-thuc-bang-phuong-phap-kraut-trong-on3" class="md-skip">
           Bỏ qua
         </a>
       
@@ -3363,10 +3363,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7928,13 +7928,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/linear_algebra/determinant-kraut.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/linear_algebra/determinant-kraut.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/linear_algebra/determinant-kraut.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/linear_algebra/determinant-kraut.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7945,18 +7945,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -7980,28 +7968,30 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="calculating-the-determinant-using-kraut-method-in-on3">Calculating the determinant using Kraut method in <span class="arithmatex">$O(N^3)$</span><a class="headerlink" href="#calculating-the-determinant-using-kraut-method-in-on3" title="Permanent link">&para;</a></h1>
-<p>In this article, we'll describe how to find the determinant of the matrix using Kraut method, which works in <span class="arithmatex">$O(N^3)$</span>.</p>
-<p>The Kraut algorithm finds decomposition of matrix <span class="arithmatex">$A$</span> as <span class="arithmatex">$A = L U$</span> where <span class="arithmatex">$L$</span> is lower triangular and <span class="arithmatex">$U$</span> is upper triangular matrix. Without loss of generality, we can assume that all the diagonal elements of <span class="arithmatex">$L$</span> are equal to 1. Once we know these matrices, it is easy to calculate the determinant of <span class="arithmatex">$A$</span>: it is equal to the product of all the elements on the main diagonal of the matrix <span class="arithmatex">$U$</span>.</p>
-<p>There is a theorem stating that any invertible matrix has a LU-decomposition, and it is unique, if and only if all its principle minors are non-zero. We consider only such decomposition in which the diagonal of matrix <span class="arithmatex">$L$</span> consists of ones.</p>
-<p>Let <span class="arithmatex">$A$</span> be the matrix and <span class="arithmatex">$N$</span> - its size. We will find the elements of the matrices <span class="arithmatex">$L$</span> and <span class="arithmatex">$U$</span> using the following steps:</p>
+<h1 id="tinh-inh-thuc-bang-phuong-phap-kraut-trong-on3">Tính định thức bằng phương pháp Kraut trong <span class="arithmatex">$O(N^3)$</span><a class="headerlink" href="#tinh-inh-thuc-bang-phuong-phap-kraut-trong-on3" title="Permanent link">&para;</a></h1>
+<p>Trong bài này, ta sẽ mô tả cách tìm định thức của ma trận bằng phương pháp Kraut với độ phức tạp <span class="arithmatex">$O(N^3)$</span>.</p>
+<p>Thuật toán Kraut tìm phép phân tích ma trận <span class="arithmatex">$A$</span> thành <span class="arithmatex">$A = L U$</span>, trong đó <span class="arithmatex">$L$</span> là ma trận tam giác dưới và <span class="arithmatex">$U$</span> là ma trận tam giác trên. Không mất tính tổng quát, ta có thể giả sử mọi phần tử trên đường chéo của <span class="arithmatex">$L$</span> đều bằng 1. Khi đã biết hai ma trận này, ta dễ dàng tính được định thức của <span class="arithmatex">$A$</span>: đó là tích các phần tử trên đường chéo chính của ma trận <span class="arithmatex">$U$</span>.</p>
+<p>Có một định lý phát biểu rằng một ma trận khả nghịch có phép phân tích LU và phép phân tích đó là duy nhất khi và chỉ khi tất cả các định thức con chính của nó đều khác không. Ta chỉ xét phép phân tích trong đó đường chéo của ma trận <span class="arithmatex">$L$</span> gồm các số một.</p>
+<p><strong>Ghi chú của người dịch:</strong> Điều kiện chuẩn cho phép phân tích LU duy nhất thuộc dạng này là các định thức con chính đầu đều khác không; yêu cầu mọi định thức con chính khác không là mạnh hơn mức cần thiết. Chẳng hạn, ma trận gồm hai hàng (1, 1) và (1, 0) vẫn có phân tích LU duy nhất dù định thức con chính ở hàng và cột thứ hai bằng không.</p>
+<p>Gọi <span class="arithmatex">$A$</span> là ma trận và <span class="arithmatex">$N$</span> là kích thước của nó. Ta sẽ tìm các phần tử của ma trận <span class="arithmatex">$L$</span> và <span class="arithmatex">$U$</span> theo các bước sau:</p>
 <ol>
-<li>Let <span class="arithmatex">$L_{i i} = 1$</span> for <span class="arithmatex">$i = 1, 2, ..., N$</span>.</li>
+<li>Đặt <span class="arithmatex">$L_{i i} = 1$</span> với <span class="arithmatex">$i = 1, 2, ..., N$</span>.</li>
 <li>
-<p>For each <span class="arithmatex">$j = 1, 2, ..., N$</span> perform:</p>
+<p>Với mỗi <span class="arithmatex">$j = 1, 2, ..., N$</span>, thực hiện:</p>
 <ul>
 <li>
-<p>For <span class="arithmatex">$i = 1, 2, ..., j$</span> find values </p>
+<p>Với <span class="arithmatex">$i = 1, 2, ..., j$</span>, tìm các giá trị</p>
 <div class="arithmatex">$$U_{ij} = A_{ij} - \sum_{k=1}^{i-1} L_{ik} \cdot U_{kj}$$</div>
 </li>
 <li>
-<p>Next, for <span class="arithmatex">$i = j+1, j+2, ..., N$</span> find values</p>
+<p>Tiếp theo, với <span class="arithmatex">$i = j+1, j+2, ..., N$</span>, tìm các giá trị</p>
 <div class="arithmatex">$$L_{ij} = \frac{1}{U_{jj}} \left(A_{ij} - \sum_{k=1}^{j-1} L_{ik} \cdot U_{kj} \right).$$</div>
 </li>
 </ul>
 </li>
 </ol>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p><strong>Ghi chú của người dịch:</strong> Mã nguồn có thể trả kết quả sai ngay cả với ma trận có định thức khác không: ma trận một phần tử âm bị nhận nhầm là có hàng toàn không vì vòng kiểm tra chỉ tìm phần tử dương. Kết quả còn được làm tròn thành số nguyên và mọi ngoại lệ đều khiến hàm trả về không.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">static</span><span class="w"> </span><span class="n">BigInteger</span><span class="w"> </span><span class="nf">det</span><span class="w"> </span><span class="p">(</span><span class="n">BigDecimal</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">[][]</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 
@@ -8087,7 +8077,7 @@ Describe the issue of this article in detail.
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="thanhtnguyen" data-bi-name="contributorprofile" target="_blank">thanhtnguyen</a> (85.45%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (7.27%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (5.45%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (1.82%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

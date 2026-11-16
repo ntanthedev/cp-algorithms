@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#garners-algorithm" class="md-skip">
+        <a href="#thuat-toan-garner" class="md-skip">
           Bỏ qua
         </a>
       
@@ -1254,10 +1254,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#mixed-radix-representation" class="md-nav__link">
+  <a href="#bieu-dien-co-so-hon-hop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Mixed Radix Representation
+        Biểu diễn cơ số hỗn hợp
       
     </span>
   </a>
@@ -1265,10 +1265,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#garners-algorithm_1" class="md-nav__link">
+  <a href="#thuat-toan-garner_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Garner's algorithm
+        Thuật toán Garner
       
     </span>
   </a>
@@ -1276,10 +1276,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-of-garners-algorithm" class="md-nav__link">
+  <a href="#cai-at-thuat-toan-garner" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation of Garner's Algorithm
+        Cài đặt thuật toán Garner
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/algebra/garners-algorithm.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/algebra/garners-algorithm.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/algebra/garners-algorithm.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/algebra/garners-algorithm.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,18 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -7996,41 +7984,41 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="garners-algorithm">Garner's algorithm<a class="headerlink" href="#garners-algorithm" title="Permanent link">&para;</a></h1>
-<p>A consequence of the <a href="chinese-remainder-theorem.html">Chinese Remainder Theorem</a> is, that we can represent big numbers using an array of small integers.
-For example, let <span class="arithmatex">$p$</span> be the product of the first <span class="arithmatex">$1000$</span> primes. <span class="arithmatex">$p$</span> has around <span class="arithmatex">$3000$</span> digits.</p>
-<p>Any number <span class="arithmatex">$a$</span> less than <span class="arithmatex">$p$</span> can be represented as an array  <span class="arithmatex">$a_1, \ldots, a_k$</span>, where <span class="arithmatex">$a_i \equiv a \pmod{p_i}$</span>.
-But to do this we obviously need to know how to get back the number <span class="arithmatex">$a$</span> from its representation.
-One way is discussed in the article about the Chinese Remainder Theorem.</p>
-<p>In this article we discuss an alternative, Garner's Algorithm, which can also be used for this purpose.</p>
-<h2 id="mixed-radix-representation">Mixed Radix Representation<a class="headerlink" href="#mixed-radix-representation" title="Permanent link">&para;</a></h2>
-<p>We can represent the number <span class="arithmatex">$a$</span> in the <strong>mixed radix</strong> representation:</p>
+<h1 id="thuat-toan-garner">Thuật toán Garner<a class="headerlink" href="#thuat-toan-garner" title="Permanent link">&para;</a></h1>
+<p>Một hệ quả của <a href="chinese-remainder-theorem.html">Định lý phần dư Trung Hoa</a> là ta có thể biểu diễn các số lớn bằng một mảng số nguyên nhỏ.
+Ví dụ, gọi <span class="arithmatex">$p$</span> là tích của <span class="arithmatex">$1000$</span> số nguyên tố đầu tiên. <span class="arithmatex">$p$</span> có khoảng <span class="arithmatex">$3000$</span> chữ số.</p>
+<p>Mọi số <span class="arithmatex">$a$</span> nhỏ hơn <span class="arithmatex">$p$</span> đều có thể biểu diễn bằng mảng <span class="arithmatex">$a_1, \ldots, a_k$</span>, trong đó <span class="arithmatex">$a_i \equiv a \pmod{p_i}$</span>.
+Tuy nhiên, để làm được điều này, ta cần biết cách khôi phục số <span class="arithmatex">$a$</span> từ biểu diễn đó.
+Một cách được trình bày trong bài về Định lý phần dư Trung Hoa.</p>
+<p>Trong bài này, ta xét một cách khác cũng có thể dùng để khôi phục số: thuật toán Garner.</p>
+<h2 id="bieu-dien-co-so-hon-hop">Biểu diễn cơ số hỗn hợp<a class="headerlink" href="#bieu-dien-co-so-hon-hop" title="Permanent link">&para;</a></h2>
+<p>Ta có thể biểu diễn số <span class="arithmatex">$a$</span> dưới dạng <strong>cơ số hỗn hợp</strong>:</p>
 <div class="arithmatex">$$a = x_1 + x_2 p_1 + x_3 p_1 p_2 + \ldots + x_k p_1 \cdots p_{k-1} \text{ with }x_i \in [0, p_i)$$</div>
-<p>A mixed radix representation is a positional numeral system, that's a generalization of the typical number systems, like the binary numeral system or the decimal numeral system.
-For instance, the decimal numeral system is a positional numeral system with the radix (or base) 10.
-Every number is represented as a string of digits <span class="arithmatex">$d_1 d_2 d_3 \dots d_n$</span> between <span class="arithmatex">$0$</span> and <span class="arithmatex">$9$</span>. For example, the string <span class="arithmatex">$415$</span> represents the number <span class="arithmatex">$4 \cdot 10^2 + 1 \cdot 10^1 + 5 \cdot 10^0$</span>.
-In general the string of digits <span class="arithmatex">$d_1 d_2 d_3 \dots d_n$</span> represents the number <span class="arithmatex">$d_1 b^{n-1} + d_2 b^{n-2} + \cdots + d_n b^0$</span> in the positional numeral system with radix <span class="arithmatex">$b$</span>.</p>
-<p>In a mixed radix system, we don't have one radix any more. The base varies from position to position.</p>
-<h2 id="garners-algorithm_1">Garner's algorithm<a class="headerlink" href="#garners-algorithm_1" title="Permanent link">&para;</a></h2>
-<p>Garner's algorithm computes the digits <span class="arithmatex">$x_1, \ldots, x_k$</span>.
-Notice, that the digits are relatively small.
-The digit <span class="arithmatex">$x_i$</span> is an integer between <span class="arithmatex">$0$</span> and <span class="arithmatex">$p_i - 1$</span>.</p>
-<p>Let <span class="arithmatex">$r_{ij}$</span> denote the inverse of <span class="arithmatex">$p_i$</span> modulo <span class="arithmatex">$p_j$</span></p>
+<p>Biểu diễn cơ số hỗn hợp là một hệ đếm theo vị trí, tổng quát hóa các hệ đếm quen thuộc như hệ nhị phân và hệ thập phân.
+Chẳng hạn, hệ thập phân là hệ đếm theo vị trí với cơ số 10.
+Mỗi số được biểu diễn bằng một dãy chữ số <span class="arithmatex">$d_1 d_2 d_3 \dots d_n$</span> từ <span class="arithmatex">$0$</span> đến <span class="arithmatex">$9$</span>. Ví dụ, dãy <span class="arithmatex">$415$</span> biểu diễn số <span class="arithmatex">$4 \cdot 10^2 + 1 \cdot 10^1 + 5 \cdot 10^0$</span>.
+Tổng quát, dãy chữ số <span class="arithmatex">$d_1 d_2 d_3 \dots d_n$</span> biểu diễn số <span class="arithmatex">$d_1 b^{n-1} + d_2 b^{n-2} + \cdots + d_n b^0$</span> trong hệ đếm theo vị trí với cơ số <span class="arithmatex">$b$</span>.</p>
+<p>Trong hệ cơ số hỗn hợp, ta không còn dùng một cơ số duy nhất. Cơ số thay đổi theo từng vị trí.</p>
+<h2 id="thuat-toan-garner_1">Thuật toán Garner<a class="headerlink" href="#thuat-toan-garner_1" title="Permanent link">&para;</a></h2>
+<p>Thuật toán Garner tính các chữ số <span class="arithmatex">$x_1, \ldots, x_k$</span>.
+Lưu ý rằng các chữ số này tương đối nhỏ.
+Chữ số <span class="arithmatex">$x_i$</span> là một số nguyên từ <span class="arithmatex">$0$</span> đến <span class="arithmatex">$p_i - 1$</span>.</p>
+<p>Gọi <span class="arithmatex">$r_{ij}$</span> là nghịch đảo của <span class="arithmatex">$p_i$</span> theo modulo <span class="arithmatex">$p_j$</span></p>
 <div class="arithmatex">$$r_{ij} = (p_i)^{-1} \pmod{p_j}$$</div>
-<p>which can be found using the algorithm described in <a href="module-inverse.html">Modular Inverse</a>.</p>
-<p>Substituting <span class="arithmatex">$a$</span> from the mixed radix representation into the first congruence equation we obtain</p>
+<p>Ta có thể tìm giá trị này bằng thuật toán trong bài <a href="module-inverse.html">Nghịch đảo modulo</a>.</p>
+<p>Thay biểu diễn cơ số hỗn hợp của <span class="arithmatex">$a$</span> vào phương trình đồng dư thứ nhất, ta được</p>
 <div class="arithmatex">$$a_1 \equiv x_1 \pmod{p_1}.$$</div>
-<p>Substituting into the second equation yields</p>
+<p>Thay vào phương trình thứ hai, ta được</p>
 <div class="arithmatex">$$a_2 \equiv x_1 + x_2 p_1 \pmod{p_2},$$</div>
-<p>which can be rewritten by subtracting <span class="arithmatex">$x_1$</span> and dividing by <span class="arithmatex">$p_1$</span> to get</p>
+<p>trừ <span class="arithmatex">$x_1$</span> rồi chia cho <span class="arithmatex">$p_1$</span> cho ta</p>
 <div class="arithmatex">$$\begin{array}{rclr}
     a_2 - x_1 &amp;\equiv&amp; x_2 p_1 &amp;\pmod{p_2} \\
     (a_2 - x_1) r_{12} &amp;\equiv&amp; x_2 &amp;\pmod{p_2} \\
     x_2 &amp;\equiv&amp; (a_2 - x_1) r_{12} &amp;\pmod{p_2}
 \end{array}$$</div>
-<p>Similarly we get that</p>
+<p>Tương tự, ta được</p>
 <div class="arithmatex">$$x_3 \equiv ((a_3 - x_1) r_{13} - x_2) r_{23} \pmod{p_3}.$$</div>
-<p>Now, we can clearly see an emerging pattern, which can be expressed by the following code:</p>
+<p>Ta có thể thấy quy luật và biểu diễn nó bằng đoạn mã sau:</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">k</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">i</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8042,15 +8030,15 @@ The digit <span class="arithmatex">$x_i$</span> is an integer between <span clas
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>So we learned how to calculate digits <span class="arithmatex">$x_i$</span> in <span class="arithmatex">$O(k^2)$</span> time. The number <span class="arithmatex">$a$</span> can now be calculated using the previously mentioned formula</p>
+<p>Như vậy ta đã tính được các chữ số <span class="arithmatex">$x_i$</span> trong thời gian <span class="arithmatex">$O(k^2)$</span>. Giờ có thể tính số <span class="arithmatex">$a$</span> bằng công thức đã nêu</p>
 <div class="arithmatex">$$a = x_1 + x_2 \cdot p_1 + x_3 \cdot p_1 \cdot p_2 + \ldots + x_k \cdot p_1 \cdots p_{k-1}$$</div>
-<p>It is worth noting that in practice, we almost probably need to compute the answer <span class="arithmatex">$a$</span> using <a href="big-integer.html">Arbitrary-Precision Arithmetic</a>, but the digits <span class="arithmatex">$x_i$</span> (because they are small) can usually be calculated using built-in types, and therefore Garner's algorithm is very efficient.</p>
-<h2 id="implementation-of-garners-algorithm">Implementation of Garner's Algorithm<a class="headerlink" href="#implementation-of-garners-algorithm" title="Permanent link">&para;</a></h2>
-<p>It is convenient to implement this algorithm using Java, because it has built-in support for large numbers through the <code>BigInteger</code> class.</p>
-<p>Here we show an implementation that can store big numbers in the form of a set of congruence equations.
-It supports addition, subtraction and multiplication.
-And with Garner's algorithm we can convert the set of equations into the unique integer.
-In this code, we take 100 prime numbers greater than <span class="arithmatex">$10^9$</span>, which allows representing numbers as large as <span class="arithmatex">$10^{900}$</span>.</p>
+<p>Trong thực tế, gần như chắc chắn ta phải dùng <a href="big-integer.html">số học độ chính xác tùy ý</a> để tính kết quả <span class="arithmatex">$a$</span>. Tuy nhiên, các chữ số <span class="arithmatex">$x_i$</span> thường tính được bằng kiểu dữ liệu có sẵn vì chúng nhỏ, do đó thuật toán Garner rất hiệu quả.</p>
+<h2 id="cai-at-thuat-toan-garner">Cài đặt thuật toán Garner<a class="headerlink" href="#cai-at-thuat-toan-garner" title="Permanent link">&para;</a></h2>
+<p>Java thuận tiện để cài đặt thuật toán này vì hỗ trợ số lớn thông qua lớp <code>BigInteger</code>.</p>
+<p>Dưới đây là một cài đặt lưu số lớn dưới dạng một hệ phương trình đồng dư.
+Cài đặt hỗ trợ phép cộng, trừ và nhân.
+Ta có thể dùng thuật toán Garner để chuyển hệ phương trình thành số nguyên duy nhất tương ứng.
+Trong mã này, ta dùng 100 số nguyên tố lớn hơn <span class="arithmatex">$10^9$</span>, cho phép biểu diễn các số lớn tới <span class="arithmatex">$10^{900}$</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">SZ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">pr</span><span class="o">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">SZ</span><span class="o">]</span><span class="p">;</span>
 <span class="kt">int</span><span class="w"> </span><span class="n">r</span><span class="o">[][]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="kt">int</span><span class="o">[</span><span class="n">SZ</span><span class="o">][</span><span class="n">SZ</span><span class="o">]</span><span class="p">;</span>
@@ -8124,10 +8112,11 @@ In this code, we take 100 prime numbers greater than <span class="arithmatex">$1
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<p><strong>Ghi chú bản dịch:</strong> Hệ các số dư chỉ xác định số nguyên theo modulo tích các số nguyên tố; để có đại diện duy nhất không âm, cần xét số từ 0 đến nhỏ hơn tích đó. Trong mã Java, phép lấy dư với số nguyên âm không được chuẩn hóa: ví dụ khởi tạo từ âm một rồi khôi phục ở chế độ không âm cho kết quả âm một thay vì đại diện không âm tương ứng.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (96.25%)</li><li><a href="#" title="GILGAMESH" data-bi-name="contributorprofile" target="_blank">GILGAMESH</a> (1.88%)</li><li><a href="#" title="Aaryan Dadu" data-bi-name="contributorprofile" target="_blank">Aaryan Dadu</a> (1.25%)</li><li><a href="#" title="Le Bao Hiep" data-bi-name="contributorprofile" target="_blank">Le Bao Hiep</a> (0.62%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

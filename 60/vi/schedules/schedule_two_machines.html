@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#scheduling-jobs-on-two-machines" class="md-skip">
+        <a href="#lap-lich-cong-viec-tren-hai-may" class="md-skip">
           Bỏ qua
         </a>
       
@@ -7669,10 +7669,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#construction-of-the-algorithm" class="md-nav__link">
+  <a href="#xay-dung-thuat-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Construction of the algorithm
+        Xây dựng thuật toán
       
     </span>
   </a>
@@ -7680,10 +7680,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -7939,13 +7939,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/schedules/schedule_two_machines.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/schedules/schedule_two_machines.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/schedules/schedule_two_machines.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/schedules/schedule_two_machines.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7956,14 +7956,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -7999,53 +7991,55 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="scheduling-jobs-on-two-machines">Scheduling jobs on two machines<a class="headerlink" href="#scheduling-jobs-on-two-machines" title="Permanent link">&para;</a></h1>
-<p>This task is about finding an optimal schedule for <span class="arithmatex">$n$</span> jobs on two machines.
-Every item must first be processed on the first machine, and afterwards on the second one.
-The <span class="arithmatex">$i$</span>-th job takes <span class="arithmatex">$a_i$</span> time on the first machine, and <span class="arithmatex">$b_i$</span> time on the second machine.
-Each machine can only process one job at a time.</p>
-<p>We want to find the optimal order of the jobs, so that the final processing time is the minimum possible.</p>
-<p>This solution that is discussed here is called Johnson's rule (named after S. M. Johnson).</p>
-<p>It is worth noting, that the task becomes NP-complete, if we have more than two machines.</p>
-<h2 id="construction-of-the-algorithm">Construction of the algorithm<a class="headerlink" href="#construction-of-the-algorithm" title="Permanent link">&para;</a></h2>
-<p>Note first, that we can assume that the order of jobs for the first and the second machine have to coincide.
-In fact, since the jobs for the second machine become available after processing them at the first, and if there are several jobs available for the second machine, than the processing time will be equal to the sum of their <span class="arithmatex">$b_i$</span>, regardless of their order.
-Therefore it is only advantageous to send the jobs to the second machine in the same order as we sent them to the first machine.</p>
-<p>Consider the order of the jobs, which coincides with their input order <span class="arithmatex">$1, 2, \dots, n$</span>.</p>
-<p>We denote by <span class="arithmatex">$x_i$</span> the <strong>idle time</strong> of the second machine immediately before processing <span class="arithmatex">$i$</span>.
-Our goal is to <strong>minimize the total idle time</strong>:</p>
+<h1 id="lap-lich-cong-viec-tren-hai-may">Lập lịch công việc trên hai máy<a class="headerlink" href="#lap-lich-cong-viec-tren-hai-may" title="Permanent link">&para;</a></h1>
+<p>Bài toán là tìm lịch tối ưu cho <span class="arithmatex">$n$</span> công việc trên hai máy.
+Mỗi công việc phải được xử lý trên máy thứ nhất trước, sau đó trên máy thứ hai.
+Công việc thứ <span class="arithmatex">$i$</span> mất thời gian <span class="arithmatex">$a_i$</span> trên máy thứ nhất và <span class="arithmatex">$b_i$</span> trên máy thứ hai.
+Mỗi máy chỉ có thể xử lý một công việc tại một thời điểm.</p>
+<p>Ta muốn tìm thứ tự tối ưu của các công việc sao cho thời điểm hoàn thành cuối cùng nhỏ nhất có thể.</p>
+<p>Lời giải được trình bày ở đây gọi là quy tắc Johnson (đặt theo tên S. M. Johnson).</p>
+<p>Lưu ý rằng bài toán trở thành NP-đầy đủ nếu có nhiều hơn hai máy.</p>
+<h2 id="xay-dung-thuat-toan">Xây dựng thuật toán<a class="headerlink" href="#xay-dung-thuat-toan" title="Permanent link">&para;</a></h2>
+<p>Trước hết, ta có thể giả sử thứ tự công việc trên máy thứ nhất và máy thứ hai trùng nhau.
+Thật vậy, các công việc chỉ có thể được đưa vào máy thứ hai sau khi xử lý ở máy thứ nhất; nếu có nhiều công việc cùng sẵn sàng cho máy thứ hai thì tổng thời gian xử lý chúng bằng tổng các <span class="arithmatex">$b_i$</span>, bất kể thứ tự.
+Do đó, sẽ chỉ có lợi khi đưa các công việc vào máy thứ hai theo cùng thứ tự đã đưa vào máy thứ nhất.</p>
+<p>Xét thứ tự công việc trùng với thứ tự đầu vào <span class="arithmatex">$1, 2, \dots, n$</span>.</p>
+<p>Ký hiệu <span class="arithmatex">$x_i$</span> là <strong>thời gian nhàn rỗi</strong> của máy thứ hai ngay trước khi xử lý công việc <span class="arithmatex">$i$</span>.
+Mục tiêu là <strong>cực tiểu hóa tổng thời gian nhàn rỗi</strong>:</p>
 <div class="arithmatex">$$F(x) = \sum x_i ~ \rightarrow \min$$</div>
-<p>For the first job we have <span class="arithmatex">$x_1 = a_1$</span>.
-For the second job, since it gets sent to the machine at the time <span class="arithmatex">$a_1 + a_2$</span>, and the second machine gets free at <span class="arithmatex">$x_1 + b_1$</span>, we have <span class="arithmatex">$x_2 = \max\left((a_1 + a_2) - (x_1 + b_1), 0\right)$</span>.
-In general we get the equation:</p>
+<p>Với công việc đầu tiên, ta có <span class="arithmatex">$x_1 = a_1$</span>.
+Với công việc thứ hai, do nó được đưa tới máy tại thời điểm <span class="arithmatex">$a_1 + a_2$</span>, còn máy thứ hai rảnh tại thời điểm <span class="arithmatex">$x_1 + b_1$</span>, ta có <span class="arithmatex">$x_2 = \max\left((a_1 + a_2) - (x_1 + b_1), 0\right)$</span>.
+Tổng quát, ta có công thức:</p>
 <div class="arithmatex">$$x_k = \max\left(\sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i - \sum_{i=1}^{k-1} x_i, 0 \right)$$</div>
-<p>We can now calculate the <strong>total idle time</strong> <span class="arithmatex">$F(x)$</span>.
-It is claimed that it has the form</p>
+<p>Bây giờ ta tính <strong>tổng thời gian nhàn rỗi</strong> <span class="arithmatex">$F(x)$</span>.
+Ta khẳng định nó có dạng</p>
 <div class="arithmatex">$$F(x) = \max_{k=1 \dots n} K_i,$$</div>
-<p>where</p>
+<p>trong đó</p>
 <div class="arithmatex">$$K_i = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i.$$</div>
-<p>This can be easily verified using induction.</p>
-<p>We now use the <strong>permutation method</strong>:
-we will exchange two neighboring jobs <span class="arithmatex">$j$</span> and <span class="arithmatex">$j+1$</span> and see how this will change the total idle time.</p>
-<p>By the form of the expression of <span class="arithmatex">$K_i$</span>, it is clear that only <span class="arithmatex">$K_j$</span> and <span class="arithmatex">$K_{j+1}$</span> change, we denote their new values with <span class="arithmatex">$K_j'$</span> and <span class="arithmatex">$K_{j+1}'$</span>.</p>
-<p>If this change from of the jobs <span class="arithmatex">$j$</span> and <span class="arithmatex">$j+1$</span> increased the total idle time, it has to be the case that:</p>
+<p><strong>Ghi chú bản dịch:</strong> Hai công thức trên dùng chỉ số chưa nhất quán. Để chỉ số được xác định, có thể viết <span class="arithmatex">$K_k = \sum_{i=1}^k a_i - \sum_{i=1}^{k-1} b_i$</span> và <span class="arithmatex">$F(x) = \max_{1 \le k \le n} K_k$</span>.</p>
+<p>Có thể dễ dàng kiểm chứng điều này bằng quy nạp.</p>
+<p>Bây giờ ta dùng <strong>phương pháp hoán đổi</strong>:
+đổi chỗ hai công việc kề nhau <span class="arithmatex">$j$</span> và <span class="arithmatex">$j+1$</span> rồi xem tổng thời gian nhàn rỗi thay đổi thế nào.</p>
+<p>Từ dạng biểu thức của <span class="arithmatex">$K_i$</span>, rõ ràng chỉ <span class="arithmatex">$K_j$</span> và <span class="arithmatex">$K_{j+1}$</span> thay đổi; ký hiệu các giá trị mới tương ứng là <span class="arithmatex">$K_j'$</span> và <span class="arithmatex">$K_{j+1}'$</span>.</p>
+<p>Nếu việc đổi chỗ hai công việc <span class="arithmatex">$j$</span> và <span class="arithmatex">$j+1$</span> làm tăng tổng thời gian nhàn rỗi, thì phải có:</p>
 <div class="arithmatex">$$\max(K_j, K_{j+1}) \le \max(K_j', K_{j+1}')$$</div>
-<p>(Switching two jobs might also have no impact at all.
-The above condition is only a sufficient one, but not a necessary one.)</p>
-<p>After removing <span class="arithmatex">$\sum_{i=1}^{j+1} a_i - \sum_{i=1}^{j-1} b_i$</span> from both sides of the inequality, we get:</p>
+<p>(Việc đổi chỗ hai công việc cũng có thể không ảnh hưởng gì.
+Điều kiện trên chỉ là điều kiện đủ, không phải điều kiện cần.)</p>
+<p><strong>Ghi chú bản dịch:</strong> Bất đẳng thức trên là điều kiện đủ để tổng thời gian nhàn rỗi sau khi đổi chỗ không giảm (có thể bằng trước). Nó không cần thiết cho kết luận không giảm này: một giá trị <span class="arithmatex">$K$</span> ngoài cặp có thể chi phối giá trị lớn nhất cả trước và sau khi đổi chỗ.</p>
+<p>Sau khi trừ <span class="arithmatex">$\sum_{i=1}^{j+1} a_i - \sum_{i=1}^{j-1} b_i$</span> ở cả hai vế, ta được:</p>
 <div class="arithmatex">$$\max(-a_{j+1}, -b_j) \le \max(-b_{j+1}, -a_j)$$</div>
-<p>And after getting rid of the negative signs:</p>
+<p>Sau khi bỏ các dấu âm:</p>
 <div class="arithmatex">$$\min(a_j, b_{j+1}) \le \min(b_j, a_{j+1})$$</div>
-<p>Thus we obtained a <strong>comparator</strong>:
-by sorting the jobs on it, we obtain an optimal order of the jobs, in which no two jobs can be switched with an improvement of the final time.</p>
-<p>However you can further <strong>simplify</strong> the sorting, if you look at the comparator from a different angle.
-The comparator can be interpreted in the following way:
-If we have the four times <span class="arithmatex">$(a_j, a_{j+1}, b_j, b_{j+1})$</span>, and the minimum of them is a time corresponding to the first machine, then the corresponding job should be done first.
-If the minimum time is a time from the second machine, then it should go later.
-Thus we can sort the jobs by <span class="arithmatex">$\min(a_i, b_i)$</span>, and if the processing time of the current job on the first machine is less then the processing time on the second machine, then this job must be done before all the remaining jobs, and otherwise after all remaining tasks.</p>
-<p>One way or another, it turns out that by Johnson's rule we can solve the problem by sorting the jobs, and thus receive a time complexity of <span class="arithmatex">$O(n \log n)$</span>.</p>
-<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
-<p>Here we implement the second variation of the described algorithm.</p>
+<p>Như vậy ta thu được một <strong>tiêu chí so sánh</strong>:
+sắp xếp các công việc theo tiêu chí này cho ta một thứ tự tối ưu, trong đó không thể đổi chỗ hai công việc để cải thiện thời điểm hoàn thành cuối cùng.</p>
+<p>Tuy nhiên, có thể <strong>đơn giản hóa</strong> việc sắp xếp hơn nữa bằng cách nhìn tiêu chí so sánh từ một góc độ khác.
+Có thể diễn giải tiêu chí như sau:
+Nếu trong bốn thời gian <span class="arithmatex">$(a_j, a_{j+1}, b_j, b_{j+1})$</span>, giá trị nhỏ nhất ứng với máy thứ nhất thì công việc tương ứng nên được thực hiện trước.
+Nếu thời gian nhỏ nhất thuộc máy thứ hai thì công việc tương ứng nên được thực hiện sau.
+Do đó ta có thể sắp xếp các công việc theo <span class="arithmatex">$\min(a_i, b_i)$</span>; nếu thời gian xử lý công việc hiện tại trên máy thứ nhất nhỏ hơn trên máy thứ hai thì công việc đó phải được thực hiện trước tất cả công việc còn lại, ngược lại thì thực hiện sau tất cả công việc còn lại.</p>
+<p>Như vậy, quy tắc Johnson giải bài toán bằng cách sắp xếp các công việc, với độ phức tạp thời gian <span class="arithmatex">$O(n \log n)$</span>.</p>
+<h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
+<p>Ở đây ta cài đặt biến thể thứ hai của thuật toán đã mô tả.</p>
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Job</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">idx</span><span class="p">;</span>
 
@@ -8076,13 +8070,13 @@ Thus we can sort the jobs by <span class="arithmatex">$\min(a_i, b_i)$</span>, a
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">make_pair</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span><span class="w"> </span><span class="n">t2</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>All the information about each job is store in struct.
-The first function sorts all jobs and computes the optimal schedule.
-The second function computes the finish times of both machines given a schedule.</p>
+<p>Mọi thông tin về mỗi công việc được lưu trong struct.
+Hàm thứ nhất sắp xếp mọi công việc và tính lịch tối ưu.
+Hàm thứ hai tính thời điểm hoàn thành của cả hai máy theo một lịch cho trước.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (94.12%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (5.04%)</li><li><a href="#" title="wiktorkuchta" data-bi-name="contributorprofile" target="_blank">wiktorkuchta</a> (0.84%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

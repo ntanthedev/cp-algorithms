@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#strong-orientation" class="md-skip">
+        <a href="#inh-huong-manh" class="md-skip">
           Bỏ qua
         </a>
       
@@ -5694,10 +5694,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#loi-giai" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Solution
+        Lời giải
       
     </span>
   </a>
@@ -5705,22 +5705,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#problem-extension" class="md-nav__link">
+  <a href="#mo-rong-bai-toan" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Problem extension
+        Mở rộng bài toán
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Problem extension">
+    <nav class="md-nav" aria-label="Mở rộng bài toán">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
+  <a href="#cai-at" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Implementation
+        Cài đặt
       
     </span>
   </a>
@@ -5733,10 +5733,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập
       
     </span>
   </a>
@@ -7967,13 +7967,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/strong-orientation.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/strong-orientation.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/strong-orientation.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/strong-orientation.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7984,22 +7984,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8023,42 +8007,34 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="strong-orientation">Strong Orientation<a class="headerlink" href="#strong-orientation" title="Permanent link">&para;</a></h1>
-<p>A <strong>strong orientation</strong> of an undirected graph is an assignment of a direction to each edge that makes it a <a href="strongly-connected-components.html">strongly connected graph</a>.
-That is, after the <em>orientation</em> we should be able to visit any vertex from any vertex by following the directed edges.</p>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">&para;</a></h2>
-<p>Of course, this cannot be done to <em>every</em> graph.
-Consider a <a href="bridge-searching.html">bridge</a> in a graph.
-We have to assign a direction to it and by doing so we make this bridge "crossable" in only one direction. That means we can't go from one of the bridge's ends to the other, so we can't make the graph strongly connected.</p>
-<p>Now consider a <a href="depth-first-search.html">DFS</a> through a bridgeless connected graph.
-Clearly, we will visit each vertex.
-And since there are no bridges, we can remove any DFS tree edge and still be able to go
-from below the edge to above the edge by using a path that contains at least one back edge.
-From this follows that from any vertex we can go to the root of the DFS tree.
-Also, from the root of the DFS tree we can visit any vertex we choose.
-We found a strong orientation!</p>
-<p>In other words, to strongly orient a bridgeless connected graph,
-run a DFS on it and let the DFS tree edges point away from the DFS root and
-all other edges from the descendant to the ancestor in the DFS tree.</p>
-<p>The result that bridgeless connected graphs are exactly the graphs that have strong orientations is called <strong>Robbins' theorem</strong>.</p>
-<h2 id="problem-extension">Problem extension<a class="headerlink" href="#problem-extension" title="Permanent link">&para;</a></h2>
-<p>Let's consider the problem of finding a graph orientation so that the number of SCCs is minimal.</p>
-<p>Of course, each graph component can be considered separately.
-Now, since only bridgeless graphs are strongly orientable, let's remove all bridges temporarily.
-We end up with some number of bridgeless components
-(exactly <em>how many components there were at the beginning</em> + <em>how many bridges there were</em>)
- and we know that we can strongly orient each of them.</p>
-<p>We were only allowed to orient edges, not remove them, but it turns out we can orient the bridges arbitrarily.
-Of course, the easiest way to orient them is to run the algorithm described above without modifications on each original connected component.</p>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h3>
-<p>Here, the input is <em>n</em> — the number of vertices, <em>m</em> — the number of edges, then <em>m</em> lines describing the edges.</p>
-<p>The output is the minimal number of SCCs on the first line and on the second line
-a string of <em>m</em> characters,
-either <code>&gt;</code> — telling us that the corresponding edge from the input
-is oriented from the left to the right vertex (as in the input),
-or <code>&lt;</code> — the opposite.</p>
-<p>This is a bridge search algorithm modified to also orient the edges,
-you can as well orient the edges as a first step and count the SCCs on the oriented graph as a second.</p>
+<h1 id="inh-huong-manh">Định hướng mạnh<a class="headerlink" href="#inh-huong-manh" title="Permanent link">&para;</a></h1>
+<p>Một <strong>định hướng mạnh</strong> của đồ thị vô hướng là cách gán hướng cho từng cạnh để tạo thành một <a href="strongly-connected-components.html">đồ thị liên thông mạnh</a>.
+Nghĩa là sau khi <em>định hướng</em>, ta có thể đi từ bất kỳ đỉnh nào đến bất kỳ đỉnh nào bằng cách đi theo các cạnh có hướng.</p>
+<h2 id="loi-giai">Lời giải<a class="headerlink" href="#loi-giai" title="Permanent link">&para;</a></h2>
+<p>Dĩ nhiên, không phải đồ thị nào cũng làm được như vậy.
+Xét một <a href="bridge-searching.html">cạnh cầu</a> trong đồ thị.
+Ta phải gán hướng cho nó, khiến cạnh cầu này chỉ có thể được đi qua theo một chiều. Điều đó có nghĩa là ta không thể đi từ một đầu của cạnh cầu sang đầu kia theo ít nhất một trong hai chiều, nên không thể làm đồ thị liên thông mạnh.</p>
+<p>Bây giờ xét phép <a href="depth-first-search.html">DFS</a> trên một đồ thị liên thông không có cầu.
+Rõ ràng ta sẽ thăm mỗi đỉnh.
+Vì không có cầu, ta có thể xóa bất kỳ cạnh cây DFS nào mà vẫn đi được từ phía dưới lên phía trên cạnh đó bằng một đường đi chứa ít nhất một cạnh ngược.
+Do đó, từ bất kỳ đỉnh nào ta có thể đi đến gốc cây DFS.
+Ngoài ra, từ gốc cây DFS ta có thể đi đến bất kỳ đỉnh nào.
+Vậy ta đã tìm được một định hướng mạnh!</p>
+<p>Nói cách khác, để định hướng mạnh một đồ thị liên thông không có cầu, chạy DFS trên đồ thị, hướng các cạnh cây DFS ra xa gốc DFS và hướng mọi cạnh còn lại từ đỉnh hậu duệ về đỉnh tổ tiên trong cây DFS.</p>
+<p>Kết quả rằng các đồ thị liên thông không có cầu chính là các đồ thị có định hướng mạnh được gọi là <strong>định lý Robbins</strong>.</p>
+<h2 id="mo-rong-bai-toan">Mở rộng bài toán<a class="headerlink" href="#mo-rong-bai-toan" title="Permanent link">&para;</a></h2>
+<p>Xét bài toán tìm cách định hướng đồ thị sao cho số thành phần liên thông mạnh (SCC) là nhỏ nhất.</p>
+<p>Dĩ nhiên, mỗi thành phần liên thông của đồ thị có thể được xét riêng.
+Vì chỉ các đồ thị không có cầu mới có thể được định hướng mạnh, ta tạm thời xóa tất cả các cạnh cầu.
+Ta thu được một số thành phần không có cầu (chính xác bằng <em>số thành phần ban đầu</em> + <em>số cạnh cầu</em>) và biết rằng mỗi thành phần đó có thể được định hướng mạnh.</p>
+<p>Ta chỉ được phép định hướng cạnh, không được xóa chúng, nhưng hóa ra ta có thể định hướng các cạnh cầu tùy ý.
+Dĩ nhiên, cách dễ nhất là chạy thuật toán mô tả ở trên mà không sửa đổi trên từng thành phần liên thông ban đầu.</p>
+<h3 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h3>
+<p>Dữ liệu vào gồm <em>n</em> — số đỉnh, <em>m</em> — số cạnh, rồi <em>m</em> dòng mô tả các cạnh.</p>
+<p>Dòng đầu của kết quả là số SCC nhỏ nhất; dòng thứ hai là một xâu gồm <em>m</em> ký tự,
+mỗi ký tự là <code>&gt;</code> — cho biết cạnh tương ứng trong dữ liệu vào được hướng từ đỉnh bên trái sang đỉnh bên phải (theo thứ tự trong dữ liệu vào),
+hoặc <code>&lt;</code> — theo chiều ngược lại.</p>
+<p>Đây là thuật toán tìm cầu được sửa đổi để đồng thời định hướng các cạnh; ta cũng có thể định hướng các cạnh trước rồi đếm SCC trong đồ thị có hướng ở bước thứ hai.</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">adj</span><span class="p">;</span><span class="w"> </span><span class="c1">// adjacency list - vertex and edge pairs</span>
 <span class="n">vector</span><span class="o">&lt;</span><span class="n">pair</span><span class="o">&lt;</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">edges</span><span class="p">;</span>
 
@@ -8114,14 +8090,14 @@ you can as well orient the edges as a first step and count the SCCs on the orien
 <span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">comp_cnt</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">bridge_cnt</span><span class="p">,</span><span class="w"> </span><span class="n">orient</span><span class="p">.</span><span class="n">c_str</span><span class="p">());</span>
 <span class="p">}</span>
 </code></pre></div>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<h2 id="bai-tap">Bài tập<a class="headerlink" href="#bai-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://szkopul.edu.pl/problemset/problem/nldsb4EW1YuZykBlf4lcZL1Y/site/">26th Polish OI - Osiedla</a></li>
 </ul>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Wiktor Kuchta" data-bi-name="contributorprofile" target="_blank">Wiktor Kuchta</a> (71.55%)</li><li><a href="#" title="wiktorkuchta" data-bi-name="contributorprofile" target="_blank">wiktorkuchta</a> (17.24%)</li><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (6.03%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (4.31%)</li><li><a href="#" title="Atulbedwal" data-bi-name="contributorprofile" target="_blank">Atulbedwal</a> (0.86%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
 </ul>
                 
               </article>

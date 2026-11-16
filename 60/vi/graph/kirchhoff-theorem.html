@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#kirchhoffs-theorem-finding-the-number-of-spanning-trees" class="md-skip">
+        <a href="#inh-ly-kirchhoff-em-so-cay-khung" class="md-skip">
           Bỏ qua
         </a>
       
@@ -6195,10 +6195,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#kirchhoffs-matrix-tree-theorem" class="md-nav__link">
+  <a href="#inh-ly-ma-tran-cay-cua-kirchhoff" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Kirchhoff's matrix tree theorem
+        Định lý ma trận cây của Kirchhoff
       
     </span>
   </a>
@@ -6206,10 +6206,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#relation-to-kirchhoffs-circuit-laws" class="md-nav__link">
+  <a href="#lien-he-voi-cac-inh-luat-mach-ien-kirchhoff" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Relation to Kirchhoff's circuit laws
+        Liên hệ với các định luật mạch điện Kirchhoff
       
     </span>
   </a>
@@ -6217,10 +6217,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#practice-problems" class="md-nav__link">
+  <a href="#bai-tap" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Practice Problems
+        Bài tập
       
     </span>
   </a>
@@ -7950,13 +7950,13 @@ Describe the issue of this article in detail.
 }
 </script>
 
-<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/kirchhoff-theorem.md" title="Chỉnh sửa" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/edit/master/src/graph/kirchhoff-theorem.vi.md" title="Chỉnh sửa" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75z"/></svg>
 </a>
 <a id="report_issue_a" href="" title="Report a problem" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14h-2V9h2m0 9h-2v-2h2M1 21h22L12 2z"/></svg>
 </a>
-<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/kirchhoff-theorem.md" title="Page authors" class="md-content__button md-icon">
+<a href="https://github.com/ntanthedev/cp-algorithms/commits/master/src/graph/kirchhoff-theorem.vi.md" title="Page authors" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><g><rect fill="none" height="24" width="24"/></g><g><g><g><path d="M12,8.5c-0.91,0-2.75,0.46-2.75,1.38v4.62h1.5V19h2.5v-4.5h1.5V9.88C14.75,8.97,12.91,8.5,12,8.5z"/><path d="M12,2C6.47,2,2,6.47,2,12s4.47,10,10,10s10-4.48,10-10S17.52,2,12,2z M12,20c-4.42,0-8-3.58-8-8s3.58-8,8-8s8,3.58,8,8 S16.42,20,12,20z"/><circle cx="12" cy="6.5" r="1.5"/></g></g></g></svg>
 </a>
 
@@ -7967,26 +7967,6 @@ Describe the issue of this article in detail.
 
 
 
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
-
-  
-  
-  
 
   
   
@@ -8022,25 +8002,26 @@ Describe the issue of this article in detail.
 </ul>
 
 
-<h1 id="kirchhoffs-theorem-finding-the-number-of-spanning-trees">Kirchhoff's theorem. Finding the number of spanning trees<a class="headerlink" href="#kirchhoffs-theorem-finding-the-number-of-spanning-trees" title="Permanent link">&para;</a></h1>
-<p>Problem: You are given a connected undirected graph (with possible multiple edges) represented using an adjacency matrix. Find the number of different spanning trees of this graph.</p>
-<p>The following formula was proven by Kirchhoff in 1847.</p>
-<h2 id="kirchhoffs-matrix-tree-theorem">Kirchhoff's matrix tree theorem<a class="headerlink" href="#kirchhoffs-matrix-tree-theorem" title="Permanent link">&para;</a></h2>
-<p>Let <span class="arithmatex">$A$</span> be the adjacency matrix of the graph: <span class="arithmatex">$A_{u,v}$</span> is the number of edges between <span class="arithmatex">$u$</span> and <span class="arithmatex">$v$</span>.
-Let <span class="arithmatex">$D$</span> be the degree matrix of the graph: a diagonal matrix with <span class="arithmatex">$D_{u,u}$</span> being the degree of vertex <span class="arithmatex">$u$</span> (including multiple edges and loops - edges which connect vertex <span class="arithmatex">$u$</span> with itself).</p>
-<p>The Laplacian matrix of the graph is defined as <span class="arithmatex">$L = D - A$</span>.
-According to Kirchhoff's theorem, all cofactors of this matrix are equal to each other, and they are equal to the number of spanning trees of the graph.
-The <span class="arithmatex">$(i,j)$</span> cofactor of a matrix is the product of <span class="arithmatex">$(-1)^{i + j}$</span> with the determinant of the matrix that you get after removing the <span class="arithmatex">$i$</span>-th row and <span class="arithmatex">$j$</span>-th column.
-So you can, for example, delete the last row and last column of the matrix <span class="arithmatex">$L$</span>, and the absolute value of the determinant of the resulting matrix will give you the number of spanning trees.</p>
-<p>The determinant of the matrix can be found in <span class="arithmatex">$O(N^3)$</span> by using the <a href="../linear_algebra/determinant-gauss.html">Gaussian method</a>.</p>
-<p>The proof of this theorem is quite difficult and is not presented here; for an outline of the proof and variations of the theorem for graphs without multiple edges and for directed graphs refer to <a href="https://en.wikipedia.org/wiki/Kirchhoff%27s_theorem">Wikipedia</a>.</p>
-<h2 id="relation-to-kirchhoffs-circuit-laws">Relation to Kirchhoff's circuit laws<a class="headerlink" href="#relation-to-kirchhoffs-circuit-laws" title="Permanent link">&para;</a></h2>
-<p>Kirchhoff's matrix tree theorem and Kirchhoff's laws for electrical circuit are related in a beautiful way. It is possible to show (using Ohm's law and Kirchhoff's first law) that resistance <span class="arithmatex">$R_{ij}$</span> between two points of the circuit <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span> is</p>
+<h1 id="inh-ly-kirchhoff-em-so-cay-khung">Định lý Kirchhoff: Đếm số cây khung<a class="headerlink" href="#inh-ly-kirchhoff-em-so-cay-khung" title="Permanent link">&para;</a></h1>
+<p>Bài toán: Cho một đồ thị vô hướng liên thông (có thể có nhiều cạnh nối cùng một cặp đỉnh) được biểu diễn bằng ma trận kề. Hãy tìm số cây khung khác nhau của đồ thị.</p>
+<p>Công thức sau được Kirchhoff chứng minh năm 1847.</p>
+<h2 id="inh-ly-ma-tran-cay-cua-kirchhoff">Định lý ma trận cây của Kirchhoff<a class="headerlink" href="#inh-ly-ma-tran-cay-cua-kirchhoff" title="Permanent link">&para;</a></h2>
+<p>Gọi <span class="arithmatex">$A$</span> là ma trận kề của đồ thị: <span class="arithmatex">$A_{u,v}$</span> là số cạnh giữa <span class="arithmatex">$u$</span> và <span class="arithmatex">$v$</span>.
+Gọi <span class="arithmatex">$D$</span> là ma trận bậc của đồ thị: đây là ma trận đường chéo với <span class="arithmatex">$D_{u,u}$</span> là bậc của đỉnh <span class="arithmatex">$u$</span> (tính cả các cạnh song song và khuyên — cạnh nối đỉnh <span class="arithmatex">$u$</span> với chính nó).</p>
+<p>Ma trận Laplace của đồ thị được định nghĩa là <span class="arithmatex">$L = D - A$</span>.
+Theo định lý Kirchhoff, mọi phần bù đại số của ma trận này bằng nhau và bằng số cây khung của đồ thị.
+Phần bù đại số <span class="arithmatex">$(i,j)$</span> của một ma trận là tích của <span class="arithmatex">$(-1)^{i + j}$</span> với định thức của ma trận thu được sau khi xóa hàng thứ <span class="arithmatex">$i$</span> và cột thứ <span class="arithmatex">$j$</span>.
+Vì vậy, chẳng hạn ta có thể xóa hàng cuối và cột cuối của ma trận <span class="arithmatex">$L$</span>; trị tuyệt đối của định thức ma trận thu được sẽ cho số cây khung.</p>
+<p>Có thể tính định thức của ma trận trong <span class="arithmatex">$O(N^3)$</span> bằng <a href="../linear_algebra/determinant-gauss.html">phương pháp Gauss</a>.</p>
+<p>Chứng minh của định lý này khá khó và không được trình bày ở đây; để xem phác thảo chứng minh và các biến thể của định lý cho đồ thị không có cạnh song song và cho đồ thị có hướng, xem <a href="https://en.wikipedia.org/wiki/Kirchhoff%27s_theorem">Wikipedia</a>.</p>
+<h2 id="lien-he-voi-cac-inh-luat-mach-ien-kirchhoff">Liên hệ với các định luật mạch điện Kirchhoff<a class="headerlink" href="#lien-he-voi-cac-inh-luat-mach-ien-kirchhoff" title="Permanent link">&para;</a></h2>
+<p>Định lý ma trận cây và các định luật mạch điện của Kirchhoff có một mối liên hệ đẹp. Có thể chứng minh (dùng định luật Ohm và định luật Kirchhoff thứ nhất) rằng điện trở <span class="arithmatex">$R_{ij}$</span> giữa hai điểm <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span> của mạch là</p>
 <div class="arithmatex">$$R_{ij} = \frac{ \left| L^{(i,j)} \right| }{ | L^j | }.$$</div>
-<p>Here the matrix <span class="arithmatex">$L$</span> is obtained from the matrix of inverse resistances <span class="arithmatex">$A$</span> (<span class="arithmatex">$A_{i,j}$</span> is inverse of the resistance of the conductor between points <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span>) using the procedure described in Kirchhoff's matrix tree theorem.
-<span class="arithmatex">$T^j$</span> is the matrix with row and column <span class="arithmatex">$j$</span> removed, <span class="arithmatex">$T^{(i,j)}$</span> is the matrix with two rows and two columns <span class="arithmatex">$i$</span> and <span class="arithmatex">$j$</span> removed.</p>
-<p>Kirchhoff's theorem gives this formula geometric meaning.</p>
-<h2 id="practice-problems">Practice Problems<a class="headerlink" href="#practice-problems" title="Permanent link">&para;</a></h2>
+<p>Ở đây, ma trận <span class="arithmatex">$L$</span> được xây dựng từ ma trận nghịch đảo điện trở <span class="arithmatex">$A$</span> (<span class="arithmatex">$A_{i,j}$</span> là nghịch đảo điện trở của dây dẫn giữa hai điểm <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span>) theo quy trình mô tả trong định lý ma trận cây Kirchhoff.
+<span class="arithmatex">$T^j$</span> là ma trận đã xóa hàng và cột <span class="arithmatex">$j$</span>, còn <span class="arithmatex">$T^{(i,j)}$</span> là ma trận đã xóa hai hàng và hai cột <span class="arithmatex">$i$</span> và <span class="arithmatex">$j$</span>.</p>
+<p>Ghi chú bản dịch: Nguồn dùng ký hiệu T trong câu trên nhưng dùng L trong công thức; các ma trận con ở đây cần được hiểu là lấy từ L. Với khuyên, cách tính bậc và đường chéo của ma trận kề cần nhất quán để khuyên không làm thay đổi ma trận Laplace; nguồn chưa nói rõ quy ước này.</p>
+<p>Định lý Kirchhoff cho công thức này một ý nghĩa hình học.</p>
+<h2 id="bai-tap">Bài tập<a class="headerlink" href="#bai-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.codechef.com/problems/STARROAD">CODECHEF: Roads in Stars</a></li>
 <li><a href="http://www.spoj.com/problems/KPMAZE/">SPOJ: Maze</a></li>
@@ -8049,7 +8030,7 @@ So you can, for example, delete the last row and last column of the matrix <span
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Jakob Kogler" data-bi-name="contributorprofile" target="_blank">Jakob Kogler</a> (34.15%)</li><li><a href="#" title="thanhtnguyen" data-bi-name="contributorprofile" target="_blank">thanhtnguyen</a> (21.95%)</li><li><a href="#" title="Mariia Mykhailova" data-bi-name="contributorprofile" target="_blank">Mariia Mykhailova</a> (17.07%)</li><li><a href="#" title="Oleksandr Kulkov" data-bi-name="contributorprofile" target="_blank">Oleksandr Kulkov</a> (14.63%)</li><li><a href="#" title="Sunil Sangwan" data-bi-name="contributorprofile" target="_blank">Sunil Sangwan</a> (9.76%)</li><li><a href="#" title="Avinash Pandey" data-bi-name="contributorprofile" target="_blank">Avinash Pandey</a> (2.44%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
 </ul>
                 
               </article>
