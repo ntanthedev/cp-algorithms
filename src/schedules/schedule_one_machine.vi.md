@@ -82,6 +82,8 @@ Hiển nhiên, trong trường hợp này, lịch tối ưu sắp xếp các cô
 - Trường hợp mũ: $f_i(t) = c_i \cdot e_{\alpha \cdot t} + d_i$, trong đó $c_i$ và $\alpha$ là các hằng số dương.
 - Trường hợp hàm giống nhau: $f_i(t) = \phi(t)$, trong đó $\phi$ là hàm đơn điệu tăng.
 
+**Ghi chú bản dịch:** Ở hai trường hợp đầu của định lý, ký hiệu trong bài gốc không nhất quán với các dạng được dùng ở trên: biểu thức tuyến tính viết hệ số kèm ngoặc thay vì phép nhân với thời gian, còn biểu thức mũ viết số mũ dưới dạng chỉ số dưới. Các dạng đã nêu ở trên lần lượt dùng tích của hệ số với thời gian và hàm mũ với số mũ bằng tích của tham số với thời gian, ngoài ra có thể cộng hằng số riêng cho mỗi công việc.
+
 Trong mọi trường hợp khác, phương pháp này không áp dụng được.
 
 Định lý được chứng minh với giả thiết các hàm phạt đủ trơn (tồn tại đạo hàm cấp ba).
