@@ -40,7 +40,7 @@ Từ tính chất trên suy ra ngay rằng nếu $n \ge 3$ thì số mặt tối
 ### Bậc đỉnh nhỏ nhất trong đồ thị phẳng
 Mọi đồ thị phẳng đều có một đỉnh bậc không lớn hơn 5.
 
-**Ghi chú của người dịch:** Khẳng định về bậc đỉnh giả sử đồ thị có ít nhất một đỉnh.
+**Ghi chú của người dịch:** Khẳng định về bậc đỉnh giả sử đồ thị đơn và có ít nhất một đỉnh.
 
 ## Thuật toán
 
@@ -69,6 +69,8 @@ Thoạt nhìn, việc tìm các mặt của đồ thị không liên thông có 
 ## Cài đặt
 Đoạn cài đặt sau trả về một vector các đỉnh cho mỗi mặt, với mặt ngoài đứng đầu.
 Các mặt trong được trả về theo chiều ngược chiều kim đồng hồ, còn mặt ngoài theo chiều kim đồng hồ.
+
+**Ghi chú của người dịch:** Với đồ thị liên thông chỉ gồm một đỉnh và không có cạnh, code trả về danh sách rỗng dù đồ thị vẫn có một mặt ngoài.
 
 Để đơn giản, ta tìm cạnh tiếp theo bằng tìm kiếm nhị phân theo góc.
 ```{.cpp file=planar}
@@ -153,6 +155,8 @@ std::vector<std::vector<size_t>> find_faces(std::vector<Point> vertices, std::ve
     return faces;
 }
 ```
+
+**Ghi chú của người dịch:** Kiểu tích lũy tổng rộng hơn không ngăn được tràn số nguyên trong các phép trừ và tích có hướng được tính trước đó. Cần giới hạn tọa độ để các phép tính trung gian này nằm trong phạm vi của kiểu tương ứng.
 
 ## Dựng đồ thị phẳng từ các đoạn thẳng
 
@@ -352,6 +356,8 @@ std::pair<std::vector<Point>, std::vector<std::vector<size_t>>> build_graph(std:
     return {p, adj};
 }
 ```
+
+**Ghi chú của người dịch:** Hàm so sánh điểm dựa trên ngưỡng sai số ở code trên không bảo đảm thứ tự yếu nghiêm ngặt mà thuật toán sắp xếp yêu cầu: tính tương đương do hàm này tạo ra có thể không bắc cầu. Cần chọn cách biểu diễn và so sánh tọa độ phù hợp khi dùng cài đặt này.
 
 ## Bài tập
  * [TIMUS 1664 Pipeline Transportation](https://acm.timus.ru/problem.aspx?space=1&num=1664)
