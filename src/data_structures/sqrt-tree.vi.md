@@ -96,7 +96,7 @@ $r = 46_{10} = 101110_2$
 
 Nhớ rằng các đoạn trên cùng một tầng có kích thước bằng nhau và các khối trên tầng đó cũng có kích thước bằng nhau (trong ví dụ này là $2^k = 2^4 = 16$). Các khối phủ toàn bộ mảng, nên khối đầu tiên chứa các phần tử $(0 - 15)$ (tương ứng $(000000_2 - 001111_2)$ trong hệ nhị phân), khối thứ hai chứa các phần tử $(16 - 31)$ (tương ứng $(010000_2 - 011111_2)$ trong hệ nhị phân), v.v. Chỉ số các vị trí trong cùng một khối chỉ có thể khác nhau ở $k$ (ở đây là $4$) bit cuối. Trong ví dụ này, $l$ và $r$ có các bit giống nhau ngoài bốn bit thấp nhất, nên chúng nằm trong cùng một khối.
 
-Vậy ta cần kiểm tra xem có nhiều hơn $k$ bit thấp nhất khác nhau hay không (tương đương kiểm tra $l\ \text{xor}\ r$ không vượt quá $2^k-1$).
+Vậy ta cần kiểm tra xem các bit khác nhau có đều nằm trong $k$ bit thấp nhất hay không (tương đương kiểm tra $l\ \text{xor}\ r$ không vượt quá $2^k-1$).
 
 Dựa trên nhận xét này, ta có thể nhanh chóng tìm được tầng phù hợp để trả lời truy vấn. Cách làm như sau:
 
