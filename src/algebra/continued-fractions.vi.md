@@ -147,18 +147,18 @@ Từ đó cũng suy ra $\gcd(p_k, q_k) = 1$ với $\frac{p_k}{q_k} = [a_0; a_1, 
 
 ??? note "Công thức truy hồi"
     Các phân số hội tụ $r_k = \frac{p_k}{q_k}$ thỏa mãn công thức truy hồi sau, cho phép tính chúng nhanh chóng:
-    
+
     $$\frac{p_k}{q_k}=\frac{a_k p_{k-1} + p_{k-2}}{a_k q_{k-1} + q_{k-2}},$$
-    
+
     trong đó $\frac{p_{-1}}{q_{-1}}=\frac{1}{0}$ và $\frac{p_{-2}}{q_{-2}}=\frac{0}{1}$.
 
 ??? note "Sai lệch"
     Nhìn chung, sai lệch giữa $r_k = \frac{p_k}{q_k}$ và $r$ có thể được ước lượng như sau:
-    
+
     $$\left|\frac{p_k}{q_k}-r\right| \leq \frac{1}{q_k q_{k+1}} \leq \frac{1}{q_k^2}.$$
-    
+
     Nhân hai vế với $q_k$, ta được một ước lượng khác:
-    
+
     $$|p_k - q_k r| \leq \frac{1}{q_{k+1}}.$$
 
     Từ công thức truy hồi trên, suy ra $q_k$ tăng ít nhất nhanh bằng các số Fibonacci.
@@ -171,13 +171,13 @@ Từ đó cũng suy ra $\gcd(p_k, q_k) = 1$ với $\frac{p_k}{q_k} = [a_0; a_1, 
 
 ??? note "Bao lồi điểm nguyên"
     Xét bao lồi của các điểm phía trên và phía dưới đường thẳng $y=rx$.
-    
+
     Các phân số hội tụ chỉ số lẻ $(q_k;p_k)$ là các đỉnh của bao lồi trên, còn các phân số chỉ số chẵn $(q_k;p_k)$ là các đỉnh của bao lồi dưới.
-    
+
     Tất cả các đỉnh nguyên trên những bao lồi này có dạng $(q;p)$ sao cho
-    
+
     $$\frac{p}{q} = \frac{tp_{k-1} + p_{k-2}}{tq_{k-1} + q_{k-2}}$$
-    
+
     với số nguyên $0 \leq t \leq a_k$. Nói cách khác, tập các điểm nguyên trên bao lồi tương ứng với tập các bán hội tụ.
 
     Hình dưới đây thể hiện các phân số hội tụ và bán hội tụ (các điểm màu xám ở giữa) của $r=\frac{9}{7}$.
@@ -186,7 +186,7 @@ Từ đó cũng suy ra $\gcd(p_k, q_k) = 1$ với $\frac{p_k}{q_k} = [a_0; a_1, 
 
 ??? note "Xấp xỉ tốt nhất"
     Cho $\frac{p}{q}$ là phân số làm cực tiểu $\left|r-\frac{p}{q}\right|$ với điều kiện $q \leq x$ cho một giá trị $x$ nào đó.
-    
+
     Khi đó $\frac{p}{q}$ là một bán hội tụ của $r$.
 
 Kết quả cuối cùng cho phép tìm các xấp xỉ hữu tỉ tốt nhất của $r$ bằng cách kiểm tra các bán hội tụ của nó.
@@ -482,11 +482,11 @@ Với số $r$ và phân số hội tụ thứ $k$ của nó là $r_k=\frac{p_k}
 
 $$r_k = a_0 + \sum\limits_{i=1}^k \frac{(-1)^{i-1}}{q_i q_{i-1}}.$$
 
-Đặc biệt, điều đó có nghĩa là 
+Đặc biệt, điều đó có nghĩa là
 
 $$r_k - r_{k-1} = \frac{(-1)^{k-1}}{q_k q_{k-1}}$$
 
-và 
+và
 
 $$p_k q_{k-1} - p_{k-1} q_k = (-1)^{k-1}.$$
 
@@ -657,7 +657,7 @@ Có thể chứng minh thêm (điều này được Lagrange chứng minh đầu
 
     $$\alpha = [a_0; a_1, \dots, a_{k-1}, s_k] = \frac{s_k p_{k-1} + p_{k-2}}{s_k q_{k-1} + q_{k-2}}.$$
 
-    Do đó, 
+    Do đó,
 
     $$s_k = -\frac{\alpha q_{k-1} - p_{k-1}}{\alpha q_k - p_k} = -\frac{q_{k-1} y \sqrt n + (x q_{k-1} - z p_{k-1})}{q_k y \sqrt n + (xq_k-zp_k)}.$$
 
@@ -783,9 +783,9 @@ $$a_k = \left\lfloor \left| \frac{q_{k-1}r-p_{k-1}}{q_{k-2}r-p_{k-2}} \right| \r
 !!! example "Thuật toán kéo dài mũi"
     Mỗi lần cộng $\vec r_{k-1}$ vào vectơ $\vec p$, giá trị của $\vec p \times \vec r$ tăng thêm $\vec r_{k-1} \times \vec r$.
 
-    Do đó, $a_k=\lfloor s_k \rfloor$ là số nguyên lớn nhất các vectơ $\vec r_{k-1}$ có thể cộng vào $\vec r_{k-2}$ mà không làm đổi dấu tích có hướng với $\vec r$.
+    Do đó, $a_k=\lfloor s_k \rfloor$ là số lượng lớn nhất các vectơ $\vec r_{k-1}$ có thể cộng vào $\vec r_{k-2}$ mà không làm đổi dấu tích có hướng với $\vec r$.
 
-    Nói cách khác, $a_k$ là số nguyên lớn nhất lần ta có thể cộng $\vec r_{k-1}$ vào $\vec r_{k-2}$ mà không vượt qua đường thẳng xác định bởi $\vec r$:
+    Nói cách khác, $a_k$ là số lần lớn nhất ta có thể cộng $\vec r_{k-1}$ vào $\vec r_{k-2}$ mà không vượt qua đường thẳng xác định bởi $\vec r$:
 
     <figure><img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Continued_convergents_geometry.svg" width="700px"/>
     <figcaption>_Các phân số hội tụ của $r=\frac{7}{9}=[0;1,3,2]$. Các bán hội tụ tương ứng với những điểm trung gian giữa các mũi tên màu xám._</figcaption></figure>
@@ -946,7 +946,7 @@ Sau khi đã giới thiệu các kết quả và khái niệm quan trọng nhấ
     Tính $\sum\limits_{x=1}^N \lfloor ex \rfloor$, trong đó $e = [2; 1, 2, 1, 1, 4, 1, 1, 6, 1, \dots, 1, 2n, 1, \dots]$ là số Euler và $N \leq 10^{4000}$.
 
 ??? hint "Lời giải"
-    Tổng này bằng số điểm nguyên $(x;y)$ thỏa mãn $1 \leq x \leq N$ và $1 \leq y \leq ex$.    
+    Tổng này bằng số điểm nguyên $(x;y)$ thỏa mãn $1 \leq x \leq N$ và $1 \leq y \leq ex$.
 
     Sau khi dựng bao lồi của các điểm dưới $y=ex$, có thể tính số lượng này bằng [định lý Pick](../geometry/picks-theorem.md):
 
