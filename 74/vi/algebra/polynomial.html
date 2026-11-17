@@ -8548,7 +8548,7 @@ $$</div>
 <h3 id="tinh-gia-tri-tai-nhieu-iem">Tính giá trị tại nhiều điểm<a class="headerlink" href="#tinh-gia-tri-tai-nhieu-iem" title="Permanent link">&para;</a></h3>
 <p>Giả sử cần tính <span class="arithmatex">$A(x_1), \dots, A(x_n)$</span>. Như đã nói, <span class="arithmatex">$A(x) \equiv A(x_i) \pmod{x-x_i}$</span>. Do đó ta có thể làm như sau:</p>
 <ol>
-<li>Tính một cây đoạn sao cho đoạn <span class="arithmatex">$[l,r)$</span> chứa tích <span class="arithmatex">$P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})$</span>.</li>
+<li>Tính một cây phân đoạn (Segment Tree) sao cho đoạn <span class="arithmatex">$[l,r)$</span> chứa tích <span class="arithmatex">$P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})$</span>.</li>
 <li>Bắt đầu với <span class="arithmatex">$l=1$</span> và <span class="arithmatex">$r=n+1$</span> ở nút gốc. Đặt <span class="arithmatex">$m=\lfloor(l+r)/2\rfloor$</span>. Đi xuống <span class="arithmatex">$[l,m)$</span> với đa thức <span class="arithmatex">$A(x) \pmod{P_{l,m}(x)}$</span>.</li>
 <li>Bước này tính đệ quy <span class="arithmatex">$A(x_l), \dots, A(x_{m-1})$</span>; làm tương tự cho <span class="arithmatex">$[m,r)$</span> với <span class="arithmatex">$A(x) \pmod{P_{m,r}(x)}$</span>.</li>
 <li>Nối kết quả của hai lời gọi đệ quy và trả về.</li>
@@ -8563,7 +8563,7 @@ $$</div>
 P_i = \prod\limits_{j \neq i} (x_i-x_j)
 $$</div>
 <p>Nhưng khi xét đạo hàm <span class="arithmatex">$P'(x)$</span>, ta thấy <span class="arithmatex">$P'(x_i) = P_i$</span>. Vì vậy có thể tính các <span class="arithmatex">$P_i$</span> bằng cách tính giá trị đa thức trong <span class="arithmatex">$O(n \log^2 n)$</span>.</p>
-<p>Giờ xét thuật toán đệ quy trên cùng cây đoạn như trong phép tính giá trị tại nhiều điểm. Thuật toán bắt đầu từ các lá, với giá trị <span class="arithmatex">$\dfrac{y_i}{P_i}$</span> ở mỗi lá.</p>
+<p>Giờ xét thuật toán đệ quy trên cùng cây phân đoạn như trong phép tính giá trị tại nhiều điểm. Thuật toán bắt đầu từ các lá, với giá trị <span class="arithmatex">$\dfrac{y_i}{P_i}$</span> ở mỗi lá.</p>
 <p>Khi trở về từ đệ quy, ta gộp kết quả từ nút trái và nút phải theo <span class="arithmatex">$A_{l,r} = A_{l,m}P_{m,r} + P_{l,m} A_{m,r}$</span>.</p>
 <p>Bằng cách này, khi trở về gốc ta sẽ có chính xác <span class="arithmatex">$A(x)$</span> tại đó.
 Toàn bộ quá trình cũng chạy trong <span class="arithmatex">$O(n \log^2 n)$</span>.</p>
