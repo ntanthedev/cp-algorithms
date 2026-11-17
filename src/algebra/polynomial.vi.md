@@ -388,7 +388,7 @@ Hệ số của $x^{n+r}$ trong tích của các đa thức $A_0(x) = \sum\limit
 ### Tính giá trị tại nhiều điểm
 Giả sử cần tính $A(x_1), \dots, A(x_n)$. Như đã nói, $A(x) \equiv A(x_i) \pmod{x-x_i}$. Do đó ta có thể làm như sau:
 
-1. Tính một cây đoạn sao cho đoạn $[l,r)$ chứa tích $P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})$.
+1. Tính một cây phân đoạn (Segment Tree) sao cho đoạn $[l,r)$ chứa tích $P_{l, r}(x) = (x-x_l)(x-x_{l+1})\dots(x-x_{r-1})$.
 2. Bắt đầu với $l=1$ và $r=n+1$ ở nút gốc. Đặt $m=\lfloor(l+r)/2\rfloor$. Đi xuống $[l,m)$ với đa thức $A(x) \pmod{P_{l,m}(x)}$.
 3. Bước này tính đệ quy $A(x_l), \dots, A(x_{m-1})$; làm tương tự cho $[m,r)$ với $A(x) \pmod{P_{m,r}(x)}$.
 4. Nối kết quả của hai lời gọi đệ quy và trả về.
@@ -411,7 +411,7 @@ $$
 
 Nhưng khi xét đạo hàm $P'(x)$, ta thấy $P'(x_i) = P_i$. Vì vậy có thể tính các $P_i$ bằng cách tính giá trị đa thức trong $O(n \log^2 n)$.
 
-Giờ xét thuật toán đệ quy trên cùng cây đoạn như trong phép tính giá trị tại nhiều điểm. Thuật toán bắt đầu từ các lá, với giá trị $\dfrac{y_i}{P_i}$ ở mỗi lá.
+Giờ xét thuật toán đệ quy trên cùng cây phân đoạn như trong phép tính giá trị tại nhiều điểm. Thuật toán bắt đầu từ các lá, với giá trị $\dfrac{y_i}{P_i}$ ở mỗi lá.
 
 Khi trở về từ đệ quy, ta gộp kết quả từ nút trái và nút phải theo $A_{l,r} = A_{l,m}P_{m,r} + P_{l,m} A_{m,r}$.
 
