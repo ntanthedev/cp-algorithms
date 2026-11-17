@@ -8503,9 +8503,9 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <h2 id="su-hoi-tu">Sự hội tụ<a class="headerlink" href="#su-hoi-tu" title="Permanent link">&para;</a></h2>
 <p>Với số <span class="arithmatex">$r$</span> và phân số hội tụ thứ <span class="arithmatex">$k$</span> của nó là <span class="arithmatex">$r_k=\frac{p_k}{q_k}$</span>, ta có công thức:</p>
 <div class="arithmatex">$$r_k = a_0 + \sum\limits_{i=1}^k \frac{(-1)^{i-1}}{q_i q_{i-1}}.$$</div>
-<p>Đặc biệt, điều đó có nghĩa là </p>
+<p>Đặc biệt, điều đó có nghĩa là</p>
 <div class="arithmatex">$$r_k - r_{k-1} = \frac{(-1)^{k-1}}{q_k q_{k-1}}$$</div>
-<p>và </p>
+<p>và</p>
 <div class="arithmatex">$$p_k q_{k-1} - p_{k-1} q_k = (-1)^{k-1}.$$</div>
 <p>Từ đây ta có thể kết luận rằng</p>
 <div class="arithmatex">$$\left| r-\frac{p_k}{q_k} \right| \leq \frac{1}{q_{k+1}q_k} \leq \frac{1}{q_k^2}.$$</div>
@@ -8634,7 +8634,7 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <summary>Lời giải</summary>
 <p>Nói chung, với thương đầy đủ thứ <span class="arithmatex">$k$</span> là <span class="arithmatex">$s_k$</span> của số này, ta có</p>
 <div class="arithmatex">$$\alpha = [a_0; a_1, \dots, a_{k-1}, s_k] = \frac{s_k p_{k-1} + p_{k-2}}{s_k q_{k-1} + q_{k-2}}.$$</div>
-<p>Do đó, </p>
+<p>Do đó,</p>
 <div class="arithmatex">$$s_k = -\frac{\alpha q_{k-1} - p_{k-1}}{\alpha q_k - p_k} = -\frac{q_{k-1} y \sqrt n + (x q_{k-1} - z p_{k-1})}{q_k y \sqrt n + (xq_k-zp_k)}.$$</div>
 <p>Nhân tử và mẫu với <span class="arithmatex">$(xq_k - zp_k) - q_k y \sqrt n$</span>, ta khử được <span class="arithmatex">$\sqrt n$</span> ở mẫu, vì vậy các thương đầy đủ có dạng</p>
 <div class="arithmatex">$$s_k = \frac{x_k + y_k \sqrt n}{z_k}.$$</div>
@@ -8742,8 +8742,8 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <div class="admonition example">
 <p class="admonition-title">Thuật toán kéo dài mũi</p>
 <p>Mỗi lần cộng <span class="arithmatex">$\vec r_{k-1}$</span> vào vectơ <span class="arithmatex">$\vec p$</span>, giá trị của <span class="arithmatex">$\vec p \times \vec r$</span> tăng thêm <span class="arithmatex">$\vec r_{k-1} \times \vec r$</span>.</p>
-<p>Do đó, <span class="arithmatex">$a_k=\lfloor s_k \rfloor$</span> là số nguyên lớn nhất các vectơ <span class="arithmatex">$\vec r_{k-1}$</span> có thể cộng vào <span class="arithmatex">$\vec r_{k-2}$</span> mà không làm đổi dấu tích có hướng với <span class="arithmatex">$\vec r$</span>.</p>
-<p>Nói cách khác, <span class="arithmatex">$a_k$</span> là số nguyên lớn nhất lần ta có thể cộng <span class="arithmatex">$\vec r_{k-1}$</span> vào <span class="arithmatex">$\vec r_{k-2}$</span> mà không vượt qua đường thẳng xác định bởi <span class="arithmatex">$\vec r$</span>:</p>
+<p>Do đó, <span class="arithmatex">$a_k=\lfloor s_k \rfloor$</span> là số lượng lớn nhất các vectơ <span class="arithmatex">$\vec r_{k-1}$</span> có thể cộng vào <span class="arithmatex">$\vec r_{k-2}$</span> mà không làm đổi dấu tích có hướng với <span class="arithmatex">$\vec r$</span>.</p>
+<p>Nói cách khác, <span class="arithmatex">$a_k$</span> là số lần lớn nhất ta có thể cộng <span class="arithmatex">$\vec r_{k-1}$</span> vào <span class="arithmatex">$\vec r_{k-2}$</span> mà không vượt qua đường thẳng xác định bởi <span class="arithmatex">$\vec r$</span>:</p>
 <p><figure><img src="https://upload.wikimedia.org/wikipedia/commons/9/92/Continued_convergents_geometry.svg" width="700px"/>
 <figcaption><em>Các phân số hội tụ của <span class="arithmatex">$r=\frac{7}{9}=[0;1,3,2]$</span>. Các bán hội tụ tương ứng với những điểm trung gian giữa các mũi tên màu xám.</em></figcaption></figure></p>
 <p>Trong hình trên, <span class="arithmatex">$\vec r_2 = (4;3)$</span> thu được bằng cách liên tiếp cộng <span class="arithmatex">$\vec r_1 = (1;1)$</span> vào <span class="arithmatex">$\vec r_0 = (1;0)$</span>.</p>
@@ -8889,7 +8889,7 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 </div>
 <details class="hint">
 <summary>Lời giải</summary>
-<p>Tổng này bằng số điểm nguyên <span class="arithmatex">$(x;y)$</span> thỏa mãn <span class="arithmatex">$1 \leq x \leq N$</span> và <span class="arithmatex">$1 \leq y \leq ex$</span>.    </p>
+<p>Tổng này bằng số điểm nguyên <span class="arithmatex">$(x;y)$</span> thỏa mãn <span class="arithmatex">$1 \leq x \leq N$</span> và <span class="arithmatex">$1 \leq y \leq ex$</span>.</p>
 <p>Sau khi dựng bao lồi của các điểm dưới <span class="arithmatex">$y=ex$</span>, có thể tính số lượng này bằng <a href="../geometry/picks-theorem.html">định lý Pick</a>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:2"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">C++</label><label for="__tabbed_11_2">Python</label></div>
 <div class="tabbed-content">
