@@ -35,6 +35,8 @@ Khi đó, tồn tại một cạnh ngược từ đỉnh $v$ hoặc một hậu 
 
 Do đó, đỉnh $v$ trong cây DFS là một đỉnh khớp khi và chỉ khi $low[to] \geq tin[v]$.
 
+**Ghi chú bản dịch:** Hai phát biểu ngay trước đây trong nguồn cần xét theo từng cây con của $v$: với đỉnh $v$ không phải gốc, chỉ cần tồn tại một con $to$ có $low[to] \geq tin[v]$ thì $v$ là đỉnh khớp; một con không thỏa điều kiện không đủ để kết luận ngược lại. Gốc được xét riêng theo số con như đã nêu ở trên. Cạnh ngược đi trực tiếp từ $v$ tới tổ tiên cũng không được mô tả bởi điều kiện chỉ xét các giá trị $low$ của con.
+
 ## Cài đặt
 
 Cài đặt cần phân biệt ba trường hợp: khi ta đi xuống theo một cạnh của cây DFS, khi gặp một cạnh ngược tới tổ tiên của đỉnh hiện tại, và khi quay về đỉnh cha. Ba trường hợp là:

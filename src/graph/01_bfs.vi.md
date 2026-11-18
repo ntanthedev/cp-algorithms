@@ -97,7 +97,7 @@ Nếu không có cạnh trọng số $0$, thuật toán trở thành BFS thông 
 Ta còn có thể mở rộng ý tưởng này khi cho phép trọng số cạnh lớn hơn.
 Nếu mọi cạnh của đồ thị có trọng số $\le k$, thì khoảng cách từ nguồn đến các đỉnh trong hàng đợi chỉ lệch tối đa $k$ so với khoảng cách từ nguồn đến đỉnh $v$.
 
-**Ghi chú bản dịch:** nguồn tiếng Anh viết “distance of $v$ to the source”, nhưng theo định nghĩa của $d[v]$ xuyên suốt bài, đại lượng ở đây là khoảng cách từ nguồn đến $v$. Bản dịch dùng đúng chiều này để tránh nhầm trên đồ thị có hướng.
+**Ghi chú bản dịch:** nguồn tiếng Anh viết “distance of $v$ to the source”, nhưng theo định nghĩa của $d[v]$ xuyên suốt bài, đại lượng ở đây là khoảng cách từ nguồn đến $v$. Bản dịch dùng đúng chiều này để tránh nhầm trên đồ thị có hướng. Với thuật toán Dial được mô tả, các trọng số cần là số nguyên không âm và không vượt quá $k$.
 
 Vì vậy, ta có thể duy trì $k + 1$ bucket cho các đỉnh trong hàng đợi; mỗi khi bucket ứng với khoảng cách nhỏ nhất trở nên rỗng, ta dịch vòng để chuyển sang bucket có khoảng cách lớn hơn kế tiếp.
 Phần mở rộng này được gọi là **thuật toán Dial** (Dial's algorithm).

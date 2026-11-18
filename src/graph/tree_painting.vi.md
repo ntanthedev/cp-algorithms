@@ -13,7 +13,7 @@ translation:
 
 Đây là một bài toán khá thường gặp. Cho cây $G$ có $N$ đỉnh. Có hai loại truy vấn: tô màu một cạnh và hỏi số cạnh được tô màu giữa hai đỉnh.
 
-Ta mô tả một lời giải khá đơn giản (dùng [cây đoạn](../data_structures/segment_tree.md)) để trả lời mỗi truy vấn trong $O(\log N)$ thời gian. Bước tiền xử lý mất $O(N)$ thời gian.
+Ta mô tả một lời giải khá đơn giản (dùng [cây phân đoạn (Segment Tree)](../data_structures/segment_tree.md)) để trả lời mỗi truy vấn trong $O(\log N)$ thời gian. Bước tiền xử lý mất $O(N)$ thời gian.
 
 ## Thuật toán
 
@@ -23,13 +23,13 @@ Ta bắt đầu bằng bước **tiền xử lý**. Chạy tìm kiếm theo chi�
 
 Danh sách này chứa mỗi cạnh (nghĩa là nếu $i$ và $j$ là hai đầu cạnh thì có một vị trí trong danh sách mà $i$ và $j$ nằm cạnh nhau), và cạnh xuất hiện đúng hai lần: theo chiều thuận (từ $i$ đến $j$, với đỉnh $i$ gần gốc hơn đỉnh $j$) và theo chiều ngược (từ $j$ đến $i$).
 
-Ta xây dựng hai danh sách cho các cạnh này. Danh sách thứ nhất lưu màu của tất cả các cạnh theo chiều thuận, danh sách thứ hai lưu màu theo chiều ngược. Ta dùng $1$ nếu cạnh được tô màu, và $0$ trong trường hợp ngược lại. Trên mỗi danh sách, xây dựng một cây đoạn (tính tổng và cập nhật một phần tử), gọi chúng là $T1$ và $T2$.
+Ta xây dựng hai danh sách cho các cạnh này. Danh sách thứ nhất lưu màu của tất cả các cạnh theo chiều thuận, danh sách thứ hai lưu màu theo chiều ngược. Ta dùng $1$ nếu cạnh được tô màu, và $0$ trong trường hợp ngược lại. Trên mỗi danh sách, xây dựng một cây phân đoạn (tính tổng và cập nhật một phần tử), gọi chúng là $T1$ và $T2$.
 
 Xét truy vấn dạng $(i,j)$, trong đó $i$ là tổ tiên của $j$. Ta cần xác định số cạnh được tô màu trên đường đi giữa $i$ và $j$. Tìm lần xuất hiện đầu tiên của $i$ và $j$ trong hành trình Euler, lần lượt ở các vị trí $p$ và $q$ (có thể làm trong $O(1)$ nếu tính trước các vị trí này khi tiền xử lý). Khi đó **đáp án** là tổng $T1[p..q-1]$ trừ tổng $T2[p..q-1]$.
 
-**Tại sao?** Xét đoạn $[p;q]$ trong hành trình Euler. Nó chứa mọi cạnh trên đường đi cần tìm từ $i$ đến $j$, nhưng cũng chứa các cạnh thuộc những đường đi khác từ $i$. Có một khác biệt lớn giữa hai nhóm: các cạnh cần tìm chỉ xuất hiện một lần theo chiều thuận, còn mọi cạnh khác xuất hiện hai lần: một lần theo chiều thuận và một lần theo chiều ngược. Vì vậy hiệu $T1[p..q-1] - T2[p..q-1]$ cho đáp án đúng (cần trừ một ở chỉ số cuối vì nếu không ta sẽ lấy thêm một cạnh đi ra từ đỉnh $j$). Truy vấn tổng trên cây đoạn mất $O(\log N)$.
+**Tại sao?** Xét đoạn $[p;q]$ trong hành trình Euler. Nó chứa mọi cạnh trên đường đi cần tìm từ $i$ đến $j$, nhưng cũng chứa các cạnh thuộc những đường đi khác từ $i$. Có một khác biệt lớn giữa hai nhóm: các cạnh cần tìm chỉ xuất hiện một lần theo chiều thuận, còn mọi cạnh khác xuất hiện hai lần: một lần theo chiều thuận và một lần theo chiều ngược. Vì vậy hiệu $T1[p..q-1] - T2[p..q-1]$ cho đáp án đúng (cần trừ một ở chỉ số cuối vì nếu không ta sẽ lấy thêm một cạnh đi ra từ đỉnh $j$). Truy vấn tổng trên cây phân đoạn mất $O(\log N)$.
 
-Trả lời **truy vấn loại một** (tô màu một cạnh) còn dễ hơn: ta chỉ cần cập nhật $T1$ và $T2$, cụ thể là cập nhật một phần tử tương ứng với cạnh đó (việc tìm cạnh trong danh sách cũng có thể thực hiện trong $O(1)$ nếu tìm trước khi tiền xử lý). Một lần cập nhật trên cây đoạn mất $O(\log N)$.
+Trả lời **truy vấn loại một** (tô màu một cạnh) còn dễ hơn: ta chỉ cần cập nhật $T1$ và $T2$, cụ thể là cập nhật một phần tử tương ứng với cạnh đó (việc tìm cạnh trong danh sách cũng có thể thực hiện trong $O(1)$ nếu tìm trước khi tiền xử lý). Một lần cập nhật trên cây phân đoạn mất $O(\log N)$.
 
 ## Cài đặt
 
