@@ -8005,6 +8005,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8038,6 +8042,7 @@ Với một số <span class="arithmatex">$x$</span>, ta cần nhiều nhất <s
 <p>Tương tự, mọi đoạn đều có thể được biểu diễn duy nhất thành hợp của các đoạn có độ dài là các lũy thừa của hai giảm dần.
 Ví dụ <span class="arithmatex">$[2, 14] = [2, 9] \cup [10, 13] \cup [14, 14]$</span>, trong đó đoạn đầy đủ có độ dài 13, còn các đoạn thành phần lần lượt có độ dài 8, 4 và 1.
 Ở đây hợp cũng gồm nhiều nhất <span class="arithmatex">$\lceil \log_2(\text{length of interval}) \rceil$</span> đoạn.</p>
+<p><strong>Ghi chú bản dịch:</strong> Hai cận trên trong nguồn không đúng khi giá trị hoặc độ dài đoạn bằng 1: logarit cơ số 2 của 1 bằng 0, nhưng biểu diễn cần một số hạng hoặc một đoạn. Với giá trị dương, một cận đúng là phần nguyên dưới của logarit cơ số 2 cộng 1. Logarit của 0 không xác định.</p>
 <p>Ý tưởng chính của Sparse Table là tính trước đáp án cho mọi truy vấn trên các đoạn có độ dài là lũy thừa của hai.
 Sau đó, một truy vấn đoạn khác có thể được trả lời bằng cách tách đoạn thành các đoạn có độ dài là lũy thừa của hai, lấy các đáp án đã tính trước rồi kết hợp chúng để thu được đáp án đầy đủ.</p>
 <h2 id="tien-xu-ly">Tiền xử lý<a class="headerlink" href="#tien-xu-ly" title="Permanent link">&para;</a></h2>
@@ -8090,6 +8095,7 @@ Ví dụ, ta có thể tách đoạn <span class="arithmatex">$[1, 6]$</span> th
 Giá trị nhỏ nhất trên <span class="arithmatex">$[1, 6]$</span> hiển nhiên bằng giá trị nhỏ nhất giữa giá trị nhỏ nhất của <span class="arithmatex">$[1, 4]$</span> và của <span class="arithmatex">$[3, 6]$</span>.
 Do đó, ta có thể tính giá trị nhỏ nhất trên đoạn <span class="arithmatex">$[L, R]$</span> bằng:</p>
 <div class="arithmatex">$$\min(\text{st}[i][L], \text{st}[i][R - 2^i + 1]) \quad \text{ where } i = \log_2(R - L + 1)$$</div>
+<p><strong>Ghi chú bản dịch:</strong> Trong công thức này, chỉ số i phải là phần nguyên dưới của logarit cơ số 2 của độ dài đoạn. Ví dụ, với độ dài 3 thì i bằng 1; bảng logarit và mã truy vấn bên dưới tính theo cách đó.</p>
 <p>Cách này yêu cầu ta tính nhanh <span class="arithmatex">$\log_2(R - L + 1)$</span>.
 Ta có thể làm điều đó bằng cách tính trước mọi logarit:</p>
 <p><div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">lg</span><span class="p">[</span><span class="n">MAXN</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
@@ -8157,7 +8163,7 @@ Một lựa chọn khác là <a href="sqrt-tree.html">Sqrt Tree</a>.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.85%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.15%)</li></ul>
 </ul>
                 
               </article>
