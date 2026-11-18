@@ -173,6 +173,8 @@ vector<int> permute(vector<int> sequence, vector<int> permutation, long long k) 
 
 Như vậy, mỗi phép biến đổi có thể được biểu diễn bằng một phép biến đổi tuyến tính trên các tọa độ. Do đó một phép biến đổi có thể viết thành ma trận $4 \times 4$ dạng:
 
+**Ghi chú bản dịch:** Phép tịnh tiến khác không là phép biến đổi affine, không tuyến tính trên các tọa độ ban đầu. Nó được biểu diễn tuyến tính sau khi bổ sung tọa độ thuần nhất như phần giải thích bên dưới.
+
 $$\begin{pmatrix}
 a_{11} & a_ {12} & a_ {13} & a_ {14} \\
 a_{21} & a_ {22} & a_ {23} & a_ {24} \\
@@ -224,12 +226,16 @@ $$\begin{pmatrix}
 
 Khi mọi phép biến đổi đã được biểu diễn dưới dạng ma trận, cả chuỗi phép biến đổi có thể biểu diễn bằng tích các ma trận đó, còn một "loop" lặp $k$ lần có thể biểu diễn bằng cách nâng ma trận lên lũy thừa $k$, tính bằng lũy thừa nhị phân trong $O(\log{k})$. Ta có thể tính trước ma trận đại diện cho toàn bộ phép biến đổi trong $O(m \log{k})$, sau đó áp dụng nó lên mỗi điểm trong số $n$ điểm trong $O(n)$, cho tổng độ phức tạp $O(n + m \log{k})$.
 
+**Ghi chú bản dịch:** Với quy ước nhân vector hàng ở trên, ma trận quay trong nguồn cho hướng quay ngược với quy tắc bàn tay phải ứng với góc dương. Cần thống nhất lại quy ước vector và chiều quay khi áp dụng.
+
 
 ### Số đường đi độ dài $k$ trong đồ thị
 
 **Bài toán:** Cho một đồ thị có hướng không trọng số gồm $n$ đỉnh, tìm số đường đi độ dài $k$ từ một đỉnh $u$ bất kỳ tới một đỉnh $v$ bất kỳ.
 
 **Lời giải:** Bài toán này được trình bày chi tiết hơn trong [một bài riêng](../graph/fixed_length_paths.md). Thuật toán nâng ma trận kề $M$ của đồ thị lên lũy thừa $k$; $m_{ij} = 1$ nếu có cạnh từ $i$ tới $j$, và bằng $0$ nếu không. Sau khi nâng lũy thừa, $m_{ij}$ là số đường đi độ dài $k$ từ $i$ tới $j$. Độ phức tạp là $O(n^3 \log k)$.
+
+**Ghi chú bản dịch:** Các đường đi được đếm ở đây có thể lặp đỉnh và cạnh; theo thuật ngữ của dự án, đó là các hành trình. Biến thể trọng số ngay sau đây cũng cho phép lặp như vậy.
 
 **Lưu ý:** Bài riêng đó cũng xét một biến thể: cạnh có trọng số và cần tìm đường đi trọng số nhỏ nhất chứa đúng $k$ cạnh. Bài toán này cũng được giải bằng cách nâng lũy thừa ma trận kề. Khi đó phần tử ma trận là trọng số cạnh từ $i$ tới $j$, hoặc $\infty$ nếu không có cạnh.
 Thay vì phép nhân ma trận thông thường, ta dùng một phép toán biến đổi:

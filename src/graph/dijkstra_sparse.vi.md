@@ -96,7 +96,7 @@ không xóa cặp cũ khỏi hàng đợi.
 Kết quả là cùng một đỉnh có thể xuất hiện nhiều lần trong hàng đợi với các khoảng cách khác nhau.
 Trong số các cặp đó, ta chỉ quan tâm tới cặp mà phần tử thứ nhất bằng giá trị hiện tại tương ứng trong $d[]$; các cặp còn lại đã lỗi thời.
 Do đó cần một thay đổi nhỏ:
-ở đầu mỗi vòng lặp, sau khi lấy cặp tiếp theo ra, ta kiểm tra cặp đó còn hợp lệ hay đã là dữ liệu cũ được xử lý trước đó.
+ở đầu mỗi vòng lặp, sau khi lấy cặp tiếp theo ra, ta kiểm tra khoảng cách trong cặp có còn bằng khoảng cách hiện tại của đỉnh hay đã lỗi thời.
 Kiểm tra này rất quan trọng; nếu bỏ qua, độ phức tạp có thể tăng tới $O(n m)$.
 
 Mặc định, `priority_queue` sắp xếp các phần tử theo thứ tự giảm dần.

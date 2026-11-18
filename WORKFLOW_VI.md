@@ -2,6 +2,8 @@
 
 Điểm vào cho agent là [AGENTS.md](AGENTS.md). Hướng dẫn theo vai trò: [tác giả](docs/translation/TRANSLATE_VI.md) và [reviewer](docs/translation/REVIEW_VI.md). Prompt ngắn ở [PROMPTS_VI.md](PROMPTS_VI.md); quy tắc nội dung và glossary ở [TRANSLATING_VI.md](TRANSLATING_VI.md).
 
+Sau đợt review toàn văn, xử lý phát hiện và đối chiếu thuật ngữ theo [kế hoạch sau review](docs/translation/REVIEW_FOLLOWUP_VI.md).
+
 **Vận hành hiện hành:** [START_HERE_VI.md](START_HERE_VI.md) quy định profile Terra/Luna, nhánh và phạm vi; tối đa ba PR dịch độc lập. Các báo cáo có ngày và PR #33 là lịch sử, không phải việc mặc định. Phải xác minh trạng thái thật; không tự nhận các nhánh đang được phiên khác review/dọn dẹp.
 
 **Cách dùng mặc định:** “Tự chọn gói bài phù hợp và dịch theo workflow của repo.” Khi cần review, mở phiên riêng và nói “Review nhánh x”. Reviewer tự lấy PR/SHA/nguồn, không cần prompt bàn giao dài. Dán kết quả về tác giả để sửa. Review PASS không cấp quyền merge; “Đồng ý merge bản vừa được review” chỉ áp dụng cho gói/SHA vừa được trình bày rõ ràng.

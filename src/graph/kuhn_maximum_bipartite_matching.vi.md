@@ -94,6 +94,8 @@ Tuy nhiên, có thể cải thiện nhẹ đánh giá này. Với thuật toán 
 Trong cài đặt mô tả ở trên, DFS/BFS chỉ bắt đầu từ các đỉnh thuộc phần thứ nhất, nên toàn bộ thuật toán chạy trong $O(n_1m)$, với $n_1$ là số đỉnh của phần thứ nhất. Trong trường hợp xấu nhất, độ phức tạp là $O(n_1 ^ 2 n_2)$ (với $n_2$ là số đỉnh của phần thứ hai).
 Điều này cho thấy sẽ có lợi hơn nếu phần thứ nhất có ít đỉnh hơn phần thứ hai. Với các đồ thị rất mất cân bằng (khi $n_1$ và $n_2$ chênh lệch nhiều), cách chọn hai phần có thể tạo ra khác biệt đáng kể về thời gian chạy.
 
+**Ghi chú bản dịch:** Các cận ở trên bỏ qua chi phí khởi tạo lại mảng đánh dấu trong mã bên dưới. Với cài đặt chuẩn, việc đặt lại mảng có kích thước phần thứ nhất ở mỗi lượt và việc in kết quả cho phần thứ hai cho cận O(n₁(n₁ + m) + n₂). Ví dụ, ngay cả khi không có cạnh, việc đặt lại mảng vẫn được thực hiện ở mỗi lượt.
+
 ## Cài đặt
 
 ### Cài đặt chuẩn

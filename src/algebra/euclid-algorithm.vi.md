@@ -77,7 +77,7 @@ Vì các số Fibonacci tăng theo cấp số nhân, ta suy ra thuật toán Euc
 
 Một cách đánh giá khác là nhận thấy rằng trong trường hợp $a \geq b$, giá trị $a \bmod b$ không vượt quá $a$ chia cho $2$, nên số lớn hơn giảm ít nhất một nửa sau mỗi vòng lặp của thuật toán. Áp dụng lập luận này khi tính UCLN của tập số $a_1,\dots,a_n \leq C$, ta còn có thể đánh giá tổng thời gian là $O(n + \log C)$ thay vì $O(n \log C)$, bởi mỗi vòng lặp không tầm thường đều làm ứng viên UCLN hiện tại giảm theo hệ số ít nhất $2$.
 
-**Ghi chú bản dịch:** Số dư không vượt quá một nửa số bị chia. Số lớn hơn trong cặp có thể cần hai phép chia liên tiếp mới giảm còn không quá một nửa.
+**Ghi chú bản dịch:** Mệnh đề nguồn nói số lớn hơn giảm ít nhất một nửa sau mỗi vòng lặp là không đúng: với cặp (10, 9), sau một vòng ta được (9, 1). Số dư không vượt quá một nửa số bị chia; số lớn hơn trong cặp có thể cần hai phép chia liên tiếp mới giảm còn không quá một nửa.
 
 ## Bội chung nhỏ nhất
 

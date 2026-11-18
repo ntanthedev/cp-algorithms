@@ -233,6 +233,8 @@ $$A(x) = B(x) D(x) + R(x), \deg R < \deg B.$$
 
 Cho $n \geq m$, suy ra $\deg D = n - m$ và $n-m+1$ hệ số bậc cao nhất của $A$ không ảnh hưởng đến $R$. Điều này có nghĩa là ta có thể khôi phục $D(x)$ từ $n-m+1$ hệ số bậc cao nhất của $A(x)$ và $B(x)$ nếu xem đây là một hệ phương trình.
 
+**Ghi chú bản dịch:** Khẳng định trong nguồn rằng các hệ số bậc cao nhất của đa thức bị chia không ảnh hưởng đến phần dư là không đúng nói chung. Chẳng hạn, chia x và 2x cho x−1 lần lượt được dư 1 và 2. Các hệ số bậc cao vẫn đủ để xác định thương như lập luận tiếp theo mô tả.
+
 Hệ phương trình tuyến tính này có thể được viết dưới dạng:
 
 $$\begin{bmatrix} a_n \\ \vdots \\ a_{m+1} \\ a_{m} \end{bmatrix} = \begin{bmatrix}
@@ -482,7 +484,9 @@ T resultant(poly<T> a, poly<T> b) {
 
 Có một cách để tính ước chung lớn nhất và kết thức trong $O(n \log^2 n)$.
 
-Thủ tục này thực hiện một phép biến đổi tuyến tính $2 \times 2$ ánh xạ cặp đa thức $a(x)$, $b(x)$ thành cặp khác $c(x), d(x)$ sao cho $\deg d(x) \leq \frac{\deg a(x)}{2}$. Nếu thực hiện cẩn thận, ta có thể tính half-GCD của bất kỳ cặp đa thức nào bằng nhiều nhất $2$ lời gọi đệ quy trên các đa thức nhỏ hơn ít nhất $2$ lần.
+Thủ tục này thực hiện một phép biến đổi tuyến tính $2 \times 2$ ánh xạ cặp đa thức $a(x)$, $b(x)$ thành cặp khác $c(x), d(x)$ sao cho $\deg d(x) \leq \frac{\deg a(x)}{2}$. Nếu thực hiện cẩn thận, ta có thể tính half-GCD của bất kỳ cặp đa thức nào bằng nhiều nhất $2$ lời gọi đệ quy trên các đa thức có kích thước giảm ít nhất theo hệ số $2$.
+
+**Ghi chú bản dịch:** Nguồn không nêu rõ thước đo kích thước trong nhận định về các đầu vào đệ quy; điều kiện trên bậc của đa thức đầu ra không tự nó xác lập cận này.
 
 Chi tiết cụ thể của thuật toán khá dài dòng, nhưng bạn có thể tìm cài đặt trong thư viện, ở hàm `half_gcd`.
 

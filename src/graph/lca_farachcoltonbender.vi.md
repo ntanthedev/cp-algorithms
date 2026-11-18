@@ -81,6 +81,9 @@ Vì vậy, chỉ còn các truy vấn RMQ nằm trong cùng một khối.
 Tại đây ta sẽ khai thác tính chất đặc biệt của mảng.
 Nhớ rằng các giá trị trong mảng — chính là độ cao của các đỉnh trên cây — luôn chênh lệch nhau một đơn vị.
 Nếu bỏ phần tử đầu tiên của một khối và lấy mọi phần tử còn lại trừ đi phần tử đó, mỗi khối có thể được đặc trưng bởi một dãy độ dài $K - 1$ chỉ gồm các số $+1$ và $-1$.
+
+**Ghi chú bản dịch:** Phát biểu của nguồn ở câu trước cần lấy hiệu của từng cặp phần tử kề nhau, thay vì trừ phần tử đầu khỏi mọi phần tử còn lại. Chẳng hạn, khối [0, 1, 2] có hai hiệu kề là [1, 1], còn các hiệu so với phần tử đầu là [1, 2]. Mã bitmask bên dưới cũng xét các phần tử kề nhau.
+
 Do các khối rất nhỏ, chỉ có ít dãy khác nhau có thể xuất hiện.
 Số dãy có thể có là:
 

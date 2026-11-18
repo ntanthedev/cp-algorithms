@@ -650,6 +650,8 @@ $$x = (L_0 \circ L_1)(y) = (L_0 \circ L_1 \circ L_0^{-1})(x).$$
 
 Có thể chứng minh thêm (điều này được Lagrange chứng minh đầu tiên) rằng với phương trình bậc hai bất kỳ $ax^2+bx+c=0$ có hệ số nguyên, nghiệm $x$ của nó là một liên phân số tuần hoàn từ một vị trí nào đó.
 
+**Ghi chú bản dịch:** Ví dụ số vô tỉ bậc hai bên dưới có một số công thức trong nguồn chưa đúng tổng quát: công thức thương đầy đủ lệch chỉ số, phép lấy phần nguyên không thể luôn thay căn bằng phần nguyên của nó, và phép khử căn dùng nhầm hệ số. Vì vậy không nên áp dụng trực tiếp hàm bước được mô tả cho biểu diễn tùy ý.
+
 !!! example "Số vô tỉ bậc hai"
     Tìm liên phân số của $\alpha = \frac{x+y\sqrt{n}}{z}$, trong đó $x, y, z, n \in \mathbb Z$ và $n > 0$ không phải số chính phương.
 ??? hint "Lời giải"
@@ -804,7 +806,7 @@ $$|\vec r_{k-2} \times \vec r_k| = |\vec r_{k-2} \times (\vec r_{k-2} + a_k \vec
 
 Kết hợp với [định lý Pick](../geometry/picks-theorem.md), điều này có nghĩa là không có điểm nguyên nào nằm thực sự bên trong tam giác, và các điểm nguyên duy nhất trên biên của nó là $\vec 0$ và $\vec r_{k-2} + t \cdot \vec r_{k-1}$ với mọi số nguyên $t$ sao cho $0 \leq t \leq a_k$. Gộp lại với mọi $k$ có thể, ta thấy không có điểm nguyên trong miền giữa các đa giác tạo bởi những vectơ hội tụ chỉ số chẵn và chỉ số lẻ.
 
-Từ đó suy ra các $\vec r_k$ với hệ số lẻ tạo thành bao lồi của các điểm nguyên có $x \geq 0$ phía trên đường thẳng $y=rx$, còn các $\vec r_k$ với hệ số chẵn tạo thành bao lồi của các điểm nguyên có $x > 0$ phía dưới đường thẳng $y=rx$.
+Từ đó suy ra các $\vec r_k$ với chỉ số lẻ tạo thành bao lồi của các điểm nguyên có $x \geq 0$ phía trên đường thẳng $y=rx$, còn các $\vec r_k$ với chỉ số chẵn tạo thành bao lồi của các điểm nguyên có $x > 0$ phía dưới đường thẳng $y=rx$.
 
 
 !!! info "Định nghĩa"

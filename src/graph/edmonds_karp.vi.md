@@ -49,7 +49,7 @@ Nguồn $s$ là nơi sinh ra toàn bộ nước, và nước chỉ có thể tho
 Hình dưới đây minh họa một mạng luồng.
 Giá trị thứ nhất trên mỗi cạnh là luồng, ban đầu bằng 0; giá trị thứ hai là dung lượng.
 <div style="text-align: center;">
-  <img src="Flow1.png" alt="Flow network">
+  <img src="Flow1.png" alt="Mạng luồng">
 </div>
 
 Giá trị của luồng trong một mạng là tổng luồng được tạo ra tại nguồn $s$, hay tương đương là tổng luồng được nhận tại đích $t$.
@@ -88,28 +88,28 @@ Dưới đây là một ví dụ minh họa phương pháp.
 Ta dùng lại mạng luồng ở trên.
 Ban đầu, luồng bằng 0.
 <div style="text-align: center;">
-  <img src="Flow1.png" alt="Flow network">
+  <img src="Flow1.png" alt="Mạng luồng">
 </div>
 
 Ta có thể tìm đường $s - A - B - t$ với các dung lượng thặng dư lần lượt là 7, 5 và 8.
 Giá trị nhỏ nhất là 5, vì vậy ta có thể tăng luồng trên đường này thêm 5.
 Khi đó giá trị luồng của mạng là 5.
 <div style="text-align: center;">
-  <img src="Flow2.png" alt="First path">
-  <img src="Flow3.png" alt="Network after first path">
+  <img src="Flow2.png" alt="Đường tăng luồng thứ nhất">
+  <img src="Flow3.png" alt="Mạng sau đường tăng luồng thứ nhất">
 </div>
 
 Ta lại tìm một đường tăng luồng, lần này là $s - D - A - C - t$ với các dung lượng thặng dư 4, 3, 3 và 5.
 Do đó ta tăng luồng thêm 3 và thu được luồng có giá trị 8.
 <div style="text-align: center;">
-  <img src="Flow4.png" alt="Second path">
-  <img src="Flow5.png" alt="Network after second path">
+  <img src="Flow4.png" alt="Đường tăng luồng thứ hai">
+  <img src="Flow5.png" alt="Mạng sau đường tăng luồng thứ hai">
 </div>
 
 Lần này ta tìm được đường $s - D - C - B - t$ với các dung lượng thặng dư 1, 2, 3 và 3, vì vậy ta tăng luồng thêm 1.
 <div style="text-align: center;">
-  <img src="Flow6.png" alt="Third path">
-  <img src="Flow7.png" alt="Network after third path">
+  <img src="Flow6.png" alt="Đường tăng luồng thứ ba">
+  <img src="Flow7.png" alt="Mạng sau đường tăng luồng thứ ba">
 </div>
 
 Tiếp theo ta tìm được đường tăng luồng $s - A - D - C - t$ với các dung lượng thặng dư 2, 3, 1 và 2.
@@ -120,8 +120,8 @@ Nhưng vì hiện đã có luồng bằng 3 từ $D$ tới $A$, việc đi theo 
 Trực giác như sau:
 thay vì gửi luồng bằng 3 từ $D$ tới $A$, ta chỉ gửi 2, rồi bù lại bằng cách gửi thêm 1 đơn vị luồng từ $s$ tới $A$; nhờ đó ta có thể gửi thêm 1 đơn vị luồng theo đường $D - C - t$.
 <div style="text-align: center;">
-  <img src="Flow8.png" alt="Fourth path">
-  <img src="Flow9.png" alt="Network after fourth path">
+  <img src="Flow8.png" alt="Đường tăng luồng thứ tư">
+  <img src="Flow9.png" alt="Mạng sau đường tăng luồng thứ tư">
 </div>
 
 Bây giờ không thể tìm thêm đường tăng luồng nào từ $s$ tới $t$, nên luồng có giá trị $10$ là lớn nhất có thể.
@@ -222,7 +222,7 @@ Trong hình dưới đây là lát cắt cực tiểu của mạng luồng đã 
 Dung lượng của lát cắt $\{s, A, D\}$ và $\{B, C, t\}$ là $5 + 3 + 2 = 10$, đúng bằng giá trị luồng cực đại ta đã tìm được.
 Các lát cắt khác có dung lượng lớn hơn, chẳng hạn lát cắt giữa $\{s, A\}$ và $\{B, C, D, t\}$ có dung lượng $4 + 3 + 5 = 12$.
 <div style="text-align: center;">
-  <img src="Cut.png" alt="Minimum cut">
+  <img src="Cut.png" alt="Lát cắt cực tiểu">
 </div>
 
 Sau khi tính luồng cực đại bằng phương pháp Ford-Fulkerson, ta có thể tìm một lát cắt cực tiểu.

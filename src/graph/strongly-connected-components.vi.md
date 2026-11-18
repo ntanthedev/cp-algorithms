@@ -46,9 +46,9 @@ Thuật toán ở phần tiếp theo sẽ tìm tất cả các thành phần li�
 ### Mô tả thuật toán
 Thuật toán này được Kosaraju và Sharir đề xuất độc lập vào khoảng năm 1980. Nó dựa trên hai lượt [tìm kiếm theo chiều sâu](depth-first-search.md), với thời gian chạy $O(n + m)$.
 
-Ở bước đầu tiên, ta thực hiện một chuỗi các lần tìm kiếm theo chiều sâu (`dfs`) để thăm toàn bộ đồ thị. Nghĩa là, miễn vẫn còn đỉnh chưa thăm, ta chọn một đỉnh như vậy và bắt đầu tìm kiếm theo chiều sâu từ đỉnh đó. Với mỗi đỉnh, ta lưu *thời điểm thoát* $t_\text{out}[v]$. Đây là 'timestamp' tại thời điểm lời gọi `dfs` trên đỉnh $v$ kết thúc, tức là lúc mọi đỉnh đi tới được từ $v$ đã được thăm và thuật toán quay trở lại $v$. Bộ đếm timestamp *không được* đặt lại giữa các lần gọi `dfs` liên tiếp. Thời điểm thoát đóng vai trò then chốt trong thuật toán, điều này sẽ rõ hơn qua định lý sau.
+Ở bước đầu tiên, ta thực hiện một chuỗi các lần tìm kiếm theo chiều sâu (`dfs`) để thăm toàn bộ đồ thị. Nghĩa là, miễn vẫn còn đỉnh chưa thăm, ta chọn một đỉnh như vậy và bắt đầu tìm kiếm theo chiều sâu từ đỉnh đó. Với mỗi đỉnh, ta lưu *thời điểm thoát* $t_\text{out}[v]$. Đây là giá trị bộ đếm tại thời điểm lời gọi `dfs` trên đỉnh $v$ kết thúc, tức là lúc mọi đỉnh đi tới được từ $v$ đã được thăm và thuật toán quay trở lại $v$. Bộ đếm thời điểm *không được* đặt lại giữa các lần gọi `dfs` liên tiếp. Thời điểm thoát đóng vai trò then chốt trong thuật toán, điều này sẽ rõ hơn qua định lý sau.
 
-Trước hết, ta định nghĩa thời điểm thoát $t_\text{out}[C]$ của một thành phần liên thông mạnh $C$ là giá trị lớn nhất của $t_\text{out}[v]$ với mọi $v \in C.$ Ngoài ra, trong chứng minh định lý, ta sẽ dùng *thời điểm vào* $t_{\text{in}}[v]$ của mỗi đỉnh $v\in G$. Số $t_{\text{in}}[v]$ biểu diễn 'timestamp' tại thời điểm hàm đệ quy `dfs` được gọi trên đỉnh $v$ ở bước đầu tiên của thuật toán. Với một thành phần liên thông mạnh $C$, ta định nghĩa $t_{\text{in}}[C]$ là giá trị nhỏ nhất của $t_{\text{in}}[v]$ với mọi $v \in C$.
+Trước hết, ta định nghĩa thời điểm thoát $t_\text{out}[C]$ của một thành phần liên thông mạnh $C$ là giá trị lớn nhất của $t_\text{out}[v]$ với mọi $v \in C.$ Ngoài ra, trong chứng minh định lý, ta sẽ dùng *thời điểm vào* $t_{\text{in}}[v]$ của mỗi đỉnh $v\in G$. Số $t_{\text{in}}[v]$ biểu diễn giá trị bộ đếm tại thời điểm hàm đệ quy `dfs` được gọi trên đỉnh $v$ ở bước đầu tiên của thuật toán. Với một thành phần liên thông mạnh $C$, ta định nghĩa $t_{\text{in}}[C]$ là giá trị nhỏ nhất của $t_{\text{in}}[v]$ với mọi $v \in C$.
 
 !!! info "Định lý"
 
@@ -149,7 +149,7 @@ void strongly_connected_components(vector<vector<int>> const& adj,
 
 Hàm `dfs` cài đặt tìm kiếm theo chiều sâu. Hàm nhận vào một danh sách kề và một đỉnh bắt đầu. Nó cũng nhận tham chiếu tới vector `output`: mỗi đỉnh được thăm sẽ được thêm vào `output` khi `dfs` rời khỏi đỉnh đó.
 
-Lưu ý rằng ta dùng hàm `dfs` ở cả bước thứ nhất lẫn bước thứ hai của thuật toán. Ở bước thứ nhất, ta truyền vào danh sách kề của $G$; qua các lần gọi `dfs` liên tiếp, ta tiếp tục dùng cùng một 'output vector' `order`, để cuối cùng thu được danh sách các đỉnh theo thứ tự tăng dần của thời điểm thoát. Ở bước thứ hai, ta truyền vào danh sách kề của $G^T$; trong mỗi lần gọi, ta truyền một 'output vector' rỗng `component`, từ đó nhận được từng thành phần liên thông mạnh một.
+Lưu ý rằng ta dùng hàm `dfs` ở cả bước thứ nhất lẫn bước thứ hai của thuật toán. Ở bước thứ nhất, ta truyền vào danh sách kề của $G$; qua các lần gọi `dfs` liên tiếp, ta tiếp tục dùng cùng một vector đầu ra `order`, để cuối cùng thu được danh sách các đỉnh theo thứ tự tăng dần của thời điểm thoát. Ở bước thứ hai, ta truyền vào danh sách kề của $G^T$; trong mỗi lần gọi, ta truyền một vector đầu ra rỗng `component`, từ đó nhận được từng thành phần liên thông mạnh một.
 
 ## Thuật toán Tarjan tìm thành phần liên thông mạnh
 
@@ -247,7 +247,7 @@ Lưu ý rằng khi hai đỉnh thuộc cùng một thành phần, gốc của ch
     Vì không thể đi tới bất kỳ tổ tiên nào của $v$ từ cây con của nó, gốc của $v$ phải chính là $v$.
 
 Bây giờ ta cần tìm cách xác định một đỉnh có phải gốc hay không; các tính chất của quá trình gán ở trên là cơ sở cho tính đúng đắn.
-Để làm điều đó, ta định nghĩa thời điểm vào $t_{in}[v]$ cho mỗi đỉnh $v \in G$, tương ứng với 'timestamp' tại thời điểm DFS được gọi trên $v$.
+Để làm điều đó, ta định nghĩa thời điểm vào $t_{in}[v]$ cho mỗi đỉnh $v \in G$, tương ứng với giá trị bộ đếm tại thời điểm DFS được gọi trên $v$.
 Theo định nghĩa, gốc là đỉnh đầu tiên của một SCC được DFS thăm, vì vậy nó có giá trị $t_{in}$ nhỏ nhất trong SCC.
 
 Cho $v$ là một đỉnh và xét cây con của nó.
@@ -259,6 +259,9 @@ Ta xét giá trị $t_{in}$ nhỏ nhất trong các đỉnh chưa được gán 
 Ta gọi giá trị được lan truyền là $t_{low}$.
 
 Cụ thể hơn, ta định nghĩa $t_{low}[v]$ là giá trị $t_{in}$ nhỏ nhất của một đỉnh chưa được gán mà một đỉnh trong cây con của $v$ có thể đi tới bằng một cạnh trực tiếp.
+
+**Ghi chú bản dịch:** Định nghĩa trong nguồn chưa bao gồm trường hợp chính đỉnh đang xét: code khởi tạo giá trị low bằng thời điểm vào của đỉnh ngay cả khi nó cô lập. Cần tính cả trường hợp này khi diễn giải định nghĩa.
+
 Vì vậy, ta có thể phát hiện đỉnh $v$ có phải gốc hay không bằng cách kiểm tra $t_{low}[v] < t_{in}[v]$.
 
 Cuối cùng, để gán các đỉnh vào SCC, có nhiều cách thực hiện, chẳng hạn dùng một thuật toán duyệt đồ thị khác; nhưng ta cũng có thể dùng một cấu trúc dữ liệu đơn giản để theo dõi các đỉnh chưa được gán.

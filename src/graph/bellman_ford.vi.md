@@ -222,6 +222,8 @@ Có một số điểm cần chú ý khi cài đặt, chẳng hạn thuật toá
 Để tránh điều này, có thể lưu một bộ đếm số lần mỗi đỉnh được nới lỏng và dừng ngay khi một đỉnh nào đó được nới lỏng lần thứ $n$.
 Ngoài ra, không cần đưa một đỉnh vào hàng đợi nếu nó đã ở trong hàng đợi.
 
+**Ghi chú bản dịch:** Code bên dưới tăng bộ đếm khi đưa một đỉnh vào hàng đợi, không phải sau mọi lần nới lỏng. Đếm mọi lần nới lỏng như câu trên có thể báo nhầm chu trình âm; chẳng hạn nhiều cạnh song song có trọng số giảm dần có thể nới lỏng cùng một đỉnh nhiều lần dù đồ thị không có chu trình.
+
 ```{.cpp file=spfa}
 const int INF = 1000000000;
 vector<vector<pair<int, int>>> adj;

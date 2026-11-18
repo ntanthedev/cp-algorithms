@@ -65,7 +65,7 @@ Với bất kỳ cây nào có $N$ đỉnh, tồn tại một hoặc hai trọng
 
     Do đó, độ sâu lớn nhất của cây phân rã trọng tâm là $O(\log N)$.
 
-**Ghi chú bản dịch:** Bất đẳng thức ở bước suy luận cuối của chứng minh trên được giữ theo nguồn; chiều suy ra cần được kiểm tra lại.
+**Ghi chú bản dịch:** Chiều suy luận trong câu áp chót của chứng minh nguồn không đúng. Để có cận trên, xét một thành phần còn tồn tại ở mức k: kích thước nguyên dương của nó ít nhất là 1 và không quá N/2^(k-1). Do đó 1 ≤ N/2^(k-1), suy ra k ≤ log₂N + 1.
 
 **Hệ quả**: Vì mỗi đỉnh tham gia vào nhiều nhất $O(\log N)$ mức phân rã và ta xử lý mỗi đỉnh một lần ở mỗi mức, các thuật toán dùng phân rã trọng tâm thường có một thừa số độ phức tạp thời gian $O(\log N)$ nhân với lượng công việc trên mỗi đỉnh ở mỗi mức.
 
@@ -203,6 +203,8 @@ void decompose(int v) {
 ```
 
 Mẫu này có thể được điều chỉnh để giải những bài toán khác bằng phân rã trọng tâm. Trong trường hợp cụ thể này, nó giải bài toán đếm mọi đường đi có độ dài $K$. Chiến lược là: với mỗi trọng tâm, đếm các đường đi qua nó bằng cách tìm những cặp đỉnh ở các cây con khác nhau có khoảng cách $d_1$ và $d_2$ với tổng bằng $K$ (tức là một đường đi qua trọng tâm gồm một đỉnh ở cây con này cách trọng tâm $d_1$ và một đỉnh ở cây con khác cách trọng tâm $d_2$, với $d_1 + d_2 = K$). Với mỗi khoảng cách $d$ trong cây con hiện tại, đoạn mã đếm số đỉnh cách trọng tâm $K - d$ trong các cây con đã xét. Phép tối ưu bỏ qua các khoảng cách lớn hơn $K$ để tránh đệ quy không cần thiết.
+
+**Ghi chú bản dịch:** Đoạn mã còn đếm các đường đi có một đầu mút là chính trọng tâm: cnt[0] = 1 biểu diễn trọng tâm ở khoảng cách 0.
 
 ### Xây dựng cây trọng tâm
 

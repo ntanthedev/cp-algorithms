@@ -208,6 +208,8 @@ int sum(int v, int tl, int tr, int l, int r) {
 }
 ```
 
+**Ghi chú bản dịch:** Mô tả nguồn nói lời gọi thừa có biên trái lớn hơn biên phải, nhưng code giữ nguyên hai biên truy vấn khi gọi đệ quy. Code dừng các lời gọi không giao nhau khi biên phải truy vấn không vượt biên trái nút hoặc biên phải nút không vượt biên trái truy vấn.
+
 Cuối cùng là truy vấn cập nhật. Hàm cũng nhận thông tin về nút/đoạn hiện tại, đồng thời nhận thêm các tham số của truy vấn cập nhật (vị trí phần tử và giá trị mới).
 
 ```{.cpp file=segment_tree_implementation_update}
@@ -404,7 +406,7 @@ Các phần tử có thể âm, và đoạn con tối ưu có thể rỗng (ch�
 
 Đây là một ứng dụng không tầm thường của cây phân đoạn.
 Lần này, tại mỗi nút ta lưu bốn giá trị:
-tổng của đoạn, tổng tiền tố lớn nhất, tổng hậu tố lớn nhất, và tổng của đoạn con lớn nhất nằm trong nó.
+tổng của đoạn, tổng lớn nhất của một tiền tố, tổng lớn nhất của một hậu tố và tổng lớn nhất của một đoạn con nằm trong nó.
 Nói cách khác, với mỗi đoạn của cây phân đoạn, ta đã tính trước cả đáp án và các đáp án cho những đoạn chạm biên trái hoặc biên phải của đoạn đó.
 
 Làm thế nào để dựng cây với những dữ liệu này?
@@ -414,7 +416,7 @@ Lưu ý đáp án của nút hiện tại thuộc một trong ba trường hợp
 
  * đáp án của nút con trái, nghĩa là đoạn con tối ưu nằm hoàn toàn trong đoạn của nút con trái
  * đáp án của nút con phải, nghĩa là đoạn con tối ưu nằm hoàn toàn trong đoạn của nút con phải
- * tổng của hậu tố lớn nhất của nút con trái và tiền tố lớn nhất của nút con phải, nghĩa là đoạn con tối ưu giao với cả hai nút con.
+ * tổng lớn nhất của một hậu tố thuộc nút con trái cộng với tổng lớn nhất của một tiền tố thuộc nút con phải, nghĩa là đoạn con tối ưu giao với cả hai nút con.
 
 Do đó, đáp án cho nút hiện tại là giá trị lớn nhất trong ba giá trị này.
 Việc tính tổng tiền tố / hậu tố lớn nhất còn đơn giản hơn.
@@ -605,6 +607,8 @@ void update(int v, int tl, int tr, int pos, int new_val) {
 }
 ```
 
+**Ghi chú bản dịch:** Code nguồn dùng các đoạn nửa mở, nên đoạn của nút lá có độ dài một. Điều kiện kiểm tra trong code vẫn đúng ở lá và có thể khiến hàm đệ quy lại cùng đoạn hoặc gọi phép xóa với iterator không hợp lệ. Với quy ước này, chỉ tiếp tục xuống con khi đoạn có độ dài lớn hơn một, và cập nhật mảng gốc tại lá.
+
 Xử lý truy vấn cập nhật này cũng mất $O(\log^2 n)$.
 
 #### Tìm số nhỏ nhất lớn hơn hoặc bằng một số cho trước. Tăng tốc bằng "fractional cascading".
@@ -643,6 +647,9 @@ Nhưng với sửa đổi này, ta có thể tránh tất cả trừ một lần
 Để trả lời truy vấn, ta chỉ cần tìm kiếm nhị phân tại nút gốc.
 Điều này cho số nhỏ nhất $y \ge x$ trong toàn bộ mảng, đồng thời cho hai vị trí.
 Đó là chỉ số của phần tử nhỏ nhất lớn hơn hoặc bằng $x$ trong cây con trái, và chỉ số của phần tử nhỏ nhất $y$ trong cây con phải. Lưu ý rằng $\ge y$ tương đương $\ge x$, vì mảng không chứa phần tử nào nằm giữa $x$ và $y$.
+
+**Ghi chú bản dịch:** Cây con phải không nhất thiết chứa giá trị tìm được tại gốc. Chỉ số cần lưu là vị trí phần tử nhỏ nhất trong con phải có giá trị không nhỏ hơn giá trị đó; cần xử lý riêng nếu không có phần tử phù hợp.
+
 Trong lời giải Merge Sort Tree thông thường, ta phải tính các chỉ số này bằng tìm kiếm nhị phân, nhưng nhờ các giá trị đã tính trước, chỉ cần tra cứu chúng trong $O(1)$.
 Ta có thể lặp lại quá trình này cho tới khi thăm tất cả các nút bao phủ khoảng truy vấn.
 
@@ -957,6 +964,8 @@ void update_x(int vx, int lx, int rx, int x, int y, int new_val) {
 }
 ```
 
+**Ghi chú bản dịch:** Trong code cập nhật hai chiều của nguồn, các đoạn con là nửa mở. Khi tọa độ bằng điểm giữa, nó thuộc đoạn con phải; do đó hai phép so sánh với điểm giữa cần dùng dấu nhỏ hơn thay cho nhỏ hơn hoặc bằng.
+
 #### Nén cây phân đoạn 2D
 
 Xét bài toán sau: có $n$ điểm trên mặt phẳng với tọa độ $(x_i, y_i)$ và các truy vấn dạng "đếm số điểm nằm trong hình chữ nhật $((x_1, y_1), (x_2, y_2))$".
@@ -1066,6 +1075,8 @@ Trước hết là giới hạn trên truy vấn:
 thay vì chỉ thực hiện truy vấn trên một tiền tố của $a$, ta muốn dùng một đoạn bất kỳ $a[l \dots r)$.
 Ở đây cần một cây phân đoạn biểu diễn histogram các phần tử trong đoạn $a[l \dots r)$.
 Dễ thấy cây đó chính là hiệu giữa cây phân đoạn có gốc $root_{r}$ và cây phân đoạn có gốc $root_{l-1}$, tức mỗi nút trong cây của đoạn $[l \dots r)$ có thể được tính bằng nút tương ứng ở cây $root_{r}$ trừ nút tương ứng ở cây $root_{l-1}$.
+
+**Ghi chú bản dịch:** Theo quy ước một-based vừa nêu, hiệu hai gốc trong nguồn chứa cả phần tử tại đầu phải. Để biểu diễn đoạn nửa mở, cần lấy gốc ứng với tiền tố kết thúc ngay trước đầu phải trừ gốc ứng với tiền tố kết thúc ngay trước đầu trái; code minh họa bên dưới dùng quy ước chỉ số riêng.
 
 Trong cài đặt hàm $\text{find_kth}$, ta xử lý điều này bằng cách truyền hai con trỏ nút và tính số đếm/tổng của đoạn hiện tại bằng hiệu giữa hai số đếm/tổng của hai nút.
 
@@ -1187,7 +1198,7 @@ Rõ ràng ý tưởng này có thể được mở rộng theo rất nhiều cá
 * [SPOJ - GSS3](http://www.spoj.com/problems/GSS3/)
 * [Codeforces - Sereja And Brackets](https://codeforces.com/contest/380/problem/C)
 * [Codeforces - Distinct Characters Queries](https://codeforces.com/problemset/problem/1234/D)
-* [Codeforces - Knight Tournament](https://codeforces.com/contest/356/problem/A) [For beginners]
+* [Codeforces - Knight Tournament](https://codeforces.com/contest/356/problem/A) [Dành cho người mới bắt đầu]
 * [Codeforces - Ant colony](https://codeforces.com/contest/474/problem/F)
 * [Codeforces - Drazil and Park](https://codeforces.com/contest/515/problem/E)
 * [Codeforces - Circular RMQ](https://codeforces.com/problemset/problem/52/C)
@@ -1201,7 +1212,7 @@ Rõ ràng ý tưởng này có thể được mở rộng theo rất nhiều cá
 * [Codeforces - SUM and REPLACE](https://codeforces.com/problemset/problem/920/F)
 * [Codeforces - XOR on Segment](https://codeforces.com/problemset/problem/242/E) [Cập nhật lười]
 * [Codeforces - Please, another Queries on Array?](https://codeforces.com/problemset/problem/1114/F) [Cập nhật lười]
-* [COCI - Deda](https://oj.uz/problem/view/COCI17_deda) [Last element smaller or equal to x / Binary search]
+* [COCI - Deda](https://oj.uz/problem/view/COCI17_deda) [Phần tử cuối cùng nhỏ hơn hoặc bằng x / Tìm kiếm nhị phân]
 * [Codeforces - The Untended Antiquity](https://codeforces.com/problemset/problem/869/E) [2D]
 * [CSES - Hotel Queries](https://cses.fi/problemset/task/1143)
 * [CSES - Polynomial Queries](https://cses.fi/problemset/task/1736)

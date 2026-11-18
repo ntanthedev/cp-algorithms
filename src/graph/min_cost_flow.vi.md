@@ -52,6 +52,8 @@ Nếu không còn đường đi như vậy, thuật toán kết thúc. Nếu lu�
 Nếu tìm được một đường, ta tăng luồng trên đường đó nhiều nhất có thể (tức tìm dung lượng thặng dư nhỏ nhất $R$ trên đường, tăng luồng thêm lượng đó và giảm luồng trên các cạnh ngược cùng một lượng).
 Nếu tại một thời điểm luồng đạt giá trị $K$, ta dừng thuật toán (lưu ý rằng ở lần lặp cuối, chỉ được tăng một lượng vừa đủ để giá trị luồng cuối cùng không vượt quá $K$).
 
+**Ghi chú bản dịch:** Phần mô tả và mã nguồn chưa xử lý tổng quát chu trình chi phí âm. Đặc biệt, nếu có chu trình chi phí âm tới được từ nguồn trong mạng thặng dư thì phép tìm đường ngắn nhất bằng SPFA dưới đây có thể tiếp tục giảm nhãn và không kết thúc đúng; phép cộng số nguyên còn có thể tràn. Nếu mô hình cho phép luồng tuần hoàn, một chu trình chi phí âm tách rời cũng có thể giảm tổng chi phí nhưng không được xét bởi các đường tăng từ nguồn tới đích. Cần bảo đảm giả thiết phù hợp hoặc dùng thuật toán xử lý chu trình âm.
+
 Không khó để thấy rằng nếu đặt $K$ bằng vô hạn thì thuật toán sẽ tìm luồng cực đại với chi phí cực tiểu.
 Vì vậy, cả hai biến thể của bài toán đều có thể giải bằng cùng một thuật toán.
 

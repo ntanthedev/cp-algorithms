@@ -68,6 +68,8 @@ Trước hết, mỗi pha lúc này chạy trong $O(E)$ vì mỗi cạnh chỉ �
 
 Tiếp theo, giả sử đã có $\sqrt{V}$ pha. Khi đó mọi đường tăng luồng có độ dài $\le\sqrt{V}$ đã được tìm thấy. Gọi $f$ là luồng hiện tại, $f'$ là luồng cực đại. Xét hiệu $f' - f$. Đây là một luồng trong $G^R$ có giá trị $|f'| - |f|$, và trên mỗi cạnh nó chỉ nhận giá trị $0$ hoặc $1$. Ta có thể phân rã nó thành $|f'| - |f|$ đường đi từ $s$ tới $t$ và có thể thêm một số chu trình. Vì mạng là mạng đơn vị, các đường này không thể có đỉnh chung, nên tổng số đỉnh là $\ge (|f'| - |f|)\sqrt{V}$, nhưng đồng thời cũng $\le V$. Vì vậy, trong thêm $\sqrt{V}$ lần lặp nữa, ta chắc chắn tìm được luồng cực đại.
 
+**Ghi chú bản dịch:** Trong chứng minh trên, các đường có thể cùng chung nguồn và đích; điều cần dùng là chúng không có đỉnh trong chung.
+
 ### Mạng có dung lượng đơn vị
 
 Trong trường hợp tổng quát hơn khi mọi cạnh đều có dung lượng đơn vị, _nhưng số cạnh đi vào và đi ra không bị chặn_, các đường không thể có cạnh chung thay vì không thể có đỉnh chung. Lập luận tương tự cho phép chứng minh cận $\sqrt E$ cho số lần lặp, do đó thời gian chạy của Dinic trên các mạng như vậy không vượt quá $O(E \sqrt E)$.
