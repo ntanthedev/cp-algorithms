@@ -198,7 +198,7 @@ Hàm `add` chỉ cần cộng giá trị ở vị trí tương ứng và cập n
 Ngược lại, hàm `remove` trừ giá trị ở vị trí đó rồi cập nhật biến đáp án.
 Còn `get_answer` chỉ trả về số nguyên này.
 
-Để trả lời truy vấn mode, ta có thể dùng một cây tìm kiếm nhị phân (ví dụ `map<int, int>`) để lưu số lần xuất hiện của mỗi số trong đoạn hiện tại, và một cây tìm kiếm nhị phân thứ hai (ví dụ `set<pair<int, int>>`) để duy trì số lần xuất hiện của các giá trị theo thứ tự (chẳng hạn dưới dạng cặp số-lần xuất hiện).
+Để trả lời truy vấn mode, ta có thể dùng một cây tìm kiếm nhị phân (ví dụ `map<int, int>`) để lưu số lần xuất hiện của mỗi số trong đoạn hiện tại, và một cây tìm kiếm nhị phân thứ hai (ví dụ `set<pair<int, int>>`) để duy trì số lần xuất hiện của các giá trị theo thứ tự (chẳng hạn dưới dạng cặp (số lần xuất hiện, giá trị)).
 Phương thức `add` xóa số hiện tại khỏi cây thứ hai, tăng số đếm trong cây thứ nhất rồi chèn số trở lại cây thứ hai.
 `remove` làm tương tự nhưng giảm số đếm.
 Còn `get_answer` chỉ nhìn vào cây thứ hai và trả về giá trị tốt nhất trong $O(1)$.

@@ -342,7 +342,7 @@ Thực ra cây Stern-Brocot là một [treap](../data_structures/treap.md): nó 
 
     Nói cách khác, với $A$ và $B$ vô tỉ, $A < B$ khi và chỉ khi $(a_0, -a_1, a_2, -a_3, \dots) < (b_0, -b_1, b_2, -b_3, \dots)$ theo thứ tự từ điển.
 
-    Bây giờ, bằng cách dùng $\infty$ một cách hình thức như một phần tử trong biểu diễn liên phân số, ta có thể mô phỏng các số vô tỉ $A-\varepsilon$ và $A+\varepsilon$, tức là những phần tử nhỏ hơn (lớn hơn) $A$ nhưng lớn hơn (nhỏ hơn) mọi số thực khác. Cụ thể, với $A=[a_0; a_1, \dots, a_n]$, một trong hai phần tử này có thể được mô phỏng bằng $[a_0; a_1, \dots, a_n, \infty]$ và phần tử còn lại bằng $[a_0; a_1, \dots, a_n - 1, 1, \infty]$.
+    Dùng $\infty$ làm hệ số hình thức, ta có thể biểu diễn $A-\varepsilon$ và $A+\varepsilon$ để so sánh: chúng lần lượt đứng ngay trước và ngay sau $A$ trong thứ tự mở rộng. Chúng chỉ là ký hiệu cho hai phía của một số hữu tỉ. Cụ thể, với $A=[a_0; a_1, \dots, a_n]$, một phía được biểu diễn bằng $[a_0; a_1, \dots, a_n, \infty]$, phía kia bằng $[a_0; a_1, \dots, a_n - 1, 1, \infty]$.
 
     Ta có thể xác định phần tử nào tương ứng với $A-\varepsilon$, phần tử nào tương ứng với $A+\varepsilon$ dựa vào tính chẵn lẻ của $n$ hoặc bằng cách so sánh chúng như các số vô tỉ.
 
@@ -443,6 +443,8 @@ Thực ra cây Stern-Brocot là một [treap](../data_structures/treap.md): nó 
             return str(q) + ' ' + str(p)
         ```
 
+**Ghi chú bản dịch:** Trong ví dụ Python ngay trên, dòng khai báo hàm solve bị thụt thừa một cấp. Khi chạy ví dụ, hãy đặt khai báo ở đầu dòng và giữ phần thân hàm thụt vào một cấp.
+
 ### Cây Calkin-Wilf
 
 Một cách đơn giản hơn đôi chút để tổ chức các liên phân số thành cây nhị phân là [cây Calkin-Wilf](https://en.wikipedia.org/wiki/Calkin–Wilf_tree).
@@ -530,7 +532,7 @@ $$|r-r_k| = |r_k-r_{k+1}|-|r-r_{k+1}| \leq |r_k - r_{k+1}|.$$
 
     $$r-r_k = \sum\limits_{i=k+1}^\infty \frac{(-1)^{i-1}}{q_i q_{i-1}}$$
 
-    có cùng dấu với $(-1)^k$ do tốc độ giảm của $q_i q_{i-1}$. Vì vậy, $r_k$ có chỉ số chẵn tiến đến $r$ từ phía dưới, còn $r_k$ có chỉ số lẻ tiến đến từ phía trên:
+    có cùng dấu với $(-1)^k$: đây là tổng đan dấu, trong đó mẫu số $q_i q_{i-1}$ tăng và độ lớn của các số hạng giảm dần về 0. Vì vậy, $r_k$ có chỉ số chẵn tiến đến $r$ từ phía dưới, còn $r_k$ có chỉ số lẻ tiến đến từ phía trên:
 
     <figure><img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Golden_ration_convergents.svg" width="600px"/>
     <figcaption>_Các phân số hội tụ của $r=\phi = \frac{1+\sqrt{5}}{2}=[1;1,1,\dots]$ và khoảng cách từ chúng đến $r$._</figcaption></figure>
@@ -584,7 +586,7 @@ $$y = \frac{ax+b}{cx+d} \iff y(cx+d) = ax + b \iff x = -\frac{dy-b}{cy-a}.$$
 ??? hint "Lời giải"
     Ta có thể giải bài toán bằng cây đoạn nếu có thể nối các liên phân số.
 
-    Nói chung, ta có $[a_0; a_1, \dots, a_k, b_0, b_1, \dots, b_k] = [a_0; a_1, \dots, a_k, [b_1; b_2, \dots, b_k]]$.
+    Trong đẳng thức ghép của bản nguồn, $[a_0; a_1, \dots, a_k, b_0, b_1, \dots, b_k] = [a_0; a_1, \dots, a_k, [b_1; b_2, \dots, b_k]]$, vế phải thiếu hệ số đầu tiên của phần đuôi. Phần đuôi trong ngoặc vuông bên trong phải bắt đầu từ cùng hệ số như ở vế trái.
 
     Đặt $L_{k}(x) = [a_k; x] = a_k + \frac{1}{x} = \frac{a_k\cdot x+1}{1\cdot x + 0}$. Lưu ý $L_k(\infty) = a_k$. Với ký hiệu này, ta có
 
@@ -650,6 +652,10 @@ $$x = (L_0 \circ L_1)(y) = (L_0 \circ L_1 \circ L_0^{-1})(x).$$
 
 Có thể chứng minh thêm (điều này được Lagrange chứng minh đầu tiên) rằng với phương trình bậc hai bất kỳ $ax^2+bx+c=0$ có hệ số nguyên, nghiệm $x$ của nó là một liên phân số tuần hoàn từ một vị trí nào đó.
 
+**Ghi chú bản dịch:** Trong ví dụ dưới đây, giải phương trình đầu tiên theo thương đầy đủ cho $s_k=-(\alpha q_{k-2}-p_{k-2})/(\alpha q_{k-1}-p_{k-1})$. Bản nguồn tăng nhầm cả hai chỉ số lên một đơn vị. Vì vậy, thừa số liên hợp của mẫu sau khi thế biểu thức của $\alpha$ phải là $(xq_{k-1}-zp_{k-1})-q_{k-1}y\sqrt n$. Ví dụ, với $\alpha=\sqrt3$, ta được $s_1=1/(\sqrt3-1)$.
+
+**Ghi chú bản dịch:** Khi chuyển sang thương kế tiếp, cần tính $a_k=\lfloor(x_k+y_k\sqrt n)/z_k\rfloor$ trước, rồi đặt $t_k=x_k-z_ka_k$ để khử căn. Lấy phần nguyên của căn quá sớm có thể làm sai kết quả: $\lfloor2\sqrt3/3\rfloor=1$, còn $\lfloor2\lfloor\sqrt3\rfloor/3\rfloor=0$. Trong mã Python bên dưới, tham số thứ nhất của hàm bước là hệ số của căn, tham số thứ hai là phần hằng.
+
 !!! example "Số vô tỉ bậc hai"
     Tìm liên phân số của $\alpha = \frac{x+y\sqrt{n}}{z}$, trong đó $x, y, z, n \in \mathbb Z$ và $n > 0$ không phải số chính phương.
 ??? hint "Lời giải"
@@ -701,7 +707,7 @@ Có thể chứng minh thêm (điều này được Lagrange chứng minh đầu
                     return a
         ```
 
-    Dùng cùng hàm `step` nhưng thay đổi $x$, $y$ và $z$ ban đầu, ta có thể tính biểu diễn cho $\frac{x+y \sqrt{n}}{z}$ bất kỳ.
+    Để dùng hàm `step` cho $x$, $y$ và $z$ ban đầu tùy ý, tức tính liên phân số của $\frac{x+y \sqrt{n}}{z}$, cần điều chỉnh thứ tự hai tham số đầu và cách lấy phần nguyên như ghi chú ở đầu ví dụ. Số bước cần để phát hiện chu kỳ cũng phụ thuộc vào trạng thái ban đầu.
 
 !!! example "[Tavrida NU Akai Contest - Continued Fraction](https://timus.online/problem.aspx?space=1&num=1814)"
     Cho $x$ và $k$, với $x$ không phải số chính phương. Đặt $\sqrt x = [a_0; a_1, \dots]$, hãy tìm $\frac{p_k}{q_k}=[a_0; a_1, \dots, a_k]$ với $0 \leq k \leq 10^9$.
@@ -759,9 +765,11 @@ $$s_k = -\frac{\vec r_{k-2} \times \vec r}{\vec r_{k-1} \times \vec r} = \left|\
 
 $$\vec r_k = \vec r_{k-2} + \left\lfloor \left| \frac{\vec r \times \vec r_{k-2}}{\vec r \times \vec r_{k-1}}\right|\right\rfloor \vec r_{k-1}.$$
 
-Lưu ý $\vec r_k \times r = (q;p) \times (1;r) = qr - p$, do đó
+Lưu ý $\vec r_k \times r = (q;p) \times (1;r) = qr - p$. Khi thay vào biểu thức trên, bản nguồn đã đảo tử và mẫu trong công thức dưới đây:
 
 $$a_k = \left\lfloor \left| \frac{q_{k-1}r-p_{k-1}}{q_{k-2}r-p_{k-2}} \right| \right\rfloor.$$
+
+**Ghi chú bản dịch:** Công thức đúng là $a_k=\left\lfloor\left|(q_{k-2}r-p_{k-2})/(q_{k-1}r-p_{k-1})\right|\right\rfloor$, vì sai số ở chỉ số cũ hơn nằm ở tử của công thức tích có hướng.
 
 ??? hint "Giải thích"
     Như đã thấy, $a_k = \lfloor s_k \rfloor$, trong đó $s_k = [a_k; a_{k+1}, a_{k+2}, \dots]$. Mặt khác, từ công thức truy hồi của phân số hội tụ, ta suy ra
@@ -804,7 +812,7 @@ $$|\vec r_{k-2} \times \vec r_k| = |\vec r_{k-2} \times (\vec r_{k-2} + a_k \vec
 
 Kết hợp với [định lý Pick](../geometry/picks-theorem.md), điều này có nghĩa là không có điểm nguyên nào nằm thực sự bên trong tam giác, và các điểm nguyên duy nhất trên biên của nó là $\vec 0$ và $\vec r_{k-2} + t \cdot \vec r_{k-1}$ với mọi số nguyên $t$ sao cho $0 \leq t \leq a_k$. Gộp lại với mọi $k$ có thể, ta thấy không có điểm nguyên trong miền giữa các đa giác tạo bởi những vectơ hội tụ chỉ số chẵn và chỉ số lẻ.
 
-Từ đó suy ra các $\vec r_k$ với hệ số lẻ tạo thành bao lồi của các điểm nguyên có $x \geq 0$ phía trên đường thẳng $y=rx$, còn các $\vec r_k$ với hệ số chẵn tạo thành bao lồi của các điểm nguyên có $x > 0$ phía dưới đường thẳng $y=rx$.
+Từ đó suy ra các $\vec r_k$ với chỉ số lẻ tạo thành bao lồi của các điểm nguyên có $x \geq 0$ phía trên đường thẳng $y=rx$, còn các $\vec r_k$ với chỉ số chẵn tạo thành bao lồi của các điểm nguyên có $x > 0$ phía dưới đường thẳng $y=rx$.
 
 
 !!! info "Định nghĩa"
@@ -832,7 +840,7 @@ Sau khi đã giới thiệu các kết quả và khái niệm quan trọng nhấ
     <figure><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Lattice-hull.svg" width="500px"/>
     <figcaption>Bao lồi của các điểm nguyên dưới $y=\frac{4}{7}x$ với $0 \leq x \leq 19$ gồm các điểm $(0;0), (7;4), (14;8), (16;9), (18;10), (19;10)$.</figcaption></figure>
 
-    Gọi $(x; y)$ là điểm cuối hiện tại trên bao lồi. Khi đó điểm tiếp theo $(x'; y')$ thỏa mãn $x' \leq N$ và $(x'; y') - (x; y) = (\Delta x; \Delta y)$ gần đường thẳng $y=rx$ nhất có thể. Nói cách khác, $(\Delta x; \Delta y)$ cực đại hóa $r \Delta x - \Delta y$ với các ràng buộc $\Delta x \leq N - x$ và $\Delta y \leq r \Delta x$.
+    Gọi $(x; y)$ là điểm cuối hiện tại trên bao lồi. Khi đó điểm tiếp theo $(x'; y')$ thỏa mãn $x' \leq N$ và $(x'; y') - (x; y) = (\Delta x; \Delta y)$ gần đường thẳng $y=rx$ nhất có thể. Nói cách khác, trong số các bước nguyên đi sang phải, $(\Delta x; \Delta y)$ phải **cực tiểu hóa** độ lệch $r \Delta x - \Delta y$ với các ràng buộc $\Delta x \leq N - x$ và $\Delta y \leq r \Delta x$. Nếu có nhiều bước đạt cùng độ lệch, chọn bước có độ dịch ngang nhỏ nhất để lấy điểm nguyên kế tiếp.
 
     Các điểm như vậy nằm trên bao lồi của những điểm nguyên dưới $y=rx$. Nói cách khác, $(\Delta x; \Delta y)$ phải là một bán hội tụ dưới của $r$.
 

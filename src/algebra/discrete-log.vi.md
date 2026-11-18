@@ -170,6 +170,8 @@ Giả sử $g = \gcd(a, m)$ và $g > 1$. Rõ ràng $a^x \bmod m$ với mọi $x 
 
 Nếu $g \nmid b$, phương trình không có nghiệm $x$.
 
+**Ghi chú bản dịch:** Lập luận này chỉ loại các nghiệm có số mũ từ 1 trở lên; số mũ 0 vẫn có thể là nghiệm. Chẳng hạn, với cơ số 2, mô-đun 4 và vế phải 1, vế phải không chia hết cho ước chung lớn nhất là 2, nhưng số mũ 0 vẫn thỏa phương trình. Mã mở rộng bên dưới kiểm tra trường hợp này trước khi loại.
+
 Nếu $g \mid b$, đặt $a = g \alpha, b = g \beta, m = g \nu$.
 
 $$

@@ -78,7 +78,7 @@ Ta cũng có thể tìm công thức này bằng phân tích. Ở đây tiếp t
 
 Với $k$ tương đối nhỏ, ta có thể tìm lời giải tốt hơn lời giải đệ quy $O(n)$ ở trên. Nếu $k$ nhỏ hơn nhiều so với $n$, ta có thể xóa nhiều số ($\lfloor \frac{n}{k} \rfloor$) trong một lượt mà không cần duyệt từng số. Sau đó còn lại $n - \lfloor \frac{n}{k} \rfloor$ số và ta bắt đầu từ số thứ $(\lfloor \frac{n}{k} \rfloor \cdot k)$. Do đó ta cần dịch đi tương ứng. Ta có thể nhận thấy $\lfloor \frac{n}{k} \rfloor \cdot k$ chính là $-n \bmod k$. Vì đã xóa mỗi số thứ $k$, ta phải cộng thêm số lượng các số đã xóa trước chỉ số kết quả; số này tính được bằng cách chia chỉ số kết quả cho $k - 1$.
 
-**Ghi chú của người dịch:** Khẳng định hai đại lượng ở trên bằng nhau không đúng nói chung. Chẳng hạn, với mười số và bước nhảy ba, đại lượng thứ nhất bằng chín, còn phần dư không âm của âm mười theo mô-đun ba bằng hai. Cách dịch chỉ số trong mã cần được xét riêng.
+**Ghi chú bản dịch:** Khẳng định hai đại lượng ở trên bằng nhau không đúng nói chung. Chẳng hạn, với mười số và bước nhảy ba, đại lượng thứ nhất bằng chín, còn phần dư không âm của âm mười theo mô-đun ba bằng hai. Cách dịch chỉ số trong mã cần được xét riêng.
 
 Ta cũng cần xử lý trường hợp $n$ nhỏ hơn $k$. Khi đó phép tối ưu trên sẽ gây vòng lặp vô hạn.
 

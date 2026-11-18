@@ -183,7 +183,7 @@ Cài đặt dưới đây do **Andrey Lopatin** phát triển vài năm trước
 
 Cài đặt tìm nghiệm cho ma trận chữ nhật $A[1\dots n][1\dots m]$, với $n\leq m$. Ma trận được đánh số từ 1 để thuận tiện và rút gọn mã: cài đặt thêm một hàng 0 và cột 0 giả, nhờ đó nhiều vòng lặp có thể viết thống nhất mà không cần kiểm tra phụ.
 
-Hai mảng $u[0 \ldots n]$ và $v[0 \ldots m]$ lưu thế. Ban đầu chúng được đặt bằng không, phù hợp với ma trận có hàng 0 (Lưu ý rằng với cài đặt này, ma trận $A$ có chứa số âm hay không cũng không quan trọng).
+Hai mảng $u[0 \ldots n]$ và $v[0 \ldots m]$ lưu thế. Ban đầu chúng được đặt bằng không, phù hợp với ma trận chưa có hàng nào (lưu ý rằng với cài đặt này, ma trận $A$ có chứa số âm hay không cũng không quan trọng).
 
 Mảng $p[0 \ldots m]$ lưu cặp ghép: với mỗi cột $j = 1 \ldots m$, nó lưu số hiệu hàng được chọn $p[j]$ (hoặc $0$ nếu chưa chọn hàng nào). Để cài đặt thuận tiện, giả sử $p[0]$ bằng số hiệu của hàng hiện tại.
 
@@ -296,6 +296,8 @@ Dưới đây là một số ví dụ liên quan đến bài toán phân công, 
     !!! info "Ghi chú"
 
         Bài toán này còn được gọi là **bài toán đối ngẫu** (dual problem) của bài toán phân công: tối thiểu hóa tổng chi phí phân công tương đương với tối đa hóa tổng các thế.
+
+**Ghi chú bản dịch:** Trong ví dụ tô màu cây ở trên, điều kiện đề bài chỉ cấm hai đỉnh kề nhau cùng màu; việc phân phối các màu khác nhau cho các con là ràng buộc mạnh hơn và có thể bỏ qua lời giải tối ưu. Với bài toán về thế như nguồn phát biểu, nếu số hàng khác số cột thì tổng các thế không bị chặn: cộng cùng một số vào mọi thế hàng và trừ số đó khỏi mọi thế cột giữ nguyên các ràng buộc. Cần thêm giả thiết hoặc ràng buộc phù hợp để phát biểu bài toán đối ngẫu chữ nhật.
 
 ## Tài liệu tham khảo
 

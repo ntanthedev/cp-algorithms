@@ -105,7 +105,7 @@ a^{n-1} \equiv 1 \bmod n &\Longleftrightarrow a^{2^s d} - 1 \equiv 0 \bmod n \\\
 &\Longleftrightarrow (a^{2^{s-1} d} + 1) (a^{2^{s-2} d} + 1) \cdots (a^{d} + 1) (a^{d} - 1) \equiv 0 \bmod n \\\\
 \end{array}$$
 
-Nếu $n$ là số nguyên tố thì $n$ phải chia hết một trong các thừa số trên.
+Nếu $n$ là số nguyên tố thì một trong các thừa số trên phải chia hết cho $n$.
 Và trong phép kiểm tra Miller-Rabin, ta kiểm tra chính mệnh đề đó; đây là một phiên bản chặt hơn so với điều kiện của phép kiểm tra Fermat.
 Với một cơ số $2 \le a \le n-2$, ta kiểm tra xem một trong hai điều kiện sau có đúng hay không:
 

@@ -108,6 +108,8 @@ Có hai toán tử dùng để dịch các bit.
     Tuy nhiên, với số nguyên có độ dài cố định, điều này có nghĩa các chữ số ngoài cùng bên trái có thể bị loại bỏ; nếu dịch quá nhiều, theo mô tả của nguồn ta sẽ nhận được số $0$.
 
 
+**Ghi chú bản dịch:** Trong C++, nếu số vị trí dịch âm hoặc không nhỏ hơn độ rộng của toán hạng sau khi thăng hạng số nguyên, phép dịch có hành vi không xác định; không thể kết luận kết quả bằng 0.
+
 ## Các mẹo hữu ích
 
 ### Bật/đảo/tắt một bit

@@ -39,6 +39,8 @@ $$\mathtt{low}[v] = \min \left\{
 
 Khi đó, tồn tại một cạnh ngược từ đỉnh $v$ hoặc một hậu duệ của nó tới một tổ tiên của nó khi và chỉ khi $v$ có một đỉnh con $to$ sao cho $\mathtt{low}[to] \leq \mathtt{tin}[v]$. Nếu $\mathtt{low}[to] = \mathtt{tin}[v]$ thì cạnh ngược đi thẳng về $v$; nếu không, cạnh ngược đi tới một tổ tiên của $v$.
 
+**Ghi chú bản dịch:** Điều kiện trong đoạn trước tương đương với việc có cạnh ngược từ cây con của một đỉnh con to về v hoặc tổ tiên của v. Nó không mô tả trường hợp cạnh ngược xuất phát trực tiếp từ v. Tiêu chuẩn cạnh cầu ở đoạn dưới vẫn đúng.
+
 Do đó, cạnh hiện tại $(v, to)$ trên cây DFS là một cạnh cầu khi và chỉ khi $\mathtt{low}[to] > \mathtt{tin}[v]$.
 
 ## Cài đặt
@@ -102,9 +104,9 @@ Cờ `parent_skipped` giúp cài đặt này xử lý nhiều cạnh giữa mộ
 
 ## Bài tập luyện tập
 
-- [UVA #796 "Critical Links"](http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=737) [difficulty: low]
-- [UVA #610 "Street Directions"](http://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=551) [difficulty: medium]
-- [Case of the Computer Network (Codeforces Round #310 Div. 1 E)](http://codeforces.com/problemset/problem/555/E) [difficulty: hard]
+- [UVA #796 "Critical Links"](http://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=737) [độ khó: dễ]
+- [UVA #610 "Street Directions"](http://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=551) [độ khó: trung bình]
+- [Case of the Computer Network (Codeforces Round #310 Div. 1 E)](http://codeforces.com/problemset/problem/555/E) [độ khó: khó]
 * [UVA 12363 - Hedge Mazes](https://uva.onlinejudge.org/index.php?option=onlinejudge&page=show_problem&problem=3785)
 * [UVA 315 - Network](https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=251)
 * [GYM - Computer Network (J)](http://codeforces.com/gym/100114)

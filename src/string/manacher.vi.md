@@ -182,6 +182,8 @@ Thật vậy, các ký tự `#` không ảnh hưởng đến các xâu đối x�
 
 Lưu ý rằng $d[2i]$ và $d[2i+1]$ về bản chất lần lượt bằng độ dài lớn nhất của xâu đối xứng lẻ và chẵn có tâm tại $i$, cộng thêm $1$.
 
+**Ghi chú bản dịch:** Câu ngay trên đã đảo thứ tự chẵn và lẻ so với hai công thức: chỉ số chẵn ứng với xâu đối xứng chẵn, còn chỉ số lẻ ứng với xâu đối xứng lẻ của chuỗi ban đầu.
+
 Phép biến đổi được cài đặt như sau:
 
 ```cpp

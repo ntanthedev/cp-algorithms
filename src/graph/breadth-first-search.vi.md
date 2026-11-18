@@ -90,6 +90,8 @@ Dưới đây là cách cài đặt thuật toán bằng C++ và Java.
     }
     ```
     
+**Ghi chú bản dịch:** Đoạn Java của nguồn dùng push và pop trên LinkedList ở cùng một đầu, tạo hành vi ngăn xếp thay vì hàng đợi FIFO. Để thực hiện BFS, có thể thêm vào cuối bằng addLast và lấy ra ở đầu bằng removeFirst.
+
 Nếu cần khôi phục và in đường đi ngắn nhất từ nguồn đến một đỉnh $u$, ta có thể làm như sau:
     
 === "C++"
@@ -155,6 +157,8 @@ Với mỗi đỉnh $v$, nó nằm trên một đường đi ngắn nhất giữ
 ta xây dựng một đồ thị phụ, trong đó mỗi đỉnh là một trạng thái $(v, c)$; $v$ là đỉnh hiện tại, còn $c = 0$ hoặc $c = 1$ biểu thị tính chẵn lẻ của độ dài hành trình hiện tại.
 Mỗi cạnh $(u, v)$ của đồ thị gốc được thay bằng hai cạnh $((u, 0), (v, 1))$ và $((u, 1), (v, 0))$ trong đồ thị mới.
 Sau đó, chạy BFS để tìm hành trình ngắn nhất từ trạng thái đầu $(s, 0)$ đến trạng thái cuối $(t, 0)$.<br>**Lưu ý**: Ở đây dùng thuật ngữ "_hành trình_" thay vì "_đường đi_" là có chủ ý, vì một đỉnh có thể xuất hiện nhiều lần trong hành trình tìm được để tổng số cạnh trở thành chẵn. Bài toán tìm _đường đi_ chẵn ngắn nhất là NP-Complete trên đồ thị có hướng, và [có thể giải trong thời gian tuyến tính](https://onlinelibrary.wiley.com/doi/abs/10.1002/net.3230140403) trên đồ thị vô hướng, nhưng cần một cách tiếp cận phức tạp hơn nhiều.
+
+**Ghi chú bản dịch:** Hai tiêu chí tìm cạnh và đỉnh thuộc đường đi ngắn nhất ở trên dùng khoảng cách từ mỗi đỉnh đến đích. Với đồ thị có hướng, lần BFS từ đích phải chạy trên đồ thị đảo; trong đồ thị vô hướng có thể chạy trên đồ thị ban đầu. Các tiêu chí cần xét riêng trường hợp đích không đi tới được.
 
 ## Bài tập luyện tập
 

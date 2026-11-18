@@ -49,7 +49,7 @@ Có hai trường hợp cơ bản:
 
     Trong trường hợp này, $d[i][j]$ không thay đổi.
 
-*   Đường đi ngắn nhất khi cho phép thêm đỉnh trung gian $k$ trở nên ngắn hơn.
+*   Đường đi ngắn nhất với các đỉnh trung gian thuộc tập $\{1, 2, \dots, k\}$ trở nên ngắn hơn.
 
     Điều đó có nghĩa đường đi mới đi qua đỉnh $k$.
     Khi ấy ta có thể tách đường đi ngắn nhất từ $i$ đến $j$ thành hai phần:
@@ -57,15 +57,15 @@ Có hai trường hợp cơ bản:
     Cả hai phần này chỉ dùng các đỉnh trung gian trong tập $\{1, 2, \dots, k-1\}$ và đều là ngắn nhất dưới ràng buộc đó.
     Vì độ dài của chúng đã được tính ở pha trước, ta có thể tính độ dài đường đi mới từ $i$ đến $j$ bằng $d[i][k] + d[k][j]$.
 
-Kết hợp hai trường hợp, ở pha thứ $k$ ta cập nhật mọi cặp $(i,j)$ như sau:
+Kết hợp hai trường hợp, ở pha thứ $k$ ta cập nhật mọi cặp $(i, j)$ như sau:
 
 $$d_{\text{new}}[i][j] = min(d[i][j], d[i][k] + d[k][j])$$
 
-Do đó, công việc ở mỗi pha chỉ là duyệt qua mọi cặp đỉnh và cập nhật độ dài đường đi ngắn nhất giữa chúng.
-Sau pha thứ $n$, $d[i][j]$ trong ma trận khoảng cách chính là độ dài đường đi ngắn nhất từ $i$ đến $j$, hoặc bằng $\infty$ nếu không tồn tại đường đi.
+Do đó, công việc ở pha thứ $k$ chỉ là duyệt qua mọi cặp đỉnh và cập nhật độ dài đường đi ngắn nhất giữa chúng.
+Sau pha thứ $n$, $d[i][j]$ trong ma trận khoảng cách chính là độ dài đường đi ngắn nhất từ $i$ đến $j$, hoặc bằng $\infty$ nếu không tồn tại đường đi từ $i$ đến $j$.
 
 Một lưu ý cuối cùng: ta không cần tạo ma trận riêng $d_{\text{new}}[ ][ ]$ để lưu tạm kết quả của pha thứ $k$; mọi thay đổi có thể được thực hiện trực tiếp trên $d[ ][ ]$.
-Thật vậy, ở mỗi pha ta chỉ có thể làm một khoảng cách trong ma trận nhỏ đi, nên việc cập nhật tại chỗ không thể làm hỏng đáp án của các cặp sẽ được xử lý ở pha $(k+1)$ hoặc sau đó.
+Thật vậy, ở pha thứ $k$ ta chỉ có thể làm một khoảng cách trong ma trận nhỏ đi, nên việc cập nhật tại chỗ không thể làm hỏng đáp án của các cặp sẽ được xử lý ở pha $(k+1)$ hoặc sau đó.
 
 Độ phức tạp thời gian của thuật toán hiển nhiên là $O(n^3)$.
 
@@ -138,6 +138,8 @@ Ta có thể mở rộng thuật toán để xử lý rõ các cặp này, chẳ
 Cách làm như sau:
 chạy Floyd-Warshall thông thường trên đồ thị.
 Sau đó, đường đi ngắn nhất từ $i$ đến $j$ không tồn tại khi và chỉ khi tồn tại một đỉnh $t$ sao cho có thể đi từ $i$ đến $t$, từ $t$ đến $j$, và $d[t][t] < 0$.
+
+**Ghi chú bản dịch:** Điều kiện vừa nêu xác định các cặp có thể đi qua chu trình âm, khiến độ dài hành trình không bị chặn dưới. Trường hợp không có đường đi giữa hai đỉnh cũng không có đường đi ngắn nhất, nhưng được phân biệt bằng khoảng cách vô cực.
 
 Ngoài ra, khi dùng Floyd-Warshall trên đồ thị có chu trình âm, cần nhớ rằng khoảng cách có thể giảm theo cấp số nhân về phía âm.
 Vì vậy phải tránh tràn số nguyên bằng cách chặn khoảng cách nhỏ nhất ở một giá trị nào đó, chẳng hạn $-\text{INF}$.

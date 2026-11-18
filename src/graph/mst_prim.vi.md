@@ -60,11 +60,11 @@ Xét thời điểm đầu tiên thuật toán thêm vào $T$ một cạnh khôn
 Gọi cạnh này là $e$, hai đầu của nó là $a$ và $b$, và tập các đỉnh đã được chọn là $V$ ($a \in V$ và $b \notin V$, hoặc ngược lại).
 
 Trong cây khung nhỏ nhất $S$, hai đỉnh $a$ và $b$ được nối bởi một đường đi $P$.
-Trên đường đi này tồn tại một cạnh $f$ sao cho một đầu của $f$ nằm trong $V$ còn đầu kia nằm ngoài $V$.
+Trên đường đi này tồn tại một cạnh $f$ sao cho một đầu của $f$ nằm trong $V$ còn đầu kia nằm ngoài tập này.
 Vì thuật toán chọn $e$ thay vì $f$, trọng số của $f$ phải lớn hơn hoặc bằng trọng số của $e$.
 
 Ta thêm cạnh $e$ vào cây khung nhỏ nhất $S$ rồi bỏ cạnh $f$.
-Việc thêm $e$ tạo ra một chu trình, và vì $f$ cũng nằm trên chu trình duy nhất đó, sau khi bỏ $f$ đồ thị lại không có chu trình.
+Việc thêm $e$ tạo ra một chu trình, và vì $f$ cũng nằm trên chu trình duy nhất đó, sau khi bỏ cạnh này đồ thị lại không có chu trình.
 Đồng thời, do ta chỉ bỏ một cạnh khỏi chu trình, đồ thị kết quả vẫn liên thông.
 
 Cây khung mới không thể có tổng trọng số lớn hơn vì trọng số của $e$ không lớn hơn trọng số của $f$; nó cũng không thể có trọng số nhỏ hơn vì $S$ vốn đã là cây khung nhỏ nhất.
@@ -72,6 +72,8 @@ Do đó, thay $f$ bằng $e$ tạo ra một cây khung nhỏ nhất khác.
 Và $e$ phải có cùng trọng số với $f$.
 
 Vì vậy, các cạnh mà thuật toán Prim chọn có thể thay thế tương ứng các cạnh của một cây khung nhỏ nhất mà không làm thay đổi tổng trọng số, nên thuật toán Prim thực sự tạo ra một cây khung nhỏ nhất.
+
+**Ghi chú bản dịch:** Phép đổi cạnh trên cho thấy có thể thêm cạnh vừa chọn vào một cây khung nhỏ nhất mà vẫn giữ các cạnh Prim đã chọn trước đó. Để suy ra kết luận cho toàn bộ cây, áp dụng lập luận tương tự lần lượt cho các cạnh còn lại.
 
 ## Cài đặt
 
@@ -216,3 +218,5 @@ void prim() {
 `min_e[v]` lưu cạnh có trọng số nhỏ nhất từ đỉnh `v` tới một đỉnh đã được chọn, cũng dưới dạng cặp trọng số và đỉnh đích.
 Ngoài ra, hàng đợi `q` chứa tất cả các đỉnh chưa được chọn theo thứ tự tăng dần của trọng số `min_e`.
 Thuật toán thực hiện `n` bước; ở mỗi bước, nó chọn đỉnh `v` có trọng số `min_e` nhỏ nhất bằng cách lấy phần tử đầu hàng đợi, sau đó duyệt mọi cạnh đi ra từ đỉnh này và cập nhật các giá trị trong `min_e` (mỗi lần cập nhật cũng phải xóa cạnh cũ khỏi hàng đợi `q` rồi chèn cạnh mới vào).
+
+**Ghi chú bản dịch:** Trong mã, hàng đợi ban đầu chỉ chứa đỉnh xuất phát. Sau khi chọn đỉnh này, hàng đợi chỉ chứa các đỉnh chưa chọn đã có cạnh nối tới cây với trọng số hữu hạn; các đỉnh chưa kề cây đang xây dựng chưa được đưa vào hàng đợi.

@@ -73,7 +73,7 @@ bool P(double E,double E_next,double T,mt19937 rng){
 }
 ```
 
-**Ghi chú của người dịch:** Hàm xác suất trong mã nguồn nhận bộ sinh ngẫu nhiên bằng giá trị, nên trạng thái bộ sinh gốc không được cập nhật sau lời gọi. Các lần thử vì thế không sử dụng những lần rút độc lập như ý tưởng mô tả; một cách khắc phục là truyền bộ sinh bằng tham chiếu.
+**Ghi chú bản dịch:** Hàm xác suất trong mã nguồn nhận bộ sinh ngẫu nhiên bằng giá trị, nên trạng thái bộ sinh gốc không được cập nhật sau lời gọi. Nếu trạng thái bộ sinh gốc không đổi giữa các lời gọi thì chúng nhận cùng trạng thái và tạo cùng mẫu ngẫu nhiên; một cách khắc phục là truyền bộ sinh bằng tham chiếu.
 
 ## Mẫu mã
 
@@ -127,7 +127,7 @@ pair<double, state> simAnneal() {
 - $T$ : Nhiệt độ ban đầu. Chọn giá trị cao hơn nếu muốn tìm kiếm chạy lâu hơn.
 - $u$ : Hệ số giảm, quyết định tốc độ làm nguội. Làm nguội chậm hơn (u lớn hơn) thường cho kết quả tốt hơn nhưng chạy lâu hơn. Đảm bảo $u < 1$.
 
-**Ghi chú của người dịch:** Với lịch làm nguội nhân như mã trên và công thức logarit bên dưới, hệ số giảm phải dương và nhỏ hơn một; điều kiện nhỏ hơn một trong nguồn chưa đủ. Công thức số vòng cũng giả sử nhiệt độ ban đầu lớn hơn một; khi nhiệt độ ban đầu không lớn hơn một, vòng lặp trong mã không chạy.
+**Ghi chú bản dịch:** Với lịch làm nguội nhân như mã trên và công thức logarit bên dưới, hệ số giảm phải dương và nhỏ hơn một; điều kiện nhỏ hơn một trong nguồn chưa đủ. Công thức số vòng cũng giả sử nhiệt độ ban đầu lớn hơn một; khi nhiệt độ ban đầu không lớn hơn một, vòng lặp trong mã không chạy.
 
 Số vòng lặp được cho bởi biểu thức
 

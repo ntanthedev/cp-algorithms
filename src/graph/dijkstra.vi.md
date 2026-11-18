@@ -65,6 +65,8 @@ Trước hết, ta chứng minh khẳng định với đỉnh $p$, tức là $d[
 Điều này gần như hiển nhiên: ở một vòng trước, ta đã chọn đỉnh $q$ và thực hiện phép nới lỏng từ nó.
 Do cách chọn đỉnh $p$, đường đi ngắn nhất đến $p$ chính là đường đi ngắn nhất đến $q$ cộng với cạnh $(p,q)$, nên phép nới lỏng từ $q$ đã đặt $d[p]$ bằng độ dài đường đi ngắn nhất $l[p]$.
 
+**Ghi chú bản dịch:** Trong đồ thị có hướng, cạnh được nới lỏng ở lập luận này đi từ q đến p; thứ tự hai đầu mút trong ký hiệu của nguồn đang bị đảo.
+
 Vì trọng số các cạnh không âm, độ dài đường đi ngắn nhất $l[p]$ (mà ta vừa chứng minh bằng $d[p]$) không vượt quá độ dài $l[v]$ của đường đi ngắn nhất đến đỉnh $v$. Đồng thời $l[v] \le d[v]$ (vì Dijkstra không thể tìm được một đường đi ngắn hơn chính đường đi ngắn nhất), nên ta có:
 
 $$d[p] = l[p] \le l[v] \le d[v]$$
@@ -151,6 +153,8 @@ vector<int> restore_path(int s, int t, vector<int> const& p) {
     return path;
 }
 ```
+
+**Ghi chú bản dịch:** Chỉ gọi hàm trên với đỉnh đích đi tới được từ nguồn. Với đỉnh không đi tới được, mảng cha vẫn có giá trị -1 và hàm có thể truy cập ngoài phạm vi.
 
 ## Tài liệu tham khảo
 

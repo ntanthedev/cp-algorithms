@@ -151,7 +151,9 @@ Ta có thể tìm tổ tiên này bằng cách chọn đỉnh $n-1$ làm gốc c
 Điều này khả thi vì đỉnh $n-1$ sẽ không bao giờ bị xóa khỏi cây.
 Ta cũng tính bậc của mỗi đỉnh.
 `ptr` là con trỏ cho biết số hiệu nhỏ nhất của các đỉnh lá còn lại (ngoại trừ đỉnh hiện tại `leaf`).
-Ta gán `next` cho đỉnh lá hiện tại nếu nó cũng là một đỉnh lá và nhỏ hơn `ptr`; nếu không, ta tìm tuyến tính đỉnh lá nhỏ nhất bằng cách tăng con trỏ.
+Ta lấy `next` làm đỉnh lá hiện tại nếu nó cũng là một đỉnh lá và nhỏ hơn `ptr`; nếu không, ta tìm tuyến tính đỉnh lá nhỏ nhất bằng cách tăng con trỏ.
+
+**Ghi chú bản dịch:** Mô tả con trỏ ngay trước đó trong nguồn chưa đúng với mọi trạng thái: ban đầu nó có thể bằng chính lá hiện tại. Bất biến ở phần giải thích phía trên là con trỏ chỉ tăng và trong các đỉnh từ 0 đến vị trí của con trỏ có nhiều nhất một lá, là lá hiện tại.
 
 Dễ thấy đoạn mã này có độ phức tạp $O(n)$.
 

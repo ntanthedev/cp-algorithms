@@ -54,6 +54,8 @@ $$\left\{\begin{array}{rcl}
 
 (Như trên, giả sử $m = m_1 m_2 \cdots m_k$ và các $m_i$ đôi một nguyên tố cùng nhau.)
 
+**Ghi chú bản dịch:** Hệ quả này còn cần giả thiết phần dư chung đồng dư với từng phần dư đã cho theo mô-đun tương ứng.
+
 ## Lời giải cho hai mô-đun
 
 Xét hệ hai phương trình với $m_1, m_2$ nguyên tố cùng nhau:
@@ -174,7 +176,7 @@ $$\left\{\begin{array}{ll}
     a \equiv 2          & \pmod{3}
 \end{array}\right.$$
 
-Vì ban đầu một số mô-đun có thừa số chung, ta sẽ nhận được một số đồng dư có mô-đun là các lũy thừa khác nhau của cùng một số nguyên tố.
+Vì ban đầu một số mô-đun có thừa số chung, ta sẽ nhận được một số đồng dư có mô-đun là lũy thừa của cùng một số nguyên tố, có thể với số mũ khác nhau.
 
 Ta có thể nhận thấy đồng dư có mô-đun là lũy thừa nguyên tố cao nhất sẽ là điều kiện mạnh nhất trong số các đồng dư dựa trên cùng số nguyên tố.
 Nó hoặc mâu thuẫn với một đồng dư khác, hoặc đã suy ra tất cả các đồng dư còn lại.

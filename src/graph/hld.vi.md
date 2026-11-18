@@ -59,7 +59,7 @@ Vì ta chỉ có thể chuyển từ một đường nặng sang đường nặn
 Hình dưới đây minh họa cách phân rã một cây mẫu. Cạnh nặng được vẽ dày hơn cạnh nhẹ. Các đường nặng được bao bởi đường nét đứt.
 
 <div style="text-align: center;">
-  <img src="hld.png" alt="Image of HLD">
+  <img src="hld.png" alt="Minh họa phân rã nặng nhẹ trên cây">
 </div>
 
 

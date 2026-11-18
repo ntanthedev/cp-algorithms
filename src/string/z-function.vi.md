@@ -205,7 +205,7 @@ Cũng theo đúng cách này, ta vẫn có thể cập nhật số chuỗi con p
 
 Cho chuỗi $s$ có độ dài $n$. Hãy tìm biểu diễn "nén" ngắn nhất của nó, tức tìm chuỗi $t$ có độ dài nhỏ nhất sao cho $s$ có thể được biểu diễn bằng cách nối một hoặc nhiều bản sao của $t$.
 
-Lời giải là tính hàm Z của $s$, duyệt mọi $i$ sao cho $i$ chia hết $n$, rồi dừng tại $i$ đầu tiên thỏa $i + z[i] = n$. Khi đó chuỗi $s$ có thể được nén xuống độ dài $i$.
+Lời giải là tính hàm Z của $s$, duyệt mọi $i$ sao cho $n$ chia hết cho $i$, rồi dừng tại $i$ đầu tiên thỏa $i + z[i] = n$. Khi đó chuỗi $s$ có thể được nén xuống độ dài $i$.
 
 Chứng minh của tính chất này giống lời giải dùng [hàm tiền tố](prefix-function.md).
 

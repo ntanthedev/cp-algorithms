@@ -14,6 +14,8 @@ translation:
 **Đường đi Euler** là một đường đi trong đồ thị đi qua mọi cạnh đúng một lần.
 **Chu trình Euler** là một đường đi Euler đồng thời là một chu trình.
 
+**Ghi chú bản dịch:** Ở đây, đường đi Euler được phép đi qua một đỉnh nhiều lần; yêu cầu là mỗi cạnh được đi qua đúng một lần.
+
 Bài toán ở đây là tìm đường đi Euler trong một **đa đồ thị vô hướng có cạnh khuyên**.
 
 ## Thuật toán
@@ -74,7 +76,12 @@ Trước hết, chương trình kiểm tra bậc các đỉnh: nếu không có 
 Ta tìm chu trình Euler đúng như mô tả ở trên (phiên bản không đệ quy), đồng thời khi thuật toán kết thúc sẽ kiểm tra đồ thị có liên thông hay không (nếu đồ thị không liên thông thì một số cạnh vẫn còn lại, và khi đó cần in $-1$).
 Cuối cùng, chương trình cũng xét trường hợp đồ thị có các đỉnh cô lập.
 
+**Ghi chú bản dịch:** Chỉ điều kiện về bậc chưa đủ để bảo đảm chu trình nói trên tồn tại: các đỉnh không cô lập còn phải liên thông. Chương trình kiểm tra các cạnh còn lại sau khi duyệt để phát hiện trường hợp không liên thông.
+
 Lưu ý rằng cài đặt này dùng ma trận kề.
+
+**Ghi chú bản dịch:** Với cài đặt này, phần tử trên đường chéo của ma trận cần bằng hai lần số cạnh khuyên tại đỉnh tương ứng: mỗi cạnh khuyên đóng góp hai vào bậc và đoạn mã giảm cùng ô đường chéo hai lần khi xóa cạnh.
+
 Ngoài ra, cách cài đặt này tìm đỉnh tiếp theo bằng vét cạn, nên phải duyệt đi duyệt lại toàn bộ một hàng của ma trận.
 Một cách tốt hơn là lưu đồ thị bằng danh sách kề, xóa cạnh trong $O(1)$ và đánh dấu các cạnh ngược trong một danh sách riêng.
 Bằng cách đó, ta có thể đạt một thuật toán $O(M)$.

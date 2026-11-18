@@ -16,6 +16,8 @@ Tìm kiếm theo chiều sâu (Depth-First Search, viết tắt là DFS) là m�
 Từ một đỉnh nguồn $u$, DFS tìm đường đi nhỏ nhất theo thứ tự từ điển đến từng đỉnh của đồ thị.
 DFS cũng tìm được đường đi ngắn nhất trong cây, vì giữa hai đỉnh chỉ tồn tại một đường đi đơn. Tuy nhiên, tính chất này không đúng với đồ thị tổng quát.
 
+**Ghi chú bản dịch:** Để DFS tìm đường đi nhỏ nhất theo thứ tự từ điển như trên, cần duyệt các đỉnh kề theo thứ tự tăng; bản nguồn không nêu giả thiết này. Đường đi được xét giữa các đỉnh mà thuật toán đi tới được.
+
 Thuật toán chạy trong thời gian $O(m + n)$, trong đó $n$ là số đỉnh và $m$ là số cạnh.
 
 ## Mô tả thuật toán
@@ -56,6 +58,8 @@ Xem phần cài đặt bên dưới để hiểu rõ hơn.
     Trước hết, thực hiện sắp xếp tô-pô trên đồ thị.
     Sau đó, đảo chiều mọi cạnh và chạy một chuỗi DFS khác theo thứ tự do phép sắp xếp tô-pô xác định. Thành phần được tạo bởi mỗi lời gọi DFS là một thành phần liên thông mạnh.
   
+**Ghi chú bản dịch:** Đồ thị ban đầu có thể có chu trình nên không nhất thiết có thứ tự tô-pô. Ở bước đầu của thuật toán tìm thành phần liên thông mạnh, ta lấy thứ tự giảm dần của thời điểm kết thúc DFS, rồi dùng thứ tự đó khi duyệt đồ thị đảo.
+
   * Tìm các cầu trong đồ thị vô hướng:
   
     Trước hết, chuyển đồ thị đã cho thành đồ thị có hướng bằng cách chạy một chuỗi DFS và định hướng mỗi cạnh theo chiều ta duyệt qua nó. Tiếp theo, tìm các thành phần liên thông mạnh trong đồ thị có hướng này. Các cầu là những cạnh có hai đầu thuộc hai thành phần liên thông mạnh khác nhau.
@@ -74,6 +78,8 @@ Các cạnh này tạo thành cây DFS, vì vậy chúng được gọi là cạ
 
 Nếu $v$ đã được thăm trước $u$:
 
+**Ghi chú bản dịch:** Trong trường hợp này, cần hiểu là v đã được thăm tại thời điểm xét cạnh từ u; riêng với cạnh xuôi, v là hậu duệ nên được thăm sau u.
+
 * Cạnh ngược (Back Edge) — Nếu $v$ là tổ tiên của $u$, cạnh $(u,v)$ là một cạnh ngược. $v$ là tổ tiên của $u$ khi ta đã đi vào $v$ nhưng chưa đi ra khỏi nó. Cạnh ngược tạo thành một chu trình: trong cây đệ quy DFS đã có đường đi từ tổ tiên $v$ đến hậu duệ $u$, còn cạnh ngược đi từ $u$ trở lại $v$. Vì vậy, có thể phát hiện chu trình bằng các cạnh ngược.
 
 * Cạnh xuôi (Forward Edge) — Nếu $v$ là hậu duệ của $u$, cạnh $(u, v)$ là một cạnh xuôi. Nói cách khác, nếu ta đã thăm và đi ra khỏi $v$, đồng thời $\text{entry}[u] < \text{entry}[v]$, thì $(u,v)$ là một cạnh xuôi.
@@ -83,9 +89,9 @@ Nếu $v$ đã được thăm trước $u$:
 
 Xét một cạnh tùy ý $(u,v)$ của $G$. Không mất tính tổng quát, giả sử $u$ được thăm trước $v$, tức $\text{entry}[u] < \text{entry}[v]$. Vì DFS chỉ xử lý mỗi cạnh một lần, chỉ có hai cách để xử lý và phân loại cạnh $(u,v)$:
 
-* Lần đầu ta duyệt cạnh $(u,v)$ là theo chiều từ $u$ đến $v$. Vì $\text{entry}[u] < \text{entry}[v]$, tính đệ quy của DFS bảo đảm đỉnh $v$ sẽ được duyệt xong và thoát ra trước khi ta có thể quay ngược lên ngăn xếp lời gọi để thoát khỏi $u$. Do đó, tại thời điểm DFS lần đầu duyệt cạnh $(u,v)$ từ $u$ sang $v$, đỉnh $v$ phải chưa được thăm; nếu không, DFS đã duyệt cạnh này từ $v$ sang $u$ trước khi rời $v$, vì $u$ và $v$ kề nhau. Vì vậy, $(u,v)$ là cạnh cây.
+* Lần đầu ta duyệt cạnh $(u,v)$ là theo chiều từ $u$ đến $v$. Vì $\text{entry}[u] < \text{entry}[v]$, tính đệ quy của DFS bảo đảm đỉnh $v$ sẽ được duyệt xong và thoát ra trước khi ta có thể quay ngược lên ngăn xếp lời gọi để thoát khỏi $u$. Do đó, tại thời điểm DFS lần đầu duyệt cạnh $(u,v)$ từ $u$ sang $v$, đỉnh $v$ phải chưa được thăm; nếu không, DFS đã duyệt cạnh $(u,v)$ từ $v$ sang $u$ trước khi rời $v$, vì $u$ và $v$ kề nhau. Vì vậy, $(u,v)$ là cạnh cây.
 
-* Lần đầu ta duyệt cạnh $(u,v)$ là theo chiều từ $v$ đến $u$. Do $u$ được phát hiện trước $v$ và mỗi cạnh chỉ được xử lý một lần, trường hợp này chỉ có thể xảy ra nếu tồn tại một đường khác từ $u$ đến $v$ không sử dụng cạnh $(u,v)$, khiến $u$ trở thành tổ tiên của $v$. Khi đó, cạnh $(u,v)$ khép kín một chu trình vì nó đi từ hậu duệ $v$ về tổ tiên $u$, là đỉnh chưa được thoát ra. Vì vậy, $(u,v)$ là cạnh ngược.
+* Lần đầu ta duyệt cạnh $(u,v)$ là theo chiều từ $v$ đến $u$. Do $u$ được phát hiện trước $v$ và mỗi cạnh chỉ được xử lý một lần, việc duyệt cạnh $(u,v)$ từ đỉnh $v$ chỉ có thể xảy ra nếu tồn tại một đường khác từ $u$ đến $v$ không sử dụng cạnh $(u,v)$, khiến $u$ trở thành tổ tiên của $v$. Khi đó, cạnh $(u,v)$ khép kín một chu trình vì nó đi từ hậu duệ $v$ về tổ tiên $u$, là đỉnh chưa được thoát ra. Vì vậy, $(u,v)$ là cạnh ngược.
 
 Chỉ có hai cách xử lý cạnh $(u,v)$ như trên. Do đó, khi chạy DFS trên đồ thị vô hướng $G$, mọi cạnh gặp được đều là cạnh cây hoặc cạnh ngược; cạnh xuôi và cạnh chéo chỉ tồn tại trong đồ thị có hướng. Định lý được chứng minh.
 
