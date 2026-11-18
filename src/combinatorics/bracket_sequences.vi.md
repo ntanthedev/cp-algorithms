@@ -82,6 +82,8 @@ Ta cần tìm ngoặc mở ngoài cùng bên phải có thể thay bằng ngoặ
 Sau khi thay vị trí này, ta có thể điền phần còn lại của xâu bằng hậu tố nhỏ nhất theo thứ tự từ điển: trước hết đặt nhiều ngoặc mở nhất có thể, sau đó điền các vị trí còn lại bằng ngoặc đóng.
 Nói cách khác, ta cố giữ nguyên một tiền tố dài nhất có thể và thay hậu tố bằng hậu tố nhỏ nhất theo thứ tự từ điển.
 
+**Ghi chú bản dịch:** Nguồn diễn đạt điều kiện tại vị trí thay là có nhiều ngoặc đóng hơn ngoặc mở; điều kiện đó bị đảo. Tiền tố sau khi thay không được có nhiều ngoặc đóng hơn ngoặc mở và phải còn khả năng hoàn thành dãy ngoặc đúng.
+
 Để tìm vị trí này, ta có thể duyệt các ký tự từ phải sang trái và duy trì độ cân bằng $\text{depth}$ giữa ngoặc mở và ngoặc đóng.
 Khi gặp một ngoặc mở, ta giảm $\text{depth}$; khi gặp một ngoặc đóng, ta tăng nó.
 Nếu tại một vị trí ta gặp ngoặc mở và độ cân bằng sau khi xử lý ký tự này là dương, thì ta đã tìm được vị trí ngoài cùng bên phải có thể thay đổi.

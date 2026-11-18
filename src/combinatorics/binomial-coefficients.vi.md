@@ -181,7 +181,7 @@ Nhưng nếu $p \le \max(k, n-k)$ thì ít nhất một trong $k!$ và $(n-k)!$ 
 Dù vậy, ta vẫn có thể tính hệ số nhị thức.
 
 Ý tưởng như sau:
-Với mỗi $x!$, ta tính số mũ lớn nhất $c$ sao cho $p^c$ chia hết $x!$, tức $p^c ~|~ x!$.
+Với mỗi $x!$, ta tính số mũ lớn nhất $c$ sao cho $x!$ chia hết cho $p^c$, tức $p^c ~|~ x!$.
 Gọi $c(x)$ là số đó.
 Và đặt $g(x) := \frac{x!}{p^{c(x)}}$.
 Khi đó, ta có thể viết hệ số nhị thức dưới dạng:

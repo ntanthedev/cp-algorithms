@@ -48,6 +48,8 @@ a^2 + b^2 &= 1 \\
 \mid a \cdot v_x + b \cdot v_y + c \mid &= r_2
 \end{align}$$
 
+**Ghi chú bản dịch:** Điều kiện chuẩn hóa trong hệ trên chỉ áp dụng cho hai hệ số a và b, không gồm c.
+
 Để bỏ dấu giá trị tuyệt đối, nhận xét rằng chỉ có bốn cách bỏ dấu trong hệ này. Ta có thể xét chung các cách đó bằng cách cho phép nhân vế phải với -1. Nói cách khác, ta chuyển sang hệ:
 
 $$\begin{align}
@@ -72,6 +74,8 @@ a &= {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + 
 b &= {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} } \\
 c &= d_1
 \end{align}$$
+
+**Ghi chú bản dịch:** Hai dấu cộng trừ trong công thức của a và b phải được chọn trái nhau để thỏa hệ phương trình phía trên. Chẳng hạn, nếu v = (1, 1) và d₂ − d₁ = 0, chọn cùng dấu cho a và b thì vế trái của phương trình cuối khác không. Mã dưới đây dùng dấu trái nhau.
 
 Tổng cộng ta thu được tám nghiệm thay vì bốn. Tuy nhiên, dễ hiểu vì sao xuất hiện các nghiệm thừa: ở hệ sau cùng, chỉ cần lấy một nghiệm (chẳng hạn nghiệm thứ nhất). Ý nghĩa hình học của việc lấy $\pm r_1$ và $\pm r_2$ là ta đang xét đường thẳng nằm về phía nào của mỗi đường tròn. Vì vậy, hai cách xuất hiện khi giải hệ sau cùng là dư thừa: chỉ cần chọn một trong hai nghiệm, nhưng phải chọn cùng một họ nghiệm trong cả bốn trường hợp.
 

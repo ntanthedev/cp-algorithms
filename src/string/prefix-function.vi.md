@@ -235,7 +235,7 @@ Rõ ràng ta chỉ cần tìm độ dài của $t$. Khi biết độ dài, đáp
 
 Tính hàm tiền tố của $s$.
 Dùng giá trị cuối cùng để định nghĩa $k = n - \pi[n - 1]$.
-Ta sẽ chứng minh rằng nếu $k$ chia hết $n$ thì $k$ là đáp án; nếu không thì không thể nén hiệu quả và đáp án là $n$.
+Ta sẽ chứng minh rằng nếu $n$ chia hết cho $k$ thì $k$ là đáp án; nếu không thì không thể nén hiệu quả và đáp án là $n$.
 
 Giả sử $n$ chia hết cho $k$.
 Khi đó chuỗi có thể được chia thành các khối có độ dài $k$.
@@ -252,11 +252,11 @@ Do đó $k$ thực sự là đáp án.
 Bây giờ giả sử $n$ không chia hết cho $k$.
 Ta sẽ chứng minh điều này kéo theo độ dài đáp án là $n$.
 Chứng minh bằng phản chứng.
-Giả sử tồn tại đáp án và cách nén có độ dài $p$ ($p$ chia hết $n$).
+Giả sử tồn tại đáp án và cách nén có độ dài $p$ ($n$ chia hết cho $p$).
 Khi đó giá trị cuối cùng của hàm tiền tố phải lớn hơn $n - p$, tức hậu tố sẽ phủ một phần khối đầu tiên.
 Xét khối thứ hai của chuỗi.
-Vì tiền tố bằng hậu tố, cả hai cùng phủ khối này và độ dịch tương đối giữa chúng là $k$ không chia hết độ dài khối $p$ (nếu không $k$ sẽ chia hết $n$), nên mọi ký tự của khối phải giống nhau.
-Nhưng khi đó chuỗi chỉ gồm một ký tự lặp đi lặp lại, do đó có thể nén xuống chuỗi độ dài $1$, suy ra $k = 1$ và $k$ chia hết $n$.
+Vì tiền tố bằng hậu tố, cả hai cùng phủ khối này và độ dài khối $p$ không chia hết cho độ dịch tương đối $k$ giữa chúng (nếu không $n$ sẽ chia hết cho $k$), nên mọi ký tự của khối phải giống nhau.
+Nhưng khi đó chuỗi chỉ gồm một ký tự lặp đi lặp lại, do đó có thể nén xuống chuỗi độ dài $1$, suy ra $k = 1$ và $n$ chia hết cho $k$.
 Mâu thuẫn.
 
 $$\overbrace{s_0 ~ s_1 ~ s_2 ~ s_3}^p ~ \overbrace{s_4 ~ s_5 ~ s_6 ~ s_7}^p$$
