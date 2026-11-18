@@ -8455,7 +8455,7 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
 \left| A_p \cap A_q \cap A_r \right| &amp;=&amp; (n-3)!\ , \\
 \cdots ,
 \end{eqnarray}$$</div>
-<p>bởi nếu biết số điểm cố định bằng <span class="arithmatex">$x$</span>, ta đã biết vị trí của <span class="arithmatex">$x$</span> phần tử trong hoán vị, còn <span class="arithmatex">$(n-x)$</span> phần tử khác có thể được sắp tùy ý.</p>
+<p>bởi khi buộc <span class="arithmatex">$x$</span> vị trí đã chọn phải là điểm cố định, ta đã xác định vị trí của <span class="arithmatex">$x$</span> phần tử trong hoán vị. Các phần tử ở <span class="arithmatex">$(n-x)$</span> vị trí còn lại có thể được sắp xếp tùy ý, kể cả khi cách sắp xếp đó tạo thêm điểm cố định.</p>
 <p>Thay vào công thức bao hàm – loại trừ, đồng thời số cách chọn một tập con kích thước <span class="arithmatex">$x$</span> từ <span class="arithmatex">$n$</span> phần tử là <span class="arithmatex">$\binom{n}{x}$</span>, ta thu được công thức cho số hoán vị có ít nhất một điểm cố định:</p>
 <div class="arithmatex">$$\binom{n}{1} \cdot (n-1)! - \binom{n}{2} \cdot (n-2)! + \binom{n}{3} \cdot (n-3)! - \cdots \pm \binom{n}{n} \cdot (n-n)! $$</div>
 <p>Do đó, số hoán vị không có điểm cố định bằng:</p>
@@ -8463,7 +8463,8 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
 <p>Rút gọn biểu thức này, ta thu được <strong>biểu thức chính xác và gần đúng cho số hoán vị không có điểm cố định</strong>:</p>
 <div class="arithmatex">$$ n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots \pm \frac{1}{n!} \right ) \approx \frac{n!}{e} $$</div>
 <p>(vì tổng trong ngoặc là <span class="arithmatex">$n+1$</span> hạng đầu của khai triển Taylor của <span class="arithmatex">$e^{-1}$</span>).</p>
-<p>Đáng chú ý, một bài toán tương tự cũng có thể giải theo cách này: yêu cầu các điểm cố định không nằm trong <span class="arithmatex">$m$</span> phần tử đầu tiên của hoán vị (thay vì không nằm ở bất kỳ vị trí nào như bài vừa giải). Công thức thu được giống công thức chính xác ở trên, nhưng tổng chỉ chạy đến <span class="arithmatex">$m$</span> thay vì <span class="arithmatex">$n$</span>.</p>
+<p>Nếu chỉ cấm điểm cố định ở <span class="arithmatex">$m$</span> vị trí đầu tiên của hoán vị, ta áp dụng bao hàm – loại trừ trên các vị trí bị cấm. Khi chọn các vị trí buộc phải cố định trong mỗi số hạng, ta chỉ chọn từ <span class="arithmatex">$m$</span> vị trí đầu, thay vì chọn từ toàn bộ <span class="arithmatex">$n$</span> vị trí.</p>
+<p><strong>Ghi chú bản dịch:</strong> Có <span class="arithmatex">$\binom{m}{j}$</span> cách chọn <span class="arithmatex">$j$</span> vị trí trong số các vị trí bị cấm, và mỗi lựa chọn cho phép sắp xếp tùy ý <span class="arithmatex">$n-j$</span> phần tử còn lại. Vì vậy số hoán vị thỏa mãn là <span class="arithmatex">$\sum_{j=0}^{m}(-1)^j\binom{m}{j}(n-j)!$</span>. Ví dụ, với <span class="arithmatex">$n=3$</span> và <span class="arithmatex">$m=1$</span>, kết quả là <span class="arithmatex">$3!-2!=4$</span>.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <p>Danh sách các bài có thể giải bằng nguyên lý bao hàm – loại trừ:</p>
 <ul>
@@ -8490,7 +8491,7 @@ ta cần chia một dãy <span class="arithmatex">$20$</span> đơn vị thành 
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.42%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.58%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (96.79%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (3.21%)</li></ul>
 </ul>
                 
               </article>

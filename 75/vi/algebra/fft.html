@@ -8354,6 +8354,7 @@ Việc duy nhất cần làm sau đó là chuẩn hóa số:</p>
 <span class="w">        </span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">%=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 </code></pre></div>
+<p><strong>Ghi chú bản dịch:</strong> Đoạn mã nguồn trên thiếu dấu ngoặc nhọn mở sau vòng lặp. Vì vậy chỉ phép cộng đầu tiên thuộc vòng lặp; biến chỉ số nằm ngoài phạm vi ở hai dòng tiếp theo và dấu ngoặc đóng không có dấu mở tương ứng.</p>
 <p>Vì độ dài tích của hai số không bao giờ vượt quá tổng độ dài của chúng, kích thước vector đủ để thực hiện mọi phép nhớ.</p>
 <h3 id="cai-tien-cai-at-tinh-toan-tai-cho">Cải tiến cài đặt: tính toán tại chỗ<a class="headerlink" href="#cai-tien-cai-at-tinh-toan-tai-cho" title="Permanent link">&para;</a></h3>
 <p>Để tăng hiệu quả, ta chuyển từ cài đặt đệ quy sang cài đặt lặp.
@@ -8433,6 +8434,7 @@ Cuối cùng, ở bước cuối, ta có kết quả DFT của hai nửa <span c
 Sau đó, ở <span class="arithmatex">$\log n - 1$</span> giai đoạn của thuật toán, ta tính DFT cho từng khối có kích thước tương ứng <span class="arithmatex">$\text{len}$</span>.
 Mọi khối này đều dùng cùng căn của đơn vị <span class="arithmatex">$\text{wlen}$</span>.
 Ta duyệt qua tất cả các khối và thực hiện phép biến đổi butterfly trên từng khối.</p>
+<p><strong>Ghi chú bản dịch:</strong> Với độ dài là lũy thừa của 2, vòng lặp trên chạy qua các kích thước 2, 4, …, n, nên số giai đoạn là logarit cơ số 2 của n. Chẳng hạn, với n bằng 8 có ba giai đoạn, không phải hai.</p>
 <p>Ta có thể tiếp tục tối ưu việc đảo bit.
 Trong cài đặt trước, ta duyệt từng bit của chỉ số để tạo chỉ số có thứ tự bit đảo ngược.
 Tuy nhiên, có một cách khác để đảo bit.</p>

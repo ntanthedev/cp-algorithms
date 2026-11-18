@@ -8204,7 +8204,8 @@ Ta có thể tìm tổ tiên này bằng cách chọn đỉnh <span class="arith
 Điều này khả thi vì đỉnh <span class="arithmatex">$n-1$</span> sẽ không bao giờ bị xóa khỏi cây.
 Ta cũng tính bậc của mỗi đỉnh.
 <code>ptr</code> là con trỏ cho biết số hiệu nhỏ nhất của các đỉnh lá còn lại (ngoại trừ đỉnh hiện tại <code>leaf</code>).
-Ta gán <code>next</code> cho đỉnh lá hiện tại nếu nó cũng là một đỉnh lá và nhỏ hơn <code>ptr</code>; nếu không, ta tìm tuyến tính đỉnh lá nhỏ nhất bằng cách tăng con trỏ.</p>
+Ta lấy <code>next</code> làm đỉnh lá hiện tại nếu nó cũng là một đỉnh lá và nhỏ hơn <code>ptr</code>; nếu không, ta tìm tuyến tính đỉnh lá nhỏ nhất bằng cách tăng con trỏ.</p>
+<p><strong>Ghi chú bản dịch:</strong> Mô tả con trỏ ngay trước đó trong nguồn chưa đúng với mọi trạng thái: ban đầu nó có thể bằng chính lá hiện tại. Bất biến ở phần giải thích phía trên là con trỏ chỉ tăng và trong các đỉnh từ 0 đến vị trí của con trỏ có nhiều nhất một lá, là lá hiện tại.</p>
 <p>Dễ thấy đoạn mã này có độ phức tạp <span class="arithmatex">$O(n)$</span>.</p>
 <h3 id="mot-so-tinh-chat-cua-ma-prufer">Một số tính chất của mã Prüfer<a class="headerlink" href="#mot-so-tinh-chat-cua-ma-prufer" title="Permanent link">&para;</a></h3>
 <ul>

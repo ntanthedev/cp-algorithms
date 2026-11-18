@@ -8289,12 +8289,12 @@ $$</div>
 </div>
 <p>Khi xử lý <span class="arithmatex">$a[i]$</span>, ta tự hỏi:
 Điều kiện nào cần thỏa để ghi số hiện tại <span class="arithmatex">$a[i]$</span> vào mảng <span class="arithmatex">$d[0 \dots n]$</span>?</p>
-<p>Ta đặt <span class="arithmatex">$d[l] = a[i]$</span> nếu tồn tại một dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span> kết thúc tại <span class="arithmatex">$a[i]$</span>, đồng thời không có dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span> nào kết thúc tại một số nhỏ hơn.
-Tương tự cách trước, nếu bỏ <span class="arithmatex">$a[i]$</span> khỏi dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span>, ta thu được một dãy con tăng dài nhất khác có độ dài <span class="arithmatex">$l -1$</span>.
-Vì vậy ta muốn nối <span class="arithmatex">$a[i]$</span> vào một dãy con tăng dài nhất độ dài <span class="arithmatex">$l - 1$</span>; rõ ràng dãy độ dài <span class="arithmatex">$l - 1$</span> có phần tử cuối nhỏ nhất sẽ thuận lợi nhất, tức dãy độ dài <span class="arithmatex">$l-1$</span> kết thúc tại <span class="arithmatex">$d[l-1]$</span>.</p>
-<p>Tồn tại một dãy con tăng dài nhất độ dài <span class="arithmatex">$l - 1$</span> mà ta có thể nối thêm <span class="arithmatex">$a[i]$</span> khi và chỉ khi <span class="arithmatex">$d[l-1] &lt; a[i]$</span>.
+<p>Ta đặt <span class="arithmatex">$d[l] = a[i]$</span> nếu tồn tại một dãy con tăng độ dài <span class="arithmatex">$l$</span> kết thúc tại <span class="arithmatex">$a[i]$</span> và chưa có dãy con tăng độ dài <span class="arithmatex">$l$</span> nào kết thúc tại một giá trị nhỏ hơn.
+Nếu bỏ phần tử cuối <span class="arithmatex">$a[i]$</span> khỏi một dãy con tăng độ dài <span class="arithmatex">$l$</span>, ta thu được một dãy con tăng có độ dài <span class="arithmatex">$l -1$</span>.
+Vì vậy, ta muốn nối <span class="arithmatex">$a[i]$</span> vào một dãy con tăng độ dài <span class="arithmatex">$l - 1$</span>. Trong các dãy độ dài <span class="arithmatex">$l - 1$</span>, dễ nối nhất là dãy có phần tử cuối nhỏ nhất, tức dãy độ dài <span class="arithmatex">$l-1$</span> kết thúc tại <span class="arithmatex">$d[l-1]$</span>.</p>
+<p>Tồn tại một dãy con tăng độ dài <span class="arithmatex">$l - 1$</span> mà ta có thể nối thêm <span class="arithmatex">$a[i]$</span> khi và chỉ khi <span class="arithmatex">$d[l-1] &lt; a[i]$</span>.
 Do đó, ta có thể duyệt mọi độ dài <span class="arithmatex">$l$</span> và kiểm tra điều kiện này để xem có thể mở rộng dãy độ dài <span class="arithmatex">$l - 1$</span> hay không.</p>
-<p>Ngoài ra, ta cũng phải kiểm tra liệu đã tìm được một dãy con tăng dài nhất độ dài <span class="arithmatex">$l$</span> với phần tử cuối nhỏ hơn hay chưa.
+<p>Ngoài ra, ta cũng phải kiểm tra liệu đã có dãy con tăng độ dài <span class="arithmatex">$l$</span> kết thúc tại một giá trị nhỏ hơn hay chưa.
 Vì vậy chỉ cập nhật khi <span class="arithmatex">$a[i] &lt; d[l]$</span>.</p>
 <p>Sau khi xử lý mọi phần tử của <span class="arithmatex">$a[]$</span>, độ dài dãy con cần tìm là giá trị <span class="arithmatex">$l$</span> lớn nhất thỏa <span class="arithmatex">$d[l] &lt; \infty$</span>.</p>
 <p>Việc thêm các giá trị <span class="arithmatex">$\pm\infty$</span> chỉ để thuận tiện khi phát biểu hệ thức truy hồi; ta không cần thực sự lưu chúng.
@@ -8317,8 +8317,7 @@ Khi đó <span class="arithmatex">$d[]$</span> tăng nhiều nhất một phần
 <p>Bây giờ ta có hai nhận xét quan trọng.</p>
 <ol>
 <li>
-<p>Mảng <span class="arithmatex">$d$</span> luôn được sắp xếp:
-    <span class="arithmatex">$d[l-1] &lt; d[l]$</span> với mọi <span class="arithmatex">$l = 1 \dots n$</span>.</p>
+<p>Mảng <span class="arithmatex">$d$</span> luôn được sắp xếp. Trong các chỉ số <span class="arithmatex">$l = 1 \dots n$</span>, mỗi độ dài đã đạt được đều thỏa <span class="arithmatex">$d[l-1] &lt; d[l]$</span>. Các ô ứng với độ dài chưa đạt được đều chứa cùng giá trị vô cực nếu ta dùng mảng có phần đệm.</p>
 <p>Điều này hiển nhiên vì chỉ cần bỏ phần tử cuối khỏi dãy con tăng độ dài <span class="arithmatex">$l$</span>, ta nhận được một dãy con tăng độ dài <span class="arithmatex">$l-1$</span> với phần tử cuối nhỏ hơn.</p>
 </li>
 <li>
@@ -8328,7 +8327,7 @@ Chỉ có thể tồn tại một vị trí trong mảng thỏa <span class="ari
 </li>
 </ol>
 <p>Vì vậy, ta có thể tìm phần tử này trong mảng <span class="arithmatex">$d[]$</span> bằng <a href="../num_methods/binary_search.html">tìm kiếm nhị phân</a> trong <span class="arithmatex">$O(\log n)$</span>.
-Thực tế, ta chỉ cần tìm trong <span class="arithmatex">$d[]$</span> số đầu tiên lớn hơn nghiêm ngặt <span class="arithmatex">$a[i]$</span>, rồi thử cập nhật phần tử đó giống như trong cài đặt phía trên.</p>
+Trong cài đặt chỉ lưu các giá trị hữu hạn, ta tìm trong <span class="arithmatex">$d[]$</span> phần tử đầu tiên lớn hơn hoặc bằng <span class="arithmatex">$a[i]$</span> và thay bằng giá trị đang xét. Nếu hai giá trị bằng nhau thì độ dài giữ nguyên; nếu không tìm thấy phần tử nào như vậy thì nối giá trị mới vào cuối mảng.</p>
 <h3 id="cai-at_1">Cài đặt<a class="headerlink" href="#cai-at_1" title="Permanent link">&para;</a></h3>
 <p>Ta thu được cài đặt <span class="arithmatex">$O(n \log n)$</span> nhanh hơn, chỉ khác cài đặt phía trên ở cách tìm vị trí:</p>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="nf">lis</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="k">const</span><span class="o">&amp;</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -8449,7 +8448,7 @@ Cụ thể, duyệt từ trái sang phải và gán số hiện tại vào dãy 
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (83.42%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (16.58%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (81.82%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (18.18%)</li></ul>
 </ul>
                 
               </article>

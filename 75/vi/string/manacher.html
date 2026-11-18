@@ -8196,6 +8196,7 @@ $$</div>
 <p>Như có thể thấy, <span class="arithmatex">$d[2i]=2 d_{even}[i]+1$</span> và <span class="arithmatex">$d[2i+1]=2 d_{odd}[i]$</span> trong đó <span class="arithmatex">$d$</span> là mảng Manacher cho các xâu đối xứng độ dài lẻ trên chuỗi đã được nối bằng <code>#</code>, còn <span class="arithmatex">$d_{odd}$</span> và <span class="arithmatex">$d_{even}$</span> là các mảng đã định nghĩa ở trên cho chuỗi ban đầu.</p>
 <p>Thật vậy, các ký tự <code>#</code> không ảnh hưởng đến các xâu đối xứng độ dài lẻ, vốn vẫn có tâm tại các ký tự của chuỗi ban đầu; còn các xâu đối xứng độ dài chẵn của chuỗi ban đầu giờ trở thành các xâu đối xứng độ dài lẻ của chuỗi mới, có tâm tại các ký tự <code>#</code>.</p>
 <p>Lưu ý rằng <span class="arithmatex">$d[2i]$</span> và <span class="arithmatex">$d[2i+1]$</span> về bản chất lần lượt bằng độ dài lớn nhất của xâu đối xứng lẻ và chẵn có tâm tại <span class="arithmatex">$i$</span>, cộng thêm <span class="arithmatex">$1$</span>.</p>
+<p><strong>Ghi chú bản dịch:</strong> Câu ngay trên đã đảo thứ tự chẵn và lẻ so với hai công thức: chỉ số chẵn ứng với xâu đối xứng chẵn, còn chỉ số lẻ ứng với xâu đối xứng lẻ của chuỗi ban đầu.</p>
 <p>Phép biến đổi được cài đặt như sau:</p>
 <div class="highlight"><pre><span></span><code><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">manacher</span><span class="p">(</span><span class="n">string</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">string</span><span class="w"> </span><span class="n">t</span><span class="p">;</span>
@@ -8220,7 +8221,7 @@ $$</div>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (98.56%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (1.44%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.62%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.38%)</li></ul>
 </ul>
                 
               </article>

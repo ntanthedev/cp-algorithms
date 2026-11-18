@@ -8037,6 +8037,7 @@ a^2 + b^2 &amp;= 1 \\
 \mid a \cdot 0 + b \cdot 0 + c \mid &amp;= r_1 \\
 \mid a \cdot v_x + b \cdot v_y + c \mid &amp;= r_2
 \end{align}$$</div>
+<p><strong>Ghi chú bản dịch:</strong> Điều kiện chuẩn hóa trong hệ trên chỉ áp dụng cho hai hệ số a và b, không gồm c.</p>
 <p>Để bỏ dấu giá trị tuyệt đối, nhận xét rằng chỉ có bốn cách bỏ dấu trong hệ này. Ta có thể xét chung các cách đó bằng cách cho phép nhân vế phải với -1. Nói cách khác, ta chuyển sang hệ:</p>
 <div class="arithmatex">$$\begin{align}
 a^2 + b^2 &amp;= 1 \\
@@ -8055,6 +8056,7 @@ a &amp;= {( d_2 - d_1 ) v_x \pm v_y \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^
 b &amp;= {( d_2 - d_1 ) v_y \pm v_x \sqrt{v_x^2 + v_y^2-(d_2-d_1)^2} \over {v_x^2 + v_y^2} } \\
 c &amp;= d_1
 \end{align}$$</div>
+<p><strong>Ghi chú bản dịch:</strong> Hai dấu cộng trừ trong công thức của a và b phải được chọn trái nhau để thỏa hệ phương trình phía trên. Chẳng hạn, nếu v = (1, 1) và d₂ − d₁ = 0, chọn cùng dấu cho a và b thì vế trái của phương trình cuối khác không. Mã dưới đây dùng dấu trái nhau.</p>
 <p>Tổng cộng ta thu được tám nghiệm thay vì bốn. Tuy nhiên, dễ hiểu vì sao xuất hiện các nghiệm thừa: ở hệ sau cùng, chỉ cần lấy một nghiệm (chẳng hạn nghiệm thứ nhất). Ý nghĩa hình học của việc lấy <span class="arithmatex">$\pm r_1$</span> và <span class="arithmatex">$\pm r_2$</span> là ta đang xét đường thẳng nằm về phía nào của mỗi đường tròn. Vì vậy, hai cách xuất hiện khi giải hệ sau cùng là dư thừa: chỉ cần chọn một trong hai nghiệm, nhưng phải chọn cùng một họ nghiệm trong cả bốn trường hợp.</p>
 <p>Điều cuối cùng ta chưa xét là <strong>cách tịnh tiến các đường thẳng</strong> khi tâm đường tròn thứ nhất ban đầu không ở gốc tọa độ. Từ tính tuyến tính của phương trình đường thẳng, ta cần trừ giá trị <span class="arithmatex">$a \cdot x_0 + b \cdot y_0$</span> khỏi hệ số <span class="arithmatex">$c$</span>, trong đó <span class="arithmatex">$x_0$</span> và <span class="arithmatex">$y_0$</span> là tọa độ tâm ban đầu của đường tròn thứ nhất.</p>
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>

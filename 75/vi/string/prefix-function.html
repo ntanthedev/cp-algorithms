@@ -8311,7 +8311,7 @@ Ta muốn tìm biểu diễn "nén" ngắn nhất của chuỗi, tức tìm chu�
 <p>Rõ ràng ta chỉ cần tìm độ dài của <span class="arithmatex">$t$</span>. Khi biết độ dài, đáp án chính là tiền tố của <span class="arithmatex">$s$</span> có độ dài đó.</p>
 <p>Tính hàm tiền tố của <span class="arithmatex">$s$</span>.
 Dùng giá trị cuối cùng để định nghĩa <span class="arithmatex">$k = n - \pi[n - 1]$</span>.
-Ta sẽ chứng minh rằng nếu <span class="arithmatex">$k$</span> chia hết <span class="arithmatex">$n$</span> thì <span class="arithmatex">$k$</span> là đáp án; nếu không thì không thể nén hiệu quả và đáp án là <span class="arithmatex">$n$</span>.</p>
+Ta sẽ chứng minh rằng nếu <span class="arithmatex">$n$</span> chia hết cho <span class="arithmatex">$k$</span> thì <span class="arithmatex">$k$</span> là đáp án; nếu không thì không thể nén hiệu quả và đáp án là <span class="arithmatex">$n$</span>.</p>
 <p>Giả sử <span class="arithmatex">$n$</span> chia hết cho <span class="arithmatex">$k$</span>.
 Khi đó chuỗi có thể được chia thành các khối có độ dài <span class="arithmatex">$k$</span>.
 Theo định nghĩa hàm tiền tố, tiền tố độ dài <span class="arithmatex">$n - k$</span> bằng hậu tố của nó.
@@ -8325,11 +8325,11 @@ Do đó <span class="arithmatex">$k$</span> thực sự là đáp án.</p>
 <p>Bây giờ giả sử <span class="arithmatex">$n$</span> không chia hết cho <span class="arithmatex">$k$</span>.
 Ta sẽ chứng minh điều này kéo theo độ dài đáp án là <span class="arithmatex">$n$</span>.
 Chứng minh bằng phản chứng.
-Giả sử tồn tại đáp án và cách nén có độ dài <span class="arithmatex">$p$</span> (<span class="arithmatex">$p$</span> chia hết <span class="arithmatex">$n$</span>).
+Giả sử tồn tại đáp án và cách nén có độ dài <span class="arithmatex">$p$</span> (<span class="arithmatex">$n$</span> chia hết cho <span class="arithmatex">$p$</span>).
 Khi đó giá trị cuối cùng của hàm tiền tố phải lớn hơn <span class="arithmatex">$n - p$</span>, tức hậu tố sẽ phủ một phần khối đầu tiên.
 Xét khối thứ hai của chuỗi.
-Vì tiền tố bằng hậu tố, cả hai cùng phủ khối này và độ dịch tương đối giữa chúng là <span class="arithmatex">$k$</span> không chia hết độ dài khối <span class="arithmatex">$p$</span> (nếu không <span class="arithmatex">$k$</span> sẽ chia hết <span class="arithmatex">$n$</span>), nên mọi ký tự của khối phải giống nhau.
-Nhưng khi đó chuỗi chỉ gồm một ký tự lặp đi lặp lại, do đó có thể nén xuống chuỗi độ dài <span class="arithmatex">$1$</span>, suy ra <span class="arithmatex">$k = 1$</span> và <span class="arithmatex">$k$</span> chia hết <span class="arithmatex">$n$</span>.
+Vì tiền tố bằng hậu tố, cả hai cùng phủ khối này và độ dài khối <span class="arithmatex">$p$</span> không chia hết cho độ dịch tương đối <span class="arithmatex">$k$</span> giữa chúng (nếu không <span class="arithmatex">$n$</span> sẽ chia hết cho <span class="arithmatex">$k$</span>), nên mọi ký tự của khối phải giống nhau.
+Nhưng khi đó chuỗi chỉ gồm một ký tự lặp đi lặp lại, do đó có thể nén xuống chuỗi độ dài <span class="arithmatex">$1$</span>, suy ra <span class="arithmatex">$k = 1$</span> và <span class="arithmatex">$n$</span> chia hết cho <span class="arithmatex">$k$</span>.
 Mâu thuẫn.</p>
 <div class="arithmatex">$$\overbrace{s_0 ~ s_1 ~ s_2 ~ s_3}^p ~ \overbrace{s_4 ~ s_5 ~ s_6 ~ s_7}^p$$</div>
 <div class="arithmatex">$$s_0 ~ s_1 ~ s_2 ~ \underbrace{\overbrace{s_3 ~ s_4 ~ s_5 ~ s_6}^p ~ s_7}_{\pi[7] = 5}$$</div>
@@ -8443,7 +8443,7 @@ t_4 &amp;= t_2^{10} + t_3^{100}
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (94.01%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (5.99%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (93.02%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (6.98%)</li></ul>
 </ul>
                 
               </article>

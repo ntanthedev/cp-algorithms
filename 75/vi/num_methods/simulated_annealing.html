@@ -8188,7 +8188,7 @@ Describe the issue of this article in detail.
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú của người dịch:</strong> Hàm xác suất trong mã nguồn nhận bộ sinh ngẫu nhiên bằng giá trị, nên trạng thái bộ sinh gốc không được cập nhật sau lời gọi. Các lần thử vì thế không sử dụng những lần rút độc lập như ý tưởng mô tả; một cách khắc phục là truyền bộ sinh bằng tham chiếu.</p>
+<p><strong>Ghi chú bản dịch:</strong> Hàm xác suất trong mã nguồn nhận bộ sinh ngẫu nhiên bằng giá trị, nên trạng thái bộ sinh gốc không được cập nhật sau lời gọi. Nếu trạng thái bộ sinh gốc không đổi giữa các lời gọi thì chúng nhận cùng trạng thái và tạo cùng mẫu ngẫu nhiên; một cách khắc phục là truyền bộ sinh bằng tham chiếu.</p>
 <h2 id="mau-ma">Mẫu mã<a class="headerlink" href="#mau-ma" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">state</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="k">public</span><span class="o">:</span>
@@ -8238,7 +8238,7 @@ Describe the issue of this article in detail.
 <li><span class="arithmatex">$T$</span> : Nhiệt độ ban đầu. Chọn giá trị cao hơn nếu muốn tìm kiếm chạy lâu hơn.</li>
 <li><span class="arithmatex">$u$</span> : Hệ số giảm, quyết định tốc độ làm nguội. Làm nguội chậm hơn (u lớn hơn) thường cho kết quả tốt hơn nhưng chạy lâu hơn. Đảm bảo <span class="arithmatex">$u &lt; 1$</span>.</li>
 </ul>
-<p><strong>Ghi chú của người dịch:</strong> Với lịch làm nguội nhân như mã trên và công thức logarit bên dưới, hệ số giảm phải dương và nhỏ hơn một; điều kiện nhỏ hơn một trong nguồn chưa đủ. Công thức số vòng cũng giả sử nhiệt độ ban đầu lớn hơn một; khi nhiệt độ ban đầu không lớn hơn một, vòng lặp trong mã không chạy.</p>
+<p><strong>Ghi chú bản dịch:</strong> Với lịch làm nguội nhân như mã trên và công thức logarit bên dưới, hệ số giảm phải dương và nhỏ hơn một; điều kiện nhỏ hơn một trong nguồn chưa đủ. Công thức số vòng cũng giả sử nhiệt độ ban đầu lớn hơn một; khi nhiệt độ ban đầu không lớn hơn một, vòng lặp trong mã không chạy.</p>
 <p>Số vòng lặp được cho bởi biểu thức</p>
 <p><span class="arithmatex">$N =   \lceil -\log_{u}{T} \rceil$</span> </p>
 <p>Gợi ý chọn <span class="arithmatex">$T$</span> và <span class="arithmatex">$u$</span>: nếu có nhiều cực tiểu địa phương và không gian trạng thái rộng, đặt <span class="arithmatex">$u = 0.999$</span> để làm nguội chậm và cho thuật toán khám phá nhiều khả năng hơn. Ngược lại, nếu không gian hẹp hơn, <span class="arithmatex">$u = 0.99$</span> có thể đủ. Nếu không chắc chắn, hãy chọn an toàn với <span class="arithmatex">$u = 0.998$</span> hoặc lớn hơn. Tính độ phức tạp thời gian của một vòng lặp, từ đó ước lượng <span class="arithmatex">$N$</span> để tránh TLE, rồi dùng công thức dưới đây để tìm <span class="arithmatex">$T$</span>.</p>

@@ -7972,6 +7972,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8020,7 +8024,7 @@ Ta cần tìm một <strong>thứ tự của các đỉnh</strong> sao cho mỗi
 
 <p>Thứ tự tô-pô cũng có thể <strong>không tồn tại</strong>.
 Nó chỉ tồn tại khi đồ thị có hướng không chứa chu trình.
-Nếu có chu trình chứa hai đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span>, ta gặp mâu thuẫn: <span class="arithmatex">$a$</span> phải có chỉ số nhỏ hơn <span class="arithmatex">$b$</span> vì có thể đi từ <span class="arithmatex">$a$</span> đến <span class="arithmatex">$b$</span>, nhưng đồng thời <span class="arithmatex">$a$</span> cũng phải có chỉ số lớn hơn <span class="arithmatex">$b$</span> vì có thể đi từ <span class="arithmatex">$b$</span> đến <span class="arithmatex">$a$</span>.
+Nếu có chu trình chứa hai đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span>, ta gặp mâu thuẫn: <span class="arithmatex">$a$</span> phải có chỉ số nhỏ hơn <span class="arithmatex">$b$</span> vì có thể đi từ <span class="arithmatex">$a$</span> đến <span class="arithmatex">$b$</span>, nhưng đồng thời cũng phải có chỉ số lớn hơn vì có thể đi từ <span class="arithmatex">$b$</span> đến <span class="arithmatex">$a$</span>.
 Bằng cách xây dựng, thuật toán trong bài này cũng chứng minh rằng mọi đồ thị có hướng không chu trình đều có ít nhất một thứ tự tô-pô.</p>
 <p>Một bài toán phổ biến sử dụng sắp xếp tô-pô có dạng sau. Có <span class="arithmatex">$n$</span> biến chưa biết giá trị. Với một số cặp biến, ta biết biến này nhỏ hơn biến kia. Ta cần kiểm tra các ràng buộc có mâu thuẫn hay không; nếu không, hãy xuất các biến theo thứ tự tăng dần, và có thể xuất bất kỳ đáp án nào nếu tồn tại nhiều đáp án. Dễ thấy đây chính là bài toán tìm thứ tự tô-pô của một đồ thị gồm <span class="arithmatex">$n$</span> đỉnh.</p>
 <h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
@@ -8029,9 +8033,9 @@ Bằng cách xây dựng, thuật toán trong bài này cũng chứng minh rằn
 <p>Khi bắt đầu từ một đỉnh <span class="arithmatex">$v$</span>, DFS cố gắng duyệt theo mọi cạnh đi ra từ <span class="arithmatex">$v$</span>.
 Thuật toán dừng tại những cạnh có đỉnh cuối đã được thăm trước đó, còn với các cạnh khác, nó đi theo cạnh và tiếp tục đệ quy tại đỉnh cuối.</p>
 <p>Vì vậy, khi lời gọi hàm <span class="arithmatex">$\text{dfs}(v)$</span> kết thúc, DFS đã thăm mọi đỉnh có thể đi tới từ <span class="arithmatex">$v$</span>, trực tiếp qua một cạnh hoặc gián tiếp qua nhiều cạnh.</p>
-<p>Ta thêm đỉnh <span class="arithmatex">$v$</span> vào một danh sách khi hoàn tất <span class="arithmatex">$\text{dfs}(v)$</span>. Vì mọi đỉnh có thể đi tới từ <span class="arithmatex">$v$</span> đều đã được thăm, chúng đã nằm trong danh sách trước khi ta thêm <span class="arithmatex">$v$</span>.
+<p>Ta thêm đỉnh <span class="arithmatex">$v$</span> vào một danh sách khi hoàn tất <span class="arithmatex">$\text{dfs}(v)$</span>. Vì mọi đỉnh có thể đi tới từ đó đều đã được thăm, chúng đã nằm trong danh sách trước khi ta thêm <span class="arithmatex">$v$</span>.
 Thực hiện điều này với mọi đỉnh của đồ thị bằng một hoặc nhiều lần chạy DFS.
-Với mỗi cạnh có hướng <span class="arithmatex">$v \rightarrow u$</span>, đỉnh <span class="arithmatex">$u$</span> sẽ xuất hiện trong danh sách trước <span class="arithmatex">$v$</span>, vì có thể đi từ <span class="arithmatex">$v$</span> đến <span class="arithmatex">$u$</span>.
+Với mỗi cạnh có hướng <span class="arithmatex">$v \rightarrow u$</span>, đỉnh <span class="arithmatex">$u$</span> sẽ xuất hiện trong danh sách trước <span class="arithmatex">$v$</span>, vì có thể đi từ <span class="arithmatex">$v$</span> đến đỉnh cuối.
 Do đó, nếu gán nhãn cho các đỉnh trong danh sách lần lượt là <span class="arithmatex">$n-1, n-2, \dots, 1, 0$</span>, ta thu được một thứ tự tô-pô.
 Nói cách khác, danh sách này biểu diễn thứ tự tô-pô theo chiều ngược lại.</p>
 <p>Ta cũng có thể diễn giải lập luận trên bằng thời điểm ra của DFS.
@@ -8066,6 +8070,7 @@ Thời điểm ra của một đỉnh <span class="arithmatex">$v$</span> luôn 
 <span class="p">}</span>
 </code></pre></div>
 <p>Hàm chính của lời giải là <code>topological_sort</code>. Hàm này khởi tạo các biến của DFS, chạy DFS và lưu đáp án trong vector <code>ans</code>. Đáng chú ý, nếu đồ thị có chu trình, kết quả của <code>topological_sort</code> vẫn có một tính chất hữu ích: nếu có thể đi từ đỉnh <span class="arithmatex">$v$</span> đến đỉnh <span class="arithmatex">$u$</span> nhưng không thể đi ngược lại, thì <span class="arithmatex">$v$</span> luôn đứng trước <span class="arithmatex">$u$</span> trong mảng kết quả. Tính chất này được sử dụng trong <a href="strongly-connected-components.html">thuật toán Kosaraju</a> để tìm các thành phần liên thông mạnh và thứ tự tô-pô của chúng trong một đồ thị có hướng chứa chu trình.</p>
+<p><strong>Ghi chú bản dịch:</strong> Tính chất trên không đúng cho từng cặp đỉnh khi đồ thị có chu trình. Ví dụ, với các cạnh từ 0 đến 1, từ 1 đến 0 và từ 0 đến 2, DFS bắt đầu từ 0 và xét các đỉnh kề theo thứ tự 1, 2 cho thứ tự 0, 2, 1: đỉnh 1 đến được 2 nhưng đứng sau 2. Trong thuật toán Kosaraju, thứ tự các thành phần liên thông mạnh được xác định theo thời điểm kết thúc lớn nhất của mỗi thành phần.</p>
 <h2 id="bai-tap-luyen-tap">Bài tập luyện tập<a class="headerlink" href="#bai-tap-luyen-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="http://www.spoj.com/problems/TOPOSORT/">SPOJ TOPOSORT - Topological Sorting [difficulty: easy]</a></li>
@@ -8081,7 +8086,7 @@ Thời điểm ra của một đỉnh <span class="arithmatex">$v$</span> luôn 
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (95.28%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (4.72%)</li></ul>
 </ul>
                 
               </article>

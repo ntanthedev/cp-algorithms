@@ -8148,12 +8148,12 @@ Những đồ thị như vậy được gọi là <strong>đồ thị phẳng</s
 <div class="arithmatex">$$n - m + f = 1 + k$$</div>
 <h3 id="so-canh-cua-o-thi-phang">Số cạnh của đồ thị phẳng<a class="headerlink" href="#so-canh-cua-o-thi-phang" title="Permanent link">&para;</a></h3>
 <p>Nếu <span class="arithmatex">$n \ge 3$</span> thì số cạnh tối đa của đồ thị phẳng có <span class="arithmatex">$n$</span> đỉnh là <span class="arithmatex">$3n - 6$</span>. Mọi đồ thị phẳng liên thông mà mỗi mặt được giới hạn bởi một tam giác đều đạt số cạnh này. Về độ phức tạp, điều này có nghĩa là <span class="arithmatex">$m = O(n)$</span> đối với mọi đồ thị phẳng.</p>
-<p><strong>Ghi chú của người dịch:</strong> Các cận số cạnh và số mặt trong phần này giả sử đồ thị đơn; nếu cho phép nhiều cạnh song song thì cận trên không còn đúng nói chung.</p>
+<p><strong>Ghi chú bản dịch:</strong> Các cận số cạnh và số mặt trong phần này giả sử đồ thị đơn; nếu cho phép nhiều cạnh song song thì cận trên không còn đúng nói chung.</p>
 <h3 id="so-mat-cua-o-thi-phang">Số mặt của đồ thị phẳng<a class="headerlink" href="#so-mat-cua-o-thi-phang" title="Permanent link">&para;</a></h3>
 <p>Từ tính chất trên suy ra ngay rằng nếu <span class="arithmatex">$n \ge 3$</span> thì số mặt tối đa của đồ thị phẳng có <span class="arithmatex">$n$</span> đỉnh là <span class="arithmatex">$2n - 4$</span>.</p>
 <h3 id="bac-inh-nho-nhat-trong-o-thi-phang">Bậc đỉnh nhỏ nhất trong đồ thị phẳng<a class="headerlink" href="#bac-inh-nho-nhat-trong-o-thi-phang" title="Permanent link">&para;</a></h3>
 <p>Mọi đồ thị phẳng đều có một đỉnh bậc không lớn hơn 5.</p>
-<p><strong>Ghi chú của người dịch:</strong> Khẳng định về bậc đỉnh giả sử đồ thị đơn và có ít nhất một đỉnh.</p>
+<p><strong>Ghi chú bản dịch:</strong> Khẳng định về bậc đỉnh giả sử đồ thị đơn và có ít nhất một đỉnh.</p>
 <h2 id="thuat-toan">Thuật toán<a class="headerlink" href="#thuat-toan" title="Permanent link">&para;</a></h2>
 <p>Trước tiên, sắp xếp các cạnh kề của mỗi đỉnh theo góc cực.
 Sau đó duyệt đồ thị như sau. Giả sử ta đi vào đỉnh <span class="arithmatex">$u$</span> qua cạnh <span class="arithmatex">$(v, u)$</span> và <span class="arithmatex">$(u, w)$</span> là cạnh tiếp theo sau <span class="arithmatex">$(v, u)$</span> trong danh sách kề đã sắp xếp của <span class="arithmatex">$u$</span>. Khi đó đỉnh tiếp theo sẽ là <span class="arithmatex">$w$</span>. Nếu bắt đầu phép duyệt này tại một cạnh <span class="arithmatex">$(v, u)$</span>, ta sẽ đi quanh đúng một trong các mặt kề với <span class="arithmatex">$(v, u)$</span>; mặt cụ thể phụ thuộc vào việc bước đầu đi từ <span class="arithmatex">$u$</span> đến <span class="arithmatex">$v$</span> hay từ <span class="arithmatex">$v$</span> đến <span class="arithmatex">$u$</span>.</p>
@@ -8173,7 +8173,7 @@ Sau đó duyệt đồ thị như sau. Giả sử ta đi vào đỉnh <span clas
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <p>Đoạn cài đặt sau trả về một vector các đỉnh cho mỗi mặt, với mặt ngoài đứng đầu.
 Các mặt trong được trả về theo chiều ngược chiều kim đồng hồ, còn mặt ngoài theo chiều kim đồng hồ.</p>
-<p><strong>Ghi chú của người dịch:</strong> Với đồ thị liên thông chỉ gồm một đỉnh và không có cạnh, code trả về danh sách rỗng dù đồ thị vẫn có một mặt ngoài.</p>
+<p><strong>Ghi chú bản dịch:</strong> Với đồ thị liên thông chỉ gồm một đỉnh và không có cạnh, code trả về danh sách rỗng dù đồ thị vẫn có một mặt ngoài.</p>
 <p>Để đơn giản, ta tìm cạnh tiếp theo bằng tìm kiếm nhị phân theo góc.
 <div class="highlight"><pre><span></span><code><span class="k">struct</span><span class="w"> </span><span class="nc">Point</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kt">int64_t</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
@@ -8256,7 +8256,7 @@ Các mặt trong được trả về theo chiều ngược chiều kim đồng h
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">faces</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></p>
-<p><strong>Ghi chú của người dịch:</strong> Kiểu tích lũy tổng rộng hơn không ngăn được tràn số nguyên trong các phép trừ và tích có hướng được tính trước đó. Cần giới hạn tọa độ để các phép tính trung gian này nằm trong phạm vi của kiểu tương ứng.</p>
+<p><strong>Ghi chú bản dịch:</strong> Kiểu tích lũy tổng rộng hơn không ngăn được tràn số nguyên trong các phép trừ và tích có hướng được tính trước đó. Cần giới hạn tọa độ để các phép tính trung gian này nằm trong phạm vi của kiểu tương ứng.</p>
 <h2 id="dung-o-thi-phang-tu-cac-oan-thang">Dựng đồ thị phẳng từ các đoạn thẳng<a class="headerlink" href="#dung-o-thi-phang-tu-cac-oan-thang" title="Permanent link">&para;</a></h2>
 <p>Đôi khi đầu vào không cho đồ thị tường minh mà là một tập đoạn thẳng trên mặt phẳng; đồ thị thực tế được tạo bởi các giao điểm của chúng như hình dưới. Khi đó ta phải tự dựng đồ thị. Cách đơn giản nhất là cố định một đoạn rồi tìm giao điểm của nó với tất cả các đoạn còn lại. Sắp xếp các giao điểm cùng hai đầu mút của đoạn theo thứ tự từ điển và thêm chúng làm các đỉnh của đồ thị. Đồng thời nối mỗi cặp đỉnh liên tiếp trong thứ tự đó bằng một cạnh. Lặp lại với mọi đoạn sẽ thu được đồ thị. Dĩ nhiên, cần bảo đảm hai giao điểm bằng nhau luôn ứng với cùng một đỉnh. Cách đơn giản nhất là lưu các điểm trong một map theo tọa độ, coi những điểm có tọa độ sai khác rất nhỏ (chẳng hạn nhỏ hơn <span class="arithmatex">$10^{-9}$</span>) là bằng nhau. Thuật toán này chạy trong <span class="arithmatex">$O(n^2 \log n)$</span>.</p>
 <div style="text-align: center;">
@@ -8452,7 +8452,7 @@ Các mặt trong được trả về theo chiều ngược chiều kim đồng h
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">adj</span><span class="p">};</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>Ghi chú của người dịch:</strong> Hàm so sánh điểm dựa trên ngưỡng sai số ở code trên không bảo đảm thứ tự yếu nghiêm ngặt mà thuật toán sắp xếp yêu cầu: tính tương đương do hàm này tạo ra có thể không bắc cầu. Cần chọn cách biểu diễn và so sánh tọa độ phù hợp khi dùng cài đặt này.</p>
+<p><strong>Ghi chú bản dịch:</strong> Hàm so sánh điểm dựa trên ngưỡng sai số ở code trên không bảo đảm thứ tự yếu nghiêm ngặt mà thuật toán sắp xếp yêu cầu: tính tương đương do hàm này tạo ra có thể không bắc cầu. Cần chọn cách biểu diễn và so sánh tọa độ phù hợp khi dùng cài đặt này.</p>
 <h2 id="bai-tap">Bài tập<a class="headerlink" href="#bai-tap" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://acm.timus.ru/problem.aspx?space=1&amp;num=1664">TIMUS 1664 Pipeline Transportation</a></li>

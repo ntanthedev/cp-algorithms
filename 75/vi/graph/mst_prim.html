@@ -8028,6 +8028,10 @@ Describe the issue of this article in detail.
   
   
 
+  
+  
+  
+
 
 
 
@@ -8096,15 +8100,16 @@ Ta chỉ cần chứng minh tổng trọng số của <span class="arithmatex">$
 <p>Xét thời điểm đầu tiên thuật toán thêm vào <span class="arithmatex">$T$</span> một cạnh không thuộc <span class="arithmatex">$S$</span>.
 Gọi cạnh này là <span class="arithmatex">$e$</span>, hai đầu của nó là <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span>, và tập các đỉnh đã được chọn là <span class="arithmatex">$V$</span> (<span class="arithmatex">$a \in V$</span> và <span class="arithmatex">$b \notin V$</span>, hoặc ngược lại).</p>
 <p>Trong cây khung nhỏ nhất <span class="arithmatex">$S$</span>, hai đỉnh <span class="arithmatex">$a$</span> và <span class="arithmatex">$b$</span> được nối bởi một đường đi <span class="arithmatex">$P$</span>.
-Trên đường đi này tồn tại một cạnh <span class="arithmatex">$f$</span> sao cho một đầu của <span class="arithmatex">$f$</span> nằm trong <span class="arithmatex">$V$</span> còn đầu kia nằm ngoài <span class="arithmatex">$V$</span>.
+Trên đường đi này tồn tại một cạnh <span class="arithmatex">$f$</span> sao cho một đầu của <span class="arithmatex">$f$</span> nằm trong <span class="arithmatex">$V$</span> còn đầu kia nằm ngoài tập này.
 Vì thuật toán chọn <span class="arithmatex">$e$</span> thay vì <span class="arithmatex">$f$</span>, trọng số của <span class="arithmatex">$f$</span> phải lớn hơn hoặc bằng trọng số của <span class="arithmatex">$e$</span>.</p>
 <p>Ta thêm cạnh <span class="arithmatex">$e$</span> vào cây khung nhỏ nhất <span class="arithmatex">$S$</span> rồi bỏ cạnh <span class="arithmatex">$f$</span>.
-Việc thêm <span class="arithmatex">$e$</span> tạo ra một chu trình, và vì <span class="arithmatex">$f$</span> cũng nằm trên chu trình duy nhất đó, sau khi bỏ <span class="arithmatex">$f$</span> đồ thị lại không có chu trình.
+Việc thêm <span class="arithmatex">$e$</span> tạo ra một chu trình, và vì <span class="arithmatex">$f$</span> cũng nằm trên chu trình duy nhất đó, sau khi bỏ cạnh này đồ thị lại không có chu trình.
 Đồng thời, do ta chỉ bỏ một cạnh khỏi chu trình, đồ thị kết quả vẫn liên thông.</p>
 <p>Cây khung mới không thể có tổng trọng số lớn hơn vì trọng số của <span class="arithmatex">$e$</span> không lớn hơn trọng số của <span class="arithmatex">$f$</span>; nó cũng không thể có trọng số nhỏ hơn vì <span class="arithmatex">$S$</span> vốn đã là cây khung nhỏ nhất.
 Do đó, thay <span class="arithmatex">$f$</span> bằng <span class="arithmatex">$e$</span> tạo ra một cây khung nhỏ nhất khác.
 Và <span class="arithmatex">$e$</span> phải có cùng trọng số với <span class="arithmatex">$f$</span>.</p>
 <p>Vì vậy, các cạnh mà thuật toán Prim chọn có thể thay thế tương ứng các cạnh của một cây khung nhỏ nhất mà không làm thay đổi tổng trọng số, nên thuật toán Prim thực sự tạo ra một cây khung nhỏ nhất.</p>
+<p><strong>Ghi chú bản dịch:</strong> Phép đổi cạnh trên cho thấy có thể thêm cạnh vừa chọn vào một cây khung nhỏ nhất mà vẫn giữ các cạnh Prim đã chọn trước đó. Để suy ra kết luận cho toàn bộ cây, áp dụng lập luận tương tự lần lượt cho các cạnh còn lại.</p>
 <h2 id="cai-at">Cài đặt<a class="headerlink" href="#cai-at" title="Permanent link">&para;</a></h2>
 <p>Độ phức tạp của thuật toán phụ thuộc vào cách ta tìm cạnh nhỏ nhất tiếp theo trong số các cạnh phù hợp.
 Có nhiều cách tiếp cận dẫn đến các độ phức tạp và cách cài đặt khác nhau.</p>
@@ -8227,10 +8232,11 @@ Với đồ thị thưa, cách này tốt hơn biến thể phía trên, nhưng 
 <code>min_e[v]</code> lưu cạnh có trọng số nhỏ nhất từ đỉnh <code>v</code> tới một đỉnh đã được chọn, cũng dưới dạng cặp trọng số và đỉnh đích.
 Ngoài ra, hàng đợi <code>q</code> chứa tất cả các đỉnh chưa được chọn theo thứ tự tăng dần của trọng số <code>min_e</code>.
 Thuật toán thực hiện <code>n</code> bước; ở mỗi bước, nó chọn đỉnh <code>v</code> có trọng số <code>min_e</code> nhỏ nhất bằng cách lấy phần tử đầu hàng đợi, sau đó duyệt mọi cạnh đi ra từ đỉnh này và cập nhật các giá trị trong <code>min_e</code> (mỗi lần cập nhật cũng phải xóa cạnh cũ khỏi hàng đợi <code>q</code> rồi chèn cạnh mới vào).</p>
+<p><strong>Ghi chú bản dịch:</strong> Trong mã, hàng đợi ban đầu chỉ chứa đỉnh xuất phát. Sau khi chọn đỉnh này, hàng đợi chỉ chứa các đỉnh chưa chọn đã có cạnh nối tới cây với trọng số hữu hạn; các đỉnh chưa kề cây đang xây dựng chưa được đưa vào hàng đợi.</p>
 
 <ul class="metadata page-metadata" data-bi-name="page info" lang="en-us" dir="ltr">
   <span class="contributors-text">Contributors:</span>
-  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (100.0%)</li></ul>
+  <ul class="contributors" data-bi-name="contributors"><li><a href="#" title="Đào Nhật Tân" data-bi-name="contributorprofile" target="_blank">Đào Nhật Tân</a> (97.3%)</li><li><a href="#" title="ntan" data-bi-name="contributorprofile" target="_blank">ntan</a> (2.7%)</li></ul>
 </ul>
                 
               </article>
