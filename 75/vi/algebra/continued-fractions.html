@@ -8365,7 +8365,7 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <p>Trước hết, giả sử <span class="arithmatex">$A$</span> và <span class="arithmatex">$B$</span> là số vô tỉ và các biểu diễn liên phân số của chúng chỉ một đường đi xuống vô hạn trong cây Stern-Brocot.</p>
 <p>Như đã nói, trong biểu diễn này <span class="arithmatex">$a_0$</span> là số lần rẽ phải trên đường đi xuống, <span class="arithmatex">$a_1$</span> là số lần rẽ trái liên tiếp tiếp theo, v.v. Do đó, khi so sánh <span class="arithmatex">$a_k$</span> và <span class="arithmatex">$b_k$</span>, nếu <span class="arithmatex">$a_k = b_k$</span> thì ta tiếp tục so sánh <span class="arithmatex">$a_{k+1}$</span> và <span class="arithmatex">$b_{k+1}$</span>. Ngược lại, để xác định <span class="arithmatex">$A &lt; B$</span>, ta kiểm tra <span class="arithmatex">$a_k &lt; b_k$</span> nếu đang đi sang phải, hoặc <span class="arithmatex">$a_k &gt; b_k$</span> nếu đang đi sang trái.</p>
 <p>Nói cách khác, với <span class="arithmatex">$A$</span> và <span class="arithmatex">$B$</span> vô tỉ, <span class="arithmatex">$A &lt; B$</span> khi và chỉ khi <span class="arithmatex">$(a_0, -a_1, a_2, -a_3, \dots) &lt; (b_0, -b_1, b_2, -b_3, \dots)$</span> theo thứ tự từ điển.</p>
-<p>Bây giờ, bằng cách dùng <span class="arithmatex">$\infty$</span> một cách hình thức như một phần tử trong biểu diễn liên phân số, ta có thể mô phỏng các số vô tỉ <span class="arithmatex">$A-\varepsilon$</span> và <span class="arithmatex">$A+\varepsilon$</span>, tức là những phần tử nhỏ hơn (lớn hơn) <span class="arithmatex">$A$</span> nhưng lớn hơn (nhỏ hơn) mọi số thực khác. Cụ thể, với <span class="arithmatex">$A=[a_0; a_1, \dots, a_n]$</span>, một trong hai phần tử này có thể được mô phỏng bằng <span class="arithmatex">$[a_0; a_1, \dots, a_n, \infty]$</span> và phần tử còn lại bằng <span class="arithmatex">$[a_0; a_1, \dots, a_n - 1, 1, \infty]$</span>.</p>
+<p>Dùng <span class="arithmatex">$\infty$</span> làm hệ số hình thức, ta có thể biểu diễn <span class="arithmatex">$A-\varepsilon$</span> và <span class="arithmatex">$A+\varepsilon$</span> để so sánh: chúng lần lượt đứng ngay trước và ngay sau <span class="arithmatex">$A$</span> trong thứ tự mở rộng. Chúng chỉ là ký hiệu cho hai phía của một số hữu tỉ. Cụ thể, với <span class="arithmatex">$A=[a_0; a_1, \dots, a_n]$</span>, một phía được biểu diễn bằng <span class="arithmatex">$[a_0; a_1, \dots, a_n, \infty]$</span>, phía kia bằng <span class="arithmatex">$[a_0; a_1, \dots, a_n - 1, 1, \infty]$</span>.</p>
 <p>Ta có thể xác định phần tử nào tương ứng với <span class="arithmatex">$A-\varepsilon$</span>, phần tử nào tương ứng với <span class="arithmatex">$A+\varepsilon$</span> dựa vào tính chẵn lẻ của <span class="arithmatex">$n$</span> hoặc bằng cách so sánh chúng như các số vô tỉ.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Python</label></div>
 <div class="tabbed-content">
@@ -8475,6 +8475,7 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 </div>
 </div>
 </details>
+<p><strong>Ghi chú bản dịch:</strong> Trong ví dụ Python ngay trên, dòng khai báo hàm solve bị thụt thừa một cấp. Khi chạy ví dụ, hãy đặt khai báo ở đầu dòng và giữ phần thân hàm thụt vào một cấp.</p>
 <h3 id="cay-calkin-wilf">Cây Calkin-Wilf<a class="headerlink" href="#cay-calkin-wilf" title="Permanent link">&para;</a></h3>
 <p>Một cách đơn giản hơn đôi chút để tổ chức các liên phân số thành cây nhị phân là <a href="https://en.wikipedia.org/wiki/Calkin–Wilf_tree">cây Calkin-Wilf</a>.</p>
 <p>Cây có dạng tổng quát như sau:</p>
@@ -8529,7 +8530,7 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <div class="arithmatex">$$r = \lim\limits_{k \to \infty} r_k = a_0 + \sum\limits_{i=1}^\infty \frac{(-1)^{i-1}}{q_i q_{i-1}}$$</div>
 <p>luôn được xác định rõ, vì chuỗi tương ứng luôn hội tụ. Đáng chú ý, chuỗi dư</p>
 <div class="arithmatex">$$r-r_k = \sum\limits_{i=k+1}^\infty \frac{(-1)^{i-1}}{q_i q_{i-1}}$$</div>
-<p>có cùng dấu với <span class="arithmatex">$(-1)^k$</span> do tốc độ giảm của <span class="arithmatex">$q_i q_{i-1}$</span>. Vì vậy, <span class="arithmatex">$r_k$</span> có chỉ số chẵn tiến đến <span class="arithmatex">$r$</span> từ phía dưới, còn <span class="arithmatex">$r_k$</span> có chỉ số lẻ tiến đến từ phía trên:</p>
+<p>có cùng dấu với <span class="arithmatex">$(-1)^k$</span>: đây là tổng đan dấu, trong đó mẫu số <span class="arithmatex">$q_i q_{i-1}$</span> tăng và độ lớn của các số hạng giảm dần về 0. Vì vậy, <span class="arithmatex">$r_k$</span> có chỉ số chẵn tiến đến <span class="arithmatex">$r$</span> từ phía dưới, còn <span class="arithmatex">$r_k$</span> có chỉ số lẻ tiến đến từ phía trên:</p>
 <p><figure><img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Golden_ration_convergents.svg" width="600px"/>
 <figcaption><em>Các phân số hội tụ của <span class="arithmatex">$r=\phi = \frac{1+\sqrt{5}}{2}=[1;1,1,\dots]$</span> và khoảng cách từ chúng đến <span class="arithmatex">$r$</span>.</em></figcaption></figure></p>
 <p>Từ hình này ta thấy rằng</p>
@@ -8579,7 +8580,7 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <details class="hint">
 <summary>Lời giải</summary>
 <p>Ta có thể giải bài toán bằng cây đoạn nếu có thể nối các liên phân số.</p>
-<p>Nói chung, ta có <span class="arithmatex">$[a_0; a_1, \dots, a_k, b_0, b_1, \dots, b_k] = [a_0; a_1, \dots, a_k, [b_1; b_2, \dots, b_k]]$</span>.</p>
+<p>Trong đẳng thức ghép của bản nguồn, <span class="arithmatex">$[a_0; a_1, \dots, a_k, b_0, b_1, \dots, b_k] = [a_0; a_1, \dots, a_k, [b_1; b_2, \dots, b_k]]$</span>, vế phải thiếu hệ số đầu tiên của phần đuôi. Phần đuôi trong ngoặc vuông bên trong phải bắt đầu từ cùng hệ số như ở vế trái.</p>
 <p>Đặt <span class="arithmatex">$L_{k}(x) = [a_k; x] = a_k + \frac{1}{x} = \frac{a_k\cdot x+1}{1\cdot x + 0}$</span>. Lưu ý <span class="arithmatex">$L_k(\infty) = a_k$</span>. Với ký hiệu này, ta có</p>
 <div class="arithmatex">$$[a_0; a_1, \dots, a_k, x] = [a_0; [a_1; [\dots; [a_k; x]]]] = (L_0 \circ L_1 \circ \dots \circ L_k)(x) = \frac{p_k x + p_{k-1}}{q_k x + q_{k-1}}.$$</div>
 <p>Do đó, bài toán quy về việc tính</p>
@@ -8626,7 +8627,8 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <p>Lập luận tương tự áp dụng cho liên phân số tuần hoàn từ một vị trí nào đó, tức <span class="arithmatex">$x = [a_0; a_1, \dots, a_k, y]$</span> với <span class="arithmatex">$y=[b_0; b_1, \dots, b_k, y]$</span>. Thật vậy, từ phương trình đầu suy ra <span class="arithmatex">$x = L_0(y)$</span> và từ phương trình thứ hai suy ra <span class="arithmatex">$y = L_1(y)$</span>, trong đó <span class="arithmatex">$L_0$</span> và <span class="arithmatex">$L_1$</span> là các phép biến đổi phân tuyến tính. Do đó,</p>
 <div class="arithmatex">$$x = (L_0 \circ L_1)(y) = (L_0 \circ L_1 \circ L_0^{-1})(x).$$</div>
 <p>Có thể chứng minh thêm (điều này được Lagrange chứng minh đầu tiên) rằng với phương trình bậc hai bất kỳ <span class="arithmatex">$ax^2+bx+c=0$</span> có hệ số nguyên, nghiệm <span class="arithmatex">$x$</span> của nó là một liên phân số tuần hoàn từ một vị trí nào đó.</p>
-<p><strong>Ghi chú bản dịch:</strong> Ví dụ số vô tỉ bậc hai bên dưới có một số công thức trong nguồn chưa đúng tổng quát: công thức thương đầy đủ lệch chỉ số, phép lấy phần nguyên không thể luôn thay căn bằng phần nguyên của nó, và phép khử căn dùng nhầm hệ số. Vì vậy không nên áp dụng trực tiếp hàm bước được mô tả cho biểu diễn tùy ý.</p>
+<p><strong>Ghi chú bản dịch:</strong> Trong ví dụ dưới đây, giải phương trình đầu tiên theo thương đầy đủ cho <span class="arithmatex">$s_k=-(\alpha q_{k-2}-p_{k-2})/(\alpha q_{k-1}-p_{k-1})$</span>. Bản nguồn tăng nhầm cả hai chỉ số lên một đơn vị. Vì vậy, thừa số liên hợp của mẫu sau khi thế biểu thức của <span class="arithmatex">$\alpha$</span> phải là <span class="arithmatex">$(xq_{k-1}-zp_{k-1})-q_{k-1}y\sqrt n$</span>. Ví dụ, với <span class="arithmatex">$\alpha=\sqrt3$</span>, ta được <span class="arithmatex">$s_1=1/(\sqrt3-1)$</span>.</p>
+<p><strong>Ghi chú bản dịch:</strong> Khi chuyển sang thương kế tiếp, cần tính <span class="arithmatex">$a_k=\lfloor(x_k+y_k\sqrt n)/z_k\rfloor$</span> trước, rồi đặt <span class="arithmatex">$t_k=x_k-z_ka_k$</span> để khử căn. Lấy phần nguyên của căn quá sớm có thể làm sai kết quả: <span class="arithmatex">$\lfloor2\sqrt3/3\rfloor=1$</span>, còn <span class="arithmatex">$\lfloor2\lfloor\sqrt3\rfloor/3\rfloor=0$</span>. Trong mã Python bên dưới, tham số thứ nhất của hàm bước là hệ số của căn, tham số thứ hai là phần hằng.</p>
 <div class="admonition example">
 <p class="admonition-title">Số vô tỉ bậc hai</p>
 <p>Tìm liên phân số của <span class="arithmatex">$\alpha = \frac{x+y\sqrt{n}}{z}$</span>, trong đó <span class="arithmatex">$x, y, z, n \in \mathbb Z$</span> và <span class="arithmatex">$n &gt; 0$</span> không phải số chính phương.</p>
@@ -8671,7 +8673,7 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 </div>
 </div>
 </div>
-<p>Dùng cùng hàm <code>step</code> nhưng thay đổi <span class="arithmatex">$x$</span>, <span class="arithmatex">$y$</span> và <span class="arithmatex">$z$</span> ban đầu, ta có thể tính biểu diễn cho <span class="arithmatex">$\frac{x+y \sqrt{n}}{z}$</span> bất kỳ.</p>
+<p>Để dùng hàm <code>step</code> cho <span class="arithmatex">$x$</span>, <span class="arithmatex">$y$</span> và <span class="arithmatex">$z$</span> ban đầu tùy ý, tức tính liên phân số của <span class="arithmatex">$\frac{x+y \sqrt{n}}{z}$</span>, cần điều chỉnh thứ tự hai tham số đầu và cách lấy phần nguyên như ghi chú ở đầu ví dụ. Số bước cần để phát hiện chu kỳ cũng phụ thuộc vào trạng thái ban đầu.</p>
 </details>
 <div class="admonition example">
 <p class="admonition-title"><a href="https://timus.online/problem.aspx?space=1&amp;num=1814">Tavrida NU Akai Contest - Continued Fraction</a></p>
@@ -8727,8 +8729,9 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <div class="arithmatex">$$s_k = -\frac{\vec r_{k-2} \times \vec r}{\vec r_{k-1} \times \vec r} = \left|\frac{\vec r_{k-2} \times \vec r}{\vec r_{k-1} \times \vec r}\right|.$$</div>
 <p>Đẳng thức cuối có được vì <span class="arithmatex">$r_{k-1}$</span> và <span class="arithmatex">$r_{k-2}$</span> nằm ở hai phía khác nhau của <span class="arithmatex">$r$</span>, do đó các tích giả vô hướng của <span class="arithmatex">$\vec r_{k-1}$</span> và <span class="arithmatex">$\vec r_{k-2}$</span> với <span class="arithmatex">$\vec r$</span> trái dấu. Nhớ rằng <span class="arithmatex">$a_k = \lfloor s_k \rfloor$</span>, công thức của <span class="arithmatex">$\vec r_k$</span> giờ có dạng</p>
 <div class="arithmatex">$$\vec r_k = \vec r_{k-2} + \left\lfloor \left| \frac{\vec r \times \vec r_{k-2}}{\vec r \times \vec r_{k-1}}\right|\right\rfloor \vec r_{k-1}.$$</div>
-<p>Lưu ý <span class="arithmatex">$\vec r_k \times r = (q;p) \times (1;r) = qr - p$</span>, do đó</p>
+<p>Lưu ý <span class="arithmatex">$\vec r_k \times r = (q;p) \times (1;r) = qr - p$</span>. Khi thay vào biểu thức trên, bản nguồn đã đảo tử và mẫu trong công thức dưới đây:</p>
 <div class="arithmatex">$$a_k = \left\lfloor \left| \frac{q_{k-1}r-p_{k-1}}{q_{k-2}r-p_{k-2}} \right| \right\rfloor.$$</div>
+<p><strong>Ghi chú bản dịch:</strong> Công thức đúng là <span class="arithmatex">$a_k=\left\lfloor\left|(q_{k-2}r-p_{k-2})/(q_{k-1}r-p_{k-1})\right|\right\rfloor$</span>, vì sai số ở chỉ số cũ hơn nằm ở tử của công thức tích có hướng.</p>
 <details class="hint">
 <summary>Giải thích</summary>
 <p>Như đã thấy, <span class="arithmatex">$a_k = \lfloor s_k \rfloor$</span>, trong đó <span class="arithmatex">$s_k = [a_k; a_{k+1}, a_{k+2}, \dots]$</span>. Mặt khác, từ công thức truy hồi của phân số hội tụ, ta suy ra</p>
@@ -8775,7 +8778,7 @@ x_k &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\
 <p>Để đến các điểm nguyên tiếp theo trên bao lồi, ta cần đến điểm <span class="arithmatex">$(x;y)$</span> lệch khỏi <span class="arithmatex">$y=rx$</span> ít nhất, đồng thời thỏa mãn <span class="arithmatex">$x \leq N$</span>.</p>
 <p><figure><img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Lattice-hull.svg" width="500px"/>
 <figcaption>Bao lồi của các điểm nguyên dưới <span class="arithmatex">$y=\frac{4}{7}x$</span> với <span class="arithmatex">$0 \leq x \leq 19$</span> gồm các điểm <span class="arithmatex">$(0;0), (7;4), (14;8), (16;9), (18;10), (19;10)$</span>.</figcaption></figure></p>
-<p>Gọi <span class="arithmatex">$(x; y)$</span> là điểm cuối hiện tại trên bao lồi. Khi đó điểm tiếp theo <span class="arithmatex">$(x'; y')$</span> thỏa mãn <span class="arithmatex">$x' \leq N$</span> và <span class="arithmatex">$(x'; y') - (x; y) = (\Delta x; \Delta y)$</span> gần đường thẳng <span class="arithmatex">$y=rx$</span> nhất có thể. Nói cách khác, <span class="arithmatex">$(\Delta x; \Delta y)$</span> cực đại hóa <span class="arithmatex">$r \Delta x - \Delta y$</span> với các ràng buộc <span class="arithmatex">$\Delta x \leq N - x$</span> và <span class="arithmatex">$\Delta y \leq r \Delta x$</span>.</p>
+<p>Gọi <span class="arithmatex">$(x; y)$</span> là điểm cuối hiện tại trên bao lồi. Khi đó điểm tiếp theo <span class="arithmatex">$(x'; y')$</span> thỏa mãn <span class="arithmatex">$x' \leq N$</span> và <span class="arithmatex">$(x'; y') - (x; y) = (\Delta x; \Delta y)$</span> gần đường thẳng <span class="arithmatex">$y=rx$</span> nhất có thể. Nói cách khác, trong số các bước nguyên đi sang phải, <span class="arithmatex">$(\Delta x; \Delta y)$</span> phải <strong>cực tiểu hóa</strong> độ lệch <span class="arithmatex">$r \Delta x - \Delta y$</span> với các ràng buộc <span class="arithmatex">$\Delta x \leq N - x$</span> và <span class="arithmatex">$\Delta y \leq r \Delta x$</span>. Nếu có nhiều bước đạt cùng độ lệch, chọn bước có độ dịch ngang nhỏ nhất để lấy điểm nguyên kế tiếp.</p>
 <p>Các điểm như vậy nằm trên bao lồi của những điểm nguyên dưới <span class="arithmatex">$y=rx$</span>. Nói cách khác, <span class="arithmatex">$(\Delta x; \Delta y)$</span> phải là một bán hội tụ dưới của <span class="arithmatex">$r$</span>.</p>
 <p>Cụ thể, <span class="arithmatex">$(\Delta x; \Delta y)$</span> có dạng <span class="arithmatex">$(q_{i-1}; p_{i-1}) + t \cdot (q_i; p_i)$</span> với một số lẻ <span class="arithmatex">$i$</span> và <span class="arithmatex">$0 \leq t &lt; a_i$</span>.</p>
 <p>Để tìm <span class="arithmatex">$i$</span> như vậy, ta có thể duyệt mọi <span class="arithmatex">$i$</span> có thể từ lớn nhất và dùng <span class="arithmatex">$t = \lfloor \frac{N-x-q_{i-1}}{q_i} \rfloor$</span> với <span class="arithmatex">$i$</span> thỏa mãn <span class="arithmatex">$N-x-q_{i-1} \geq 0$</span>.</p>
