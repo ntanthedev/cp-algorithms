@@ -72,11 +72,11 @@ Thuật toán Kuhn là một ứng dụng trực tiếp của bổ đề Berge. 
 
 Ban đầu, ta lấy cặp ghép rỗng. Sau đó, chừng nào còn tìm được một đường tăng, ta đảo trạng thái thuộc cặp ghép của các cạnh trên đường đó rồi tiếp tục tìm đường tăng mới. Khi không còn đường tăng nào, ta dừng lại — cặp ghép hiện tại là cực đại.
 
-Còn lại là cách tìm đường tăng. Thuật toán Kuhn đơn giản tìm một đường tăng bất kỳ bằng phép duyệt [theo chiều sâu](depth-first-search.md) hoặc [theo chiều rộng](breadth-first-search.md). Thuật toán lần lượt xét các đỉnh của đồ thị, bắt đầu một lượt duyệt từ mỗi đỉnh và cố tìm một đường tăng xuất phát từ đỉnh đó.
+Còn lại là cách tìm đường tăng. Thuật toán Kuhn tìm một đường tăng bằng phép duyệt [theo chiều sâu](depth-first-search.md) hoặc [theo chiều rộng](breadth-first-search.md). Mỗi lượt tìm kiếm bắt đầu từ một đỉnh chưa được ghép ở phía thứ nhất.
 
 Sẽ thuận tiện hơn khi mô tả thuật toán nếu giả sử đồ thị đầu vào đã được chia sẵn thành hai phần (dù trên thực tế có thể cài đặt thuật toán mà không cần cung cấp tường minh cách chia này).
 
-Trong biến thể được mô tả ở đây, thuật toán xét mọi đỉnh $v$ thuộc phần thứ nhất: $v = 1 \ldots n_1$. Nếu đỉnh hiện tại $v$ đã bão hòa trong cặp ghép hiện tại (tức đã có một cạnh kề với nó được chọn), ta có thể bỏ qua đỉnh này. Ngược lại, thuật toán cố bão hòa đỉnh này bằng cách bắt đầu tìm một đường tăng từ nó. Việc bỏ qua đỉnh đã bão hòa là một tối ưu hóa an toàn trong cách cài đặt này, không phải điều kiện bắt buộc trong định nghĩa chung của thuật toán Kuhn.
+Thuật toán lần lượt xét các đỉnh $v$ ở phía thứ nhất, $v = 1 \ldots n_1$. Nếu $v$ đã được ghép, ta bỏ qua đỉnh này ở vòng lặp ngoài. Chỉ khi đỉnh đang xét chưa được ghép, ta mới bắt đầu tìm một đường tăng từ đó. Trong quá trình tìm kiếm, DFS vẫn có thể đi qua các đỉnh đã được ghép để đổi các cạnh trên đường tăng.
 
 Việc tìm đường tăng được thực hiện bằng một phép duyệt theo chiều sâu hoặc theo chiều rộng đặc biệt (thường dùng duyệt theo chiều sâu vì dễ cài đặt hơn).
 Ban đầu, DFS đứng tại đỉnh chưa bão hòa $v$ thuộc phần thứ nhất. Ta xét tất cả các cạnh đi từ đỉnh này. Gọi cạnh hiện tại là $(v, to)$. Nếu đỉnh $to$ chưa bão hòa trong cặp ghép, ta đã tìm được một đường tăng chỉ gồm cạnh $(v, to)$; khi đó chỉ cần thêm cạnh này vào cặp ghép và dừng việc tìm đường tăng từ $v$. Ngược lại, nếu $to$ đã bão hòa bởi một cạnh $(to, p)$, ta đi tiếp theo cạnh đó: tức cố tìm một đường tăng đi qua $(v, to),(to, p), \ldots$.
@@ -152,7 +152,7 @@ Nhắc lại rằng thuật toán Kuhn có thể dễ dàng được cài đặt
 
 ### Cài đặt cải tiến
 
-Ta sửa thuật toán như sau. Trước vòng lặp chính, hãy tìm một **cặp ghép bất kỳ** bằng một thuật toán đơn giản (một **heuristic** đơn giản), rồi mới chạy vòng lặp gọi hàm $\textrm{try_kuhn}()$ để cải thiện cặp ghép này. Trên các đồ thị ngẫu nhiên, cách làm thường nhanh hơn đáng kể: với đa số đồ thị, có thể nhanh chóng tìm một cặp ghép khá lớn bằng heuristic, sau đó cải thiện nó thành cặp ghép cực đại bằng thuật toán Kuhn thông thường. Nhờ đó, ta không cần khởi chạy DFS từ những đỉnh đã được đưa vào cặp ghép bởi heuristic.
+Ta sửa thuật toán như sau. Trước vòng lặp chính, hãy tìm một **cặp ghép bất kỳ** bằng một thuật toán đơn giản (một **heuristic** đơn giản), rồi mới chạy vòng lặp gọi hàm $\textrm{try_kuhn}()$ để cải thiện cặp ghép này. Trên các đồ thị ngẫu nhiên, cách làm thường nhanh hơn đáng kể: với đa số đồ thị, có thể nhanh chóng tìm một cặp ghép khá lớn bằng heuristic, sau đó cải thiện nó thành cặp ghép cực đại bằng thuật toán Kuhn thông thường. Ở vòng lặp ngoài, ta bỏ qua các đỉnh đã được ghép ở bước tham lam và chỉ khởi chạy DFS từ những đỉnh còn tự do.
 
 Ví dụ, có thể duyệt mọi đỉnh thuộc phần thứ nhất, với mỗi đỉnh chọn một cạnh bất kỳ có thể thêm vào cặp ghép rồi thêm cạnh đó. Ngay cả heuristic đơn giản này cũng có thể tăng tốc thuật toán Kuhn nhiều lần.
 
