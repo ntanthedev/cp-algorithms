@@ -171,9 +171,9 @@ Phương pháp này thường được dùng để tính modulo một hợp số
 
 Ý tưởng là chọn một tập số nguyên tố (thường đủ nhỏ để lưu trong kiểu số nguyên thông thường) và lưu số nguyên dưới dạng vector các số dư khi chia nó cho từng số nguyên tố đó.
 
-Định lý phần dư Trung Hoa cho biết biểu diễn này đủ để khôi phục duy nhất mọi số từ 0 đến tích các số nguyên tố đó trừ một. [Thuật toán Garner](garners-algorithm.md) cho phép khôi phục số nguyên dạng thông thường từ biểu diễn này.
+Định lý Thặng dư Trung Hoa cho biết biểu diễn này đủ để khôi phục duy nhất mọi số từ 0 đến tích các số nguyên tố đó trừ một. [Thuật toán Garner](garners-algorithm.md) cho phép khôi phục số nguyên dạng thông thường từ biểu diễn này.
 
-Cách này tiết kiệm bộ nhớ so với phương pháp cổ điển (dù không tiết kiệm nhiều như biểu diễn phân tích thừa số). Ngoài ra, nó hỗ trợ cộng, trừ và nhân nhanh với thời gian tỉ lệ với số lượng số nguyên tố dùng làm modulo (xem bài [Định lý phần dư Trung Hoa](chinese-remainder-theorem.md) để biết cách cài đặt).
+Cách này tiết kiệm bộ nhớ so với phương pháp cổ điển (dù không tiết kiệm nhiều như biểu diễn phân tích thừa số). Ngoài ra, nó hỗ trợ cộng, trừ và nhân nhanh với thời gian tỉ lệ với số lượng số nguyên tố dùng làm modulo (xem bài [Định lý Thặng dư Trung Hoa](chinese-remainder-theorem.md) để biết cách cài đặt).
 
 Đổi lại, việc chuyển số nguyên về dạng thông thường khá mất công và đòi hỏi cài đặt số học độ chính xác tùy ý cổ điển có phép nhân. Ngoài ra, phương pháp này không hỗ trợ phép chia.
 

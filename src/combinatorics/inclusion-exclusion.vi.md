@@ -423,7 +423,7 @@ $$\begin{eqnarray}
 \cdots ,
 \end{eqnarray}$$
 
-bởi nếu biết số điểm cố định bằng $x$, ta đã biết vị trí của $x$ phần tử trong hoán vị, còn $(n-x)$ phần tử khác có thể được sắp tùy ý.
+bởi khi buộc $x$ vị trí đã chọn phải là điểm cố định, ta đã xác định vị trí của $x$ phần tử trong hoán vị. Các phần tử ở $(n-x)$ vị trí còn lại có thể được sắp xếp tùy ý, kể cả khi cách sắp xếp đó tạo thêm điểm cố định.
 
 Thay vào công thức bao hàm – loại trừ, đồng thời số cách chọn một tập con kích thước $x$ từ $n$ phần tử là $\binom{n}{x}$, ta thu được công thức cho số hoán vị có ít nhất một điểm cố định:
 
@@ -439,7 +439,9 @@ $$ n! \left( 1 - \frac{1}{1!} + \frac{1}{2!} - \frac{1}{3!} + \cdots \pm \frac{1
 
 (vì tổng trong ngoặc là $n+1$ hạng đầu của khai triển Taylor của $e^{-1}$).
 
-Đáng chú ý, một bài toán tương tự cũng có thể giải theo cách này: yêu cầu các điểm cố định không nằm trong $m$ phần tử đầu tiên của hoán vị (thay vì không nằm ở bất kỳ vị trí nào như bài vừa giải). Công thức thu được giống công thức chính xác ở trên, nhưng tổng chỉ chạy đến $m$ thay vì $n$.
+Nếu chỉ cấm điểm cố định ở $m$ vị trí đầu tiên của hoán vị, ta áp dụng bao hàm – loại trừ trên các vị trí bị cấm. Khi chọn các vị trí buộc phải cố định trong mỗi số hạng, ta chỉ chọn từ $m$ vị trí đầu, thay vì chọn từ toàn bộ $n$ vị trí.
+
+**Ghi chú bản dịch:** Có $\binom{m}{j}$ cách chọn $j$ vị trí trong số các vị trí bị cấm, và mỗi lựa chọn cho phép sắp xếp tùy ý $n-j$ phần tử còn lại. Vì vậy số hoán vị thỏa mãn là $\sum_{j=0}^{m}(-1)^j\binom{m}{j}(n-j)!$. Ví dụ, với $n=3$ và $m=1$, kết quả là $3!-2!=4$.
 
 ## Bài tập luyện tập
 

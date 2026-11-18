@@ -29,6 +29,8 @@ Tương tự, mọi đoạn đều có thể được biểu diễn duy nhất t
 Ví dụ $[2, 14] = [2, 9] \cup [10, 13] \cup [14, 14]$, trong đó đoạn đầy đủ có độ dài 13, còn các đoạn thành phần lần lượt có độ dài 8, 4 và 1.
 Ở đây hợp cũng gồm nhiều nhất $\lceil \log_2(\text{length of interval}) \rceil$ đoạn.
 
+**Ghi chú bản dịch:** Hai cận trên trong nguồn không đúng khi giá trị hoặc độ dài đoạn bằng 1: logarit cơ số 2 của 1 bằng 0, nhưng biểu diễn cần một số hạng hoặc một đoạn. Với giá trị dương, một cận đúng là phần nguyên dưới của logarit cơ số 2 cộng 1. Logarit của 0 không xác định.
+
 Ý tưởng chính của Sparse Table là tính trước đáp án cho mọi truy vấn trên các đoạn có độ dài là lũy thừa của hai.
 Sau đó, một truy vấn đoạn khác có thể được trả lời bằng cách tách đoạn thành các đoạn có độ dài là lũy thừa của hai, lấy các đáp án đã tính trước rồi kết hợp chúng để thu được đáp án đầy đủ.
 
@@ -102,6 +104,8 @@ Giá trị nhỏ nhất trên $[1, 6]$ hiển nhiên bằng giá trị nhỏ nh�
 Do đó, ta có thể tính giá trị nhỏ nhất trên đoạn $[L, R]$ bằng:
 
 $$\min(\text{st}[i][L], \text{st}[i][R - 2^i + 1]) \quad \text{ where } i = \log_2(R - L + 1)$$
+
+**Ghi chú bản dịch:** Trong công thức này, chỉ số i phải là phần nguyên dưới của logarit cơ số 2 của độ dài đoạn. Ví dụ, với độ dài 3 thì i bằng 1; bảng logarit và mã truy vấn bên dưới tính theo cách đó.
 
 Cách này yêu cầu ta tính nhanh $\log_2(R - L + 1)$.
 Ta có thể làm điều đó bằng cách tính trước mọi logarit:

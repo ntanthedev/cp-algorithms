@@ -29,7 +29,7 @@ Hình dưới đây minh họa thuật toán khi tìm tất cả số nguyên t�
 </div>
 
 Ý tưởng cốt lõi như sau:
-một số là số nguyên tố nếu không có số nguyên tố nhỏ hơn nào chia hết nó.
+một số là số nguyên tố nếu nó không chia hết cho bất kỳ số nguyên tố nhỏ hơn nào.
 Vì ta xét các số nguyên tố theo thứ tự tăng dần, mọi số chia hết cho ít nhất một số nguyên tố nhỏ hơn đã được đánh dấu là hợp số.
 Do đó, khi đi đến một vị trí chưa bị đánh dấu, số đó không chia hết cho bất kỳ số nguyên tố nhỏ hơn nào và vì thế phải là số nguyên tố.
 

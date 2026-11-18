@@ -88,7 +88,7 @@ Giờ ta xét một thuật toán khác. Thuật toán này khó hiểu hơn m�
 
 Ta duyệt mảng và tích lũy tổng hiện tại vào một biến $s$. Nếu tại một thời điểm $s$ âm, ta gán $s=0$. Có thể chứng minh giá trị lớn nhất mà biến $s$ nhận trong quá trình chạy chính là đáp án.
 
-**Ghi chú của người dịch:** Cần lấy giá trị lớn nhất sau khi cộng phần tử và trước khi đặt tổng âm về không, như trong mã bên dưới. Nếu tính cả giá trị không sau khi đặt lại thì kết quả có thể sai với mảng toàn số âm.
+**Ghi chú bản dịch:** Cần lấy giá trị lớn nhất sau khi cộng phần tử và trước khi đặt tổng âm về không, như trong mã bên dưới. Nếu tính cả giá trị không sau khi đặt lại thì kết quả có thể sai với mảng toàn số âm.
 
 **Chứng minh:**
 
@@ -166,7 +166,7 @@ Ta cần giải bài toán con sau: cho số $x$, kiểm tra xem có đoạn con
 
 Như vậy ta có lời giải với độ phức tạp $O(T(n) \log W)$, trong đó $W$ là độ chính xác cần đạt và $T(n)$ là thời gian giải bài toán con trên mảng độ dài $n$, có thể thay đổi tùy các ràng buộc cụ thể.
 
-**Ghi chú của người dịch:** Số bước tìm kiếm nhị phân còn phụ thuộc độ rộng khoảng tìm kiếm ban đầu và sai số cho phép. Với khoảng độ rộng D và sai số tuyệt đối epsilon dương, số bước tỷ lệ logarit của D chia cho epsilon; vì vậy cách viết theo W ở nguồn cần làm rõ quy ước về độ chính xác và khoảng tìm kiếm.
+**Ghi chú bản dịch:** Số bước tìm kiếm nhị phân còn phụ thuộc độ rộng khoảng tìm kiếm ban đầu và sai số cho phép. Với khoảng độ rộng D và sai số tuyệt đối epsilon dương, số bước tỷ lệ logarit của D chia cho epsilon; vì vậy cách viết theo W ở nguồn cần làm rõ quy ước về độ chính xác và khoảng tìm kiếm.
 
 ### Giải bài toán trực tuyến
 

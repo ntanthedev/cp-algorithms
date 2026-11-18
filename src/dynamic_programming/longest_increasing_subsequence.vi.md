@@ -181,14 +181,14 @@ Ta lại lần lượt xử lý các số, trước hết $a[0]$, rồi $a[1]$, 
 Khi xử lý $a[i]$, ta tự hỏi:
 Điều kiện nào cần thỏa để ghi số hiện tại $a[i]$ vào mảng $d[0 \dots n]$?
 
-Ta đặt $d[l] = a[i]$ nếu tồn tại một dãy con tăng dài nhất độ dài $l$ kết thúc tại $a[i]$, đồng thời không có dãy con tăng dài nhất độ dài $l$ nào kết thúc tại một số nhỏ hơn.
-Tương tự cách trước, nếu bỏ $a[i]$ khỏi dãy con tăng dài nhất độ dài $l$, ta thu được một dãy con tăng dài nhất khác có độ dài $l -1$.
-Vì vậy ta muốn nối $a[i]$ vào một dãy con tăng dài nhất độ dài $l - 1$; rõ ràng dãy độ dài $l - 1$ có phần tử cuối nhỏ nhất sẽ thuận lợi nhất, tức dãy độ dài $l-1$ kết thúc tại $d[l-1]$.
+Ta đặt $d[l] = a[i]$ nếu tồn tại một dãy con tăng độ dài $l$ kết thúc tại $a[i]$ và chưa có dãy con tăng độ dài $l$ nào kết thúc tại một giá trị nhỏ hơn.
+Nếu bỏ phần tử cuối $a[i]$ khỏi một dãy con tăng độ dài $l$, ta thu được một dãy con tăng có độ dài $l -1$.
+Vì vậy, ta muốn nối $a[i]$ vào một dãy con tăng độ dài $l - 1$. Trong các dãy độ dài $l - 1$, dễ nối nhất là dãy có phần tử cuối nhỏ nhất, tức dãy độ dài $l-1$ kết thúc tại $d[l-1]$.
 
-Tồn tại một dãy con tăng dài nhất độ dài $l - 1$ mà ta có thể nối thêm $a[i]$ khi và chỉ khi $d[l-1] < a[i]$.
+Tồn tại một dãy con tăng độ dài $l - 1$ mà ta có thể nối thêm $a[i]$ khi và chỉ khi $d[l-1] < a[i]$.
 Do đó, ta có thể duyệt mọi độ dài $l$ và kiểm tra điều kiện này để xem có thể mở rộng dãy độ dài $l - 1$ hay không.
 
-Ngoài ra, ta cũng phải kiểm tra liệu đã tìm được một dãy con tăng dài nhất độ dài $l$ với phần tử cuối nhỏ hơn hay chưa.
+Ngoài ra, ta cũng phải kiểm tra liệu đã có dãy con tăng độ dài $l$ kết thúc tại một giá trị nhỏ hơn hay chưa.
 Vì vậy chỉ cập nhật khi $a[i] < d[l]$.
 
 Sau khi xử lý mọi phần tử của $a[]$, độ dài dãy con cần tìm là giá trị $l$ lớn nhất thỏa $d[l] < \infty$.
@@ -215,8 +215,7 @@ int lis(vector<int> const& a) {
 
 Bây giờ ta có hai nhận xét quan trọng.
 
-1.  Mảng $d$ luôn được sắp xếp:
-    $d[l-1] < d[l]$ với mọi $l = 1 \dots n$.
+1.  Mảng $d$ luôn được sắp xếp. Trong các chỉ số $l = 1 \dots n$, mỗi độ dài đã đạt được đều thỏa $d[l-1] < d[l]$. Các ô ứng với độ dài chưa đạt được đều chứa cùng giá trị vô cực nếu ta dùng mảng có phần đệm.
 
     Điều này hiển nhiên vì chỉ cần bỏ phần tử cuối khỏi dãy con tăng độ dài $l$, ta nhận được một dãy con tăng độ dài $l-1$ với phần tử cuối nhỏ hơn.
 
@@ -226,7 +225,7 @@ Bây giờ ta có hai nhận xét quan trọng.
     Chỉ có thể tồn tại một vị trí trong mảng thỏa $d[l-1] < a[i] < d[l]$.
 
 Vì vậy, ta có thể tìm phần tử này trong mảng $d[]$ bằng [tìm kiếm nhị phân](../num_methods/binary_search.md) trong $O(\log n)$.
-Thực tế, ta chỉ cần tìm trong $d[]$ số đầu tiên lớn hơn nghiêm ngặt $a[i]$, rồi thử cập nhật phần tử đó giống như trong cài đặt phía trên.
+Trong cài đặt chỉ lưu các giá trị hữu hạn, ta tìm trong $d[]$ phần tử đầu tiên lớn hơn hoặc bằng $a[i]$ và thay bằng giá trị đang xét. Nếu hai giá trị bằng nhau thì độ dài giữ nguyên; nếu không tìm thấy phần tử nào như vậy thì nối giá trị mới vào cuối mảng.
 
 ### Cài đặt
 

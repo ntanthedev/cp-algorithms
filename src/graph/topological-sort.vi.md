@@ -31,7 +31,7 @@ Thứ tự tô-pô có thể **không duy nhất**. Chẳng hạn, giả sử c�
 
 Thứ tự tô-pô cũng có thể **không tồn tại**.
 Nó chỉ tồn tại khi đồ thị có hướng không chứa chu trình.
-Nếu có chu trình chứa hai đỉnh $a$ và $b$, ta gặp mâu thuẫn: $a$ phải có chỉ số nhỏ hơn $b$ vì có thể đi từ $a$ đến $b$, nhưng đồng thời $a$ cũng phải có chỉ số lớn hơn $b$ vì có thể đi từ $b$ đến $a$.
+Nếu có chu trình chứa hai đỉnh $a$ và $b$, ta gặp mâu thuẫn: $a$ phải có chỉ số nhỏ hơn $b$ vì có thể đi từ $a$ đến $b$, nhưng đồng thời cũng phải có chỉ số lớn hơn vì có thể đi từ $b$ đến $a$.
 Bằng cách xây dựng, thuật toán trong bài này cũng chứng minh rằng mọi đồ thị có hướng không chu trình đều có ít nhất một thứ tự tô-pô.
 
 Một bài toán phổ biến sử dụng sắp xếp tô-pô có dạng sau. Có $n$ biến chưa biết giá trị. Với một số cặp biến, ta biết biến này nhỏ hơn biến kia. Ta cần kiểm tra các ràng buộc có mâu thuẫn hay không; nếu không, hãy xuất các biến theo thứ tự tăng dần, và có thể xuất bất kỳ đáp án nào nếu tồn tại nhiều đáp án. Dễ thấy đây chính là bài toán tìm thứ tự tô-pô của một đồ thị gồm $n$ đỉnh.
@@ -47,9 +47,9 @@ Thuật toán dừng tại những cạnh có đỉnh cuối đã được thăm
 
 Vì vậy, khi lời gọi hàm $\text{dfs}(v)$ kết thúc, DFS đã thăm mọi đỉnh có thể đi tới từ $v$, trực tiếp qua một cạnh hoặc gián tiếp qua nhiều cạnh.
 
-Ta thêm đỉnh $v$ vào một danh sách khi hoàn tất $\text{dfs}(v)$. Vì mọi đỉnh có thể đi tới từ $v$ đều đã được thăm, chúng đã nằm trong danh sách trước khi ta thêm $v$.
+Ta thêm đỉnh $v$ vào một danh sách khi hoàn tất $\text{dfs}(v)$. Vì mọi đỉnh có thể đi tới từ đó đều đã được thăm, chúng đã nằm trong danh sách trước khi ta thêm $v$.
 Thực hiện điều này với mọi đỉnh của đồ thị bằng một hoặc nhiều lần chạy DFS.
-Với mỗi cạnh có hướng $v \rightarrow u$, đỉnh $u$ sẽ xuất hiện trong danh sách trước $v$, vì có thể đi từ $v$ đến $u$.
+Với mỗi cạnh có hướng $v \rightarrow u$, đỉnh $u$ sẽ xuất hiện trong danh sách trước $v$, vì có thể đi từ $v$ đến đỉnh cuối.
 Do đó, nếu gán nhãn cho các đỉnh trong danh sách lần lượt là $n-1, n-2, \dots, 1, 0$, ta thu được một thứ tự tô-pô.
 Nói cách khác, danh sách này biểu diễn thứ tự tô-pô theo chiều ngược lại.
 
@@ -90,6 +90,8 @@ void topological_sort() {
 ```
 
 Hàm chính của lời giải là `topological_sort`. Hàm này khởi tạo các biến của DFS, chạy DFS và lưu đáp án trong vector `ans`. Đáng chú ý, nếu đồ thị có chu trình, kết quả của `topological_sort` vẫn có một tính chất hữu ích: nếu có thể đi từ đỉnh $v$ đến đỉnh $u$ nhưng không thể đi ngược lại, thì $v$ luôn đứng trước $u$ trong mảng kết quả. Tính chất này được sử dụng trong [thuật toán Kosaraju](./strongly-connected-components.md) để tìm các thành phần liên thông mạnh và thứ tự tô-pô của chúng trong một đồ thị có hướng chứa chu trình.
+
+**Ghi chú bản dịch:** Tính chất trên không đúng cho từng cặp đỉnh khi đồ thị có chu trình. Ví dụ, với các cạnh từ 0 đến 1, từ 1 đến 0 và từ 0 đến 2, DFS bắt đầu từ 0 và xét các đỉnh kề theo thứ tự 1, 2 cho thứ tự 0, 2, 1: đỉnh 1 đến được 2 nhưng đứng sau 2. Trong thuật toán Kosaraju, thứ tự các thành phần liên thông mạnh được xác định theo thời điểm kết thúc lớn nhất của mỗi thành phần.
 
 ## Bài tập luyện tập
 

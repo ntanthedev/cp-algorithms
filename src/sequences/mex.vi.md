@@ -8,7 +8,7 @@ translation:
   status: draft
   last_synced: 2026-11-15
 ---
-# MEX (số không xuất hiện nhỏ nhất) của một dãy
+# MEX (số nguyên không âm nhỏ nhất không xuất hiện) của một dãy
 
 Cho mảng $A$ gồm $N$ phần tử. Ta cần tìm số nguyên không âm nhỏ nhất không xuất hiện trong mảng. Số đó thường được gọi là **MEX** (minimal excluded).
 

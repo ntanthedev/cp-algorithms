@@ -16,7 +16,7 @@ Thuật toán Kraut tìm phép phân tích ma trận $A$ thành $A = L U$, trong
 
 Có một định lý phát biểu rằng một ma trận khả nghịch có phép phân tích LU và phép phân tích đó là duy nhất khi và chỉ khi tất cả các định thức con chính của nó đều khác không. Ta chỉ xét phép phân tích trong đó đường chéo của ma trận $L$ gồm các số một.
 
-**Ghi chú của người dịch:** Điều kiện chuẩn cho phép phân tích LU duy nhất thuộc dạng này là các định thức con chính đầu đều khác không; yêu cầu mọi định thức con chính khác không là mạnh hơn mức cần thiết. Chẳng hạn, ma trận gồm hai hàng (1, 1) và (1, 0) vẫn có phân tích LU duy nhất dù định thức con chính ở hàng và cột thứ hai bằng không.
+**Ghi chú bản dịch:** Điều kiện chuẩn cho phép phân tích LU duy nhất thuộc dạng này là các định thức con chính đầu đều khác không; yêu cầu mọi định thức con chính khác không là mạnh hơn mức cần thiết. Chẳng hạn, ma trận gồm hai hàng (1, 1) và (1, 0) vẫn có phân tích LU duy nhất dù định thức con chính ở hàng và cột thứ hai bằng không.
 
 Gọi $A$ là ma trận và $N$ là kích thước của nó. Ta sẽ tìm các phần tử của ma trận $L$ và $U$ theo các bước sau:
 
@@ -32,7 +32,7 @@ Gọi $A$ là ma trận và $N$ là kích thước của nó. Ta sẽ tìm các 
 
 ## Cài đặt
 
-**Ghi chú của người dịch:** Mã nguồn có thể trả kết quả sai ngay cả với ma trận có định thức khác không: ma trận một phần tử âm bị nhận nhầm là có hàng toàn không vì vòng kiểm tra chỉ tìm phần tử dương. Kết quả còn được làm tròn thành số nguyên và mọi ngoại lệ đều khiến hàm trả về không.
+**Ghi chú bản dịch:** Mã nguồn có thể trả kết quả sai ngay cả với ma trận có định thức khác không: ma trận một phần tử âm bị nhận nhầm là có hàng toàn không vì vòng kiểm tra chỉ tìm phần tử dương. Kết quả còn được làm tròn thành số nguyên và mọi ngoại lệ đều khiến hàm trả về không.
 
 ```java
 static BigInteger det (BigDecimal a [][], int n) {

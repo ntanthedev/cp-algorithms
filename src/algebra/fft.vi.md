@@ -290,6 +290,8 @@ Việc duy nhất cần làm sau đó là chuẩn hóa số:
     }
 ```
 
+**Ghi chú bản dịch:** Đoạn mã nguồn trên thiếu dấu ngoặc nhọn mở sau vòng lặp. Vì vậy chỉ phép cộng đầu tiên thuộc vòng lặp; biến chỉ số nằm ngoài phạm vi ở hai dòng tiếp theo và dấu ngoặc đóng không có dấu mở tương ứng.
+
 Vì độ dài tích của hai số không bao giờ vượt quá tổng độ dài của chúng, kích thước vector đủ để thực hiện mọi phép nhớ.
 
 ### Cải tiến cài đặt: tính toán tại chỗ
@@ -386,6 +388,8 @@ void fft(vector<cd> & a, bool invert) {
 Sau đó, ở $\log n - 1$ giai đoạn của thuật toán, ta tính DFT cho từng khối có kích thước tương ứng $\text{len}$.
 Mọi khối này đều dùng cùng căn của đơn vị $\text{wlen}$.
 Ta duyệt qua tất cả các khối và thực hiện phép biến đổi butterfly trên từng khối.
+
+**Ghi chú bản dịch:** Với độ dài là lũy thừa của 2, vòng lặp trên chạy qua các kích thước 2, 4, …, n, nên số giai đoạn là logarit cơ số 2 của n. Chẳng hạn, với n bằng 8 có ba giai đoạn, không phải hai.
 
 Ta có thể tiếp tục tối ưu việc đảo bit.
 Trong cài đặt trước, ta duyệt từng bit của chỉ số để tạo chỉ số có thứ tự bit đảo ngược.
