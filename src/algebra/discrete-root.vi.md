@@ -150,6 +150,8 @@ int main() {
 }
 ```
 
+**Ghi chú bản dịch:** Khi in số nghiệm bằng printf, hãy dùng định dạng %zu vì ans.size() trả về giá trị kiểu size_t. Định dạng %d trong ví dụ dành cho đối số kiểu int.
+
 ## Bài tập luyện tập
 
 * [Codeforces - Lunar New Year and a Recursive Sequence](https://codeforces.com/contest/1106/problem/F)
