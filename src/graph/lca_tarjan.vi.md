@@ -9,10 +9,10 @@ translation:
   last_synced: 2026-11-15
 ---
 
-# Tổ tiên chung thấp nhất – thuật toán offline của Tarjan
+# Tổ tiên chung gần nhất – thuật toán offline của Tarjan
 
 Cho cây $G$ có $n$ đỉnh và $m$ truy vấn dạng $(u, v)$.
-Với mỗi truy vấn $(u, v)$, ta muốn tìm tổ tiên chung thấp nhất của hai đỉnh $u$ và $v$: đỉnh là tổ tiên của cả $u$ và $v$ và có độ sâu lớn nhất trong cây.
+Với mỗi truy vấn $(u, v)$, ta muốn tìm tổ tiên chung gần nhất của hai đỉnh $u$ và $v$: đỉnh là tổ tiên của cả $u$ và $v$ và có độ sâu lớn nhất trong cây.
 Đỉnh $v$ cũng là tổ tiên của $v$, nên LCA có thể là một trong hai đỉnh.
 
 Bài này giải bài toán offline: giả sử biết trước tất cả truy vấn, do đó ta có thể trả lời chúng theo thứ tự tùy ý.
